@@ -1,7 +1,7 @@
 /Sample Xlsx/
 /.claude/
 /ingestion/output/
-/curation/output/
+#/curation/output/
 .ds_Store
 curation/test/*.txt
 ollamaCommand.txt
