@@ -1,0 +1,72 @@
+Testing 10 wines against gemma3n:e4b at http://localhost:11434/v1/chat/completions
+Web lookup sources (5): Jeb Dunnuck, James Suckling, Vinous, Robert Parker Wine Advocate, Wine Enthusiast
+
+[01] Annabella Pinot Noir
+     source: Wine Enthusiast
+     web: "There are lot's of cherry, cola, sandalwood and exotic spice flavors in this Pinot Noir . It's dry a"
+     country=US  region=Sonoma Coast
+     grapes=['Pinot Noir']  is_blend=False
+     organic=False  confidence=95
+
+[02] Aster Ribera del Duero
+     source: Jeb Dunnuck
+     web: 'This round-up reflects the last of the wines tasted during my time in Rioja and Ribera del Duero in '
+     country=Spain  region=Ribeira del Duero
+     grapes=['Tempranillo', 'Other']  is_blend=True
+     organic=False  confidence=90
+
+[03] Bayten Sauvignon Blanc
+     source: fallback
+     web: 'The refreshing Sauvignon Blanc grape is perfectly at home in South Africa. The diverse growing regio'
+     country=South Africa  region=Constantia
+     grapes=['Sauvignon Blanc']  is_blend=False
+     organic=False  confidence=90
+
+[04] Bila Haut Roussillon
+     source: James Suckling
+     web: 'Bila - Haut , which Chapoutier started in 1998, produces high-quality parcel ... The Domaine de Bila'
+     country=France  region=Côtes du Roussillon Villages
+     grapes=['Grenache', 'Syrah', 'Carignan']  is_blend=True
+     organic=False  confidence=90
+
+[05] Chapelle Bastion Picpoul
+     source: James Suckling
+     web: 'Apr 26, 2026 · La Chapelle de La Mission Haut-Brion Pessac-Léognan 2025 Click here to view the note.'
+     country=Spain  region=Pessac-Léognan
+     grapes=['Picpoul']  is_blend=False
+     organic=False  confidence=90
+
+[06] Chocapalha Tinto
+     source: Wine Enthusiast
+     web: 'The steep-sided Douro Valley with its terraced vineyards are planted with Touriga Nacional, Tinto Ro'
+     country=Portugal  region=Douro Valley
+     grapes=['Touriga Nacional', 'Tinto Roiz', 'Touriga Franca', 'others']  is_blend=True
+     organic=False  confidence=90
+
+[07] Cloudline PN
+     source: fallback
+     web: 'Darker than the average Oregonian Pinot, the color of the Cloudline is a pretty, deep, translucent r'
+     country=United States  region=Willamette Valley, Oregon
+     grapes=['Pinot Noir']  is_blend=False
+     organic=False  confidence=90
+
+[08] Curator White
+     source: Jeb Dunnuck
+     web: 'Upon graduating, Printz put White in touch with the Chinati Foundation in Marfa, Texas, where White '
+     country=USA  region=Texas
+     grapes=['White']  is_blend=False
+     organic=False  confidence=60
+
+[09] DV Catena Tinto
+     source: James Suckling
+     web: 'May 12, 2025 · Catena Zapata Mendoza D.V. Catena Tinto Historico 2023 Click here to view the note. |'
+     country=Argentina  region=Mendoza
+     grapes=['Cabernet Franc', 'Tinto']  is_blend=True
+     organic=False  confidence=90
+
+[10] Excelsior Chardonnay
+     source: Wine Enthusiast
+     web: 'Christina Pickard : This young Chardonnay bursts with aromas of freshly sliced lemon, lime and peach'
+     country=USA  region=California
+     grapes=['Chardonnay']  is_blend=False
+     organic=False  confidence=90
