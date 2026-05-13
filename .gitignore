@@ -2,3 +2,4 @@
 /.claude/
 /ingestion/output/
 .ds_Store
+curation/test/*.txt

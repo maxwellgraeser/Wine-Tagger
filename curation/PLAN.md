@@ -12,39 +12,54 @@ From `ingestion/output/`:
 ## Processing Steps
 
 1. **Load CSV** into memory (pandas or stdlib csv).
-2. **For each product, perform a web lookup** to gather raw context about the wine before calling the LLM:
-   - Search using the product name (and brand/supplier where available) via DuckDuckGo Instant Answer (free, no API key required).
-   - Extract the top result's description / fact sheet snippet (producer, region, grapes, organic/biodynamic mentions).
-   - Store the raw snippet for the prompt and for the `tag_log`.
-3. **For each product, call the local LLM** with the wine's name *and* the web snippet to infer:
-   - `country` -- country of origin (e.g. `France`, `USA`, `Spain`)
-   - `region` -- wine region (e.g. `Bordeaux`, `Napa Valley`, `Ribera del Duero`)
-   - `grapes` -- grape varieties (e.g. `["Cabernet Sauvignon", "Merlot"]`)
-   - `is_blend` -- `true` if multiple grapes, `false` if single varietal
-   - `organic` -- `true` if the wine is certified organic/biodynamic/natural, otherwise omit / `false`
-   - `confidence` -- integer 0–100 reflecting how certain the model is about the metadata as a whole (100 = definitive web evidence, 0 = pure guess from name alone)
-4. **Parse the LLM response** into structured fields. Use a consistent prompt that requests JSON output to make parsing reliable.
-5. **Write everything to SQLite** -- products, sales stats, and the new tags.
+2. **For each product, gather web snippets** from all curated sources in parallel (no early stop):
+   - Query every source in `curation/sources.py` plus an unscoped fallback via DuckDuckGo.
+   - Collect every snippet returned (multiple sources may hit).
+3. **Phase 1 — LLM match scoring** (one LLM call per product):
+   - Send all snippets to the LLM in a single prompt asking it to rate each snippet 0–100 for how well it matches the product name.
+   - Wine abbreviations are expanded in this prompt (PN → Pinot Noir, SB → Sauvignon Blanc, etc.).
+   - Snippets below `SNIPPET_MATCH_THRESHOLD` (default 65) are discarded.
+4. **Phase 2 — LLM tag inference** (one LLM call per product):
+   - Combine all passing snippets into a labeled context block (`[source | match=N]\n...`).
+   - Ask the LLM to infer country, region, grapes, is_blend, organic, and confidence from this richer context.
+   - Confidence rubric has hard limits: max 84 with a single source, max 69 if the producer name is absent.
+5. **Parse the LLM response** into structured fields. Use a consistent prompt that requests JSON output to make parsing reliable.
+6. **Write everything to SQLite** -- products, sales stats, and the new tags.
 
 ## Web Lookup
 
 ### Goal
 
-Give the local model real-world context rather than asking it to guess from a product name alone. A single web snippet per wine dramatically improves accuracy for obscure labels.
+Give the local model real-world context rather than asking it to guess from a product name alone. Multiple corroborating sources improve accuracy for obscure labels and guard against a single bad snippet inflating confidence.
 
-### Approach
+### Approach (two-phase)
 
-1. Build a site-scoped search query for each source in `curation/sources.py` (checked in priority order): `site:{domain} "{name}" {brand}`. The `CURATED_SOURCES` list covers Jeb Dunnuck, James Suckling, Vinous, Robert Parker Wine Advocate, and Wine Enthusiast — each with its domain.
-2. Hit the DuckDuckGo Instant Answer API (free, no API key required) with each site-scoped query in turn; stop at the first source that returns a meaningful snippet.
-3. Take the first meaningful text snippet (≤ 400 chars). If none of the curated sources returns anything useful (e.g. the product is a private label), fall back to an unscoped query `"{name}" {brand} wine region grapes` before giving up.
-4. If still nothing useful for a **known label**, set `web_context` to `null` and let the model do its best from the name alone — then mark `tag_status = 'needs_review'` regardless of confidence (private-label / unknown wine path).
-   If DDG itself errors or returns no results at all (total lookup failure), skip LLM inference entirely and immediately set `tag_status = 'needs_review'`.
-5. Cache results in a local file (`curation/output/web_cache.json`, keyed by product id) so re-runs don't hit the network for already-looked-up wines.
+#### Phase 1 — gather and score
+
+1. Build a site-scoped query for **every** source in `curation/sources.py`: `site:{domain} "{name}" {brand}`. Unlike the old approach, processing does **not** stop at the first hit — all sources are queried.
+2. Add an unscoped fallback query `"{name}" {brand} wine region grapes` at the end.
+3. Collect every snippet returned (up to one per source, ≤ 400 chars each).
+4. Send all snippets to the LLM in a **single batch match-scoring call**. The prompt instructs the model to expand common wine abbreviations (PN → Pinot Noir, SB → Sauvignon Blanc, Shiraz = Syrah, etc.) and rate each snippet 0–100 for how well it matches the product.
+5. Discard snippets scoring below `SNIPPET_MATCH_THRESHOLD` (default **65**).
+
+#### Phase 2 — context assembly
+
+6. Combine the surviving snippets into a labeled context block:
+   ```
+   [Vivino | match=82]
+   De Bortoli Noble One Botrytis Semillon is a luscious dessert wine...
+
+   [Wine Searcher | match=71]
+   Noble One from De Bortoli winery in Riverina, New South Wales...
+   ```
+7. Pass this context to the tag-inference LLM call (see LLM Integration below).
+8. Cache the final assembled context string in `curation/output/web_cache.json` (keyed by product id). Re-runs use the cache directly, skipping both DDG and match scoring.
 
 ### Rate Handling
 
-- Add a short delay (0.5 s) between lookups to be polite to public APIs.
-- On HTTP error, retry once, then proceed with `web_context = null`.
+- Add a 0.5 s delay between DDG queries to be polite to public APIs.
+- On DDG error, skip that source and continue.
+- If **no** snippets pass the match threshold, `web_context` is `null`; the product is tagged from name alone and set to `tag_status = 'needs_review'`.
 
 ---
 
@@ -65,7 +80,13 @@ Gemma (likely `gemma2:9b` or similar). The prompt should be tuned for this model
 
 ### Prompt Strategy
 
-For each wine, send the name, available catalog fields, and the web snippet (if any) and ask for structured output:
+#### Match-scoring call (Phase 1)
+
+Sent once per product with all snippets bundled. The model returns a JSON object mapping snippet index to a 0–100 match score. Abbreviation expansion guidance is embedded in the prompt.
+
+#### Tag-inference call (Phase 2)
+
+Sent with the combined multi-source context assembled in Phase 1:
 
 ```
 You are a wine expert. Use the product information and the web context below to identify the wine's metadata.
@@ -73,17 +94,22 @@ You are a wine expert. Use the product information and the web context below to 
 Product name: {name}
 Category: {category}
 Brand: {brand}
-Web context: {web_context or "none"}
+
+Web context: {combined snippet block, or "none"}
 
 Rules:
 - is_blend is true if the wine contains more than one grape variety, false if it is a single varietal.
-- organic is true only if the wine is certified organic, biodynamic, or explicitly marketed as natural/organic. Omit the field (or set false) if uncertain.
+- organic is true only if the wine is certified organic, biodynamic, or explicitly marketed as certified biodynamic. Omit or set false if uncertain.
 - If the web context contradicts the product name, trust the web context.
-- confidence is an integer from 0 to 100 reflecting your overall certainty about this wine's metadata:
-  - 90–100: strong web evidence confirmed the wine's details
-  - 60–89: partial web evidence; some fields inferred
-  - 30–59: web context was vague or absent; mostly inferred from the name
-  - 0–29: little or no usable information; high chance of error
+- confidence is an integer from 0 to 100 reflecting certainty that the tags are correct:
+  - 90–100: two or more independent sources explicitly confirm producer, region, AND grape variety
+  - 70–89:  one strong source confirms the producer name plus most key details
+  - 50–69:  one source confirms region or grape but not both; or a weak match
+  - 30–49:  no strong web source; details inferred from name and abbreviations only
+  - 0–29:   no usable web context; pure guesswork
+  Hard limits:
+  * Max 84 if only one source contributed to your answer
+  * Max 69 if the producer/brand name does not appear in any web snippet
 
 Respond in JSON only — no explanation, no markdown fences:
 {
@@ -189,7 +215,9 @@ All open questions have been resolved:
 | 3 | **Private-label wines** (no useful web result) | Attempt LLM inference from name alone, then automatically set `tag_status = 'needs_review'` regardless of confidence. |
 | 4 | **Organic evidence threshold** | Require **explicit wording** only: `"certified organic"`, `"biodynamic"`, `"certified biodynamic"`. Soft signals (`"natural"`, `"no added sulfites"`, `"low intervention"`) are not sufficient — `organic` stays `false`. |
 | 5 | **Re-run behaviour** | Re-run re-tags all rows **except** those with `tag_status = 'manual'`. Rows with `'reviewed'`, `'needs_review'`, and `'auto'` are all eligible to be re-tagged. |
-| 6 | **Batching (LLM)** | One wine per LLM call. |
+| 6 | **LLM calls per wine** | **Two**: one batch match-scoring call (rates all snippets), one tag-inference call (uses filtered context). |
+| 7 | **Multi-source web lookup** | Query **all** curated sources, not just the first hit. Discard snippets the LLM rates below match score **65** (`SNIPPET_MATCH_THRESHOLD`). |
+| 8 | **Confidence hard limits** | Max 84 with a single source; max 69 if the producer name is absent from all snippets. Prevents inflated scores from weak evidence. |
 
 ## Batch-Review Mode
 

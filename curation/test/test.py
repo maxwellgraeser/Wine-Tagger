@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Quick smoke test: send the first 10 data rows of combined.csv through the LLM
+Quick smoke test: send the first X data rows of combined.csv through the LLM
 and print the parsed results. No DB writes.
 """
 
@@ -14,7 +14,7 @@ from curate import infer_tags, web_lookup, DEFAULT_API_URL, DEFAULT_MODEL
 from sources import CURATED_SOURCES
 
 CSV_PATH = Path(__file__).parent / "combined.csv"
-ROWS_TO_TEST = 10
+ROWS_TO_TEST = 3
 
 
 def main():
@@ -30,15 +30,14 @@ def main():
     for i, row in enumerate(rows, 1):
         name = row.get("name", "?")
         print(f"[{i:02d}] {name}")
-        source_log = []
-        web_context = web_lookup(row, cache, source_log=source_log)
-        hit_entry = next((e for e in source_log if e["hit"]), None)
-        if hit_entry:
-            label = "fallback" if hit_entry["fallback"] else hit_entry["name"]
-            print(f"     source: {label}")
+        web_context, scored = web_lookup(row, cache, api_url=DEFAULT_API_URL, model=DEFAULT_MODEL)
+        if scored:
+            top = scored[0]
+            print(f"     source: {top.get('source', '?')} (match_score={top.get('match_score')})")
+        elif web_context:
+            print(f"     source: cache")
         else:
-            tried = [e["name"] for e in source_log]
-            print(f"     source: none (tried: {', '.join(tried) or '—'})")
+            print(f"     source: none")
         print(f"     web: {(web_context or 'none')[:100]!r}")
         parsed, _prompt, raw = infer_tags(row, web_context=web_context,
                                           api_url=DEFAULT_API_URL,

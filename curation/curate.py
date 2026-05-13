@@ -20,7 +20,7 @@ from typing import Optional
 import requests
 
 try:
-    from ddgs import DDGS
+    from ddgs import DDGS           #  error in virtual environment on my computer but is functional, idk
 except ImportError:
     DDGS = None
 
@@ -38,10 +38,16 @@ RUN_STATE_PATH = OUTPUT_DIR / ".run_state.json"
 # ---------------------------------------------------------------------------
 # Defaults
 # ---------------------------------------------------------------------------
-DEFAULT_API_URL = "http://localhost:11434/v1/chat/completions"
-DEFAULT_MODEL = "gemma3n:e4b"
-DEFAULT_CONFIDENCE_THRESHOLD = 75
-ORGANIC_PHRASES = {"certified organic", "biodynamic", "certified biodynamic"}
+from constants import (
+    DEFAULT_API_URL,
+    DEFAULT_MODEL,
+    DEFAULT_CONFIDENCE_THRESHOLD,
+    DDG_MAX_RESULTS,
+    SNIPPET_CHAR_LIMIT,
+    SCORING_SNIPPET_CHARS,
+    SNIPPET_MATCH_THRESHOLD,
+    ORGANIC_PHRASES,
+)
 
 # ---------------------------------------------------------------------------
 # Sources
@@ -124,65 +130,133 @@ def save_cache(path: Path, cache: dict) -> None:
 
 
 # ---------------------------------------------------------------------------
-# Web lookup
+# Web lookup — multi-source with LLM match scoring
 # ---------------------------------------------------------------------------
 
 def ddg_snippet(query: str, timeout: int = 8) -> Optional[str]:
     """Search DuckDuckGo and return a concatenated snippet from the top results."""
     try:
-        results = DDGS().text(query, max_results=3, timelimit=None)
+        results = DDGS().text(query, max_results=DDG_MAX_RESULTS, timelimit=None)
     except Exception:
         return None
     if not results:
         return None
     bodies = [r.get("body", "").strip() for r in results if r.get("body")]
     combined = " | ".join(bodies)
-    return combined[:400] if combined else None
+    return combined[:SNIPPET_CHAR_LIMIT] if combined else None
 
 
-def web_lookup(product: dict, cache: dict,
-               source_log: Optional[list] = None) -> Optional[str]:
-    """Return a web snippet for the product, using cache when available.
-
-    If source_log is a list, each attempted source is appended as a dict with
-    keys 'name', 'domain', 'hit' (bool), and 'fallback' (bool).
-    """
-    pid = product["id"]
-    if pid in cache:
-        return cache[pid]
-
+def gather_all_snippets(product: dict) -> list[dict]:
+    """Query every curated source plus unscoped fallback. Returns all snippets found."""
     name = product["name"]
-    brand = product.get("brand_name", "")
+    brand = product.get("brand_name", "") or ""
+    results = []
 
-    snippet = None
-
-    # Try curated sources first
     for source in CURATED_SOURCES:
         query = f'site:{source["domain"]} "{name}"'
         if brand:
             query += f" {brand}"
         snippet = ddg_snippet(query)
         time.sleep(0.5)
-        if source_log is not None:
-            source_log.append({"name": source["name"], "domain": source["domain"],
-                                "hit": bool(snippet), "fallback": False})
         if snippet:
-            break
+            results.append({"source": source["name"], "domain": source["domain"], "snippet": snippet})
 
-    # Fallback to unscoped query
-    if not snippet:
-        query = f'"{name}"'
-        if brand:
-            query += f" {brand}"
-        query += " wine region grapes"
-        snippet = ddg_snippet(query)
-        time.sleep(0.5)
-        if source_log is not None:
-            source_log.append({"name": "fallback", "domain": "*",
-                                "hit": bool(snippet), "fallback": True})
+    query = f'"{name}"'
+    if brand:
+        query += f" {brand}"
+    query += " wine region grapes"
+    snippet = ddg_snippet(query)
+    time.sleep(0.5)
+    if snippet:
+        results.append({"source": "fallback", "domain": "*", "snippet": snippet})
 
-    cache[pid] = snippet
-    return snippet
+    return results
+
+
+BATCH_MATCH_SCORE_PROMPT = """\
+You are a wine expert. Score how well each web snippet matches the wine product name below.
+
+Product: {name}
+Brand: {brand}
+
+Abbreviation guide (expand these when comparing names):
+PN / P.N. = Pinot Noir | PG = Pinot Gris or Pinot Grigio | SB = Sauvignon Blanc
+CS / Cab / Cab Sauv = Cabernet Sauvignon | CF = Cabernet Franc | GR = Grenache
+Chard = Chardonnay | Shiraz = Syrah (same grape, different name) | GSM = Grenache Shiraz Mourvèdre
+Sauv Blanc = Sauvignon Blanc | Pinot Gris = Pinot Grigio | Tempranillo = Tinto
+
+Snippets:
+{snippets_block}
+
+Score each snippet 0–100:
+  90–100: clearly this exact wine — producer/brand, variety, and style all confirmed
+  70–89:  very likely the same wine — most key details align
+  50–69:  possibly the same wine — some details match but ambiguous
+  30–49:  unlikely — only loose or coincidental similarity
+  0–29:   different wine, wrong producer, or irrelevant content
+
+Return ONLY a JSON object mapping snippet index (as string) to integer score.
+Example: {{"0": 85, "1": 40, "2": 72}}
+No explanation, no extra text."""
+
+
+def score_snippets(product: dict, all_snippets: list[dict], api_url: str, model: str) -> list[dict]:
+    """One LLM call to rate all snippets for name-match quality. Returns snippets with match_score added."""
+    if not all_snippets:
+        return []
+
+    lines = [f"[{i}] ({item['source']}): {item['snippet'][:SCORING_SNIPPET_CHARS]}"
+             for i, item in enumerate(all_snippets)]
+    snippets_block = "\n\n".join(lines)
+
+    prompt = BATCH_MATCH_SCORE_PROMPT.format(
+        name=product["name"],
+        brand=product.get("brand_name", "") or "unknown",
+        snippets_block=snippets_block,
+    )
+
+    try:
+        raw = call_llm(prompt, api_url, model, timeout=45)
+        scores = extract_json(raw) or {}
+        return [
+            {**item, "match_score": min(100, max(0, int(scores.get(str(i), scores.get(i, 0)))))}
+            for i, item in enumerate(all_snippets)
+        ]
+    except Exception:
+        return [{**item, "match_score": 0} for item in all_snippets]
+
+
+def build_web_context(scored_snippets: list[dict], threshold: int = SNIPPET_MATCH_THRESHOLD) -> Optional[str]:
+    """Combine snippets that passed the match threshold into a single labeled context string."""
+    relevant = [s for s in scored_snippets if s["match_score"] >= threshold]
+    if not relevant:
+        return None
+    parts = [
+        f"[{item['source']} | match={item['match_score']}]\n{item['snippet']}"
+        for item in sorted(relevant, key=lambda x: x["match_score"], reverse=True)
+    ]
+    return "\n\n".join(parts)
+
+
+def web_lookup(product: dict, cache: dict, api_url: str = "", model: str = "") -> tuple[Optional[str], list[dict]]:
+    """Multi-source web lookup with LLM match scoring. Returns (web_context, scored_snippets).
+
+    On cache hit, returns the cached context with an empty snippet list.
+    api_url and model are required for cache misses (match scoring).
+    """
+    pid = product["id"]
+    if pid in cache:
+        return cache[pid], []
+
+    all_snippets = gather_all_snippets(product)
+    if not all_snippets:
+        cache[pid] = None
+        return None, []
+
+    scored = score_snippets(product, all_snippets, api_url, model)
+    context = build_web_context(scored)
+    cache[pid] = context
+    return context, scored
 
 
 # ---------------------------------------------------------------------------
@@ -202,11 +276,15 @@ Rules:
 - is_blend is true if the wine contains more than one grape variety, false if it is a single varietal.
 - organic is true only if the wine is certified organic, biodynamic, or explicitly marketed as certified biodynamic. Omit or set false if uncertain.
 - If the web context contradicts the product name, trust the web context.
-- confidence is an integer from 0 to 100:
-  - 90-100: strong web evidence confirmed the wine's details
-  - 60-89: partial web evidence; some fields inferred
-  - 30-59: web context was vague or absent; mostly inferred from the name
-  - 0-29: little or no usable information; high chance of error
+- confidence is an integer from 0 to 100 reflecting certainty that the tags are correct:
+  - 90–100: two or more independent sources explicitly confirm producer, region, AND grape variety
+  - 70–89:  one strong source confirms the producer name plus most key details
+  - 50–69:  one source confirms region or grape but not both; or a weak match
+  - 30–49:  no strong web source; details inferred from name and abbreviations only
+  - 0–29:   no usable web context; pure guesswork
+  Hard limits — do not exceed these regardless of how confident you feel:
+  * Max 84 if only one source contributed to your answer
+  * Max 69 if the producer/brand name does not appear in any web snippet
 
 Respond in JSON only — no explanation, no markdown fences:
 {{
@@ -508,11 +586,14 @@ def main() -> None:
 
         print(f"[{pos}/{total}] {product['name']}", end="", flush=True)
 
-        # Web lookup
-        web_context = web_lookup(product, cache)
+        # Web lookup — gather all sources, score for name match, build combined context
+        web_context, scored_snippets = web_lookup(product, cache, args.api_url, args.model)
         save_cache(CACHE_PATH, cache)
+        if scored_snippets:
+            n_relevant = sum(1 for s in scored_snippets if s["match_score"] >= SNIPPET_MATCH_THRESHOLD)
+            print(f" | sources: {len(scored_snippets)} found, {n_relevant} relevant", end="", flush=True)
         if web_context:
-            print(f" | web: {web_context[:60]}...", end="", flush=True)
+            print(f" | ctx: {web_context[:50]}...", end="", flush=True)
         else:
             print(" | no web context", end="", flush=True)
 
