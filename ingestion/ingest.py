@@ -190,7 +190,8 @@ def merge_datasets(
     inventory: list[dict],
 ) -> tuple[list[str], list[dict]]:
     """
-    Full outer join of products and inventory on name (case-insensitive).
+    Inner join of products and inventory on name (case-insensitive).
+    Rows not present in both sources are dropped.
     Returns (headers, rows) for the combined CSV.
     """
     combined_headers = prod_headers + SALES_ONLY_COLS
@@ -200,40 +201,51 @@ def merge_datasets(
     }
 
     rows: list[dict] = []
-    matched_names: set[str] = set()
+    products_only = 0
 
     for prod in products:
         key = prod.get("name", "").strip().lower()
         inv = inv_by_name.get(key)
-        row = {col: prod.get(col, "") for col in prod_headers}
-        for col in SALES_ONLY_COLS:
-            row[col] = inv.get(col, "") if inv is not None else ""
         if inv is None:
-            log.warning("No inventory match for product: %r", prod.get("name"))
-        else:
-            matched_names.add(key)
-        rows.append(row)
-
-    # Inventory rows with no product match
-    for inv in inventory:
-        key = inv.get("name", "").strip().lower()
-        if key in matched_names:
+            log.warning("Dropping product with no inventory match: %r", prod.get("name"))
+            products_only += 1
             continue
-        log.warning("No product match for inventory row: %r", inv.get("name"))
-        row = {col: "" for col in prod_headers}
-        row["name"] = inv.get("name", "")
-        row["sku"] = inv.get("sku", "")
+        row = {col: prod.get(col, "") for col in prod_headers}
         for col in SALES_ONLY_COLS:
             row[col] = inv.get(col, "")
         rows.append(row)
 
+    matched_names = {r["name"].strip().lower() for r in rows}
+    inventory_only = sum(
+        1 for inv in inventory if inv.get("name", "").strip().lower() not in matched_names
+    )
+    for inv in inventory:
+        key = inv.get("name", "").strip().lower()
+        if key not in matched_names:
+            log.warning("Dropping inventory row with no product match: %r", inv.get("name"))
+
     log.info(
-        "Merge complete: %d matched, %d products-only, %d inventory-only",
-        len(matched_names),
-        len(products) - len(matched_names),
-        len(inventory) - len(matched_names),
+        "Merge complete: %d matched, %d products-only dropped, %d inventory-only dropped",
+        len(rows),
+        products_only,
+        inventory_only,
     )
     return combined_headers, rows
+
+
+def prompt_missing_categories(rows: list[dict]) -> None:
+    """Interactively prompt the user to fill in any missing product_category values."""
+    missing = [r for r in rows if not r.get("product_category")]
+    if not missing:
+        return
+    print(f"\n{len(missing)} wine(s) have no category. Please assign one for each.\n")
+    for row in missing:
+        while True:
+            cat = input(f"  Category for '{row['name']}': ").strip()
+            if cat:
+                row["product_category"] = cat
+                break
+            print("  Category cannot be empty — try again.")
 
 
 def write_csv(path: Path, headers: list[str], rows: list[dict]) -> None:
@@ -249,6 +261,8 @@ def main() -> None:
     prod_headers, products = load_products()
     _inv_headers, inventory = load_inventory()
     combined_headers, combined = merge_datasets(prod_headers, products, inventory)
+
+    prompt_missing_categories(combined)
 
     write_csv(OUTPUT_DIR / "combined.csv", combined_headers, combined)
     log.info("Ingestion complete.")

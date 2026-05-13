@@ -58,7 +58,7 @@ Key columns (17 total):
 1. **Read** both xlsx files using openpyxl.
 2. **Normalize column names** -- lowercase, underscores, strip whitespace.
 3. **Drop variant/composite columns** that are always empty for single-variant wines (`composite_*`, `variant_option_*`, `account_code*`).
-4. **Join** the two datasets on `name` (case-insensitive, full outer join). Products without sales data still appear (sales columns left empty); inventory rows without a product match are appended with only name and sales columns filled.
+4. **Join** the two datasets on `name` (case-insensitive, inner join). Rows not present in both sources are dropped and logged as warnings.
 5. **Clean**:
    - Strip whitespace from string fields.
    - Coerce numeric columns to proper types (float for prices/rates, int for counts).
@@ -113,4 +113,4 @@ Downstream (curation) reads a single file: `ingestion/output/combined.csv`
 ## Open Questions
 
 - Are there edge cases in product names that would cause join failures (e.g. trailing size info like "750ml")?
-- Should unmatched inventory rows (no product UUID) be included in the combined output at all, or filtered out before curation reads the file?
+- ~~Should unmatched inventory rows (no product UUID) be included in the combined output at all?~~ Resolved: inner join, both-sides-only rows are dropped.
