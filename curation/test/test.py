@@ -14,7 +14,7 @@ from curate import infer_tags, web_lookup, DEFAULT_API_URL, DEFAULT_MODEL
 from sources import CURATED_SOURCES
 
 CSV_PATH = Path(__file__).parent / "combined.csv"
-ROWS_TO_TEST = 3
+ROWS_TO_TEST = 5
 
 
 def main():

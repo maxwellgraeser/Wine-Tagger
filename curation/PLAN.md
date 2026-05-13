@@ -76,17 +76,17 @@ The script should accept a `--api-url` flag or read from an env var so it works 
 
 ### Model
 
-Gemma (likely `gemma2:9b` or similar). The prompt should be tuned for this model's strengths.
+Gemma (`gemma3n:e4b` by default; override with `--model` or `CURATION_MODEL` env var).
 
 ### Prompt Strategy
 
 #### Match-scoring call (Phase 1)
 
-Sent once per product with all snippets bundled. The model returns a JSON object mapping snippet index to a 0–100 match score. Abbreviation expansion guidance is embedded in the prompt.
+Sent once per product with all snippets bundled. The model returns a JSON object mapping snippet index to a 0–100 match score. Abbreviation expansion guidance is embedded in the prompt. Prompt text is defined as `BATCH_MATCH_SCORE_PROMPT` in `curation/constants.py`.
 
 #### Tag-inference call (Phase 2)
 
-Sent with the combined multi-source context assembled in Phase 1:
+Sent with the combined multi-source context assembled in Phase 1. Prompt text is defined as `PROMPT_TEMPLATE` (with a `STRICT_SUFFIX` appended on retry) in `curation/constants.py`.
 
 ```
 You are a wine expert. Use the product information and the web context below to identify the wine's metadata.
@@ -126,7 +126,7 @@ Respond in JSON only — no explanation, no markdown fences:
 
 - Process wines sequentially (local model, no rate limits to worry about, but only one inference at a time).
 - If the model returns unparseable output, retry once with a stricter prompt ("Return only raw JSON, no text before or after."). On second failure, flag the product for manual review (`tag_status = 'needs_review'`).
-- After a successful parse, if `confidence < CONFIDENCE_THRESHOLD` (default 75), set `tag_status = 'needs_review'` even if parsing succeeded.
+- After a successful parse, if `confidence < CONFIDENCE_THRESHOLD` (default **90**, override with `--confidence-threshold` or `CURATION_CONFIDENCE_THRESHOLD` env var), set `tag_status = 'needs_review'` even if parsing succeeded.
 - `organic` is set to `true` only when the web snippet or model response contains the exact phrases `"certified organic"`, `"biodynamic"`, or `"certified biodynamic"`. All other signals are ignored.
 - Log every response (prompt, raw response, parse result) to `tag_log`.
 
@@ -183,7 +183,7 @@ CREATE TABLE tag_log (
 - `grapes` is stored as a JSON array string for flexibility (a wine can have multiple grapes).
 - `is_blend` is a SQLite integer boolean (`1`/`0`); NULL means the model couldn't determine it.
 - `organic` defaults to `0`; only set to `1` when the model finds explicit certification evidence.
-- `confidence` is the LLM's self-reported certainty (0–100) about the metadata as a whole. Rows below `CONFIDENCE_THRESHOLD` (default 75, set via `--confidence-threshold` flag or `CURATION_CONFIDENCE_THRESHOLD` env var) are automatically set to `tag_status = 'needs_review'`.
+- `confidence` is the LLM's self-reported certainty (0–100) about the metadata as a whole. Rows below `CONFIDENCE_THRESHOLD` (default 90, set via `--confidence-threshold` flag or `CURATION_CONFIDENCE_THRESHOLD` env var) are automatically set to `tag_status = 'needs_review'`.
 - `web_context` stores the raw snippet used as model input so you can audit why a tag was chosen. A non-NULL value here is the main driver of a high confidence score.
 - `tags_raw` is the pre-computed semicolon-separated string ready for Lightspeed export, e.g. `France; Bordeaux; Cabernet Sauvignon; Merlot; Blend; Organic`. Single-varietal wines get `Single Varietal` instead of `Blend`; organic wines get `Organic` appended.
 - `tag_status` tracks whether the tags were auto-generated, need human review, reviewed, or manually entered.
@@ -210,8 +210,8 @@ All open questions have been resolved:
 
 | # | Question | Decision |
 |---|----------|----------|
-| 1 | **Web search reliability** — what to do when DDG returns nothing | Immediately set `tag_status = 'needs_review'` and skip LLM inference. |
-| 2 | **Confidence threshold** | Default **75**. Expose as `--confidence-threshold` CLI flag and `CURATION_CONFIDENCE_THRESHOLD` env var so it can be adjusted without touching code. |
+| 1 | **Web search reliability** — what to do when DDG returns nothing | Attempt LLM inference from name alone (same as Decision 3), then automatically set `tag_status = 'needs_review'` regardless of confidence. |
+| 2 | **Confidence threshold** | Default **90**. Expose as `--confidence-threshold` CLI flag and `CURATION_CONFIDENCE_THRESHOLD` env var so it can be adjusted without touching code. |
 | 3 | **Private-label wines** (no useful web result) | Attempt LLM inference from name alone, then automatically set `tag_status = 'needs_review'` regardless of confidence. |
 | 4 | **Organic evidence threshold** | Require **explicit wording** only: `"certified organic"`, `"biodynamic"`, `"certified biodynamic"`. Soft signals (`"natural"`, `"no added sulfites"`, `"low intervention"`) are not sufficient — `organic` stays `false`. |
 | 5 | **Re-run behaviour** | Re-run re-tags all rows **except** those with `tag_status = 'manual'`. Rows with `'reviewed'`, `'needs_review'`, and `'auto'` are all eligible to be re-tagged. |
