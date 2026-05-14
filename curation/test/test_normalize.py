@@ -12,10 +12,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from grape_library import normalize_grape, normalize_grapes, is_placeholder_grape
-from country_library import normalize_country
-from region_library import normalize_region
-from normalize import normalize_tags
+from normalization.grape_library import normalize_grape, normalize_grapes, is_placeholder_grape
+from normalization.country_library import normalize_country
+from normalization.region_library import normalize_region
+from normalization import normalize_tags
 
 
 class TestNormalizeGrape(unittest.TestCase):

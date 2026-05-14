@@ -17,9 +17,9 @@ Issues currently surfaced:
 
 from __future__ import annotations
 
-from grape_library import is_placeholder_grape, normalize_grape, normalize_grapes
-from country_library import normalize_country
-from region_library import normalize_region
+from .grape_library import is_placeholder_grape, normalize_grape, normalize_grapes
+from .country_library import normalize_country
+from .region_library import normalize_region
 
 
 def normalize_tags(parsed: dict) -> tuple[dict, list[str]]:

@@ -198,12 +198,13 @@ CREATE TABLE tag_log (
 
 ## Normalization Libraries
 
-See `curation/LIBRARY.md` for the full spec. Implemented as four flat modules:
+See `curation/normalization/LIBRARY.md` for the full spec. Implemented as a `normalization/` package:
 
-- `curation/grape_library.py` — `CANONICAL_GRAPES`, `PLACEHOLDER_GRAPES`, `normalize_grape`, `normalize_grapes`, `is_placeholder_grape`.
-- `curation/country_library.py` — `CANONICAL_COUNTRIES`, `normalize_country`.
-- `curation/region_library.py` — `REGIONS` (with region→country pinning), `normalize_region`, `COUNTRY_AS_REGION` (catches country names jammed into the region slot).
-- `curation/normalize.py` — `normalize_tags(parsed) -> (parsed, issues)` orchestrator called by `curate.py` between `infer_tags` and `upsert_product`.
+- `curation/normalization/grape_library.py` — `CANONICAL_GRAPES`, `PLACEHOLDER_GRAPES`, `normalize_grape`, `normalize_grapes`, `is_placeholder_grape`.
+- `curation/normalization/country_library.py` — `CANONICAL_COUNTRIES`, `normalize_country`.
+- `curation/normalization/region_library.py` — `REGIONS` (with region→country pinning), `normalize_region`, `COUNTRY_AS_REGION` (catches country names jammed into the region slot).
+- `curation/normalization/normalize.py` — `normalize_tags(parsed) -> (parsed, issues)` orchestrator called by `curate.py` between `infer_tags` and `upsert_product`.
+- `curation/normalization/__init__.py` — re-exports `normalize_tags` for convenience.
 
 Integration point: `curate.py` calls `normalize_tags` immediately after `infer_tags`. A non-empty `issues` list forces `tag_status = 'needs_review'`. The normalized `parsed` dict is what gets written to `products`, so both the `grapes` JSON column and `tags_raw` stay canonical.
 

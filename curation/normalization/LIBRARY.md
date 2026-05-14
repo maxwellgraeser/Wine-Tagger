@@ -55,7 +55,7 @@ Out of scope:
 
 ## Module layout
 
-Flat files in `curation/`:
+Package at `curation/normalization/`:
 
 | File | Responsibility |
 |------|----------------|
@@ -63,6 +63,7 @@ Flat files in `curation/`:
 | `country_library.py` | `CANONICAL_COUNTRIES`, `normalize_country`, `is_known_country` |
 | `region_library.py` | `REGIONS` (with country pinning), `COUNTRY_AS_REGION`, `normalize_region`, `is_known_region` |
 | `normalize.py` | `normalize_tags(parsed) -> (parsed, issues)` orchestrator used by `curate.py` |
+| `__init__.py` | re-exports `normalize_tags` so callers can `from normalization import normalize_tags` |
 
 ### `normalize_tags` contract
 

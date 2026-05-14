@@ -14,12 +14,13 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 import curate
 from curate import infer_tags, web_lookup, DEFAULT_API_URL, DEFAULT_MODEL
 from constants import CURATED_SOURCES, DEFAULT_CONFIDENCE_THRESHOLD, SNIPPET_MATCH_THRESHOLD, TOP_N_SNIPPETS
-from normalize import normalize_tags
+from normalization import normalize_tags
 
 CSV_PATH = Path(__file__).parent / "combined.csv"
 ROWS_TO_TEST = 24
 
 _llm_call_count = 0
+_in_inference = False
 
 
 def _patched_ddg_snippets(query: str) -> list[str]:
@@ -35,7 +36,7 @@ def _patched_ddg_snippets(query: str) -> list[str]:
 def _patched_call_llm(prompt: str, api_url: str, model: str, timeout: int = 60) -> str:
     global _llm_call_count
     _llm_call_count += 1
-    label = "scoring snippets" if len(prompt) > 800 else "inferring tags"
+    label = "inferring tags" if _in_inference else "scoring snippets"
     print(f"       [LLM #{_llm_call_count}] {label} ...", end="", flush=True)
     t0 = time.time()
     result = _orig_call_llm(prompt, api_url, model, timeout)
@@ -64,7 +65,7 @@ def main():
     n_review = 0
     review_reasons: dict[str, int] = {}
     for i, row in enumerate(rows, 1):
-        global _llm_call_count
+        global _llm_call_count, _in_inference
         _llm_call_count = 0
         name = row.get("name", "?")
         print(f"[{i:02d}/{len(rows)}] {name}")
@@ -101,11 +102,13 @@ def main():
         print(f"       web lookup total: {web_elapsed:.1f}s")
 
         print(f"     --- LLM inference ---")
+        _in_inference = True
         t_llm = time.time()
         parsed, _prompt, raw = infer_tags(row, web_context=web_context,
                                           api_url=DEFAULT_API_URL,
                                           model=DEFAULT_MODEL)
         llm_elapsed = time.time() - t_llm
+        _in_inference = False
 
         forced_review = web_context is None
         norm_issues: list[str] = []
