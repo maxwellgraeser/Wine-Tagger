@@ -1,144 +1,182 @@
-# Grape Tagging Library
+# Normalization Libraries
 
 ## Purpose
 
-Normalize grape variety names across the catalog so that synonyms (e.g. Shiraz / Syrah, Pinot Gris / Pinot Grigio) collapse to a single canonical tag. Without this, the downstream tag string `tags_raw` and any region/grape filter in distribution would treat the same grape as two different entities.
+Normalize the country, region, and grape names returned by the Phase 2 LLM
+so that synonyms, casing drift, and diacritic variants collapse to a single
+canonical tag — and so that obvious data-quality errors (e.g. region=Veneto
+with country=USA) get flagged for review instead of silently committed.
 
-The library is a pure-Python module — no LLM calls, no I/O — consumed by `curate.py` after the tag-inference step (Phase 2) and before `build_tags_raw`.
+The libraries are pure-Python modules — no LLM calls, no I/O — consumed by
+`curate.py` between the tag-inference step and the DB write.
 
 ## Problem
 
-The LLM in Phase 2 returns whatever grape spelling appears in the web snippet. Real-world examples we have already seen:
+The LLM in Phase 2 returns whatever spelling appears in the web snippet, plus
+the occasional clear mistake. Real-world examples from a recent 24-wine test
+run:
 
-- `Shiraz` vs `Syrah` (same grape, regional naming convention)
-- `Pinot Gris` vs `Pinot Grigio` (same grape, FR vs IT name)
-- `Tempranillo` vs `Tinto Fino` vs `Tinta de Toro` (same grape, regional synonyms)
-- `Grenache` vs `Garnacha` (FR vs ES)
-- `Mourvèdre` vs `Monastrell` vs `Mataro` (FR vs ES vs AU)
-- `Carmenère` vs `Carménère` (diacritic variant)
-- Casing drift: `cabernet sauvignon`, `Cabernet sauvignon`, `Cabernet Sauvignon`
+- `Zenato Pinot Grigio` → tagged `country=USA, region=Veneto` (Wine Searcher
+  snippet literally said "delle Venezie, Italy" with match=95).
+- `Librandi Cirò Bianco` → tagged `grapes=['Cirò Bianco']` (Cirò Bianco is a
+  DOC, not a grape).
+- `Tessellae Old Vines` → tagged `grapes=['Red Rhone Blend']` (placeholder,
+  not a grape list).
+- `USA` vs `United States` (used interchangeably across wines).
+- `Languedoc Roussillon` (no hyphen) vs `Languedoc-Roussillon`.
+- `Coastal Region Cape Peninsula` / `Coastal Region Paarl` — sub-region jammed
+  onto WO district.
+- `region="Portugal"` — country name in the region slot.
+- `Garnacha` vs `Grenache`, `Tinta Roriz` vs `Tempranillo`, `Shiraz` vs
+  `Syrah` — regional naming for the same grape.
 
-If left unnormalized, a customer searching the tag `Syrah` misses every wine tagged `Shiraz`, and reporting on grape mix double-counts.
+Without normalization, a customer searching the tag `Syrah` misses every wine
+tagged `Shiraz`, the catalog double-counts varieties, and the Zenato bug ships
+to production.
 
 ## Scope
 
 In scope:
-- Synonym → canonical mapping for the ~60 grape varieties that account for >99% of the catalog.
+- Synonym → canonical mapping for the ~30 wine-producing countries, ~80
+  regions, and ~60 grape varieties covering >99% of the catalog.
 - Case folding and diacritic stripping for matching.
-- Preserving the canonical form's diacritics in the output (e.g. always emit `Carmenère`, not `Carmenere`).
-- A small helper to normalize a list of grapes returned by the LLM.
+- Preserving the canonical form's diacritics in the output (e.g. always emit
+  `Carmenère`, not `Carmenere`).
+- Region → country pinning so the catalog can detect Zenato-style mismatches.
+- A set of "placeholder" grape phrases (`unknown`, `Bordeaux Blend`,
+  `Red Rhone Blend`, …) that are stripped from the grape list and flagged.
 
 Out of scope:
-- Region/country normalization (separate concern; could be a sibling library later).
-- Disambiguating grapes that share a name across families (e.g. "Malvasia" covers several distinct varieties — for v1 we collapse to one).
 - Vintage, style, or producer normalization.
+- Disambiguating names that overlap across families (e.g. "Malvasia" covers
+  several distinct varieties — for v1 we collapse to one).
+- Cross-checking grape against region (e.g. "Nebbiolo outside Piedmont must
+  be unusual") — that's the Phase 3 LLM-review concern (see REVIEW.md).
 
-## Design
+## Module layout
 
-### Module layout
+Flat files in `curation/`:
 
-A new file `curation/grape_library.py` with:
+| File | Responsibility |
+|------|----------------|
+| `grape_library.py` | `CANONICAL_GRAPES`, `PLACEHOLDER_GRAPES`, `normalize_grape`, `normalize_grapes`, `is_placeholder_grape` |
+| `country_library.py` | `CANONICAL_COUNTRIES`, `normalize_country`, `is_known_country` |
+| `region_library.py` | `REGIONS` (with country pinning), `COUNTRY_AS_REGION`, `normalize_region`, `is_known_region` |
+| `normalize.py` | `normalize_tags(parsed) -> (parsed, issues)` orchestrator used by `curate.py` |
 
-```python
-CANONICAL_GRAPES: dict[str, list[str]]
-# Maps canonical name → list of synonyms (including the canonical itself).
-# Example: "Syrah": ["Syrah", "Shiraz"]
-
-def normalize_grape(raw: str) -> str:
-    """Return the canonical spelling for a single grape name.
-    Falls back to title-cased raw input if no match is found."""
-
-def normalize_grapes(raw: list[str]) -> list[str]:
-    """Normalize a list of grapes, deduplicating after canonicalization."""
-```
-
-### Lookup table construction
-
-A reverse lookup `_SYNONYM_TO_CANONICAL: dict[str, str]` is built once at import time. Keys are the **normalized** form of each synonym (lowercased, diacritics stripped, whitespace collapsed). Values are the canonical display form.
+### `normalize_tags` contract
 
 ```python
-# pseudocode
-_SYNONYM_TO_CANONICAL = {
-    _norm_key(syn): canonical
-    for canonical, synonyms in CANONICAL_GRAPES.items()
-    for syn in synonyms
-}
+def normalize_tags(parsed: dict) -> tuple[dict, list[str]]:
+    """Apply libraries to LLM output. Returns (normalized_parsed, issues).
+    A non-empty issues list means the row should be marked needs_review."""
 ```
 
-`_norm_key` uses `unicodedata.normalize("NFKD", s)` + ASCII-only filter + `.lower().strip()`.
+Possible entries in `issues`:
 
-### Choice of canonical form
+| Issue | Meaning |
+|-------|---------|
+| `placeholder_grapes` | LLM emitted a vague placeholder (`unknown`, `Bordeaux Blend`, …) instead of real grape names. The placeholder is dropped from the grape list; if the wine was blend-flagged, `is_blend=True` is preserved. |
+| `region_country_mismatch` | Region maps to a country different from the one the LLM reported. The headline reason for review — catches Zenato-style mistakes. |
+| `country_in_region_slot` | LLM put a country name (e.g. `Portugal`) in the region field. Blanked out. |
+| `no_grapes` | Grape list ended up empty after placeholder removal. |
 
-For each grape we pick the spelling most familiar to an Australian retail customer (the project's target market). When tied, prefer the French form for international varieties:
+### Canonical-form rules
+
+For each grape we pick the spelling most familiar to an Australian retail
+customer (the project's target market). When tied, prefer the French form for
+international varieties:
 
 | Canonical | Synonyms collapsed |
 |-----------|--------------------|
 | Shiraz | Shiraz, Syrah |
-| Pinot Gris | Pinot Gris, Pinot Grigio |
-| Grenache | Grenache, Garnacha |
+| Pinot Gris | Pinot Gris, Pinot Grigio, Grauburgunder |
+| Grenache | Grenache, Garnacha, Cannonau |
 | Mourvèdre | Mourvèdre, Mourvedre, Monastrell, Mataro |
-| Tempranillo | Tempranillo, Tinto Fino, Tinta de Toro, Tinta del País, Cencibel |
+| Tempranillo | Tempranillo, Tinto Fino, Tinta de Toro, Tinta del País, Tinta Roriz, Aragonez, Cencibel |
 | Carmenère | Carmenère, Carmenere |
 | Sangiovese | Sangiovese, Brunello, Prugnolo Gentile |
-| Garganega | Garganega, Grecanico |
-| Trebbiano | Trebbiano, Ugni Blanc |
-| Malbec | Malbec, Côt, Auxerrois |
+| Carignan | Carignan, Cariñena, Mazuelo |
 | Cabernet Sauvignon | Cabernet Sauvignon, Cab Sauv, Cab |
-| Sauvignon Blanc | Sauvignon Blanc, Sauv Blanc, SB |
-| Chardonnay | Chardonnay, Chard |
-| Pinot Noir | Pinot Noir, PN |
+| Sauvignon Blanc | Sauvignon Blanc, Sauv Blanc, SB, Fumé Blanc |
 | Riesling | Riesling, Johannisberg Riesling, White Riesling |
 
-(The full list lives in the module itself — this table is illustrative.)
+(The full list lives in `grape_library.py`.)
 
-> **Note on Shiraz vs Syrah:** the abbreviation guide in `curate.py` already tells the LLM "Shiraz = Syrah". This library is the second line of defence — it canonicalizes whichever spelling the model actually emitted. Decision: collapse to **Shiraz** (Australian retail convention).
+> **Note on Shiraz vs Syrah:** the abbreviation guide in `curate.py` already
+> tells the LLM "Shiraz = Syrah". The library is the second line of defence —
+> it canonicalizes whichever spelling the model actually emitted. Decision:
+> collapse to **Shiraz** (Australian retail convention).
 
-### Integration with `curate.py`
+For countries: `USA / US / U.S. / America / United States of America` →
+`United States`. For regions: hyphenation, diacritics, and language drift
+collapse to a single canonical form (`Piemonte` → `Piedmont`, `Bourgogne` →
+`Burgundy`, `Languedoc Roussillon` → `Languedoc-Roussillon`).
 
-In `build_tags_raw` (currently at `curate.py:363`), wrap the LLM-returned `grapes` list:
+### Region → country pinning
+
+Every entry in `REGIONS` has an `expected_country`. When the LLM reports
+`region=Veneto` and `country=USA`, `normalize_region("Veneto")` returns
+`("Veneto", "Italy")`; the orchestrator compares against `"USA"` →
+`"United States"` and emits `region_country_mismatch`.
+
+Unknown regions pass through (no constraint, no flag). Sub-region noise like
+`Coastal Region Cape Peninsula` is handled by a substring fallback: if any
+known synonym is contained in the normalized input, the canonical region wins.
+
+## Integration with `curate.py`
+
+In the main loop, immediately after `infer_tags` returns:
 
 ```python
-from grape_library import normalize_grapes
-...
-grapes = normalize_grapes(parsed.get("grapes") or [])
+parsed, norm_issues = normalize_tags(parsed)
+if norm_issues:
+    tag_status = "needs_review"
 ```
 
-And similarly in `upsert_product` before serializing to JSON for the `grapes` column. This keeps both `grapes` (stored JSON) and `tags_raw` (semicolon string) consistent.
-
-The `web_context` and `tag_log.raw_response` should remain unmodified — they are the audit trail of what the model originally said.
+This sits alongside the existing `forced_review` and confidence-threshold
+checks. `web_context` and `tag_log.raw_response` are unmodified — they are the
+audit trail of what the model originally said.
 
 ## Building the synonym list
 
-1. Start from a hand-curated seed of the 60ish most common varieties (see table above + the rest).
-2. Cross-check with the grape names already appearing in `wines.db.products.grapes` after a first curation run — any variety appearing >2 times that is *not* in the library is a candidate for inclusion (either as a new canonical or as a synonym of an existing one).
+1. Start from the hand-curated seeds in each library file.
+2. After a curation run, query for unknowns:
+
+   ```sql
+   SELECT json_each.value AS grape, COUNT(*) AS n
+   FROM products, json_each(products.grapes)
+   GROUP BY grape ORDER BY n DESC;
+   ```
+
+   Any variety appearing >2 times that is *not* in `grape_library.py` is a
+   candidate (either a new canonical or a synonym of an existing one). Run
+   the equivalent query against `country` and `region` columns.
 3. Iterate.
-
-Suggested workflow once the library exists:
-
-```sql
-SELECT json_each.value AS grape, COUNT(*) AS n
-FROM products, json_each(products.grapes)
-GROUP BY grape ORDER BY n DESC;
-```
-
-Grapes appearing only once are usually either misspellings, abbreviations the LLM didn't expand, or genuine rare varieties — review case by case.
 
 ## Testing
 
-Add `curation/test/test_grape_library.py` covering:
+Suggested coverage for `curation/test/test_normalize.py`:
 
 - `normalize_grape("syrah") == "Shiraz"`
 - `normalize_grape("SHIRAZ") == "Shiraz"`
 - `normalize_grape("carmenere") == "Carmenère"` (diacritic re-injected)
-- `normalize_grape("Pinot  Grigio") == "Pinot Gris"` (whitespace collapsed)
-- `normalize_grape("Assyrtiko") == "Assyrtiko"` (unknown grape → title-cased passthrough)
-- `normalize_grapes(["Syrah", "Shiraz", "Grenache"]) == ["Shiraz", "Grenache"]` (dedupe after canonicalization)
+- `normalize_grape("Assyrtiko") == "Assyrtiko"` (unknown → title-cased passthrough)
+- `is_placeholder_grape("Bordeaux Blend") is True`
+- `normalize_grapes(["Syrah", "Shiraz", "Grenache"]) == ["Shiraz", "Grenache"]`
+- `normalize_country("USA") == "United States"`
+- `normalize_region("Veneto") == ("Veneto", "Italy")`
+- `normalize_region("Coastal Region Paarl") == ("Coastal Region", "South Africa")`
+- `normalize_region("Portugal") == ("", None)` — country in region slot
+- `normalize_tags({"country": "USA", "region": "Veneto", "grapes": ["Pinot Grigio"]})` →
+  issues contains `"region_country_mismatch"`, grape becomes `"Pinot Gris"`.
 
 ## Open questions
 
 | # | Question | Tentative answer |
 |---|----------|------------------|
-| 1 | Which canonical for Shiraz/Syrah? | **Shiraz** — AU retail context. Revisit if catalog skews European. |
-| 2 | Do we expose the synonym table as JSON for non-Python consumers (e.g. distribution)? | Not yet — keep it Python-only until distribution actually needs it. |
-| 3 | How do we handle ambiguous names like "Malvasia"? | v1: collapse to `Malvasia`. If a customer complaint surfaces the distinction, split later. |
-| 4 | Should the LLM see the canonical list in its prompt? | Possibly — could shrink the synonym table over time. Out of scope for v1; library handles the cleanup post-hoc. |
+| 1 | Canonical for Shiraz/Syrah? | **Shiraz** — AU retail context. Revisit if catalog skews European. |
+| 2 | Expose the synonym tables as JSON for non-Python consumers? | Not yet — keep them Python-only until distribution actually needs them. |
+| 3 | Ambiguous names like "Malvasia"? | v1: collapse to `Malvasia`. Split later if customer feedback surfaces the distinction. |
+| 4 | Show the LLM the canonical lists in its prompt? | Out of scope here — covered by Phase 3 review (see REVIEW.md). |
+| 5 | `region_country_mismatch` — flip the country automatically? | No. Flag for review only. The mismatch could go either way (wrong country, wrong region) and we don't want the library to silently overwrite LLM output. Phase 3 review can make that call with more context. |

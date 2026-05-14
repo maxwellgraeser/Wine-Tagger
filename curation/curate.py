@@ -59,6 +59,7 @@ from constants import (
 # ---------------------------------------------------------------------------
 sys.path.insert(0, str(SCRIPT_DIR))
 from constants import CURATED_SOURCES
+from normalize import normalize_tags
 
 
 # ---------------------------------------------------------------------------
@@ -573,9 +574,18 @@ def main() -> None:
         ok = parsed is not None
         log_tag(conn, product["id"], prompt, raw, ok)
 
+        # Normalize via grape/country/region libraries; any issue → needs_review
+        norm_issues: list[str] = []
+        if ok:
+            parsed, norm_issues = normalize_tags(parsed)
+            if norm_issues:
+                print(f" | norm: {','.join(norm_issues)}", end="", flush=True)
+
         if not ok:
             tag_status = "needs_review"
         elif forced_review:
+            tag_status = "needs_review"
+        elif norm_issues:
             tag_status = "needs_review"
         elif parsed.get("confidence", 0) < args.confidence_threshold:
             tag_status = "needs_review"

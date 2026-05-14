@@ -13,7 +13,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 import curate
 from curate import infer_tags, web_lookup, DEFAULT_API_URL, DEFAULT_MODEL
-from constants import CURATED_SOURCES
+from constants import CURATED_SOURCES, DEFAULT_CONFIDENCE_THRESHOLD, SNIPPET_MATCH_THRESHOLD, TOP_N_SNIPPETS
+from normalize import normalize_tags
 
 CSV_PATH = Path(__file__).parent / "combined.csv"
 ROWS_TO_TEST = 24
@@ -59,6 +60,9 @@ def main():
     print(f"Web lookup sources ({len(CURATED_SOURCES)}): {', '.join(source_names)}\n")
 
     cache = {}
+    n_auto = 0
+    n_review = 0
+    review_reasons: dict[str, int] = {}
     for i, row in enumerate(rows, 1):
         global _llm_call_count
         _llm_call_count = 0
@@ -71,7 +75,7 @@ def main():
         web_elapsed = time.time() - t_web
 
         if scored:
-            relevant = [s for s in scored if s.get("match_score", 0) >= 50]
+            relevant = [s for s in scored if s.get("match_score", 0) >= SNIPPET_MATCH_THRESHOLD]
             top = max(scored, key=lambda s: s.get("match_score", 0))
             print(f"       {len(scored)} snippets gathered, {len(relevant)} relevant")
             print(f"       best: {top.get('source', '?')} (match_score={top.get('match_score')})")
@@ -79,6 +83,20 @@ def main():
             print(f"       cache hit")
         else:
             print(f"       no snippets found")
+
+        # Sources actually fed to the tagger (top-N relevant after scoring)
+        if scored:
+            tagging_sources = sorted(
+                [s for s in scored if s.get("match_score", 0) >= SNIPPET_MATCH_THRESHOLD],
+                key=lambda x: x.get("match_score", 0),
+                reverse=True,
+            )[:TOP_N_SNIPPETS]
+            if tagging_sources:
+                print(f"       tagging inputs ({len(tagging_sources)} of top-{TOP_N_SNIPPETS}):")
+                for s in tagging_sources:
+                    print(f"         - {s.get('source', '?')} (match={s.get('match_score')})")
+            else:
+                print(f"       tagging inputs: none passed threshold ({SNIPPET_MATCH_THRESHOLD})")
         print(f"       web context: {(web_context or 'none')[:120]!r}")
         print(f"       web lookup total: {web_elapsed:.1f}s")
 
@@ -89,14 +107,45 @@ def main():
                                           model=DEFAULT_MODEL)
         llm_elapsed = time.time() - t_llm
 
+        forced_review = web_context is None
+        norm_issues: list[str] = []
         if parsed:
+            parsed, norm_issues = normalize_tags(parsed)
             print(f"       country={parsed.get('country')}  region={parsed.get('region')}")
             print(f"       grapes={parsed.get('grapes')}  is_blend={parsed.get('is_blend')}")
             print(f"       organic={parsed.get('organic')}  confidence={parsed.get('confidence')}")
         else:
             print(f"       PARSE FAILED — raw: {raw[:120]!r}")
         print(f"       inference total: {llm_elapsed:.1f}s")
+
+        if not parsed:
+            tag_status, reason = "needs_review", "parse_failed"
+        elif forced_review:
+            tag_status, reason = "needs_review", "no_web_context"
+        elif norm_issues:
+            tag_status, reason = "needs_review", ",".join(norm_issues)
+        elif (parsed.get("confidence") or 0) < DEFAULT_CONFIDENCE_THRESHOLD:
+            tag_status, reason = "needs_review", f"confidence<{DEFAULT_CONFIDENCE_THRESHOLD}"
+        else:
+            tag_status, reason = "auto", "ok"
+        print(f"       label: {tag_status} ({reason})")
+        if tag_status == "needs_review":
+            n_review += 1
+            review_reasons[reason] = review_reasons.get(reason, 0) + 1
+        else:
+            n_auto += 1
         print()
+
+    total = n_auto + n_review
+    pct_review = (n_review / total * 100) if total else 0.0
+    pct_auto = (n_auto / total * 100) if total else 0.0
+    print("=" * 50)
+    print(f"GRADE: {n_review}/{total} flagged for review ({pct_review:.1f}%)")
+    print(f"       {n_auto}/{total} auto-tagged ({pct_auto:.1f}%)")
+    if review_reasons:
+        print("       review reasons:")
+        for reason, count in sorted(review_reasons.items(), key=lambda x: -x[1]):
+            print(f"         - {reason}: {count}")
 
 
 if __name__ == "__main__":

@@ -24,7 +24,13 @@ From `ingestion/output/`:
    - Ask the LLM to infer country, region, grapes, is_blend, organic, and confidence from this richer context.
    - Confidence rubric has hard limits: max 84 with a single source, max 69 if the producer name is absent.
 5. **Parse the LLM response** into structured fields. Use a consistent prompt that requests JSON output to make parsing reliable.
-6. **Write everything to SQLite** -- products, sales stats, and the new tags.
+6. **Normalize via libraries** (`normalize.py`):
+   - Canonicalize country (`USA` → `United States`), region (`Languedoc Roussillon` → `Languedoc-Roussillon`, `Piemonte` → `Piedmont`), and grapes (`Garnacha` → `Grenache`, `Syrah` → `Shiraz`).
+   - Strip placeholder grapes (`Bordeaux Blend`, `Red Rhone Blend`, `unknown`); preserve `is_blend=True` when they're removed.
+   - Cross-check region against its pinned country. **Any mismatch (e.g. region=Veneto, country=USA) forces `tag_status = 'needs_review'`.**
+   - Other normalization issues (`placeholder_grapes`, `country_in_region_slot`, `no_grapes`) also force `needs_review`.
+   - See `LIBRARY.md` for the library spec.
+7. **Write everything to SQLite** -- products, sales stats, and the (normalized) tags.
 
 ## Web Lookup
 
@@ -190,16 +196,20 @@ CREATE TABLE tag_log (
 - `tag_status` tracks whether the tags were auto-generated, need human review, reviewed, or manually entered.
 - `tag_log` preserves the raw LLM interaction (including the web snippet used) for debugging and prompt iteration.
 
-## Grape Normalization Library (planned)
+## Normalization Libraries
 
-See `curation/LIBRARY.md` for the full spec. `grape_library.py` does not exist yet.
+See `curation/LIBRARY.md` for the full spec. Implemented as four flat modules:
 
-The module (`curation/grape_library.py`) will normalize LLM-returned grape names to canonical forms so that synonyms collapse to a single tag (e.g. Shiraz/Syrah → Shiraz, Pinot Grigio/Pinot Gris → Pinot Gris). It exposes:
+- `curation/grape_library.py` — `CANONICAL_GRAPES`, `PLACEHOLDER_GRAPES`, `normalize_grape`, `normalize_grapes`, `is_placeholder_grape`.
+- `curation/country_library.py` — `CANONICAL_COUNTRIES`, `normalize_country`.
+- `curation/region_library.py` — `REGIONS` (with region→country pinning), `normalize_region`, `COUNTRY_AS_REGION` (catches country names jammed into the region slot).
+- `curation/normalize.py` — `normalize_tags(parsed) -> (parsed, issues)` orchestrator called by `curate.py` between `infer_tags` and `upsert_product`.
 
-- `normalize_grape(raw: str) -> str` — single grape, falls back to title-cased input for unknowns
-- `normalize_grapes(raw: list[str]) -> list[str]` — list with deduplication after canonicalization
+Integration point: `curate.py` calls `normalize_tags` immediately after `infer_tags`. A non-empty `issues` list forces `tag_status = 'needs_review'`. The normalized `parsed` dict is what gets written to `products`, so both the `grapes` JSON column and `tags_raw` stay canonical.
 
-Integration point: call `normalize_grapes` inside `build_tags_raw` and `upsert_product` (before serializing to JSON) so both `grapes` (DB column) and `tags_raw` stay consistent.
+## Phase 3 — LLM Review (planned)
+
+See `curation/REVIEW.md` for the full spec. The libraries above catch deterministic drift; Phase 3 is a second LLM pass that re-examines rows the libraries flagged for review, constrained to the canonical vocabulary, using the stored `web_context` as evidence. Not yet implemented.
 
 ## Output Contract
 
