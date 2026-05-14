@@ -4,7 +4,6 @@
 /curation/output/
 .ds_Store
 curation/test/*.txt
-ollamaCommand.txt
 /curation/__pycache__/
 .vscode/
 .venv/

@@ -43,9 +43,11 @@ from constants import (
     DEFAULT_MODEL,
     DEFAULT_CONFIDENCE_THRESHOLD,
     DDG_MAX_RESULTS,
+    DDG_SLEEP_SECONDS,
     SNIPPET_CHAR_LIMIT,
     SCORING_SNIPPET_CHARS,
     SNIPPET_MATCH_THRESHOLD,
+    TOP_N_SNIPPETS,
     ORGANIC_PHRASES,
     BATCH_MATCH_SCORE_PROMPT,
     PROMPT_TEMPLATE,
@@ -56,7 +58,7 @@ from constants import (
 # Sources
 # ---------------------------------------------------------------------------
 sys.path.insert(0, str(SCRIPT_DIR))
-from sources import CURATED_SOURCES
+from constants import CURATED_SOURCES
 
 
 # ---------------------------------------------------------------------------
@@ -136,44 +138,57 @@ def save_cache(path: Path, cache: dict) -> None:
 # Web lookup — multi-source with LLM match scoring
 # ---------------------------------------------------------------------------
 
-def ddg_snippet(query: str, timeout: int = 8) -> Optional[str]:
-    """Search DuckDuckGo and return a concatenated snippet from the top results."""
+def ddg_snippets(query: str) -> list[str]:
+    """Search DuckDuckGo and return one snippet string per result (not joined)."""
     if DDGS is None:
-        return None
+        return []
     try:
         results = DDGS().text(query, max_results=DDG_MAX_RESULTS, timelimit=None)
     except Exception:
-        return None
+        return []
     if not results:
-        return None
-    bodies = [r.get("body", "").strip() for r in results if r.get("body")]
-    combined = " | ".join(bodies)
-    return combined[:SNIPPET_CHAR_LIMIT] if combined else None
+        return []
+    return [r["body"][:SNIPPET_CHAR_LIMIT] for r in results if r.get("body")]
+
+
+def _is_upc(sku: str) -> bool:
+    """Return True if sku looks like a numeric barcode (UPC-A/EAN/GTIN, 8–14 digits)."""
+    return bool(sku and re.match(r'^\d{8,14}$', sku.strip()))
 
 
 def gather_all_snippets(product: dict) -> list[dict]:
-    """Query every curated source plus unscoped fallback. Returns all snippets found."""
+    """Query every curated source plus unscoped fallback. Returns one dict per individual DDG result."""
     name = product["name"]
     brand = product.get("brand_name", "") or ""
+    sku = (product.get("sku") or "").strip()
     results = []
 
+    def _collect(source_name: str, domain: str, query: str) -> None:
+        snippets = ddg_snippets(query)
+        time.sleep(DDG_SLEEP_SECONDS)
+        for i, body in enumerate(snippets):
+            label = f"{source_name} #{i + 1}" if len(snippets) > 1 else source_name
+            results.append({"source": label, "domain": domain, "snippet": body})
+
+    # UPC lookup — run first so high-confidence barcode hits appear early
+    if _is_upc(sku):
+        for source in [s for s in CURATED_SOURCES if s.get("upc_capable")]:
+            _collect(f"{source['name']} (UPC)", source["domain"], f'site:{source["domain"]} "{sku}"')
+        _collect("UPC fallback", "*", f'"{sku}" wine')
+
+    # Name-based lookup across all curated sources
     for source in CURATED_SOURCES:
         query = f'site:{source["domain"]} "{name}"'
         if brand:
             query += f" {brand}"
-        snippet = ddg_snippet(query)
-        time.sleep(0.5)
-        if snippet:
-            results.append({"source": source["name"], "domain": source["domain"], "snippet": snippet})
+        _collect(source["name"], source["domain"], query)
 
-    query = f'"{name}"'
+    # Unscoped name fallback
+    fallback_query = f'"{name}"'
     if brand:
-        query += f" {brand}"
-    query += " wine region grapes"
-    snippet = ddg_snippet(query)
-    time.sleep(0.5)
-    if snippet:
-        results.append({"source": "fallback", "domain": "*", "snippet": snippet})
+        fallback_query += f" {brand}"
+    fallback_query += " wine region grapes"
+    _collect("fallback", "*", fallback_query)
 
     return results
 
@@ -204,14 +219,19 @@ def score_snippets(product: dict, all_snippets: list[dict], api_url: str, model:
         return [{**item, "match_score": 0} for item in all_snippets]
 
 
-def build_web_context(scored_snippets: list[dict], threshold: int = SNIPPET_MATCH_THRESHOLD) -> Optional[str]:
-    """Combine snippets that passed the match threshold into a single labeled context string."""
-    relevant = [s for s in scored_snippets if s["match_score"] >= threshold]
+def build_web_context(scored_snippets: list[dict], threshold: int = SNIPPET_MATCH_THRESHOLD,
+                      top_n: int = TOP_N_SNIPPETS) -> Optional[str]:
+    """Combine top-N snippets that passed the match threshold into a single labeled context string."""
+    relevant = sorted(
+        [s for s in scored_snippets if s["match_score"] >= threshold],
+        key=lambda x: x["match_score"],
+        reverse=True,
+    )[:top_n]
     if not relevant:
         return None
     parts = [
         f"[{item['source']} | match={item['match_score']}]\n{item['snippet']}"
-        for item in sorted(relevant, key=lambda x: x["match_score"], reverse=True)
+        for item in relevant
     ]
     return "\n\n".join(parts)
 

@@ -36,15 +36,16 @@ Give the local model real-world context rather than asking it to guess from a pr
 
 #### Phase 1 — gather and score
 
+0. **UPC lookup (runs first when SKU is a barcode)** — if `sku` matches `^\d{8,14}$`, run site-scoped queries `site:{domain} "{sku}"` on all `upc_capable` sources in `curation/sources.py` (Wine Searcher, Vivino, CellarTracker), plus an unscoped `"{sku}" wine` fallback. Barcode hits tend to be exact matches and appear early in the scored list.
 1. Build a site-scoped query for **every** source in `curation/sources.py`: `site:{domain} "{name}" {brand}`. Unlike the old approach, processing does **not** stop at the first hit — all sources are queried.
 2. Add an unscoped fallback query `"{name}" {brand} wine region grapes` at the end.
-3. Collect every snippet returned (up to one per source, ≤ 400 chars each).
+3. Collect every snippet returned as individual results — up to `DDG_MAX_RESULTS` per source, each capped at `SNIPPET_CHAR_LIMIT` chars. Each DDG result is its own entry (labelled `Source #1`, `Source #2`, etc.) so the scoring LLM can rate them independently.
 4. Send all snippets to the LLM in a **single batch match-scoring call**. The prompt instructs the model to expand common wine abbreviations (PN → Pinot Noir, SB → Sauvignon Blanc, Shiraz = Syrah, etc.) and rate each snippet 0–100 for how well it matches the product.
 5. Discard snippets scoring below `SNIPPET_MATCH_THRESHOLD` (default **65**).
 
 #### Phase 2 — context assembly
 
-6. Combine the surviving snippets into a labeled context block:
+6. Take the top `TOP_N_SNIPPETS` (default **3**) surviving snippets by match score and combine them into a labeled context block:
    ```
    [Vivino | match=82]
    De Bortoli Noble One Botrytis Semillon is a luscious dessert wine...
@@ -67,12 +68,12 @@ Give the local model real-world context rather than asking it to guess from a pr
 
 ### Runtime
 
-Either Ollama or LM Studio, both exposing an OpenAI-compatible API at localhost.
+Ollama, exposing an OpenAI-compatible API at localhost.
 
-- **Ollama:** `http://localhost:11434/v1/chat/completions`
-- **LM Studio:** `http://localhost:1234/v1/chat/completions`
+- **Ollama:** `http://localhost:11434/v1/chat/completions` (default when running via `run.sh`)
+- **llama.cpp fallback:** `http://localhost:8080/v1/chat/completions` (default in `constants.py` when invoking `curate.py` directly without the env var set)
 
-The script should accept a `--api-url` flag or read from an env var so it works with either runtime.
+Start Ollama with the `gemma3n` shell command (project root). `curate.py` accepts a `--api-url` flag or reads from `CURATION_API_URL` env var to override.
 
 ### Model
 
@@ -126,7 +127,7 @@ Respond in JSON only — no explanation, no markdown fences:
 
 - Process wines sequentially (local model, no rate limits to worry about, but only one inference at a time).
 - If the model returns unparseable output, retry once with a stricter prompt ("Return only raw JSON, no text before or after."). On second failure, flag the product for manual review (`tag_status = 'needs_review'`).
-- After a successful parse, if `confidence < CONFIDENCE_THRESHOLD` (default **90**, override with `--confidence-threshold` or `CURATION_CONFIDENCE_THRESHOLD` env var), set `tag_status = 'needs_review'` even if parsing succeeded.
+- After a successful parse, if `confidence < CONFIDENCE_THRESHOLD` (default **90** in `constants.py`; `run.sh` overrides to **75** via `CURATION_CONFIDENCE_THRESHOLD`; further override with `--confidence-threshold` CLI flag or env var), set `tag_status = 'needs_review'` even if parsing succeeded.
 - `organic` is set to `true` only when the web snippet or model response contains the exact phrases `"certified organic"`, `"biodynamic"`, or `"certified biodynamic"`. All other signals are ignored.
 - Log every response (prompt, raw response, parse result) to `tag_log`.
 
@@ -183,11 +184,22 @@ CREATE TABLE tag_log (
 - `grapes` is stored as a JSON array string for flexibility (a wine can have multiple grapes).
 - `is_blend` is a SQLite integer boolean (`1`/`0`); NULL means the model couldn't determine it.
 - `organic` defaults to `0`; only set to `1` when the model finds explicit certification evidence.
-- `confidence` is the LLM's self-reported certainty (0–100) about the metadata as a whole. Rows below `CONFIDENCE_THRESHOLD` (default 90, set via `--confidence-threshold` flag or `CURATION_CONFIDENCE_THRESHOLD` env var) are automatically set to `tag_status = 'needs_review'`.
+- `confidence` is the LLM's self-reported certainty (0–100) about the metadata as a whole. Rows below `CONFIDENCE_THRESHOLD` (90 in `constants.py`, 75 when run via `run.sh`; override with `--confidence-threshold` flag or `CURATION_CONFIDENCE_THRESHOLD` env var) are automatically set to `tag_status = 'needs_review'`.
 - `web_context` stores the raw snippet used as model input so you can audit why a tag was chosen. A non-NULL value here is the main driver of a high confidence score.
 - `tags_raw` is the pre-computed semicolon-separated string ready for Lightspeed export, e.g. `France; Bordeaux; Cabernet Sauvignon; Merlot; Blend; Organic`. Single-varietal wines get `Single Varietal` instead of `Blend`; organic wines get `Organic` appended.
 - `tag_status` tracks whether the tags were auto-generated, need human review, reviewed, or manually entered.
 - `tag_log` preserves the raw LLM interaction (including the web snippet used) for debugging and prompt iteration.
+
+## Grape Normalization Library (planned)
+
+See `curation/LIBRARY.md` for the full spec. `grape_library.py` does not exist yet.
+
+The module (`curation/grape_library.py`) will normalize LLM-returned grape names to canonical forms so that synonyms collapse to a single tag (e.g. Shiraz/Syrah → Shiraz, Pinot Grigio/Pinot Gris → Pinot Gris). It exposes:
+
+- `normalize_grape(raw: str) -> str` — single grape, falls back to title-cased input for unknowns
+- `normalize_grapes(raw: list[str]) -> list[str]` — list with deduplication after canonicalization
+
+Integration point: call `normalize_grapes` inside `build_tags_raw` and `upsert_product` (before serializing to JSON) so both `grapes` (DB column) and `tags_raw` stay consistent.
 
 ## Output Contract
 
@@ -200,8 +212,10 @@ Downstream (distribution) reads from `wines.db` and expects:
 
 - Python 3.11+
 - `sqlite3` (stdlib)
-- `requests` or `httpx` for LLM API calls and DuckDuckGo web lookups
+- `requests` for LLM API calls
+- `ddgs` (`duckduckgo-search` package) for DuckDuckGo web lookups — gracefully skipped if not installed
 - `web_cache.json` at `curation/output/web_cache.json` for search result caching (keyed by product id)
+- `run.sh` — entry point script; sets Ollama defaults and installs `requests` if missing, then delegates to `curate.py`
 - No paid external APIs or API keys required
 
 ## Decisions
@@ -211,23 +225,25 @@ All open questions have been resolved:
 | # | Question | Decision |
 |---|----------|----------|
 | 1 | **Web search reliability** — what to do when DDG returns nothing | Attempt LLM inference from name alone (same as Decision 3), then automatically set `tag_status = 'needs_review'` regardless of confidence. |
-| 2 | **Confidence threshold** | Default **90**. Expose as `--confidence-threshold` CLI flag and `CURATION_CONFIDENCE_THRESHOLD` env var so it can be adjusted without touching code. |
+| 2 | **Confidence threshold** | Default **90** in `constants.py`; `run.sh` overrides to **75**. Exposed as `--confidence-threshold` CLI flag and `CURATION_CONFIDENCE_THRESHOLD` env var so it can be adjusted without touching code. |
 | 3 | **Private-label wines** (no useful web result) | Attempt LLM inference from name alone, then automatically set `tag_status = 'needs_review'` regardless of confidence. |
 | 4 | **Organic evidence threshold** | Require **explicit wording** only: `"certified organic"`, `"biodynamic"`, `"certified biodynamic"`. Soft signals (`"natural"`, `"no added sulfites"`, `"low intervention"`) are not sufficient — `organic` stays `false`. |
 | 5 | **Re-run behaviour** | Re-run re-tags all rows **except** those with `tag_status = 'manual'`. Rows with `'reviewed'`, `'needs_review'`, and `'auto'` are all eligible to be re-tagged. |
 | 6 | **LLM calls per wine** | **Two**: one batch match-scoring call (rates all snippets), one tag-inference call (uses filtered context). |
-| 7 | **Multi-source web lookup** | Query **all** curated sources, not just the first hit. Discard snippets the LLM rates below match score **65** (`SNIPPET_MATCH_THRESHOLD`). |
+| 7 | **Multi-source web lookup** | Query **all** curated sources, not just the first hit. Each DDG result is kept as a separate scored snippet (labelled `Source #N`) so individual results are rated independently. Discard snippets below match score **65** (`SNIPPET_MATCH_THRESHOLD`); pass the top **3** survivors (by score) to Phase 2 (`TOP_N_SNIPPETS`). |
 | 8 | **Confidence hard limits** | Max 84 with a single source; max 69 if the producer name is absent from all snippets. Prevents inflated scores from weak evidence. |
 
 ## Batch-Review Mode
 
 In addition to sequential processing, curation supports a **batch-review workflow** that pauses after every N wines so results can be inspected before continuing.
 
-### CLI flag
+### CLI flags
 
 ```
 --batch-size N    Process N wines, then pause for review before continuing.
                   Set to 0 (default) to run all wines without pausing.
+--limit N         Process at most N wines total (0 = all). Useful for smoke-testing
+                  a run without committing to the full catalog.
 ```
 
 ### Behaviour
