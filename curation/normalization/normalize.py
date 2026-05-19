@@ -13,11 +13,15 @@ Issues currently surfaced:
   - "country_in_region_slot": LLM put a country name in the region field
     (e.g. region="Portugal"); blanked out.
   - "no_grapes": grape list ended up empty after placeholder removal.
+  - "non_canonical_grape": LLM returned a grape name not in CANONICAL_GRAPES
+    (e.g. "Pin Blanc", "Eigen") — usually a hallucination.
+  - "is_blend_mismatch": declared is_blend disagreed with the cleaned grape
+    count (single grape but is_blend=True, or multiple grapes but is_blend=False).
 """
 
 from __future__ import annotations
 
-from .grape_library import is_placeholder_grape, normalize_grape, normalize_grapes
+from .grape_library import is_canonical_grape, is_placeholder_grape, normalize_grape, normalize_grapes
 from .country_library import normalize_country
 from .region_library import normalize_region
 
@@ -53,6 +57,10 @@ def normalize_tags(parsed: dict) -> tuple[dict, list[str]]:
     # Grapes
     raw_grapes = out.get("grapes") or []
     had_placeholder = any(is_placeholder_grape(g) for g in raw_grapes if g)
+    non_canonical = [
+        g for g in raw_grapes
+        if g and not is_placeholder_grape(g) and not is_canonical_grape(g)
+    ]
     cleaned = normalize_grapes(raw_grapes)
     out["grapes"] = cleaned
 
@@ -63,7 +71,25 @@ def normalize_tags(parsed: dict) -> tuple[dict, list[str]]:
         if not cleaned:
             out["is_blend"] = True
 
+    if non_canonical:
+        # Grape name not in the canonical vocabulary — likely hallucinated
+        # (e.g. "Pin Blanc", "Eigen") or a rare variety we don't track yet.
+        issues.append("non_canonical_grape")
+
     if not cleaned:
         issues.append("no_grapes")
+
+    # Mechanical is_blend reconciliation against the cleaned grape list.
+    # A single varietal cannot be a blend; two or more grapes is a blend.
+    # Disagreement with the LLM's value is a quality signal — flag it.
+    declared_blend = out.get("is_blend")
+    if len(cleaned) == 1:
+        if declared_blend is True:
+            issues.append("is_blend_mismatch")
+        out["is_blend"] = False
+    elif len(cleaned) >= 2:
+        if declared_blend is False:
+            issues.append("is_blend_mismatch")
+        out["is_blend"] = True
 
     return out, issues

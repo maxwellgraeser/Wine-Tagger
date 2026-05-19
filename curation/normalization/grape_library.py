@@ -139,6 +139,11 @@ def is_placeholder_grape(raw: str) -> bool:
     return _norm_key(raw) in PLACEHOLDER_GRAPES
 
 
+def is_canonical_grape(raw: str) -> bool:
+    """True if the grape name resolves to an entry in CANONICAL_GRAPES."""
+    return _norm_key(raw) in _SYNONYM_TO_CANONICAL
+
+
 def normalize_grape(raw: str) -> str:
     """Return the canonical spelling for a single grape.
 

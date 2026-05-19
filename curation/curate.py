@@ -60,6 +60,9 @@ from constants import (
 sys.path.insert(0, str(SCRIPT_DIR))
 from constants import CURATED_SOURCES
 from normalization import normalize_tags
+from normalization.grape_library import CANONICAL_GRAPES
+
+CANONICAL_GRAPES_BLOCK = ", ".join(CANONICAL_GRAPES.keys())
 
 
 # ---------------------------------------------------------------------------
@@ -308,6 +311,7 @@ def infer_tags(product: dict, web_context: Optional[str], api_url: str, model: s
         category=product.get("product_category", ""),
         brand=product.get("brand_name", ""),
         web_context=web_context or "none",
+        canonical_grapes=CANONICAL_GRAPES_BLOCK,
     )
 
     raw = ""

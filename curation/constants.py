@@ -70,7 +70,11 @@ Brand: {brand}
 
 Web context: {web_context}
 
+Allowed grape vocabulary (use ONLY these canonical names; if a grape is not in this list or you cannot determine it from the web context, leave grapes empty — do NOT invent names):
+{canonical_grapes}
+
 Rules:
+- Grape names MUST come from the allowed vocabulary above. If the web context does not clearly identify the grape(s), return an empty list rather than guess.
 - is_blend is true if the wine contains more than one grape variety, false if it is a single varietal.
 - organic is true only if the wine is certified organic, biodynamic, or explicitly marketed as certified biodynamic. Omit or set false if uncertain.
 - If the web context contradicts the product name, trust the web context.
