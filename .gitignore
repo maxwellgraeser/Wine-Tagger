@@ -1,9 +1,43 @@
+# Project-specific
 /Sample Xlsx/
-/.claude/
 /ingestion/output/
 /curation/output/
-.ds_Store
 curation/test/*.txt
-/curation/__pycache__/
+
+# Editor / IDE
+/.claude/
 .vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
 .venv/
+venv/
+env/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

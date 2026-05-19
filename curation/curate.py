@@ -139,8 +139,8 @@ def save_cache(path: Path, cache: dict) -> None:
 # Web lookup — multi-source with LLM match scoring
 # ---------------------------------------------------------------------------
 
-def ddg_snippets(query: str) -> list[str]:
-    """Search DuckDuckGo and return one snippet string per result (not joined)."""
+def ddg_snippets(query: str) -> list[dict]:
+    """Search DuckDuckGo and return one {body, href} dict per result."""
     if DDGS is None:
         return []
     try:
@@ -149,7 +149,10 @@ def ddg_snippets(query: str) -> list[str]:
         return []
     if not results:
         return []
-    return [r["body"][:SNIPPET_CHAR_LIMIT] for r in results if r.get("body")]
+    return [
+        {"body": r["body"][:SNIPPET_CHAR_LIMIT], "href": r.get("href", "") or ""}
+        for r in results if r.get("body")
+    ]
 
 
 def _is_upc(sku: str) -> bool:
@@ -163,13 +166,24 @@ def gather_all_snippets(product: dict) -> list[dict]:
     brand = product.get("brand_name", "") or ""
     sku = (product.get("sku") or "").strip()
     results = []
+    seen_urls: set[str] = set()
 
     def _collect(source_name: str, domain: str, query: str) -> None:
         snippets = ddg_snippets(query)
         time.sleep(DDG_SLEEP_SECONDS)
-        for i, body in enumerate(snippets):
-            label = f"{source_name} #{i + 1}" if len(snippets) > 1 else source_name
-            results.append({"source": label, "domain": domain, "snippet": body})
+        # Dedupe across all queries: first query to hit a URL keeps it. Prevents
+        # repeated URLs from boxing out the top-N pool used for context.
+        deduped = []
+        for item in snippets:
+            key = item["href"].strip().lower().rstrip("/")
+            if key and key in seen_urls:
+                continue
+            if key:
+                seen_urls.add(key)
+            deduped.append(item)
+        for i, item in enumerate(deduped):
+            label = f"{source_name} #{i + 1}" if len(deduped) > 1 else source_name
+            results.append({"source": label, "domain": domain, "snippet": item["body"], "url": item["href"]})
 
     # UPC lookup — run first so high-confidence barcode hits appear early
     if _is_upc(sku):

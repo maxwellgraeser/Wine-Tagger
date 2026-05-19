@@ -46,6 +46,7 @@ Give the local model real-world context rather than asking it to guess from a pr
 1. Build a site-scoped query for **every** source in `curation/sources.py`: `site:{domain} "{name}" {brand}`. Unlike the old approach, processing does **not** stop at the first hit — all sources are queried.
 2. Add an unscoped fallback query `"{name}" {brand} wine region grapes` at the end.
 3. Collect every snippet returned as individual results — up to `DDG_MAX_RESULTS` per source, each capped at `SNIPPET_CHAR_LIMIT` chars. Each DDG result is its own entry (labelled `Source #1`, `Source #2`, etc.) so the scoring LLM can rate them independently.
+   - **Dedupe by URL across all queries**: if a later query returns a URL that was already collected by an earlier query (e.g. two `site:` queries hit the same page), the duplicate is dropped. The first query to surface a given URL keeps it. This prevents repeated URLs from boxing out the next-most-confident unique result in the top-N pool used for context.
 4. Send all snippets to the LLM in a **single batch match-scoring call**. The prompt instructs the model to expand common wine abbreviations (PN → Pinot Noir, SB → Sauvignon Blanc, Shiraz = Syrah, etc.) and rate each snippet 0–100 for how well it matches the product.
 5. Discard snippets scoring below `SNIPPET_MATCH_THRESHOLD` (default **65**).
 

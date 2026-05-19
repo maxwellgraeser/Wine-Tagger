@@ -69,7 +69,7 @@ class TestGatherAllSnippetsUsesSku(unittest.TestCase):
 
         def fake_ddg(query):
             issued_queries.append(query)
-            return ["stub snippet"]
+            return [{"body": "stub snippet", "href": f"https://example.com/{len(issued_queries)}"}]
 
         with patch.object(curate, "ddg_snippets", side_effect=fake_ddg):
             with patch("time.sleep"):

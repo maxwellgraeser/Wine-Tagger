@@ -23,7 +23,7 @@ _llm_call_count = 0
 _in_inference = False
 
 
-def _patched_ddg_snippets(query: str) -> list[str]:
+def _patched_ddg_snippets(query: str) -> list[dict]:
     domain = query.split("site:")[-1].split(" ")[0] if "site:" in query else "web"
     print(f"       [DDG] {domain} ...", end="", flush=True)
     t0 = time.time()
@@ -64,11 +64,13 @@ def main():
     n_auto = 0
     n_review = 0
     review_reasons: dict[str, int] = {}
+    per_wine_times: list[float] = []
     for i, row in enumerate(rows, 1):
         global _llm_call_count, _in_inference
         _llm_call_count = 0
         name = row.get("name", "?")
         print(f"[{i:02d}/{len(rows)}] {name}")
+        t_wine = time.time()
 
         print(f"     --- web lookup ---")
         t_web = time.time()
@@ -137,6 +139,9 @@ def main():
             review_reasons[reason] = review_reasons.get(reason, 0) + 1
         else:
             n_auto += 1
+        wine_elapsed = time.time() - t_wine
+        per_wine_times.append(wine_elapsed)
+        print(f"       wine total: {wine_elapsed:.1f}s")
         print()
 
     total = n_auto + n_review
@@ -145,6 +150,9 @@ def main():
     print("=" * 50)
     print(f"GRADE: {n_review}/{total} flagged for review ({pct_review:.1f}%)")
     print(f"       {n_auto}/{total} auto-tagged ({pct_auto:.1f}%)")
+    if per_wine_times:
+        avg_time = sum(per_wine_times) / len(per_wine_times)
+        print(f"       avg time/wine: {avg_time:.1f}s (over {len(per_wine_times)} wines, total {sum(per_wine_times):.1f}s)")
     if review_reasons:
         print("       review reasons:")
         for reason, count in sorted(review_reasons.items(), key=lambda x: -x[1]):

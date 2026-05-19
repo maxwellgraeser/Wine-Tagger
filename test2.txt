@@ -1,0 +1,462 @@
+Testing 24 wines against gemma3n:e4b at http://localhost:8080/v1/chat/completions
+Web lookup sources (3): Wine Searcher, Vivino, CellarTracker
+
+[01/24] Annabella Pinot Noir
+     --- web lookup ---
+       [DDG] wine-searcher.com ... 3 result(s) (2.3s)
+       [DDG] vivino.com ... 0 result(s) (2.9s)
+       [DDG] cellartracker.com ... 0 result(s) (3.1s)
+       [DDG] web ... 3 result(s) (2.8s)
+       [DDG] wine-searcher.com ... 3 result(s) (3.4s)
+       [DDG] vivino.com ... 3 result(s) (1.3s)
+       [DDG] cellartracker.com ... 0 result(s) (3.3s)
+       [DDG] web ... 3 result(s) (1.2s)
+       [LLM #1] scoring snippets ... done (10.1s)
+       14 snippets gathered, 9 relevant
+       best: UPC fallback #3 (match_score=100)
+       tagging inputs (3 of top-3):
+         - UPC fallback #3 (match=100)
+         - Wine Searcher #1 (match=100)
+         - Wine Searcher #2 (match=100)
+       web context: '[UPC fallback #3 | match=100]\nBuy 2020 Annabella Pinot Noir 750 ml., a red wine from Russian River Valley in Sonoma Coun'
+       web lookup total: 32.0s
+     --- LLM inference ---
+       [LLM #2] inferring tags ... done (4.9s)
+       country=United States  region=California
+       grapes=['Pinot Noir']  is_blend=False
+       organic=False  confidence=95
+       inference total: 4.9s
+       label: auto (ok)
+       wine total: 36.9s
+
+[02/24] Aster Ribera del Duero
+     --- web lookup ---
+       [DDG] wine-searcher.com ... 3 result(s) (1.2s)
+       [DDG] vivino.com ... 3 result(s) (3.2s)
+       [DDG] cellartracker.com ... 3 result(s) (3.2s)
+       [DDG] web ... 1 result(s) (3.4s)
+       [DDG] wine-searcher.com ... 3 result(s) (1.2s)
+       [DDG] vivino.com ... 0 result(s) (10.5s)
+       [DDG] cellartracker.com ... 3 result(s) (4.3s)
+       [DDG] web ... 3 result(s) (3.2s)
+       [LLM #1] scoring snippets ... done (13.1s)
+       18 snippets gathered, 7 relevant
+       best: CellarTracker (UPC) #1 (match_score=95)
+       tagging inputs (3 of top-3):
+         - CellarTracker (UPC) #1 (match=95)
+         - Wine Searcher #1 (match=95)
+         - Wine Searcher #2 (match=95)
+       web context: '[CellarTracker (UPC) #1 | match=95]\nMar 7, 2017 · NOTE: Some content is property of JancisRobinson.com and Vinous. Add a'
+       web lookup total: 44.9s
+     --- LLM inference ---
+       [LLM #2] inferring tags ... done (8.6s)
+       country=Spain  region=Ribera del Duero
+       grapes=['Tempranillo']  is_blend=False
+       organic=False  confidence=95
+       inference total: 8.6s
+       label: auto (ok)
+       wine total: 53.5s
+
+[03/24] Bayten Sauvignon Blanc
+     --- web lookup ---
+       [DDG] wine-searcher.com ... 3 result(s) (2.2s)
+       [DDG] vivino.com ... 0 result(s) (3.3s)
+       [DDG] cellartracker.com ... 0 result(s) (3.2s)
+       [DDG] web ... 3 result(s) (3.5s)
+       [DDG] wine-searcher.com ... 3 result(s) (1.1s)
+       [DDG] vivino.com ... 3 result(s) (1.2s)
+       [DDG] cellartracker.com ... 0 result(s) (3.3s)
+       [DDG] web ... 3 result(s) (1.0s)
+       [LLM #1] scoring snippets ... done (8.9s)
+       14 snippets gathered, 5 relevant
+       best: Wine Searcher #1 (match_score=95)
+       tagging inputs (3 of top-3):
+         - Wine Searcher #1 (match=95)
+         - Wine Searcher #2 (match=95)
+         - Vivino #1 (match=90)
+       web context: '[Wine Searcher #1 | match=95]\nFind the best local price for Buitenverwachting Bayten Sauvignon Blanc, Constantia, South '
+       web lookup total: 29.3s
+     --- LLM inference ---
+       [LLM #2] inferring tags ... done (5.1s)
+       country=South Africa  region=Constantia
+       grapes=['Sauvignon Blanc']  is_blend=False
+       organic=False  confidence=95
+       inference total: 5.1s
+       label: auto (ok)
+       wine total: 34.3s
+
+[04/24] Bila Haut Roussillon
+     --- web lookup ---
+       [DDG] wine-searcher.com ... 3 result(s) (2.7s)
+       [DDG] vivino.com ... 3 result(s) (1.0s)
+       [DDG] cellartracker.com ... 3 result(s) (2.8s)
+       [DDG] web ... 3 result(s) (1.3s)
+       [DDG] wine-searcher.com ... 3 result(s) (1.3s)
+       [DDG] vivino.com ... 3 result(s) (1.1s)
+       [DDG] cellartracker.com ... 0 result(s) (3.1s)
+       [DDG] web ... 3 result(s) (1.2s)
+       [LLM #1] scoring snippets ... done (16.0s)
+       21 snippets gathered, 4 relevant
+       best: UPC fallback #3 (match_score=95)
+       tagging inputs (3 of top-3):
+         - UPC fallback #3 (match=95)
+         - Wine Searcher #2 (match=90)
+         - fallback #3 (match=90)
+       web context: '[UPC fallback #3 | match=95]\n2020 Bila-Haut Cotes du Roussillon Villages 750 ml. is a red wine from Cotes du Roussillon '
+       web lookup total: 32.1s
+     --- LLM inference ---
+       [LLM #2] inferring tags ... done (5.9s)
+       country=France  region=Roussillon
+       grapes=['Grenache Blanc', 'Grenache Gris', 'Macabeu']  is_blend=True
+       organic=False  confidence=90
+       inference total: 5.9s
+       label: auto (ok)
+       wine total: 38.0s
+
+[05/24] Chapelle Bastion Picpoul
+     --- web lookup ---
+       [DDG] wine-searcher.com ... 0 result(s) (4.0s)
+       [DDG] vivino.com ... 0 result(s) (2.7s)
+       [DDG] cellartracker.com ... 3 result(s) (3.0s)
+       [DDG] web ... 3 result(s) (3.6s)
+       [DDG] wine-searcher.com ... 0 result(s) (3.5s)
+       [DDG] vivino.com ... 0 result(s) (3.4s)
+       [DDG] cellartracker.com ... 3 result(s) (1.9s)
+       [DDG] web ... 3 result(s) (1.1s)
+       [LLM #1] scoring snippets ... done (8.7s)
+       10 snippets gathered, 8 relevant
+       best: CellarTracker #2 (match_score=96)
+       tagging inputs (3 of top-3):
+         - CellarTracker #2 (match=96)
+         - CellarTracker (UPC) #1 (match=95)
+         - CellarTracker #1 (match=94)
+       web context: '[CellarTracker #2 | match=96]\nSort by Default Sort by Name Sort by Vintage Sort by Variety Sort by Score 1 - 11 of 11 So'
+       web lookup total: 33.5s
+     --- LLM inference ---
+       [LLM #2] inferring tags ... done (9.4s)
+       country=France  region=Languedoc-Roussillon
+       grapes=['Picpoul']  is_blend=True
+       organic=False  confidence=95
+       inference total: 9.4s
+       label: auto (ok)
+       wine total: 43.0s
+
+[06/24] Chocapalha Tinto
+     --- web lookup ---
+       [DDG] wine-searcher.com ... 0 result(s) (3.1s)
+       [DDG] vivino.com ... 3 result(s) (3.0s)
+       [DDG] cellartracker.com ... 0 result(s) (2.6s)
+       [DDG] web ... 3 result(s) (2.0s)
+       [DDG] wine-searcher.com ... 3 result(s) (1.4s)
+       [DDG] vivino.com ... 3 result(s) (1.6s)
+       [DDG] cellartracker.com ... 3 result(s) (2.5s)
+       [DDG] web ... 3 result(s) (1.9s)
+       [LLM #1] scoring snippets ... done (13.0s)
+       17 snippets gathered, 14 relevant
+       best: Vivino (UPC) #1 (match_score=100)
+       tagging inputs (3 of top-3):
+         - Vivino (UPC) #1 (match=100)
+         - Wine Searcher #1 (match=100)
+         - Wine Searcher #2 (match=100)
+       web context: "[Vivino (UPC) #1 | match=100]\nShop on Vivino — the world's largest wine marketplace with reviews straight from the commu"
+       web lookup total: 32.5s
+     --- LLM inference ---
+       [LLM #2] inferring tags ... done (5.7s)
+       country=Portugal  region=None
+       grapes=['Touriga Nacional', 'Tempranillo', 'Tinta Barroca', 'Touriga Franca']  is_blend=True
+       organic=False  confidence=90
+       inference total: 5.7s
+       label: needs_review (country_in_region_slot)
+       wine total: 38.2s
+
+[07/24] Cloudline PN
+     --- web lookup ---
+       [DDG] wine-searcher.com ... 0 result(s) (3.6s)
+       [DDG] vivino.com ... 3 result(s) (2.0s)
+       [DDG] cellartracker.com ... 3 result(s) (2.0s)
+       [DDG] web ... 3 result(s) (2.5s)
+       [DDG] wine-searcher.com ... 3 result(s) (1.4s)
+       [DDG] vivino.com ... 2 result(s) (3.4s)
+       [DDG] cellartracker.com ... 2 result(s) (2.3s)
+       [DDG] web ... 3 result(s) (1.3s)
+       [LLM #1] scoring snippets ... done (14.8s)
+       19 snippets gathered, 8 relevant
+       best: Wine Searcher #1 (match_score=95)
+       tagging inputs (3 of top-3):
+         - Wine Searcher #1 (match=95)
+         - Wine Searcher #2 (match=95)
+         - Wine Searcher #3 (match=95)
+       web context: '[Wine Searcher #1 | match=95]\n2019Bottle (750ml) 2019 CLOUDLINE WILLAMETTE VALLEY CLOUDLINE PN 750ML Wine and Spirits Ma'
+       web lookup total: 35.0s
+     --- LLM inference ---
+       [LLM #2] inferring tags ... done (8.1s)
+       country=United States  region=Willamette Valley
+       grapes=['Pinot Noir']  is_blend=False
+       organic=False  confidence=95
+       inference total: 8.1s
+       label: auto (ok)
+       wine total: 43.1s
+
+[08/24] Curator White
+     --- web lookup ---
+       [DDG] wine-searcher.com ... 0 result(s) (3.4s)
+       [DDG] vivino.com ... 3 result(s) (2.3s)
+       [DDG] cellartracker.com ... 3 result(s) (3.2s)
+       [DDG] web ... 3 result(s) (1.0s)
+       [DDG] wine-searcher.com ... 3 result(s) (1.4s)
+       [DDG] vivino.com ... 3 result(s) (3.1s)
+       [DDG] cellartracker.com ... 3 result(s) (3.5s)
+       [DDG] web ... 3 result(s) (3.1s)
+       [LLM #1] scoring snippets ... done (16.7s)
+       21 snippets gathered, 7 relevant
+       best: UPC fallback #2 (match_score=100)
+       tagging inputs (3 of top-3):
+         - UPC fallback #2 (match=100)
+         - Wine Searcher #1 (match=100)
+         - Wine Searcher #2 (match=100)
+       web context: '[UPC fallback #2 | match=100]\nCURATOR WHITE BLEND 750ml $11.99 SKU: 2-3375 UPC: 8991090020806 Quantity: Add to Wish List'
+       web lookup total: 39.3s
+     --- LLM inference ---
+       [LLM #2] inferring tags ... done (5.8s)
+       country=South Africa  region=Coastal Region
+       grapes=['Chenin Blanc', 'Sauvignon Blanc', 'Pin Blanc']  is_blend=True
+       organic=False  confidence=90
+       inference total: 5.8s
+       label: auto (ok)
+       wine total: 45.1s
+
+[09/24] DV Catena Tinto
+     --- web lookup ---
+       [DDG] wine-searcher.com ... 0 result(s) (3.3s)
+       [DDG] vivino.com ... 0 result(s) (3.0s)
+       [DDG] cellartracker.com ... 3 result(s) (0.8s)
+       [DDG] web ... 3 result(s) (3.2s)
+       [DDG] wine-searcher.com ... 3 result(s) (2.3s)
+       [DDG] vivino.com ... 3 result(s) (1.7s)
+       [DDG] cellartracker.com ... 3 result(s) (3.2s)
+       [DDG] web ... 3 result(s) (1.3s)
+       [LLM #1] scoring snippets ... done (13.4s)
+       17 snippets gathered, 9 relevant
+       best: UPC fallback #2 (match_score=95)
+       tagging inputs (3 of top-3):
+         - UPC fallback #2 (match=95)
+         - CellarTracker #1 (match=95)
+         - CellarTracker #2 (match=95)
+       web context: '[UPC fallback #2 | match=95]\nHome. STILL WINE. Catena D.V. Tinto Histórico Red Blend 750ml.Specific References. UPC. 098'
+       web lookup total: 34.0s
+     --- LLM inference ---
+       [LLM #2] inferring tags ... done (8.9s)
+       country=Argentina  region=Paraje Altamira
+       grapes=['Cabernet Sauvignon', 'Malbec', 'Carignan', 'Pinot Noir', 'Cinsault']  is_blend=True
+       organic=False  confidence=95
+       inference total: 8.9s
+       label: auto (ok)
+       wine total: 42.9s
+
+[10/24] Excelsior Chardonnay
+     --- web lookup ---
+       [DDG] wine-searcher.com ... 0 result(s) (4.0s)
+       [DDG] vivino.com ... 0 result(s) (3.3s)
+       [DDG] cellartracker.com ... 3 result(s) (2.3s)
+       [DDG] web ... 3 result(s) (3.9s)
+       [DDG] wine-searcher.com ... 3 result(s) (2.4s)
+       [DDG] vivino.com ... 3 result(s) (1.1s)
+       [DDG] cellartracker.com ... 3 result(s) (2.9s)
+       [DDG] web ... 3 result(s) (2.3s)
+       [LLM #1] scoring snippets ... done (12.7s)
+       17 snippets gathered, 13 relevant
+       best: CellarTracker (UPC) #1 (match_score=95)
+       tagging inputs (3 of top-3):
+         - CellarTracker (UPC) #1 (match=95)
+         - CellarTracker (UPC) #2 (match=95)
+         - UPC fallback #1 (match=95)
+       web context: '[CellarTracker (UPC) #1 | match=95]\nAug 15, 2013 · NOTE: Some content is property of WineAlign and Vinous. Add a Pro Rev'
+       web lookup total: 36.3s
+     --- LLM inference ---
+       [LLM #2] inferring tags ... done (6.8s)
+       country=South Africa  region=Robertson
+       grapes=['Chardonnay']  is_blend=False
+       organic=False  confidence=95
+       inference total: 6.8s
+       label: auto (ok)
+       wine total: 43.2s
+
+[11/24] Faustino VII Rioja
+     --- web lookup ---
+       [DDG] wine-searcher.com ... 3 result(s) (2.8s)
+       [DDG] vivino.com ... 0 result(s) (3.5s)
+       [DDG] cellartracker.com ... 1 result(s) (2.8s)
+       [DDG] web ... 3 result(s) (2.4s)
+       [DDG] wine-searcher.com ... 3 result(s) (1.4s)
+       [DDG] vivino.com ... 3 result(s) (2.6s)
+       [DDG] cellartracker.com ... 1 result(s) (2.6s)
+       [DDG] web ... 3 result(s) (1.2s)
+       [LLM #1] scoring snippets ... done (12.9s)
+       16 snippets gathered, 10 relevant
+       best: Wine Searcher #1 (match_score=95)
+       tagging inputs (3 of top-3):
+         - Wine Searcher #1 (match=95)
+         - Wine Searcher #2 (match=95)
+         - Wine Searcher #3 (match=95)
+       web context: '[Wine Searcher #1 | match=95]\nFind the best local price for Bodegas Faustino VII, Rioja DOCa, Spain. Avg Price (ex-tax) '
+       web lookup total: 33.8s
+     --- LLM inference ---
+       [LLM #2] inferring tags ... done (9.7s)
+       country=Spain  region=Rioja
+       grapes=['Tempranillo']  is_blend=False
+       organic=False  confidence=95
+       inference total: 9.7s
+       label: auto (ok)
+       wine total: 43.5s
+
+[12/24] La Rioja Alta Ardanza
+     --- web lookup ---
+       [DDG] wine-searcher.com ... 3 result(s) (1.8s)
+       [DDG] vivino.com ... 3 result(s) (1.0s)
+       [DDG] cellartracker.com ... 3 result(s) (2.1s)
+       [DDG] web ... 3 result(s) (1.2s)
+       [DDG] wine-searcher.com ... 3 result(s) (1.9s)
+       [DDG] vivino.com ... 3 result(s) (2.3s)
+       [DDG] cellartracker.com ... 3 result(s) (1.4s)
+       [DDG] web ... 3 result(s) (2.8s)
+       [LLM #1] scoring snippets ... done (16.1s)
+       23 snippets gathered, 7 relevant
+       best: Wine Searcher #1 (match_score=100)
+       tagging inputs (3 of top-3):
+         - Wine Searcher #1 (match=100)
+         - Wine Searcher #2 (match=100)
+         - CellarTracker #1 (match=100)
+       web context: '[Wine Searcher #1 | match=100]\n1st label thumbnail of La Rioja Alta S.A. Vina Ardanza Reserva.\n\n[Wine Searcher #2 | matc'
+       web lookup total: 32.2s
+     --- LLM inference ---
+       [LLM #2] inferring tags ... done (6.7s)
+       country=Spain  region=Rioja
+       grapes=['Tempranillo', 'Grenache', 'Carignan', 'Eigen']  is_blend=True
+       organic=False  confidence=90
+       inference total: 6.7s
+       label: auto (ok)
+       wine total: 38.9s
+
+[13/24] Li Veli Passamante
+     --- web lookup ---
+       [DDG] wine-searcher.com ... 0 result(s) (2.8s)
+       [DDG] vivino.com ... 0 result(s) (2.6s)
+       [DDG] cellartracker.com ... 3 result(s) (1.5s)
+       [DDG] web ... 3 result(s) (1.5s)
+       [DDG] wine-searcher.com ... 3 result(s) (1.1s)
+       [DDG] vivino.com ... 3 result(s) (1.3s)
+       [DDG] cellartracker.com ... 3 result(s) (2.7s)
+       [DDG] web ... 3 result(s) (1.2s)
+       [LLM #1] scoring snippets ... done (9.6s)
+       14 snippets gathered, 8 relevant
+       best: CellarTracker (match_score=100)
+       tagging inputs (3 of top-3):
+         - CellarTracker (match=100)
+         - UPC fallback #2 (match=95)
+         - Wine Searcher #1 (match=95)
+       web context: '[CellarTracker | match=100]\nVintage 2017. Type Red. Producer Masseria Li Veli. Varietal Negroamaro. Designation Passaman'
+       web lookup total: 26.0s
+     --- LLM inference ---
+       [LLM #2] inferring tags ... done (4.9s)
+       country=Italy  region=Puglia
+       grapes=['Negroamaro']  is_blend=False
+       organic=False  confidence=95
+       inference total: 4.9s
+       label: auto (ok)
+       wine total: 30.9s
+
+[14/24] Librandi Ciro Bianco
+     --- web lookup ---
+       [DDG] wine-searcher.com ... 0 result(s) (2.7s)
+       [DDG] vivino.com ... 3 result(s) (2.1s)
+       [DDG] cellartracker.com ... 0 result(s) (2.6s)
+       [DDG] web ... 1 result(s) (2.9s)
+       [DDG] wine-searcher.com ... 3 result(s) (1.8s)
+       [DDG] vivino.com ... 3 result(s) (1.5s)
+       [DDG] cellartracker.com ... 3 result(s) (2.1s)
+       [DDG] web ... 3 result(s) (2.4s)
+       [LLM #1] scoring snippets ... done (10.8s)
+       15 snippets gathered, 8 relevant
+       best: Wine Searcher #1 (match_score=95)
+       tagging inputs (3 of top-3):
+         - Wine Searcher #1 (match=95)
+         - Wine Searcher #2 (match=95)
+         - Wine Searcher #3 (match=95)
+       web context: '[Wine Searcher #1 | match=95]\nFind the best local price for Librandi Ciro Bianco, Calabria, Italy. Avg Price (ex-tax) ₽9'
+       web lookup total: 30.6s
+     --- LLM inference ---
+       [LLM #2] inferring tags ... done (5.0s)
+       country=Italy  region=Calabria
+       grapes=[]  is_blend=True
+       organic=False  confidence=95
+       inference total: 5.0s
+       label: needs_review (placeholder_grapes,no_grapes)
+       wine total: 35.7s
+
+[15/24] Massaya Rose
+     --- web lookup ---
+       [DDG] wine-searcher.com ... 3 result(s) (1.1s)
+       [DDG] vivino.com ... 0 result(s) (2.5s)
+       [DDG] cellartracker.com ... 3 result(s) (2.6s)
+       [DDG] web ... 3 result(s) (0.9s)
+       [DDG] wine-searcher.com ... 3 result(s) (2.6s)
+       [DDG] vivino.com ... 3 result(s) (1.2s)
+       [DDG] cellartracker.com ... 1 result(s) (2.8s)
+       [DDG] web ... 3 result(s) (2.0s)
+       [LLM #1] scoring snippets ... done (13.8s)
+       18 snippets gathered, 12 relevant
+       best: Vivino #1 (match_score=95)
+       tagging inputs (3 of top-3):
+         - Vivino #1 (match=95)
+         - Vivino #2 (match=95)
+         - Vivino #3 (match=95)
+       web context: '[Vivino #1 | match=95]\nA Rosé wine from Bekaa Valley, Lebanon. Made from Shiraz/Syrah, Cabernet Sauvignon, Cinsault.The '
+       web lookup total: 31.2s
+     --- LLM inference ---
+       [LLM #2] inferring tags ... done (5.4s)
+       country=Lebanon  region=Bekaa Valley
+       grapes=['Shiraz/Syrah', 'Cabernet Sauvignon', 'Cinsault']  is_blend=True
+       organic=False  confidence=95
+       inference total: 5.4s
+       label: auto (ok)
+       wine total: 36.5s
+
+[16/24] Mont Gravet Rose
+     --- web lookup ---
+       [DDG] wine-searcher.com ... 0 result(s) (2.5s)
+       [DDG] vivino.com ... 3 result(s) (1.1s)
+       [DDG] cellartracker.com ... 0 result(s) (2.8s)
+       [DDG] web ... 3 result(s) (1.8s)
+       [DDG] wine-searcher.com ... 3 result(s) (1.2s)
+       [DDG] vivino.com ... 3 result(s) (3.1s)
+       [DDG] cellartracker.com ... 3 result(s) (1.0s)
+       [DDG] web ... 3 result(s) (1.2s)
+       [LLM #1] scoring snippets ... done (13.2s)
+       18 snippets gathered, 7 relevant
+       best: CellarTracker #1 (match_score=95)
+       tagging inputs (3 of top-3):
+         - CellarTracker #1 (match=95)
+         - CellarTracker #2 (match=95)
+         - CellarTracker #3 (match=90)
+       web context: '[CellarTracker #1 | match=95]\nCommunity wine reviews and ratings on 2025 Mont Gravet Rosé, plus professional notes, labe'
+       web lookup total: 29.4s
+     --- LLM inference ---
+       [LLM #2] inferring tags ... done (7.9s)
+       country=France  region=Pays d'Hérault
+       grapes=['Carignan', 'Other']  is_blend=True
+       organic=False  confidence=90
+       inference total: 7.9s
+       label: auto (ok)
+       wine total: 37.3s
+
+[17/24] Neirano Barolo
+     --- web lookup ---
+       [DDG] wine-searcher.com ... 3 result(s) (1.4s)
+       [DDG] vivino.com ... 3 result(s) (1.6s)
+       [DDG] cellartracker.com ... 0 result(s) (3.1s)
+       [DDG] web ... 3 result(s) (1.6s)
+       [DDG] wine-searcher.com ... 3 result(s) (3.0s)
+       [DDG] vivino.com ... 3 result(s) (2.5s)
+       [DDG] cellartracker.com ... 3 result(s) (2.8s)
+       [DDG] web ... 3 result(s) (1.1s)
+       [LLM #1] scoring snippets ...
