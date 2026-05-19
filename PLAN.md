@@ -23,7 +23,7 @@ Reads the raw `.xlsx` exports from Lightspeed (product catalog and inventory/sal
 
 ### 2. Curation (`curation/`)
 
-Consumes the clean CSVs. Uses a locally-running Gemma model (via Ollama or LM Studio) to search the internet and generate tags for each wine -- country of origin, region, and grape varieties. Stores everything in a SQLite database that becomes the single source of truth.
+Consumes the clean CSVs. Uses a locally-running Gemma model (via llama.cpp's `llama-server`, with LM Studio as an alternative) to search the internet and generate tags for each wine -- country of origin, region, and grape varieties. Stores everything in a SQLite database that becomes the single source of truth.
 
 Web lookup uses a two-phase approach: all curated sources are queried (no early stop), then a batch LLM call scores each snippet for name-match quality (with abbreviation expansion: PN → Pinot Noir, etc.). Only snippets scoring ≥ 65 feed the final tag-inference call. Confidence scoring has hard limits to prevent inflated scores from weak single-source evidence.
 

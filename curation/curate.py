@@ -14,6 +14,7 @@ import re
 import sqlite3
 import sys
 import time
+import unicodedata
 from pathlib import Path
 from typing import Optional
 
@@ -52,6 +53,10 @@ from constants import (
     BATCH_MATCH_SCORE_PROMPT,
     PROMPT_TEMPLATE,
     STRICT_SUFFIX,
+    PRODUCER_ABSENT_CONFIDENCE_CAP,
+    SNIPPET_BOILERPLATE_PHRASES,
+    SNIPPET_BOILERPLATE_KEEP_RATIO,
+    SNIPPET_MIN_CLEANED_CHARS,
 )
 
 # ---------------------------------------------------------------------------
@@ -139,6 +144,84 @@ def save_cache(path: Path, cache: dict) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Text helpers — accent stripping, tokenizing, boilerplate cleanup
+# ---------------------------------------------------------------------------
+
+# Common words that should NOT count as significant producer/name tokens when
+# checking whether a snippet mentions the wine. Includes wine-vocabulary noise
+# and a handful of multilingual articles/prepositions found in producer names.
+_STOPWORDS = {
+    "wine", "wines", "vino", "vin", "vins", "vinho", "weingut", "domaine", "domaines",
+    "chateau", "château", "estate", "estates", "winery", "wineries", "cellars", "cellar",
+    "the", "a", "an", "of", "and", "or", "&", "et", "und", "y",
+    "de", "du", "des", "da", "do", "dos", "das", "di", "della", "delle", "del", "dei",
+    "le", "la", "les", "el", "los", "las", "il", "lo", "gli",
+    "red", "white", "rose", "rosé", "rosado", "rosato",
+    "brut", "extra", "dry", "sec", "doux", "demi", "sweet",
+    "reserve", "reserva", "riserva", "gran", "grand", "grande", "vieille", "vieilles", "old", "vines",
+    "vintage", "nv", "non", "vintage",
+    "ml", "cl", "l", "750ml", "1l", "375ml", "1.5l",
+    "bottle", "bottles",
+}
+
+_TOKEN_RE = re.compile(r"[a-z0-9]+")
+
+
+def _strip_accents(text: str) -> str:
+    """Lowercase + strip diacritics for tolerant token matching."""
+    nfkd = unicodedata.normalize("NFKD", text)
+    return "".join(c for c in nfkd if not unicodedata.combining(c)).lower()
+
+
+def significant_tokens(text: str, min_len: int = 4) -> list[str]:
+    """Tokenize text → lowercase, accent-stripped, stopwords removed, len >= min_len.
+
+    Used to check whether a snippet body actually mentions the product/brand.
+    """
+    if not text:
+        return []
+    normalized = _strip_accents(text)
+    return [t for t in _TOKEN_RE.findall(normalized)
+            if len(t) >= min_len and t not in _STOPWORDS]
+
+
+def snippet_contains_any_token(snippet_body: str, tokens: list[str]) -> bool:
+    """True if any token (already normalized) appears as a substring in the normalized snippet."""
+    if not tokens:
+        # No significant tokens available to check against (e.g. very short product
+        # name) — fall back to letting the snippet through.
+        return True
+    haystack = _strip_accents(snippet_body)
+    return any(t in haystack for t in tokens)
+
+
+def clean_snippet_text(text: str) -> str:
+    """Strip known CMS/UI boilerplate phrases from a snippet body.
+
+    Case-insensitive substring removal. The original casing of surviving text is
+    preserved by walking the string with re.sub.
+    """
+    if not text:
+        return text
+    cleaned = text
+    for phrase in SNIPPET_BOILERPLATE_PHRASES:
+        cleaned = re.sub(re.escape(phrase), " ", cleaned, flags=re.IGNORECASE)
+    # Collapse whitespace left behind by removals
+    cleaned = re.sub(r"\s+", " ", cleaned).strip()
+    return cleaned
+
+
+_PRICE_ONLY_RE = re.compile(r"^[\s\$\€\£\d\.\,\-x×]+$")
+
+
+def is_price_only(text: str) -> bool:
+    """True if the cleaned text is essentially just a price tag (numbers/currency)."""
+    if not text:
+        return True
+    return bool(_PRICE_ONLY_RE.match(text))
+
+
+# ---------------------------------------------------------------------------
 # Web lookup — multi-source with LLM match scoring
 # ---------------------------------------------------------------------------
 
@@ -211,13 +294,48 @@ def gather_all_snippets(product: dict) -> list[dict]:
     return results
 
 
-def score_snippets(product: dict, all_snippets: list[dict], api_url: str, model: str) -> list[dict]:
-    """One LLM call to rate all snippets for name-match quality. Returns snippets with match_score added."""
+def score_snippets(product: dict, all_snippets: list[dict], api_url: str, model: str,
+                   producer_gate: bool = True) -> list[dict]:
+    """One LLM call to rate all snippets for name-match quality. Returns snippets with match_score added.
+
+    Pre-scoring: each snippet body is cleaned of CMS/UI boilerplate; snippets that
+    are mostly boilerplate or price-only are forced to score 0.
+
+    Post-scoring: when producer_gate is True, any surviving snippet that does not
+    contain a significant token from the product name OR brand is zeroed out
+    (defends against the Zenato/Rioja-Alta failure where a snippet was wine-shaped
+    but mentioned a different producer entirely).
+    """
     if not all_snippets:
         return []
 
-    lines = [f"[{i}] ({item['source']}): {item['snippet'][:SCORING_SNIPPET_CHARS]}"
-             for i, item in enumerate(all_snippets)]
+    # Boilerplate cleanup (#4). The cleaned text is what the LLM scores against —
+    # but we leave item["snippet"] alone for downstream context assembly, since the
+    # full original snippet is still the most informative input for tag inference
+    # once the snippet has earned its place.
+    prepared: list[dict] = []
+    pre_zeroed: dict[int, str] = {}  # index → reason
+    for i, item in enumerate(all_snippets):
+        cleaned = clean_snippet_text(item["snippet"])
+        original_len = max(1, len(item["snippet"]))
+        keep_ratio = len(cleaned) / original_len
+        if (
+            len(cleaned) < SNIPPET_MIN_CLEANED_CHARS
+            or keep_ratio < SNIPPET_BOILERPLATE_KEEP_RATIO
+            or is_price_only(cleaned)
+        ):
+            pre_zeroed[i] = "boilerplate"
+            prepared.append({**item, "_cleaned": cleaned})
+            continue
+        prepared.append({**item, "_cleaned": cleaned})
+
+    # Build LLM input from cleaned text, skipping ones already known to be junk.
+    scorable = [(i, p) for i, p in enumerate(prepared) if i not in pre_zeroed]
+    if not scorable:
+        return [{**p, "match_score": 0} for p in prepared]
+
+    lines = [f"[{i}] ({p['source']}): {p['_cleaned'][:SCORING_SNIPPET_CHARS]}"
+             for i, p in scorable]
     snippets_block = "\n\n".join(lines)
 
     prompt = BATCH_MATCH_SCORE_PROMPT.format(
@@ -226,15 +344,39 @@ def score_snippets(product: dict, all_snippets: list[dict], api_url: str, model:
         snippets_block=snippets_block,
     )
 
+    raw_scores: dict = {}
     try:
         raw = call_llm(prompt, api_url, model, timeout=45)
-        scores = extract_json(raw) or {}
-        return [
-            {**item, "match_score": min(100, max(0, int(scores.get(str(i), scores.get(i, 0)))))}
-            for i, item in enumerate(all_snippets)
-        ]
+        raw_scores = extract_json(raw) or {}
     except Exception:
-        return [{**item, "match_score": 0} for item in all_snippets]
+        raw_scores = {}
+
+    # Producer/name token list for the gate (#3)
+    name_tokens = significant_tokens(product.get("name", ""))
+    brand_tokens = significant_tokens(product.get("brand_name", "") or "")
+    gate_tokens = list({*name_tokens, *brand_tokens})
+
+    out: list[dict] = []
+    for i, p in enumerate(prepared):
+        item = {k: v for k, v in p.items() if k != "_cleaned"}
+        if i in pre_zeroed:
+            item["match_score"] = 0
+            item["zeroed_reason"] = pre_zeroed[i]
+            out.append(item)
+            continue
+        try:
+            score = int(raw_scores.get(str(i), raw_scores.get(i, 0)))
+        except (TypeError, ValueError):
+            score = 0
+        score = min(100, max(0, score))
+        # Producer/name verification gate (#3)
+        if producer_gate and score > 0 and gate_tokens:
+            if not snippet_contains_any_token(p["snippet"], gate_tokens):
+                score = 0
+                item["zeroed_reason"] = "producer_absent"
+        item["match_score"] = score
+        out.append(item)
+    return out
 
 
 def build_web_context(scored_snippets: list[dict], threshold: int = SNIPPET_MATCH_THRESHOLD,
@@ -254,7 +396,8 @@ def build_web_context(scored_snippets: list[dict], threshold: int = SNIPPET_MATC
     return "\n\n".join(parts)
 
 
-def web_lookup(product: dict, cache: dict, api_url: str = "", model: str = "") -> tuple[Optional[str], list[dict]]:
+def web_lookup(product: dict, cache: dict, api_url: str = "", model: str = "",
+               producer_gate: bool = True) -> tuple[Optional[str], list[dict]]:
     """Multi-source web lookup with LLM match scoring. Returns (web_context, scored_snippets).
 
     On cache hit, returns the cached context with an empty snippet list.
@@ -269,7 +412,7 @@ def web_lookup(product: dict, cache: dict, api_url: str = "", model: str = "") -
         cache[pid] = None
         return None, []
 
-    scored = score_snippets(product, all_snippets, api_url, model)
+    scored = score_snippets(product, all_snippets, api_url, model, producer_gate=producer_gate)
     context = build_web_context(scored)
     cache[pid] = context
     return context, scored
@@ -356,6 +499,36 @@ def build_tags_raw(parsed: dict) -> str:
     if parsed.get("organic"):
         parts.append("Organic")
     return "; ".join(parts)
+
+
+def enforce_producer_absent_cap(parsed: dict, web_context: Optional[str], brand: str,
+                                 name: str) -> Optional[str]:
+    """Deterministic producer-absent confidence cap (#5).
+
+    If the brand/producer token does not appear in the web_context, cap confidence
+    at PRODUCER_ABSENT_CONFIDENCE_CAP and return the issue tag for the caller to
+    add to its issues list (which forces needs_review). Returns None when no
+    action was needed.
+
+    Falls back to name tokens when brand is missing, since some products have no
+    brand_name populated but still carry a recognizable producer in the name.
+    """
+    if not parsed:
+        return None
+    tokens = significant_tokens(brand) or significant_tokens(name)
+    if not tokens:
+        # Nothing to look for — can't make a deterministic claim.
+        return None
+    if not web_context:
+        # No context means the cap rule is moot here; the row is already going
+        # to needs_review via the forced_review path. Don't double-flag.
+        return None
+    if snippet_contains_any_token(web_context, tokens):
+        return None
+    current = parsed.get("confidence")
+    if isinstance(current, (int, float)) and current > PRODUCER_ABSENT_CONFIDENCE_CAP:
+        parsed["confidence"] = PRODUCER_ABSENT_CONFIDENCE_CAP
+    return "producer_absent_from_context"
 
 
 def organic_confirmed(web_context: Optional[str], parsed: dict) -> bool:
@@ -512,6 +685,8 @@ def main() -> None:
                         help="Path to combined.csv")
     parser.add_argument("--limit", type=int, default=0,
                         help="Process at most N wines (0 = all); useful for testing")
+    parser.add_argument("--no-producer-gate", action="store_true",
+                        help="Disable the post-scoring producer/name token check on snippets (debug)")
     args = parser.parse_args()
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -568,7 +743,10 @@ def main() -> None:
         print(f"[{pos}/{total}] {product['name']}", end="", flush=True)
 
         # Web lookup — gather all sources, score for name match, build combined context
-        web_context, scored_snippets = web_lookup(product, cache, args.api_url, args.model)
+        web_context, scored_snippets = web_lookup(
+            product, cache, args.api_url, args.model,
+            producer_gate=not args.no_producer_gate,
+        )
         save_cache(CACHE_PATH, cache)
         if scored_snippets:
             n_relevant = sum(1 for s in scored_snippets if s["match_score"] >= SNIPPET_MATCH_THRESHOLD)
@@ -596,6 +774,14 @@ def main() -> None:
         norm_issues: list[str] = []
         if parsed is not None:
             parsed, norm_issues = normalize_tags(parsed)
+            # Deterministic producer-absent confidence cap (#5)
+            producer_issue = enforce_producer_absent_cap(
+                parsed, web_context,
+                product.get("brand_name", "") or "",
+                product.get("name", "") or "",
+            )
+            if producer_issue:
+                norm_issues.append(producer_issue)
             if norm_issues:
                 print(f" | norm: {','.join(norm_issues)}", end="", flush=True)
 

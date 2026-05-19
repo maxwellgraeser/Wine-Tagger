@@ -21,6 +21,11 @@ DEFAULT_API_URL = "http://localhost:8080/v1/chat/completions"
 DEFAULT_MODEL = "gemma3n:e4b"
 DEFAULT_CONFIDENCE_THRESHOLD = 90
 
+# Models - models currently used to put on DEFAULT_MODEL above
+# gemma3n:e4b 
+# qwen2.5-7b-instruct
+
+
 # --- Web search ---
 DDG_MAX_RESULTS = 3          #  DDG results fetched per source query
 SNIPPET_CHAR_LIMIT = 1500     # Max chars kept from each DDG result set
@@ -33,6 +38,42 @@ TOP_N_SNIPPETS = 3            # Max number of top-scoring snippets passed to the
 
 # --- Organic detection ---
 ORGANIC_PHRASES = {"certified organic", "biodynamic", "certified biodynamic"}
+
+# --- Producer-absent confidence cap (Improvement #5) ---
+# When the brand/producer token cannot be found in any web snippet, cap confidence
+# at this value deterministically (the model's self-reported limit is unreliable).
+PRODUCER_ABSENT_CONFIDENCE_CAP = 69
+
+# --- Snippet boilerplate stripping (Improvement #4) ---
+# Phrases stripped from snippet bodies before LLM scoring. Match is case-insensitive
+# against the raw snippet text. Keep entries short, distinctive, and unlikely to
+# appear inside genuine wine prose.
+SNIPPET_BOILERPLATE_PHRASES = [
+    "add your own reviews",
+    "add a pro review",
+    "add a pro tasting note",
+    "sort by default",
+    "sort by name",
+    "sort by vintage",
+    "sort by score",
+    "sort by price",
+    "note: some content is property of",
+    "jancisrobinson.com and vinous",
+    "ex. sales tax",
+    "this site uses cookies",
+    "create a free account",
+    "sign in to add",
+    "log in to add",
+    "view all reviews",
+    "community tasting note",
+    "your shopping cart",
+]
+
+# A snippet is dropped (match_score forced to 0) if cleaning leaves it shorter than
+# this fraction of the original length — meaning most of the snippet was boilerplate.
+SNIPPET_BOILERPLATE_KEEP_RATIO = 0.4
+# Minimum cleaned length (in chars) for a snippet to be kept at all.
+SNIPPET_MIN_CLEANED_CHARS = 40
 
 # --- LLM prompts ---
 BATCH_MATCH_SCORE_PROMPT = """\

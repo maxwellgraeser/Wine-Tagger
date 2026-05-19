@@ -4,10 +4,10 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 # ---------------------------------------------------------------------------
-# Model / runtime config — override via env vars or edit these defaults
+# Runtime config — model is sourced from curation/constants.py (DEFAULT_MODEL).
+# Override per-run via the --model flag or CURATION_MODEL env var if needed.
 # ---------------------------------------------------------------------------
-: "${CURATION_MODEL:=gemma3n:e4b}"
-: "${CURATION_API_URL:=http://localhost:11434/v1/chat/completions}"
+: "${CURATION_API_URL:=http://localhost:8080/v1/chat/completions}"
 : "${CURATION_CONFIDENCE_THRESHOLD:=75}"
 
 # Install deps if needed
@@ -17,7 +17,6 @@ if ! python3 -c "import requests" 2>/dev/null; then
 fi
 
 exec python3 curate.py \
-    --model "$CURATION_MODEL" \
     --api-url "$CURATION_API_URL" \
     --confidence-threshold "$CURATION_CONFIDENCE_THRESHOLD" \
     "$@"

@@ -1,9 +1,12 @@
 # Curation Accuracy — Improvement Backlog
 
-Ranked by likely ROI based on the 24-wine `test/test2.txt` run. Items 1 and 2 from the original brainstorm are already implemented:
+Ranked by likely ROI based on the 24-wine `test/test2.txt` run. Items 1–5 from the original brainstorm are already implemented:
 
 - **Done** — grapes are constrained to `CANONICAL_GRAPES` in the inference prompt; any non-canonical grape returned by the model triggers a `non_canonical_grape` normalization issue and forces `needs_review`.
 - **Done** — `is_blend` is reconciled mechanically against the cleaned grape list (1 grape → False, 2+ → True). When the LLM's declared value disagrees with the count, `is_blend_mismatch` is added to the issues list and the row is flagged for review.
+- **Done (3)** — producer/name verification gate: after the LLM scores snippets, any snippet whose body contains no significant token from the product name or brand (case- and accent-insensitive, stopwords stripped) has its match score zeroed out. Disable with `--no-producer-gate`.
+- **Done (4)** — snippet boilerplate stripping: each snippet is run through `clean_snippet_text` before scoring. Known CMS/UI phrases (`SNIPPET_BOILERPLATE_PHRASES` in `constants.py`) are removed; snippets where the cleaned text is too short or below `SNIPPET_BOILERPLATE_KEEP_RATIO` of the original, or that are essentially a price tag, are forced to score 0.
+- **Done (5)** — deterministic producer-absent confidence cap: `enforce_producer_absent_cap` runs after `normalize_tags`. If the brand (or name) tokens do not appear anywhere in the saved `web_context`, confidence is capped at `PRODUCER_ABSENT_CONFIDENCE_CAP` (69) and a `producer_absent_from_context` issue is appended, forcing `needs_review`.
 
 The remaining ideas are tracked here.
 
@@ -69,6 +72,6 @@ Risk: prompt length grows. Worth measuring whether the local model latency is st
 
 Filing here because it was the proximate trigger for this audit:
 
-- **Mechanism.** Not LLM context bleed. Every `call_llm` invocation in `curate.py` sends a fresh `messages=[{"role":"user", "content": prompt}]` payload with no conversation history, no `session_id`, no system message. Ollama's `/v1/chat/completions` is stateless. There is no path by which the prior wine's content can leak into the next wine's inference.
+- **Mechanism.** Not LLM context bleed. Every `call_llm` invocation in `curate.py` sends a fresh `messages=[{"role":"user", "content": prompt}]` payload with no conversation history, no `session_id`, no system message. llama.cpp's `/v1/chat/completions` is stateless. There is no path by which the prior wine's content can leak into the next wine's inference.
 - **Actual cause.** A site-scoped UPC DDG query (`site:cellartracker.com "{zenato_upc}"`) returned a CellarTracker page whose DDG preview text happened to be the most recent community review on that page, which was about *La Rioja Alta* — not Zenato. The 300-char scoring snippet contained no producer token at all, so there was nothing for the scoring LLM to anchor against. It scored the snippet 95 anyway because the text was vintage-and-points shaped.
 - **Why the existing safeguards missed it.** The `producer absent → max 69 confidence` rule lives in the *tag-inference* prompt, not in scoring. The snippet entered the top-3 pool before that rule applied. Items 3 (producer gate) and 5 (deterministic confidence cap) are the direct fixes.

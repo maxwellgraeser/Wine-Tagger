@@ -58,8 +58,8 @@ Each domain is self-contained. Data flows strictly downstream — no domain reac
 # Pause for review after every 10 wines
 ./curation/run.sh --batch-size 10
 
-# Use LM Studio instead of Ollama
-./curation/run.sh --api-url http://localhost:1234/v1
+# Use LM Studio instead of llama.cpp
+./curation/run.sh --api-url http://localhost:1234/v1/chat/completions
 
 # Lower the confidence threshold (accept more tags without manual review)
 ./curation/run.sh --confidence-threshold 60
@@ -87,7 +87,7 @@ For each wine the script queries DuckDuckGo using site-scoped queries against a 
 
 ### LLM Inference
 
-Uses a locally-running Gemma model (via **Ollama** at `http://localhost:11434/v1/chat/completions` or **LM Studio** at `http://localhost:1234/v1/chat/completions`). Pass `--api-url` or set the env var to switch runtimes.
+Uses a locally-running Gemma model (via **llama.cpp's `llama-server`** at `http://localhost:8080/v1/chat/completions`, or **LM Studio** at `http://localhost:1234/v1/chat/completions`). Pass `--api-url` or set the env var to switch runtimes.
 
 The model receives the product name, category, brand, and web snippet and returns JSON:
 
@@ -115,7 +115,7 @@ After parsing, `tags_raw` is assembled as a semicolon-separated string ready for
 
 | Flag | Default | Description |
 |------|---------|-------------|
-| `--api-url` | Ollama | LLM API base URL |
+| `--api-url` | llama.cpp (`http://localhost:8080/v1/chat/completions`) | LLM API base URL |
 | `--confidence-threshold` | 75 | Minimum confidence to auto-accept tags |
 | `--batch-size N` | 0 (all) | Pause for review after every N wines |
 | `--force` | off | Ignore saved run state; restart from row 0 |

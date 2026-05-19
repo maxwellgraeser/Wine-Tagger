@@ -16,8 +16,10 @@ From `ingestion/output/`:
    - Query every source in `curation/sources.py` plus an unscoped fallback via DuckDuckGo.
    - Collect every snippet returned (multiple sources may hit).
 3. **Phase 1 — LLM match scoring** (one LLM call per product):
-   - Send all snippets to the LLM in a single prompt asking it to rate each snippet 0–100 for how well it matches the product name.
+   - **Boilerplate strip (pre-scoring):** each snippet body is run through `clean_snippet_text`, which removes known CMS/UI phrases listed in `SNIPPET_BOILERPLATE_PHRASES` (e.g. "Add Your Own Reviews", "Sort by Default", "NOTE: Some content is property of"). Snippets whose cleaned text falls below `SNIPPET_MIN_CLEANED_CHARS` or below `SNIPPET_BOILERPLATE_KEEP_RATIO` of the original length, or that are essentially just a price tag, are forced to score 0 without being sent to the LLM.
+   - Send the surviving (cleaned) snippets to the LLM in a single prompt asking it to rate each snippet 0–100 for how well it matches the product name.
    - Wine abbreviations are expanded in this prompt (PN → Pinot Noir, SB → Sauvignon Blanc, etc.).
+   - **Producer/name verification gate (post-scoring):** any snippet whose original body contains no significant token from the product name OR brand (lowercased, accent-stripped, stopwords removed, min length 4) has its match score zeroed out. Disable with `--no-producer-gate` (debug only). This kills snippet contamination cases where a DDG preview is wine-shaped but mentions a different producer.
    - Snippets below `SNIPPET_MATCH_THRESHOLD` (default 65) are discarded.
 4. **Phase 2 — LLM tag inference** (one LLM call per product):
    - Combine all passing snippets into a labeled context block (`[source | match=N]\n...`).
@@ -28,7 +30,8 @@ From `ingestion/output/`:
    - Canonicalize country (`USA` → `United States`), region (`Languedoc Roussillon` → `Languedoc-Roussillon`, `Piemonte` → `Piedmont`), and grapes (`Garnacha` → `Grenache`, `Syrah` → `Shiraz`).
    - Strip placeholder grapes (`Bordeaux Blend`, `Red Rhone Blend`, `unknown`); preserve `is_blend=True` when they're removed.
    - Cross-check region against its pinned country. **Any mismatch (e.g. region=Veneto, country=USA) forces `tag_status = 'needs_review'`.**
-   - Other normalization issues (`placeholder_grapes`, `country_in_region_slot`, `no_grapes`) also force `needs_review`.
+   - Other normalization issues (`placeholder_grapes`, `country_in_region_slot`, `no_grapes`, `non_canonical_grape`, `is_blend_mismatch`) also force `needs_review`.
+   - **Deterministic producer-absent confidence cap:** after `normalize_tags`, `enforce_producer_absent_cap` scans the stored `web_context` for any significant token from the brand (falling back to the product name if no brand is set). If none is present, `confidence` is capped at `PRODUCER_ABSENT_CONFIDENCE_CAP` (69) and a `producer_absent_from_context` issue is appended — this replaces the unreliable LLM-side "max 69" rubric clause with a hard mechanical check.
    - See `LIBRARY.md` for the library spec.
 7. **Write everything to SQLite** -- products, sales stats, and the (normalized) tags.
 
@@ -47,12 +50,14 @@ Give the local model real-world context rather than asking it to guess from a pr
 2. Add an unscoped fallback query `"{name}" {brand} wine region grapes` at the end.
 3. Collect every snippet returned as individual results — up to `DDG_MAX_RESULTS` per source, each capped at `SNIPPET_CHAR_LIMIT` chars. Each DDG result is its own entry (labelled `Source #1`, `Source #2`, etc.) so the scoring LLM can rate them independently.
    - **Dedupe by URL across all queries**: if a later query returns a URL that was already collected by an earlier query (e.g. two `site:` queries hit the same page), the duplicate is dropped. The first query to surface a given URL keeps it. This prevents repeated URLs from boxing out the next-most-confident unique result in the top-N pool used for context.
-4. Send all snippets to the LLM in a **single batch match-scoring call**. The prompt instructs the model to expand common wine abbreviations (PN → Pinot Noir, SB → Sauvignon Blanc, Shiraz = Syrah, etc.) and rate each snippet 0–100 for how well it matches the product.
-5. Discard snippets scoring below `SNIPPET_MATCH_THRESHOLD` (default **65**).
+4. **Pre-score boilerplate cleanup.** Each snippet body is passed through `clean_snippet_text` to remove known CMS/UI noise (`SNIPPET_BOILERPLATE_PHRASES`). Snippets gutted by this step — cleaned text below `SNIPPET_MIN_CLEANED_CHARS` chars, below `SNIPPET_BOILERPLATE_KEEP_RATIO` of the original length, or detected by `is_price_only` — are pre-zeroed and never reach the LLM.
+5. Send the surviving cleaned snippets to the LLM in a **single batch match-scoring call**. The prompt instructs the model to expand common wine abbreviations (PN → Pinot Noir, SB → Sauvignon Blanc, Shiraz = Syrah, etc.) and rate each snippet 0–100 for how well it matches the product.
+6. **Post-score producer/name verification gate.** Any snippet whose body lacks every significant token from the product name and brand (lowercase, accent-stripped, stopwords removed, min length 4) is forced to score 0 regardless of what the LLM said. Bypass with `--no-producer-gate` (debug only).
+7. Discard snippets scoring below `SNIPPET_MATCH_THRESHOLD` (default **65**).
 
 #### Phase 2 — context assembly
 
-6. Take the top `TOP_N_SNIPPETS` (default **3**) surviving snippets by match score and combine them into a labeled context block:
+8. Take the top `TOP_N_SNIPPETS` (default **3**) surviving snippets by match score and combine them into a labeled context block:
    ```
    [Vivino | match=82]
    De Bortoli Noble One Botrytis Semillon is a luscious dessert wine...
@@ -60,8 +65,8 @@ Give the local model real-world context rather than asking it to guess from a pr
    [Wine Searcher | match=71]
    Noble One from De Bortoli winery in Riverina, New South Wales...
    ```
-7. Pass this context to the tag-inference LLM call (see LLM Integration below).
-8. Cache the final assembled context string in `curation/output/web_cache.json` (keyed by product id). Re-runs use the cache directly, skipping both DDG and match scoring.
+9. Pass this context to the tag-inference LLM call (see LLM Integration below).
+10. Cache the final assembled context string in `curation/output/web_cache.json` (keyed by product id). Re-runs use the cache directly, skipping both DDG and match scoring.
 
 ### Rate Handling
 
@@ -75,12 +80,12 @@ Give the local model real-world context rather than asking it to guess from a pr
 
 ### Runtime
 
-Ollama, exposing an OpenAI-compatible API at localhost.
+llama.cpp's `llama-server`, exposing an OpenAI-compatible API at localhost.
 
-- **Ollama:** `http://localhost:11434/v1/chat/completions` (default when running via `run.sh`)
-- **llama.cpp fallback:** `http://localhost:8080/v1/chat/completions` (default in `constants.py` when invoking `curate.py` directly without the env var set)
+- **llama.cpp:** `http://localhost:8080/v1/chat/completions` (default in `constants.py` and `run.sh`)
+- **LM Studio (alternative):** `http://localhost:1234/v1/chat/completions` — pass `--api-url` to switch
 
-Start Ollama with the `gemma3n` shell command (project root). `curate.py` accepts a `--api-url` flag or reads from `CURATION_API_URL` env var to override.
+Start `llama-server` with the `gemma3n.sh` shell command (project root). `curate.py` accepts a `--api-url` flag or reads from `CURATION_API_URL` env var to override.
 
 ### Model
 
@@ -207,7 +212,7 @@ See `curation/normalization/LIBRARY.md` for the full spec. Implemented as a `nor
 - `curation/normalization/normalize.py` — `normalize_tags(parsed) -> (parsed, issues)` orchestrator called by `curate.py` between `infer_tags` and `upsert_product`.
 - `curation/normalization/__init__.py` — re-exports `normalize_tags` for convenience.
 
-Integration point: `curate.py` calls `normalize_tags` immediately after `infer_tags`. A non-empty `issues` list forces `tag_status = 'needs_review'`. The normalized `parsed` dict is what gets written to `products`, so both the `grapes` JSON column and `tags_raw` stay canonical.
+Integration point: `curate.py` calls `normalize_tags` immediately after `infer_tags`, then `enforce_producer_absent_cap` to apply the deterministic producer-absent confidence cap (issue `producer_absent_from_context`). A non-empty `issues` list forces `tag_status = 'needs_review'`. The normalized `parsed` dict is what gets written to `products`, so both the `grapes` JSON column and `tags_raw` stay canonical.
 
 ## Phase 3 — LLM Review (planned)
 
@@ -227,7 +232,7 @@ Downstream (distribution) reads from `wines.db` and expects:
 - `requests` for LLM API calls
 - `ddgs` (`duckduckgo-search` package) for DuckDuckGo web lookups — gracefully skipped if not installed
 - `web_cache.json` at `curation/output/web_cache.json` for search result caching (keyed by product id)
-- `run.sh` — entry point script; sets Ollama defaults and installs `requests` if missing, then delegates to `curate.py`
+- `run.sh` — entry point script; sets llama.cpp defaults and installs `requests` if missing, then delegates to `curate.py`
 - No paid external APIs or API keys required
 
 ## Decisions
@@ -243,7 +248,7 @@ All open questions have been resolved:
 | 5 | **Re-run behaviour** | Re-run re-tags all rows **except** those with `tag_status = 'manual'`. Rows with `'reviewed'`, `'needs_review'`, and `'auto'` are all eligible to be re-tagged. |
 | 6 | **LLM calls per wine** | **Two**: one batch match-scoring call (rates all snippets), one tag-inference call (uses filtered context). |
 | 7 | **Multi-source web lookup** | Query **all** curated sources, not just the first hit. Each DDG result is kept as a separate scored snippet (labelled `Source #N`) so individual results are rated independently. Discard snippets below match score **65** (`SNIPPET_MATCH_THRESHOLD`); pass the top **3** survivors (by score) to Phase 2 (`TOP_N_SNIPPETS`). |
-| 8 | **Confidence hard limits** | Max 84 with a single source; max 69 if the producer name is absent from all snippets. Prevents inflated scores from weak evidence. |
+| 8 | **Confidence hard limits** | Max 84 with a single source (LLM-side rubric). Max 69 if the producer name is absent from all snippets — **enforced deterministically** by `enforce_producer_absent_cap` after `normalize_tags`, not left to the LLM. Prevents inflated scores from weak evidence. |
 
 ## Batch-Review Mode
 
