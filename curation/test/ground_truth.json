@@ -4,7 +4,7 @@
   "20fceb8b-24eb-4cf0-82a4-de1887862e5f": {
     "name": "Annabella Pinot Noir",
     "country": "United States",
-    "region": ["Russian River Valley"],
+    "region": ["Russian River Valley", "California"],
     "grapes": ["Pinot Noir"],
     "is_blend": false,
     "organic": false

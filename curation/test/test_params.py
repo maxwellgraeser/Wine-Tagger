@@ -35,9 +35,9 @@ from normalization import normalize_tags
 # ---------------------------------------------------------------------------
 # Grid — edit these lists to change which parameter values are explored.
 # ---------------------------------------------------------------------------
-DDG_MAX_RESULTS_VALUES     = [2, 3, 5]
-SNIPPET_CHAR_LIMIT_VALUES  = [750, 1500, 3000]
-SCORING_SNIPPET_CHARS_VALUES = [200, 300, 500]
+DDG_MAX_RESULTS_VALUES     = [3]
+SNIPPET_CHAR_LIMIT_VALUES  = [ 1500, 2000, 2500, 3000, 4000, 5000]
+SCORING_SNIPPET_CHARS_VALUES = [100, 200, 300, 400, 500]
 
 CSV_PATH         = Path(__file__).parent / "combined.csv"
 GROUND_TRUTH_PATH = Path(__file__).parent / "ground_truth.json"
@@ -184,6 +184,14 @@ def run_variant(rows, ddg, snippet_limit, scoring_chars, truth_by_id):
             if ok:
                 field_correct[field] += 1
 
+        mismatches = {}
+        for field, ok in correctness.items():
+            if ok is False:
+                mismatches[field] = {
+                    "guessed": (parsed or {}).get(field),
+                    "truth":   (truth or {}).get(field),
+                }
+
         elapsed = time.time() - t_wine
         times.append(elapsed)
         per_wine.append({
@@ -191,7 +199,9 @@ def run_variant(rows, ddg, snippet_limit, scoring_chars, truth_by_id):
             "name": row.get("name"),
             "tag_status": tag_status,
             "confidence": (parsed or {}).get("confidence"),
+            "parsed_grapes": (parsed or {}).get("grapes"),
             "correct": correctness,
+            "mismatches": mismatches,
             "elapsed_s": round(elapsed, 2),
         })
         print(f"   [{i:02d}/{len(rows)}] {row.get('name'):<35} "
