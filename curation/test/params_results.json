@@ -1,0 +1,4531 @@
+{
+  "wines_per_run": 10,
+  "grid": {
+    "DDG_MAX_RESULTS": [
+      2,
+      3,
+      5
+    ],
+    "SNIPPET_CHAR_LIMIT": [
+      750,
+      1500,
+      3000
+    ],
+    "SCORING_SNIPPET_CHARS": [
+      200,
+      300,
+      500
+    ]
+  },
+  "results": [
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 2,
+        "SNIPPET_CHAR_LIMIT": 750,
+        "SCORING_SNIPPET_CHARS": 200
+      },
+      "metrics": {
+        "pct_auto": 60.0,
+        "n_auto": 6,
+        "n_review": 4,
+        "avg_conf_auto": 93.33333333333333,
+        "avg_top_match": 97.41379310344827,
+        "avg_time_s": 34.69102234840393,
+        "total_time_s": 346.9102234840393,
+        "field_accuracy": {
+          "country": 1.0,
+          "region": 0.8,
+          "grapes": 0.6,
+          "is_blend": 0.9,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.86,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 31.58
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 31.34
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 33.72
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 31.66
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 31.7
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 35.14
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 36.06
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "needs_review",
+            "confidence": 70,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 37.38
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 44.71
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 33.62
+          }
+        ]
+      },
+      "variant_elapsed_s": 346.9
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 2,
+        "SNIPPET_CHAR_LIMIT": 750,
+        "SCORING_SNIPPET_CHARS": 300
+      },
+      "metrics": {
+        "pct_auto": 70.0,
+        "n_auto": 7,
+        "n_review": 3,
+        "avg_conf_auto": 93.57142857142857,
+        "avg_top_match": 95.96666666666667,
+        "avg_time_s": 39.43121302127838,
+        "total_time_s": 394.3121302127838,
+        "field_accuracy": {
+          "country": 1.0,
+          "region": 0.8,
+          "grapes": 0.6,
+          "is_blend": 0.9,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.86,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 38.17
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 36.97
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 39.79
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 42.99
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 42.44
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 45.16
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 42.05
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "needs_review",
+            "confidence": 70,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 30.66
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 38.05
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 38.04
+          }
+        ]
+      },
+      "variant_elapsed_s": 394.3
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 2,
+        "SNIPPET_CHAR_LIMIT": 750,
+        "SCORING_SNIPPET_CHARS": 500
+      },
+      "metrics": {
+        "pct_auto": 80.0,
+        "n_auto": 8,
+        "n_review": 2,
+        "avg_conf_auto": 93.75,
+        "avg_top_match": 96.46666666666667,
+        "avg_time_s": 35.99340574741363,
+        "total_time_s": 359.93405747413635,
+        "field_accuracy": {
+          "country": 1.0,
+          "region": 0.8,
+          "grapes": 0.6,
+          "is_blend": 0.9,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.86,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 37.92
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 37.54
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 38.04
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 37.76
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 33.15
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 38.15
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 38.0
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "needs_review",
+            "confidence": 70,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 30.38
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 38.3
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 30.7
+          }
+        ]
+      },
+      "variant_elapsed_s": 359.9
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 2,
+        "SNIPPET_CHAR_LIMIT": 1500,
+        "SCORING_SNIPPET_CHARS": 200
+      },
+      "metrics": {
+        "pct_auto": 80.0,
+        "n_auto": 8,
+        "n_review": 2,
+        "avg_conf_auto": 94.375,
+        "avg_top_match": 96.9,
+        "avg_time_s": 33.126654863357544,
+        "total_time_s": 331.26654863357544,
+        "field_accuracy": {
+          "country": 1.0,
+          "region": 0.8,
+          "grapes": 0.6,
+          "is_blend": 0.8,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.84,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 33.57
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 33.97
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 27.31
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 35.72
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 34.67
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 31.24
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 33.17
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 34.04
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 33.19
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 34.4
+          }
+        ]
+      },
+      "variant_elapsed_s": 331.3
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 2,
+        "SNIPPET_CHAR_LIMIT": 1500,
+        "SCORING_SNIPPET_CHARS": 300
+      },
+      "metrics": {
+        "pct_auto": 80.0,
+        "n_auto": 8,
+        "n_review": 2,
+        "avg_conf_auto": 93.75,
+        "avg_top_match": 95.76666666666667,
+        "avg_time_s": 32.24961428642273,
+        "total_time_s": 322.4961428642273,
+        "field_accuracy": {
+          "country": 1.0,
+          "region": 0.9,
+          "grapes": 0.6,
+          "is_blend": 0.9,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.88,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 33.1
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 33.24
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 33.01
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 32.8
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 31.9
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 28.12
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 35.55
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 32.74
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 35.25
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 26.77
+          }
+        ]
+      },
+      "variant_elapsed_s": 322.5
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 2,
+        "SNIPPET_CHAR_LIMIT": 1500,
+        "SCORING_SNIPPET_CHARS": 500
+      },
+      "metrics": {
+        "pct_auto": 70.0,
+        "n_auto": 7,
+        "n_review": 3,
+        "avg_conf_auto": 95.0,
+        "avg_top_match": 97.16666666666667,
+        "avg_time_s": 35.27645916938782,
+        "total_time_s": 352.7645916938782,
+        "field_accuracy": {
+          "country": 0.9,
+          "region": 0.8,
+          "grapes": 0.6,
+          "is_blend": 0.8,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.82,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 39.81
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 35.54
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 34.84
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 29.54
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 36.06
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 36.96
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": false,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 33.29
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "needs_review",
+            "confidence": 70,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 28.66
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 39.41
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 38.66
+          }
+        ]
+      },
+      "variant_elapsed_s": 352.8
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 2,
+        "SNIPPET_CHAR_LIMIT": 3000,
+        "SCORING_SNIPPET_CHARS": 200
+      },
+      "metrics": {
+        "pct_auto": 70.0,
+        "n_auto": 7,
+        "n_review": 3,
+        "avg_conf_auto": 92.85714285714286,
+        "avg_top_match": 97.03333333333333,
+        "avg_time_s": 33.02328131198883,
+        "total_time_s": 330.2328131198883,
+        "field_accuracy": {
+          "country": 0.9,
+          "region": 0.8,
+          "grapes": 0.6,
+          "is_blend": 0.9,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.84,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 39.75
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 33.78
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 35.95
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 35.44
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 34.41
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 32.17
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": false,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 26.76
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 35.82
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 30.2
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 25.95
+          }
+        ]
+      },
+      "variant_elapsed_s": 330.2
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 2,
+        "SNIPPET_CHAR_LIMIT": 3000,
+        "SCORING_SNIPPET_CHARS": 300
+      },
+      "metrics": {
+        "pct_auto": 90.0,
+        "n_auto": 9,
+        "n_review": 1,
+        "avg_conf_auto": 94.44444444444444,
+        "avg_top_match": 96.0,
+        "avg_time_s": 35.369167280197146,
+        "total_time_s": 353.69167280197144,
+        "field_accuracy": {
+          "country": 1.0,
+          "region": 0.9,
+          "grapes": 0.6,
+          "is_blend": 0.9,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.88,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 38.28
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 42.7
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 29.03
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 37.45
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 34.35
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 34.41
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 36.53
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 33.29
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 31.39
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 36.27
+          }
+        ]
+      },
+      "variant_elapsed_s": 353.7
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 2,
+        "SNIPPET_CHAR_LIMIT": 3000,
+        "SCORING_SNIPPET_CHARS": 500
+      },
+      "metrics": {
+        "pct_auto": 70.0,
+        "n_auto": 7,
+        "n_review": 3,
+        "avg_conf_auto": 95.0,
+        "avg_top_match": 96.84,
+        "avg_time_s": 35.60597014427185,
+        "total_time_s": 356.0597014427185,
+        "field_accuracy": {
+          "country": 0.9,
+          "region": 0.9,
+          "grapes": 0.6,
+          "is_blend": 0.8,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.84,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 33.8
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 40.5
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 34.38
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": false,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 37.22
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 36.41
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "needs_review",
+            "confidence": 98,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 39.47
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 31.04
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "needs_review",
+            "confidence": 70,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 27.64
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 38.02
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 37.56
+          }
+        ]
+      },
+      "variant_elapsed_s": 356.1
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 3,
+        "SNIPPET_CHAR_LIMIT": 750,
+        "SCORING_SNIPPET_CHARS": 200
+      },
+      "metrics": {
+        "pct_auto": 60.0,
+        "n_auto": 6,
+        "n_review": 4,
+        "avg_conf_auto": 94.16666666666667,
+        "avg_top_match": 96.73333333333333,
+        "avg_time_s": 42.30156588554382,
+        "total_time_s": 423.01565885543823,
+        "field_accuracy": {
+          "country": 0.9,
+          "region": 0.9,
+          "grapes": 0.6,
+          "is_blend": 0.9,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.86,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 39.76
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 38.85
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 44.34
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 39.24
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 44.48
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 46.13
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 43.15
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 42.48
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 44.9
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": false,
+              "region": false,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 39.68
+          }
+        ]
+      },
+      "variant_elapsed_s": 423.0
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 3,
+        "SNIPPET_CHAR_LIMIT": 750,
+        "SCORING_SNIPPET_CHARS": 300
+      },
+      "metrics": {
+        "pct_auto": 80.0,
+        "n_auto": 8,
+        "n_review": 2,
+        "avg_conf_auto": 93.125,
+        "avg_top_match": 96.83333333333333,
+        "avg_time_s": 40.36855382919312,
+        "total_time_s": 403.68553829193115,
+        "field_accuracy": {
+          "country": 1.0,
+          "region": 0.9,
+          "grapes": 0.6,
+          "is_blend": 0.7,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.84,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 37.63
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 37.79
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 40.64
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 44.02
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 39.26
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 36.63
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 43.03
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 45.25
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 37.85
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 41.59
+          }
+        ]
+      },
+      "variant_elapsed_s": 403.7
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 3,
+        "SNIPPET_CHAR_LIMIT": 750,
+        "SCORING_SNIPPET_CHARS": 500
+      },
+      "metrics": {
+        "pct_auto": 50.0,
+        "n_auto": 5,
+        "n_review": 5,
+        "avg_conf_auto": 92.0,
+        "avg_top_match": 95.53333333333333,
+        "avg_time_s": 39.13034610748291,
+        "total_time_s": 391.3034610748291,
+        "field_accuracy": {
+          "country": 0.9,
+          "region": 0.9,
+          "grapes": 0.6,
+          "is_blend": 0.8,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.84,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": false,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 36.21
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 41.62
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 38.37
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 35.46
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 37.81
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 40.69
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 36.79
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 42.06
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 37.99
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 44.31
+          }
+        ]
+      },
+      "variant_elapsed_s": 391.3
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 3,
+        "SNIPPET_CHAR_LIMIT": 1500,
+        "SCORING_SNIPPET_CHARS": 200
+      },
+      "metrics": {
+        "pct_auto": 90.0,
+        "n_auto": 9,
+        "n_review": 1,
+        "avg_conf_auto": 93.88888888888889,
+        "avg_top_match": 95.33333333333333,
+        "avg_time_s": 37.36981098651886,
+        "total_time_s": 373.6981098651886,
+        "field_accuracy": {
+          "country": 1.0,
+          "region": 0.9,
+          "grapes": 0.6,
+          "is_blend": 0.9,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.88,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 39.76
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 40.25
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 41.45
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 34.01
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 33.83
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 37.25
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 38.14
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 35.78
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 38.75
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 34.48
+          }
+        ]
+      },
+      "variant_elapsed_s": 373.7
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 3,
+        "SNIPPET_CHAR_LIMIT": 1500,
+        "SCORING_SNIPPET_CHARS": 300
+      },
+      "metrics": {
+        "pct_auto": 70.0,
+        "n_auto": 7,
+        "n_review": 3,
+        "avg_conf_auto": 92.14285714285714,
+        "avg_top_match": 96.20689655172414,
+        "avg_time_s": 36.364862012863156,
+        "total_time_s": 363.6486201286316,
+        "field_accuracy": {
+          "country": 1.0,
+          "region": 0.9,
+          "grapes": 0.6,
+          "is_blend": 0.7,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.84,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 34.61
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 39.51
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 30.33
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 33.47
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 38.49
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "needs_review",
+            "confidence": 70,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 35.85
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 35.33
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 40.19
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 41.0
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 34.87
+          }
+        ]
+      },
+      "variant_elapsed_s": 363.6
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 3,
+        "SNIPPET_CHAR_LIMIT": 1500,
+        "SCORING_SNIPPET_CHARS": 500
+      },
+      "metrics": {
+        "pct_auto": 70.0,
+        "n_auto": 7,
+        "n_review": 3,
+        "avg_conf_auto": 92.14285714285714,
+        "avg_top_match": 95.66666666666667,
+        "avg_time_s": 40.77139942646026,
+        "total_time_s": 407.71399426460266,
+        "field_accuracy": {
+          "country": 1.0,
+          "region": 0.9,
+          "grapes": 0.6,
+          "is_blend": 0.9,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.88,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 34.44
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 40.75
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 40.1
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 39.79
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 34.51
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 36.79
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 39.38
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 38.03
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 53.88
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 50.05
+          }
+        ]
+      },
+      "variant_elapsed_s": 407.7
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 3,
+        "SNIPPET_CHAR_LIMIT": 3000,
+        "SCORING_SNIPPET_CHARS": 200
+      },
+      "metrics": {
+        "pct_auto": 90.0,
+        "n_auto": 9,
+        "n_review": 1,
+        "avg_conf_auto": 94.77777777777777,
+        "avg_top_match": 96.03333333333333,
+        "avg_time_s": 37.60885922908783,
+        "total_time_s": 376.0885922908783,
+        "field_accuracy": {
+          "country": 1.0,
+          "region": 1.0,
+          "grapes": 0.6,
+          "is_blend": 0.9,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.9,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 38.98
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 46.19
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 31.93
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 40.37
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 35.7
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "auto",
+            "confidence": 98,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 38.32
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 37.84
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 34.12
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 37.09
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 35.55
+          }
+        ]
+      },
+      "variant_elapsed_s": 376.1
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 3,
+        "SNIPPET_CHAR_LIMIT": 3000,
+        "SCORING_SNIPPET_CHARS": 300
+      },
+      "metrics": {
+        "pct_auto": 70.0,
+        "n_auto": 7,
+        "n_review": 3,
+        "avg_conf_auto": 92.85714285714286,
+        "avg_top_match": 94.65517241379311,
+        "avg_time_s": 38.654718327522275,
+        "total_time_s": 386.5471832752228,
+        "field_accuracy": {
+          "country": 0.9,
+          "region": 0.9,
+          "grapes": 0.6,
+          "is_blend": 0.9,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.86,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 37.5
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 45.74
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 38.55
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 38.2
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 37.76
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 38.96
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 35.08
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 36.3
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 39.46
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": false,
+              "region": false,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 39.0
+          }
+        ]
+      },
+      "variant_elapsed_s": 386.5
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 3,
+        "SNIPPET_CHAR_LIMIT": 3000,
+        "SCORING_SNIPPET_CHARS": 500
+      },
+      "metrics": {
+        "pct_auto": 70.0,
+        "n_auto": 7,
+        "n_review": 3,
+        "avg_conf_auto": 93.57142857142857,
+        "avg_top_match": 96.5,
+        "avg_time_s": 40.25268964767456,
+        "total_time_s": 402.5268964767456,
+        "field_accuracy": {
+          "country": 0.8,
+          "region": 0.8,
+          "grapes": 0.6,
+          "is_blend": 0.9,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.82,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 43.78
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 43.37
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 43.53
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 38.5
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 41.93
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "needs_review",
+            "confidence": 70,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 39.5
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": false,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 41.55
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 32.88
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": false,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 36.85
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 40.63
+          }
+        ]
+      },
+      "variant_elapsed_s": 402.5
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 5,
+        "SNIPPET_CHAR_LIMIT": 750,
+        "SCORING_SNIPPET_CHARS": 200
+      },
+      "metrics": {
+        "pct_auto": 90.0,
+        "n_auto": 9,
+        "n_review": 1,
+        "avg_conf_auto": 93.88888888888889,
+        "avg_top_match": 95.63333333333334,
+        "avg_time_s": 59.230511617660525,
+        "total_time_s": 592.3051161766052,
+        "field_accuracy": {
+          "country": 1.0,
+          "region": 0.8,
+          "grapes": 0.6,
+          "is_blend": 0.8,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.84,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 43.96
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 47.35
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 52.48
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 51.28
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 43.36
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 52.9
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 72.35
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 77.55
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 77.12
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 73.95
+          }
+        ]
+      },
+      "variant_elapsed_s": 592.3
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 5,
+        "SNIPPET_CHAR_LIMIT": 750,
+        "SCORING_SNIPPET_CHARS": 300
+      },
+      "metrics": {
+        "pct_auto": 50.0,
+        "n_auto": 5,
+        "n_review": 5,
+        "avg_conf_auto": 94.0,
+        "avg_top_match": 94.46666666666667,
+        "avg_time_s": 55.48165111541748,
+        "total_time_s": 554.8165111541748,
+        "field_accuracy": {
+          "country": 0.9,
+          "region": 0.9,
+          "grapes": 0.6,
+          "is_blend": 1.0,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.88,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 67.24
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 81.76
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 67.23
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 52.56
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 42.96
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 46.55
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": false,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 42.75
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 51.73
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 47.54
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 54.5
+          }
+        ]
+      },
+      "variant_elapsed_s": 554.8
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 5,
+        "SNIPPET_CHAR_LIMIT": 750,
+        "SCORING_SNIPPET_CHARS": 500
+      },
+      "metrics": {
+        "pct_auto": 70.0,
+        "n_auto": 7,
+        "n_review": 3,
+        "avg_conf_auto": 92.85714285714286,
+        "avg_top_match": 95.33333333333333,
+        "avg_time_s": 47.607764434814456,
+        "total_time_s": 476.07764434814453,
+        "field_accuracy": {
+          "country": 1.0,
+          "region": 1.0,
+          "grapes": 0.6,
+          "is_blend": 0.9,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.9,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 44.62
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 47.59
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 42.83
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 64.96
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 38.95
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 45.45
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 42.67
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 55.29
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 48.64
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 45.07
+          }
+        ]
+      },
+      "variant_elapsed_s": 476.1
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 5,
+        "SNIPPET_CHAR_LIMIT": 1500,
+        "SCORING_SNIPPET_CHARS": 200
+      },
+      "metrics": {
+        "pct_auto": 70.0,
+        "n_auto": 7,
+        "n_review": 3,
+        "avg_conf_auto": 94.28571428571429,
+        "avg_top_match": 96.93333333333334,
+        "avg_time_s": 46.50674493312836,
+        "total_time_s": 465.06744933128357,
+        "field_accuracy": {
+          "country": 0.9,
+          "region": 0.9,
+          "grapes": 0.6,
+          "is_blend": 0.9,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.86,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 50.13
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 50.6
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 50.16
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 44.79
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 38.75
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 44.0
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": false,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 44.37
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 44.62
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 45.78
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 51.87
+          }
+        ]
+      },
+      "variant_elapsed_s": 465.1
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 5,
+        "SNIPPET_CHAR_LIMIT": 1500,
+        "SCORING_SNIPPET_CHARS": 300
+      },
+      "metrics": {
+        "pct_auto": 70.0,
+        "n_auto": 7,
+        "n_review": 3,
+        "avg_conf_auto": 93.57142857142857,
+        "avg_top_match": 96.3,
+        "avg_time_s": 50.154474115371706,
+        "total_time_s": 501.54474115371704,
+        "field_accuracy": {
+          "country": 1.0,
+          "region": 0.8,
+          "grapes": 0.6,
+          "is_blend": 0.9,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.86,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 52.09
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 62.62
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 49.45
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 42.73
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 44.73
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 44.89
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 41.0
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 55.66
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 52.17
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 56.21
+          }
+        ]
+      },
+      "variant_elapsed_s": 501.5
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 5,
+        "SNIPPET_CHAR_LIMIT": 1500,
+        "SCORING_SNIPPET_CHARS": 500
+      },
+      "metrics": {
+        "pct_auto": 70.0,
+        "n_auto": 7,
+        "n_review": 3,
+        "avg_conf_auto": 94.28571428571429,
+        "avg_top_match": 96.83333333333333,
+        "avg_time_s": 51.750878643989566,
+        "total_time_s": 517.5087864398956,
+        "field_accuracy": {
+          "country": 0.9,
+          "region": 0.9,
+          "grapes": 0.6,
+          "is_blend": 1.0,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.88,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 45.69
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 65.55
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 56.18
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 47.84
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 42.99
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 48.5
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": false,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 54.66
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 44.62
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 54.17
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 57.31
+          }
+        ]
+      },
+      "variant_elapsed_s": 517.5
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 5,
+        "SNIPPET_CHAR_LIMIT": 3000,
+        "SCORING_SNIPPET_CHARS": 200
+      },
+      "metrics": {
+        "pct_auto": 70.0,
+        "n_auto": 7,
+        "n_review": 3,
+        "avg_conf_auto": 94.28571428571429,
+        "avg_top_match": 97.16666666666667,
+        "avg_time_s": 45.20321545600891,
+        "total_time_s": 452.0321545600891,
+        "field_accuracy": {
+          "country": 1.0,
+          "region": 0.9,
+          "grapes": 0.7,
+          "is_blend": 0.8,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.88,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 44.28
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 50.62
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 49.08
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 42.24
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 45.78
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 45.13
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 41.13
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 43.3
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 45.19
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 45.28
+          }
+        ]
+      },
+      "variant_elapsed_s": 452.0
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 5,
+        "SNIPPET_CHAR_LIMIT": 3000,
+        "SCORING_SNIPPET_CHARS": 300
+      },
+      "metrics": {
+        "pct_auto": 80.0,
+        "n_auto": 8,
+        "n_review": 2,
+        "avg_conf_auto": 93.75,
+        "avg_top_match": 96.3,
+        "avg_time_s": 48.177962470054624,
+        "total_time_s": 481.77962470054626,
+        "field_accuracy": {
+          "country": 0.9,
+          "region": 0.9,
+          "grapes": 0.6,
+          "is_blend": 0.9,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.86,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 40.51
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 46.47
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 48.42
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 50.47
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 42.54
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 54.2
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 52.47
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": false,
+              "organic": true
+            },
+            "elapsed_s": 50.49
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "needs_review",
+            "confidence": 70,
+            "correct": {
+              "country": false,
+              "region": false,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 44.9
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 51.3
+          }
+        ]
+      },
+      "variant_elapsed_s": 481.8
+    },
+    {
+      "params": {
+        "DDG_MAX_RESULTS": 5,
+        "SNIPPET_CHAR_LIMIT": 3000,
+        "SCORING_SNIPPET_CHARS": 500
+      },
+      "metrics": {
+        "pct_auto": 70.0,
+        "n_auto": 7,
+        "n_review": 3,
+        "avg_conf_auto": 93.57142857142857,
+        "avg_top_match": 96.89655172413794,
+        "avg_time_s": 48.99368002414703,
+        "total_time_s": 489.93680024147034,
+        "field_accuracy": {
+          "country": 1.0,
+          "region": 0.9,
+          "grapes": 0.6,
+          "is_blend": 1.0,
+          "organic": 1.0
+        },
+        "overall_accuracy": 0.9,
+        "per_wine": [
+          {
+            "id": "20fceb8b-24eb-4cf0-82a4-de1887862e5f",
+            "name": "Annabella Pinot Noir",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 48.88
+          },
+          {
+            "id": "1a94c0a9-881f-448a-a9e6-6e541f0ac200",
+            "name": "Aster Ribera del Duero",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 50.25
+          },
+          {
+            "id": "c11a2bab-829d-422d-8a11-720dbec19bcc",
+            "name": "Bayten Sauvignon Blanc",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 52.66
+          },
+          {
+            "id": "9de287a2-5b57-4c21-b8a0-6a0ede9ff282",
+            "name": "Bila Haut Roussillon",
+            "tag_status": "needs_review",
+            "confidence": 75,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 46.15
+          },
+          {
+            "id": "d49b97a9-b8d2-492e-9681-5b45c30f5077",
+            "name": "Chapelle Bastion Picpoul",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 55.8
+          },
+          {
+            "id": "3be16d50-ef73-4643-8214-e28f2bb3ea32",
+            "name": "Chocapalha Tinto",
+            "tag_status": "needs_review",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": false,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 47.67
+          },
+          {
+            "id": "cc3d14ef-23d7-49be-860b-26dcf5e6a413",
+            "name": "Cloudline PN",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 35.21
+          },
+          {
+            "id": "405cad33-5383-41a4-8eb3-8cd523b940f7",
+            "name": "Curator White",
+            "tag_status": "needs_review",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 50.97
+          },
+          {
+            "id": "f79c27b8-c208-40f6-9514-0fd73a0de174",
+            "name": "DV Catena Tinto",
+            "tag_status": "auto",
+            "confidence": 90,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": false,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 51.51
+          },
+          {
+            "id": "83755a8b-3853-4ac9-83c0-dca51b725030",
+            "name": "Excelsior Chardonnay",
+            "tag_status": "auto",
+            "confidence": 95,
+            "correct": {
+              "country": true,
+              "region": true,
+              "grapes": true,
+              "is_blend": true,
+              "organic": true
+            },
+            "elapsed_s": 50.84
+          }
+        ]
+      },
+      "variant_elapsed_s": 489.9
+    }
+  ]
+}

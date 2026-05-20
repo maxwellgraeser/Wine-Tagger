@@ -116,6 +116,7 @@ Allowed grape vocabulary (use ONLY these canonical names; if a grape is not in t
 
 Rules:
 - Grape names MUST come from the allowed vocabulary above. If the web context does not clearly identify the grape(s), return an empty list rather than guess.
+- region is a LIST of strings. Include the most-specific wine region you can identify FIRST, and you may also include any broader region(s) you are confident about (e.g. ["Willamette Valley", "Oregon"] or ["Russian River Valley", "Sonoma", "California"]). Do NOT include the country name in this list. If you cannot identify any region, return an empty list.
 - is_blend is true if the wine contains more than one grape variety, false if it is a single varietal.
 - organic is true only if the wine is certified organic, biodynamic, or explicitly marketed as certified biodynamic. Omit or set false if uncertain.
 - If the web context contradicts the product name, trust the web context.
@@ -132,7 +133,7 @@ Rules:
 Respond in JSON only — no explanation, no markdown fences:
 {{
   "country": "...",
-  "region": "...",
+  "region": ["...", "..."],
   "grapes": ["...", "..."],
   "is_blend": true or false,
   "organic": true or false,

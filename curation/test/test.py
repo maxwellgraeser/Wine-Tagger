@@ -116,7 +116,10 @@ def main():
         norm_issues: list[str] = []
         if parsed:
             parsed, norm_issues = normalize_tags(parsed)
-            print(f"       country={parsed.get('country')}  region={parsed.get('region')}")
+            region_disp = parsed.get('region')
+            if isinstance(region_disp, list):
+                region_disp = ", ".join(region_disp) if region_disp else None
+            print(f"       country={parsed.get('country')}  region={region_disp}")
             print(f"       grapes={parsed.get('grapes')}  is_blend={parsed.get('is_blend')}")
             print(f"       organic={parsed.get('organic')}  confidence={parsed.get('confidence')}")
         else:

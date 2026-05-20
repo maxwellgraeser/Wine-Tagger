@@ -23,7 +23,7 @@ from __future__ import annotations
 
 from .grape_library import is_canonical_grape, is_placeholder_grape, normalize_grape, normalize_grapes
 from .country_library import normalize_country
-from .region_library import normalize_region
+from .region_library import normalize_regions
 
 
 def normalize_tags(parsed: dict) -> tuple[dict, list[str]]:
@@ -39,18 +39,16 @@ def normalize_tags(parsed: dict) -> tuple[dict, list[str]]:
     country = normalize_country(country_raw) if country_raw else ""
     out["country"] = country or None
 
-    # Region (+ cross-check)
-    region_raw = (out.get("region") or "").strip()
+    # Region (+ parent expansion + cross-check). `region` is a list of
+    # strings; legacy single-string input is accepted by normalize_regions.
+    region_raw = out.get("region")
     if region_raw:
-        canonical_region, expected_country = normalize_region(region_raw)
-        if canonical_region == "" and expected_country is None and region_raw:
-            # Country name was stuffed into region slot
+        expanded, expected_country, country_in_slot = normalize_regions(region_raw)
+        if country_in_slot:
             issues.append("country_in_region_slot")
-            out["region"] = None
-        else:
-            out["region"] = canonical_region or None
-            if expected_country and country and expected_country != country:
-                issues.append("region_country_mismatch")
+        out["region"] = expanded or None
+        if expected_country and country and expected_country != country:
+            issues.append("region_country_mismatch")
     else:
         out["region"] = None
 

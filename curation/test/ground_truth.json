@@ -1,0 +1,93 @@
+{
+  "_comment": "Ground-truth tags for the first 10 wines in combined.csv. `region` is a list of strings: include the most-specific region first; parent regions (e.g. 'Oregon' for 'Willamette Valley') are auto-expanded by the pipeline, so listing just the most-specific is enough — anything you list is required to appear. Set any field to null to skip it during correctness scoring.",
+
+  "20fceb8b-24eb-4cf0-82a4-de1887862e5f": {
+    "name": "Annabella Pinot Noir",
+    "country": "United States",
+    "region": ["Russian River Valley"],
+    "grapes": ["Pinot Noir"],
+    "is_blend": false,
+    "organic": false
+  },
+
+  "1a94c0a9-881f-448a-a9e6-6e541f0ac200": {
+    "name": "Aster Ribera del Duero",
+    "country": "Spain",
+    "region": ["Ribera del Duero"],
+    "grapes": ["Tempranillo"],
+    "is_blend": false,
+    "organic": false
+  },
+
+  "c11a2bab-829d-422d-8a11-720dbec19bcc": {
+    "name": "Bayten Sauvignon Blanc",
+    "country": "South Africa",
+    "region": ["Constantia"],
+    "grapes": ["Sauvignon Blanc"],
+    "is_blend": false,
+    "organic": false
+  },
+
+  "9de287a2-5b57-4c21-b8a0-6a0ede9ff282": {
+    "name": "Bila Haut Roussillon",
+    "country": "France",
+    "region": ["Roussillon"],
+    "grapes": ["Syrah", "Grenache", "Carignan"],
+    "is_blend": true,
+    "organic": false
+  },
+
+  "d49b97a9-b8d2-492e-9681-5b45c30f5077": {
+    "name": "Chapelle Bastion Picpoul",
+    "country": "France",
+    "region": ["Languedoc-Roussillon"],
+    "grapes": ["Picpoul"],
+    "is_blend": false,
+    "organic": false
+  },
+
+  "3be16d50-ef73-4643-8214-e28f2bb3ea32": {
+    "name": "Chocapalha Tinto",
+    "country": "Portugal",
+    "region": ["Lisboa"],
+    "grapes": ["Touriga Nacional", "Tinta Roriz", "Castelao"],
+    "is_blend": true,
+    "organic": false
+  },
+
+  "cc3d14ef-23d7-49be-860b-26dcf5e6a413": {
+    "name": "Cloudline PN",
+    "country": "United States",
+    "region": ["Willamette Valley"],
+    "grapes": ["Pinot Noir"],
+    "is_blend": false,
+    "organic": false
+  },
+
+  "405cad33-5383-41a4-8eb3-8cd523b940f7": {
+    "name": "Curator White",
+    "country": "South Africa",
+    "region": ["Western Cape"],
+    "grapes": ["Chenin Blanc", "Chardonnay", "Viognier"],
+    "is_blend": true,
+    "organic": false
+  },
+
+  "f79c27b8-c208-40f6-9514-0fd73a0de174": {
+    "name": "DV Catena Tinto",
+    "country": "Argentina",
+    "region": ["Mendoza"],
+    "grapes": ["Malbec", "Bonarda", "Petite Verdot"],
+    "is_blend": true,
+    "organic": false
+  },
+
+  "83755a8b-3853-4ac9-83c0-dca51b725030": {
+    "name": "Excelsior Chardonnay",
+    "country": "South Africa",
+    "region": ["Robertson"],
+    "grapes": ["Chardonnay"],
+    "is_blend": false,
+    "organic": false
+  }
+}

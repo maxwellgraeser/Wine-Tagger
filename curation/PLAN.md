@@ -28,8 +28,9 @@ From `ingestion/output/`:
 5. **Parse the LLM response** into structured fields. Use a consistent prompt that requests JSON output to make parsing reliable.
 6. **Normalize via libraries** (`normalize.py`):
    - Canonicalize country (`USA` → `United States`), region (`Languedoc Roussillon` → `Languedoc-Roussillon`, `Piemonte` → `Piedmont`), and grapes (`Garnacha` → `Grenache`, `Syrah` → `Shiraz`).
+   - **`region` is a list of strings.** `normalize_regions` canonicalizes each entry and auto-expands parents from `region_library.py`'s hierarchy — e.g. `["Willamette Valley"]` becomes `["Willamette Valley", "Oregon"]`, `["Russian River Valley"]` becomes `["Russian River Valley", "Sonoma", "California"]`. The list stays most-specific → broadest.
    - Strip placeholder grapes (`Bordeaux Blend`, `Red Rhone Blend`, `unknown`); preserve `is_blend=True` when they're removed.
-   - Cross-check region against its pinned country. **Any mismatch (e.g. region=Veneto, country=USA) forces `tag_status = 'needs_review'`.**
+   - Cross-check the most-specific region's pinned country against the declared country. **Any mismatch (e.g. region=["Veneto"], country=USA) forces `tag_status = 'needs_review'`.**
    - Other normalization issues (`placeholder_grapes`, `country_in_region_slot`, `no_grapes`, `non_canonical_grape`, `is_blend_mismatch`) also force `needs_review`.
    - **Deterministic producer-absent confidence cap:** after `normalize_tags`, `enforce_producer_absent_cap` scans the stored `web_context` for any significant token from the brand (falling back to the product name if no brand is set). If none is present, `confidence` is capped at `PRODUCER_ABSENT_CONFIDENCE_CAP` (69) and a `producer_absent_from_context` issue is appended — this replaces the unreliable LLM-side "max 69" rubric clause with a hard mechanical check.
    - See `LIBRARY.md` for the library spec.
@@ -127,13 +128,16 @@ Rules:
 Respond in JSON only — no explanation, no markdown fences:
 {
   "country": "...",
-  "region": "...",
+  "region": ["...", "..."],
   "grapes": ["...", "..."],
   "is_blend": true | false,
   "organic": true | false,
   "confidence": 0-100
 }
 ```
+
+`region` is a list: include the most-specific known region first; broader
+regions may be included but are auto-expanded by the library either way.
 
 ### Rate & Error Handling
 
@@ -158,7 +162,7 @@ CREATE TABLE products (
     supplier    TEXT,
     brand       TEXT,
     country     TEXT,              -- from LLM
-    region      TEXT,              -- from LLM
+    region      TEXT,              -- JSON array of canonical regions (most-specific → broadest), e.g. '["Willamette Valley","Oregon"]'
     grapes      TEXT,              -- JSON array, e.g. '["Cabernet Sauvignon","Merlot"]'
     is_blend    INTEGER,           -- 1 = blend, 0 = single varietal, NULL = unknown
     organic     INTEGER DEFAULT 0, -- 1 = certified organic/biodynamic, 0 = not/unknown
@@ -194,6 +198,7 @@ CREATE TABLE tag_log (
 ### Notes on Schema
 
 - `grapes` is stored as a JSON array string for flexibility (a wine can have multiple grapes).
+- `region` is stored as a JSON array string. The pipeline auto-expands sub-regions into their parents via `region_library.REGIONS[*].parents`, so a single LLM answer like `"Willamette Valley"` lands on disk as `["Willamette Valley", "Oregon"]` and gets both tags downstream.
 - `is_blend` is a SQLite integer boolean (`1`/`0`); NULL means the model couldn't determine it.
 - `organic` defaults to `0`; only set to `1` when the model finds explicit certification evidence.
 - `confidence` is the LLM's self-reported certainty (0–100) about the metadata as a whole. Rows below `CONFIDENCE_THRESHOLD` (90 in `constants.py`, 75 when run via `run.sh`; override with `--confidence-threshold` flag or `CURATION_CONFIDENCE_THRESHOLD` env var) are automatically set to `tag_status = 'needs_review'`.

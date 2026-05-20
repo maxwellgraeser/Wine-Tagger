@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS products (
     supplier     TEXT,
     brand        TEXT,
     country      TEXT,
-    region       TEXT,
+    region       TEXT,             -- JSON array, e.g. '["Willamette Valley","Oregon"]'
     grapes       TEXT,
     is_blend     INTEGER,
     organic      INTEGER DEFAULT 0,
@@ -488,8 +488,13 @@ def build_tags_raw(parsed: dict) -> str:
     parts = []
     if parsed.get("country"):
         parts.append(parsed["country"])
-    if parsed.get("region"):
-        parts.append(parsed["region"])
+    region = parsed.get("region")
+    if region:
+        # region may be a list (post-normalize) or a string (legacy/transient).
+        if isinstance(region, list):
+            parts.extend(r for r in region if r)
+        else:
+            parts.append(region)
     grapes = parsed.get("grapes") or []
     parts.extend(grapes)
     if parsed.get("is_blend"):
@@ -551,7 +556,13 @@ def upsert_product(conn: sqlite3.Connection, product: dict, parsed: Optional[dic
 
     if parsed:
         country = parsed.get("country")
-        region = parsed.get("region")
+        region_val = parsed.get("region")
+        # region is stored as a JSON-encoded list (same shape as grapes).
+        # Accept legacy string input by wrapping it.
+        if region_val:
+            if isinstance(region_val, str):
+                region_val = [region_val]
+            region = json.dumps(list(region_val))
         grapes = parsed.get("grapes") or []
         grapes_json = json.dumps(grapes)
         is_blend = 1 if parsed.get("is_blend") else (0 if parsed.get("is_blend") is False else None)

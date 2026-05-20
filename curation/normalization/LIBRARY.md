@@ -61,7 +61,7 @@ Package at `curation/normalization/`:
 |------|----------------|
 | `grape_library.py` | `CANONICAL_GRAPES`, `PLACEHOLDER_GRAPES`, `normalize_grape`, `normalize_grapes`, `is_placeholder_grape` |
 | `country_library.py` | `CANONICAL_COUNTRIES`, `normalize_country`, `is_known_country` |
-| `region_library.py` | `REGIONS` (with country pinning), `COUNTRY_AS_REGION`, `normalize_region`, `is_known_region` |
+| `region_library.py` | `REGIONS` (with country pinning + `parents`), `COUNTRY_AS_REGION`, `normalize_region`, `normalize_regions`, `is_known_region` |
 | `normalize.py` | `normalize_tags(parsed) -> (parsed, issues)` orchestrator used by `curate.py` |
 | `__init__.py` | re-exports `normalize_tags` so callers can `from normalization import normalize_tags` |
 
@@ -114,16 +114,28 @@ For countries: `USA / US / U.S. / America / United States of America` →
 collapse to a single canonical form (`Piemonte` → `Piedmont`, `Bourgogne` →
 `Burgundy`, `Languedoc Roussillon` → `Languedoc-Roussillon`).
 
-### Region → country pinning
+### Region → country pinning + parent expansion
 
-Every entry in `REGIONS` has an `expected_country`. When the LLM reports
-`region=Veneto` and `country=USA`, `normalize_region("Veneto")` returns
-`("Veneto", "Italy")`; the orchestrator compares against `"USA"` →
-`"United States"` and emits `region_country_mismatch`.
+`region` on the parsed LLM output is a **list of strings** (most-specific
+first). Each entry in `REGIONS` has an `expected_country` and a `parents`
+list of broader canonical regions. `normalize_regions` walks each entry,
+appends its parents, dedupes, and returns the merged chain plus the
+country pinned to the first known entry.
+
+Examples:
+- `normalize_region("Willamette Valley") == (["Willamette Valley", "Oregon"], "United States")`
+- `normalize_region("Russian River Valley") == (["Russian River Valley", "Sonoma", "California"], "United States")`
+- `normalize_regions(["Stellenbosch"])` → `(["Stellenbosch", "Coastal Region", "Western Cape"], "South Africa", False)`
+
+When the LLM reports `region=["Veneto"]` and `country=USA`, the orchestrator
+compares the resolved country (`Italy`) against the LLM's normalized country
+(`United States`) and emits `region_country_mismatch`.
 
 Unknown regions pass through (no constraint, no flag). Sub-region noise like
-`Coastal Region Cape Peninsula` is handled by a substring fallback: if any
-known synonym is contained in the normalized input, the canonical region wins.
+`Coastal Region Cape Peninsula` is handled by a substring fallback inside
+`_resolve_one`: if any known synonym is contained in the normalized input,
+the canonical region wins. A bare country name in the region slot (e.g.
+`["Portugal", "Lisboa"]`) drops that entry and surfaces `country_in_region_slot`.
 
 ## Integration with `curate.py`
 
@@ -166,9 +178,10 @@ Suggested coverage for `curation/test/test_normalize.py`:
 - `is_placeholder_grape("Bordeaux Blend") is True`
 - `normalize_grapes(["Syrah", "Shiraz", "Grenache"]) == ["Shiraz", "Grenache"]`
 - `normalize_country("USA") == "United States"`
-- `normalize_region("Veneto") == ("Veneto", "Italy")`
-- `normalize_region("Coastal Region Paarl") == ("Coastal Region", "South Africa")`
-- `normalize_region("Portugal") == ("", None)` — country in region slot
+- `normalize_region("Veneto") == (["Veneto"], "Italy")`
+- `normalize_region("Willamette Valley") == (["Willamette Valley", "Oregon"], "United States")`
+- `normalize_region("Portugal") == ([], None)` — country in region slot
+- `normalize_regions(["Stellenbosch"])` includes `"Western Cape"` in the expanded list
 - `normalize_tags({"country": "USA", "region": "Veneto", "grapes": ["Pinot Grigio"]})` →
   issues contains `"region_country_mismatch"`, grape becomes `"Pinot Gris"`.
 

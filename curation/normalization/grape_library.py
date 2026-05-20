@@ -16,7 +16,7 @@ import unicodedata
 # French form for international varieties.
 CANONICAL_GRAPES: dict[str, list[str]] = {
     # Reds
-    "Shiraz": ["Shiraz", "Syrah"],
+    "Syrah": ["Shiraz", "Syrah"],
     "Cabernet Sauvignon": ["Cabernet Sauvignon", "Cab Sauv", "Cab", "Cabernet Sauv"],
     "Cabernet Franc": ["Cabernet Franc", "Cab Franc"],
     "Merlot": ["Merlot"],
@@ -44,7 +44,8 @@ CANONICAL_GRAPES: dict[str, list[str]] = {
     "Castelão": ["Castelão", "Castelao", "Periquita"],
     "Alicante Bouschet": ["Alicante Bouschet", "Alicante"],
     "Tannat": ["Tannat"],
-    "Petit Verdot": ["Petit Verdot"],
+    "Petit Verdot": ["Petit Verdot", "Petite Verdot"],
+    "Bonarda": ["Bonarda", "Bonarda Argentina", "Charbono"],
     "Petite Sirah": ["Petite Sirah", "Durif"],
     "Cinsault": ["Cinsault", "Cinsaut"],
     "Carignan": ["Carignan", "Cariñena", "Carinena", "Mazuelo", "Mazuela"],

@@ -14,7 +14,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from normalization.grape_library import normalize_grape, normalize_grapes, is_placeholder_grape
 from normalization.country_library import normalize_country
-from normalization.region_library import normalize_region
+from normalization.region_library import normalize_region, normalize_regions
 from normalization import normalize_tags
 
 
@@ -84,20 +84,51 @@ class TestNormalizeCountry(unittest.TestCase):
 class TestNormalizeRegion(unittest.TestCase):
 
     def test_veneto_pinned_to_italy(self):
-        self.assertEqual(normalize_region("Veneto"), ("Veneto", "Italy"))
-
-    def test_coastal_region_paarl_substring_match(self):
-        canonical, country = normalize_region("Coastal Region Paarl")
-        self.assertEqual(country, "South Africa")
-        self.assertTrue(canonical)  # non-empty canonical region
+        regions, country = normalize_region("Veneto")
+        self.assertEqual(regions, ["Veneto"])
+        self.assertEqual(country, "Italy")
 
     def test_country_name_in_region_slot_blanks_out(self):
-        self.assertEqual(normalize_region("Portugal"), ("", None))
+        regions, country = normalize_region("Portugal")
+        self.assertEqual(regions, [])
+        self.assertIsNone(country)
 
     def test_languedoc_no_hyphen(self):
-        canonical, country = normalize_region("Languedoc Roussillon")
-        self.assertEqual(canonical, "Languedoc-Roussillon")
+        regions, country = normalize_region("Languedoc Roussillon")
+        self.assertEqual(regions, ["Languedoc-Roussillon"])
         self.assertEqual(country, "France")
+
+    def test_parent_expansion_willamette(self):
+        regions, country = normalize_region("Willamette Valley")
+        self.assertEqual(regions, ["Willamette Valley", "Oregon"])
+        self.assertEqual(country, "United States")
+
+    def test_parent_expansion_russian_river(self):
+        regions, country = normalize_region("Russian River Valley")
+        self.assertEqual(regions, ["Russian River Valley", "Sonoma", "California"])
+        self.assertEqual(country, "United States")
+
+
+class TestNormalizeRegions(unittest.TestCase):
+
+    def test_list_of_two_dedupes_parents(self):
+        regions, country, in_slot = normalize_regions(["Willamette Valley", "Oregon"])
+        self.assertEqual(regions, ["Willamette Valley", "Oregon"])
+        self.assertEqual(country, "United States")
+        self.assertFalse(in_slot)
+
+    def test_country_in_slot_flag(self):
+        regions, country, in_slot = normalize_regions(["Portugal", "Lisboa"])
+        self.assertTrue(in_slot)
+        self.assertEqual(regions, ["Lisboa"])
+        self.assertEqual(country, "Portugal")
+
+    def test_legacy_string_input(self):
+        regions, country, in_slot = normalize_regions("Stellenbosch")
+        self.assertEqual(regions[0], "Stellenbosch")
+        self.assertIn("Western Cape", regions)
+        self.assertEqual(country, "South Africa")
+        self.assertFalse(in_slot)
 
 
 class TestNormalizeTags(unittest.TestCase):
@@ -112,7 +143,7 @@ class TestNormalizeTags(unittest.TestCase):
         self.assertIn("region_country_mismatch", issues)
         # USA → United States; Veneto stays Veneto pinned to Italy
         self.assertEqual(parsed["country"], "United States")
-        self.assertEqual(parsed["region"], "Veneto")
+        self.assertEqual(parsed["region"], ["Veneto"])
         # Pinot Grigio → Pinot Gris
         self.assertEqual(parsed["grapes"], ["Pinot Gris"])
 
@@ -153,7 +184,7 @@ class TestNormalizeTags(unittest.TestCase):
         })
         self.assertEqual(issues, [])
         self.assertEqual(parsed["country"], "France")
-        self.assertEqual(parsed["region"], "Burgundy")
+        self.assertEqual(parsed["region"], ["Burgundy"])
         self.assertEqual(parsed["grapes"], ["Pinot Noir"])
 
 
