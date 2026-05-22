@@ -1,0 +1,8 @@
+#defaultView:Table
+# Every sovereign country with an ISO-3166-1 alpha-2 code.
+# Used to seed `countries`.
+SELECT ?country ?countryLabel ?iso WHERE {
+  ?country wdt:P31 wd:Q6256 .
+  OPTIONAL { ?country wdt:P297 ?iso . }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}

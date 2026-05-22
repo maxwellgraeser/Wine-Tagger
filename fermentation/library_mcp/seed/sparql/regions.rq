@@ -1,0 +1,9 @@
+#defaultView:Table
+# Wine regions: instances of Q204754 (wine region) or its subclasses,
+# pinned to a country (P17), with optional parent admin region (P131).
+SELECT ?region ?regionLabel ?country ?countryLabel ?parent ?parentLabel WHERE {
+  ?region (wdt:P31/wdt:P279*) wd:Q204754 .
+  OPTIONAL { ?region wdt:P17  ?country . }
+  OPTIONAL { ?region wdt:P131 ?parent . }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
