@@ -6,8 +6,8 @@ Source pages:
 
 The Italian grape list is one of the cleaner per-country tables on
 Wikipedia: three columns (Grape | Color | Region). We treat each row as
-authoritative for the (region -> grape) edge and re-resolve QIDs from
-the linked anchors.
+authoritative for the (region -> grape) edge; the orchestrator resolves
+both ends by name/synonym against the allowlist-seeded tables.
 """
 
 from __future__ import annotations
@@ -34,9 +34,9 @@ _COLOR_MAP = {
 
 
 def _qid_from_href(href: str | None) -> str | None:
-    """Wikipedia anchors don't carry the QID directly. The orchestrator
-    will re-resolve via the wbgetentities API; we just stash the slug
-    here so we can look it up later."""
+    """Wikipedia anchors don't carry the QID (Parsoid HTML has no
+    data-wikidata-item-id). Return the page slug as a hint only; the
+    orchestrator matches by name/synonym, never by this value."""
     if not href or not href.startswith("/wiki/"):
         return None
     return unquote(href[len("/wiki/"):])

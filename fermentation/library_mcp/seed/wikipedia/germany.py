@@ -17,9 +17,9 @@ from . import ParsedCountry, RegionRow
 
 COUNTRY = "Germany"
 
-# The thirteen Anbaugebiete. Hard-coded so the parser still emits useful
-# rows even if the Wikipedia article re-structures its tables. The
-# orchestrator will resolve QIDs from these names via wbsearchentities.
+# The thirteen Anbaugebiete. All of them are on the region allowlist
+# (regions.yaml), so this parser contributes nothing new today; it stays
+# as the landing spot for a future Bereich/Grosslage -> Anbaugebiet pass.
 ANBAUGEBIETE = [
     "Ahr",
     "Baden",

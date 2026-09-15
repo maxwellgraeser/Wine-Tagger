@@ -107,6 +107,9 @@
   .sev.high{background:#3a2a0c;color:#f0c069;border:1px solid var(--gold)}
   .sev.med{background:#0f2a2e;color:#7fd6c9;border:1px solid var(--teal)}
   .sev.low{background:#1a2230;color:#9bc0ec;border:1px solid var(--blue)}
+  .sev.fixed{background:#12291a;color:#8fd49a;border:1px solid var(--green)}
+  .imp.fixed{opacity:.8}
+  .imp.fixed .ttl{text-decoration:line-through;text-decoration-color:var(--green)}
   .imp .body{padding:0 14px 14px 14px;color:var(--muted);font-size:13.5px}
   .imp .body b{color:var(--ink)}
   .imp .ttl{font-weight:700;color:var(--ink);font-size:14.5px}
@@ -268,21 +271,20 @@
       <div class="title"><span class="dot" style="background:var(--gold)"></span>library.db <span class="file">· baked SQLite, shipped in repo</span></div>
       <div class="desc">Schema (<span class="mono">schema.sql</span>): keyed on Wikidata QIDs for dedup.</div>
       <ul class="tight">
-        <li><span class="mono">countries</span> (id, name, iso_code, qid)</li>
-        <li><span class="mono">regions</span> (self-ref <span class="mono">parent_region_id</span> → appellation hierarchy)</li>
-        <li><span class="mono">grapes</span> (canonical_name, color, species, origin, qid)</li>
-        <li><span class="mono">grape_synonyms</span> (Garnacha → Grenache)</li>
-        <li><span class="mono">region_grapes</span> (m:n grown-in)</li>
+        <li><span class="mono">countries</span> (id, name, iso_code, qid, is_canonical) + <span class="mono">country_synonyms</span> (USA → United States)</li>
+        <li><span class="mono">regions</span> (self-ref <span class="mono">parent_region_id</span> → authored hierarchy, is_canonical) + <span class="mono">region_synonyms</span> (Piemonte → Piedmont)</li>
+        <li><span class="mono">grapes</span> (canonical_name, color, origin, qid, is_canonical) + <span class="mono">grape_synonyms</span> (Garnacha → Grenache)</li>
+        <li><span class="mono">region_grapes</span> (m:n grown-in, from the Italian Wikipedia list)</li>
       </ul>
-      <div class="desc" style="color:var(--wine2)">⚠ Current contents are the v1 "firehose": 1672 grapes (1671 with no color), 213 countries, 36 regions. The allowlist reseed (BATON.md) is unbuilt (see #2).</div>
+      <div class="desc" style="color:#8fd49a">✓ Reseeded 2026-09-15 (two tiers): 46 countries · 675 canonical + 275 placeholder regions · 335 canonical + 375 placeholder grapes, every canonical grape coloured. Canonical = allowlist; placeholder = Wikidata long tail with an enwiki article, resolvable but rejected by <span class="mono">submit_tags</span>.</div>
     </div>
   </div>
 
   <div class="clabel" style="color:#b59ce8;margin-top:18px"><span class="dot" style="background:var(--purple)"></span>seed/ — one-shot offline build pipeline</div>
   <div class="grid g3">
-    <div class="box"><div class="title">build_db.py <span class="file">· 345</span></div><div class="desc">Orchestrates Wikidata SPARQL → countries/grapes/regions, then Wikipedia enrichment, then dedup-by-QID. <span class="kbd">--offline</span> writes empty schema.</div></div>
-    <div class="box"><div class="title">sparql/*.rq</div><div class="desc"><span class="mono">countries · grapes · regions</span> SPARQL queries (firehose; allowlist <span class="mono">VALUES</span> rewrite pending).</div></div>
-    <div class="box"><div class="title">wikipedia/*.py</div><div class="desc">Per-country HTML parsers (<span class="mono">italy.py</span>, <span class="mono">germany.py</span>) → <span class="mono">ParsedCountry</span> (regions + region_grapes).</div></div>
+    <div class="box"><div class="title">build_db.py <span class="file">· ~500</span></div><div class="desc">Allowlist-driven: countries by ISO (P297), grapes by locked QID (VALUES SPARQL), regions straight from YAML; then the filtered placeholder pass, then Wikipedia enrichment (no minting). Rebuilds atomically — no migrations. <span class="kbd">--offline</span> · <span class="kbd">--no-placeholders</span>.</div></div>
+    <div class="box"><div class="title">allowlist/ + resolve_qids.py</div><div class="desc"><span class="mono">countries.yaml · grapes.yaml · regions.yaml</span> are the human-authored canonical tier (names, colour, hierarchy, synonyms). <span class="mono">resolve_qids.py</span> resolves names → Wikidata QIDs into <span class="mono">qids.lock.yaml</span> (label + description per pick, reviewable in a diff). The v1 <span class="mono">sparql/*.rq</span> firehose is gone.</div></div>
+    <div class="box"><div class="title">wikipedia/*.py · tests/</div><div class="desc">Per-country parsers (<span class="mono">italy.py</span>, <span class="mono">germany.py</span>) contribute <span class="mono">region_grapes</span> edges and grape colours only. <span class="mono">tests/</span>: allowlist validation, 24-wine coverage against <span class="mono">combined.csv</span>, server gate semantics (48 tests).</div></div>
   </div>
 </div>
 
@@ -345,11 +347,12 @@
 <h2 class="section">6 · Improvements &amp; Findings <span class="tag">ordered by severity</span></h2>
 <p class="lead">Found while reading the tree. Severity reflects impact on a real run, not effort to fix.</p>
 
-<div class="imp">
+<div class="imp fixed">
   <div class="head">
-    <span class="sev crit">Critical</span>
+    <span class="sev fixed">Fixed</span>
     <div>
       <div class="ttl">DDG package mismatch — the searcher gathers <i>nothing</i></div>
+      <div class="desc" style="color:#8fd49a">Resolved 2026-09-15: <span class="mono">searcher.py</span> imports <span class="mono">ddgs</span>, falls back to <span class="mono">duckduckgo_search</span>, and raises if neither is installed.</div>
       <div class="where">fermentation/searcher.py:14 · requirements.txt:1</div>
     </div>
   </div>
@@ -365,12 +368,13 @@
   </div>
 </div>
 
-<div class="imp">
+<div class="imp fixed">
   <div class="head">
-    <span class="sev high">High</span>
+    <span class="sev fixed">Fixed</span>
     <div>
       <div class="ttl">library.db is still the v1 "firehose" — the allowlist reseed is unbuilt</div>
-      <div class="where">fermentation/library_mcp/library.db · BATON.md (Tasks 1–8)</div>
+      <div class="where">fermentation/library_mcp/library.db · BATON.md</div>
+      <div class="desc" style="color:#8fd49a">Resolved 2026-09-15: allowlists + QID lock, two-tier DB, canonical-first server with <span class="mono">is_phrase</span>/<span class="mono">is_placeholder</span>, new <span class="mono">submit_tags</span> issue codes (unknown/placeholder region &amp; grape), parent-chain expansion, and 48 tests. Note: every hand-typed QID in the original BATON was wrong — the plan was reworked to name-keyed allowlists with machine-resolved QIDs (see BATON.md).</div>
     </div>
   </div>
   <div class="body">
@@ -450,11 +454,12 @@
   </div>
 </div>
 
-<div class="imp">
+<div class="imp fixed">
   <div class="head">
-    <span class="sev low">Low</span>
+    <span class="sev fixed">Fixed</span>
     <div>
       <div class="ttl">Server does Python-side full-table scans on every resolve miss</div>
+      <div class="desc" style="color:#8fd49a">Resolved 2026-09-15: resolvers now hit in-memory accent-folded indexes built once at startup (names, synonyms, ISO codes).</div>
       <div class="where">fermentation/library_mcp/server.py — _resolve_country/region/grape</div>
     </div>
   </div>
@@ -499,7 +504,7 @@
 </div>
 
 <footer>
-  Generated from a read of the repository on 2026-06-08 · diagrams reflect code on <span class="mono">main</span>, not the README.
+  Generated from a read of the repository on 2026-06-08; findings marked <b>Fixed</b> were resolved on 2026-09-15 · diagrams reflect code on <span class="mono">main</span>, not the README.
 </footer>
 
 </div>

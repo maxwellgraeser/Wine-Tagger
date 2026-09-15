@@ -1,0 +1,725 @@
+# Canonical wine-region allowlist. Hierarchy, country and classification are
+# authored HERE (Wikidata's P131 is administrative, not viticultural, and
+# its typing of wine regions is inconsistent). `parent` names another entry
+# in this file, in the same country. `synonyms` feed region_synonyms.
+# QIDs are best-effort via qids.lock.yaml; a region without one is fine.
+#
+# Conventions:
+#   * Names are the retail-facing English form (Piedmont, Burgundy, Tuscany).
+#   * A synonym may not equal any other region's name or synonym (validator).
+#   * High-volume IGP/IGT/regional designations are included on purpose
+#     (Pays d'Oc, Vin de France, Toscana IGT, delle Venezie, South Eastern
+#     Australia) -- they are what the label says.
+#   * Every allowlisted country gets at least its top 1-3 regions
+#     ("single-region floor") so "country known, region placeholder" is rare.
+
+# ======================= FRANCE =======================
+- {name: "Bordeaux", country: FR, classification: AOC, synonyms: ["Bordelais"]}
+- {name: "Médoc", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Medoc"]}
+- {name: "Haut-Médoc", country: FR, parent: "Médoc", classification: AOC, synonyms: ["Haut-Medoc", "Haut Médoc"]}
+- {name: "Margaux", country: FR, parent: "Haut-Médoc", classification: AOC}
+- {name: "Pauillac", country: FR, parent: "Haut-Médoc", classification: AOC}
+- {name: "Saint-Julien", country: FR, parent: "Haut-Médoc", classification: AOC, synonyms: ["St-Julien", "St. Julien", "Saint Julien"]}
+- {name: "Saint-Estèphe", country: FR, parent: "Haut-Médoc", classification: AOC, synonyms: ["St-Estèphe", "Saint-Estephe", "St. Estephe"]}
+- {name: "Listrac-Médoc", country: FR, parent: "Haut-Médoc", classification: AOC, synonyms: ["Listrac"]}
+- {name: "Moulis-en-Médoc", country: FR, parent: "Haut-Médoc", classification: AOC, synonyms: ["Moulis"]}
+- {name: "Graves", country: FR, parent: "Bordeaux", classification: AOC}
+- {name: "Pessac-Léognan", country: FR, parent: "Graves", classification: AOC, synonyms: ["Pessac-Leognan", "Pessac Léognan"]}
+- {name: "Sauternes", country: FR, parent: "Graves", classification: AOC}
+- {name: "Barsac", country: FR, parent: "Sauternes", classification: AOC}
+- {name: "Saint-Émilion", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Saint-Emilion", "St-Émilion", "St. Emilion", "St-Emilion", "Saint Emilion", "Saint-Émilion Grand Cru"]}
+- {name: "Pomerol", country: FR, parent: "Bordeaux", classification: AOC}
+- {name: "Lalande-de-Pomerol", country: FR, parent: "Bordeaux", classification: AOC}
+- {name: "Fronsac", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Canon-Fronsac"]}
+- {name: "Côtes de Bourg", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Cotes de Bourg", "Bourg"]}
+- {name: "Blaye", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Côtes de Blaye", "Blaye Côtes de Bordeaux"]}
+- {name: "Entre-Deux-Mers", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Entre Deux Mers"]}
+- {name: "Bordeaux Supérieur", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Bordeaux Superieur"]}
+- {name: "Castillon Côtes de Bordeaux", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Castillon", "Côtes de Castillon"]}
+- {name: "Côtes de Bordeaux", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Cotes de Bordeaux"]}
+- {name: "Burgundy", country: FR, classification: AOC, synonyms: ["Bourgogne", "Bourgogne AOC"]}
+- {name: "Chablis", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Petit Chablis", "Chablis Premier Cru", "Chablis Grand Cru"]}
+- {name: "Côte d'Or", country: FR, parent: "Burgundy", synonyms: ["Cote d'Or"]}
+- {name: "Côte de Nuits", country: FR, parent: "Côte d'Or", synonyms: ["Cote de Nuits", "Côte de Nuits-Villages"]}
+- {name: "Marsannay", country: FR, parent: "Côte de Nuits", classification: AOC}
+- {name: "Fixin", country: FR, parent: "Côte de Nuits", classification: AOC}
+- {name: "Gevrey-Chambertin", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Gevrey Chambertin"]}
+- {name: "Morey-Saint-Denis", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Morey-St-Denis"]}
+- {name: "Chambolle-Musigny", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Chambolle Musigny"]}
+- {name: "Vougeot", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Clos de Vougeot"]}
+- {name: "Vosne-Romanée", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Vosne-Romanee", "Vosne Romanée"]}
+- {name: "Nuits-Saint-Georges", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Nuits-St-Georges", "Nuits Saint Georges"]}
+- {name: "Côte de Beaune", country: FR, parent: "Côte d'Or", synonyms: ["Cote de Beaune", "Côte de Beaune-Villages"]}
+- {name: "Aloxe-Corton", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["Corton", "Corton-Charlemagne"]}
+- {name: "Savigny-lès-Beaune", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["Savigny-les-Beaune", "Savigny"]}
+- {name: "Beaune", country: FR, parent: "Côte de Beaune", classification: AOC}
+- {name: "Pommard", country: FR, parent: "Côte de Beaune", classification: AOC}
+- {name: "Volnay", country: FR, parent: "Côte de Beaune", classification: AOC}
+- {name: "Meursault", country: FR, parent: "Côte de Beaune", classification: AOC}
+- {name: "Puligny-Montrachet", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["Puligny Montrachet"]}
+- {name: "Chassagne-Montrachet", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["Chassagne Montrachet"]}
+- {name: "Saint-Aubin", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["St-Aubin"]}
+- {name: "Santenay", country: FR, parent: "Côte de Beaune", classification: AOC}
+- {name: "Auxey-Duresses", country: FR, parent: "Côte de Beaune", classification: AOC}
+- {name: "Côte Chalonnaise", country: FR, parent: "Burgundy", synonyms: ["Cote Chalonnaise", "Bourgogne Côte Chalonnaise"]}
+- {name: "Mercurey", country: FR, parent: "Côte Chalonnaise", classification: AOC}
+- {name: "Givry", country: FR, parent: "Côte Chalonnaise", classification: AOC}
+- {name: "Rully", country: FR, parent: "Côte Chalonnaise", classification: AOC}
+- {name: "Montagny", country: FR, parent: "Côte Chalonnaise", classification: AOC}
+- {name: "Mâconnais", country: FR, parent: "Burgundy", synonyms: ["Maconnais", "Mâcon", "Macon"]}
+- {name: "Mâcon-Villages", country: FR, parent: "Mâconnais", classification: AOC, synonyms: ["Macon-Villages", "Mâcon Villages"]}
+- {name: "Pouilly-Fuissé", country: FR, parent: "Mâconnais", classification: AOC, synonyms: ["Pouilly-Fuisse", "Pouilly Fuissé"]}
+- {name: "Saint-Véran", country: FR, parent: "Mâconnais", classification: AOC, synonyms: ["Saint-Veran", "St-Véran"]}
+- {name: "Viré-Clessé", country: FR, parent: "Mâconnais", classification: AOC, synonyms: ["Vire-Clesse"]}
+- {name: "Beaujolais", country: FR, classification: AOC}
+- {name: "Beaujolais-Villages", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Beaujolais Villages"]}
+- {name: "Brouilly", country: FR, parent: "Beaujolais", classification: AOC}
+- {name: "Côte de Brouilly", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Cote de Brouilly"]}
+- {name: "Morgon", country: FR, parent: "Beaujolais", classification: AOC}
+- {name: "Fleurie", country: FR, parent: "Beaujolais", classification: AOC}
+- {name: "Moulin-à-Vent", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Moulin-a-Vent", "Moulin à Vent"]}
+- {name: "Chénas", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Chenas"]}
+- {name: "Chiroubles", country: FR, parent: "Beaujolais", classification: AOC}
+- {name: "Juliénas", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Julienas"]}
+- {name: "Régnié", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Regnie"]}
+- {name: "Saint-Amour", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["St-Amour"]}
+- {name: "Champagne", country: FR, classification: AOC}
+- {name: "Côte des Blancs", country: FR, parent: "Champagne", synonyms: ["Cote des Blancs"]}
+- {name: "Montagne de Reims", country: FR, parent: "Champagne"}
+- {name: "Vallée de la Marne", country: FR, parent: "Champagne", synonyms: ["Vallee de la Marne"]}
+- {name: "Côte des Bar", country: FR, parent: "Champagne", synonyms: ["Cote des Bar", "Aube"]}
+- {name: "Loire Valley", country: FR, synonyms: ["Loire", "Val de Loire", "Vallée de la Loire", "Vallee de la Loire"]}
+- {name: "Sancerre", country: FR, parent: "Loire Valley", classification: AOC}
+- {name: "Pouilly-Fumé", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Pouilly-Fume", "Pouilly Fumé", "Pouilly Fume"]}
+- {name: "Menetou-Salon", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Menetou Salon"]}
+- {name: "Quincy", country: FR, parent: "Loire Valley", classification: AOC}
+- {name: "Reuilly", country: FR, parent: "Loire Valley", classification: AOC}
+- {name: "Touraine", country: FR, parent: "Loire Valley", classification: AOC}
+- {name: "Vouvray", country: FR, parent: "Touraine", classification: AOC}
+- {name: "Montlouis-sur-Loire", country: FR, parent: "Touraine", classification: AOC, synonyms: ["Montlouis"]}
+- {name: "Chinon", country: FR, parent: "Touraine", classification: AOC}
+- {name: "Bourgueil", country: FR, parent: "Touraine", classification: AOC}
+- {name: "Saint-Nicolas-de-Bourgueil", country: FR, parent: "Touraine", classification: AOC, synonyms: ["St-Nicolas-de-Bourgueil"]}
+- {name: "Cheverny", country: FR, parent: "Touraine", classification: AOC, synonyms: ["Cour-Cheverny"]}
+- {name: "Anjou", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Anjou-Saumur", "Rosé d'Anjou", "Cabernet d'Anjou"]}
+- {name: "Savennières", country: FR, parent: "Anjou", classification: AOC, synonyms: ["Savennieres"]}
+- {name: "Coteaux du Layon", country: FR, parent: "Anjou", classification: AOC}
+- {name: "Quarts de Chaume", country: FR, parent: "Coteaux du Layon", classification: AOC}
+- {name: "Bonnezeaux", country: FR, parent: "Coteaux du Layon", classification: AOC}
+- {name: "Saumur", country: FR, parent: "Loire Valley", classification: AOC}
+- {name: "Saumur-Champigny", country: FR, parent: "Saumur", classification: AOC, synonyms: ["Saumur Champigny"]}
+- {name: "Muscadet", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Muscadet Sèvre et Maine", "Muscadet-Sèvre-et-Maine", "Muscadet Sevre et Maine", "Pays Nantais"]}
+- {name: "Rhône Valley", country: FR, synonyms: ["Rhône", "Rhone", "Rhone Valley", "Vallée du Rhône", "Vallee du Rhone"]}
+- {name: "Northern Rhône", country: FR, parent: "Rhône Valley", synonyms: ["Northern Rhone", "Rhône Septentrional"]}
+- {name: "Côte-Rôtie", country: FR, parent: "Northern Rhône", classification: AOC, synonyms: ["Cote-Rotie", "Côte Rôtie", "Cote Rotie"]}
+- {name: "Condrieu", country: FR, parent: "Northern Rhône", classification: AOC}
+- {name: "Château-Grillet", country: FR, parent: "Northern Rhône", classification: AOC, synonyms: ["Chateau-Grillet"]}
+- {name: "Saint-Joseph", country: FR, parent: "Northern Rhône", classification: AOC, synonyms: ["St-Joseph", "Saint Joseph"]}
+- {name: "Crozes-Hermitage", country: FR, parent: "Northern Rhône", classification: AOC, synonyms: ["Crozes Hermitage"]}
+- {name: "Hermitage", country: FR, parent: "Northern Rhône", classification: AOC}
+- {name: "Cornas", country: FR, parent: "Northern Rhône", classification: AOC}
+- {name: "Saint-Péray", country: FR, parent: "Northern Rhône", classification: AOC, synonyms: ["Saint-Peray", "St-Péray"]}
+- {name: "Southern Rhône", country: FR, parent: "Rhône Valley", synonyms: ["Southern Rhone", "Rhône Méridional"]}
+- {name: "Châteauneuf-du-Pape", country: FR, parent: "Southern Rhône", classification: AOC, synonyms: ["Chateauneuf-du-Pape", "Châteauneuf du Pape", "Chateauneuf du Pape", "CdP"]}
+- {name: "Gigondas", country: FR, parent: "Southern Rhône", classification: AOC}
+- {name: "Vacqueyras", country: FR, parent: "Southern Rhône", classification: AOC}
+- {name: "Rasteau", country: FR, parent: "Southern Rhône", classification: AOC}
+- {name: "Cairanne", country: FR, parent: "Southern Rhône", classification: AOC}
+- {name: "Beaumes-de-Venise", country: FR, parent: "Southern Rhône", classification: AOC, synonyms: ["Beaumes de Venise", "Muscat de Beaumes-de-Venise"]}
+- {name: "Vinsobres", country: FR, parent: "Southern Rhône", classification: AOC}
+- {name: "Lirac", country: FR, parent: "Southern Rhône", classification: AOC}
+- {name: "Tavel", country: FR, parent: "Southern Rhône", classification: AOC}
+- {name: "Côtes du Rhône", country: FR, parent: "Southern Rhône", classification: AOC, synonyms: ["Cotes du Rhone", "Côtes-du-Rhône", "CDR"]}
+- {name: "Côtes du Rhône Villages", country: FR, parent: "Côtes du Rhône", classification: AOC, synonyms: ["Cotes du Rhone Villages", "Côtes-du-Rhône Villages"]}
+- {name: "Ventoux", country: FR, parent: "Southern Rhône", classification: AOC, synonyms: ["Côtes du Ventoux", "Cotes du Ventoux"]}
+- {name: "Luberon", country: FR, parent: "Southern Rhône", classification: AOC, synonyms: ["Côtes du Luberon"]}
+- {name: "Costières de Nîmes", country: FR, parent: "Southern Rhône", classification: AOC, synonyms: ["Costieres de Nimes"]}
+- {name: "Alsace", country: FR, classification: AOC, synonyms: ["Alsace Grand Cru", "Crémant d'Alsace"]}
+- {name: "Provence", country: FR}
+- {name: "Côtes de Provence", country: FR, parent: "Provence", classification: AOC, synonyms: ["Cotes de Provence", "Côtes de Provence Sainte-Victoire"]}
+- {name: "Bandol", country: FR, parent: "Provence", classification: AOC}
+- {name: "Cassis", country: FR, parent: "Provence", classification: AOC}
+- {name: "Bellet", country: FR, parent: "Provence", classification: AOC}
+- {name: "Coteaux d'Aix-en-Provence", country: FR, parent: "Provence", classification: AOC, synonyms: ["Coteaux d'Aix", "Aix-en-Provence"]}
+- {name: "Coteaux Varois en Provence", country: FR, parent: "Provence", classification: AOC, synonyms: ["Coteaux Varois"]}
+- {name: "Les Baux-de-Provence", country: FR, parent: "Provence", classification: AOC, synonyms: ["Les Baux de Provence", "Baux-de-Provence"]}
+- {name: "Languedoc-Roussillon", country: FR, synonyms: ["Languedoc Roussillon", "Occitanie"]}
+- {name: "Languedoc", country: FR, parent: "Languedoc-Roussillon", classification: AOC, synonyms: ["Coteaux du Languedoc", "Languedoc AOC"]}
+- {name: "Picpoul de Pinet", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Picpoul de Pinet AOC", "Pinet"]}
+- {name: "Corbières", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Corbieres", "Corbières-Boutenac"]}
+- {name: "Minervois", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Minervois La Livinière"]}
+- {name: "Saint-Chinian", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["St-Chinian", "Saint Chinian"]}
+- {name: "Faugères", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Faugeres"]}
+- {name: "Fitou", country: FR, parent: "Languedoc", classification: AOC}
+- {name: "La Clape", country: FR, parent: "Languedoc", classification: AOC}
+- {name: "Pic Saint-Loup", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Pic St-Loup", "Pic Saint Loup"]}
+- {name: "Terrasses du Larzac", country: FR, parent: "Languedoc", classification: AOC}
+- {name: "Limoux", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Blanquette de Limoux", "Crémant de Limoux"]}
+- {name: "Cabardès", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Cabardes"]}
+- {name: "Roussillon", country: FR, parent: "Languedoc-Roussillon", classification: AOC, synonyms: ["Côtes du Roussillon", "Cotes du Roussillon", "Côtes-du-Roussillon"]}
+- {name: "Côtes du Roussillon Villages", country: FR, parent: "Roussillon", classification: AOC, synonyms: ["Cotes du Roussillon Villages", "Côtes-du-Roussillon Villages"]}
+- {name: "Collioure", country: FR, parent: "Roussillon", classification: AOC}
+- {name: "Banyuls", country: FR, parent: "Roussillon", classification: AOC}
+- {name: "Maury", country: FR, parent: "Roussillon", classification: AOC}
+- {name: "Rivesaltes", country: FR, parent: "Roussillon", classification: AOC, synonyms: ["Muscat de Rivesaltes"]}
+- {name: "Pays d'Oc", country: FR, parent: "Languedoc-Roussillon", classification: IGP, synonyms: ["Pays d'Oc IGP", "IGP Pays d'Oc", "Vin de Pays d'Oc", "Pays dOc", "Oc"]}
+- {name: "Jura", country: FR, synonyms: ["Côtes du Jura", "Cotes du Jura"]}
+- {name: "Arbois", country: FR, parent: "Jura", classification: AOC}
+- {name: "Château-Chalon", country: FR, parent: "Jura", classification: AOC, synonyms: ["Chateau-Chalon"]}
+- {name: "Savoie", country: FR, synonyms: ["Savoy", "Vin de Savoie", "Bugey"]}
+- {name: "South West France", country: FR, synonyms: ["Sud-Ouest", "Southwest France", "South-West France", "Sud Ouest"]}
+- {name: "Cahors", country: FR, parent: "South West France", classification: AOC}
+- {name: "Madiran", country: FR, parent: "South West France", classification: AOC}
+- {name: "Jurançon", country: FR, parent: "South West France", classification: AOC, synonyms: ["Jurancon"]}
+- {name: "Bergerac", country: FR, parent: "South West France", classification: AOC, synonyms: ["Côtes de Bergerac", "Pécharmant"]}
+- {name: "Monbazillac", country: FR, parent: "Bergerac", classification: AOC}
+- {name: "Gaillac", country: FR, parent: "South West France", classification: AOC}
+- {name: "Fronton", country: FR, parent: "South West France", classification: AOC}
+- {name: "Marcillac", country: FR, parent: "South West France", classification: AOC}
+- {name: "Irouléguy", country: FR, parent: "South West France", classification: AOC, synonyms: ["Irouleguy"]}
+- {name: "Côtes de Gascogne", country: FR, parent: "South West France", classification: IGP, synonyms: ["Cotes de Gascogne", "IGP Côtes de Gascogne", "Gascogne", "Gascony"]}
+- {name: "Corsica", country: FR, synonyms: ["Corse", "Vin de Corse", "Île de Beauté"]}
+- {name: "Patrimonio", country: FR, parent: "Corsica", classification: AOC}
+- {name: "Vin de France", country: FR, classification: "Vin de France", synonyms: ["VdF", "Vin de Table", "France (Vin de France)"]}
+
+# ======================= ITALY =======================
+- {name: "Piedmont", country: IT, synonyms: ["Piemonte", "Piemonte DOC"]}
+- {name: "Langhe", country: IT, parent: "Piedmont", classification: DOC, synonyms: ["Langhe DOC", "Langhe Nebbiolo"]}
+- {name: "Barolo", country: IT, parent: "Langhe", classification: DOCG, synonyms: ["Barolo DOCG"]}
+- {name: "Barbaresco", country: IT, parent: "Langhe", classification: DOCG, synonyms: ["Barbaresco DOCG"]}
+- {name: "Roero", country: IT, parent: "Piedmont", classification: DOCG, synonyms: ["Roero Arneis"]}
+- {name: "Barbera d'Asti", country: IT, parent: "Piedmont", classification: DOCG, synonyms: ["Barbera d'Asti DOCG", "Nizza"]}
+- {name: "Barbera d'Alba", country: IT, parent: "Langhe", classification: DOC}
+- {name: "Dolcetto d'Alba", country: IT, parent: "Langhe", classification: DOC}
+- {name: "Dogliani", country: IT, parent: "Langhe", classification: DOCG, synonyms: ["Dolcetto di Dogliani"]}
+- {name: "Nebbiolo d'Alba", country: IT, parent: "Langhe", classification: DOC}
+- {name: "Asti", country: IT, parent: "Piedmont", classification: DOCG, synonyms: ["Asti Spumante", "Moscato d'Asti"]}
+- {name: "Gavi", country: IT, parent: "Piedmont", classification: DOCG, synonyms: ["Cortese di Gavi", "Gavi di Gavi", "Gavi DOCG"]}
+- {name: "Gattinara", country: IT, parent: "Piedmont", classification: DOCG}
+- {name: "Ghemme", country: IT, parent: "Piedmont", classification: DOCG}
+- {name: "Monferrato", country: IT, parent: "Piedmont", classification: DOC}
+- {name: "Colli Tortonesi", country: IT, parent: "Piedmont", classification: DOC}
+- {name: "Lombardy", country: IT, synonyms: ["Lombardia"]}
+- {name: "Franciacorta", country: IT, parent: "Lombardy", classification: DOCG}
+- {name: "Oltrepò Pavese", country: IT, parent: "Lombardy", classification: DOC, synonyms: ["Oltrepo Pavese"]}
+- {name: "Valtellina", country: IT, parent: "Lombardy", classification: DOCG, synonyms: ["Valtellina Superiore", "Sforzato di Valtellina"]}
+- {name: "Lugana", country: IT, parent: "Lombardy", classification: DOC}
+- {name: "Veneto", country: IT, synonyms: ["Veneto IGT"]}
+- {name: "Valpolicella", country: IT, parent: "Veneto", classification: DOC, synonyms: ["Valpolicella DOC", "Valpolicella Classico"]}
+- {name: "Amarone della Valpolicella", country: IT, parent: "Valpolicella", classification: DOCG, synonyms: ["Amarone", "Amarone DOCG"]}
+- {name: "Valpolicella Ripasso", country: IT, parent: "Valpolicella", classification: DOC, synonyms: ["Ripasso", "Ripasso della Valpolicella"]}
+- {name: "Soave", country: IT, parent: "Veneto", classification: DOC, synonyms: ["Soave Classico", "Soave DOC"]}
+- {name: "Bardolino", country: IT, parent: "Veneto", classification: DOC}
+- {name: "Prosecco", country: IT, parent: "Veneto", classification: DOC, synonyms: ["Prosecco DOC", "Prosecco Treviso"]}
+- {name: "Conegliano Valdobbiadene", country: IT, parent: "Prosecco", classification: DOCG, synonyms: ["Valdobbiadene", "Conegliano", "Prosecco Superiore", "Conegliano Valdobbiadene Prosecco Superiore", "Valdobbiadene Prosecco Superiore"]}
+- {name: "Custoza", country: IT, parent: "Veneto", classification: DOC, synonyms: ["Bianco di Custoza"]}
+- {name: "delle Venezie", country: IT, classification: DOC, synonyms: ["Delle Venezie DOC", "delle Venezie IGT", "Venezie", "Tre Venezie", "Triveneto"]}
+- {name: "Trentino-Alto Adige", country: IT, synonyms: ["Trentino Alto Adige", "Trentino-Südtirol", "Trentino-South Tyrol"]}
+- {name: "Alto Adige", country: IT, parent: "Trentino-Alto Adige", classification: DOC, synonyms: ["Südtirol", "Sudtirol", "South Tyrol", "Alto Adige DOC", "Südtirol DOC"]}
+- {name: "Trentino", country: IT, parent: "Trentino-Alto Adige", classification: DOC, synonyms: ["Trentino DOC"]}
+- {name: "Trento", country: IT, parent: "Trentino", classification: DOC, synonyms: ["Trento DOC", "Trentodoc"]}
+- {name: "Friuli-Venezia Giulia", country: IT, synonyms: ["Friuli", "Friuli Venezia Giulia", "Friuli DOC"]}
+- {name: "Collio", country: IT, parent: "Friuli-Venezia Giulia", classification: DOC, synonyms: ["Collio Goriziano"]}
+- {name: "Colli Orientali del Friuli", country: IT, parent: "Friuli-Venezia Giulia", classification: DOC, synonyms: ["Friuli Colli Orientali", "Colli Orientali"]}
+- {name: "Friuli Grave", country: IT, parent: "Friuli-Venezia Giulia", classification: DOC, synonyms: ["Grave del Friuli"]}
+- {name: "Friuli Isonzo", country: IT, parent: "Friuli-Venezia Giulia", classification: DOC, synonyms: ["Isonzo"]}
+- {name: "Emilia-Romagna", country: IT, synonyms: ["Emilia Romagna", "Emilia", "Romagna"]}
+- {name: "Colli Piacentini", country: IT, parent: "Emilia-Romagna", classification: DOC}
+- {name: "Liguria", country: IT}
+- {name: "Cinque Terre", country: IT, parent: "Liguria", classification: DOC}
+- {name: "Riviera Ligure di Ponente", country: IT, parent: "Liguria", classification: DOC}
+- {name: "Valle d'Aosta", country: IT, synonyms: ["Aosta Valley", "Vallée d'Aoste", "Valle d'Aosta DOC"]}
+- {name: "Tuscany", country: IT, synonyms: ["Toscana", "Toscana IGT", "IGT Toscana", "Tuscan"]}
+- {name: "Chianti", country: IT, parent: "Tuscany", classification: DOCG, synonyms: ["Chianti DOCG"]}
+- {name: "Chianti Classico", country: IT, parent: "Chianti", classification: DOCG, synonyms: ["Chianti Classico DOCG", "Chianti Classico Riserva", "Gran Selezione"]}
+- {name: "Chianti Rufina", country: IT, parent: "Chianti", classification: DOCG, synonyms: ["Rufina"]}
+- {name: "Chianti Colli Senesi", country: IT, parent: "Chianti", classification: DOCG, synonyms: ["Colli Senesi"]}
+- {name: "Montalcino", country: IT, parent: "Tuscany"}
+- {name: "Brunello di Montalcino", country: IT, parent: "Montalcino", classification: DOCG, synonyms: ["Brunello", "Brunello di Montalcino DOCG"]}
+- {name: "Rosso di Montalcino", country: IT, parent: "Montalcino", classification: DOC}
+- {name: "Vino Nobile di Montepulciano", country: IT, parent: "Tuscany", classification: DOCG, synonyms: ["Vino Nobile", "Nobile di Montepulciano"]}
+- {name: "Rosso di Montepulciano", country: IT, parent: "Tuscany", classification: DOC}
+- {name: "Bolgheri", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Bolgheri DOC", "Bolgheri Sassicaia", "Bolgheri Superiore"]}
+- {name: "Maremma", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Maremma Toscana", "Maremma Toscana DOC"]}
+- {name: "Morellino di Scansano", country: IT, parent: "Maremma", classification: DOCG, synonyms: ["Scansano"]}
+- {name: "Carmignano", country: IT, parent: "Tuscany", classification: DOCG}
+- {name: "Vernaccia di San Gimignano", country: IT, parent: "Tuscany", classification: DOCG, synonyms: ["San Gimignano"]}
+- {name: "Montecucco", country: IT, parent: "Tuscany", classification: DOC}
+- {name: "Cortona", country: IT, parent: "Tuscany", classification: DOC}
+- {name: "Umbria", country: IT, synonyms: ["Umbria IGT"]}
+- {name: "Orvieto", country: IT, parent: "Umbria", classification: DOC, synonyms: ["Orvieto Classico"]}
+- {name: "Montefalco", country: IT, parent: "Umbria", classification: DOCG, synonyms: ["Sagrantino di Montefalco", "Montefalco Sagrantino", "Montefalco Rosso"]}
+- {name: "Marche", country: IT, synonyms: ["Marches", "Le Marche", "Marche IGT"]}
+- {name: "Verdicchio dei Castelli di Jesi", country: IT, parent: "Marche", classification: DOC, synonyms: ["Castelli di Jesi", "Jesi"]}
+- {name: "Verdicchio di Matelica", country: IT, parent: "Marche", classification: DOC, synonyms: ["Matelica"]}
+- {name: "Rosso Conero", country: IT, parent: "Marche", classification: DOC, synonyms: ["Conero"]}
+- {name: "Rosso Piceno", country: IT, parent: "Marche", classification: DOC, synonyms: ["Piceno"]}
+- {name: "Offida", country: IT, parent: "Marche", classification: DOCG}
+- {name: "Lazio", country: IT, synonyms: ["Latium", "Lazio IGT"]}
+- {name: "Frascati", country: IT, parent: "Lazio", classification: DOC}
+- {name: "Abruzzo", country: IT, synonyms: ["Abruzzi"]}
+- {name: "Montepulciano d'Abruzzo", country: IT, parent: "Abruzzo", classification: DOC, synonyms: ["Montepulciano d'Abruzzo DOC", "Colline Teramane"]}
+- {name: "Trebbiano d'Abruzzo", country: IT, parent: "Abruzzo", classification: DOC}
+- {name: "Cerasuolo d'Abruzzo", country: IT, parent: "Abruzzo", classification: DOC}
+- {name: "Molise", country: IT}
+- {name: "Campania", country: IT, synonyms: ["Campania IGT"]}
+- {name: "Irpinia", country: IT, parent: "Campania", classification: DOC}
+- {name: "Taurasi", country: IT, parent: "Irpinia", classification: DOCG}
+- {name: "Fiano di Avellino", country: IT, parent: "Irpinia", classification: DOCG, synonyms: ["Avellino"]}
+- {name: "Greco di Tufo", country: IT, parent: "Irpinia", classification: DOCG, synonyms: ["Tufo"]}
+- {name: "Sannio", country: IT, parent: "Campania", classification: DOC, synonyms: ["Aglianico del Taburno", "Taburno"]}
+- {name: "Falerno del Massico", country: IT, parent: "Campania", classification: DOC}
+- {name: "Campi Flegrei", country: IT, parent: "Campania", classification: DOC}
+- {name: "Puglia", country: IT, synonyms: ["Apulia", "Puglia IGT", "Puglia IGP"]}
+- {name: "Salento", country: IT, parent: "Puglia", classification: IGT, synonyms: ["Salento IGT", "Salento IGP"]}
+- {name: "Salice Salentino", country: IT, parent: "Salento", classification: DOC, synonyms: ["Salice Salentino DOC"]}
+- {name: "Primitivo di Manduria", country: IT, parent: "Salento", classification: DOC, synonyms: ["Manduria"]}
+- {name: "Brindisi", country: IT, parent: "Salento", classification: DOC}
+- {name: "Castel del Monte", country: IT, parent: "Puglia", classification: DOC}
+- {name: "Gioia del Colle", country: IT, parent: "Puglia", classification: DOC}
+- {name: "Basilicata", country: IT, synonyms: ["Basilicata IGT"]}
+- {name: "Aglianico del Vulture", country: IT, parent: "Basilicata", classification: DOC, synonyms: ["Vulture", "Aglianico del Vulture Superiore"]}
+- {name: "Calabria", country: IT, synonyms: ["Calabria IGT"]}
+- {name: "Cirò", country: IT, parent: "Calabria", classification: DOC, synonyms: ["Ciro", "Cirò DOC", "Ciro DOC", "Cirò Classico"]}
+- {name: "Sicily", country: IT, synonyms: ["Sicilia", "Sicilia DOC", "Terre Siciliane", "Terre Siciliane IGT", "Terre Siciliane IGP", "Sicilia IGT"]}
+- {name: "Etna", country: IT, parent: "Sicily", classification: DOC, synonyms: ["Etna DOC", "Mount Etna", "Etna Rosso", "Etna Bianco"]}
+- {name: "Marsala", country: IT, parent: "Sicily", classification: DOC}
+- {name: "Cerasuolo di Vittoria", country: IT, parent: "Sicily", classification: DOCG, synonyms: ["Vittoria"]}
+- {name: "Pantelleria", country: IT, parent: "Sicily", classification: DOC, synonyms: ["Passito di Pantelleria", "Moscato di Pantelleria"]}
+- {name: "Menfi", country: IT, parent: "Sicily", classification: DOC}
+- {name: "Sardinia", country: IT, synonyms: ["Sardegna", "Isola dei Nuraghi", "Isola dei Nuraghi IGT"]}
+- {name: "Vermentino di Gallura", country: IT, parent: "Sardinia", classification: DOCG, synonyms: ["Gallura"]}
+- {name: "Vermentino di Sardegna", country: IT, parent: "Sardinia", classification: DOC}
+- {name: "Cannonau di Sardegna", country: IT, parent: "Sardinia", classification: DOC}
+- {name: "Carignano del Sulcis", country: IT, parent: "Sardinia", classification: DOC, synonyms: ["Sulcis"]}
+
+# ======================= SPAIN =======================
+- {name: "Rioja", country: ES, classification: DOCa, synonyms: ["La Rioja", "Rioja DOCa", "DOCa Rioja", "Rioja DOC"]}
+- {name: "Rioja Alta", country: ES, parent: "Rioja"}
+- {name: "Rioja Alavesa", country: ES, parent: "Rioja"}
+- {name: "Rioja Oriental", country: ES, parent: "Rioja", synonyms: ["Rioja Baja"]}
+- {name: "Castilla y León", country: ES, synonyms: ["Castilla y Leon", "Castile and León", "Castile and Leon", "Vino de la Tierra de Castilla y León", "VT Castilla y León"]}
+- {name: "Ribera del Duero", country: ES, parent: "Castilla y León", classification: DO, synonyms: ["Ribera del Duero DO", "Ribera"]}
+- {name: "Toro", country: ES, parent: "Castilla y León", classification: DO, synonyms: ["Toro DO"]}
+- {name: "Rueda", country: ES, parent: "Castilla y León", classification: DO, synonyms: ["Rueda DO"]}
+- {name: "Bierzo", country: ES, parent: "Castilla y León", classification: DO, synonyms: ["El Bierzo"]}
+- {name: "Cigales", country: ES, parent: "Castilla y León", classification: DO}
+- {name: "Arribes", country: ES, parent: "Castilla y León", classification: DO, synonyms: ["Arribes del Duero"]}
+- {name: "Navarra", country: ES, classification: DO, synonyms: ["Navarre", "Navarra DO"]}
+- {name: "Aragón", country: ES, synonyms: ["Aragon"]}
+- {name: "Cariñena", country: ES, parent: "Aragón", classification: DO, synonyms: ["Carinena", "Cariñena DO"]}
+- {name: "Calatayud", country: ES, parent: "Aragón", classification: DO}
+- {name: "Campo de Borja", country: ES, parent: "Aragón", classification: DO, synonyms: ["Borja"]}
+- {name: "Somontano", country: ES, parent: "Aragón", classification: DO}
+- {name: "Catalonia", country: ES, synonyms: ["Cataluña", "Catalunya", "Catalonia DO", "Catalunya DO"]}
+- {name: "Priorat", country: ES, parent: "Catalonia", classification: DOQ, synonyms: ["Priorato", "Priorat DOQ"]}
+- {name: "Montsant", country: ES, parent: "Catalonia", classification: DO}
+- {name: "Penedès", country: ES, parent: "Catalonia", classification: DO, synonyms: ["Penedes", "Penedès DO"]}
+- {name: "Costers del Segre", country: ES, parent: "Catalonia", classification: DO}
+- {name: "Empordà", country: ES, parent: "Catalonia", classification: DO, synonyms: ["Emporda", "Ampurdán", "Empordà DO"]}
+- {name: "Terra Alta", country: ES, parent: "Catalonia", classification: DO}
+- {name: "Conca de Barberà", country: ES, parent: "Catalonia", classification: DO, synonyms: ["Conca de Barbera"]}
+- {name: "Alella", country: ES, parent: "Catalonia", classification: DO}
+- {name: "Cava", country: ES, classification: DO, synonyms: ["Cava DO"]}
+- {name: "Galicia", country: ES, synonyms: ["Galiza"]}
+- {name: "Rías Baixas", country: ES, parent: "Galicia", classification: DO, synonyms: ["Rias Baixas", "Rías Baixas DO", "Rias Baixas DO"]}
+- {name: "Ribeiro", country: ES, parent: "Galicia", classification: DO}
+- {name: "Ribeira Sacra", country: ES, parent: "Galicia", classification: DO}
+- {name: "Valdeorras", country: ES, parent: "Galicia", classification: DO}
+- {name: "Monterrei", country: ES, parent: "Galicia", classification: DO}
+- {name: "Basque Country", country: ES, synonyms: ["País Vasco", "Pais Vasco", "Euskadi", "Basque", "Basque Country (Spain)"]}
+- {name: "Getariako Txakolina", country: ES, parent: "Basque Country", classification: DO, synonyms: ["Txakoli de Getaria", "Txakolina", "Txakoli", "Chacolí de Guetaria", "Chacoli", "Getaria"]}
+- {name: "Bizkaiko Txakolina", country: ES, parent: "Basque Country", classification: DO, synonyms: ["Txakoli de Bizkaia", "Chacolí de Vizcaya"]}
+- {name: "Arabako Txakolina", country: ES, parent: "Basque Country", classification: DO, synonyms: ["Txakoli de Álava"]}
+- {name: "Valencia", country: ES, classification: DO, synonyms: ["Comunidad Valenciana", "Valencian Community", "Valencia DO"]}
+- {name: "Utiel-Requena", country: ES, parent: "Valencia", classification: DO, synonyms: ["Utiel Requena", "Requena"]}
+- {name: "Alicante", country: ES, parent: "Valencia", classification: DO, synonyms: ["Alicante DO"]}
+- {name: "Murcia", country: ES, synonyms: ["Región de Murcia"]}
+- {name: "Jumilla", country: ES, parent: "Murcia", classification: DO, synonyms: ["Jumilla DO"]}
+- {name: "Yecla", country: ES, parent: "Murcia", classification: DO}
+- {name: "Bullas", country: ES, parent: "Murcia", classification: DO}
+- {name: "Castilla-La Mancha", country: ES, synonyms: ["Castilla La Mancha", "Vino de la Tierra de Castilla", "VT Castilla", "Castilla"]}
+- {name: "La Mancha", country: ES, parent: "Castilla-La Mancha", classification: DO, synonyms: ["La Mancha DO"]}
+- {name: "Valdepeñas", country: ES, parent: "Castilla-La Mancha", classification: DO, synonyms: ["Valdepenas"]}
+- {name: "Manchuela", country: ES, parent: "Castilla-La Mancha", classification: DO}
+- {name: "Almansa", country: ES, parent: "Castilla-La Mancha", classification: DO}
+- {name: "Méntrida", country: ES, parent: "Castilla-La Mancha", classification: DO, synonyms: ["Mentrida"]}
+- {name: "Vinos de Madrid", country: ES, classification: DO, synonyms: ["Madrid"]}
+- {name: "Sierra de Gredos", country: ES, synonyms: ["Gredos", "Cebreros"]}
+- {name: "Extremadura", country: ES, synonyms: ["Ribera del Guadiana"]}
+- {name: "Andalusia", country: ES, synonyms: ["Andalucía", "Andalucia"]}
+- {name: "Jerez", country: ES, parent: "Andalusia", classification: DO, synonyms: ["Sherry", "Jerez-Xérès-Sherry", "Xérès", "Jerez de la Frontera", "Manzanilla-Sanlúcar de Barrameda", "Manzanilla"]}
+- {name: "Montilla-Moriles", country: ES, parent: "Andalusia", classification: DO, synonyms: ["Montilla Moriles", "Montilla"]}
+- {name: "Málaga", country: ES, parent: "Andalusia", classification: DO, synonyms: ["Malaga", "Sierras de Málaga"]}
+- {name: "Canary Islands", country: ES, synonyms: ["Islas Canarias", "Canarias", "Canaries"]}
+- {name: "Lanzarote", country: ES, parent: "Canary Islands", classification: DO}
+- {name: "Tenerife", country: ES, parent: "Canary Islands", synonyms: ["Tacoronte-Acentejo", "Valle de la Orotava", "Ycoden-Daute-Isora"]}
+- {name: "Mallorca", country: ES, synonyms: ["Majorca", "Binissalem", "Pla i Llevant", "Balearic Islands", "Islas Baleares"]}
+
+# ======================= PORTUGAL =======================
+- {name: "Douro", country: PT, classification: DOC, synonyms: ["Douro DOC", "Douro Valley", "Alto Douro", "Cima Corgo", "Baixo Corgo", "Douro Superior"]}
+- {name: "Porto", country: PT, parent: "Douro", classification: DOC, synonyms: ["Port", "Oporto", "Porto DOC", "Port wine", "Vinho do Porto"]}
+- {name: "Vinho Verde", country: PT, classification: DOC, synonyms: ["Vinhos Verdes", "Minho", "Vinho Verde DOC"]}
+- {name: "Dão", country: PT, classification: DOC, synonyms: ["Dao", "Dão DOC"]}
+- {name: "Bairrada", country: PT, classification: DOC}
+- {name: "Beira Interior", country: PT, classification: DOC, synonyms: ["Beiras", "Beira Atlântico"]}
+- {name: "Lisboa", country: PT, classification: VR, synonyms: ["Lisbon", "Estremadura", "Lisboa VR", "Vinho Regional Lisboa", "Regional Lisboa"]}
+- {name: "Alenquer", country: PT, parent: "Lisboa", classification: DOC, synonyms: ["Alenquer DOC"]}
+- {name: "Bucelas", country: PT, parent: "Lisboa", classification: DOC}
+- {name: "Colares", country: PT, parent: "Lisboa", classification: DOC}
+- {name: "Óbidos", country: PT, parent: "Lisboa", classification: DOC, synonyms: ["Obidos"]}
+- {name: "Tejo", country: PT, classification: DOC, synonyms: ["Ribatejo", "Do Tejo"]}
+- {name: "Alentejo", country: PT, classification: DOC, synonyms: ["Alentejano", "Vinho Regional Alentejano", "Alentejo DOC", "Regional Alentejano"]}
+- {name: "Península de Setúbal", country: PT, classification: VR, synonyms: ["Peninsula de Setubal", "Setúbal", "Setubal", "Terras do Sado", "Moscatel de Setúbal"]}
+- {name: "Palmela", country: PT, parent: "Península de Setúbal", classification: DOC}
+- {name: "Madeira", country: PT, classification: DOC, synonyms: ["Madeira DOC", "Madeira wine"]}
+- {name: "Algarve", country: PT, classification: VR}
+- {name: "Trás-os-Montes", country: PT, classification: DOC, synonyms: ["Tras-os-Montes", "Transmontano"]}
+- {name: "Açores", country: PT, classification: VR, synonyms: ["Azores", "Pico"]}
+
+# ======================= GERMANY =======================
+- {name: "Ahr", country: DE, classification: Anbaugebiet}
+- {name: "Baden", country: DE, classification: Anbaugebiet, synonyms: ["Kaiserstuhl"]}
+- {name: "Franken", country: DE, classification: Anbaugebiet, synonyms: ["Franconia"]}
+- {name: "Hessische Bergstraße", country: DE, classification: Anbaugebiet, synonyms: ["Hessische Bergstrasse"]}
+- {name: "Mittelrhein", country: DE, classification: Anbaugebiet, synonyms: ["Middle Rhine"]}
+- {name: "Mosel", country: DE, classification: Anbaugebiet, synonyms: ["Mosel-Saar-Ruwer", "Moselle", "Saar", "Ruwer"]}
+- {name: "Nahe", country: DE, classification: Anbaugebiet}
+- {name: "Pfalz", country: DE, classification: Anbaugebiet, synonyms: ["Palatinate", "Rheinpfalz"]}
+- {name: "Rheingau", country: DE, classification: Anbaugebiet}
+- {name: "Rheinhessen", country: DE, classification: Anbaugebiet, synonyms: ["Rhenish Hesse", "Rhine Hesse"]}
+- {name: "Saale-Unstrut", country: DE, classification: Anbaugebiet}
+- {name: "Sachsen", country: DE, classification: Anbaugebiet, synonyms: ["Saxony"]}
+- {name: "Württemberg", country: DE, classification: Anbaugebiet, synonyms: ["Wurttemberg", "Wuerttemberg"]}
+
+# ======================= AUSTRIA =======================
+- {name: "Niederösterreich", country: AT, synonyms: ["Lower Austria", "Niederosterreich"]}
+- {name: "Wachau", country: AT, parent: "Niederösterreich", classification: DAC}
+- {name: "Kamptal", country: AT, parent: "Niederösterreich", classification: DAC}
+- {name: "Kremstal", country: AT, parent: "Niederösterreich", classification: DAC}
+- {name: "Traisental", country: AT, parent: "Niederösterreich", classification: DAC}
+- {name: "Wagram", country: AT, parent: "Niederösterreich", classification: DAC}
+- {name: "Weinviertel", country: AT, parent: "Niederösterreich", classification: DAC}
+- {name: "Carnuntum", country: AT, parent: "Niederösterreich", classification: DAC}
+- {name: "Thermenregion", country: AT, parent: "Niederösterreich", classification: DAC}
+- {name: "Burgenland", country: AT}
+- {name: "Neusiedlersee", country: AT, parent: "Burgenland", classification: DAC, synonyms: ["Neusiedler See"]}
+- {name: "Leithaberg", country: AT, parent: "Burgenland", classification: DAC}
+- {name: "Mittelburgenland", country: AT, parent: "Burgenland", classification: DAC}
+- {name: "Eisenberg", country: AT, parent: "Burgenland", classification: DAC, synonyms: ["Südburgenland"]}
+- {name: "Steiermark", country: AT, synonyms: ["Styria"]}
+- {name: "Südsteiermark", country: AT, parent: "Steiermark", classification: DAC, synonyms: ["South Styria", "Sudsteiermark"]}
+- {name: "Vulkanland Steiermark", country: AT, parent: "Steiermark", classification: DAC, synonyms: ["Vulkanland"]}
+- {name: "Weststeiermark", country: AT, parent: "Steiermark", classification: DAC, synonyms: ["West Styria"]}
+- {name: "Wien", country: AT, classification: DAC, synonyms: ["Vienna", "Wiener Gemischter Satz"]}
+
+# ======================= SWITZERLAND / LUXEMBOURG / UK =======================
+- {name: "Valais", country: CH, synonyms: ["Wallis"]}
+- {name: "Vaud", country: CH, synonyms: ["Lavaux", "La Côte"]}
+- {name: "Geneva", country: CH, synonyms: ["Genève", "Geneve"]}
+- {name: "Ticino", country: CH, synonyms: ["Tessin"]}
+- {name: "Neuchâtel", country: CH, synonyms: ["Neuchatel"]}
+- {name: "Moselle Luxembourgeoise", country: LU, synonyms: ["Luxembourg Moselle"]}
+- {name: "England", country: GB, synonyms: ["English wine"]}
+- {name: "Sussex", country: GB, parent: "England"}
+- {name: "Kent", country: GB, parent: "England"}
+- {name: "Wales", country: GB}
+
+# ======================= GREECE / CYPRUS =======================
+- {name: "Peloponnese", country: GR, synonyms: ["Peloponnesos", "Peloponnisos"]}
+- {name: "Nemea", country: GR, parent: "Peloponnese", classification: PDO}
+- {name: "Mantinia", country: GR, parent: "Peloponnese", classification: PDO, synonyms: ["Mantineia"]}
+- {name: "Patras", country: GR, parent: "Peloponnese", classification: PDO, synonyms: ["Patra"]}
+- {name: "Macedonia", country: GR, synonyms: ["Greek Macedonia", "Makedonia", "Macedonia (Greece)"]}
+- {name: "Naoussa", country: GR, parent: "Macedonia", classification: PDO, synonyms: ["Naousa"]}
+- {name: "Amyndeon", country: GR, parent: "Macedonia", classification: PDO, synonyms: ["Amynteo", "Amyntaio", "Amyndeo"]}
+- {name: "Drama", country: GR, parent: "Macedonia", classification: PGI}
+- {name: "Goumenissa", country: GR, parent: "Macedonia", classification: PDO}
+- {name: "Santorini", country: GR, classification: PDO, synonyms: ["Thira", "Santorini PDO"]}
+- {name: "Crete", country: GR, synonyms: ["Kriti"]}
+- {name: "Samos", country: GR, classification: PDO}
+- {name: "Cephalonia", country: GR, synonyms: ["Kefalonia", "Robola of Cephalonia"]}
+- {name: "Attica", country: GR, synonyms: ["Attiki"]}
+- {name: "Rapsani", country: GR, classification: PDO}
+- {name: "Commandaria", country: CY, classification: PDO, synonyms: ["Koumandaria"]}
+
+# ======================= CENTRAL & EASTERN EUROPE =======================
+- {name: "Tokaj", country: HU, synonyms: ["Tokaji", "Tokaj-Hegyalja", "Tokay"]}
+- {name: "Eger", country: HU, synonyms: ["Egri", "Egri Bikavér"]}
+- {name: "Villány", country: HU, synonyms: ["Villany"]}
+- {name: "Szekszárd", country: HU, synonyms: ["Szekszard"]}
+- {name: "Balaton", country: HU, synonyms: ["Lake Balaton", "Balatonfüred-Csopak"]}
+- {name: "Badacsony", country: HU, parent: "Balaton"}
+- {name: "Somló", country: HU, synonyms: ["Somlo"]}
+- {name: "Sopron", country: HU}
+- {name: "Moravia", country: CZ, synonyms: ["Morava"]}
+- {name: "Dealu Mare", country: RO}
+- {name: "Murfatlar", country: RO}
+- {name: "Cotnari", country: RO}
+- {name: "Târnave", country: RO, synonyms: ["Tarnave"]}
+- {name: "Drăgășani", country: RO, synonyms: ["Dragasani"]}
+- {name: "Thracian Valley", country: BG, synonyms: ["Thracian Lowlands", "Thrace (Bulgaria)"]}
+- {name: "Danubian Plain", country: BG}
+- {name: "Struma Valley", country: BG, synonyms: ["Melnik (region)"]}
+- {name: "Istria", country: HR, synonyms: ["Istra"]}
+- {name: "Dalmatia", country: HR, synonyms: ["Dalmacija"]}
+- {name: "Pelješac", country: HR, parent: "Dalmatia", synonyms: ["Peljesac", "Dingač"]}
+- {name: "Hvar", country: HR, parent: "Dalmatia"}
+- {name: "Slavonia", country: HR, synonyms: ["Slavonija"]}
+- {name: "Primorska", country: SI, synonyms: ["Primorje", "Slovenian Littoral"]}
+- {name: "Goriška Brda", country: SI, parent: "Primorska", synonyms: ["Brda", "Goriska Brda"]}
+- {name: "Vipava Valley", country: SI, parent: "Primorska", synonyms: ["Vipavska dolina", "Vipava"]}
+- {name: "Kras", country: SI, parent: "Primorska", synonyms: ["Karst"]}
+- {name: "Podravje", country: SI, synonyms: ["Drava Valley", "Štajerska", "Stajerska"]}
+- {name: "Fruška Gora", country: RS, synonyms: ["Fruska Gora"]}
+- {name: "Tikveš", country: MK, synonyms: ["Tikves"]}
+- {name: "Codru", country: MD}
+- {name: "Valul lui Traian", country: MD}
+- {name: "Ștefan Vodă", country: MD, synonyms: ["Stefan Voda"]}
+
+# ======================= CAUCASUS / TURKEY / LEVANT =======================
+- {name: "Kakheti", country: GE, synonyms: ["Kakhetia"]}
+- {name: "Tsinandali", country: GE, parent: "Kakheti"}
+- {name: "Kindzmarauli", country: GE, parent: "Kakheti"}
+- {name: "Mukuzani", country: GE, parent: "Kakheti"}
+- {name: "Kartli", country: GE}
+- {name: "Imereti", country: GE}
+- {name: "Racha", country: GE, synonyms: ["Racha-Lechkhumi", "Khvanchkara"]}
+- {name: "Vayots Dzor", country: AM, synonyms: ["Areni (region)"]}
+- {name: "Thrace", country: TR, synonyms: ["Turkish Thrace", "Marmara"]}
+- {name: "Aegean", country: TR, synonyms: ["Aegean Turkey"]}
+- {name: "Cappadocia", country: TR, synonyms: ["Kapadokya"]}
+- {name: "Bekaa Valley", country: LB, synonyms: ["Bekaa", "Beqaa Valley", "Beqaa", "Béqaa"]}
+- {name: "Mount Lebanon", country: LB}
+- {name: "Batroun", country: LB}
+- {name: "Galilee", country: IL, synonyms: ["Galil", "Upper Galilee"]}
+- {name: "Golan Heights", country: IL, synonyms: ["Golan"]}
+- {name: "Judean Hills", country: IL, synonyms: ["Judea", "Judean Foothills"]}
+- {name: "Shomron", country: IL, synonyms: ["Samaria"]}
+- {name: "Negev", country: IL}
+
+# ======================= SOUTH AFRICA =======================
+- {name: "Western Cape", country: ZA, classification: GU}
+- {name: "Coastal Region", country: ZA, parent: "Western Cape", classification: Region}
+- {name: "Stellenbosch", country: ZA, parent: "Coastal Region", classification: District, synonyms: ["Simonsberg-Stellenbosch", "Stellenbosch WO"]}
+- {name: "Paarl", country: ZA, parent: "Coastal Region", classification: District, synonyms: ["Paarl WO"]}
+- {name: "Franschhoek", country: ZA, parent: "Paarl", classification: Ward, synonyms: ["Franschhoek Valley"]}
+- {name: "Wellington", country: ZA, parent: "Paarl", classification: District}
+- {name: "Constantia", country: ZA, parent: "Coastal Region", classification: Ward, synonyms: ["Constantia Valley", "Constantia WO"]}
+- {name: "Swartland", country: ZA, parent: "Coastal Region", classification: District}
+- {name: "Darling", country: ZA, parent: "Coastal Region", classification: District}
+- {name: "Durbanville", country: ZA, parent: "Coastal Region", classification: Ward}
+- {name: "Tulbagh", country: ZA, parent: "Coastal Region", classification: District}
+- {name: "Breede River Valley", country: ZA, parent: "Western Cape", classification: Region}
+- {name: "Robertson", country: ZA, parent: "Breede River Valley", classification: District, synonyms: ["Robertson WO"]}
+- {name: "Worcester", country: ZA, parent: "Breede River Valley", classification: District}
+- {name: "Breedekloof", country: ZA, parent: "Breede River Valley", classification: District}
+- {name: "Cape South Coast", country: ZA, parent: "Western Cape", classification: Region}
+- {name: "Walker Bay", country: ZA, parent: "Cape South Coast", classification: District}
+- {name: "Hemel-en-Aarde", country: ZA, parent: "Walker Bay", classification: Ward, synonyms: ["Hemel-en-Aarde Valley", "Hemel en Aarde"]}
+- {name: "Elgin", country: ZA, parent: "Cape South Coast", classification: District}
+- {name: "Overberg", country: ZA, parent: "Cape South Coast", classification: District}
+- {name: "Klein Karoo", country: ZA, parent: "Western Cape", classification: Region, synonyms: ["Little Karoo"]}
+- {name: "Olifants River", country: ZA, parent: "Western Cape", classification: Region}
+- {name: "Cape Town", country: ZA, parent: "Coastal Region", classification: District}
+- {name: "Northern Cape", country: ZA, classification: GU}
+
+# ======================= AUSTRALIA =======================
+- {name: "South Australia", country: AU, classification: Zone, synonyms: ["SA"]}
+- {name: "Barossa Valley", country: AU, parent: "South Australia", classification: GI, synonyms: ["Barossa"]}
+- {name: "Eden Valley", country: AU, parent: "South Australia", classification: GI}
+- {name: "Clare Valley", country: AU, parent: "South Australia", classification: GI}
+- {name: "McLaren Vale", country: AU, parent: "South Australia", classification: GI}
+- {name: "Adelaide Hills", country: AU, parent: "South Australia", classification: GI}
+- {name: "Langhorne Creek", country: AU, parent: "South Australia", classification: GI}
+- {name: "Limestone Coast", country: AU, parent: "South Australia", classification: Zone}
+- {name: "Coonawarra", country: AU, parent: "Limestone Coast", classification: GI}
+- {name: "Padthaway", country: AU, parent: "Limestone Coast", classification: GI}
+- {name: "Riverland", country: AU, parent: "South Australia", classification: GI}
+- {name: "Victoria", country: AU, classification: Zone, synonyms: ["Victoria (Australia)"]}
+- {name: "Yarra Valley", country: AU, parent: "Victoria", classification: GI}
+- {name: "Mornington Peninsula", country: AU, parent: "Victoria", classification: GI}
+- {name: "Heathcote", country: AU, parent: "Victoria", classification: GI}
+- {name: "Geelong", country: AU, parent: "Victoria", classification: GI}
+- {name: "Rutherglen", country: AU, parent: "Victoria", classification: GI}
+- {name: "King Valley", country: AU, parent: "Victoria", classification: GI}
+- {name: "Grampians", country: AU, parent: "Victoria", classification: GI}
+- {name: "Beechworth", country: AU, parent: "Victoria", classification: GI}
+- {name: "Macedon Ranges", country: AU, parent: "Victoria", classification: GI}
+- {name: "New South Wales", country: AU, classification: Zone, synonyms: ["NSW"]}
+- {name: "Hunter Valley", country: AU, parent: "New South Wales", classification: GI, synonyms: ["Hunter"]}
+- {name: "Orange", country: AU, parent: "New South Wales", classification: GI}
+- {name: "Mudgee", country: AU, parent: "New South Wales", classification: GI}
+- {name: "Riverina", country: AU, parent: "New South Wales", classification: GI}
+- {name: "Canberra District", country: AU, parent: "New South Wales", classification: GI, synonyms: ["Canberra"]}
+- {name: "Western Australia", country: AU, classification: Zone}
+- {name: "Margaret River", country: AU, parent: "Western Australia", classification: GI}
+- {name: "Great Southern", country: AU, parent: "Western Australia", classification: GI, synonyms: ["Frankland River", "Mount Barker"]}
+- {name: "Swan Valley", country: AU, parent: "Western Australia", classification: GI, synonyms: ["Swan District"]}
+- {name: "Tasmania", country: AU, classification: GI}
+- {name: "South Eastern Australia", country: AU, classification: GI, synonyms: ["South-Eastern Australia", "SE Australia", "Southeastern Australia"]}
+
+# ======================= NEW ZEALAND =======================
+- {name: "Marlborough", country: NZ, classification: GI}
+- {name: "Central Otago", country: NZ, classification: GI}
+- {name: "Hawke's Bay", country: NZ, classification: GI, synonyms: ["Hawkes Bay", "Hawke’s Bay"]}
+- {name: "Gimblett Gravels", country: NZ, parent: "Hawke's Bay"}
+- {name: "Wairarapa", country: NZ, classification: GI}
+- {name: "Martinborough", country: NZ, parent: "Wairarapa", classification: GI}
+- {name: "Nelson", country: NZ, classification: GI}
+- {name: "Canterbury", country: NZ, classification: GI, synonyms: ["North Canterbury"]}
+- {name: "Waipara", country: NZ, parent: "Canterbury", classification: GI, synonyms: ["Waipara Valley"]}
+- {name: "Gisborne", country: NZ, classification: GI}
+- {name: "Auckland", country: NZ, classification: GI}
+- {name: "Waiheke Island", country: NZ, parent: "Auckland", classification: GI, synonyms: ["Waiheke"]}
+
+# ======================= UNITED STATES =======================
+- {name: "California", country: US, synonyms: ["CA", "Calif."]}
+- {name: "North Coast", country: US, parent: "California", classification: AVA}
+- {name: "Napa Valley", country: US, parent: "North Coast", classification: AVA, synonyms: ["Napa", "Napa Valley AVA", "Napa County"]}
+- {name: "Oakville", country: US, parent: "Napa Valley", classification: AVA}
+- {name: "Rutherford", country: US, parent: "Napa Valley", classification: AVA}
+- {name: "St. Helena", country: US, parent: "Napa Valley", classification: AVA, synonyms: ["Saint Helena", "St Helena"]}
+- {name: "Stags Leap District", country: US, parent: "Napa Valley", classification: AVA, synonyms: ["Stags Leap", "Stag's Leap District", "Stag's Leap"]}
+- {name: "Howell Mountain", country: US, parent: "Napa Valley", classification: AVA}
+- {name: "Mount Veeder", country: US, parent: "Napa Valley", classification: AVA}
+- {name: "Calistoga", country: US, parent: "Napa Valley", classification: AVA}
+- {name: "Yountville", country: US, parent: "Napa Valley", classification: AVA}
+- {name: "Atlas Peak", country: US, parent: "Napa Valley", classification: AVA}
+- {name: "Coombsville", country: US, parent: "Napa Valley", classification: AVA}
+- {name: "Spring Mountain District", country: US, parent: "Napa Valley", classification: AVA, synonyms: ["Spring Mountain"]}
+- {name: "Los Carneros", country: US, parent: "North Coast", classification: AVA, synonyms: ["Carneros"]}
+- {name: "Sonoma County", country: US, parent: "North Coast", synonyms: ["Sonoma"]}
+- {name: "Russian River Valley", country: US, parent: "Sonoma County", classification: AVA, synonyms: ["Russian River", "Russian River Valley AVA", "Green Valley of Russian River Valley"]}
+- {name: "Dry Creek Valley", country: US, parent: "Sonoma County", classification: AVA, synonyms: ["Dry Creek"]}
+- {name: "Alexander Valley", country: US, parent: "Sonoma County", classification: AVA}
+- {name: "Sonoma Coast", country: US, parent: "Sonoma County", classification: AVA, synonyms: ["West Sonoma Coast", "Fort Ross-Seaview"]}
+- {name: "Sonoma Valley", country: US, parent: "Sonoma County", classification: AVA}
+- {name: "Knights Valley", country: US, parent: "Sonoma County", classification: AVA}
+- {name: "Chalk Hill", country: US, parent: "Sonoma County", classification: AVA}
+- {name: "Petaluma Gap", country: US, parent: "Sonoma County", classification: AVA}
+- {name: "Bennett Valley", country: US, parent: "Sonoma County", classification: AVA}
+- {name: "Mendocino County", country: US, parent: "North Coast", synonyms: ["Mendocino"]}
+- {name: "Anderson Valley", country: US, parent: "Mendocino County", classification: AVA}
+- {name: "Lake County", country: US, parent: "North Coast", synonyms: ["Clear Lake"]}
+- {name: "Sierra Foothills", country: US, parent: "California", classification: AVA}
+- {name: "Amador County", country: US, parent: "Sierra Foothills", synonyms: ["Amador", "Shenandoah Valley (California)", "Fiddletown"]}
+- {name: "El Dorado", country: US, parent: "Sierra Foothills", classification: AVA, synonyms: ["El Dorado County"]}
+- {name: "Lodi", country: US, parent: "California", classification: AVA}
+- {name: "Clarksburg", country: US, parent: "California", classification: AVA}
+- {name: "Central Coast", country: US, parent: "California", classification: AVA}
+- {name: "Monterey County", country: US, parent: "Central Coast", synonyms: ["Monterey", "Monterey AVA"]}
+- {name: "Santa Lucia Highlands", country: US, parent: "Monterey County", classification: AVA}
+- {name: "Arroyo Seco", country: US, parent: "Monterey County", classification: AVA}
+- {name: "Paso Robles", country: US, parent: "Central Coast", classification: AVA, synonyms: ["Paso", "Paso Robles AVA", "Adelaida District", "Willow Creek District"]}
+- {name: "San Luis Obispo County", country: US, parent: "Central Coast", synonyms: ["San Luis Obispo", "SLO Coast"]}
+- {name: "Edna Valley", country: US, parent: "San Luis Obispo County", classification: AVA}
+- {name: "Arroyo Grande Valley", country: US, parent: "San Luis Obispo County", classification: AVA}
+- {name: "Santa Barbara County", country: US, parent: "Central Coast", synonyms: ["Santa Barbara"]}
+- {name: "Santa Ynez Valley", country: US, parent: "Santa Barbara County", classification: AVA, synonyms: ["Santa Ynez"]}
+- {name: "Sta. Rita Hills", country: US, parent: "Santa Ynez Valley", classification: AVA, synonyms: ["Santa Rita Hills", "Sta Rita Hills"]}
+- {name: "Happy Canyon of Santa Barbara", country: US, parent: "Santa Ynez Valley", classification: AVA, synonyms: ["Happy Canyon"]}
+- {name: "Ballard Canyon", country: US, parent: "Santa Ynez Valley", classification: AVA}
+- {name: "Santa Maria Valley", country: US, parent: "Santa Barbara County", classification: AVA}
+- {name: "Livermore Valley", country: US, parent: "California", classification: AVA, synonyms: ["Livermore"]}
+- {name: "Santa Cruz Mountains", country: US, parent: "California", classification: AVA}
+- {name: "Temecula Valley", country: US, parent: "California", classification: AVA, synonyms: ["Temecula"]}
+- {name: "Oregon", country: US, synonyms: ["OR"]}
+- {name: "Willamette Valley", country: US, parent: "Oregon", classification: AVA, synonyms: ["Willamette", "Willamette Valley AVA"]}
+- {name: "Dundee Hills", country: US, parent: "Willamette Valley", classification: AVA}
+- {name: "Yamhill-Carlton", country: US, parent: "Willamette Valley", classification: AVA, synonyms: ["Yamhill Carlton"]}
+- {name: "Ribbon Ridge", country: US, parent: "Willamette Valley", classification: AVA}
+- {name: "Eola-Amity Hills", country: US, parent: "Willamette Valley", classification: AVA, synonyms: ["Eola Amity Hills"]}
+- {name: "Chehalem Mountains", country: US, parent: "Willamette Valley", classification: AVA}
+- {name: "McMinnville", country: US, parent: "Willamette Valley", classification: AVA}
+- {name: "Umpqua Valley", country: US, parent: "Oregon", classification: AVA}
+- {name: "Rogue Valley", country: US, parent: "Oregon", classification: AVA, synonyms: ["Applegate Valley"]}
+- {name: "Washington", country: US, synonyms: ["Washington State"]}
+- {name: "Columbia Valley", country: US, parent: "Washington", classification: AVA}
+- {name: "Yakima Valley", country: US, parent: "Columbia Valley", classification: AVA}
+- {name: "Walla Walla Valley", country: US, parent: "Columbia Valley", classification: AVA, synonyms: ["Walla Walla"]}
+- {name: "Red Mountain", country: US, parent: "Columbia Valley", classification: AVA}
+- {name: "Horse Heaven Hills", country: US, parent: "Columbia Valley", classification: AVA}
+- {name: "Wahluke Slope", country: US, parent: "Columbia Valley", classification: AVA}
+- {name: "Rattlesnake Hills", country: US, parent: "Yakima Valley", classification: AVA}
+- {name: "Idaho", country: US, synonyms: ["Snake River Valley"]}
+- {name: "New York", country: US, synonyms: ["New York State", "NY"]}
+- {name: "Finger Lakes", country: US, parent: "New York", classification: AVA, synonyms: ["Seneca Lake", "Cayuga Lake", "Keuka Lake"]}
+- {name: "Long Island", country: US, parent: "New York", classification: AVA, synonyms: ["North Fork of Long Island", "North Fork", "Hamptons"]}
+- {name: "Hudson River Region", country: US, parent: "New York", classification: AVA, synonyms: ["Hudson Valley"]}
+- {name: "Virginia", country: US, synonyms: ["Monticello", "VA"]}
+- {name: "Texas", country: US, synonyms: ["TX"]}
+- {name: "Texas Hill Country", country: US, parent: "Texas", classification: AVA, synonyms: ["Hill Country"]}
+- {name: "Texas High Plains", country: US, parent: "Texas", classification: AVA, synonyms: ["High Plains"]}
+- {name: "Michigan", country: US, synonyms: ["Leelanau Peninsula", "Old Mission Peninsula"]}
+- {name: "Missouri", country: US, synonyms: ["Augusta (Missouri)"]}
+- {name: "Colorado", country: US, synonyms: ["Grand Valley"]}
+- {name: "Arizona", country: US, synonyms: ["Willcox", "Verde Valley"]}
+- {name: "New Mexico", country: US}
+- {name: "North Carolina", country: US, synonyms: ["Yadkin Valley"]}
+- {name: "Pennsylvania", country: US}
+- {name: "Ohio", country: US}
+
+# ======================= CANADA / MEXICO =======================
+- {name: "British Columbia", country: CA, synonyms: ["BC"]}
+- {name: "Okanagan Valley", country: CA, parent: "British Columbia", classification: VQA, synonyms: ["Okanagan"]}
+- {name: "Similkameen Valley", country: CA, parent: "British Columbia", classification: VQA, synonyms: ["Similkameen"]}
+- {name: "Ontario", country: CA}
+- {name: "Niagara Peninsula", country: CA, parent: "Ontario", classification: VQA, synonyms: ["Niagara", "Niagara-on-the-Lake", "Niagara Escarpment"]}
+- {name: "Prince Edward County", country: CA, parent: "Ontario", classification: VQA}
+- {name: "Nova Scotia", country: CA, synonyms: ["Annapolis Valley"]}
+- {name: "Baja California", country: MX, synonyms: ["Baja"]}
+- {name: "Valle de Guadalupe", country: MX, parent: "Baja California", synonyms: ["Guadalupe Valley"]}
+
+# ======================= ARGENTINA =======================
+- {name: "Mendoza", country: AR, synonyms: ["Mendoza Province"]}
+- {name: "Luján de Cuyo", country: AR, parent: "Mendoza", synonyms: ["Lujan de Cuyo", "Agrelo", "Perdriel", "Vistalba"]}
+- {name: "Maipú", country: AR, parent: "Mendoza", synonyms: ["Maipu"]}
+- {name: "Uco Valley", country: AR, parent: "Mendoza", synonyms: ["Valle de Uco", "Gualtallary", "Paraje Altamira", "La Consulta", "Vista Flores"]}
+- {name: "Tupungato", country: AR, parent: "Uco Valley"}
+- {name: "Tunuyán", country: AR, parent: "Uco Valley", synonyms: ["Tunuyan"]}
+- {name: "San Rafael", country: AR, parent: "Mendoza"}
+- {name: "Salta", country: AR}
+- {name: "Cafayate", country: AR, parent: "Salta"}
+- {name: "Calchaquí Valley", country: AR, parent: "Salta", synonyms: ["Valles Calchaquíes", "Calchaqui Valley", "Valle Calchaquí", "Valles Calchaquies"]}
+- {name: "Patagonia", country: AR, synonyms: ["Patagonia Argentina"]}
+- {name: "Neuquén", country: AR, parent: "Patagonia", synonyms: ["Neuquen"]}
+- {name: "Río Negro", country: AR, parent: "Patagonia", synonyms: ["Rio Negro"]}
+- {name: "San Juan", country: AR, synonyms: ["San Juan Province", "Pedernal Valley"]}
+- {name: "Jujuy", country: AR}
+
+# ======================= CHILE =======================
+- {name: "Central Valley", country: CL, synonyms: ["Valle Central", "Central Valley (Chile)"]}
+- {name: "Maipo Valley", country: CL, parent: "Central Valley", synonyms: ["Maipo", "Valle del Maipo", "Alto Maipo"]}
+- {name: "Rapel Valley", country: CL, parent: "Central Valley", synonyms: ["Rapel", "Valle del Rapel"]}
+- {name: "Colchagua Valley", country: CL, parent: "Rapel Valley", synonyms: ["Colchagua", "Valle de Colchagua", "Apalta"]}
+- {name: "Cachapoal Valley", country: CL, parent: "Rapel Valley", synonyms: ["Cachapoal", "Valle del Cachapoal"]}
+- {name: "Curicó Valley", country: CL, parent: "Central Valley", synonyms: ["Curicó", "Curico", "Curico Valley", "Valle de Curicó"]}
+- {name: "Maule Valley", country: CL, parent: "Central Valley", synonyms: ["Maule", "Valle del Maule"]}
+- {name: "Aconcagua", country: CL, synonyms: ["Aconcagua Valley", "Aconcagua Region", "Valle de Aconcagua"]}
+- {name: "Casablanca Valley", country: CL, parent: "Aconcagua", synonyms: ["Casablanca", "Valle de Casablanca"]}
+- {name: "San Antonio Valley", country: CL, parent: "Aconcagua", synonyms: ["San Antonio", "Valle de San Antonio"]}
+- {name: "Leyda Valley", country: CL, parent: "San Antonio Valley", synonyms: ["Leyda", "Valle de Leyda"]}
+- {name: "Coquimbo", country: CL}
+- {name: "Limarí Valley", country: CL, parent: "Coquimbo", synonyms: ["Limarí", "Limari", "Limari Valley", "Valle del Limarí"]}
+- {name: "Elqui Valley", country: CL, parent: "Coquimbo", synonyms: ["Elqui", "Valle del Elqui"]}
+- {name: "Choapa Valley", country: CL, parent: "Coquimbo", synonyms: ["Choapa"]}
+- {name: "Southern Chile", country: CL, synonyms: ["Sur", "Región del Sur"]}
+- {name: "Itata Valley", country: CL, parent: "Southern Chile", synonyms: ["Itata", "Valle del Itata"]}
+- {name: "Bío-Bío Valley", country: CL, parent: "Southern Chile", synonyms: ["Bio Bio", "Biobío", "Bío Bío", "Bio-Bio Valley", "Valle del Bío-Bío"]}
+- {name: "Malleco Valley", country: CL, parent: "Southern Chile", synonyms: ["Malleco"]}
+
+# ======================= REST OF THE WORLD =======================
+- {name: "Canelones", country: UY}
+- {name: "Maldonado", country: UY, synonyms: ["Garzón", "Garzon"]}
+- {name: "Serra Gaúcha", country: BR, synonyms: ["Serra Gaucha", "Vale dos Vinhedos"]}
+- {name: "Campanha", country: BR, synonyms: ["Campanha Gaúcha"]}
+- {name: "Ica", country: PE}
+- {name: "Ningxia", country: CN, synonyms: ["Helan Mountain"]}
+- {name: "Shandong", country: CN, synonyms: ["Yantai", "Penglai"]}
+- {name: "Yunnan", country: CN, synonyms: ["Shangri-La"]}
+- {name: "Yamanashi", country: JP, synonyms: ["Katsunuma", "Koshu (region)"]}
+- {name: "Nagano", country: JP}
+- {name: "Hokkaido", country: JP}
+- {name: "Nashik", country: IN, synonyms: ["Nasik"]}
+- {name: "Meknès", country: MA, synonyms: ["Meknes", "Guerrouane"]}

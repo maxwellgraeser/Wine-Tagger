@@ -31,18 +31,14 @@ schema is free to change. The only carry-over mechanic is run-state resume.
 
 **NOT done — known gaps / bugs (fix before relying on a run):**
 
-1. **DDG import mismatch (critical).** `searcher.py` does
-   `from ddgs import DDGS`, but `requirements.txt` pins `duckduckgo-search`
-   (imports as `duckduckgo_search`). The import fails silently → `DDGS=None`
-   → **zero snippets gathered → every wine routes to `needs_review`** with no
-   error. Align the import and the requirement, and fail loudly when
-   `DDGS is None`.
-2. **The "Reseed plan" below is UNBUILT.** `library.db` is still the v1
-   firehose: ~1672 grapes (nearly all with no color), 213 countries, **36
-   regions**. There is no `is_canonical` column, no `region_synonyms` table,
-   and no `allowlist/` directory. With only 36 regions, `submit_tags` rejects
-   most real regions as non-canonical. Executing BATON.md Tasks 1–8 is the
-   biggest lever on output quality. (BATON.md tracks this work.)
+1. ~~DDG import mismatch (critical).~~ **Fixed 2026-09-15.** `searcher.py`
+   imports `ddgs` and falls back to `duckduckgo_search`; a missing package
+   now raises at import instead of silently yielding zero snippets.
+2. ~~The "Reseed plan" below is UNBUILT.~~ **Built 2026-09-15.** Allowlist
+   YAMLs, QID resolver + lock file, allowlist-driven `build_db.py`,
+   placeholder pass, canonical-first server, and a test suite are in.
+   `BATON.md` records what changed versus the first draft (every
+   hand-typed QID in it was wrong) and how to re-seed.
 3. **Confidence threshold is self-defeating.** `DEFAULT_CONFIDENCE_THRESHOLD
    = 90`, but `SYSTEM_PROMPT_MCP` caps confidence at 84 for single-snippet
    answers, and the producer gate + `SNIPPET_MATCH_THRESHOLD = 85` often
@@ -55,8 +51,9 @@ schema is free to change. The only carry-over mechanic is run-state resume.
 - No `fermentation/run.sh` (Phase 4 cutover). Run via
   `python -m fermentation.ferment`.
 - `curation/` not yet deleted.
-- No tests cover any fermentation module (the `curation/test/` harness tests
-  curation only).
+- Tests cover `library_mcp` only (`fermentation/library_mcp/tests/`:
+  allowlist validation, 24-wine coverage, server gate). `searcher` /
+  `scorer` / `tagger` / `ferment` remain untested.
 - No snippet cache (deliberate, per Risk #7 — but compounds bug #1: a
   throttled DDG run is indistinguishable from a clean all-`needs_review` run).
 
@@ -878,6 +875,45 @@ allowlist canonicals (the v1 source of `Emilia Romagna` /
 - **Re-seed cadence stays a dev op.** Re-run `build_db.py`, commit the
   new `library.db`. No runtime fetch (unchanged from v1 PLAN).
 
+### Revisions made while executing (2026-09-15)
+
+Everything above in this section is the *intended* design; the build
+diverges from it in these specific ways, each forced by what Wikidata
+actually contains. `BATON.md` has the longer rationale.
+
+- **Allowlists keyed by name; QIDs machine-resolved into
+  `allowlist/qids.lock.yaml`.** Every hand-typed QID in the first draft
+  pointed at the wrong entity. `seed/resolve_qids.py` does batched
+  entity search through the SPARQL MWAPI service and records label +
+  description per pick for review; `qid:` in a YAML entry overrides it.
+- **Region QIDs optional.** Hierarchy, country and classification are
+  authored in `regions.yaml`; Wikidata's typing of wine regions is too
+  inconsistent (wine / valley / commune / AVA / AOC) to be load-bearing.
+  Grape QIDs remain mandatory (and are checked to be `grape variety`).
+- **Colour authored in `grapes.yaml`** — Wikidata P462 exists on 2 grapes.
+- **Placeholder filter is "has an enwiki article"**, not
+  `P225 "Vitis vinifera"` (which is a taxon-name property and matches
+  nothing useful). ~680 grapes qualify. Regions: `wine-producing region`
+  + `AVA` subclasses with an enwiki article, pinned to an allowlisted
+  country.
+- **Wikipedia parsers resolve by name/synonym and never mint rows**
+  (Parsoid HTML has no QIDs on anchors). That, not QID-awareness, is
+  what stops the duplicate-region problem.
+- **`submit_tags` semantics tightened.** Unknown regions/countries are
+  issues (`unknown_region`, `unknown_country`), placeholders are issues
+  (`non_canonical_region`, `placeholder_grape`), `placeholder_grapes`
+  became `phrase_grapes`, hints list the offending values, regions are
+  expanded to their parent chain, and country is inferred from regions
+  when omitted. `lookup_grape` returns `is_phrase` + `is_placeholder`.
+- **`country_synonyms` table added** alongside `region_synonyms`;
+  ISO codes resolve as country names.
+- **Server uses in-memory folded indexes** (no per-miss table scans).
+- **No migrations**: `build_db.py` rebuilds into a temp file and renames.
+
+Built 2026-09-15: 46 countries; 675 canonical + 275 placeholder regions;
+335 canonical + 375 placeholder grapes; 48 tests green. Counts and the
+re-seed procedure live in `BATON.md`.
+
 ### Coverage notes — `curation/test/combined.csv`
 
 The 24-wine test set exercises the plan as follows:
@@ -892,9 +928,10 @@ The 24-wine test set exercises the plan as follows:
   Sauvignon/Franc, Merlot, Picpoul. Synonym layer earns its keep on:
   `Aragonez → Tempranillo`, `Tinto Fino → Tempranillo`,
   `Pinot Grigio → Pinot Gris`, `Picpoul ↔ Piquepoul`. The Basque
-  `Hondarrabi Zuri` / `Hondarrabi Beltza` (Urruzola Txakolina) sit in
-  the placeholder tier — real grapes, niche, exactly the case the
-  placeholder pass exists for.
+  `Hondarrabi Zuri` / `Hondarrabi Beltza` (Urruzola Txakolina) were
+  promoted to canonical during the build — they are on a stocked label,
+  which is the whole test for inclusion. The placeholder tier is
+  exercised by the test suite against whatever the pass produces.
 - **Regions** — most concentrated work. Solidly canonical in any
   reasonable 300-region list: Napa, Ribera del Duero, Rioja, Barolo,
   Veneto, Côtes du Roussillon, Touraine, Brouilly, Willamette Valley,

@@ -39,7 +39,7 @@ TOOL_SCHEMAS: list[dict[str, Any]] = [
         "type": "function",
         "function": {
             "name": "lookup_country",
-            "description": "Resolve a country name to its canonical form. Returns {canonical, iso, known}.",
+            "description": "Resolve a country name, ISO code, or abbreviation (USA) to its canonical form. Returns {canonical, iso, known}.",
             "parameters": {
                 "type": "object",
                 "properties": {"name": {"type": "string"}},
@@ -51,7 +51,7 @@ TOOL_SCHEMAS: list[dict[str, Any]] = [
         "type": "function",
         "function": {
             "name": "lookup_region",
-            "description": "Resolve a wine region. Returns {canonical, country, parents[], known}.",
+            "description": "Resolve a wine region or synonym (Piemonte, Napa). Returns {canonical, country, parents[], classification, is_placeholder, known}. is_placeholder=true means real but non-canonical: it will not pass submit_tags -- use a canonical parent instead.",
             "parameters": {
                 "type": "object",
                 "properties": {"name": {"type": "string"}},
@@ -63,7 +63,7 @@ TOOL_SCHEMAS: list[dict[str, Any]] = [
         "type": "function",
         "function": {
             "name": "lookup_grape",
-            "description": "Resolve a grape (or one of its synonyms). Returns {canonical, color, origin, synonyms[], is_placeholder, known}.",
+            "description": "Resolve a grape or synonym (Garnacha, Shiraz, PN). Returns {canonical, color, origin, synonyms[], is_phrase, is_placeholder, known}. is_phrase=true means the input is filler like 'Bordeaux Blend'; is_placeholder=true means a real but niche grape that will not pass submit_tags.",
             "parameters": {
                 "type": "object",
                 "properties": {"name": {"type": "string"}},
@@ -110,8 +110,10 @@ TOOL_SCHEMAS: list[dict[str, Any]] = [
             "name": "submit_tags",
             "description": (
                 "Commit the final tag set. On success returns {ok: true, "
-                "normalized: {...}}; on failure returns {ok: false, issues: "
-                "[...], hints: {...}} -- read hints, fix, call again."
+                "normalized: {...}} with regions expanded to their parent chain "
+                "and country inferred from regions when omitted; on failure "
+                "returns {ok: false, issues: [...], hints: {...}} -- read hints, "
+                "fix, call again. Unknown or placeholder regions/grapes never pass."
             ),
             "parameters": {
                 "type": "object",
@@ -120,7 +122,7 @@ TOOL_SCHEMAS: list[dict[str, Any]] = [
                     "region": {
                         "type": "array",
                         "items": {"type": "string"},
-                        "description": "Most-specific first; do not include the country name.",
+                        "description": "Canonical region names, most-specific first; parents are added automatically. Do not include the country name.",
                     },
                     "grapes": {
                         "type": "array",

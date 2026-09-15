@@ -11,10 +11,20 @@ import time
 from .types import Product, Snippet
 from . import constants
 
+# `ddgs` is the renamed successor of `duckduckgo-search`; accept either so
+# the pinned requirement and a newer install both work. A missing package is
+# a hard error: a silent None here makes every wine route to needs_review
+# with zero snippets and no explanation.
 try:
     from ddgs import DDGS
 except ImportError:
-    DDGS = None
+    try:
+        from duckduckgo_search import DDGS
+    except ImportError as _exc:  # pragma: no cover
+        raise ImportError(
+            "searcher needs the `ddgs` (or legacy `duckduckgo-search`) package; "
+            "install requirements.txt"
+        ) from _exc
 
 
 # ---------------------------------------------------------------------------

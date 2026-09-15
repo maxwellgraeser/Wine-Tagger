@@ -8,8 +8,16 @@ where ParsedCountry is the dataclass below. The orchestrator
 (`build_db.py`) calls each parser with HTML fetched from the Wikipedia
 REST API and merges the result into the SQLite seeded from Wikidata.
 
-Rows whose Wikidata QID cannot be resolved are dropped — the database is
-QID-keyed and un-keyed rows would create silent duplicates.
+Parsers are an *enrichment* source only. `build_db.ingest_wikipedia`
+resolves every region and grape they mention by name/synonym against rows
+the canonical (allowlist) and placeholder passes already inserted, adds
+`region_grapes` edges, and fills in missing grape colours. It never mints
+new region or grape rows -- that was the v1 source of duplicate regions
+("Emilia Romagna" vs "Emilia-Romagna"). Anything a parser names that the
+allowlists don't know is silently skipped; add it to the YAML instead.
+
+Note: Wikipedia REST HTML does NOT carry Wikidata QIDs on anchors, so
+`wikidata_qid` on these rows is only ever a page slug hint, not a QID.
 """
 
 from __future__ import annotations

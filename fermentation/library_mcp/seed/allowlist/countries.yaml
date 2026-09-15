@@ -1,0 +1,50 @@
+# Canonical wine-producing countries (OIV-aligned, plus minor producers the
+# shop actually stocks). Keyed by ISO-3166-1 alpha-2; the QID is resolved at
+# build time from the ISO code (wdt:P297), so no lock entry is needed.
+# `synonyms` are appended to Wikidata's altLabels (USA, U.S., ...).
+- {name: "France", iso: FR}
+- {name: "Italy", iso: IT, synonyms: ["Italia"]}
+- {name: "Spain", iso: ES, synonyms: ["España", "Espana"]}
+- {name: "Portugal", iso: PT}
+- {name: "Germany", iso: DE, synonyms: ["Deutschland"]}
+- {name: "Austria", iso: AT, synonyms: ["Österreich", "Osterreich"]}
+- {name: "Switzerland", iso: CH, synonyms: ["Suisse", "Schweiz", "Svizzera"]}
+- {name: "Luxembourg", iso: LU}
+- {name: "United Kingdom", iso: GB, synonyms: ["UK", "U.K.", "Great Britain", "Britain", "England"]}
+- {name: "Greece", iso: GR, synonyms: ["Hellas"]}
+- {name: "Cyprus", iso: CY}
+- {name: "Hungary", iso: HU, synonyms: ["Magyarország", "Magyarorszag"]}
+- {name: "Czechia", iso: CZ, synonyms: ["Czech Republic"]}
+- {name: "Slovakia", iso: SK}
+- {name: "Romania", iso: RO, synonyms: ["România"]}
+- {name: "Bulgaria", iso: BG}
+- {name: "Croatia", iso: HR, synonyms: ["Hrvatska"]}
+- {name: "Slovenia", iso: SI, synonyms: ["Slovenija"]}
+- {name: "Serbia", iso: RS}
+- {name: "Bosnia and Herzegovina", iso: BA, synonyms: ["Bosnia"]}
+- {name: "Montenegro", iso: ME}
+- {name: "North Macedonia", iso: MK, synonyms: ["Macedonia (country)"]}
+- {name: "Albania", iso: AL}
+- {name: "Malta", iso: MT}
+- {name: "Moldova", iso: MD, synonyms: ["Republic of Moldova"]}
+- {name: "Ukraine", iso: UA}
+- {name: "Georgia", iso: GE, synonyms: ["Republic of Georgia", "Sakartvelo"]}
+- {name: "Armenia", iso: AM}
+- {name: "Turkey", iso: TR, synonyms: ["Türkiye", "Turkiye"]}
+- {name: "Lebanon", iso: LB}
+- {name: "Israel", iso: IL}
+- {name: "Morocco", iso: MA}
+- {name: "South Africa", iso: ZA, synonyms: ["RSA"]}
+- {name: "Australia", iso: AU}
+- {name: "New Zealand", iso: NZ, synonyms: ["NZ", "Aotearoa"]}
+- {name: "United States", iso: US, synonyms: ["USA", "U.S.A.", "U.S.", "US", "America", "United States of America"]}
+- {name: "Canada", iso: CA}
+- {name: "Mexico", iso: MX, synonyms: ["México"]}
+- {name: "Argentina", iso: AR}
+- {name: "Chile", iso: CL}
+- {name: "Uruguay", iso: UY}
+- {name: "Brazil", iso: BR, synonyms: ["Brasil"]}
+- {name: "Peru", iso: PE, synonyms: ["Perú"]}
+- {name: "China", iso: CN}
+- {name: "Japan", iso: JP}
+- {name: "India", iso: IN}
