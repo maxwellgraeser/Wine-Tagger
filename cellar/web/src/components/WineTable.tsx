@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
-import type { Wine } from '../api';
+import { TAG_STATUSES, TAG_STATUS_LABEL, type Wine } from '../api';
 import { Badge, PhaseDot, StatusBadge } from './Badge';
+import { formatRunId } from './RunHistory';
 
 type SortKey = 'name' | 'category' | 'brand' | 'country' | 'confidence' | 'tag_status';
 
@@ -86,10 +87,11 @@ export function WineTable({
           className="rounded-md border border-parchment bg-white px-2 py-1.5 text-sm focus:border-wine focus:outline-none"
         >
           <option value="all">All statuses</option>
-          <option value="auto">Auto</option>
-          <option value="needs_review">Needs review</option>
-          <option value="manual">Manual</option>
-          <option value="pending">Pending</option>
+          {TAG_STATUSES.map((s) => (
+            <option key={s} value={s}>
+              {TAG_STATUS_LABEL[s]}
+            </option>
+          ))}
         </select>
         <span className="text-xs text-muted">{filtered.length} wines</span>
       </div>
@@ -107,6 +109,14 @@ export function WineTable({
               {headerCell('confidence', 'Confidence')}
               {headerCell('tag_status', 'Status')}
               {showDevColumns && <th className="px-3 py-2 text-left font-semibold text-muted">Phases</th>}
+              {showDevColumns && (
+                <th
+                  className="px-3 py-2 text-left font-semibold text-muted"
+                  title="The run whose tag phase produced these tags (search-only runs don't count)"
+                >
+                  Tagged in
+                </th>
+              )}
             </tr>
           </thead>
           <tbody>
@@ -157,11 +167,21 @@ export function WineTable({
                     </div>
                   </td>
                 )}
+                {showDevColumns && (
+                  <td className="px-3 py-2 font-mono text-xs text-muted" title={w.tag_run_id ?? 'never tagged'}>
+                    {w.tag_run_id ? formatRunId(w.tag_run_id).slice(5) : '—'}
+                    {w.human_in_store && (
+                      <span className="ml-1 font-sans" title="The live table has since been hand-edited for this wine">
+                        ✎
+                      </span>
+                    )}
+                  </td>
+                )}
               </tr>
             ))}
             {filtered.length === 0 && (
               <tr>
-                <td colSpan={showDevColumns ? 9 : 7} className="px-3 py-6 text-center text-muted">
+                <td colSpan={showDevColumns ? 10 : 7} className="px-3 py-6 text-center text-muted">
                   No wines match.
                 </td>
               </tr>

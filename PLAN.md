@@ -23,7 +23,7 @@ dashboard for review and re-upload.
 | Domain | State | Entry point | Notes |
 |---|---|---|---|
 | `ingestion/` | ✅ Implemented | `ingestion/run.sh` | xlsx → `combined.csv` |
-| `fermentation/` | 🟧 Active build | `python -m fermentation.ferment` | no `run.sh` yet |
+| `fermentation/` | 🟧 Active build | `./ferment.sh` / `python -m fermentation.ferment` | |
 | `cellar/` | ✅ Built | `cellar/run.sh` | web app over all three stages; owns the Lightspeed export (was `distribution/`) |
 
 See each domain's `PLAN.md` for detail, and `Tree.html` (repo root) for a
@@ -86,7 +86,10 @@ downstream — no domain reaches back into an upstream domain's internals. The
 contract between domains is their output format:
 
 - Ingestion → Fermentation: `combined.csv` with agreed column names.
-- Fermentation → Cellar: `output/wines.json` with a known shape.
+- Fermentation → Cellar: `output/wines.json` with a known shape
+  (`tag_status` ∈ pending | model | needs_review | human).
+- Cellar ↔ Fermentation: `settings.json` at the repo root (confidence
+  threshold) — written by the dashboard, read by both.
 
 ## Running the Pipeline
 

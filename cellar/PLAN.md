@@ -37,7 +37,8 @@ Data it reads and writes (all at the repo root):
 |---|---|---|
 | `Sample Xlsx/*.xlsx` | you | lists them |
 | `ingestion/output/combined.csv` | ingestion | previews rows |
-| `output/wines.json` | fermentation | reads, `PATCH`es tag edits (marks `manual`) |
+| `output/wines.json` | fermentation | reads, `PATCH`es tag edits (marks `human`) |
+| `settings.json` | cellar | user knobs shared with the CLI (confidence threshold) |
 | `output/.run_state.json` | fermentation | shows resume cursor |
 | `logs/<run_id>/…` | fermentation | browses per-phase logs and transcripts |
 | `fermentation/library_mcp/library.db` | library seed | read-only vocab for the tag editor |
@@ -74,18 +75,53 @@ every wine, so the next run resumes where it stopped.
 GET    /api/status                       everything the top bar and stage cards need
 POST   /api/ingest/run                   -> job
 POST   /api/ferment/run                  {force, limit, confidence_threshold, model,
-                                          api_url, no_producer_gate, phase, run_id} -> job
+                                          api_url, no_producer_gate, phase, run_id,
+                                          stop_after} -> job
 POST   /api/llama/start                  start the llama-server script in the background
 GET    /api/llama/log?lines=
 GET    /api/jobs · /api/jobs/{id} · /api/jobs/{id}/events (SSE) · POST /api/jobs/{id}/stop
 GET    /api/ingestion/rows               combined.csv as JSON
 GET    /api/wines                        output/wines.json
 GET    /api/wines/{id}?run_id=           wine + its search/scorer/tagger/final logs
-PATCH  /api/wines/{id}                   tag edit -> tag_status = manual
+PATCH  /api/wines/{id}                   tag edit -> tag_status = human
+POST   /api/wines/reset-human            flip every human row back to pending
+GET    /api/settings · PATCH /api/settings   settings.json (confidence_threshold)
 GET    /api/runs · /api/runs/{id} · /api/runs/{id}/events · /api/runs/{id}/{phase}/{product_id}
+GET    /api/runs/{id}/results            the wine table as that run produced it (final/*.json)
+DELETE /api/runs/{id}                    rm -rf logs/{id} (409 if the active job writes to it)
+POST   /api/runs/delete                  {run_ids} | {keep_latest: N} | {all: true}
 GET    /api/library/countries · /regions?country= · /grapes
-GET    /api/export.xlsx?status=auto,manual   Lightspeed export (id, name, tags)
+GET    /api/export.xlsx?status=model,human   Lightspeed export (id, name, tags)
 ```
+
+## Which run am I looking at?
+
+Every row in `wines.json` carries two run ids: `run_id` is the last run that
+touched the row in *any* phase (a search-only run counts), `tag_run_id` is
+the run whose tag phase produced the tags shown. Rows written before
+`tag_run_id` existed get it backfilled on read (newest run with a
+`final/<id>.json`). The Distribute table shows `tag_run_id` in the developer
+"Tagged in" column.
+
+The **Results from** selector on Distribute picks what the table shows:
+
+- a run: exactly what `logs/<run>/` says — its wine set, tags from
+  `final/`, phase dots derived from which log files exist; wines the run
+  never reached are `pending`. Human edits are not shown here (they only
+  live in the store) but rows the store has since hand-edited get a ✎ mark.
+- **Live table**: `output/wines.json`, the merged result of every run plus
+  hand edits, and what the export uses.
+
+It defaults to the latest run and switches to a new run as soon as the job
+reports its id, so a fresh run never shows a previous iteration's results.
+
+## Deleting runs
+
+Ferment → Run history lists every `logs/<run_id>/` with per-run delete,
+"Delete all but latest 5" and "Delete all"; Distribute has "Delete this
+run" for the selected run. The server never deletes the run the active job
+writes to, and clears `output/.run_state.json` if it pointed at a deleted
+run. `wines.json` is untouched.
 
 ## Export
 
@@ -98,5 +134,24 @@ The file is also written to `output/lightspeed-export.xlsx`.
 - Auth: none, it is a local tool.
 - Pagination: the table loads everything; fine for hundreds of wines.
 - The old `distribution/` open question "separate overrides DB" is moot —
-  edits mark the row `manual` in `wines.json` and fermentation never
-  overwrites a `manual` row.
+  edits mark the row `human` in `wines.json` and fermentation never
+  overwrites a `human` row.
+
+## Tag statuses
+
+| value | meaning |
+|---|---|
+| `pending` | not tagged yet |
+| `model` | the LLM tagged it and cleared the confidence threshold |
+| `needs_review` | the LLM could not tag it confidently (no context, no grapes, or low confidence) |
+| `human` | a person saved tags in Cellar; fermentation skips it until "Reset human tags" |
+
+(`auto` / `manual` were the names before 2026-09-15; `store.load_store` migrates them.)
+
+## Phased runs
+
+"Pause after each phase" (Ferment panel) sends `stop_after=search`; the run
+exits after search with status `paused` and the panel shows **Continue → score**,
+which posts `{run_id, phase: score, stop_after: score}`, and so on. The
+table in Distribute refreshes live during a run (every progress event,
+throttled to one reload per 2 s) so tags appear as each wine is written.

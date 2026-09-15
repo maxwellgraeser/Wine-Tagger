@@ -32,19 +32,23 @@ export interface RunState {
 export interface WinesJsonStatus {
   exists: boolean;
   count: number;
-  by_status: {
-    auto: number;
-    needs_review: number;
-    manual: number;
-    pending: number;
-  };
+  by_status: Partial<Record<TagStatus, number>>;
 }
 
 export interface FermentationStatus {
   wines_json: WinesJsonStatus;
   last_run_id: string | null;
+  /** run.json status of last_run_id: running | paused | done | interrupted | failed */
+  last_run_status: string | null;
+  /** When last_run_status is "paused": the phase it stopped after. */
+  paused_after: Phase | null;
   run_state: RunState | null;
   runs: string[];
+}
+
+export interface Settings {
+  confidence_threshold: number;
+  path?: string;
 }
 
 export interface JobSummary {
@@ -69,6 +73,7 @@ export interface StatusResponse {
     model: string;
     confidence_threshold: number;
   };
+  settings: Settings;
   llama: LlamaStatus;
   ingestion: {
     inputs: InputFile[];
@@ -108,7 +113,22 @@ export interface PhaseStatus {
   tag: PhaseStatusValue;
 }
 
-export type TagStatus = 'pending' | 'auto' | 'needs_review' | 'manual';
+/**
+ * pending      not tagged yet
+ * model        the LLM tagged it and cleared the confidence threshold
+ * needs_review the LLM could not tag it confidently (or at all)
+ * human        a person saved tags in Cellar; fermentation never overwrites it
+ */
+export type TagStatus = 'pending' | 'model' | 'needs_review' | 'human';
+export const TAG_STATUSES: TagStatus[] = ['model', 'needs_review', 'human', 'pending'];
+export const TAG_STATUS_LABEL: Record<TagStatus, string> = {
+  model: 'Model',
+  needs_review: 'Needs review',
+  human: 'Human',
+  pending: 'Pending',
+};
+export type Phase = 'search' | 'score' | 'tag';
+export const PHASES: Phase[] = ['search', 'score', 'tag'];
 
 export interface Wine {
   id: number | string;
@@ -129,9 +149,14 @@ export interface Wine {
   tags_raw: string | null;
   tag_status: TagStatus;
   sales: SalesStats;
+  /** Last run that touched this row in any phase (a search-only run counts). */
   run_id: string | null;
+  /** Run whose tag phase produced the tags shown; null if never tagged. */
+  tag_run_id: string | null;
   phase_status: PhaseStatus;
   updated_at: string | null;
+  /** Only on run-results rows: the live store has since been hand-edited. */
+  human_in_store?: boolean;
 }
 
 export interface WinesResponse {
@@ -150,6 +175,8 @@ export interface Snippet {
 export interface ScoredSnippet extends Snippet {
   match_score: number | null;
   dropped_reason: string | null;
+  /** True when this snippet made the top-N cut into web_context (newer logs only). */
+  in_context?: boolean;
 }
 
 export interface TranscriptToolCall {
@@ -172,14 +199,17 @@ export interface SearchLog {
   run_id: string;
   snippets: Snippet[];
   raw_snippet_count: number;
+  errors?: { source: string; query: string; error: string }[];
 }
 
 export interface ScorerLog {
   input_count: number;
   producer_gate_dropped: number;
+  context_count?: number;
   scored_snippets: ScoredSnippet[];
   web_context_built: boolean;
   web_context: string | null;
+  llm?: { response: string | null; parsed: unknown; attempts: number; error: string | null } | null;
 }
 
 export interface TaggerLog {
@@ -238,8 +268,13 @@ export interface RunSummary {
   run_id: string;
   started_at: string | null;
   ended_at: string | null;
+  /** running | paused | done | interrupted | failed */
   status: string;
+  paused_after?: Phase | null;
+  error?: string | null;
   product_count: number | null;
+  /** Wines with a final/<id>.json, i.e. that reached the end of the tag phase. */
+  tagged_count: number;
   phases: {
     search?: RunPhaseSummary;
     score?: RunPhaseSummary;
@@ -255,6 +290,17 @@ export interface RunDetailResponse {
 
 export interface RunEventsResponse {
   events: JobEvent[];
+}
+
+export interface RunResultsResponse {
+  run: RunSummary;
+  wines: Wine[];
+}
+
+export interface RunsDeleteResponse {
+  deleted: string[];
+  /** Unknown ids, or the run the active job is still writing. */
+  skipped: string[];
 }
 
 export interface RegionEntry {
@@ -286,8 +332,10 @@ export interface FermentRunOptions {
   model?: string;
   api_url?: string;
   no_producer_gate?: boolean;
-  phase?: 'search' | 'score' | 'tag';
+  phase?: Phase;
   run_id?: string;
+  /** Pause the run once this phase finishes (the run can then be continued). */
+  stop_after?: Phase;
 }
 
 const BASE = '/api';
@@ -346,12 +394,21 @@ export const api = {
     request<WineDetailResponse>(`/wines/${id}${runId ? `?run_id=${encodeURIComponent(runId)}` : ''}`),
   patchWine: (id: number | string, patch: WinePatch) =>
     request<Wine>(`/wines/${id}`, { method: 'PATCH', body: JSON.stringify(patch) }),
-  resetManualWines: () => request<{ reset: number }>('/wines/reset-manual', { method: 'POST' }),
+  resetHumanWines: () => request<{ reset: number }>('/wines/reset-human', { method: 'POST' }),
+
+  getSettings: () => request<Settings>('/settings'),
+  patchSettings: (patch: Partial<Settings>) =>
+    request<Settings>('/settings', { method: 'PATCH', body: JSON.stringify(patch) }),
 
   getRuns: () => request<RunSummary[]>('/runs'),
   getRun: (runId: string) => request<RunDetailResponse>(`/runs/${encodeURIComponent(runId)}`),
   getRunEvents: (runId: string, limit?: number) =>
     request<RunEventsResponse>(`/runs/${encodeURIComponent(runId)}/events${limit ? `?limit=${limit}` : ''}`),
+  getRunResults: (runId: string) => request<RunResultsResponse>(`/runs/${encodeURIComponent(runId)}/results`),
+  deleteRun: (runId: string) =>
+    request<RunsDeleteResponse>(`/runs/${encodeURIComponent(runId)}`, { method: 'DELETE' }),
+  deleteRuns: (body: { run_ids?: string[]; all?: boolean; keep_latest?: number }) =>
+    request<RunsDeleteResponse>('/runs/delete', { method: 'POST', body: JSON.stringify(body) }),
 
   getCountries: () => request<string[]>('/library/countries'),
   getRegions: (country?: string) =>

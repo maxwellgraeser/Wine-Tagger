@@ -345,9 +345,12 @@ _HINTS = {
         "Generic phrases like 'Bordeaux Blend' or 'unknown' are not grapes. "
         "Submit the actual varieties; if truly unknown, leave grapes=[]."
     ),
+    # Not an issue: a submission with no grapes is ACCEPTED (ok: true) and
+    # reported under `warnings` so the country/region survive; the empty
+    # grape list is what routes the row to needs_review downstream.
     "no_grapes": (
-        "Grape list is empty. If the source genuinely doesn't name grapes, "
-        "submit anyway -- the row will route to needs_review."
+        "Grape list is empty; accepted as-is. The row will route to "
+        "needs_review. Only add grapes if a source actually names them."
     ),
     "non_canonical_grape": (
         "One or more grape names aren't in the canonical list. Call "
@@ -483,8 +486,13 @@ def submit_tags(
     if placeholder:
         _add_issue(issues, "placeholder_grape")
         detail["placeholder_grape"] = placeholder
+    warnings: list[str] = []
     if not normalized_grapes and not phrase_seen and not non_canonical and not placeholder:
-        _add_issue(issues, "no_grapes")
+        # Empty grapes are allowed (the tagger prompt tells the model to submit
+        # [] rather than guess). Surface it as a warning, never a rejection --
+        # rejecting here made the model retry until it gave up and lost the
+        # country/region it had already found.
+        warnings.append("no_grapes")
 
     # --- is_blend ---
     if is_blend is not None and normalized_grapes:
@@ -501,7 +509,7 @@ def submit_tags(
             hints[code] = hint
         return {"ok": False, "issues": issues, "hints": hints}
 
-    return {
+    out: dict = {
         "ok": True,
         "normalized": {
             "country": canonical_country,
@@ -514,6 +522,10 @@ def submit_tags(
             "confidence": confidence,
         },
     }
+    if warnings:
+        out["warnings"] = warnings
+        out["hints"] = {w: _HINTS.get(w, "") for w in warnings}
+    return out
 
 
 if __name__ == "__main__":

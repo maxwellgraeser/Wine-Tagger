@@ -77,7 +77,7 @@ def _call_llm(prompt: str, api_url: str, model: str, timeout: int = 45) -> str:
     payload = {
         "model": model,
         "messages": [{"role": "user", "content": prompt}],
-        "temperature": 0.1,
+        "temperature": 0.0,   # deterministic: at 0.1 the same snippet swung 0<->98 between runs
         "stream": False,
     }
     resp = requests.post(api_url, json=payload, timeout=timeout)
@@ -106,15 +106,19 @@ def _batch_match_score(
     snippets: list[Snippet],
     api_url: str,
     model: str,
-) -> dict[int, int]:
+) -> tuple[dict[int, int], dict]:
     """One LLM call rating each snippet 0-100 for product-match quality.
 
-    Returns {snippet_index: score}. Missing/invalid entries are treated as 0
-    by the caller. Snippets arriving here are already cleaned by searcher;
-    we score against `body` directly.
+    Returns `({snippet_index: score}, raw)` where `raw` records what the LLM
+    returned (`response`, `parsed`, `attempts`, `error`) so a parse failure
+    is visible in the scorer log instead of silently scoring everything 0.
+    If the first reply does not parse as JSON, one retry is made with
+    STRICT_SUFFIX appended. Snippets arriving here are already cleaned by
+    searcher; we score against `body` directly.
     """
+    raw: dict = {"response": None, "parsed": None, "attempts": 0, "error": None}
     if not snippets:
-        return {}
+        return {}, raw
 
     lines = [
         f"[{i}] ({s.source}): {s.body[:constants.SCORING_SNIPPET_CHARS]}"
@@ -129,11 +133,21 @@ def _batch_match_score(
     )
 
     raw_scores: dict = {}
-    try:
-        raw = _call_llm(prompt, api_url, model, timeout=45)
-        raw_scores = _extract_json(raw) or {}
-    except Exception:
-        raw_scores = {}
+    for attempt, text in enumerate((prompt, prompt + constants.STRICT_SUFFIX), start=1):
+        raw["attempts"] = attempt
+        try:
+            reply = _call_llm(text, api_url, model, timeout=constants.SCORING_TIMEOUT_SECONDS)
+        except Exception as exc:  # noqa: BLE001 — network/HTTP failure: try once more, then score 0s
+            raw["error"] = f"{type(exc).__name__}: {exc}"
+            continue
+        raw["response"] = reply
+        parsed = _extract_json(reply)
+        if isinstance(parsed, dict) and parsed:
+            raw_scores = parsed
+            raw["parsed"] = parsed
+            raw["error"] = None
+            break
+        raw["error"] = "no JSON object in reply"
 
     out: dict[int, int] = {}
     for i in range(len(snippets)):
@@ -142,7 +156,7 @@ def _batch_match_score(
         except (TypeError, ValueError):
             score = 0
         out[i] = min(100, max(0, score))
-    return out
+    return out, raw
 
 
 # ---------------------------------------------------------------------------
@@ -174,7 +188,11 @@ def _apply_producer_gate(
     for item in scored:
         if item.dropped_reason is not None:
             continue
-        if not _snippet_contains_any_token(item.snippet.body, gate_tokens):
+        # The body is the primary check; the URL slug is a legitimate second
+        # place for the producer to appear (vivino.com/en/cloudline-pinot-noir/…)
+        # when a site-scoped search returns a description that omits the name.
+        haystack = f"{item.snippet.body} {item.snippet.url or ''}"
+        if not _snippet_contains_any_token(haystack, gate_tokens):
             item.dropped_reason = "producer_absent"
     return scored
 
@@ -182,6 +200,48 @@ def _apply_producer_gate(
 # ---------------------------------------------------------------------------
 # Web-context assembly
 # ---------------------------------------------------------------------------
+
+def _source_family(s: ScoredSnippet) -> str:
+    """'Wine Searcher (UPC) #2' -> 'wine searcher (upc)'; groups a source's
+    numbered results together so diversity is measured across sources."""
+    return re.sub(r"\s*#\d+$", "", s.snippet.source or "").strip().lower()
+
+
+def _pick_diverse(survivors: list[ScoredSnippet], top_n: int) -> list[ScoredSnippet]:
+    """Choose up to `top_n` survivors (already sorted by score, desc) so the
+    context holds distinct facts rather than three copies of one page:
+
+      1. the distributor's snippet, if one survived (it names the exact blend);
+      2. the best-scoring snippet from each source not yet represented;
+      3. remaining slots by score.
+
+    Output keeps score order within each pass so the tagger still sees the
+    strongest evidence first.
+    """
+    chosen: list[ScoredSnippet] = []
+    seen_families: set[str] = set()
+
+    def take(s: ScoredSnippet) -> None:
+        chosen.append(s)
+        seen_families.add(_source_family(s))
+
+    for s in survivors:
+        if len(chosen) >= top_n:
+            break
+        if "(distributor)" in (s.snippet.source or "") and _source_family(s) not in seen_families:
+            take(s)
+    for s in survivors:
+        if len(chosen) >= top_n:
+            break
+        if s not in chosen and _source_family(s) not in seen_families:
+            take(s)
+    for s in survivors:
+        if len(chosen) >= top_n:
+            break
+        if s not in chosen:
+            take(s)
+    return chosen
+
 
 def _build_web_context(
     scored: list[ScoredSnippet],
@@ -201,7 +261,9 @@ def _build_web_context(
     if not survivors:
         return None
     survivors.sort(key=lambda s: s.match_score, reverse=True)
-    top = survivors[:top_n]
+    top = _pick_diverse(survivors, top_n)
+    for s in top:
+        s.in_context = True
     parts = [
         f"[{s.snippet.source} | match={s.match_score}]\n{s.snippet.body}"
         for s in top
@@ -220,7 +282,8 @@ def score_and_assemble(
     api_url: str,
     model: str,
     producer_gate: bool = True,
-) -> tuple[Optional[str], list[ScoredSnippet]]:
+    return_raw: bool = False,
+):
     """Score snippets, apply producer-absent hard gate, trim top-N, assemble context.
 
     Returns `(web_context_or_None, scored_full_list)`. The full list always
@@ -229,11 +292,17 @@ def score_and_assemble(
     the score threshold. If the gate kills every snippet — or none clear
     threshold — web_context is None and the caller should route the product
     straight to needs_review without invoking the tagger.
-    """
-    if not snippets:
-        return None, []
 
-    raw_scores = _batch_match_score(product, snippets, api_url, model)
+    Snippets that made the top-N cut are flagged `in_context=True`. With
+    `return_raw=True` a third element carries the scoring LLM's raw reply.
+    """
+    def _ret(ctx, scored_list, raw):
+        return (ctx, scored_list, raw) if return_raw else (ctx, scored_list)
+
+    if not snippets:
+        return _ret(None, [], {"response": None, "parsed": None, "attempts": 0, "error": None})
+
+    raw_scores, llm_raw = _batch_match_score(product, snippets, api_url, model)
 
     scored: list[ScoredSnippet] = [
         ScoredSnippet(
@@ -250,7 +319,7 @@ def score_and_assemble(
 
         # If every snippet failed the producer gate, signal hard-skip to caller.
         if all(s.dropped_reason == "producer_absent" for s in scored):
-            return None, scored
+            return _ret(None, scored, llm_raw)
 
     web_context = _build_web_context(scored)
-    return web_context, scored
+    return _ret(web_context, scored, llm_raw)

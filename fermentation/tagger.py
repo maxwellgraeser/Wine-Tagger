@@ -127,7 +127,7 @@ TOOL_SCHEMAS: list[dict[str, Any]] = [
                     "grapes": {
                         "type": "array",
                         "items": {"type": "string"},
-                        "description": "Canonical grape names; empty list is allowed when unknown.",
+                        "description": "Canonical grape names. An empty list is accepted (ok: true with a no_grapes warning) when no source names the grapes -- never guess.",
                     },
                     "is_blend": {"type": ["boolean", "null"]},
                     "organic": {"type": ["boolean", "null"]},

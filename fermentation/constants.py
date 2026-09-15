@@ -3,12 +3,18 @@
 # exclusion in scorer.py, not a post-hoc confidence cap.
 
 # --- Web sources ---
-# UPC-capable sources are tried first when a SKU looks like a barcode.
+# Every wine gets one site-scoped DDG query per entry here (plus a UPC query
+# for `upc_capable` sources when the SKU is a barcode, plus the distributor
+# site below, plus one unscoped fallback). More sources = more snippets but
+# also more queries per wine, and DDG throttles bursts — keep the list lean.
 CURATED_SOURCES = [
     # Wine databases — good for both name and UPC lookups
     {"name": "Wine Searcher",              "domain": "wine-searcher.com",    "upc_capable": True},
     {"name": "Vivino",                     "domain": "vivino.com",           "upc_capable": True},
     {"name": "CellarTracker",              "domain": "cellartracker.com",    "upc_capable": True},
+    # Large retailers — product pages state region + varietal in plain text
+    {"name": "Wine.com",                   "domain": "wine.com",             "upc_capable": False},
+    {"name": "Total Wine",                 "domain": "totalwine.com",        "upc_capable": False},
     # Critic review sites — commented out (paywalled; DDG rarely returns useful snippets)
     # {"name": "Jeb Dunnuck",               "domain": "jebdunnuck.com"},
     # {"name": "James Suckling",             "domain": "jamessuckling.com"},
@@ -17,25 +23,63 @@ CURATED_SOURCES = [
     # {"name": "Wine Enthusiast",            "domain": "wineenthusiast.com"},
 ]
 
+# Distributor / importer websites, keyed by a lowercase substring of the
+# Lightspeed `supplier_name`. When a wine's supplier matches, its site is
+# queried too (label "Winebow (distributor)"). Importer pages are the single
+# best source: they list the exact grape blend and appellation of the wine
+# they actually ship. Add a line per supplier you buy from.
+DISTRIBUTOR_SITES = {
+    "winebow":          "winebow.com",
+    "monsieur touton":  "monsieurtouton.com",
+}
+
 # --- LLM / API ---
 DEFAULT_API_URL = "http://localhost:8080/v1/chat/completions"
-DEFAULT_MODEL = "gemma3n:e4b"
-DEFAULT_CONFIDENCE_THRESHOLD = 90
+DEFAULT_MODEL = "qwen2.5-7b-instruct"
+DEFAULT_CONFIDENCE_THRESHOLD = 85   # initial value; settings.json (see settings.py) overrides it
 
-# Models - models currently used to put on DEFAULT_MODEL above
+# Models - models previously used for DEFAULT_MODEL above
+# qwen2.5-7b-instruct  -- current default; gemma3n has no working tool-call
+#                         support in llama.cpp (its chat template ignores
+#                         `tools`, and its native tool_code/tool_output
+#                         convention isn't parsed by tagger.py or llama-server's
+#                         generic tool-call handling)
 # gemma3n:e4b
-# qwen2.5-7b-instruct
 
 
 # --- Web search ---
 DDG_MAX_RESULTS = 3          # DDG results fetched per source query
-SNIPPET_CHAR_LIMIT = 1500    # Max chars kept from each DDG result set
-SCORING_SNIPPET_CHARS = 300  # Max chars of each snippet shown to the scoring LLM
-DDG_SLEEP_SECONDS = 0.2      # Delay between DDG queries
+SNIPPET_CHAR_LIMIT = 2000    # Max chars kept from each DDG result (p90 of real snippets is ~1400)
+SCORING_SNIPPET_CHARS = 600  # Max chars of each snippet shown to the scoring LLM
+                             # (was 300 — the producer name is often past that point)
+SCORING_TIMEOUT_SECONDS = 120  # One scoring call: ~25 snippets x 600 chars is ~4k tokens of
+                               # prompt, ~40 s on a 7B model; 45 s timed out under load
+DDG_SLEEP_SECONDS = 0.2      # Stagger between DDG query starts
+DDG_CONCURRENCY = 4          # DDG queries run in parallel per wine (1 = sequential)
+DDG_TIMEOUT_SECONDS = 10     # Per-engine wait inside ddgs (5 s timed out 7 of 11 queries on a busy run)
+DDG_BACKEND = "yahoo,bing,duckduckgo"
+# ddgs tries these engines in THIS order, one at a time (with max_results<=10 it
+# only runs one engine per attempt), moving on when one errors. "auto" shuffles
+# the order and usually lands on html.duckduckgo.com first, which on 2026-09-15
+# timed out on ~70% of queries; yahoo answered the same site: queries in <1 s.
+# Bing ignores site: for its ad slots, so site-scoped results are also filtered
+# by URL host (see searcher._on_site).
+DDG_RETRY_DELAYS = (15, 45)  # If a wine gets ZERO results from every query (rate limit),
+                             # wait this many seconds and retry the whole plan, once per entry
 
 # --- Snippet filtering ---
+SNIPPET_DEDUPE_JACCARD = 0.9  # Two snippets whose word sets overlap this much (Jaccard, words of
+                              # 3+ letters, digits ignored so vintages don't matter) are near-
+                              # duplicates — e.g. one price page returned for three vintages. Only
+                              # the first is kept. 0.9 collapsed 53 of 340 snippets on the 24-wine
+                              # test run; 0.8 starts merging different pages that share boilerplate.
 SNIPPET_MATCH_THRESHOLD = 85  # Min match score (0-100) for a snippet to enter web_context
-TOP_N_SNIPPETS = 3            # Max number of top-scoring snippets passed to the tag-inference LLM
+TOP_N_SNIPPETS = 5            # Max number of top-scoring snippets passed to the tag-inference LLM.
+                              # Picked for source diversity: the distributor's snippet (if any) first,
+                              # then the best snippet from each distinct source, then by score.
+                              # Since tagging moved to the MCP tool loop the prompt no longer carries
+                              # reference tables, so there is room for 5 x SNIPPET_CHAR_LIMIT
+                              # (~2.5k tokens) — and the confidence rubric wants >= 2 sources.
 
 # --- Organic detection ---
 ORGANIC_PHRASES = {"certified organic", "biodynamic", "certified biodynamic"}
@@ -78,11 +122,8 @@ You are a wine expert. Score how well each web snippet matches the wine product 
 Product: {name}
 Brand: {brand}
 
-Abbreviation guide (expand these when comparing names):
-PN / P.N. = Pinot Noir | PG = Pinot Gris or Pinot Grigio | SB = Sauvignon Blanc
-CS / Cab / Cab Sauv = Cabernet Sauvignon | CF = Cabernet Franc | GR = Grenache
-Chard = Chardonnay | Shiraz = Syrah (same grape, different name) | GSM = Grenache Shiraz Mourvèdre
-Sauv Blanc = Sauvignon Blanc | Pinot Gris = Pinot Grigio | Tempranillo = Tinto
+Product names may abbreviate the grape (PN = Pinot Noir, SB = Sauvignon Blanc,
+Cab = Cabernet Sauvignon); treat such abbreviations as the full name when comparing.
 
 Snippets:
 {snippets_block}
@@ -136,12 +177,6 @@ Workflow:
      spelling via lookup_*, or drop the value and keep what you are sure of.
   4. Do NOT reply with free-text JSON. The only way to commit is submit_tags.
 
-Abbreviation guide (expand these when comparing names):
-PN / P.N. = Pinot Noir | PG = Pinot Gris or Pinot Grigio | SB = Sauvignon Blanc
-CS / Cab / Cab Sauv = Cabernet Sauvignon | CF = Cabernet Franc | GR = Grenache
-Chard = Chardonnay | Shiraz = Syrah (same grape, different name) | GSM = Grenache Shiraz Mourvèdre
-Sauv Blanc = Sauvignon Blanc | Pinot Gris = Pinot Grigio | Tempranillo = Tinto
-
 Field rules for submit_tags:
   - country: a single canonical country name (use lookup_country if unsure).
   - region: a LIST, most-specific first. Parent regions are added for you
@@ -149,10 +184,16 @@ Field rules for submit_tags:
     North Coast, California]), so submit the most specific canonical region
     you can support. Do NOT put the country name in region — use the
     country field.
-  - grapes: canonical grape names from lookup_grape. If the web context does
-    not name grapes, submit an empty list rather than guess — the row will
-    route to needs_review, which is the correct outcome.
-  - is_blend: true iff two or more grapes; false for a single varietal.
+  - grapes: canonical grape names from lookup_grape, and ONLY grapes that a
+    web snippet actually names for this wine. Never infer a grape from the
+    region, the style, or a word in the product name ("Tinto", "Rosé",
+    "Old Vines" are not grapes). If no snippet names the grapes, submit an
+    empty list — it is accepted and the row routes to needs_review, which
+    is the correct outcome. lookup_grape resolves abbreviations and synonyms
+    (PN, Shiraz, Garnacha, Tinta Roriz), so look them up instead of guessing.
+  - is_blend: true if two or more grapes, OR if a snippet calls the wine a
+    blend ("Tempranillo Blend", "Red Rhône Blend") even when only one grape
+    is named; false for a confirmed single varietal.
   - organic: true only if certified organic, biodynamic, or explicitly
     marketed as certified biodynamic. Otherwise false.
   - confidence: integer 0-100 reflecting how sure the tags are correct.

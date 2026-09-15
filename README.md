@@ -47,6 +47,12 @@ Cellar starts in **Developer** view (all logs and knobs); toggle to
 **Simple** in the top bar. If the llama-server isn't up, the top bar offers
 to start it.
 
+In the Ferment panel, **Pause after each phase** runs search, stops, and
+shows a *Continue → score* button (then *Continue → tag*), so you can check
+the snippets and scores in Distribute before the LLM tags anything. The
+confidence threshold you set there is saved to `settings.json` at the repo
+root and used by console runs too (initial default 85).
+
 **From the console:**
 
 ```sh
@@ -66,6 +72,19 @@ LLAMA_SCRIPT=./qwen25-7b.sh ./ferment.sh   # use a different model
 > `ferment.sh` leaves a server it started running, so later runs skip the model
 > load. To stop it, run `kill "$(cat .llama-server.pid)"`. To run the module
 > without the wrapper, use `python -m fermentation.ferment` from the repo root.
+
+**Stopping everything:**
+
+```sh
+./stop-all.sh   # kills cellar backend (:8000), vite dev (:5173), llama-server (:8080)
+```
+
+Run this when you're done for the day so nothing keeps eating RAM/GPU in the
+background. It's safe to run even if some or all of those servers aren't up.
+`./cellar/run.sh` (and `./cellar/run.sh dev`) also kill anything already
+bound to their own ports before starting, so re-running either one always
+gives you a fresh process — you don't need to `stop-all.sh` first just to
+restart Cellar.
 
 ---
 
@@ -177,7 +196,7 @@ OpenAI-compatible `/v1/chat/completions` endpoint:
 - After tagging, `confidence < threshold` (default in `constants.py`) → `needs_review`.
 - `organic` is set only when explicit certification language
   (`certified organic`, `biodynamic`, `certified biodynamic`) appears.
-- Rows with `tag_status = 'manual'` are never overwritten on re-run.
+- Rows with `tag_status = 'human'` (edited in Cellar) are never overwritten on re-run.
 
 ### CLI flags
 
@@ -211,7 +230,7 @@ checkpoints cleanly.
     "country": "Spain", "region": ["Ribera del Duero", "Castilla y León"],
     "grapes": ["Tempranillo"], "is_blend": false, "organic": false,
     "confidence": 84, "web_context": "…", "tags_raw": "Spain; Ribera del Duero; …",
-    "tag_status": "auto",                 // pending | auto | needs_review | manual
+    "tag_status": "model",                // pending | model | needs_review | human
     "sales": {"items_sold": 81, "margin_pct": 0.31, "sale_count": 46, "customer_count": 29, "avg_sale_value": 29.5},
     "run_id": "20260915-132128",
     "phase_status": {"search": "ok", "score": "ok", "tag": "ok"}
@@ -247,7 +266,7 @@ no paid APIs or keys required.
 `cellar/` is the web app (FastAPI backend in `cellar/server/app.py`, React +
 Vite + TypeScript + Tailwind frontend in `cellar/web/`). It owns the
 distribution step — browse, search, sort, edit tags (edits mark a wine
-`manual`, which fermentation never overwrites), and **Export** a
+`human`, which fermentation never overwrites), and **Export** a
 Lightspeed-compatible `.xlsx` with `id`, `name`, `tags` — and it also runs the
 two upstream stages with live progress and a drill-down into every phase log.
 See `cellar/PLAN.md` for the API.
@@ -262,6 +281,8 @@ Wine Warehouse DDD/
 ├── PLAN.md
 ├── Tree.html                    # visual architecture map + findings
 ├── requirements.txt
+├── ferment.sh                   # runs fermentation, starting llama-server if needed
+├── stop-all.sh                  # kills cellar backend, vite dev, and llama-server
 ├── gemma3n.sh / qwen25-7b.sh    # local LLM server helpers
 ├── ingestion/
 │   ├── PLAN.md

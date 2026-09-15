@@ -3,7 +3,14 @@
 One JSON document holding every wine with its catalog fields, sales stats,
 canonical tags, and per-phase status. Replaces the old SQLite `wines.db`.
 The cellar web app reads it directly and writes tag edits back through
-`update_wine_tags`, which marks the row `manual` so reruns never overwrite it.
+`update_wine_tags`, which marks the row `human` so reruns never overwrite it.
+
+tag_status values:
+    pending       not tagged yet
+    model         the LLM tagged it and cleared the confidence threshold
+    needs_review  the LLM could not tag it confidently (or at all)
+    human         a person saved tags in Cellar; fermentation never overwrites it
+(`auto` / `manual` were the pre-2026-09-15 names; `load_store` migrates them.)
 
 Shape:
 {
@@ -28,7 +35,11 @@ from typing import Optional
 from .paths import WINES_JSON
 from .types import ParsedTags, Product
 
-STORE_VERSION = 2
+STORE_VERSION = 3
+
+TAG_STATUSES = ("pending", "model", "needs_review", "human")
+# Legacy names -> current names, applied on load.
+_LEGACY_STATUS = {"auto": "model", "manual": "human"}
 
 
 def _now() -> str:
@@ -54,6 +65,11 @@ def load_store(path: Path = WINES_JSON) -> dict:
         return empty_store()
     if not isinstance(data, dict) or "wines" not in data:
         return empty_store()
+    for w in data["wines"]:
+        st = w.get("tag_status")
+        if st in _LEGACY_STATUS:
+            w["tag_status"] = _LEGACY_STATUS[st]
+    data["version"] = STORE_VERSION
     return data
 
 
@@ -90,7 +106,7 @@ def wine_from_product(product: Product) -> dict:
         "confidence": None,
         "web_context": None,
         "tags_raw": None,
-        "tag_status": "pending",   # pending | auto | needs_review | manual
+        "tag_status": "pending",   # see TAG_STATUSES
         "sales": {
             "items_sold": product.items_sold,
             "margin_pct": product.margin_pct,
@@ -98,7 +114,8 @@ def wine_from_product(product: Product) -> dict:
             "customer_count": product.customer_count,
             "avg_sale_value": product.avg_sale_value,
         },
-        "run_id": None,
+        "run_id": None,          # last run that touched this row (any phase)
+        "tag_run_id": None,      # run whose tag phase produced the tags shown
         "phase_status": {"search": None, "score": None, "tag": None},
         "created_at": _now(),
         "updated_at": _now(),
@@ -135,10 +152,12 @@ def build_tags_raw(normalized: Optional[ParsedTags], organic: bool) -> Optional[
         parts.append(normalized.country)
     parts.extend(r for r in (normalized.region or []) if r)
     parts.extend(normalized.grapes or [])
-    if normalized.is_blend is True:
-        parts.append("Blend")
-    elif normalized.is_blend is False:
-        parts.append("Single Varietal")
+    # Blend / Single Varietal only means something once grapes are known.
+    if normalized.grapes:
+        if normalized.is_blend is True:
+            parts.append("Blend")
+        elif normalized.is_blend is False:
+            parts.append("Single Varietal")
     if organic:
         parts.append("Organic")
     return "; ".join(parts) if parts else None
@@ -170,12 +189,13 @@ def apply_tags(
     row["tags_raw"] = build_tags_raw(normalized, organic)
     row["tag_status"] = tag_status
     row["run_id"] = run_id
+    row["tag_run_id"] = run_id
     row["updated_at"] = _now()
 
 
 def update_wine_tags(store: dict, product_id: str, **fields) -> Optional[dict]:
     """Manual edit from the web app. Accepts country, region, grapes,
-    is_blend, organic, confidence, tag_status. Marks the row `manual`
+    is_blend, organic, confidence, tag_status. Marks the row `human`
     unless a tag_status is supplied explicitly."""
     row = find_wine(store, product_id)
     if row is None:
@@ -188,7 +208,7 @@ def update_wine_tags(store: dict, product_id: str, **fields) -> Optional[dict]:
             row[key] = list(fields[key] or [])
     if "organic" in fields:
         row["organic"] = bool(fields["organic"])
-    row["tag_status"] = fields.get("tag_status") or "manual"
+    row["tag_status"] = fields.get("tag_status") or "human"
     tags = ParsedTags(
         country=row.get("country"),
         region=list(row.get("region") or []),
@@ -202,13 +222,13 @@ def update_wine_tags(store: dict, product_id: str, **fields) -> Optional[dict]:
     return row
 
 
-def reset_manual(store: dict) -> int:
-    """Flip every `manual` row back to `pending` so the next fermentation
+def reset_human(store: dict) -> int:
+    """Flip every `human` row back to `pending` so the next fermentation
     run re-searches/scores/tags it instead of skipping it. Returns the
     count of rows changed."""
     n = 0
     for row in store["wines"]:
-        if row.get("tag_status") == "manual":
+        if row.get("tag_status") == "human":
             row["tag_status"] = "pending"
             row["updated_at"] = _now()
             n += 1

@@ -147,16 +147,17 @@ def _read_log(ctx: RunContext, phase: str, product_id: str) -> Optional[dict]:
         return None
 
 
-def _is_manual(ctx: RunContext, product: Product) -> bool:
+def _is_human(ctx: RunContext, product: Product) -> bool:
+    """Human-edited rows are never re-processed."""
     row = store_mod.find_wine(ctx.store, product.id)
-    return bool(row and row.get("tag_status") == "manual")
+    return bool(row and row.get("tag_status") == "human")
 
 
 def _set_phase_status(ctx: RunContext, product: Product, phase: str, status: str) -> None:
     row = store_mod.ensure_wine(ctx.store, product)
     row["phase_status"][phase] = status
     if status != "skipped":
-        # A skipped (manual) wine keeps pointing at the run that produced its logs.
+        # A skipped (human-edited) wine keeps pointing at the run that produced its logs.
         row["run_id"] = ctx.run_id
     row["updated_at"] = _now()
 
@@ -194,17 +195,17 @@ def _checkpoint(ctx: RunContext, phase: str, next_index: int) -> None:
 def run_search(ctx: RunContext, start: int = 0) -> None:
     _begin_phase(ctx, "search", start)
     total = len(ctx.products)
-    counts = {"searched": 0, "skipped_manual": 0, "no_snippets": 0, "snippets_total": 0}
+    counts = {"searched": 0, "skipped_human": 0, "no_snippets": 0, "snippets_total": 0}
     for idx in range(start, total):
         product = ctx.products[idx]
-        if _is_manual(ctx, product):
-            counts["skipped_manual"] += 1
+        if _is_human(ctx, product):
+            counts["skipped_human"] += 1
             _set_phase_status(ctx, product, "search", "skipped")
-            ctx.sink.progress("search", idx, total, product.id, product.name, "skip (manual)")
+            ctx.sink.progress("search", idx, total, product.id, product.name, "skip (human)")
             _checkpoint(ctx, "search", idx + 1)
             continue
 
-        snippets = searcher.gather_snippets(product)
+        snippets, search_errors, n_dup = searcher.gather_snippets(product, return_errors=True)
         _write_log(ctx, "search", product.id, {
             "product_id": product.id,
             "name": product.name,
@@ -212,6 +213,11 @@ def run_search(ctx: RunContext, start: int = 0) -> None:
             "sku": product.sku,
             "raw_snippet_count": len(snippets),
             "snippets": [asdict(s) for s in snippets],
+            # One entry per query that raised (rate limits, timeouts). An empty
+            # snippet list with errors here means the search engine, not the wine.
+            "errors": search_errors,
+            # Near-duplicate bodies collapsed before this list was written.
+            "near_duplicates_dropped": n_dup,
             "written_at": _now(),
         })
         counts["searched"] += 1
@@ -219,8 +225,10 @@ def run_search(ctx: RunContext, start: int = 0) -> None:
         if not snippets:
             counts["no_snippets"] += 1
         _set_phase_status(ctx, product, "search", "ok" if snippets else "empty")
+        err_note = f", {len(search_errors)} query errors" if search_errors else ""
         ctx.sink.progress("search", idx, total, product.id, product.name,
-                          f"{len(snippets)} snippets", snippet_count=len(snippets))
+                          f"{len(snippets)} snippets{err_note}",
+                          snippet_count=len(snippets), error_count=len(search_errors))
         _checkpoint(ctx, "search", idx + 1)
     _end_phase(ctx, "search", counts)
 
@@ -238,17 +246,20 @@ def _snippets_from_log(log: Optional[dict]) -> list[Snippet]:
             source=s.get("source", ""), domain=s.get("domain", ""),
             body=s.get("body", ""), url=s.get("url", ""),
         ))
+    # Older search logs (before 2026-09-15) were not deduped on write.
+    out, _ = searcher.dedupe_near_duplicates(out)
     return out
 
 
 def _scored_payload(product: Product, scored: list[ScoredSnippet], web_context: Optional[str],
-                    input_count: int) -> dict:
+                    input_count: int, llm_raw: Optional[dict] = None) -> dict:
     dropped = sum(1 for s in scored if s.dropped_reason == "producer_absent")
     return {
         "product_id": product.id,
         "name": product.name,
         "input_count": input_count,
         "producer_gate_dropped": dropped,
+        "context_count": sum(1 for s in scored if s.in_context),
         "scored_snippets": [
             {
                 "source": s.snippet.source,
@@ -257,11 +268,16 @@ def _scored_payload(product: Product, scored: list[ScoredSnippet], web_context: 
                 "body": s.cleaned_body,
                 "match_score": s.match_score,
                 "dropped_reason": s.dropped_reason,
+                # True for the top-N survivors that were pasted into web_context
+                # and therefore seen by the tagger LLM.
+                "in_context": s.in_context,
             }
             for s in scored
         ],
         "web_context_built": web_context is not None,
         "web_context": web_context,
+        # What the scoring LLM actually returned, for debugging parse failures.
+        "llm": llm_raw,
         "written_at": _now(),
     }
 
@@ -270,22 +286,23 @@ def run_score(ctx: RunContext, start: int = 0) -> None:
     _begin_phase(ctx, "score", start)
     total = len(ctx.products)
     cfg = ctx.config
-    counts = {"scored": 0, "skipped_manual": 0, "with_context": 0, "no_context": 0}
+    counts = {"scored": 0, "skipped_human": 0, "with_context": 0, "no_context": 0}
     for idx in range(start, total):
         product = ctx.products[idx]
-        if _is_manual(ctx, product):
-            counts["skipped_manual"] += 1
+        if _is_human(ctx, product):
+            counts["skipped_human"] += 1
             _set_phase_status(ctx, product, "score", "skipped")
-            ctx.sink.progress("score", idx, total, product.id, product.name, "skip (manual)")
+            ctx.sink.progress("score", idx, total, product.id, product.name, "skip (human)")
             _checkpoint(ctx, "score", idx + 1)
             continue
 
         snippets = _snippets_from_log(_read_log(ctx, "search", product.id))
-        web_context, scored = scorer.score_and_assemble(
+        web_context, scored, llm_raw = scorer.score_and_assemble(
             product, snippets, api_url=cfg.api_url, model=cfg.model,
-            producer_gate=cfg.producer_gate,
+            producer_gate=cfg.producer_gate, return_raw=True,
         )
-        _write_log(ctx, "scorer", product.id, _scored_payload(product, scored, web_context, len(snippets)))
+        _write_log(ctx, "scorer", product.id,
+                   _scored_payload(product, scored, web_context, len(snippets), llm_raw))
         counts["scored"] += 1
         if web_context is None:
             counts["no_context"] += 1
@@ -307,13 +324,20 @@ def run_score(ctx: RunContext, start: int = 0) -> None:
 # ---------------------------------------------------------------------------
 
 def decide_tag_status(*, normalized: Optional[ParsedTags], confidence_threshold: int) -> str:
-    """None -> needs_review; confidence < threshold -> needs_review; else auto."""
+    """None -> needs_review; no grapes -> needs_review; confidence < threshold
+    -> needs_review; else model.
+
+    `submit_tags` accepts an empty grape list (with a `no_grapes` warning) so
+    the country/region the model *did* find are kept on the row; the empty
+    grapes are what route it to review."""
     if normalized is None:
+        return "needs_review"
+    if not normalized.grapes:
         return "needs_review"
     conf = normalized.confidence
     if conf is None or conf < confidence_threshold:
         return "needs_review"
-    return "auto"
+    return "model"
 
 
 def organic_confirmed(web_context: Optional[str], normalized: Optional[ParsedTags]) -> bool:
@@ -332,16 +356,16 @@ def run_tag(ctx: RunContext, start: int = 0) -> None:
     _begin_phase(ctx, "tag", start)
     total = len(ctx.products)
     cfg = ctx.config
-    counts = {"tagged": 0, "auto": 0, "needs_review": 0, "skipped_manual": 0, "no_context": 0}
+    counts = {"tagged": 0, "model": 0, "needs_review": 0, "skipped_human": 0, "no_context": 0}
 
     with tagger.library_mcp_session() as mcp:
         for idx in range(start, total):
             product = ctx.products[idx]
             row = store_mod.ensure_wine(ctx.store, product)
-            if row.get("tag_status") == "manual":
-                counts["skipped_manual"] += 1
+            if row.get("tag_status") == "human":
+                counts["skipped_human"] += 1
                 _set_phase_status(ctx, product, "tag", "skipped")
-                ctx.sink.progress("tag", idx, total, product.id, product.name, "skip (manual)")
+                ctx.sink.progress("tag", idx, total, product.id, product.name, "skip (human)")
                 _checkpoint(ctx, "tag", idx + 1)
                 continue
 
@@ -390,7 +414,7 @@ def run_tag(ctx: RunContext, start: int = 0) -> None:
             })
 
             counts["tagged"] += 1
-            counts[tag_status if tag_status in ("auto", "needs_review") else "needs_review"] += 1
+            counts[tag_status if tag_status in ("model", "needs_review") else "needs_review"] += 1
             conf = normalized.confidence if normalized and normalized.confidence is not None else None
             ctx.sink.progress(
                 "tag", idx, total, product.id, product.name,
@@ -405,8 +429,19 @@ def run_tag(ctx: RunContext, start: int = 0) -> None:
 PHASE_RUNNERS = {"search": run_search, "score": run_score, "tag": run_tag}
 
 
-def run_all(ctx: RunContext, resume_phase: str = "search", resume_cursor: int = 0) -> None:
-    """Run phases in order starting at (resume_phase, resume_cursor)."""
+def run_all(
+    ctx: RunContext,
+    resume_phase: str = "search",
+    resume_cursor: int = 0,
+    stop_after: Optional[str] = None,
+) -> Optional[str]:
+    """Run phases in order starting at (resume_phase, resume_cursor).
+
+    With `stop_after=PHASE` the run pauses once that phase completes: run.json
+    gets status "paused", and the resume cursor points at the *next* phase so
+    a plain re-run (or `--phase NEXT --run-id ID`) continues from there.
+    Returns the phase it paused after, or None when the run finished.
+    """
     started = False
     for phase in PHASES:
         if phase == resume_phase:
@@ -414,9 +449,22 @@ def run_all(ctx: RunContext, resume_phase: str = "search", resume_cursor: int = 
             PHASE_RUNNERS[phase](ctx, resume_cursor)
         elif started:
             PHASE_RUNNERS[phase](ctx, 0)
+        else:
+            continue
+        if stop_after == phase and phase != PHASES[-1]:
+            nxt = PHASES[PHASES.index(phase) + 1]
+            ctx.run_json["status"] = "paused"
+            ctx.run_json["paused_after"] = phase
+            ctx.store["last_run_id"] = ctx.run_id
+            store_mod.save_store(ctx.store)
+            ctx.save_run_json()
+            save_run_state(ctx.run_id, nxt, 0)
+            return phase
     ctx.run_json["status"] = "done"
+    ctx.run_json.pop("paused_after", None)
     ctx.run_json["ended_at"] = _now()
     ctx.store["last_run_id"] = ctx.run_id
     store_mod.save_store(ctx.store)
     ctx.save_run_json()
     clear_run_state()
+    return None

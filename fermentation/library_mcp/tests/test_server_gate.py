@@ -95,8 +95,15 @@ def test_submit_issue_codes(server):
     res = server.submit_tags("France", ["Bordeaux"], ["Merlotz"], None, None, 50)
     assert "non_canonical_grape" in res["issues"]
     assert "Merlotz" in res["hints"]["non_canonical_grape"]
+    # Empty grapes are accepted (the tagger is told to submit [] rather than
+    # guess) but flagged, so country/region survive and the row can still
+    # route to needs_review downstream.
     res = server.submit_tags("France", ["Bordeaux"], [], None, None, 50)
-    assert res["issues"] == ["no_grapes"]
+    assert res["ok"], res
+    assert res["warnings"] == ["no_grapes"]
+    assert res["normalized"]["grapes"] == []
+    assert res["normalized"]["country"] == "France"
+    assert res["normalized"]["is_blend"] is False
 
 
 def test_submit_expands_parents_and_infers_country(server):

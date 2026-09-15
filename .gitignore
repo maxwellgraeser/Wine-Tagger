@@ -50,3 +50,6 @@ fermentation/output/
 # Cellar frontend
 cellar/web/node_modules/
 cellar/web/dist/
+
+# User settings written by the Cellar dashboard
+/settings.json

@@ -1,19 +1,29 @@
 import type { ReactNode } from 'react';
+import { TAG_STATUS_LABEL, type TagStatus } from '../api';
 
-const TAG_STATUS_STYLES: Record<string, string> = {
-  auto: 'bg-green-100 text-green-800 border-green-300',
+export const TAG_STATUS_STYLES: Record<string, string> = {
+  model: 'bg-green-100 text-green-800 border-green-300',
   needs_review: 'bg-amber-100 text-amber-800 border-amber-300',
-  manual: 'bg-blue-100 text-blue-800 border-blue-300',
+  human: 'bg-blue-100 text-blue-800 border-blue-300',
   pending: 'bg-gray-100 text-gray-600 border-gray-300',
+};
+
+export const TAG_STATUS_TITLE: Record<string, string> = {
+  model: 'Tagged by the LLM and cleared the confidence threshold',
+  needs_review: 'The LLM could not tag this confidently (or at all)',
+  human: 'Tags saved by a person in Cellar; fermentation never overwrites it',
+  pending: 'Not tagged yet',
 };
 
 export function StatusBadge({ status }: { status: string }) {
   const style = TAG_STATUS_STYLES[status] ?? TAG_STATUS_STYLES.pending;
+  const label = TAG_STATUS_LABEL[status as TagStatus] ?? status.replace('_', ' ');
   return (
     <span
-      className={`inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium capitalize ${style}`}
+      title={TAG_STATUS_TITLE[status]}
+      className={`inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium ${style}`}
     >
-      {status.replace('_', ' ')}
+      {label}
     </span>
   );
 }

@@ -31,15 +31,18 @@ post-hoc normalization pass.
 
 **Built and wired (Phases 1–5 core):**
 
-- `ferment.py`, `searcher.py`, `scorer.py`, `tagger.py`, `types.py`,
-  `constants.py`, `debug_output.py` — all present and integrated.
+- `ferment.py`, `phases.py`, `searcher.py`, `scorer.py`, `tagger.py`,
+  `store.py`, `events.py`, `paths.py`, `types.py`, `constants.py` — all
+  present and integrated. `debug_output.py` is gone; logging is always on
+  (see the phased-pipeline note above).
 - `library_mcp/server.py` — FastMCP stdio server with all six browse tools
   plus `submit_tags` and its issue/hint codes.
 - `library_mcp/seed/` — `build_db.py`, `sparql/*.rq`, Wikipedia parsers
   (`italy.py`, `germany.py`).
 - `--no-producer-gate` is now wired (was a no-op in an earlier draft).
-- `wines.db` schema: `region`/`grapes` stored as JSON-encoded TEXT arrays;
-  `tag_log` stores the MCP transcript.
+- `output/wines.json` (via `store.py`): `region`/`grapes` stored as JSON
+  arrays; `tagger/<id>.json` under `logs/<run_id>/` holds the MCP transcript
+  (replaces the old `wines.db` / `tag_log` column).
 
 **NOT done — known gaps / bugs (fix before relying on a run):**
 
@@ -61,8 +64,9 @@ post-hoc normalization pass.
 
 **Not built (out of fermentation's current scope):**
 
-- No `fermentation/run.sh` (Phase 4 cutover). Run via
-  `python -m fermentation.ferment`.
+- Phase 4 cutover landed as `ferment.sh` at the repo root (not
+  `fermentation/run.sh`); it also starts `llama-server` if it isn't up. Run
+  the bare module via `python -m fermentation.ferment`.
 - Tests cover `library_mcp` only (`fermentation/library_mcp/tests/`:
   allowlist validation, 24-wine coverage, server gate). `searcher` /
   `scorer` / `tagger` / `ferment` remain untested.
@@ -497,7 +501,7 @@ with library_mcp_session() as mcp:
 - `decide_tag_status(normalized, confidence_threshold)` — small,
   readable, unit-testable. Precedence: missing normalized →
   `needs_review`; confidence < threshold → `needs_review`; else
-  `auto`.
+  `model`.
 - `organic_confirmed(web_context, normalized)` — explicit-phrase check
   (carried over) if still needed for the DB write path.
 - `build_tags_raw(normalized)` — DB tag-string assembly.
@@ -576,7 +580,7 @@ the latest result.
 ```json
 {
   "product_id": "abc123",
-  "tag_status": "auto",
+  "tag_status": "model",
   "normalized": {
     "country": "Spain",
     "region": ["Priorat"],

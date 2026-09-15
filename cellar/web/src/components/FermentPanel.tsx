@@ -1,10 +1,21 @@
-import { useMemo, useState } from 'react';
-import type { FermentRunOptions, JobEvent, StatusResponse } from '../api';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { Pause, Play, RotateCcw } from 'lucide-react';
+import {
+  api,
+  PHASES,
+  type FermentRunOptions,
+  type JobEvent,
+  type Phase,
+  type RunSummary,
+  type StatusResponse,
+} from '../api';
 import { EventLog } from './EventLog';
+import { FERMENT_HELP, Help } from './Help';
+import { RunHistory, runLabel } from './RunHistory';
 import { ProgressBar } from './ProgressBar';
+import { StatusCounts } from './StatusCounts';
 
-const PHASES = ['search', 'score', 'tag'] as const;
-type Phase = (typeof PHASES)[number];
+const nextPhase = (p: Phase): Phase | null => PHASES[PHASES.indexOf(p) + 1] ?? null;
 
 function computePhaseProgress(events: JobEvent[]): Record<Phase, { index: number; total: number; active: boolean }> {
   const result: Record<Phase, { index: number; total: number; active: boolean }> = {
@@ -31,6 +42,20 @@ function computePhaseProgress(events: JobEvent[]): Record<Phase, { index: number
   return result;
 }
 
+/** The pause point of the current stream (if the last event is `paused`). */
+function pausedFromEvents(events: JobEvent[]): { runId: string; after: Phase; next: Phase } | null {
+  for (let i = events.length - 1; i >= 0; i--) {
+    const e = events[i];
+    if (e.type === 'paused' && typeof e.run_id === 'string' && typeof e.phase === 'string') {
+      const after = e.phase as Phase;
+      const next = (e.next_phase as Phase | undefined) ?? nextPhase(after);
+      return next ? { runId: e.run_id, after, next } : null;
+    }
+    if (e.type === 'done' || e.type === 'error') return null;
+  }
+  return null;
+}
+
 export function FermentPanel({
   status,
   onRun,
@@ -38,6 +63,11 @@ export function FermentPanel({
   running,
   events,
   simple,
+  onWinesChanged,
+  onSettingsChanged,
+  runs = [],
+  activeRunId = null,
+  onRunsChanged,
 }: {
   status: StatusResponse | null;
   onRun: (opts: FermentRunOptions) => void;
@@ -45,36 +75,179 @@ export function FermentPanel({
   running: boolean;
   events: JobEvent[];
   simple?: boolean;
+  onWinesChanged?: () => void;
+  onSettingsChanged?: () => void;
+  runs?: RunSummary[];
+  activeRunId?: string | null;
+  onRunsChanged?: () => void;
 }) {
   const defaults = status?.defaults;
   const [force, setForce] = useState(false);
   const [limit, setLimit] = useState<number | ''>('');
-  const [confidenceThreshold, setConfidenceThreshold] = useState<number | ''>('');
-  const [model, setModel] = useState('');
   const [noProducerGate, setNoProducerGate] = useState(false);
+  const [pauseBetweenPhases, setPauseBetweenPhases] = useState(() => {
+    try {
+      return localStorage.getItem('cellar:pausePhases') === '1';
+    } catch {
+      return false;
+    }
+  });
+
+  // --- Model: a dropdown of what the running llama-server reports -------
+  const serverModels = status?.llama.models;
+  const defaultModel = defaults?.model;
+  const modelOptions = useMemo(() => {
+    const opts = [...(serverModels ?? [])];
+    if (defaultModel && !opts.includes(defaultModel)) opts.push(defaultModel);
+    return opts;
+  }, [serverModels, defaultModel]);
+  // '' means "whatever the server has loaded" (first reported model).
+  const [modelChoice, setModelChoice] = useState('');
+  const model = modelChoice || serverModels?.[0] || '';
+
+  // --- Confidence threshold: persisted in settings.json ------------------
+  const savedThreshold = status?.settings?.confidence_threshold;
+  const [threshold, setThreshold] = useState<number | ''>('');
+  const [thresholdSaved, setThresholdSaved] = useState<string | null>(null);
+  const seededRef = useRef(false);
+  useEffect(() => {
+    if (!seededRef.current && savedThreshold != null) {
+      seededRef.current = true;
+      setThreshold(savedThreshold);
+    }
+  }, [savedThreshold]);
+  const saveThreshold = async (v: number | '') => {
+    if (v === '' || Number.isNaN(v)) return;
+    const n = Math.max(0, Math.min(100, Math.round(Number(v))));
+    setThreshold(n);
+    if (n === savedThreshold) return;
+    try {
+      await api.patchSettings({ confidence_threshold: n });
+      setThresholdSaved(`Saved ${n} to settings.json`);
+      onSettingsChanged?.();
+    } catch (e) {
+      setThresholdSaved(e instanceof Error ? e.message : 'Failed to save threshold');
+    }
+  };
 
   const [rerunRunId, setRerunRunId] = useState('');
   const [rerunPhase, setRerunPhase] = useState<Phase>('search');
 
+  const [resetting, setResetting] = useState(false);
+  const [resetMsg, setResetMsg] = useState<string | null>(null);
+
   const phaseProgress = useMemo(() => computePhaseProgress(events), [events]);
   const runState = status?.fermentation.run_state ?? null;
-  const runs = status?.fermentation.runs ?? [];
   const byStatus = status?.fermentation.wines_json.by_status;
+
+  // A paused run to continue: from the live stream first, else from the
+  // server's persisted run state (survives a page reload).
+  const paused = useMemo(() => {
+    if (running) return null;
+    const live = pausedFromEvents(events);
+    if (live) return live;
+    const f = status?.fermentation;
+    if (f?.last_run_status === 'paused' && f.paused_after && f.last_run_id) {
+      const next = nextPhase(f.paused_after);
+      return next ? { runId: f.last_run_id, after: f.paused_after, next } : null;
+    }
+    return null;
+  }, [running, events, status?.fermentation]);
+
+  const togglePause = (v: boolean) => {
+    setPauseBetweenPhases(v);
+    try {
+      localStorage.setItem('cellar:pausePhases', v ? '1' : '0');
+    } catch {
+      // ignore
+    }
+  };
 
   const run = () => {
     const opts: FermentRunOptions = {};
     if (force) opts.force = true;
     if (limit !== '') opts.limit = limit;
-    if (confidenceThreshold !== '') opts.confidence_threshold = confidenceThreshold;
+    if (threshold !== '') opts.confidence_threshold = threshold;
     if (model) opts.model = model;
     if (noProducerGate) opts.no_producer_gate = true;
+    if (pauseBetweenPhases) opts.stop_after = 'search';
+    onRun(opts);
+  };
+
+  const continueRun = () => {
+    if (!paused) return;
+    const opts: FermentRunOptions = { run_id: paused.runId, phase: paused.next };
+    if (threshold !== '') opts.confidence_threshold = threshold;
+    if (model) opts.model = model;
+    if (noProducerGate) opts.no_producer_gate = true;
+    if (pauseBetweenPhases && paused.next !== 'tag') opts.stop_after = paused.next;
     onRun(opts);
   };
 
   const rerun = () => {
     if (!rerunRunId) return;
-    onRun({ run_id: rerunRunId, phase: rerunPhase });
+    const opts: FermentRunOptions = { run_id: rerunRunId, phase: rerunPhase };
+    if (threshold !== '') opts.confidence_threshold = threshold;
+    if (model) opts.model = model;
+    if (pauseBetweenPhases && rerunPhase !== 'tag') opts.stop_after = rerunPhase;
+    onRun(opts);
   };
+
+  const humanCount = byStatus?.human ?? 0;
+  const resetHuman = async () => {
+    if (!humanCount) return;
+    if (!confirm(`Reset ${humanCount} human-edited wine(s) to pending so fermentation stops skipping them?`)) {
+      return;
+    }
+    setResetting(true);
+    setResetMsg(null);
+    try {
+      const { reset } = await api.resetHumanWines();
+      setResetMsg(`Reset ${reset} wine(s) to pending.`);
+      onWinesChanged?.();
+    } catch (e) {
+      setResetMsg(e instanceof Error ? e.message : 'Failed to reset human-edited wines');
+    } finally {
+      setResetting(false);
+    }
+  };
+
+  const continueButton = paused && (
+    <button
+      type="button"
+      onClick={continueRun}
+      disabled={running}
+      className="flex items-center gap-1.5 rounded-md bg-wine px-3 py-1.5 text-sm font-medium text-white hover:bg-wine-dark disabled:opacity-50"
+      title={`Run ${paused.runId} is paused after ${paused.after}. Continue with the ${paused.next} phase over its logs.`}
+    >
+      <Play className="h-4 w-4" />
+      Continue → {paused.next}
+    </button>
+  );
+
+  const resetButton = (
+    <button
+      type="button"
+      onClick={resetHuman}
+      disabled={resetting || !humanCount}
+      className="flex items-center gap-1.5 rounded-md border border-wine px-3 py-1.5 text-sm font-medium text-wine hover:bg-wine-light disabled:cursor-not-allowed disabled:opacity-50"
+      title="Reset every human-edited wine to pending so the next fermentation run doesn't skip it"
+    >
+      <RotateCcw className="h-4 w-4" />
+      {resetting ? 'Resetting…' : 'Reset human tags'}
+    </button>
+  );
+
+  const pausedBanner = paused && (
+    <div className="flex flex-wrap items-center gap-2 rounded-md border border-amber-300 bg-amber-50 px-3 py-2 text-sm text-amber-900">
+      <Pause className="h-4 w-4" />
+      <span>
+        Run <span className="font-mono">{paused.runId}</span> is paused after the{' '}
+        <span className="font-semibold">{paused.after}</span> phase. Inspect the results in Distribute,
+        then continue with <span className="font-semibold">{paused.next}</span>.
+      </span>
+    </div>
+  );
 
   if (simple) {
     const totalIndex = PHASES.reduce((s, p) => s + phaseProgress[p].index, 0);
@@ -84,6 +257,7 @@ export function FermentPanel({
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-semibold text-ink">Run pipeline</h2>
           <div className="flex gap-2">
+            {continueButton}
             <button
               type="button"
               onClick={run}
@@ -101,17 +275,13 @@ export function FermentPanel({
                 Stop
               </button>
             )}
+            {resetButton}
           </div>
         </div>
+        {pausedBanner}
         <ProgressBar value={totalIndex} total={totalTotal || 1} label="Overall progress" />
-        {byStatus && (
-          <div className="flex flex-wrap gap-2 text-xs text-muted">
-            <span>auto: {byStatus.auto}</span>
-            <span>needs_review: {byStatus.needs_review}</span>
-            <span>manual: {byStatus.manual}</span>
-            <span>pending: {byStatus.pending}</span>
-          </div>
-        )}
+        {byStatus && <StatusCounts byStatus={byStatus} />}
+        {resetMsg && <div className="text-xs text-ink/70">{resetMsg}</div>}
       </div>
     );
   }
@@ -121,13 +291,14 @@ export function FermentPanel({
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h2 className="text-lg font-semibold text-ink">Ferment</h2>
         <div className="flex gap-2">
+          {continueButton}
           <button
             type="button"
             onClick={run}
             disabled={running}
             className="rounded-md bg-wine px-3 py-1.5 text-sm font-medium text-white hover:bg-wine-dark disabled:opacity-50"
           >
-            {running ? 'Running…' : 'Run fermentation'}
+            {running ? 'Running…' : paused ? 'Start new run' : 'Run fermentation'}
           </button>
           {running && (
             <button
@@ -138,16 +309,23 @@ export function FermentPanel({
               Stop
             </button>
           )}
+          {resetButton}
         </div>
       </div>
+      {pausedBanner}
+      {resetMsg && <div className="text-xs text-ink/70">{resetMsg}</div>}
+      {byStatus && <StatusCounts byStatus={byStatus} />}
 
       <div className="grid grid-cols-2 gap-3 rounded-md border border-parchment bg-white p-3 sm:grid-cols-3">
-        <label className="flex items-center gap-1.5 text-sm">
+        <label className="flex items-center gap-1.5 text-sm" title={FERMENT_HELP.force}>
           <input type="checkbox" checked={force} onChange={(e) => setForce(e.target.checked)} className="accent-wine" />
-          Force
+          Force fresh run
+          <Help text={FERMENT_HELP.force} />
         </label>
-        <label className="text-sm">
-          <span className="mb-1 block text-xs text-muted">Limit</span>
+        <label className="text-sm" title={FERMENT_HELP.limit}>
+          <span className="mb-1 flex items-center gap-1 text-xs text-muted">
+            Limit <Help text={FERMENT_HELP.limit} />
+          </span>
           <input
             type="number"
             value={limit}
@@ -155,28 +333,49 @@ export function FermentPanel({
             className="w-full rounded-md border border-parchment px-2 py-1 text-sm focus:border-wine focus:outline-none"
           />
         </label>
-        <label className="text-sm">
-          <span className="mb-1 block text-xs text-muted">
-            Confidence threshold {defaults ? `(default ${defaults.confidence_threshold})` : ''}
+        <label className="text-sm" title={FERMENT_HELP.threshold}>
+          <span className="mb-1 flex items-center gap-1 text-xs text-muted">
+            Confidence threshold
+            {savedThreshold != null && <span>(saved: {savedThreshold})</span>}
+            <Help text={FERMENT_HELP.threshold} />
           </span>
           <input
             type="number"
-            step="0.01"
-            value={confidenceThreshold}
-            onChange={(e) => setConfidenceThreshold(e.target.value === '' ? '' : Number(e.target.value))}
+            min={0}
+            max={100}
+            step={1}
+            value={threshold}
+            onChange={(e) => setThreshold(e.target.value === '' ? '' : Number(e.target.value))}
+            onBlur={(e) => saveThreshold(e.target.value === '' ? '' : Number(e.target.value))}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') (e.target as HTMLInputElement).blur();
+            }}
+            title={FERMENT_HELP.threshold}
             className="w-full rounded-md border border-parchment px-2 py-1 text-sm focus:border-wine focus:outline-none"
           />
+          {thresholdSaved && <span className="mt-0.5 block text-[11px] text-muted">{thresholdSaved}</span>}
         </label>
-        <label className="text-sm sm:col-span-2">
-          <span className="mb-1 block text-xs text-muted">Model {defaults ? `(default ${defaults.model})` : ''}</span>
-          <input
-            type="text"
+        <label className="text-sm sm:col-span-2" title={FERMENT_HELP.model}>
+          <span className="mb-1 flex items-center gap-1 text-xs text-muted">
+            Model {status?.llama.ok ? '(loaded on llama-server)' : '(llama-server is down)'}
+            <Help text={FERMENT_HELP.model} />
+          </span>
+          <select
             value={model}
-            onChange={(e) => setModel(e.target.value)}
-            className="w-full rounded-md border border-parchment px-2 py-1 text-sm focus:border-wine focus:outline-none"
-          />
+            onChange={(e) => setModelChoice(e.target.value)}
+            disabled={modelOptions.length === 0}
+            className="w-full rounded-md border border-parchment bg-white px-2 py-1 text-sm focus:border-wine focus:outline-none disabled:opacity-60"
+          >
+            {modelOptions.length === 0 && <option value="">— start the model server —</option>}
+            {modelOptions.map((m) => (
+              <option key={m} value={m}>
+                {m}
+                {defaultModel === m && !(serverModels ?? []).includes(m) ? ' (default, not loaded)' : ''}
+              </option>
+            ))}
+          </select>
         </label>
-        <label className="flex items-center gap-1.5 text-sm">
+        <label className="flex items-center gap-1.5 text-sm" title={FERMENT_HELP.producerGate}>
           <input
             type="checkbox"
             checked={noProducerGate}
@@ -184,28 +383,42 @@ export function FermentPanel({
             className="accent-wine"
           />
           Disable producer gate
+          <Help text={FERMENT_HELP.producerGate} />
+        </label>
+        <label className="flex items-center gap-1.5 text-sm sm:col-span-3" title={FERMENT_HELP.pause}>
+          <input
+            type="checkbox"
+            checked={pauseBetweenPhases}
+            onChange={(e) => togglePause(e.target.checked)}
+            className="accent-wine"
+          />
+          Pause after each phase
+          <span className="text-xs text-muted">(search → pause → score → pause → tag)</span>
+          <Help text={FERMENT_HELP.pause} />
         </label>
       </div>
 
       <div className="rounded-md border border-parchment bg-white p-3">
-        <h3 className="mb-2 text-sm font-semibold text-ink">Re-run from phase</h3>
+        <h3 className="mb-2 flex items-center gap-1 text-sm font-semibold text-ink">
+          Re-run from phase <Help text={FERMENT_HELP.rerun} />
+        </h3>
         <div className="flex flex-wrap items-center gap-2">
           <select
             value={rerunRunId}
             onChange={(e) => setRerunRunId(e.target.value)}
-            className="rounded-md border border-parchment px-2 py-1 text-sm focus:border-wine focus:outline-none"
+            className="rounded-md border border-parchment bg-white px-2 py-1 text-sm focus:border-wine focus:outline-none"
           >
             <option value="">Select run…</option>
             {runs.map((r) => (
-              <option key={r} value={r}>
-                {r}
+              <option key={r.run_id} value={r.run_id}>
+                {runLabel(r)}
               </option>
             ))}
           </select>
           <select
             value={rerunPhase}
             onChange={(e) => setRerunPhase(e.target.value as Phase)}
-            className="rounded-md border border-parchment px-2 py-1 text-sm focus:border-wine focus:outline-none"
+            className="rounded-md border border-parchment bg-white px-2 py-1 text-sm focus:border-wine focus:outline-none"
           >
             {PHASES.map((p) => (
               <option key={p} value={p}>
@@ -245,6 +458,8 @@ export function FermentPanel({
         <h3 className="mb-2 text-sm font-semibold text-ink">Event log</h3>
         <EventLog events={events} />
       </div>
+
+      <RunHistory runs={runs} activeRunId={activeRunId} onChanged={() => onRunsChanged?.()} />
     </div>
   );
 }

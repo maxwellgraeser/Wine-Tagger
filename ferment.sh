@@ -8,7 +8,12 @@ cd "$(dirname "$0")"
 # `python -m fermentation.ferment` with any flags passed to this script.
 #
 #   ./ferment.sh --force --limit 3
-#   LLAMA_SCRIPT=./qwen25-7b.sh ./ferment.sh
+#   LLAMA_SCRIPT=./gemma3n.sh ./ferment.sh
+#
+# Default model is Qwen2.5-7B-Instruct: gemma3n has no working tool-call
+# support in llama.cpp (its chat template ignores `tools`, and its native
+# tool_code/tool_output convention isn't parsed by tagger.py), so wines tag
+# as needs_review with no tags even when web context is good.
 #
 # The library_mcp server is NOT started here — tagger.py spawns it as a stdio
 # subprocess for the duration of the run.
@@ -19,7 +24,7 @@ cd "$(dirname "$0")"
 # stop that one with: kill "$(cat .llama-server.pid)"
 # ---------------------------------------------------------------------------
 : "${FERMENTATION_API_URL:=http://localhost:8080/v1/chat/completions}"
-: "${LLAMA_SCRIPT:=./gemma3n.sh}"
+: "${LLAMA_SCRIPT:=./qwen25-7b.sh}"
 : "${LLAMA_LOG:=.llama-server.log}"
 : "${LLAMA_STARTUP_TIMEOUT:=600}"   # seconds; first run downloads the GGUF
 export FERMENTATION_API_URL

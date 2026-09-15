@@ -41,8 +41,8 @@ HERE = Path(__file__).resolve().parent
 PROJECT_ROOT = HERE.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from fermentation import store as store_mod  # noqa: E402
-from fermentation.constants import DEFAULT_API_URL, DEFAULT_CONFIDENCE_THRESHOLD, DEFAULT_MODEL  # noqa: E402
+from fermentation import settings as settings_mod, store as store_mod  # noqa: E402
+from fermentation.constants import DEFAULT_API_URL, DEFAULT_MODEL  # noqa: E402
 from fermentation.paths import (  # noqa: E402
     INPUT_CSV, LOGS_DIR, OUTPUT_DIR, PHASE_DIRS, PHASES, RUN_STATE_PATH, WINES_JSON, run_dir,
 )
@@ -53,7 +53,7 @@ if not Path(PYTHON).exists():
 LIBRARY_DB = PROJECT_ROOT / "fermentation" / "library_mcp" / "library.db"
 SAMPLE_DIR = PROJECT_ROOT / "Sample Xlsx"
 WEB_DIST = HERE.parent / "web" / "dist"
-LLAMA_SCRIPT = os.environ.get("LLAMA_SCRIPT", str(PROJECT_ROOT / "gemma3n.sh"))
+LLAMA_SCRIPT = os.environ.get("LLAMA_SCRIPT", str(PROJECT_ROOT / "qwen25-7b.sh"))
 LLAMA_LOG = PROJECT_ROOT / ".llama-server.log"
 LLAMA_PID = PROJECT_ROOT / ".llama-server.pid"
 
@@ -233,13 +233,16 @@ def api_status() -> dict:
     active = _active_job()
     run_state = _read_json(RUN_STATE_PATH) if RUN_STATE_PATH.exists() else None
     runs = _run_ids()
+    settings = settings_mod.load_settings()
+    last_run = _read_json(run_dir(store["last_run_id"]) / "run.json") if store.get("last_run_id") else None
     return {
         "now": _now(),
         "project_root": str(PROJECT_ROOT),
         "defaults": {
             "api_url": DEFAULT_API_URL, "model": DEFAULT_MODEL,
-            "confidence_threshold": DEFAULT_CONFIDENCE_THRESHOLD,
+            "confidence_threshold": settings["confidence_threshold"],
         },
+        "settings": settings,
         "llama": _llama_status(),
         "ingestion": {
             "inputs": [
@@ -251,6 +254,8 @@ def api_status() -> dict:
         "fermentation": {
             "wines_json": _file_info(WINES_JSON) | {"count": len(wines), "by_status": by_status},
             "last_run_id": store.get("last_run_id"),
+            "last_run_status": (last_run or {}).get("status"),
+            "paused_after": (last_run or {}).get("paused_after"),
             "run_state": run_state,
             "runs": runs[:10],
         },
@@ -278,6 +283,7 @@ class FermentRequest(BaseModel):
     no_producer_gate: bool = False
     phase: Optional[str] = None      # re-run from this phase...
     run_id: Optional[str] = None     # ...over this run's logs
+    stop_after: Optional[str] = None  # pause once this phase finishes
 
 
 @app.post("/api/ferment/run")
@@ -301,8 +307,35 @@ async def api_ferment_run(req: FermentRequest) -> dict:
         if not req.run_id:
             raise HTTPException(400, "phase requires run_id")
         cmd += ["--phase", req.phase, "--run-id", req.run_id]
+    if req.stop_after:
+        if req.stop_after not in PHASES:
+            raise HTTPException(400, f"stop_after must be one of {PHASES}")
+        cmd += ["--stop-after", req.stop_after]
     job = await _start_job("ferment", cmd)
     return job.summary()
+
+
+# ---------------------------------------------------------------------------
+# Settings (settings.json at the repo root, shared with the CLI)
+# ---------------------------------------------------------------------------
+
+class SettingsPatch(BaseModel):
+    confidence_threshold: Optional[int] = None
+
+
+@app.get("/api/settings")
+def api_settings() -> dict:
+    return settings_mod.load_settings() | {"path": str(settings_mod.SETTINGS_PATH)}
+
+
+@app.patch("/api/settings")
+def api_settings_patch(patch: SettingsPatch) -> dict:
+    fields = patch.model_dump(exclude_unset=True)
+    if "confidence_threshold" in fields:
+        v = fields["confidence_threshold"]
+        if v is None or not (0 <= int(v) <= 100):
+            raise HTTPException(400, "confidence_threshold must be 0-100")
+    return settings_mod.save_settings(fields) | {"path": str(settings_mod.SETTINGS_PATH)}
 
 
 @app.post("/api/llama/start")
@@ -404,9 +437,24 @@ def api_ingestion_rows() -> dict:
 # Wines (output/wines.json)
 # ---------------------------------------------------------------------------
 
+def _backfill_tag_run_ids(wines: list[dict]) -> None:
+    """Rows written before `tag_run_id` existed only carry `run_id`, which any
+    phase overwrites (a search-only run claims a row it never tagged). For
+    display, fall back to the newest run that wrote a final log for the row."""
+    missing = [w for w in wines if not w.get("tag_run_id")]
+    if not missing:
+        return
+    runs = _run_ids()
+    for w in missing:
+        w["tag_run_id"] = next(
+            (r for r in runs if (run_dir(r) / "final" / f"{w['id']}.json").exists()), None,
+        )
+
+
 @app.get("/api/wines")
 def api_wines() -> dict:
     store = store_mod.load_store()
+    _backfill_tag_run_ids(store["wines"])
     return {
         "generated_at": store.get("generated_at"),
         "last_run_id": store.get("last_run_id"),
@@ -457,8 +505,8 @@ class WinePatch(BaseModel):
 
 @app.patch("/api/wines/{wine_id}")
 def api_wine_patch(wine_id: str, patch: WinePatch) -> dict:
-    if patch.tag_status is not None and patch.tag_status not in ("auto", "needs_review", "manual", "pending"):
-        raise HTTPException(400, "bad tag_status")
+    if patch.tag_status is not None and patch.tag_status not in store_mod.TAG_STATUSES:
+        raise HTTPException(400, f"tag_status must be one of {store_mod.TAG_STATUSES}")
     store = store_mod.load_store()
     fields = patch.model_dump(exclude_unset=True)
     row = store_mod.update_wine_tags(store, wine_id, **fields)
@@ -468,12 +516,12 @@ def api_wine_patch(wine_id: str, patch: WinePatch) -> dict:
     return row
 
 
-@app.post("/api/wines/reset-manual")
-def api_wines_reset_manual() -> dict:
-    """Flip every `manual` wine back to `pending` so the next fermentation
-    run doesn't skip it."""
+@app.post("/api/wines/reset-human")
+def api_wines_reset_human() -> dict:
+    """Flip every `human` (hand-edited) wine back to `pending` so the next
+    fermentation run doesn't skip it."""
     store = store_mod.load_store()
-    n = store_mod.reset_manual(store)
+    n = store_mod.reset_human(store)
     if n:
         store_mod.save_store(store)
     return {"reset": n}
@@ -483,19 +531,148 @@ def api_wines_reset_manual() -> dict:
 # Runs + logs
 # ---------------------------------------------------------------------------
 
+def _run_summary(rid: str, rj: Optional[dict] = None) -> dict:
+    rj = rj if rj is not None else (_read_json(run_dir(rid) / "run.json") or {})
+    final_dir = run_dir(rid) / "final"
+    return {
+        "run_id": rid,
+        "started_at": rj.get("started_at"), "ended_at": rj.get("ended_at"),
+        "status": rj.get("status"), "paused_after": rj.get("paused_after"),
+        "error": rj.get("error"),
+        "product_count": len(rj.get("product_ids") or []),
+        "tagged_count": sum(1 for _ in final_dir.glob("*.json")) if final_dir.exists() else 0,
+        "phases": {ph: (rj.get("phases") or {}).get(ph, {}) for ph in PHASES},
+        "config": rj.get("config"),
+    }
+
+
 @app.get("/api/runs")
 def api_runs() -> list[dict]:
-    out = []
-    for rid in _run_ids():
-        rj = _read_json(run_dir(rid) / "run.json") or {}
-        out.append({
-            "run_id": rid,
-            "started_at": rj.get("started_at"), "ended_at": rj.get("ended_at"),
-            "status": rj.get("status"), "product_count": len(rj.get("product_ids") or []),
-            "phases": {ph: (rj.get("phases") or {}).get(ph, {}) for ph in PHASES},
-            "config": rj.get("config"),
+    return [_run_summary(rid) for rid in _run_ids()]
+
+
+def _run_phase_status(rid: str, product_id: str) -> dict:
+    """Same vocabulary as the store's `phase_status`, derived from the run's
+    own log files so a historical run can be shown without the live store."""
+    out: dict[str, Optional[str]] = {"search": None, "score": None, "tag": None}
+    search = _read_json(run_dir(rid) / "search" / f"{product_id}.json")
+    if search is not None:
+        out["search"] = "ok" if search.get("raw_snippet_count") else "empty"
+    scorer = _read_json(run_dir(rid) / "scorer" / f"{product_id}.json")
+    if scorer is not None:
+        out["score"] = "ok" if scorer.get("web_context_built") else "no_context"
+    tagger = _read_json(run_dir(rid) / "tagger" / f"{product_id}.json")
+    if tagger is not None:
+        if tagger.get("success"):
+            out["tag"] = "ok"
+        elif tagger.get("had_web_context"):
+            out["tag"] = "no_submit"
+        else:
+            out["tag"] = "no_context"
+    web_context = scorer.get("web_context") if scorer else None
+    return {"phase_status": out, "web_context": web_context}
+
+
+@app.get("/api/runs/{run_id}/results")
+def api_run_results(run_id: str) -> dict:
+    """The wine table as *this run* produced it: every wine in the run's set,
+    with the tags from `final/<id>.json` where the tag phase got that far,
+    else `pending` plus whichever phase logs exist. Catalog and sales fields
+    come from the live store; human edits do not (they live in the store only)."""
+    rj = _read_json(run_dir(run_id) / "run.json")
+    if rj is None:
+        raise HTTPException(404, "no such run")
+    store = store_mod.load_store()
+    names = rj.get("product_names") or {}
+    rows = []
+    for pid in rj.get("product_ids") or []:
+        base = store_mod.find_wine(store, pid)
+        row = dict(base) if base else {
+            "id": pid, "name": names.get(pid, pid), "sku": None, "category": None,
+            "supply_price": None, "retail_price": None, "supplier": None, "brand": None,
+            "sales": {"items_sold": None, "margin_pct": None, "sale_count": None,
+                      "customer_count": None, "avg_sale_value": None},
+        }
+        derived = _run_phase_status(run_id, pid)
+        final = _read_json(run_dir(run_id) / "final" / f"{pid}.json")
+        norm = (final or {}).get("normalized") or {}
+        row.update({
+            "country": norm.get("country"),
+            "region": list(norm.get("region") or []),
+            "grapes": list(norm.get("grapes") or []),
+            "is_blend": norm.get("is_blend"),
+            "organic": bool((final or {}).get("organic")),
+            "confidence": norm.get("confidence"),
+            "tags_raw": (final or {}).get("tags_raw"),
+            # Final logs written before 2026-09-15 use the old status names.
+            "tag_status": store_mod._LEGACY_STATUS.get(
+                (final or {}).get("tag_status"), (final or {}).get("tag_status") or "pending"),
+            "web_context": derived["web_context"],
+            "run_id": run_id,
+            "tag_run_id": run_id if final is not None else None,
+            "phase_status": derived["phase_status"],
+            "updated_at": (final or {}).get("written_at"),
+            # True when the live store has since been hand-edited for this wine.
+            "human_in_store": bool(base and base.get("tag_status") == "human"),
         })
-    return out
+        rows.append(row)
+    return {"run": _run_summary(run_id, rj), "wines": rows}
+
+
+def _delete_run(rid: str) -> None:
+    d = run_dir(rid)
+    if d.resolve().parent != LOGS_DIR.resolve() or not d.is_dir():
+        raise HTTPException(400, f"invalid run id {rid!r}")
+    shutil.rmtree(d)
+    state = _read_json(RUN_STATE_PATH) if RUN_STATE_PATH.exists() else None
+    if state and state.get("run_id") == rid:
+        RUN_STATE_PATH.unlink(missing_ok=True)
+
+
+def _deletable(run_ids: list[str]) -> tuple[list[str], list[str]]:
+    """Split into (ok, skipped): the active job's run is never deleted."""
+    active = _active_job()
+    busy = active.run_id if active else None
+    known = set(_run_ids())
+    ok = [r for r in run_ids if r in known and r != busy]
+    skipped = [r for r in run_ids if r not in ok]
+    return ok, skipped
+
+
+@app.delete("/api/runs/{run_id}")
+def api_run_delete(run_id: str) -> dict:
+    if run_id not in _run_ids():
+        raise HTTPException(404, "no such run")
+    ok, _ = _deletable([run_id])
+    if not ok:
+        raise HTTPException(409, f"run {run_id} is being written by the active job")
+    _delete_run(run_id)
+    return {"deleted": [run_id], "skipped": []}
+
+
+class RunsDeleteRequest(BaseModel):
+    run_ids: Optional[list[str]] = None   # explicit list...
+    all: bool = False                     # ...or every run...
+    keep_latest: Optional[int] = None     # ...or every run except the newest N
+
+
+@app.post("/api/runs/delete")
+def api_runs_delete(req: RunsDeleteRequest) -> dict:
+    runs = _run_ids()  # newest first
+    if req.run_ids is not None:
+        targets = req.run_ids
+    elif req.keep_latest is not None:
+        if req.keep_latest < 0:
+            raise HTTPException(400, "keep_latest must be >= 0")
+        targets = runs[req.keep_latest:]
+    elif req.all:
+        targets = runs
+    else:
+        raise HTTPException(400, "give run_ids, keep_latest, or all=true")
+    ok, skipped = _deletable(targets)
+    for rid in ok:
+        _delete_run(rid)
+    return {"deleted": ok, "skipped": skipped}
 
 
 @app.get("/api/runs/{run_id}")

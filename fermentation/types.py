@@ -35,6 +35,7 @@ class ScoredSnippet:
     match_score: int
     cleaned_body: str
     dropped_reason: Optional[str] = None  # "producer_absent" | None
+    in_context: bool = False              # made the top-N cut into web_context
 
 
 @dataclass

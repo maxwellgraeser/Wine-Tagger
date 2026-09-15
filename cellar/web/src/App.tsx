@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { api, type FermentRunOptions, type Stage, type StatusResponse, type Wine } from './api';
+import { api, type FermentRunOptions, type RunSummary, type Stage, type StatusResponse, type Wine } from './api';
 import { TopBar } from './components/TopBar';
 import { IngestPanel } from './components/IngestPanel';
 import { FermentPanel } from './components/FermentPanel';
-import { DistributePanel } from './components/DistributePanel';
+import { DistributePanel, LIVE } from './components/DistributePanel';
 import { WineDrawer } from './components/WineDrawer';
 import { useJobStream } from './hooks/useJobStream';
 
@@ -36,13 +36,36 @@ export default function App() {
   const [banner, setBanner] = useState<string | null>(null);
   const [startingLlama, setStartingLlama] = useState(false);
   const [activeJobId, setActiveJobId] = useState<string | null>(null);
+  const [runs, setRuns] = useState<RunSummary[]>([]);
+  // Which results Distribute shows: LIVE (wines.json) or a run id. Starts
+  // unset so the first runs load can pick the latest run.
+  const [resultsRun, setResultsRun] = useState<string | null>(null);
+  // Bumped every time wines.json is re-read so a run view refetches too.
+  const [winesVersion, setWinesVersion] = useState(0);
 
   const attachedRef = useRef(false);
+  // Live table updates: fermentation checkpoints wines.json after every
+  // wine, so on each progress event we re-read it — throttled so a fast
+  // phase can't flood the API.
+  const lastWineRefreshRef = useRef(0);
 
   const jobStream = useJobStream(
     useCallback(() => {
       refreshWines();
       refreshStatus();
+      refreshRuns();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []),
+    useCallback((e) => {
+      if (e.type !== 'progress' && e.type !== 'phase_end') return;
+      const now = Date.now();
+      if (e.type === 'progress' && now - lastWineRefreshRef.current < 2000) return;
+      lastWineRefreshRef.current = now;
+      refreshWines();
+      if (e.type === 'phase_end') {
+        refreshStatus();
+        refreshRuns();
+      }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []),
   );
@@ -66,14 +89,46 @@ export default function App() {
     try {
       const w = await api.getWines();
       setWines(w.wines ?? []);
+      setWinesVersion((v) => v + 1);
     } catch (e) {
       showError(e, 'Failed to load wines');
     }
   }, []);
 
+  const refreshRuns = useCallback(async () => {
+    try {
+      setRuns(await api.getRuns());
+    } catch (e) {
+      showError(e, 'Failed to load runs');
+    }
+  }, []);
+
   useEffect(() => {
     refreshWines();
-  }, [refreshWines]);
+    refreshRuns();
+  }, [refreshWines, refreshRuns]);
+
+  // The run the current job writes to (from its first event carrying run_id,
+  // or the server's summary after a reload).
+  const streamRunId = jobStream.events.find((e) => typeof e.run_id === 'string')?.run_id as string | undefined;
+  const activeRunId = jobStream.running ? (streamRunId ?? status?.active_job?.run_id ?? null) : null;
+
+  // Distribute defaults to the latest run, follows a new run as soon as it
+  // has an id, and falls back if the selected run was deleted.
+  useEffect(() => {
+    if (activeRunId && resultsRun !== activeRunId) {
+      setResultsRun(activeRunId);
+      return;
+    }
+    if (resultsRun === null) {
+      if (runs.length) setResultsRun(runs[0].run_id);
+      return;
+    }
+    if (resultsRun !== LIVE && runs.length && !runs.some((r) => r.run_id === resultsRun)) {
+      setResultsRun(runs[0].run_id);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeRunId, runs]);
 
   // Initial status load + attach to an active job if one exists.
   useEffect(() => {
@@ -104,6 +159,7 @@ export default function App() {
       .then((job) => {
         setActiveJobId(job.id);
         jobStream.connect(job.id);
+        setTimeout(refreshRuns, 1500);
       })
       .catch((e) => showError(e, 'Failed to start job'));
   };
@@ -170,17 +226,37 @@ export default function App() {
             running={stageIsRunning}
             events={jobStream.events}
             simple={isSimple}
+            onWinesChanged={() => {
+              refreshWines();
+              refreshStatus();
+            }}
+            onSettingsChanged={refreshStatus}
+            runs={runs}
+            activeRunId={activeRunId}
+            onRunsChanged={() => {
+              refreshRuns();
+              refreshStatus();
+            }}
           />
         )}
 
         {stage === 'distribution' && (
           <DistributePanel
             status={status}
-            wines={wines}
+            liveWines={wines}
+            runs={runs}
+            resultsRun={resultsRun ?? LIVE}
+            onResultsRunChange={setResultsRun}
+            activeRunId={activeRunId}
+            winesVersion={winesVersion}
             onSelect={setSelectedWine}
             showDevColumns={!isSimple}
             onWinesChanged={() => {
               refreshWines();
+              refreshStatus();
+            }}
+            onRunsChanged={() => {
+              refreshRuns();
               refreshStatus();
             }}
           />

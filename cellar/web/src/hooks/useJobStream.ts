@@ -9,6 +9,7 @@ const EVENT_TYPES = [
   'phase_start',
   'phase_end',
   'progress',
+  'paused',
   'done',
   'exit',
 ];
@@ -25,13 +26,18 @@ export interface UseJobStreamResult {
  * Subscribes to a job's SSE event stream (`GET /api/jobs/{id}/events`).
  * History is replayed by the server on connect. Closes automatically on
  * an `exit` event.
+ *
+ * `onDone` fires on done / paused / exit; `onEvent` fires for every event
+ * (used to refresh the wine table live while the tag phase runs).
  */
-export function useJobStream(onDone?: () => void): UseJobStreamResult {
+export function useJobStream(onDone?: () => void, onEvent?: (e: JobEvent) => void): UseJobStreamResult {
   const [events, setEvents] = useState<JobEvent[]>([]);
   const [running, setRunning] = useState(false);
   const esRef = useRef<EventSource | null>(null);
   const onDoneRef = useRef(onDone);
   onDoneRef.current = onDone;
+  const onEventRef = useRef(onEvent);
+  onEventRef.current = onEvent;
 
   const disconnect = useCallback(() => {
     esRef.current?.close();
@@ -52,13 +58,15 @@ export function useJobStream(onDone?: () => void): UseJobStreamResult {
       const handleMessage = (evt: MessageEvent) => {
         try {
           const data = JSON.parse(evt.data) as JobEvent;
-          setEvents((prev) => [...prev, { ...data, type: data.type ?? evt.type }]);
-          if (data.type === 'exit' || evt.type === 'exit') {
+          const type = data.type ?? evt.type;
+          setEvents((prev) => [...prev, { ...data, type }]);
+          onEventRef.current?.({ ...data, type });
+          if (type === 'exit') {
             setRunning(false);
             es.close();
             onDoneRef.current?.();
           }
-          if (data.type === 'done' || evt.type === 'done') {
+          if (type === 'done' || type === 'paused') {
             onDoneRef.current?.();
           }
         } catch {

@@ -16,6 +16,22 @@ PYTHON=".venv/bin/python"
 PORT="${CELLAR_PORT:-8000}"
 MODE="${1:-serve}"
 
+kill_port() {
+    local port="$1"
+    local pids
+    pids="$(lsof -ti "tcp:$port" 2>/dev/null || true)"
+    if [[ -n "$pids" ]]; then
+        echo "Killing existing process(es) on port $port: $pids"
+        kill $pids 2>/dev/null || true
+        sleep 0.5
+        pids="$(lsof -ti "tcp:$port" 2>/dev/null || true)"
+        [[ -n "$pids" ]] && kill -9 $pids 2>/dev/null || true
+    fi
+}
+
+kill_port "$PORT"
+[[ "$MODE" == "dev" ]] && kill_port 5173
+
 if [[ ! -d cellar/web/node_modules ]]; then
     echo "Installing frontend dependencies..."
     (cd cellar/web && npm install)

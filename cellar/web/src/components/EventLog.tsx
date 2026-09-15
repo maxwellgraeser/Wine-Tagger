@@ -6,6 +6,7 @@ function colorFor(type: string): string {
   if (type.startsWith('phase_')) return 'font-bold text-wine';
   if (type === 'progress') return 'text-ink';
   if (type === 'done' || type === 'exit') return 'font-semibold text-green-700';
+  if (type === 'paused') return 'font-semibold text-amber-700';
   return 'text-muted';
 }
 

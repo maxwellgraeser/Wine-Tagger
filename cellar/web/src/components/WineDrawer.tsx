@@ -3,7 +3,7 @@ import { X } from 'lucide-react';
 import { api, type Wine, type WineDetailResponse } from '../api';
 import { StatusBadge } from './Badge';
 import { TagEditor } from './TagEditor';
-import { SnippetList, ScoredSnippetList } from './SnippetList';
+import { SnippetList, ScoredSnippetList, contextSources } from './SnippetList';
 import { TranscriptView } from './TranscriptView';
 import { JsonView } from './JsonView';
 
@@ -137,6 +137,21 @@ export function WineDrawer({
                         <div className="mb-2 text-xs text-muted">
                           raw_snippet_count: {detail.logs.search.raw_snippet_count}
                         </div>
+                        {detail.logs.search.errors && detail.logs.search.errors.length > 0 && (
+                          <div className="mb-2 rounded-md border border-amber-300 bg-amber-50 p-2 text-xs text-amber-900">
+                            <div className="font-semibold">
+                              {detail.logs.search.errors.length} search quer{detail.logs.search.errors.length === 1 ? 'y' : 'ies'} failed
+                              (rate limit / timeout), so this wine may have fewer snippets than it should:
+                            </div>
+                            <ul className="mt-1 list-disc pl-4">
+                              {detail.logs.search.errors.map((e, i) => (
+                                <li key={i}>
+                                  <span className="font-medium">{e.source}</span>: {e.error}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
                         <SnippetList snippets={detail.logs.search.snippets} />
                         <JsonView data={detail.logs.search} label="search log JSON" />
                       </>
@@ -152,8 +167,27 @@ export function WineDrawer({
                           <span>input_count: {detail.logs.scorer.input_count}</span>
                           <span>producer_gate_dropped: {detail.logs.scorer.producer_gate_dropped}</span>
                           <span>web_context_built: {String(detail.logs.scorer.web_context_built)}</span>
+                          <span>
+                            sent to LLM:{' '}
+                            {detail.logs.scorer.context_count ??
+                              contextSources(detail.logs.scorer.web_context).size}
+                          </span>
                         </div>
-                        <ScoredSnippetList snippets={detail.logs.scorer.scored_snippets} />
+                        {detail.logs.scorer.llm?.error && (
+                          <div className="mb-2 rounded-md border border-red-300 bg-red-50 p-2 text-xs text-red-800">
+                            Scoring LLM reply could not be used ({detail.logs.scorer.llm.error}, after{' '}
+                            {detail.logs.scorer.llm.attempts} attempt
+                            {detail.logs.scorer.llm.attempts === 1 ? '' : 's'}) — every snippet scored 0.
+                          </div>
+                        )}
+                        <div className="mb-2 text-xs text-muted">
+                          Sorted by score, highest first. Green rows were pasted into web_context and
+                          are what the tagger LLM saw.
+                        </div>
+                        <ScoredSnippetList
+                          snippets={detail.logs.scorer.scored_snippets}
+                          webContext={detail.logs.scorer.web_context}
+                        />
                         {detail.logs.scorer.web_context && (
                           <div className="mt-3">
                             <h4 className="mb-1 text-xs font-semibold text-muted">web_context</h4>
