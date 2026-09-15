@@ -2,32 +2,38 @@
 # There is no producer-absent confidence cap: the producer gate is a hard
 # exclusion in scorer.py, not a post-hoc confidence cap.
 
-# --- Web sources ---
-# Every wine gets one site-scoped DDG query per entry here (plus a UPC query
-# for `upc_capable` sources when the SKU is a barcode, plus the distributor
-# site below, plus one unscoped fallback). More sources = more snippets but
-# also more queries per wine, and DDG throttles bursts — keep the list lean.
-CURATED_SOURCES = [
-    # Wine databases — good for both name and UPC lookups
-    {"name": "Wine Searcher",              "domain": "wine-searcher.com",    "upc_capable": True},
-    {"name": "Vivino",                     "domain": "vivino.com",           "upc_capable": True},
-    {"name": "CellarTracker",              "domain": "cellartracker.com",    "upc_capable": True},
-    # Large retailers — product pages state region + varietal in plain text
-    {"name": "Wine.com",                   "domain": "wine.com",             "upc_capable": False},
-    {"name": "Total Wine",                 "domain": "totalwine.com",        "upc_capable": False},
-    # Critic review sites — commented out (paywalled; DDG rarely returns useful snippets)
-    # {"name": "Jeb Dunnuck",               "domain": "jebdunnuck.com"},
-    # {"name": "James Suckling",             "domain": "jamessuckling.com"},
-    # {"name": "Vinous",                     "domain": "vinous.com"},
-    # {"name": "Robert Parker Wine Advocate","domain": "robertparker.com"},
-    # {"name": "Wine Enthusiast",            "domain": "wineenthusiast.com"},
+# --- Web search plan ---
+# One DDG query per entry, per wine. `scope` is the site: domain the results
+# must come from ("*" = unscoped; only ad-redirect hosts are filtered).
+# Placeholders: {name} product name, {sku} barcode (entry skipped if the SKU is
+# not 8-14 digits), {dist} the distributor's domain (entry skipped if the
+# supplier is not in DISTRIBUTOR_SITES).
+#
+# Chosen from a 2026-09-15 experiment (11 wines x 15 templates, see
+# fermentation/ACCURACY-2026-09-15.md): question-style unscoped queries found
+# the TRUE grape for 11/11 wines with 97% of results passing the producer gate;
+# the old '"{name}" wine region grapes' fallback managed 9/11; per-source UPC
+# queries (site:cellartracker.com "{sku}") passed the gate only 37% of the time;
+# totalwine.com timed out on 6/11. Every query costs ~1 s and engines throttle
+# bursts, so the plan is 9 queries per wine, down from 12.
+SEARCH_QUERIES = [
+    # label,                    template,                                  scope
+    ("Grapes Q",                "what grapes are in {name} wine",          "*"),
+    ("Region Q",                "what region is {name} wine made in",      "*"),
+    ("Wine Searcher",           'site:wine-searcher.com "{name}"',         "wine-searcher.com"),
+    ("Vivino",                  'site:vivino.com "{name}"',                "vivino.com"),
+    ("CellarTracker",           'site:cellartracker.com "{name}"',         "cellartracker.com"),
+    ("Wine.com",                'site:wine.com "{name}"',                  "wine.com"),
+    ("UPC",                     '"{sku}" wine',                            "*"),
+    ("{supplier} (distributor)", "site:{dist} {name}",                     "{dist}"),
+    ("fallback",                "{name} wine",                             "*"),
 ]
 
 # Distributor / importer websites, keyed by a lowercase substring of the
-# Lightspeed `supplier_name`. When a wine's supplier matches, its site is
-# queried too (label "Winebow (distributor)"). Importer pages are the single
-# best source: they list the exact grape blend and appellation of the wine
-# they actually ship. Add a line per supplier you buy from.
+# Lightspeed `supplier_name`. Importer pages, when the engine has indexed
+# them, list the exact blend and appellation of the wine actually shipped —
+# but indexing is thin (5/11 wines in the experiment). Add a line per
+# supplier you buy from.
 DISTRIBUTOR_SITES = {
     "winebow":          "winebow.com",
     "monsieur touton":  "monsieurtouton.com",

@@ -93,7 +93,7 @@ def _on_site(url: str, domain: str) -> bool:
 _local = threading.local()
 
 
-def _client() -> "DDGS":
+def _client() -> "DDGS": # type: ignore
     """One DDGS per worker thread, so engine HTTP sessions are reused across
     queries without sharing them between threads."""
     if not hasattr(_local, "ddgs"):
@@ -142,38 +142,16 @@ def _gather_all_snippets(product: Product) -> tuple[list[Snippet], list[dict]]:
     `{source, query, error}` for every query that raised.
     """
     name = product.name
-    brand = product.brand or ""
     sku = (product.sku or "").strip()
-    plan: list[tuple[str, str, str]] = []  # (source_name, domain, query)
-
-    # UPC lookup — listed first so high-confidence barcode hits appear early
-    if _is_upc(sku):
-        for source in [s for s in constants.CURATED_SOURCES if s.get("upc_capable")]:
-            plan.append((f"{source['name']} (UPC)", source["domain"], f'site:{source["domain"]} "{sku}"'))
-        plan.append(("UPC fallback", "*", f'"{sku}" wine'))
-
-    # Name-based lookup across all curated sources
-    for source in constants.CURATED_SOURCES:
-        query = f'site:{source["domain"]} "{name}"'
-        if brand:
-            query += f" {brand}"
-        plan.append((source["name"], source["domain"], query))
-
-    # The distributor's own site, when we know it (see DISTRIBUTOR_SITES)
-    # Unquoted on purpose: engines index only a slice of an importer's site,
-    # and the product page title rarely matches our catalog name verbatim
-    # ("Áster Crianza" vs "Aster Ribera del Duero"). The site: scope plus the
-    # URL-host filter keep the noise down.
     dist_domain = _distributor_domain(product.supplier)
-    if dist_domain:
-        plan.append((f"{product.supplier} (distributor)", dist_domain, f"site:{dist_domain} {name}"))
-
-    # Unscoped name fallback
-    fallback_query = f'"{name}"'
-    if brand:
-        fallback_query += f" {brand}"
-    fallback_query += " wine region grapes"
-    plan.append(("fallback", "*", fallback_query))
+    plan: list[tuple[str, str, str]] = []  # (source_label, scope_domain, query)
+    for label, template, scope in constants.SEARCH_QUERIES:
+        if "{sku}" in template and not _is_upc(sku):
+            continue
+        if "{dist}" in (template + scope + label) and not dist_domain:
+            continue
+        fmt = {"name": name, "sku": sku, "dist": dist_domain or "", "supplier": product.supplier or "Distributor"}
+        plan.append((label.format(**fmt), scope.format(**fmt), template.format(**fmt)))
 
     def _run(i: int) -> tuple[list[dict], Optional[str]]:
         # Stagger starts so concurrent queries don't all hit engines at once.
