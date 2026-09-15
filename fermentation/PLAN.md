@@ -32,7 +32,8 @@ schema is free to change. The only carry-over mechanic is run-state resume.
 **NOT done — known gaps / bugs (fix before relying on a run):**
 
 1. ~~DDG import mismatch (critical).~~ **Fixed 2026-09-15.** `searcher.py`
-   imports `ddgs` and falls back to `duckduckgo_search`; a missing package
+   imports `ddgs` (pinned in `requirements.txt`; the `duckduckgo_search`
+   fallback was dropped because it warns on every query). A missing package
    now raises at import instead of silently yielding zero snippets.
 2. ~~The "Reseed plan" below is UNBUILT.~~ **Built 2026-09-15.** Allowlist
    YAMLs, QID resolver + lock file, allowlist-driven `build_db.py`,

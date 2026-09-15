@@ -59,8 +59,10 @@ that humans author *names* and a machine resolves QIDs:
    region labels (it caught "WA" = Washington *and* Western Australia).
 10. **Rebuild, don't migrate.** `build_db.py` writes to a temp file and
     renames over `library.db`; schema header says so.
-11. **DDG import fixed** (`Tree.html` finding #1): `searcher.py` accepts
-    `ddgs` or `duckduckgo_search` and raises loudly if neither exists.
+11. **DDG import fixed** (`Tree.html` finding #1): `searcher.py` imports
+    `ddgs` (pinned; the legacy `duckduckgo-search` fallback was removed
+    because it emits a rename warning on every query) and raises loudly if
+    it is missing.
 
 ## Files
 

@@ -41,15 +41,18 @@ is their output format (`combined.csv`, then `wines.db`).
 # 1. Ingestion — xlsx → CSV
 ./ingestion/run.sh
 
-# 2. Start a local LLM server first (OpenAI-compatible), then run fermentation.
-#    llama.cpp llama-server on :8080, or LM Studio on :1234.
-./gemma3n.sh            # or ./qwen25-7b.sh — helper scripts at repo root
-python -m fermentation.ferment
+# 2. Fermentation — starts llama-server on :8080 if it isn't already up
+#    (default ./gemma3n.sh), waits for /health, then runs the module.
+#    Flags pass through to ferment.
+./ferment.sh --force --limit 3
+LLAMA_SCRIPT=./qwen25-7b.sh ./ferment.sh   # use a different model
 
 # 3. Distribution — not built yet
 ```
 
-> There is no `fermentation/run.sh` wrapper yet; invoke the module directly.
+> `ferment.sh` leaves a server it started running, so later runs skip the model
+> load. To stop it, run `kill "$(cat .llama-server.pid)"`. To run the module
+> without the wrapper, use `python -m fermentation.ferment` from the repo root.
 
 ---
 
@@ -180,11 +183,10 @@ tag_log    — the MCP tool-call transcript per inference (for auditing)
 **Tech:** Python 3.11+, sqlite3, requests, `mcp` (FastMCP), DuckDuckGo search —
 no paid APIs or keys required.
 
-> **Known issues (see `Tree.html` / `fermentation/PLAN.md`):** the DDG import
-> currently mismatches the pinned package (so a fresh run gathers no snippets
-> and routes everything to `needs_review`); `library.db` is still the unfiltered
-> v1 seed; and the default confidence threshold fights the prompt's confidence
-> caps. Fix these before trusting a run's output.
+> **Known issues (see `Tree.html` / `fermentation/PLAN.md`):** the default
+> confidence threshold (90) fights the prompt's confidence caps, so most wines
+> land in `needs_review`. The DDG import and the library reseed are fixed; see
+> `fermentation/BATON.md`.
 
 ---
 

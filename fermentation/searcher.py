@@ -11,20 +11,14 @@ import time
 from .types import Product, Snippet
 from . import constants
 
-# `ddgs` is the renamed successor of `duckduckgo-search`; accept either so
-# the pinned requirement and a newer install both work. A missing package is
-# a hard error: a silent None here makes every wine route to needs_review
-# with zero snippets and no explanation.
+# A missing package is a hard error: a silent fallback here makes every wine
+# route to needs_review with zero snippets and no explanation.
 try:
     from ddgs import DDGS
-except ImportError:
-    try:
-        from duckduckgo_search import DDGS
-    except ImportError as _exc:  # pragma: no cover
-        raise ImportError(
-            "searcher needs the `ddgs` (or legacy `duckduckgo-search`) package; "
-            "install requirements.txt"
-        ) from _exc
+except ImportError as _exc:  # pragma: no cover
+    raise ImportError(
+        "searcher needs the `ddgs` package; install requirements.txt"
+    ) from _exc
 
 
 # ---------------------------------------------------------------------------
@@ -72,8 +66,6 @@ def _is_price_only(text: str) -> bool:
 
 def _ddg_snippets(query: str) -> list[dict]:
     """Search DuckDuckGo and return one {body, href} dict per result."""
-    if DDGS is None:
-        return []
     try:
         results = DDGS().text(query, max_results=constants.DDG_MAX_RESULTS, timelimit=None)
     except Exception:
