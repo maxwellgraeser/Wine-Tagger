@@ -317,12 +317,12 @@ export function FermentPanel({
       {byStatus && <StatusCounts byStatus={byStatus} />}
 
       <div className="grid grid-cols-2 gap-3 rounded-md border border-parchment bg-white p-3 sm:grid-cols-3">
-        <label className="flex items-center gap-1.5 text-sm" title={FERMENT_HELP.force}>
+        <label className="flex items-center gap-1.5 text-sm">
           <input type="checkbox" checked={force} onChange={(e) => setForce(e.target.checked)} className="accent-wine" />
           Force fresh run
           <Help text={FERMENT_HELP.force} />
         </label>
-        <label className="text-sm" title={FERMENT_HELP.limit}>
+        <label className="text-sm">
           <span className="mb-1 flex items-center gap-1 text-xs text-muted">
             Limit <Help text={FERMENT_HELP.limit} />
           </span>
@@ -333,7 +333,7 @@ export function FermentPanel({
             className="w-full rounded-md border border-parchment px-2 py-1 text-sm focus:border-wine focus:outline-none"
           />
         </label>
-        <label className="text-sm" title={FERMENT_HELP.threshold}>
+        <label className="text-sm">
           <span className="mb-1 flex items-center gap-1 text-xs text-muted">
             Confidence threshold
             {savedThreshold != null && <span>(saved: {savedThreshold})</span>}
@@ -350,12 +350,12 @@ export function FermentPanel({
             onKeyDown={(e) => {
               if (e.key === 'Enter') (e.target as HTMLInputElement).blur();
             }}
-            title={FERMENT_HELP.threshold}
+           
             className="w-full rounded-md border border-parchment px-2 py-1 text-sm focus:border-wine focus:outline-none"
           />
           {thresholdSaved && <span className="mt-0.5 block text-[11px] text-muted">{thresholdSaved}</span>}
         </label>
-        <label className="text-sm sm:col-span-2" title={FERMENT_HELP.model}>
+        <label className="text-sm sm:col-span-2">
           <span className="mb-1 flex items-center gap-1 text-xs text-muted">
             Model {status?.llama.ok ? '(loaded on llama-server)' : '(llama-server is down)'}
             <Help text={FERMENT_HELP.model} />
@@ -375,7 +375,7 @@ export function FermentPanel({
             ))}
           </select>
         </label>
-        <label className="flex items-center gap-1.5 text-sm" title={FERMENT_HELP.producerGate}>
+        <label className="flex items-center gap-1.5 text-sm">
           <input
             type="checkbox"
             checked={noProducerGate}
@@ -385,7 +385,7 @@ export function FermentPanel({
           Disable producer gate
           <Help text={FERMENT_HELP.producerGate} />
         </label>
-        <label className="flex items-center gap-1.5 text-sm sm:col-span-3" title={FERMENT_HELP.pause}>
+        <label className="flex items-center gap-1.5 text-sm sm:col-span-3">
           <input
             type="checkbox"
             checked={pauseBetweenPhases}

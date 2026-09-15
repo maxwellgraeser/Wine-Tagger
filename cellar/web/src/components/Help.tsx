@@ -1,10 +1,55 @@
+import { useRef, useState } from 'react';
 import { CircleHelp } from 'lucide-react';
 
-/** A small "?" icon whose native tooltip explains a control. */
+const TIP_WIDTH = 288;
+
+/** A small "?" icon that shows a rendered tooltip explaining a control on hover
+ *  or keyboard focus. (Native `title` tooltips are slow and unreliable in some
+ *  webviews, so the text is drawn by us.) Positioned `fixed` so panels with
+ *  overflow don't clip it. */
 export function Help({ text, className = '' }: { text: string; className?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [pos, setPos] = useState<{ left: number; top: number; above: boolean } | null>(null);
+
+  const show = () => {
+    const r = ref.current?.getBoundingClientRect();
+    if (!r) return;
+    const left = Math.min(Math.max(8, r.left + r.width / 2 - TIP_WIDTH / 2), window.innerWidth - TIP_WIDTH - 8);
+    const above = r.bottom + 160 > window.innerHeight;
+    setPos({ left, top: above ? r.top - 6 : r.bottom + 6, above });
+  };
+  const hide = () => setPos(null);
+
   return (
-    <span title={text} aria-label={text} className={`inline-flex cursor-help text-muted hover:text-ink ${className}`}>
+    <span
+      ref={ref}
+      tabIndex={0}
+      role="img"
+      aria-label={text}
+      onMouseEnter={show}
+      onMouseLeave={hide}
+      onFocus={show}
+      onBlur={hide}
+      // The icon often sits inside a <label>; don't let a click toggle its control.
+      onClick={(e) => e.preventDefault()}
+      className={`inline-flex cursor-help text-muted hover:text-ink focus:text-ink focus:outline-none ${className}`}
+    >
       <CircleHelp className="h-3.5 w-3.5" />
+      {pos && (
+        <span
+          role="tooltip"
+          style={{
+            position: 'fixed',
+            left: pos.left,
+            top: pos.top,
+            width: TIP_WIDTH,
+            transform: pos.above ? 'translateY(-100%)' : undefined,
+          }}
+          className="pointer-events-none z-50 rounded-md bg-ink px-2.5 py-1.5 text-left text-xs font-normal leading-snug text-cream normal-case shadow-lg"
+        >
+          {text}
+        </span>
+      )}
     </span>
   );
 }
