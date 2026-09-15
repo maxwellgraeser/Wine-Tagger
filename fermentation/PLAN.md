@@ -10,6 +10,58 @@ schema is free to change. The only carry-over mechanic is run-state resume.
 
 ---
 
+## Implementation status
+
+> Snapshot of what is actually in the tree vs. what this plan describes.
+> Everything below "## Architecture" is the *design*; this section is the
+> *reality*. See `Tree.html` at the repo root for a visual map and a
+> severity-ordered findings list.
+
+**Built and wired (Phases 1–5 core):**
+
+- `ferment.py`, `searcher.py`, `scorer.py`, `tagger.py`, `types.py`,
+  `constants.py`, `debug_output.py` — all present and integrated.
+- `library_mcp/server.py` — FastMCP stdio server with all six browse tools
+  plus `submit_tags` and its issue/hint codes.
+- `library_mcp/seed/` — `build_db.py`, `sparql/*.rq`, Wikipedia parsers
+  (`italy.py`, `germany.py`).
+- `--no-producer-gate` is now wired (was a no-op in an earlier draft).
+- `wines.db` schema: `region`/`grapes` stored as JSON-encoded TEXT arrays;
+  `tag_log` stores the MCP transcript.
+
+**NOT done — known gaps / bugs (fix before relying on a run):**
+
+1. **DDG import mismatch (critical).** `searcher.py` does
+   `from ddgs import DDGS`, but `requirements.txt` pins `duckduckgo-search`
+   (imports as `duckduckgo_search`). The import fails silently → `DDGS=None`
+   → **zero snippets gathered → every wine routes to `needs_review`** with no
+   error. Align the import and the requirement, and fail loudly when
+   `DDGS is None`.
+2. **The "Reseed plan" below is UNBUILT.** `library.db` is still the v1
+   firehose: ~1672 grapes (nearly all with no color), 213 countries, **36
+   regions**. There is no `is_canonical` column, no `region_synonyms` table,
+   and no `allowlist/` directory. With only 36 regions, `submit_tags` rejects
+   most real regions as non-canonical. Executing BATON.md Tasks 1–8 is the
+   biggest lever on output quality. (BATON.md tracks this work.)
+3. **Confidence threshold is self-defeating.** `DEFAULT_CONFIDENCE_THRESHOLD
+   = 90`, but `SYSTEM_PROMPT_MCP` caps confidence at 84 for single-snippet
+   answers, and the producer gate + `SNIPPET_MATCH_THRESHOLD = 85` often
+   leave a single surviving snippet. A correct single-source wine maxes at
+   84 < 90 → forced `needs_review`. Lower the threshold (~80) or relax the
+   cap; tune the two together.
+
+**Not built (out of fermentation's current scope):**
+
+- No `fermentation/run.sh` (Phase 4 cutover). Run via
+  `python -m fermentation.ferment`.
+- `curation/` not yet deleted.
+- No tests cover any fermentation module (the `curation/test/` harness tests
+  curation only).
+- No snippet cache (deliberate, per Risk #7 — but compounds bug #1: a
+  throttled DDG run is indistinguishable from a clean all-`needs_review` run).
+
+---
+
 ## Architecture
 
 Four-file controller-and-modules split, plus a sibling MCP server package.

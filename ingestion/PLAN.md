@@ -1,5 +1,9 @@
 # Ingestion Domain
 
+> **Status: ✅ Implemented** (`ingestion/ingest.py`, run via `ingestion/run.sh`).
+> The "curation" referenced below is now the **fermentation** domain — the
+> output contract (`combined.csv`) is unchanged.
+
 ## Purpose
 
 Read raw Lightspeed `.xlsx` exports, clean and normalize the data, and output structured CSV files that downstream domains can consume without needing xlsx tooling.
@@ -20,7 +24,7 @@ Key columns (29 total):
 | `name` | Display name | e.g. `Annabella Pinot Noir` |
 | `description` | Product description | Often empty |
 | `product_category` | Lightspeed category | e.g. `Red`, `Sparkling` |
-| `tags` | Existing tags | Currently empty -- this is what curation will fill |
+| `tags` | Existing tags | Currently empty -- this is what fermentation will fill |
 | `supply_price` | Cost price | |
 | `retail_price` | Selling price | |
 | `brand_name` | Brand | |
@@ -69,7 +73,8 @@ Key columns (17 total):
 
 ## Output Contract
 
-Downstream (curation) reads a single file: `ingestion/output/combined.csv`
+Downstream (**fermentation**; formerly curation) reads a single file:
+`ingestion/output/combined.csv`
 
 **Product columns (from product-export.xlsx):**
 - `id` (string, Lightspeed UUID)

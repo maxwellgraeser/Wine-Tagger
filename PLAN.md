@@ -2,75 +2,132 @@
 
 ## Overview
 
-A three-domain pipeline that takes raw Lightspeed product and inventory exports, enriches them with AI-generated tags, and produces a dashboard for review and re-upload.
+A domain-driven pipeline that takes raw Lightspeed product and inventory
+exports, enriches them with AI-generated wine tags, and (eventually) produces a
+dashboard for review and re-upload.
 
 ```
-  ┌─────────────┐       ┌─────────────┐       ┌────────────────┐
-  │  Ingestion   │──CSV──▶  Curation   │──DB───▶  Distribution  │
-  │  (Python)    │       │  (Python +   │       │  (React/Vite/  │
-  │              │       │   Gemma)     │       │   TypeScript)  │
-  └─────────────┘       └─────────────┘       └────────────────┘
+  ┌─────────────┐      ┌──────────────────┐      ┌────────────────┐
+  │  Ingestion  │─CSV─▶│   Fermentation   │─DB──▶│  Distribution  │
+  │  (Python)   │      │ (Python + local  │      │  (React/Vite/  │
+  │             │      │  LLM + MCP lib)  │      │   TypeScript)  │
+  └─────────────┘      └──────────────────┘      └────────────────┘
+        done                  active                 not built
 ```
+
+> **Migration note.** The original design had three domains: Ingestion →
+> **Curation** → Distribution. `curation/` is being replaced by
+> `fermentation/`, a clean-break rewrite that drives a local LLM through a
+> self-built **MCP wine library** instead of a post-hoc normalization pass.
+> `curation/` is now legacy and will be deleted once `fermentation/` is
+> verified end-to-end. `distribution/` is still only a plan.
+
+## Status at a glance
+
+| Domain | State | Entry point | Notes |
+|---|---|---|---|
+| `ingestion/` | ✅ Implemented | `ingestion/run.sh` | xlsx → `combined.csv` |
+| `fermentation/` | 🟧 Active build | `python -m fermentation.ferment` | replaces curation; no `run.sh` yet |
+| `curation/` | ⬛ Legacy | `curation/run.sh` | superseded by fermentation; pending deletion |
+| `distribution/` | ⬜ Not built | — | only `distribution/PLAN.md` exists |
+
+See each domain's `PLAN.md` for detail, and `Tree.html` (repo root) for a
+visual component map plus an ordered list of known issues.
 
 ## Domains
 
 ### 1. Ingestion (`ingestion/`)
 
-Reads the raw `.xlsx` exports from Lightspeed (product catalog and inventory/sales report), cleans and normalizes the data, and outputs well-structured CSV files that downstream domains can consume without any xlsx dependency.
+Reads the raw `.xlsx` exports from Lightspeed (product catalog and
+inventory/sales report), cleans and normalizes the data, and outputs a single
+CSV that downstream domains consume without any xlsx dependency.
 
-**Input:** Two `.xlsx` files (product export, inventory report)
-**Output:** Single `combined.csv` in `ingestion/output/` -- product catalog columns and sales stats merged into one row per wine via a name-based full outer join.
+**Input:** Two `.xlsx` files (product export, inventory report) in `Sample Xlsx/`
+**Output:** `ingestion/output/combined.csv` — product catalog columns and sales
+stats merged into one row per wine via a name-based **inner join**
+(case-insensitive; rows present in only one source are dropped and logged).
 
-### 2. Curation (`curation/`)
+### 2. Fermentation (`fermentation/`)
 
-Consumes the clean CSVs. Uses a locally-running Gemma model (via llama.cpp's `llama-server`, with LM Studio as an alternative) to search the internet and generate tags for each wine -- country of origin, region, and grape varieties. Stores everything in a SQLite database that becomes the single source of truth.
+Consumes `combined.csv`. For each wine it gathers web snippets (DuckDuckGo),
+uses a local LLM to score snippet relevance, then drives a second LLM tool-call
+loop against the **`library_mcp`** server to infer and *canonicalize* tags —
+country, region(s), grapes, blend status, organic status, confidence. Results
+land in a fresh SQLite database.
 
-Web lookup uses a two-phase approach: all curated sources are queried (no early stop), then a batch LLM call scores each snippet for name-match quality (with abbreviation expansion: PN → Pinot Noir, etc.). Only snippets scoring ≥ 65 feed the final tag-inference call. Confidence scoring has hard limits to prevent inflated scores from weak single-source evidence.
+Architecture is a controller (`ferment.py`) over three independent modules:
 
-**Input:** `combined.csv` from `ingestion/output/`
-**Output:** SQLite database at `curation/output/wines.db`
+- `searcher.py` — DDG queries, dedupe, snippet cleanup → `list[Snippet]`.
+- `scorer.py` — one LLM call scores snippets 0–100, a **producer-absent hard
+  gate** drops snippets missing the producer name, top-N assembled into
+  `web_context` (or `None`, which short-circuits to `needs_review`).
+- `tagger.py` — drives the MCP tool-call loop; the model browses canonical
+  countries/regions/grapes via `lookup_*`/`list_*` and commits via
+  `submit_tags`, which is the canonicalization gate — whatever it accepts is
+  what gets written; there is no second normalization pass.
+
+The **`library_mcp/`** package is a FastMCP stdio server backed by a baked
+SQLite wine library (`library.db`), seeded offline from Wikidata + Wikipedia.
+
+**Input:** `ingestion/output/combined.csv`
+**Output:** SQLite database at `fermentation/wines.db` (tables: `products`,
+`sales`, `tag_log`).
 
 ### 3. Distribution (`distribution/`)
 
-A local React + Vite + TypeScript dashboard that reads from the SQLite database. Lets you browse, search, and edit wine data and tags. Exports a Lightspeed-compatible `.xlsx` with the columns `id`, `name`, and `tags` (semicolon-separated).
+*Planned — not yet implemented.* A local React + Vite + TypeScript dashboard
+that reads the SQLite database, lets you browse/search/edit tags, and exports a
+Lightspeed-compatible `.xlsx` (`id`, `name`, `tags`). See
+`distribution/PLAN.md`.
 
-**Input:** SQLite database from `curation/output/wines.db`
+**Input:** SQLite database from `fermentation/wines.db`
 **Output:** Lightspeed import `.xlsx`
 
 ## Data Flow
 
-Each domain is self-contained in its own folder. Data flows strictly downstream -- no domain reaches back into an upstream domain's internals. The contract between domains is defined by their output format:
+Each domain is self-contained in its own folder. Data flows strictly
+downstream — no domain reaches back into an upstream domain's internals. The
+contract between domains is their output format:
 
-- Ingestion -> Curation: `combined.csv` with agreed-upon column names (products + sales stats in one file)
-- Curation -> Distribution: SQLite database with a known schema
+- Ingestion → Fermentation: `combined.csv` with agreed column names.
+- Fermentation → Distribution: SQLite database with a known schema.
 
 ## Running the Pipeline
 
-Each domain has its own run script. Execute them in order:
-
 ```
 ./ingestion/run.sh
-./curation/run.sh
-./distribution/run.sh   # starts the dev server
+python -m fermentation.ferment          # (no run.sh wrapper yet)
+# ./distribution/run.sh                 # not built
 ```
+
+Fermentation needs a local OpenAI-compatible LLM endpoint running first
+(llama.cpp `llama-server` on :8080, or LM Studio on :1234). The `gemma3n.sh` /
+`qwen25-7b.sh` helper scripts at the repo root start a server.
 
 ## Folder Structure
 
 ```
 Wine Warehouse DDD/
 ├── PLAN.md                  # this file
+├── README.md
+├── Tree.html                # visual architecture map + findings
+├── requirements.txt
 ├── ingestion/
 │   ├── PLAN.md
-│   ├── run.sh
-│   └── ...
-├── curation/
+│   ├── ingest.py
+│   └── run.sh
+├── fermentation/            # active — replaces curation/
 │   ├── PLAN.md
-│   ├── run.sh
-│   └── ...
-├── distribution/
+│   ├── ferment.py           # controller
+│   ├── searcher.py · scorer.py · tagger.py
+│   ├── types.py · constants.py · debug_output.py
+│   └── library_mcp/         # FastMCP server + baked library.db + seed/
+├── curation/                # legacy — pending deletion
 │   ├── PLAN.md
-│   ├── run.sh
-│   └── ...
+│   ├── curate.py
+│   └── run.sh
+├── distribution/            # not built
+│   └── PLAN.md
 └── Sample Xlsx/
     ├── product-export.xlsx
     └── inventory-report (...).xlsx

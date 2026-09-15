@@ -1,26 +1,55 @@
 # Wine Warehouse DDD Data Pipeline
 
-A three-domain pipeline that takes raw Lightspeed exports, enriches them with AI-generated wine metadata, and produces a dashboard for review and re-upload.
+A domain-driven pipeline that takes raw Lightspeed exports, enriches them with
+AI-generated wine metadata, and produces a database for review and re-upload.
 
 ```
-┌─────────────┐       ┌─────────────┐       ┌────────────────┐
-│  Ingestion  │──CSV──▶  Curation   │──DB───▶  Distribution  │
-│  (Python)   │       │  (Python +  │       │  (React/Vite/  │
-│             │       │   Gemma)    │       │   TypeScript)  │
-└─────────────┘       └─────────────┘       └────────────────┘
+  ┌─────────────┐      ┌──────────────────┐      ┌────────────────┐
+  │  Ingestion  │─CSV─▶│   Fermentation   │─DB──▶│  Distribution  │
+  │  (Python)   │      │ (Python + local  │      │  (React/Vite/  │
+  │             │      │  LLM + MCP lib)  │      │   TypeScript)  │
+  └─────────────┘      └──────────────────┘      └────────────────┘
+        done                  active                 not built
 ```
+
+> **Migration note.** The original design had three domains: Ingestion →
+> **Curation** → Distribution. `curation/` is being replaced by
+> `fermentation/`, a clean-break rewrite that drives a local LLM through a
+> self-built **MCP wine library** instead of a post-hoc normalization pass.
+> `curation/` is legacy and will be deleted once `fermentation/` is verified
+> end-to-end. `distribution/` is still only a plan.
+>
+> See `Tree.html` (repo root) for a visual component map and a
+> severity-ordered list of known issues.
+
+## Status at a glance
+
+| Domain | State | Entry point | In → Out |
+|---|---|---|---|
+| `ingestion/` | ✅ Implemented | `./ingestion/run.sh` | 2× `.xlsx` → `combined.csv` |
+| `fermentation/` | 🟧 Active build | `python -m fermentation.ferment` | `combined.csv` → `wines.db` |
+| `curation/` | ⬛ Legacy | `./curation/run.sh` | superseded; pending deletion |
+| `distribution/` | ⬜ Not built | — | `wines.db` → Lightspeed `.xlsx` |
+
+Each domain is self-contained. Data flows strictly downstream — no domain
+reaches back into an upstream domain's internals; the contract between domains
+is their output format (`combined.csv`, then `wines.db`).
 
 ## How to Run
 
-Execute the three domains in order:
-
 ```sh
+# 1. Ingestion — xlsx → CSV
 ./ingestion/run.sh
-./curation/run.sh
-./distribution/run.sh   # starts the local dashboard
+
+# 2. Start a local LLM server first (OpenAI-compatible), then run fermentation.
+#    llama.cpp llama-server on :8080, or LM Studio on :1234.
+./gemma3n.sh            # or ./qwen25-7b.sh — helper scripts at repo root
+python -m fermentation.ferment
+
+# 3. Distribution — not built yet
 ```
 
-Each domain is self-contained. Data flows strictly downstream — no domain reaches back into an upstream domain's internals.
+> There is no `fermentation/run.sh` wrapper yet; invoke the module directly.
 
 ---
 
@@ -28,142 +57,145 @@ Each domain is self-contained. Data flows strictly downstream — no domain reac
 
 **Run:** `./ingestion/run.sh`
 
-**What it does:** Reads the two raw `.xlsx` exports from Lightspeed, cleans and normalizes them, and writes a single merged CSV.
+**What it does:** Reads the two raw `.xlsx` exports from Lightspeed, cleans and
+normalizes them, and writes a single merged CSV.
 
 **Inputs** (place in `Sample Xlsx/`):
 - `product-export.xlsx` — full product catalog (id, name, SKU, prices, supplier, tags, etc.)
 - `inventory-report.xlsx` — sales stats per product (units sold, margin, customer count, etc.)
 
-**Output:** `ingestion/output/combined.csv` — one row per wine with all product columns and sales stats merged via a case-insensitive full outer join on the product name.
+**Output:** `ingestion/output/combined.csv` — one row per wine with all product
+columns and sales stats merged via a case-insensitive **inner join** on the
+product name. Rows present in only one source are dropped and logged as
+warnings.
 
 **Key processing steps:**
 1. Read both xlsx files with openpyxl.
 2. Normalize column names (lowercase, underscores).
 3. Drop always-empty variant/composite columns.
-4. Full outer join on `name` — products with no sales data are included (sales columns left blank); inventory rows with no matching product are appended with only the sales columns filled.
+4. Inner join on `name` — products and inventory rows must match on both sides;
+   unmatched rows are dropped and counted.
 5. Coerce numeric types, strip whitespace, validate UUIDs, handle nulls consistently.
 
-**Tech:** Python 3.11+, openpyxl (or pandas), stdlib csv — no network access needed.
+**Tech:** Python 3.11+, openpyxl, stdlib csv — no network access needed.
+
+See `ingestion/PLAN.md` for the full column contract.
 
 ---
 
-## Domain 2 — Curation
+## Domain 2 — Fermentation
 
-**Run:**
+**Run:** `python -m fermentation.ferment [flags]`
 
-```sh
-# Standard run (all wines, no pausing)
-./curation/run.sh
-
-# Pause for review after every 10 wines
-./curation/run.sh --batch-size 10
-
-# Use LM Studio instead of llama.cpp
-./curation/run.sh --api-url http://localhost:1234/v1/chat/completions
-
-# Lower the confidence threshold (accept more tags without manual review)
-./curation/run.sh --confidence-threshold 60
-
-# Ignore saved run state and start over from the beginning
-./curation/run.sh --force
-
-# Combine flags
-./curation/run.sh --batch-size 20 --confidence-threshold 60 --api-url http://localhost:1234/v1
-```
-
-**What it does:** For each wine, looks it up on the web, then calls a local Gemma model to infer structured metadata (country, region, grapes, blend status, organic status). Writes everything to a SQLite database.
+**What it does:** For each wine, gathers web snippets, uses a local LLM to score
+their relevance, then drives a second LLM through a **tool-call loop against the
+`library_mcp` server** to infer and *canonicalize* structured metadata
+(country, region(s), grapes, blend status, organic status, confidence). Writes
+everything to a fresh SQLite database.
 
 **Input:** `ingestion/output/combined.csv`
+**Output:** `fermentation/wines.db` (SQLite)
 
-**Output:** `curation/output/wines.db` (SQLite)
+### Architecture
 
-### Web Lookup
+A controller (`ferment.py`) orchestrates three independent modules — they never
+import each other; config (model, api_url) is owned by the controller and
+passed down:
 
-For each wine the script queries DuckDuckGo using site-scoped queries against a curated priority list of sources (Jeb Dunnuck, James Suckling, Vinous, Robert Parker, Wine Enthusiast). It takes the first useful snippet (≤ 400 chars) and caches it in `curation/output/web_cache.json` keyed by product id so re-runs skip the network for already-looked-up wines.
+- **`searcher.py`** — owns the network for snippets. DuckDuckGo queries (UPC +
+  per-source + fallback), cross-query URL dedupe, boilerplate strip, price-only
+  filter. → `list[Snippet]`.
+- **`scorer.py`** — one LLM call scores each snippet 0–100 for product match. A
+  **producer-absent hard gate** drops snippets that don't mention the producer
+  name (a hard exclusion, not a confidence cap). Top-N survivors are assembled
+  into `web_context` — or `None`, in which case the wine routes straight to
+  `needs_review` and the tagger is skipped.
+- **`tagger.py`** — drives the MCP tool-call loop. The model browses canonical
+  countries/regions/grapes via `lookup_*`/`list_*`, then commits via
+  `submit_tags`. `submit_tags` **is the canonicalization gate** — whatever it
+  accepts is what `ferment.py` writes; there is no second normalization pass.
 
-- If no curated source returns a snippet, it falls back to an unscoped query.
-- If nothing useful is found at all, `web_context` is set to null and the wine is flagged `needs_review`.
-- A 0.5 s delay between requests keeps DDG happy; HTTP errors retry once then proceed with null context.
+### The `library_mcp` server
 
-### LLM Inference
+A FastMCP **stdio server** (`fermentation/library_mcp/server.py`) backed by a
+baked SQLite wine library (`library.db`), seeded offline from Wikidata +
+Wikipedia (`seed/build_db.py`). Tool surface:
 
-Uses a locally-running Gemma model (via **llama.cpp's `llama-server`** at `http://localhost:8080/v1/chat/completions`, or **LM Studio** at `http://localhost:1234/v1/chat/completions`). Pass `--api-url` or set the env var to switch runtimes.
+- Browse (read-only): `lookup_country`, `lookup_region`, `lookup_grape`,
+  `list_countries`, `list_regions`, `list_grapes`.
+- Terminal: `submit_tags(country, region[], grapes[], is_blend, organic, confidence)`
+  → `{ok, normalized}` on success, or `{ok:false, issues, hints}` so the model
+  can correct and retry in-loop.
 
-The model receives the product name, category, brand, and web snippet and returns JSON:
+Why MCP instead of a bigger prompt or a post-hoc pass: synonyms collapse
+upfront (Garnacha → Grenache), mismatches surface as a correctable tool failure,
+and every lookup is captured in a structured transcript. See
+`fermentation/PLAN.md` for the full rationale.
 
-```json
-{
-  "country": "France",
-  "region": "Bordeaux",
-  "grapes": ["Cabernet Sauvignon", "Merlot"],
-  "is_blend": true,
-  "organic": false,
-  "confidence": 92
-}
-```
+### LLM runtime
 
-After parsing, `tags_raw` is assembled as a semicolon-separated string ready for Lightspeed — e.g. `France; Bordeaux; Cabernet Sauvignon; Merlot; Blend`.
+A single local model (default `gemma3n:e4b`) is hit at **two points** via an
+OpenAI-compatible `/v1/chat/completions` endpoint:
 
-### Confidence & Review Flags
+- **llama.cpp `llama-server`:** `http://localhost:8080/v1/chat/completions` (default)
+- **LM Studio (alternative):** `http://localhost:1234/v1/chat/completions` — pass `--api-url`
 
-- Rows with `confidence < 75` (default, adjustable via `--confidence-threshold` or `CURATION_CONFIDENCE_THRESHOLD`) are flagged `tag_status = 'needs_review'`.
-- Private-label wines (no web result found) go through LLM inference but are always flagged `needs_review`.
-- `organic = true` is only set when the web snippet or model response contains `"certified organic"`, `"biodynamic"`, or `"certified biodynamic"` — softer signals are ignored.
+### Confidence & review flags
+
+- A wine with no usable `web_context` (no snippets, or all dropped by the
+  producer gate) is written as `needs_review` without ever calling the tagger.
+- After tagging, `confidence < threshold` (default in `constants.py`) → `needs_review`.
+- `organic` is set only when explicit certification language
+  (`certified organic`, `biodynamic`, `certified biodynamic`) appears.
 - Rows with `tag_status = 'manual'` are never overwritten on re-run.
 
-### CLI Flags
+### CLI flags
 
 | Flag | Default | Description |
 |------|---------|-------------|
-| `--api-url` | llama.cpp (`http://localhost:8080/v1/chat/completions`) | LLM API base URL |
-| `--confidence-threshold` | 75 | Minimum confidence to auto-accept tags |
+| `--api-url` | llama.cpp (`:8080`) | LLM API URL (or `FERMENTATION_API_URL`) |
+| `--model` | `gemma3n:e4b` | Model name (or `FERMENTATION_MODEL`) |
+| `--confidence-threshold` | see `constants.py` | Min confidence to auto-accept |
 | `--batch-size N` | 0 (all) | Pause for review after every N wines |
+| `--limit N` | 0 (all) | Process at most N wines |
 | `--force` | off | Ignore saved run state; restart from row 0 |
+| `--input` | `ingestion/output/combined.csv` | Path to the input CSV |
+| `--no-producer-gate` | off | Disable the producer-absent hard gate (debug) |
+| `--debug-output` | off | Write per-stage JSON snapshots to `fermentation/output/` |
 
 ### Resumability
 
-After each committed wine the script writes `curation/output/.run_state.json`. If the run is interrupted (user declined to continue a batch, or the process was killed), re-running the same command resumes from where it left off. `--force` discards the state file and starts fresh.
+After each committed wine, `fermentation/.run_state.json` records the cursor.
+Re-running the same command resumes from where it left off; `--force` discards
+the state and starts fresh.
 
-### SQLite Schema
+### SQLite schema (`fermentation/wines.db`)
 
 ```
-products   — one row per wine; holds all catalog fields plus LLM-generated tags
+products   — one row per wine; catalog fields + canonical tags (region/grapes as JSON arrays)
 sales      — sales stats per SKU, joined to products via product_id
-tag_log    — raw LLM prompt/response pairs for every inference (for auditing)
+tag_log    — the MCP tool-call transcript per inference (for auditing)
 ```
 
-**Tech:** Python 3.11+, sqlite3, requests/httpx — no paid APIs or API keys required.
+**Tech:** Python 3.11+, sqlite3, requests, `mcp` (FastMCP), DuckDuckGo search —
+no paid APIs or keys required.
+
+> **Known issues (see `Tree.html` / `fermentation/PLAN.md`):** the DDG import
+> currently mismatches the pinned package (so a fresh run gathers no snippets
+> and routes everything to `needs_review`); `library.db` is still the unfiltered
+> v1 seed; and the default confidence threshold fights the prompt's confidence
+> caps. Fix these before trusting a run's output.
 
 ---
 
 ## Domain 3 — Distribution
 
-**Run:** `./distribution/run.sh`
+**Status: not built** — `distribution/` contains only `PLAN.md`.
 
-**What it does:** A local web dashboard for browsing, editing, and exporting the curated wine data.
-
-**Input:** `curation/output/wines.db`
-
-**Output:** Lightspeed-compatible `.xlsx` with columns `id`, `name`, `tags` (semicolon-separated).
-
-### Dashboard Features
-
-- **Wine table** — sortable, filterable (by category, country, region, tag_status), searchable by name.
-- **Inline tag editing** — edit country, region, and grapes directly in the table; saving flips `tag_status` to `reviewed`.
-- **Sales stats** — per-wine details plus summary stats (top sellers, highest margin, most customers).
-- **Export** — one-click `.xlsx` download containing only `id`, `name`, and `tags`.
-
-### API Endpoints
-
-```
-GET    /api/wines              list wines (?search, ?category, ?status)
-GET    /api/wines/:id          single wine + sales stats
-PATCH  /api/wines/:id          update tags (sets tag_status = 'reviewed')
-GET    /api/wines/export       download Lightspeed xlsx
-GET    /api/stats/summary      aggregate sales stats
-```
-
-**Tech:** Node.js 18+, Vite + React + TypeScript, Express/Fastify, better-sqlite3, exceljs/SheetJS, Tailwind CSS.
+**Planned:** a local React + Vite + TypeScript dashboard that reads
+`fermentation/wines.db`, lets you browse/search/edit tags, and exports a
+Lightspeed-compatible `.xlsx` with columns `id`, `name`, `tags`
+(semicolon-separated). See `distribution/PLAN.md`.
 
 ---
 
@@ -173,21 +205,30 @@ GET    /api/stats/summary      aggregate sales stats
 Wine Warehouse DDD/
 ├── README.md
 ├── PLAN.md
+├── Tree.html                    # visual architecture map + findings
+├── requirements.txt
+├── gemma3n.sh / qwen25-7b.sh    # local LLM server helpers
 ├── ingestion/
 │   ├── PLAN.md
+│   ├── ingest.py
 │   ├── run.sh
-│   └── output/
-│       └── combined.csv        (generated)
-├── curation/
+│   └── output/combined.csv      (generated)
+├── fermentation/                # active — replaces curation/
 │   ├── PLAN.md
-│   ├── run.sh
-│   └── output/
-│       ├── wines.db            (generated)
-│       ├── web_cache.json      (generated)
-│       └── .run_state.json     (generated, deleted on clean completion)
-├── distribution/
+│   ├── ferment.py               # controller
+│   ├── searcher.py · scorer.py · tagger.py
+│   ├── types.py · constants.py · debug_output.py
+│   ├── wines.db                 (generated)
+│   └── library_mcp/
+│       ├── server.py            # FastMCP stdio server
+│       ├── schema.sql · library.db
+│       └── seed/                # offline Wikidata + Wikipedia build
+├── curation/                    # legacy — pending deletion
 │   ├── PLAN.md
+│   ├── curate.py
 │   └── run.sh
+├── distribution/                # not built
+│   └── PLAN.md
 └── Sample Xlsx/
     ├── product-export.xlsx
     └── inventory-report (...).xlsx

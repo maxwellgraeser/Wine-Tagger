@@ -1,5 +1,25 @@
 # Curation Domain
 
+> **⬛ LEGACY — SUPERSEDED BY `fermentation/`.**
+>
+> This domain is no longer the active path. It has been replaced by
+> `fermentation/`, a clean-break rewrite that keeps the same goal (turn web
+> context into structured wine tags) but changes the mechanism:
+>
+> | Curation (this doc) | Fermentation (current) |
+> |---|---|
+> | Single monolith `curate.py` (~860 LOC) | Controller `ferment.py` + `searcher`/`scorer`/`tagger` modules |
+> | Hand-maintained `normalization/` libraries (Python dicts) | **`library_mcp`** — a FastMCP server over a baked Wikidata/Wikipedia SQLite library |
+> | Post-hoc `normalize_tags` pass after inference | In-loop canonicalization: the model calls `lookup_*`/`submit_tags`; `submit_tags` *is* the gate, no second pass |
+> | Producer-absent = soft **confidence cap** (69) applied after tagging | Producer-absent = **hard exclusion** in `scorer.py`; failing wines never reach the tagger |
+> | `web_cache.json` snippet cache | **No cache** (dropped; reruns re-hit DDG) |
+> | Output `curation/output/wines.db` | Output `fermentation/wines.db` (fresh schema) |
+>
+> The only carried-over mechanic is run-state resume. This file is retained as
+> historical/reference context until `curation/` is deleted (see
+> `fermentation/PLAN.md` Phase 4). For the current design, read
+> `fermentation/PLAN.md`.
+
 ## Purpose
 
 Take the clean CSVs from ingestion, look up each wine online to gather authoritative metadata, then use a locally-running Gemma model to turn that web context into structured tags (country, region, grapes, varietal/blend classification, organic status). Store everything in a SQLite database that serves as the single source of truth for the distribution layer.

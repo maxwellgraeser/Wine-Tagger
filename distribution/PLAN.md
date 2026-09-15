@@ -1,8 +1,19 @@
 # Distribution Domain
 
+> **⬜ NOT BUILT.** This domain is a design plan only — the folder currently
+> contains just this `PLAN.md` (no `run.sh`, no source). Everything below is
+> the intended design, not a description of existing code.
+>
+> **Input source changed:** it reads `fermentation/wines.db` (the
+> `fermentation/` domain replaced `curation/`). The schema is compatible —
+> `products` / `sales` tables with the columns this plan assumes — but the
+> `tag_log` shape differs (fermentation stores an MCP tool-call transcript, not
+> raw prompt/response). Distribution does not read `tag_log`, so this is not a
+> blocker.
+
 ## Purpose
 
-Provide a local web dashboard for browsing, editing, and exporting wine data. Reads from the SQLite database produced by curation. Exports a Lightspeed-compatible `.xlsx` for re-upload.
+Provide a local web dashboard for browsing, editing, and exporting wine data. Reads from the SQLite database produced by fermentation. Exports a Lightspeed-compatible `.xlsx` for re-upload.
 
 ## Architecture
 
@@ -19,7 +30,7 @@ Provide a local web dashboard for browsing, editing, and exporting wine data. Re
 │  - Export endpoint (generates xlsx)          │
 │  - Reads/writes to SQLite via better-sqlite3 │
 ├──────────────────────────────────────────────┤
-│  SQLite (curation/output/wines.db)           │
+│  SQLite (fermentation/wines.db)              │
 └──────────────────────────────────────────────┘
 ```
 
@@ -69,7 +80,7 @@ GET    /api/stats/summary      -- aggregate sales stats
 ### Database Access
 
 - `better-sqlite3` for synchronous, simple SQLite access from Node.
-- Reads from `curation/output/wines.db` (path configurable via env var).
+- Reads from `fermentation/wines.db` (path configurable via env var).
 - Writes only to the `products` table (tag edits) -- never modifies `sales` or `tag_log`.
 
 ### Export Logic
