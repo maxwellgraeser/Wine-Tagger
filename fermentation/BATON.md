@@ -50,8 +50,7 @@ that humans author *names* and a machine resolves QIDs:
    `placeholder_grape` (and `placeholder_grapes` → `phrase_grapes`).
    Unknown regions no longer pass through as free text. Hints name the
    offending values. Regions are expanded with their parent chain and
-   country is inferred from regions when omitted (the old
-   `curation/normalization` behaviour the MCP had dropped).
+   country is inferred from regions when omitted.
 8. **Server resolves from in-memory folded indexes** built at startup —
    closes the "full-table scan per miss" finding in `Tree.html`.
 9. **Scope adds:** `country_synonyms` table (USA/US/U.S. …);

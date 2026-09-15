@@ -12,12 +12,8 @@ AI-generated wine metadata, and produces a database for review and re-upload.
         done                  active                 not built
 ```
 
-> **Migration note.** The original design had three domains: Ingestion →
-> **Curation** → Distribution. `curation/` is being replaced by
-> `fermentation/`, a clean-break rewrite that drives a local LLM through a
-> self-built **MCP wine library** instead of a post-hoc normalization pass.
-> `curation/` is legacy and will be deleted once `fermentation/` is verified
-> end-to-end. `distribution/` is still only a plan.
+> `fermentation/` drives a local LLM through a self-built **MCP wine
+> library** to tag wines. `distribution/` is still only a plan.
 >
 > See `Tree.html` (repo root) for a visual component map and a
 > severity-ordered list of known issues.
@@ -28,7 +24,6 @@ AI-generated wine metadata, and produces a database for review and re-upload.
 |---|---|---|---|
 | `ingestion/` | ✅ Implemented | `./ingestion/run.sh` | 2× `.xlsx` → `combined.csv` |
 | `fermentation/` | 🟧 Active build | `python -m fermentation.ferment` | `combined.csv` → `wines.db` |
-| `curation/` | ⬛ Legacy | `./curation/run.sh` | superseded; pending deletion |
 | `distribution/` | ⬜ Not built | — | `wines.db` → Lightspeed `.xlsx` |
 
 Each domain is self-contained. Data flows strictly downstream — no domain
@@ -215,7 +210,7 @@ Wine Warehouse DDD/
 │   ├── ingest.py
 │   ├── run.sh
 │   └── output/combined.csv      (generated)
-├── fermentation/                # active — replaces curation/
+├── fermentation/                # active
 │   ├── PLAN.md
 │   ├── ferment.py               # controller
 │   ├── searcher.py · scorer.py · tagger.py
@@ -225,10 +220,6 @@ Wine Warehouse DDD/
 │       ├── server.py            # FastMCP stdio server
 │       ├── schema.sql · library.db
 │       └── seed/                # offline Wikidata + Wikipedia build
-├── curation/                    # legacy — pending deletion
-│   ├── PLAN.md
-│   ├── curate.py
-│   └── run.sh
 ├── distribution/                # not built
 │   └── PLAN.md
 └── Sample Xlsx/

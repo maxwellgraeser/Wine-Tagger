@@ -1,12 +1,10 @@
 # Fermentation — Plan
 
-Successor to `curation/`. Clean break: no parity gate against `curate.py`, no
-re-use of `curation/normalization/` (the MCP replaces it), and the `wines.db`
-schema is free to change. The only carry-over mechanic is run-state resume.
+The tagging domain: reads `combined.csv`, drives a local LLM through the MCP
+wine library, and writes `wines.db`. The MCP library replaces any post-hoc
+normalization pass, and the `wines.db` schema is free to change.
 
-`fermentation/` is the only home. Files like `constants.py` are **copied**
-(not imported) from `curation/`. Once fermentation is running end-to-end,
-`curation/` is deleted.
+`fermentation/` is self-contained.
 
 ---
 
@@ -51,7 +49,6 @@ schema is free to change. The only carry-over mechanic is run-state resume.
 
 - No `fermentation/run.sh` (Phase 4 cutover). Run via
   `python -m fermentation.ferment`.
-- `curation/` not yet deleted.
 - Tests cover `library_mcp` only (`fermentation/library_mcp/tests/`:
   allowlist validation, 24-wine coverage, server gate). `searcher` /
   `scorer` / `tagger` / `ferment` remain untested.
@@ -70,7 +67,7 @@ fermentation/
   searcher.py       # DDG queries, URL dedupe, snippet cleanup, web_context assembly input
   scorer.py         # LLM match-scoring, top-N trim, producer-absent hard gate
   tagger.py         # LLM tag inference via MCP tool loop; owns submit_tags consumption
-  constants.py      # copied from curation/; thresholds, prompts, source defs
+  constants.py      # thresholds, prompts, source defs
   types.py          # shared dataclasses (Product, Snippet, ScoredSnippet, ParsedTags)
   debug_output.py   # write_search/scorer/tagger/final_output helpers; no-ops unless --debug-output
   library_mcp/
@@ -116,7 +113,7 @@ are passed in by `ferment`, so neither `scorer` nor `tagger` owns config.
    no-op tagger that just writes raw `web_context`.
 3. **Phase 3 — `tagger.py` with MCP tool loop.** Lands once Phase 1 ships
    a working server. Wires the full pipeline end-to-end.
-4. **Phase 4 — Cut over.** Delete `curation/`. `run.sh` points at
+4. **Phase 4 — Cut over.** Add a `run.sh` that points at
    `fermentation/ferment.py`.
 
 ---
@@ -260,8 +257,8 @@ Three options considered:
 1. Dump canonical lists into the system prompt — prompt grows ~150
    lines, model still guesses at parent-region chains, no way to detect
    when it ignored the list.
-2. Keep a post-hoc `normalize_tags` step — today's curation behavior;
-   every fixable mistake becomes a `needs_review` row.
+2. A post-hoc `normalize_tags` step — every fixable mistake becomes a
+   `needs_review` row.
 3. MCP tools the model calls during inference — picked. Synonyms
    collapse upfront; mismatches surface as a tool-call failure the model
    can correct in-loop; structured transcript per lookup.
@@ -295,7 +292,7 @@ def gather_snippets(product: Product) -> list[Snippet]:
     Returns cleaned snippets (boilerplate stripped, price-only dropped)."""
 ```
 
-### Internal helpers (lifted from `curation/curate.py`)
+### Internal helpers
 
 - `_is_upc(sku)`
 - `_ddg_snippets(query)`
@@ -340,9 +337,9 @@ zeroed**. If *every* snippet fails the gate, `score_and_assemble`
 returns `(None, scored)` and the product flows straight to
 `needs_review` without ever invoking the tagger.
 
-This is a deliberate change from curation, where the producer-absent
-check was a soft confidence cap applied post-tagging. Here it gates the
-expensive LLM tag-inference call.
+The producer-absent check is a hard gate rather than a soft confidence
+cap applied post-tagging, so it skips the expensive LLM tag-inference
+call.
 
 ### Internal helpers
 
@@ -419,8 +416,8 @@ return last_ok_normalized, messages
 
 ### Prompt
 
-Replace the curation-era "return JSON with fields …" instructions with
-something like:
+Rather than "return JSON with fields …" instructions, use something
+like:
 
 > You have tools to look up canonical wine countries, regions, and
 > grapes. Use `lookup_region` and `lookup_grape` when unsure about a
@@ -429,8 +426,8 @@ something like:
 > `ok: false`, read `hints`, fix your submission, and call again. Do
 > not reply with free-text JSON.
 
-Abbreviation guide, snippet ordering, and confidence rubric carry over
-from the curation prompt.
+The prompt also includes an abbreviation guide, snippet ordering, and a
+confidence rubric.
 
 ---
 
@@ -443,7 +440,7 @@ Controller. Responsibilities:
    `--no-producer-gate`, `--debug-output`.
 2. **CSV load** — `load_products(path) → list[Product]`.
 3. **Run state** — `load_run_state` / `save_run_state` /
-   `clear_run_state` (carried from curation; only carry-over).
+   `clear_run_state`.
 4. **DB** — `open_db`, `upsert_product`, `upsert_sales`, `log_tag`,
    `is_eligible`. Schema may change to match `submit_tags` output (see
    DB note below).
@@ -479,7 +476,7 @@ with library_mcp_session() as mcp:
         save_run_state(product.id, idx + 1, args.batch_size)
 ```
 
-6. **Batch summary + pause loop** — carried from curation.
+6. **Batch summary + pause loop.**
 
 ### Helpers in `ferment.py`
 
@@ -627,9 +624,8 @@ class ParsedTags:
 
 ## Constants
 
-Copy `curation/constants.py` to `fermentation/constants.py`. Prune the
-post-hoc normalization knobs (`PRODUCER_ABSENT_CONFIDENCE_CAP` no longer
-applies — gate is hard). `searcher.py` imports snippet-related
+`fermentation/constants.py` holds no post-hoc normalization knobs (there
+is no `PRODUCER_ABSENT_CONFIDENCE_CAP` — the gate is hard). `searcher.py` imports snippet-related
 constants; `scorer.py` imports the scoring prompt + producer-gate
 thresholds; `tagger.py` imports the MCP prompt; `ferment.py` imports
 orchestration-level (`DEFAULT_CONFIDENCE_THRESHOLD`,
@@ -641,8 +637,8 @@ orchestration-level (`DEFAULT_CONFIDENCE_THRESHOLD`,
 
 Schema is open for changes. Align column shape with `submit_tags`
 output (e.g. region stored as JSON array or a join table rather than a
-delimited string, if cleaner). No migration from the curation-era DB —
-fermentation starts a fresh `wines.db`.
+delimited string, if cleaner). No migrations — fermentation starts a
+fresh `wines.db`.
 
 ---
 
@@ -651,9 +647,9 @@ fermentation starts a fresh `wines.db`.
 | # | Risk / Question | Notes |
 |---|-----------------|-------|
 | 1 | llama.cpp tool-calling quality is model-dependent | Smaller/older quants skip tools and emit JSON anyway. Fallback (needs_review on no-submit) must be solid before ship. |
-| 2 | Latency cost of multi-turn inference | Curation: one POST per product. MCP: 4–6 round-trips. Benchmark before celebrating. |
+| 2 | Latency cost of multi-turn inference | Single-shot tagging: one POST per product. MCP: 4–6 round-trips. Benchmark before celebrating. |
 | 3 | MCP subprocess robustness | If the server crashes mid-run, the batch stalls. Add healthcheck + restart in `ferment.py`, or accept and document the failure mode. |
-| 4 | Hard producer gate may over-exclude | Curation used a soft cap; fermentation drops snippets outright. Sample the `needs_review` rate during phase 2 and revisit the gate's token-match threshold if too aggressive. |
+| 4 | Hard producer gate may over-exclude | A soft cap would only lower confidence; fermentation drops snippets outright. Sample the `needs_review` rate during phase 2 and revisit the gate's token-match threshold if too aggressive. |
 | 5 | Wikidata coverage gaps | Some niche grapes/regions have thin Wikidata entries. Wikipedia enrichment exists to backfill, but expect a residual `unknown` rate. Track during Phase 1 validation. |
 | 6 | Re-seed cadence | `library.db` is baked. New grapes/regions require a re-run of `build_db.py` and a new commit. Accept; document as a dev op. |
 | 7 | No snippet cache | Reruns are expensive (DDG + politeness delay). Acceptable for now; revisit if iteration cost hurts. |
@@ -672,8 +668,8 @@ fermentation starts a fresh `wines.db`.
 - Replacing the snippet-scoring LLM call in `scorer.py` with anything
   fancier (cross-encoder, embedding similarity). Single-shot LLM
   scoring stays.
-- Anything from curation's `IMPROVEMENTS.md` / `REVIEW.md` (Phase 3 LLM
-  review, etc.) unless explicitly pulled into a later phase here.
+- A second-pass LLM review of flagged rows, unless explicitly pulled into
+  a later phase here.
 
 ---
 
@@ -915,7 +911,7 @@ Built 2026-09-15: 46 countries; 675 canonical + 275 placeholder regions;
 335 canonical + 375 placeholder grapes; 48 tests green. Counts and the
 re-seed procedure live in `BATON.md`.
 
-### Coverage notes — `curation/test/combined.csv`
+### Coverage notes — `library_mcp/tests/fixtures/combined.csv`
 
 The 24-wine test set exercises the plan as follows:
 
@@ -961,6 +957,6 @@ network. The placeholder tier expands what resolves locally; it does
 not add runtime fetches. A grape entirely absent from the seed returns
 `known: false` and the tagger handles it as "unknown" — there is no
 live Wikidata fallback. CI smoke test should resolve every grape and
-region implied by `curation/test/combined.csv` against `library.db`
+region implied by `library_mcp/tests/fixtures/combined.csv` against `library.db`
 after a build, with at most the documented placeholder set returning
 `is_placeholder: true`.

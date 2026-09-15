@@ -1,8 +1,6 @@
 """LLM match-scoring, producer-absent hard gate, and web_context assembly.
 
-Lifted in spirit from curation/curate.py's `score_snippets` / `build_web_context`,
-but with one critical behavioral change: the producer-absent check is now a
-**hard exclusion** (snippets failing the token-overlap test are dropped from
+The producer-absent check is a **hard exclusion** (snippets failing the token-overlap test are dropped from
 web_context entirely) rather than a post-tagging confidence cap.
 
 If every snippet fails the producer gate, `score_and_assemble` returns
@@ -24,7 +22,7 @@ from .types import Product, ScoredSnippet, Snippet
 
 
 # ---------------------------------------------------------------------------
-# Tokenization / stopwords (lifted verbatim from curation/curate.py)
+# Tokenization / stopwords
 # ---------------------------------------------------------------------------
 
 _STOPWORDS = {
@@ -63,7 +61,7 @@ def _snippet_contains_any_token(snippet_body: str, tokens: list[str]) -> bool:
     """True if any (already-normalized) token appears as a substring in the normalized snippet.
 
     If there are no significant tokens to check (e.g. very short product name),
-    fall back to letting the snippet through — same policy as curation.
+    fall back to letting the snippet through.
     """
     if not tokens:
         return True
@@ -157,8 +155,7 @@ def _apply_producer_gate(
 ) -> list[ScoredSnippet]:
     """Mark snippets that lack any product/brand significant token as dropped.
 
-    In curation this was a soft cap on the *post-tagging* confidence value
-    (PRODUCER_ABSENT_CONFIDENCE_CAP). Here it is a hard exclusion applied
+    This is a hard exclusion (not a post-tagging confidence cap) applied
     *before* the tagger ever runs: failing snippets get
     `dropped_reason="producer_absent"` and are excluded from web_context.
     They remain in the returned scored list so debug_output can record them.

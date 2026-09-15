@@ -1,9 +1,9 @@
-"""CI smoke test: every wine in curation/test/combined.csv must resolve its
+"""CI smoke test: every wine in tests/fixtures/combined.csv must resolve its
 country / region(s) / grape(s) against the built library.db, canonical
 tier, via the same code paths the MCP server exposes.
 
 The expected values are reference assertions (hand-derived from the wines,
-cross-checked with curation/test/ground_truth.json), not derived from web
+cross-checked with tests/fixtures/ground_truth.json), not derived from web
 snippets. Each row: input strings the tagger is likely to emit -> expected
 canonical outputs.
 """
@@ -15,7 +15,7 @@ from pathlib import Path
 
 import pytest
 
-CSV_PATH = Path(__file__).resolve().parents[3] / "curation" / "test" / "combined.csv"
+CSV_PATH = Path(__file__).resolve().parent / "fixtures" / "combined.csv"
 
 # name -> (country_input, [(region_input, canonical_region, expected_parents_subset)],
 #          [(grape_input, canonical_grape)])

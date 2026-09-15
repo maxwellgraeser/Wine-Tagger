@@ -1,7 +1,6 @@
 # Tunable constants for the fermentation pipeline.
-# Copied from curation/constants.py and pruned: the producer-absent confidence
-# cap is removed because the producer gate is now a hard exclusion in scorer.py,
-# not a post-hoc confidence cap.
+# There is no producer-absent confidence cap: the producer gate is a hard
+# exclusion in scorer.py, not a post-hoc confidence cap.
 
 # --- Web sources ---
 # UPC-capable sources are tried first when a SKU looks like a barcode.

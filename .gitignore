@@ -1,8 +1,6 @@
 # Project-specific
 /Sample Xlsx/
 /ingestion/output/
-/curation/output/
-curation/test/*.txt
 
 # Editor / IDE
 /.claude/

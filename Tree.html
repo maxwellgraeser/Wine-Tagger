@@ -60,7 +60,6 @@
   .stage h4{margin:0 0 4px; font-size:16px}
   .stage .meta{font-size:12px;color:var(--muted)}
   .stage.done{border-left:4px solid var(--green)}
-  .stage.legacy{border-left:4px solid var(--grey); opacity:.85}
   .stage.active{border-left:4px solid var(--wine2)}
   .stage.todo{border-left:4px dashed var(--gold)}
   .arrow{
@@ -129,12 +128,10 @@
   <h1>🍷 Wine Warehouse DDD — Architecture Tree</h1>
   <p>A domain-driven data pipeline that turns raw Lightspeed exports into AI-enriched wine metadata for re-upload.
      Each domain is self-contained; data flows strictly downstream via file contracts (CSV → SQLite → XLSX).</p>
-  <p><b>Active focus:</b> the <span class="mono">fermentation/</span> domain — a clean-break rewrite of <span class="mono">curation/</span>
-     that drives a local LLM through a self-built <b>MCP wine library</b> instead of post-hoc normalization.</p>
+  <p><b>Active focus:</b> the <span class="mono">fermentation/</span> domain, which drives a local LLM through a self-built <b>MCP wine library</b> to tag wines.</p>
   <div class="legend">
     <span><i class="swatch" style="background:var(--green)"></i> Implemented</span>
     <span><i class="swatch" style="background:var(--wine2)"></i> Active / in-progress</span>
-    <span><i class="swatch" style="background:var(--grey)"></i> Legacy (to be deleted)</span>
     <span><i class="swatch" style="background:var(--gold)"></i> Planned / not built</span>
   </div>
 </header>
@@ -143,8 +140,7 @@
 
 <!-- ============================ TOP-LEVEL PIPELINE ============================ -->
 <h2 class="section">1 · Pipeline Overview <span class="tag">four domains, one-way data flow</span></h2>
-<p class="lead">The original 3-domain design (Ingestion → Curation → Distribution) is mid-migration:
-   <span class="mono">curation/</span> is being replaced by <span class="mono">fermentation/</span>, and
+<p class="lead">Ingestion → Fermentation → Distribution.
    <span class="mono">distribution/</span> is still only a plan.</p>
 
 <div class="pipeline">
@@ -161,7 +157,7 @@
   </div>
   <div class="arrow">→</div>
   <div class="stage active">
-    <h4>② Fermentation <span style="font-size:11px;color:var(--muted)">(replaces Curation)</span></h4>
+    <h4>② Fermentation</h4>
     <div class="meta">Python · local LLM · MCP</div>
     <div style="margin-top:8px">
       <span class="pill in">combined.csv</span><br>
@@ -182,16 +178,6 @@
     <div class="desc" style="color:var(--muted);font-size:12px;margin-top:8px">
       Planned dashboard for review/edit/export. Only <span class="mono">PLAN.md</span> exists today.
     </div>
-  </div>
-</div>
-
-<div class="container" style="border-style:dashed;border-color:var(--grey)">
-  <div class="clabel" style="color:var(--grey)"><span class="dot" style="background:var(--grey)"></span>Legacy — curation/ (superseded, awaiting deletion)</div>
-  <div class="grid g4">
-    <div class="box"><div class="title">curate.py</div><div class="desc">862-line monolith: search + score + LLM tag + post-hoc normalize, all in one file.</div></div>
-    <div class="box"><div class="title">normalization/</div><div class="desc">Hand-built country/region/grape libraries — <b>replaced by the MCP server.</b></div></div>
-    <div class="box"><div class="title">constants.py</div><div class="desc">Source of the values copied into <span class="mono">fermentation/constants.py</span>.</div></div>
-    <div class="box"><div class="title">test/</div><div class="desc">Ground-truth + param sweep harness. Tests curation, <b>not</b> fermentation.</div></div>
   </div>
 </div>
 
@@ -340,7 +326,7 @@
     </div>
   </div>
   <div class="varrow">↓</div>
-  <div class="vstep box" style="border-left:4px solid var(--gold)"><div class="title">🗄️ curation/output/… → fermentation/wines.db <span class="vside">(products · sales · tag_log)</span></div></div>
+  <div class="vstep box" style="border-left:4px solid var(--gold)"><div class="title">🗄️ fermentation/wines.db <span class="vside">(products · sales · tag_log)</span></div></div>
 </div>
 
 <!-- ============================ IMPROVEMENTS ============================ -->
@@ -409,15 +395,15 @@
   <div class="head">
     <span class="sev med">Medium</span>
     <div>
-      <div class="ttl">Cutover is incomplete — stale docs, no run.sh, dead legacy domain</div>
-      <div class="where">README.md · PLAN.md · fermentation/ (no run.sh) · curation/</div>
+      <div class="ttl">Cutover is incomplete — no run.sh, thin test coverage</div>
+      <div class="where">fermentation/ (no run.sh) · fermentation/library_mcp/tests/</div>
     </div>
   </div>
   <div class="body">
-    <span class="mono">README.md</span> / <span class="mono">PLAN.md</span> still describe the old Gemma/llama.cpp 3-domain flow and never mention fermentation or the MCP. There's no <span class="mono">fermentation/run.sh</span> (PLAN Phase 4 unmet), and <span class="mono">curation/</span> still ships in full.
+    There's no <span class="mono">fermentation/run.sh</span> (PLAN Phase 4 unmet), and tests cover <span class="mono">library_mcp</span> only.
     <ul class="tight">
-      <li><b>Fix:</b> add <span class="mono">fermentation/run.sh</span> (mirror <span class="mono">curation/run.sh</span>: dep check + <span class="mono">python -m fermentation.ferment</span>), update the top-level docs to the 4-box reality, and delete <span class="mono">curation/</span> once parity is confirmed.</li>
-      <li>Migrate the useful parts of <span class="mono">curation/test/</span> — there are currently <b>no tests covering any fermentation module</b> (searcher/scorer/tagger/server/build_db).</li>
+      <li><b>Fix:</b> add <span class="mono">fermentation/run.sh</span> (dep check + <span class="mono">python -m fermentation.ferment</span>).</li>
+      <li>Add tests for the pipeline modules — there are currently <b>no tests covering searcher/scorer/tagger/ferment</b>.</li>
     </ul>
   </div>
 </div>
@@ -431,7 +417,7 @@
     </div>
   </div>
   <div class="body">
-    Curation's <span class="mono">web_cache.json</span> was deliberately dropped. Every rerun re-queries DDG (≥4 queries/wine + politeness sleep), which is slow and risks rate-limiting during iteration — and DDG failures silently yield zero snippets (see #1), so a throttled run looks identical to a successful all-<span class="mono">needs_review</span> run.
+    There is deliberately no snippet cache. Every rerun re-queries DDG (≥4 queries/wine + politeness sleep), which is slow and risks rate-limiting during iteration — and DDG failures silently yield zero snippets (see #1), so a throttled run looks identical to a successful all-<span class="mono">needs_review</span> run.
     <ul class="tight">
       <li><b>Fix:</b> add a simple keyed cache (by product id or query hash) with a TTL, gated behind a <span class="kbd">--no-cache</span> flag. Pairs naturally with debug-output's per-product JSON.</li>
     </ul>

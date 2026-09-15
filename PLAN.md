@@ -15,20 +15,15 @@ dashboard for review and re-upload.
         done                  active                 not built
 ```
 
-> **Migration note.** The original design had three domains: Ingestion →
-> **Curation** → Distribution. `curation/` is being replaced by
-> `fermentation/`, a clean-break rewrite that drives a local LLM through a
-> self-built **MCP wine library** instead of a post-hoc normalization pass.
-> `curation/` is now legacy and will be deleted once `fermentation/` is
-> verified end-to-end. `distribution/` is still only a plan.
+> `fermentation/` drives a local LLM through a self-built **MCP wine
+> library** to tag wines. `distribution/` is still only a plan.
 
 ## Status at a glance
 
 | Domain | State | Entry point | Notes |
 |---|---|---|---|
 | `ingestion/` | ✅ Implemented | `ingestion/run.sh` | xlsx → `combined.csv` |
-| `fermentation/` | 🟧 Active build | `python -m fermentation.ferment` | replaces curation; no `run.sh` yet |
-| `curation/` | ⬛ Legacy | `curation/run.sh` | superseded by fermentation; pending deletion |
+| `fermentation/` | 🟧 Active build | `python -m fermentation.ferment` | no `run.sh` yet |
 | `distribution/` | ⬜ Not built | — | only `distribution/PLAN.md` exists |
 
 See each domain's `PLAN.md` for detail, and `Tree.html` (repo root) for a
@@ -116,16 +111,12 @@ Wine Warehouse DDD/
 │   ├── PLAN.md
 │   ├── ingest.py
 │   └── run.sh
-├── fermentation/            # active — replaces curation/
+├── fermentation/            # active
 │   ├── PLAN.md
 │   ├── ferment.py           # controller
 │   ├── searcher.py · scorer.py · tagger.py
 │   ├── types.py · constants.py · debug_output.py
 │   └── library_mcp/         # FastMCP server + baked library.db + seed/
-├── curation/                # legacy — pending deletion
-│   ├── PLAN.md
-│   ├── curate.py
-│   └── run.sh
 ├── distribution/            # not built
 │   └── PLAN.md
 └── Sample Xlsx/

@@ -1,8 +1,6 @@
 # Ingestion Domain
 
 > **Status: ✅ Implemented** (`ingestion/ingest.py`, run via `ingestion/run.sh`).
-> The "curation" referenced below is now the **fermentation** domain — the
-> output contract (`combined.csv`) is unchanged.
 
 ## Purpose
 
@@ -73,7 +71,7 @@ Key columns (17 total):
 
 ## Output Contract
 
-Downstream (**fermentation**; formerly curation) reads a single file:
+Downstream (**fermentation**) reads a single file:
 `ingestion/output/combined.csv`
 
 **Product columns (from product-export.xlsx):**
@@ -83,7 +81,7 @@ Downstream (**fermentation**; formerly curation) reads a single file:
 - `name` (string)
 - `description` (string)
 - `product_category` (string)
-- `tags` (string, empty -- filled by curation)
+- `tags` (string, empty -- filled by fermentation)
 - `supply_price` (float)
 - `retail_price` (float)
 - `brand_name` (string)
