@@ -1,14 +1,28 @@
 # Fermentation — Plan
 
 The tagging domain: reads `combined.csv`, drives a local LLM through the MCP
-wine library, and writes `wines.db`. The MCP library replaces any post-hoc
-normalization pass, and the `wines.db` schema is free to change.
+wine library, and writes `output/wines.json`. The MCP library replaces any
+post-hoc normalization pass.
 
 `fermentation/` is self-contained.
 
 ---
 
 ## Implementation status
+
+> **2026-09-15 — phased pipeline + JSON store.** The per-wine
+> `search → score → tag` loop was replaced by three whole-set phases in
+> `phases.py` (`run_search`, `run_score`, `run_tag`): all wines are searched,
+> then all scored, then all tagged. Each phase writes one JSON per wine to
+> `logs/<run_id>/{search,scorer,tagger,final}/` (always on; the old
+> `--debug-output` / `debug_output.py` are gone), plus `run.json` and
+> `events.jsonl`. The SQLite `wines.db` was replaced by `output/wines.json`
+> (`store.py`); `output/.run_state.json` records `(run_id, phase, cursor)` so a
+> run resumes inside a phase. `--phase P --run-id R` re-runs from a phase over
+> an earlier run's logs. `--events-json` emits JSON-lines progress for the
+> `cellar/` web app. `--batch-size` (interactive pause) was dropped — the web
+> app's Stop button + resume covers that use. References to `wines.db` and
+> `fermentation/output/` further down describe the previous design.
 
 > Snapshot of what is actually in the tree vs. what this plan describes.
 > Everything below "## Architecture" is the *design*; this section is the

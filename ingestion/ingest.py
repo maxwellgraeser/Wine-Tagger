@@ -238,6 +238,12 @@ def prompt_missing_categories(rows: list[dict]) -> None:
     missing = [r for r in rows if not r.get("product_category")]
     if not missing:
         return
+    if not sys.stdin.isatty():
+        # Non-interactive (e.g. launched from the Cellar web app): leave the
+        # category blank rather than block on input().
+        for row in missing:
+            log.warning("No category for %r — leaving blank (non-interactive run)", row["name"])
+        return
     print(f"\n{len(missing)} wine(s) have no category. Please assign one for each.\n")
     for row in missing:
         while True:

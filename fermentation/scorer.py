@@ -158,7 +158,7 @@ def _apply_producer_gate(
     This is a hard exclusion (not a post-tagging confidence cap) applied
     *before* the tagger ever runs: failing snippets get
     `dropped_reason="producer_absent"` and are excluded from web_context.
-    They remain in the returned scored list so debug_output can record them.
+    They remain in the returned scored list so the scorer log can record them.
 
     Returns the same list (mutated in place) for convenience.
     """

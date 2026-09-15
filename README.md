@@ -5,15 +5,18 @@ AI-generated wine metadata, and produces a database for review and re-upload.
 
 ```
   ┌─────────────┐      ┌──────────────────┐      ┌────────────────┐
-  │  Ingestion  │─CSV─▶│   Fermentation   │─DB──▶│  Distribution  │
-  │  (Python)   │      │ (Python + local  │      │  (React/Vite/  │
-  │             │      │  LLM + MCP lib)  │      │   TypeScript)  │
+  │  Ingestion  │─CSV─▶│   Fermentation   │─JSON▶│  Distribution  │
+  │  (Python)   │      │ (Python + local  │      │  (tag review + │
+  │             │      │  LLM + MCP lib)  │      │  xlsx export)  │
   └─────────────┘      └──────────────────┘      └────────────────┘
-        done                  active                 not built
+        done                  active                  in Cellar
+  ═══════════════════════════════════════════════════════════════════
+                  Cellar — one web app that runs all three
+                  (FastAPI + React, ./cellar/run.sh, :8000)
 ```
 
 > `fermentation/` drives a local LLM through a self-built **MCP wine
-> library** to tag wines. `distribution/` is still only a plan.
+> library** to tag wines. `distribution/` became `cellar/`, the web app.
 >
 > See `Tree.html` (repo root) for a visual component map and a
 > severity-ordered list of known issues.
@@ -23,14 +26,28 @@ AI-generated wine metadata, and produces a database for review and re-upload.
 | Domain | State | Entry point | In → Out |
 |---|---|---|---|
 | `ingestion/` | ✅ Implemented | `./ingestion/run.sh` | 2× `.xlsx` → `combined.csv` |
-| `fermentation/` | 🟧 Active build | `python -m fermentation.ferment` | `combined.csv` → `wines.db` |
-| `distribution/` | ⬜ Not built | — | `wines.db` → Lightspeed `.xlsx` |
+| `fermentation/` | 🟧 Active build | `./ferment.sh` / `python -m fermentation.ferment` | `combined.csv` → `output/wines.json` + `logs/` |
+| `cellar/` | ✅ Built | `./cellar/run.sh` | web app over all stages; `wines.json` → Lightspeed `.xlsx` |
 
 Each domain is self-contained. Data flows strictly downstream — no domain
 reaches back into an upstream domain's internals; the contract between domains
-is their output format (`combined.csv`, then `wines.db`).
+is their output format (`combined.csv`, then `output/wines.json`).
 
 ## How to Run
+
+**The easy way — Cellar.** One web page runs every stage, streams progress,
+and lets you inspect logs, edit tags, and export:
+
+```sh
+./cellar/run.sh            # http://localhost:8000  (first run: npm install + build)
+./cellar/run.sh dev        # hot reload: API on :8000, Vite on :5173
+```
+
+Cellar starts in **Developer** view (all logs and knobs); toggle to
+**Simple** in the top bar. If the llama-server isn't up, the top bar offers
+to start it.
+
+**From the console:**
 
 ```sh
 # 1. Ingestion — xlsx → CSV
@@ -42,7 +59,8 @@ is their output format (`combined.csv`, then `wines.db`).
 ./ferment.sh --force --limit 3
 LLAMA_SCRIPT=./qwen25-7b.sh ./ferment.sh   # use a different model
 
-# 3. Distribution — not built yet
+# 3. Distribution — the export lives in Cellar (Distribute tab → Export),
+#    or GET http://localhost:8000/api/export.xlsx
 ```
 
 > `ferment.sh` leaves a server it started running, so later runs skip the model
@@ -85,20 +103,29 @@ See `ingestion/PLAN.md` for the full column contract.
 
 **Run:** `python -m fermentation.ferment [flags]`
 
-**What it does:** For each wine, gathers web snippets, uses a local LLM to score
-their relevance, then drives a second LLM through a **tool-call loop against the
-`library_mcp` server** to infer and *canonicalize* structured metadata
-(country, region(s), grapes, blend status, organic status, confidence). Writes
-everything to a fresh SQLite database.
+**What it does:** Runs three phases, each over the **whole** wine list before
+the next starts:
+
+1. **search** — gather web snippets for every wine → `logs/<run>/search/`
+2. **score** — one LLM call per wine scores its snippets, applies the
+   producer-absent gate, assembles `web_context` → `logs/<run>/scorer/`
+3. **tag** — drive the LLM through a **tool-call loop against the
+   `library_mcp` server** to infer and *canonicalize* country, region(s),
+   grapes, blend, organic, confidence → `logs/<run>/tagger/`, `final/`, and
+   `output/wines.json`
+
+Running phase-by-phase (111 222 333 rather than 123 123 123) means every
+intermediate is on disk and inspectable before the next phase spends LLM time
+on it, and a phase can be re-run alone with `--phase … --run-id …`.
 
 **Input:** `ingestion/output/combined.csv`
-**Output:** `fermentation/wines.db` (SQLite)
+**Output:** `output/wines.json` (one JSON document, see below) and
+`logs/<run_id>/` (per-phase, per-wine JSON plus `run.json` and `events.jsonl`)
 
 ### Architecture
 
-A controller (`ferment.py`) orchestrates three independent modules — they never
-import each other; config (model, api_url) is owned by the controller and
-passed down:
+`ferment.py` (CLI) → `phases.py` (the three phase loops) → three independent
+modules that never import each other; config (model, api_url) is passed down:
 
 - **`searcher.py`** — owns the network for snippets. DuckDuckGo queries (UPC +
   per-source + fallback), cross-query URL dedupe, boilerplate strip, price-only
@@ -111,7 +138,12 @@ passed down:
 - **`tagger.py`** — drives the MCP tool-call loop. The model browses canonical
   countries/regions/grapes via `lookup_*`/`list_*`, then commits via
   `submit_tags`. `submit_tags` **is the canonicalization gate** — whatever it
-  accepts is what `ferment.py` writes; there is no second normalization pass.
+  accepts is what gets written; there is no second normalization pass.
+
+Supporting modules: `store.py` (read/write `output/wines.json`, manual edits,
+export rows), `events.py` (progress events: human lines, or `--events-json`
+JSON lines for Cellar, always appended to `events.jsonl`), `paths.py`
+(the folder layout).
 
 ### The `library_mcp` server
 
@@ -154,25 +186,48 @@ OpenAI-compatible `/v1/chat/completions` endpoint:
 | `--api-url` | llama.cpp (`:8080`) | LLM API URL (or `FERMENTATION_API_URL`) |
 | `--model` | `gemma3n:e4b` | Model name (or `FERMENTATION_MODEL`) |
 | `--confidence-threshold` | see `constants.py` | Min confidence to auto-accept |
-| `--batch-size N` | 0 (all) | Pause for review after every N wines |
-| `--limit N` | 0 (all) | Process at most N wines |
-| `--force` | off | Ignore saved run state; restart from row 0 |
+| `--limit N` | 0 (all) | Process at most N wines (fresh runs only) |
+| `--force` | off | Ignore saved run state; start a fresh run |
 | `--input` | `ingestion/output/combined.csv` | Path to the input CSV |
 | `--no-producer-gate` | off | Disable the producer-absent hard gate (debug) |
-| `--debug-output` | off | Write per-stage JSON snapshots to `fermentation/output/` |
+| `--phase P --run-id R` | — | Re-run from phase `search`/`score`/`tag` over run R's existing logs |
+| `--events-json` | off | One JSON event per line on stdout (what Cellar reads) |
 
 ### Resumability
 
-After each committed wine, `fermentation/.run_state.json` records the cursor.
-Re-running the same command resumes from where it left off; `--force` discards
-the state and starts fresh.
+After every wine, `output/.run_state.json` records `(run_id, phase, cursor)`.
+Re-running (or pressing Run again in Cellar) resumes inside that phase;
+`--force` starts a fresh run with a new run id. Ctrl-C / the Stop button
+checkpoints cleanly.
 
-### SQLite schema (`fermentation/wines.db`)
+### `output/wines.json`
+
+```jsonc
+{
+  "version": 2, "generated_at": "…", "last_run_id": "20260915-132128",
+  "wines": [{
+    "id": "…", "name": "…", "sku": "…", "category": "Red", "brand": null,
+    "supply_price": 17.99, "retail_price": 25.99, "supplier": "Winebow",
+    "country": "Spain", "region": ["Ribera del Duero", "Castilla y León"],
+    "grapes": ["Tempranillo"], "is_blend": false, "organic": false,
+    "confidence": 84, "web_context": "…", "tags_raw": "Spain; Ribera del Duero; …",
+    "tag_status": "auto",                 // pending | auto | needs_review | manual
+    "sales": {"items_sold": 81, "margin_pct": 0.31, "sale_count": 46, "customer_count": 29, "avg_sale_value": 29.5},
+    "run_id": "20260915-132128",
+    "phase_status": {"search": "ok", "score": "ok", "tag": "ok"}
+  }]
+}
+```
+
+### `logs/<run_id>/`
 
 ```
-products   — one row per wine; catalog fields + canonical tags (region/grapes as JSON arrays)
-sales      — sales stats per SKU, joined to products via product_id
-tag_log    — the MCP tool-call transcript per inference (for auditing)
+run.json              args, product ids, per-phase status + counts
+events.jsonl          every progress event of the run
+search/<id>.json      raw snippets (source, domain, url, body)
+scorer/<id>.json      match_score + dropped_reason per snippet, web_context
+tagger/<id>.json      the full MCP tool-call transcript
+final/<id>.json       normalized block + tag_status as written to wines.json
 ```
 
 **Tech:** Python 3.11+, sqlite3, requests, `mcp` (FastMCP), DuckDuckGo search —
@@ -185,14 +240,17 @@ no paid APIs or keys required.
 
 ---
 
-## Domain 3 — Distribution
+## Domain 3 — Distribution, and Cellar
 
-**Status: not built** — `distribution/` contains only `PLAN.md`.
+**Run:** `./cellar/run.sh` → http://localhost:8000
 
-**Planned:** a local React + Vite + TypeScript dashboard that reads
-`fermentation/wines.db`, lets you browse/search/edit tags, and exports a
-Lightspeed-compatible `.xlsx` with columns `id`, `name`, `tags`
-(semicolon-separated). See `distribution/PLAN.md`.
+`cellar/` is the web app (FastAPI backend in `cellar/server/app.py`, React +
+Vite + TypeScript + Tailwind frontend in `cellar/web/`). It owns the
+distribution step — browse, search, sort, edit tags (edits mark a wine
+`manual`, which fermentation never overwrites), and **Export** a
+Lightspeed-compatible `.xlsx` with `id`, `name`, `tags` — and it also runs the
+two upstream stages with live progress and a drill-down into every phase log.
+See `cellar/PLAN.md` for the API.
 
 ---
 
@@ -212,16 +270,20 @@ Wine Warehouse DDD/
 │   └── output/combined.csv      (generated)
 ├── fermentation/                # active
 │   ├── PLAN.md
-│   ├── ferment.py               # controller
+│   ├── ferment.py               # CLI
+│   ├── phases.py                # search → score → tag, each over all wines
 │   ├── searcher.py · scorer.py · tagger.py
-│   ├── types.py · constants.py · debug_output.py
-│   ├── wines.db                 (generated)
+│   ├── store.py · events.py · paths.py · types.py · constants.py
 │   └── library_mcp/
 │       ├── server.py            # FastMCP stdio server
 │       ├── schema.sql · library.db
 │       └── seed/                # offline Wikidata + Wikipedia build
-├── distribution/                # not built
-│   └── PLAN.md
+├── output/                      (generated) wines.json, .run_state.json, lightspeed-export.xlsx
+├── logs/                        (generated) one folder per fermentation run
+├── cellar/                      # the web app
+│   ├── PLAN.md · run.sh
+│   ├── server/app.py            # FastAPI
+│   └── web/                     # React + Vite + Tailwind
 └── Sample Xlsx/
     ├── product-export.xlsx
     └── inventory-report (...).xlsx

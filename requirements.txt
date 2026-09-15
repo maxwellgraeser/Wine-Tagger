@@ -5,3 +5,5 @@ mcp
 beautifulsoup4==4.12.3
 PyYAML==6.0.2
 pytest==8.3.5
+fastapi>=0.141
+uvicorn[standard]>=0.47

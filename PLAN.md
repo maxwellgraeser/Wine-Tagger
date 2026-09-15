@@ -16,7 +16,7 @@ dashboard for review and re-upload.
 ```
 
 > `fermentation/` drives a local LLM through a self-built **MCP wine
-> library** to tag wines. `distribution/` is still only a plan.
+> library** to tag wines. `distribution/` was renamed `cellar/` and built as the web app.
 
 ## Status at a glance
 
@@ -24,7 +24,7 @@ dashboard for review and re-upload.
 |---|---|---|---|
 | `ingestion/` | ✅ Implemented | `ingestion/run.sh` | xlsx → `combined.csv` |
 | `fermentation/` | 🟧 Active build | `python -m fermentation.ferment` | no `run.sh` yet |
-| `distribution/` | ⬜ Not built | — | only `distribution/PLAN.md` exists |
+| `cellar/` | ✅ Built | `cellar/run.sh` | web app over all three stages; owns the Lightspeed export (was `distribution/`) |
 
 See each domain's `PLAN.md` for detail, and `Tree.html` (repo root) for a
 visual component map plus an ordered list of known issues.
@@ -65,17 +65,18 @@ The **`library_mcp/`** package is a FastMCP stdio server backed by a baked
 SQLite wine library (`library.db`), seeded offline from Wikidata + Wikipedia.
 
 **Input:** `ingestion/output/combined.csv`
-**Output:** SQLite database at `fermentation/wines.db` (tables: `products`,
-`sales`, `tag_log`).
+**Output:** `output/wines.json` (all wines, tags, sales, per-phase status) plus
+`logs/<run_id>/` with every phase's per-wine JSON. Fermentation runs its three
+phases — search, score, tag — each over the whole list before the next.
 
-### 3. Distribution (`distribution/`)
+### 3. Distribution — Cellar (`cellar/`)
 
-*Planned — not yet implemented.* A local React + Vite + TypeScript dashboard
-that reads the SQLite database, lets you browse/search/edit tags, and exports a
-Lightspeed-compatible `.xlsx` (`id`, `name`, `tags`). See
-`distribution/PLAN.md`.
+A local FastAPI + React/Vite/TypeScript/Tailwind dashboard that runs all three
+stages with live progress, browses every fermentation log, lets you
+search/edit tags, and exports a Lightspeed-compatible `.xlsx` (`id`, `name`,
+`tags`). Developer view (default) and Simple view. See `cellar/PLAN.md`.
 
-**Input:** SQLite database from `fermentation/wines.db`
+**Input:** `output/wines.json` + `logs/`
 **Output:** Lightspeed import `.xlsx`
 
 ## Data Flow
@@ -85,14 +86,15 @@ downstream — no domain reaches back into an upstream domain's internals. The
 contract between domains is their output format:
 
 - Ingestion → Fermentation: `combined.csv` with agreed column names.
-- Fermentation → Distribution: SQLite database with a known schema.
+- Fermentation → Cellar: `output/wines.json` with a known shape.
 
 ## Running the Pipeline
 
 ```
-./ingestion/run.sh
-python -m fermentation.ferment          # (no run.sh wrapper yet)
-# ./distribution/run.sh                 # not built
+./cellar/run.sh                         # everything, from the browser (:8000)
+
+./ingestion/run.sh                      # or stage by stage from the console
+./ferment.sh [--force --limit N]
 ```
 
 Fermentation needs a local OpenAI-compatible LLM endpoint running first
@@ -113,12 +115,15 @@ Wine Warehouse DDD/
 │   └── run.sh
 ├── fermentation/            # active
 │   ├── PLAN.md
-│   ├── ferment.py           # controller
+│   ├── ferment.py           # CLI
+│   ├── phases.py            # search → score → tag, each over all wines
 │   ├── searcher.py · scorer.py · tagger.py
-│   ├── types.py · constants.py · debug_output.py
+│   ├── store.py · events.py · paths.py · types.py · constants.py
 │   └── library_mcp/         # FastMCP server + baked library.db + seed/
-├── distribution/            # not built
-│   └── PLAN.md
+├── cellar/                  # the web app (FastAPI + React)
+│   ├── PLAN.md · run.sh · server/app.py · web/
+├── output/                  (generated) wines.json, .run_state.json
+├── logs/                    (generated) per-run phase logs
 └── Sample Xlsx/
     ├── product-export.xlsx
     └── inventory-report (...).xlsx

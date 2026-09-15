@@ -7,7 +7,7 @@ cd "$(dirname "$0")"
 # Runs fermentation end-to-end: ensures a llama-server is up, then runs
 # `python -m fermentation.ferment` with any flags passed to this script.
 #
-#   ./ferment.sh --force --limit 3 --debug-output
+#   ./ferment.sh --force --limit 3
 #   LLAMA_SCRIPT=./qwen25-7b.sh ./ferment.sh
 #
 # The library_mcp server is NOT started here — tagger.py spawns it as a stdio
