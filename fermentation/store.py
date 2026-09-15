@@ -202,6 +202,19 @@ def update_wine_tags(store: dict, product_id: str, **fields) -> Optional[dict]:
     return row
 
 
+def reset_manual(store: dict) -> int:
+    """Flip every `manual` row back to `pending` so the next fermentation
+    run re-searches/scores/tags it instead of skipping it. Returns the
+    count of rows changed."""
+    n = 0
+    for row in store["wines"]:
+        if row.get("tag_status") == "manual":
+            row["tag_status"] = "pending"
+            row["updated_at"] = _now()
+            n += 1
+    return n
+
+
 def export_rows(store: dict) -> list[dict]:
     """Lightspeed export rows: id, name, tags (country; regions; grapes)."""
     out = []

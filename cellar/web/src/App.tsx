@@ -179,6 +179,10 @@ export default function App() {
             wines={wines}
             onSelect={setSelectedWine}
             showDevColumns={!isSimple}
+            onWinesChanged={() => {
+              refreshWines();
+              refreshStatus();
+            }}
           />
         )}
       </main>

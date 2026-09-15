@@ -346,6 +346,7 @@ export const api = {
     request<WineDetailResponse>(`/wines/${id}${runId ? `?run_id=${encodeURIComponent(runId)}` : ''}`),
   patchWine: (id: number | string, patch: WinePatch) =>
     request<Wine>(`/wines/${id}`, { method: 'PATCH', body: JSON.stringify(patch) }),
+  resetManualWines: () => request<{ reset: number }>('/wines/reset-manual', { method: 'POST' }),
 
   getRuns: () => request<RunSummary[]>('/runs'),
   getRun: (runId: string) => request<RunDetailResponse>(`/runs/${encodeURIComponent(runId)}`),

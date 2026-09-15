@@ -1,4 +1,5 @@
-import { Download } from 'lucide-react';
+import { useState } from 'react';
+import { Download, RotateCcw } from 'lucide-react';
 import { api, type StatusResponse, type Wine } from '../api';
 import { WineTable } from './WineTable';
 
@@ -7,26 +8,62 @@ export function DistributePanel({
   wines,
   onSelect,
   showDevColumns,
+  onWinesChanged,
 }: {
   status: StatusResponse | null;
   wines: Wine[];
   onSelect: (w: Wine) => void;
   showDevColumns: boolean;
+  onWinesChanged: () => void;
 }) {
   const byStatus = status?.fermentation.wines_json.by_status;
+  const [resetting, setResetting] = useState(false);
+  const [resetMsg, setResetMsg] = useState<string | null>(null);
+
+  const resetManual = async () => {
+    if (!byStatus?.manual) return;
+    if (!confirm(`Reset ${byStatus.manual} manual wine(s) to pending so fermentation stops skipping them?`)) {
+      return;
+    }
+    setResetting(true);
+    setResetMsg(null);
+    try {
+      const { reset } = await api.resetManualWines();
+      setResetMsg(`Reset ${reset} wine(s) to pending.`);
+      onWinesChanged();
+    } catch (e) {
+      setResetMsg(e instanceof Error ? e.message : 'Failed to reset manual wines');
+    } finally {
+      setResetting(false);
+    }
+  };
 
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h2 className="text-lg font-semibold text-ink">Distribute</h2>
-        <a
-          href={api.exportUrl()}
-          className="flex items-center gap-1.5 rounded-md bg-wine px-3 py-1.5 text-sm font-medium text-white hover:bg-wine-dark"
-        >
-          <Download className="h-4 w-4" />
-          Export Lightspeed .xlsx
-        </a>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={resetManual}
+            disabled={resetting || !byStatus?.manual}
+            className="flex items-center gap-1.5 rounded-md border border-wine px-3 py-1.5 text-sm font-medium text-wine hover:bg-wine-light disabled:cursor-not-allowed disabled:opacity-50"
+            title="Reset every manual wine to pending so the next fermentation run doesn't skip it"
+          >
+            <RotateCcw className="h-4 w-4" />
+            {resetting ? 'Resetting…' : 'Reset manual tags'}
+          </button>
+          <a
+            href={api.exportUrl()}
+            className="flex items-center gap-1.5 rounded-md bg-wine px-3 py-1.5 text-sm font-medium text-white hover:bg-wine-dark"
+          >
+            <Download className="h-4 w-4" />
+            Export Lightspeed .xlsx
+          </a>
+        </div>
       </div>
+
+      {resetMsg && <div className="text-xs text-ink/70">{resetMsg}</div>}
 
       {byStatus && (
         <div className="flex flex-wrap gap-2 text-xs">

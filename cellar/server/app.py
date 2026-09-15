@@ -468,6 +468,17 @@ def api_wine_patch(wine_id: str, patch: WinePatch) -> dict:
     return row
 
 
+@app.post("/api/wines/reset-manual")
+def api_wines_reset_manual() -> dict:
+    """Flip every `manual` wine back to `pending` so the next fermentation
+    run doesn't skip it."""
+    store = store_mod.load_store()
+    n = store_mod.reset_manual(store)
+    if n:
+        store_mod.save_store(store)
+    return {"reset": n}
+
+
 # ---------------------------------------------------------------------------
 # Runs + logs
 # ---------------------------------------------------------------------------
