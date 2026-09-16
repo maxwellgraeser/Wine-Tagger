@@ -138,7 +138,11 @@ def ensure_wine(store: dict, product: Product) -> dict:
         store["wines"].append(fresh)
         return fresh
     for key in ("name", "sku", "category", "supply_price", "retail_price", "supplier", "brand", "sales"):
+        if key == "category" and not fresh[key] and row.get("category_source") == "model":
+            continue  # keep the inferred category until the CSV supplies one
         row[key] = fresh[key]
+    if fresh["category"]:
+        row.pop("category_source", None)
     row.setdefault("phase_status", {"search": None, "score": None, "tag": None})
     return row
 
@@ -173,6 +177,11 @@ def apply_tags(
 ) -> None:
     """Write the tagger result onto a store row."""
     if normalized is not None:
+        # The CSV's category wins; a model-inferred one only fills a blank and
+        # is marked so Cellar and later CSV refreshes can tell it apart.
+        if not row.get("category") and normalized.category:
+            row["category"] = normalized.category
+            row["category_source"] = "model"
         row["country"] = normalized.country
         row["region"] = list(normalized.region or [])
         row["grapes"] = list(normalized.grapes or [])

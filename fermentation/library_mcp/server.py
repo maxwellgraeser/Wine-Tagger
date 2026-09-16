@@ -348,6 +348,10 @@ _HINTS = {
     # Not an issue: a submission with no grapes is ACCEPTED (ok: true) and
     # reported under `warnings` so the country/region survive; the empty
     # grape list is what routes the row to needs_review downstream.
+    "unknown_category": (
+        "category must be one of Red, White, Rose, Sparkling (or null when the "
+        "product already has one). Pick the one the snippets support and resubmit."
+    ),
     "no_grapes": (
         "Grape list is empty; accepted as-is. The row will route to "
         "needs_review. Only add grapes if a source actually names them."
@@ -388,6 +392,19 @@ _HINTS = {
 }
 
 
+_CATEGORY_OPTIONS = ("Red", "White", "Rose", "Sparkling")
+_CATEGORY_ALIASES = {
+    "red": "Red", "rouge": "Red", "tinto": "Red", "rosso": "Red",
+    "white": "White", "blanc": "White", "blanco": "White", "bianco": "White",
+    "rose": "Rose", "rosado": "Rose", "rosato": "Rose",
+    "sparkling": "Sparkling", "champagne": "Sparkling", "prosecco": "Sparkling", "cava": "Sparkling",
+}
+
+
+def _resolve_category(name: str) -> Optional[str]:
+    return _CATEGORY_ALIASES.get(_fold(name))
+
+
 def _add_issue(issues: list[str], code: str) -> None:
     if code not in issues:
         issues.append(code)
@@ -401,8 +418,13 @@ def submit_tags(
     is_blend: Optional[bool],
     organic: Optional[bool],
     confidence: Optional[int],
+    category: Optional[str] = None,
 ) -> dict:
     """Canonicalise and validate a proposed tag set.
+
+    `category` is optional: one of Red / White / Rose / Sparkling (accents and
+    case ignored, "rosé"/"rosado"/"rosato" accepted). Fill it only when the
+    product had no category; anything else is `unknown_category`.
 
     On success returns {ok: True, normalized: {...}} with canonical values;
     `normalized.region` is expanded with each region's parent chain
@@ -494,6 +516,14 @@ def submit_tags(
         # country/region it had already found.
         warnings.append("no_grapes")
 
+    # --- category ---
+    canonical_category: Optional[str] = None
+    if category is not None and str(category).strip():
+        canonical_category = _resolve_category(category)
+        if canonical_category is None:
+            _add_issue(issues, "unknown_category")
+            detail["unknown_category"] = [category]
+
     # --- is_blend ---
     if is_blend is not None and normalized_grapes:
         expected = len(normalized_grapes) >= 2
@@ -520,6 +550,7 @@ def submit_tags(
             ),
             "organic": bool(organic) if organic is not None else False,
             "confidence": confidence,
+            "category": canonical_category,
         },
     }
     if warnings:

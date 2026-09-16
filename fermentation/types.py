@@ -34,8 +34,9 @@ class ScoredSnippet:
     snippet: Snippet
     match_score: int
     cleaned_body: str
-    dropped_reason: Optional[str] = None  # "producer_absent" | None
+    dropped_reason: Optional[str] = None  # "producer_absent" | "unscored" | None
     in_context: bool = False              # made the top-N cut into web_context
+    facts: list[str] = field(default_factory=list)  # scorer's claim: subset of grape/region/producer
 
 
 @dataclass
@@ -47,3 +48,4 @@ class ParsedTags:
     is_blend: Optional[bool] = None
     organic: Optional[bool] = None
     confidence: Optional[int] = None
+    category: Optional[str] = None  # Red/White/Rose/Sparkling, only filled when the CSV had none

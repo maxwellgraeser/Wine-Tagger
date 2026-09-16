@@ -132,6 +132,10 @@ TOOL_SCHEMAS: list[dict[str, Any]] = [
                     "is_blend": {"type": ["boolean", "null"]},
                     "organic": {"type": ["boolean", "null"]},
                     "confidence": {"type": ["integer", "null"]},
+                    "category": {
+                        "type": ["string", "null"],
+                        "description": "Only when the product Category is (unknown): one of Red, White, Rose, Sparkling, from the snippets' description of the wine. Otherwise null.",
+                    },
                 },
                 "required": ["country", "region", "grapes", "is_blend", "organic", "confidence"],
             },
@@ -303,7 +307,7 @@ def _product_user_prompt(product: Product, web_context: str) -> str:
         f"Product name: {product.name}\n"
         f"Brand: {product.brand or '(unknown)'}\n"
         f"SKU: {product.sku or '(none)'}\n"
-        f"Category: {product.category or '(unknown)'}\n"
+        f"Category: {product.category or '(unknown) -- infer it: Red, White, Rose or Sparkling'}\n"
         f"Supplier: {product.supplier or '(unknown)'}\n\n"
         "Web context (top scored snippets, most relevant first):\n"
         "---\n"
@@ -337,6 +341,7 @@ def _to_parsed_tags(normalized: dict) -> ParsedTags:
         is_blend=normalized.get("is_blend"),
         organic=normalized.get("organic"),
         confidence=normalized.get("confidence"),
+        category=normalized.get("category"),
     )
 
 

@@ -296,6 +296,12 @@ keeps it clean.
 
 ## Phase 2 — `searcher.py`
 
+> **2026-09-15:** results from `BLOCKED_DOMAINS` (vinovoss.com, an
+> AI-generated wine site) are dropped before scoring, and the throttling
+> retry now also fires when at least `DDG_RETRY_ERROR_FRACTION` of a wine's
+> queries raised — Bila Haut had 9 of 11 time out and its four junk results
+> used to be enough to skip the retry.
+
 **Owns:** DDG queries, URL dedupe, boilerplate cleanup, price-only
 filter. Single module that touches the network for snippets.
 
@@ -329,8 +335,63 @@ def gather_snippets(product: Product) -> list[Snippet]:
 
 ## Phase 3 — `scorer.py`
 
-**Owns:** LLM match-scoring, the producer-absent hard gate, top-N trim,
-`web_context` assembly.
+**Owns:** LLM match-scoring, the producer-absent hard gate, fact-first
+context selection, `web_context` assembly.
+
+> **2026-09-15 — scoring methodology revised.** The full review, with the
+> per-wine evidence, is in `SCORING-2026-09-15.md`. Summary of what was
+> wrong with the first design: the 7B model listed only some indices when
+> shown 15–27 snippets at once (17/24 wines; 72 of 255 name-matching
+> snippets silently became 0), scores were bimodal (0 or ≥85) so the
+> threshold was not a knob, the scorer never saw the URL (Vivino and
+> CellarTracker bodies carry the producer only in the slug), and the rubric
+> measured identity, not information, so price pages filled the context
+> while tech sheets sat at 0. The tagger then committed grapes that no
+> snippet named (Bila Haut, Aster) and the row still reached `model`.
+
+### How scoring works now
+
+1. **Batches with URLs.** Snippets go to the LLM in batches of
+   `SCORING_BATCH_SIZE` (8). Each line carries the source label, the URL
+   and up to `SCORING_SNIPPET_CHARS` of body. When a word of the product
+   name appears in the URL but not in the text, the line says so
+   explicitly (`[note: "aster" from the product name appears in this URL
+   but not in the text]`) — the model overlooked the URL on its own.
+2. **Every index must come back.** The prompt lists the indices it wants.
+   Any index missing from the reply is re-asked, in further batches, up to
+   `SCORING_MISSING_RETRIES` rounds. An index still missing afterwards is
+   logged as `dropped_reason: "unscored"`, never disguised as a 0.
+3. **Two fields per snippet.** The reply is
+   `{"<idx>": {"score": 0-100, "facts": ["grape"|"region"|"producer"]}}`.
+   `score` answers only "is this the same wine?"; `facts` says what the
+   snippet states about it. A price page that repeats the name has
+   `facts: []`. Bare-integer replies (the old shape) still parse.
+4. **Producer gate.** Unchanged: a snippet whose body and URL contain no
+   significant token of the name/brand is dropped (`producer_absent`).
+5. **Identity threshold.** Survivors need `score >= SNIPPET_MATCH_THRESHOLD`
+   (70 — the rubric's "very likely the same wine" band). 85 was tuned for
+   bimodal output; with honest per-index grading the model put every true
+   match for Li Veli, Cloudline and Chapelle Bastion at 70.
+6. **Fact-first selection.** Survivors are ordered by (names a grape, number
+   of facts, score); then the distributor's snippet first, then the best of
+   each source family, then the rest, up to `TOP_N_SNIPPETS` (5). The score
+   gates; the facts choose.
+7. **Log.** `logs/<run>/scorer/<id>.json` records per snippet
+   `match_score`, `facts`, `dropped_reason`, `in_context`, and under `llm`
+   every call's `indices`, `response`, `error`, plus `missing`.
+
+### What the tagger's output is checked against
+
+`evidence.py` + `phases.apply_evidence_rules` (the rules the prompt already
+stated, now enforced in code):
+
+- **Grape evidence.** Every submitted grape must appear in `web_context`,
+  by canonical name or a library synonym (Garnacha → Grenache; synonyms
+  shorter than 5 chars and generic words like "Tinto" are ignored). A miss
+  routes the row to `needs_review` with
+  `review_reasons: ["unsupported_grape:<name>"]` in `final/<id>.json`.
+- **Single-snippet cap.** One snippet in context clamps confidence to
+  `SINGLE_SNIPPET_CONFIDENCE_CAP` (84), i.e. below the default threshold.
 
 ### Public surface
 
@@ -341,32 +402,27 @@ def score_and_assemble(
     *,
     api_url: str,
     model: str,
-) -> tuple[Optional[str], list[ScoredSnippet]]:
-    """Score snippets, apply producer-absent hard gate, trim to top N,
-    assemble web_context. Returns (web_context_or_None, scored_full_list).
-    web_context is None if no snippet survived gating."""
+    producer_gate: bool = True,
+    return_raw: bool = False,
+):
+    """Score snippets (batched, with re-asks), apply the producer gate,
+    pick the most fact-rich survivors, assemble web_context.
+    Returns (web_context_or_None, scored_full_list[, llm_raw])."""
 ```
-
-### Producer-absent gate (hard exclusion)
-
-Token-overlap check: significant tokens from `product.name`/`product.brand`
-must appear in the snippet body. Snippets that fail are **dropped, not
-zeroed**. If *every* snippet fails the gate, `score_and_assemble`
-returns `(None, scored)` and the product flows straight to
-`needs_review` without ever invoking the tagger.
-
-The producer-absent check is a hard gate rather than a soft confidence
-cap applied post-tagging, so it skips the expensive LLM tag-inference
-call.
 
 ### Internal helpers
 
-- `_batch_match_score(product, snippets, api_url, model)` — one LLM
-  call, returns `{idx: score}`
+- `_score_batch(product, snippets, indices, ...)` — one LLM call over a
+  set of indices; returns what parsed (possibly a subset)
+- `_batch_match_score(product, snippets, api_url, model)` — drives the
+  batches and re-ask rounds; returns `{idx: (score, facts)}` and the raw
+  call record
+- `_parse_entry(value)` — accepts `{"score", "facts"}` or a bare int
 - `_significant_tokens(text)` — accent-strip + stopword + min-length
-- `_snippet_contains_any_token(body, tokens)`
-- `_apply_producer_gate(snippets, product)` — returns the filtered list
-- `_build_web_context(scored)` — top-N labeled block
+- `_apply_producer_gate(scored, product)` — marks `producer_absent`
+- `_fact_rank(s)` / `_pick_diverse(survivors, top_n)` — fact-first,
+  source-diverse selection
+- `_build_web_context(scored, threshold, top_n)` — labeled block
 
 ---
 

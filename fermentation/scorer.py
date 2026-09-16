@@ -1,5 +1,11 @@
 """LLM match-scoring, producer-absent hard gate, and web_context assembly.
 
+The scoring LLM sees each snippet's URL and body (in batches of
+SCORING_BATCH_SIZE) and returns, per snippet, a 0-100 same-wine score and the
+facts it states (grape / region / producer). Indices missing from a reply are
+re-asked. The score gates identity (SNIPPET_MATCH_THRESHOLD); the facts decide
+which survivors are worth the tagger's context window.
+
 The producer-absent check is a **hard exclusion** (snippets failing the token-overlap test are dropped from
 web_context entirely) rather than a post-tagging confidence cap.
 
@@ -101,62 +107,119 @@ def _extract_json(text: str) -> Optional[dict]:
 # Batch match-score
 # ---------------------------------------------------------------------------
 
+_FACT_KINDS = ("grape", "region", "producer")
+
+
+def _parse_entry(value) -> Optional[tuple[int, list[str]]]:
+    """One reply entry -> (score, facts). Accepts the new {"score", "facts"}
+    shape and a bare integer (older prompt / a model that ignores the shape)."""
+    if isinstance(value, dict):
+        raw_score = value.get("score")
+        raw_facts = value.get("facts") or []
+    else:
+        raw_score, raw_facts = value, []
+    try:
+        score = int(raw_score)
+    except (TypeError, ValueError):
+        return None
+    facts = [f for f in raw_facts if isinstance(f, str) and f.lower() in _FACT_KINDS] \
+        if isinstance(raw_facts, list) else []
+    return min(100, max(0, score)), sorted({f.lower() for f in facts})
+
+
+def _score_batch(
+    product: Product,
+    snippets: list[Snippet],
+    indices: list[int],
+    api_url: str,
+    model: str,
+    log: list[dict],
+) -> dict[int, tuple[int, list[str]]]:
+    """One LLM call over the given snippet indices. Returns whatever parsed
+    for those indices (possibly a subset). Appends a record to `log`."""
+    name_tokens = _significant_tokens(f"{product.name} {product.brand or ''}")
+    lines = []
+    for i in indices:
+        snip = snippets[i]
+        body = snip.body[:constants.SCORING_SNIPPET_CHARS]
+        # Vivino / CellarTracker descriptions often omit the producer while the
+        # slug has it; the model sometimes overlooks the URL, so say it outright.
+        hint = ""
+        body_norm, url_norm = _strip_accents(body), _strip_accents(snip.url or "")
+        url_only = [t for t in name_tokens if t in url_norm and t not in body_norm]
+        if url_only:
+            hint = (f"    [note: \"{', '.join(url_only)}\" from the product name appears in "
+                    f"this URL but not in the text]\n")
+        lines.append(f"[{i}] ({snip.source}) {snip.url}\n{hint}    {body}")
+    prompt = constants.BATCH_MATCH_SCORE_PROMPT.format(
+        name=product.name,
+        brand=product.brand or "unknown",
+        snippets_block="\n\n".join(lines),
+        index_list=", ".join(str(i) for i in indices),
+    )
+    rec: dict = {"indices": indices, "response": None, "error": None, "attempts": 0}
+    log.append(rec)
+    parsed: dict = {}
+    for attempt, text in enumerate((prompt, prompt + constants.STRICT_SUFFIX), start=1):
+        rec["attempts"] = attempt
+        try:
+            reply = _call_llm(text, api_url, model, timeout=constants.SCORING_TIMEOUT_SECONDS)
+        except Exception as exc:  # noqa: BLE001 — network/HTTP failure: try once more
+            rec["error"] = f"{type(exc).__name__}: {exc}"
+            continue
+        rec["response"] = reply
+        got = _extract_json(reply)
+        if isinstance(got, dict) and got:
+            parsed = got
+            rec["error"] = None
+            break
+        rec["error"] = "no JSON object in reply"
+    out: dict[int, tuple[int, list[str]]] = {}
+    for i in indices:
+        value = parsed.get(str(i), parsed.get(i))
+        if value is None:
+            continue
+        entry = _parse_entry(value)
+        if entry is not None:
+            out[i] = entry
+    return out
+
+
 def _batch_match_score(
     product: Product,
     snippets: list[Snippet],
     api_url: str,
     model: str,
-) -> tuple[dict[int, int], dict]:
-    """One LLM call rating each snippet 0-100 for product-match quality.
+) -> tuple[dict[int, tuple[int, list[str]]], dict]:
+    """Score every snippet 0-100 for product match and record which facts
+    (grape / region / producer) it states.
 
-    Returns `({snippet_index: score}, raw)` where `raw` records what the LLM
-    returned (`response`, `parsed`, `attempts`, `error`) so a parse failure
-    is visible in the scorer log instead of silently scoring everything 0.
-    If the first reply does not parse as JSON, one retry is made with
-    STRICT_SUFFIX appended. Snippets arriving here are already cleaned by
-    searcher; we score against `body` directly.
+    Snippets are scored in batches of SCORING_BATCH_SIZE; any index the model
+    leaves out of its reply is re-asked (SCORING_MISSING_RETRIES rounds) rather
+    than silently treated as 0 — on the 2026-09-15 run 28% of name-matching
+    snippets were lost that way. Indices still missing afterwards are absent
+    from the returned dict so the caller can mark them "unscored".
+
+    Returns `({index: (score, facts)}, raw)`; `raw` holds every call's reply
+    and error under `calls`, plus `missing` (indices never scored).
     """
-    raw: dict = {"response": None, "parsed": None, "attempts": 0, "error": None}
+    raw: dict = {"calls": [], "missing": [], "attempts": 0}
     if not snippets:
         return {}, raw
 
-    lines = [
-        f"[{i}] ({s.source}): {s.body[:constants.SCORING_SNIPPET_CHARS]}"
-        for i, s in enumerate(snippets)
-    ]
-    snippets_block = "\n\n".join(lines)
-
-    prompt = constants.BATCH_MATCH_SCORE_PROMPT.format(
-        name=product.name,
-        brand=product.brand or "unknown",
-        snippets_block=snippets_block,
-    )
-
-    raw_scores: dict = {}
-    for attempt, text in enumerate((prompt, prompt + constants.STRICT_SUFFIX), start=1):
-        raw["attempts"] = attempt
-        try:
-            reply = _call_llm(text, api_url, model, timeout=constants.SCORING_TIMEOUT_SECONDS)
-        except Exception as exc:  # noqa: BLE001 — network/HTTP failure: try once more, then score 0s
-            raw["error"] = f"{type(exc).__name__}: {exc}"
-            continue
-        raw["response"] = reply
-        parsed = _extract_json(reply)
-        if isinstance(parsed, dict) and parsed:
-            raw_scores = parsed
-            raw["parsed"] = parsed
-            raw["error"] = None
+    results: dict[int, tuple[int, list[str]]] = {}
+    pending = list(range(len(snippets)))
+    size = max(1, constants.SCORING_BATCH_SIZE)
+    for round_no in range(1 + constants.SCORING_MISSING_RETRIES):
+        if not pending:
             break
-        raw["error"] = "no JSON object in reply"
-
-    out: dict[int, int] = {}
-    for i in range(len(snippets)):
-        try:
-            score = int(raw_scores.get(str(i), raw_scores.get(i, 0)))
-        except (TypeError, ValueError):
-            score = 0
-        out[i] = min(100, max(0, score))
-    return out, raw
+        for start in range(0, len(pending), size):
+            chunk = pending[start:start + size]
+            results.update(_score_batch(product, snippets, chunk, api_url, model, raw["calls"]))
+        pending = [i for i in pending if i not in results]
+    raw["missing"] = pending
+    raw["attempts"] = len(raw["calls"])
+    return results, raw
 
 
 # ---------------------------------------------------------------------------
@@ -207,17 +270,26 @@ def _source_family(s: ScoredSnippet) -> str:
     return re.sub(r"\s*#\d+$", "", s.snippet.source or "").strip().lower()
 
 
+def _fact_rank(s: ScoredSnippet) -> tuple[int, int, int]:
+    """Sort key (desc): grape named, number of facts, score. The score is an
+    identity gate; among survivors what matters is what the snippet *says*."""
+    return (1 if "grape" in s.facts else 0, len(s.facts), s.match_score)
+
+
 def _pick_diverse(survivors: list[ScoredSnippet], top_n: int) -> list[ScoredSnippet]:
-    """Choose up to `top_n` survivors (already sorted by score, desc) so the
-    context holds distinct facts rather than three copies of one page:
+    """Choose up to `top_n` survivors so the context holds distinct facts
+    rather than five price pages that repeat the name.
 
+    Survivors are ordered by `_fact_rank` (grape-naming first, then most
+    facts, then score); then:
       1. the distributor's snippet, if one survived (it names the exact blend);
-      2. the best-scoring snippet from each source not yet represented;
-      3. remaining slots by score.
+      2. the best snippet from each source not yet represented;
+      3. remaining slots in rank order.
 
-    Output keeps score order within each pass so the tagger still sees the
-    strongest evidence first.
+    Output keeps rank order within each pass so the tagger sees the most
+    informative evidence first.
     """
+    survivors = sorted(survivors, key=_fact_rank, reverse=True)
     chosen: list[ScoredSnippet] = []
     seen_families: set[str] = set()
 
@@ -260,7 +332,6 @@ def _build_web_context(
     ]
     if not survivors:
         return None
-    survivors.sort(key=lambda s: s.match_score, reverse=True)
     top = _pick_diverse(survivors, top_n)
     for s in top:
         s.in_context = True
@@ -294,31 +365,32 @@ def score_and_assemble(
     straight to needs_review without invoking the tagger.
 
     Snippets that made the top-N cut are flagged `in_context=True`. With
-    `return_raw=True` a third element carries the scoring LLM's raw reply.
+    `return_raw=True` a third element carries every scoring call's raw reply.
     """
     def _ret(ctx, scored_list, raw):
         return (ctx, scored_list, raw) if return_raw else (ctx, scored_list)
 
     if not snippets:
-        return _ret(None, [], {"response": None, "parsed": None, "attempts": 0, "error": None})
+        return _ret(None, [], {"calls": [], "missing": [], "attempts": 0})
 
-    raw_scores, llm_raw = _batch_match_score(product, snippets, api_url, model)
+    results, llm_raw = _batch_match_score(product, snippets, api_url, model)
 
-    scored: list[ScoredSnippet] = [
-        ScoredSnippet(
-            snippet=s,
-            match_score=raw_scores.get(i, 0),
-            cleaned_body=s.body,
-            dropped_reason=None,
-        )
-        for i, s in enumerate(snippets)
-    ]
+    scored: list[ScoredSnippet] = []
+    for i, s in enumerate(snippets):
+        if i in results:
+            score, facts = results[i]
+            scored.append(ScoredSnippet(snippet=s, match_score=score, cleaned_body=s.body, facts=facts))
+        else:
+            # Never scored even after re-asks: visible in the log as "unscored",
+            # not disguised as a confident 0.
+            scored.append(ScoredSnippet(snippet=s, match_score=0, cleaned_body=s.body,
+                                        dropped_reason="unscored"))
 
     if producer_gate:
         _apply_producer_gate(scored, product)
 
-        # If every snippet failed the producer gate, signal hard-skip to caller.
-        if all(s.dropped_reason == "producer_absent" for s in scored):
+        # If every snippet is gone (gate or unscored), signal hard-skip to caller.
+        if all(s.dropped_reason is not None for s in scored):
             return _ret(None, scored, llm_raw)
 
     web_context = _build_web_context(scored)

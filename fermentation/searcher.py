@@ -6,6 +6,7 @@ scoring, gating, and LLM calls live elsewhere.
 """
 
 import re
+from urllib.parse import urlparse
 import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
@@ -76,6 +77,12 @@ _AD_HOSTS = ("bing.com", "duckduckgo.com", "googleadservices.com", "doubleclick.
 def _host(url: str) -> str:
     m = re.match(r"https?://([^/?#]+)", url or "")
     return (m.group(1) if m else "").lower().removeprefix("www.")
+
+
+def _is_blocked(url: str) -> bool:
+    """True if the URL's host is (or is under) a domain in BLOCKED_DOMAINS."""
+    host = (urlparse(url).hostname or "").lower()
+    return any(host == d or host.endswith("." + d) for d in constants.BLOCKED_DOMAINS)
 
 
 def _on_site(url: str, domain: str) -> bool:
@@ -170,12 +177,16 @@ def _gather_all_snippets(product: Product) -> tuple[list[Snippet], list[dict]]:
     results: list[Snippet] = []
     seen_urls: set[str] = set()
     off_site = 0
+    blocked = 0
     for (source_name, domain, _query), (snippets, _err) in zip(plan, per_query):
         # Engines (Bing especially) pad site-scoped results with ads from
         # elsewhere; a "Winebow (distributor)" snippet must actually be winebow.com.
         kept_on_site = [it for it in snippets if _on_site(it["href"], domain)]
         off_site += len(snippets) - len(kept_on_site)
-        snippets = kept_on_site
+        # Known-bad hosts (AI-generated wine pages) never reach the scorer.
+        kept = [it for it in kept_on_site if not _is_blocked(it["href"])]
+        blocked += len(kept_on_site) - len(kept)
+        snippets = kept
         # Dedupe across all queries: first query to hit a URL keeps it. Prevents
         # repeated URLs from boxing out the top-N pool used for context.
         deduped = []
@@ -197,6 +208,8 @@ def _gather_all_snippets(product: Product) -> tuple[list[Snippet], list[dict]]:
 
     if off_site:
         errors.append({"source": "*", "query": "", "error": f"{off_site} off-site/ad results dropped"})
+    if blocked:
+        errors.append({"source": "*", "query": "", "error": f"{blocked} results from blocked domains dropped"})
     return results, errors
 
 
@@ -236,6 +249,21 @@ def dedupe_near_duplicates(snippets: list[Snippet]) -> tuple[list[Snippet], int]
     return kept, dropped
 
 
+def _mostly_failed(raw: list[Snippet], errors: list[dict]) -> bool:
+    """True when the engine is throttling us: no results at all, or at least
+    DDG_RETRY_ERROR_FRACTION of the real queries raised. Bila Haut on the
+    2026-09-15 run had 9 of 11 queries time out; the 4 junk results from the
+    other two were enough to skip the retry, and its whole context became one
+    page about a different cuvée."""
+    if not raw:
+        return True
+    query_errors = [e for e in errors if e.get("source") != "*"]
+    if not query_errors:
+        return False
+    total = len(query_errors) + len({s.source.rsplit(" #", 1)[0] for s in raw})
+    return len(query_errors) / max(1, total) >= constants.DDG_RETRY_ERROR_FRACTION
+
+
 def gather_snippets(product: Product, *, return_errors: bool = False):
     """UPC + per-source + fallback queries with cross-query URL dedupe.
 
@@ -246,15 +274,15 @@ def gather_snippets(product: Product, *, return_errors: bool = False):
     Near-duplicate bodies (word-set Jaccard >= SNIPPET_DEDUPE_JACCARD, e.g.
     one price page listed for three vintages) are collapsed to the first.
 
-    If *every* query comes back empty the engine is almost certainly
-    throttling us (that is what happened to Zenato Pinot Grigio, wine 24/24
-    of a run), so the whole plan is retried after each delay in
-    DDG_RETRY_DELAYS. With `return_errors=True` a second element lists the
+    If *every* query comes back empty, or most of them raised, the engine is
+    almost certainly throttling us (Zenato Pinot Grigio got nothing from any
+    query; Bila Haut had 9 of 11 time out), so the whole plan is retried
+    after each delay in DDG_RETRY_DELAYS. With `return_errors=True` a second element lists the
     per-query errors from the final attempt.
     """
     raw, errors = _gather_all_snippets(product)
     for delay in constants.DDG_RETRY_DELAYS:
-        if raw:
+        if not _mostly_failed(raw, errors):
             break
         time.sleep(delay)
         raw, errors = _gather_all_snippets(product)

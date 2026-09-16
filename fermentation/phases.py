@@ -20,7 +20,10 @@ from pathlib import Path
 from typing import Any, Optional
 
 from . import scorer, searcher, store as store_mod, tagger
-from .constants import ORGANIC_PHRASES
+from .constants import (
+    ORGANIC_PHRASES, REQUIRE_GRAPE_EVIDENCE, SINGLE_SNIPPET_CONFIDENCE_CAP,
+)
+from .evidence import context_snippet_count, unsupported_grapes
 from .events import EventSink
 from .paths import PHASES, RUN_STATE_PATH, phase_dir, run_dir
 from .types import ParsedTags, Product, ScoredSnippet, Snippet
@@ -271,12 +274,14 @@ def _scored_payload(product: Product, scored: list[ScoredSnippet], web_context: 
                 # True for the top-N survivors that were pasted into web_context
                 # and therefore seen by the tagger LLM.
                 "in_context": s.in_context,
+                # What the scorer says the snippet states: subset of grape/region/producer.
+                "facts": s.facts,
             }
             for s in scored
         ],
         "web_context_built": web_context is not None,
         "web_context": web_context,
-        # What the scoring LLM actually returned, for debugging parse failures.
+        # Every scoring call's reply/error (`calls`) and indices never scored (`missing`).
         "llm": llm_raw,
         "written_at": _now(),
     }
@@ -323,16 +328,54 @@ def run_score(ctx: RunContext, start: int = 0) -> None:
 # Phase 3 — tag
 # ---------------------------------------------------------------------------
 
-def decide_tag_status(*, normalized: Optional[ParsedTags], confidence_threshold: int) -> str:
-    """None -> needs_review; no grapes -> needs_review; confidence < threshold
-    -> needs_review; else model.
+def apply_evidence_rules(normalized: Optional[ParsedTags], web_context: Optional[str]) -> list[str]:
+    """Mechanical checks on what the tagger submitted versus the text it was
+    shown. Mutates `normalized` (confidence clamp) and returns the reasons
+    that will route the row to needs_review:
+
+      * "single_snippet_cap": only one snippet was in context, so confidence
+        is clamped to SINGLE_SNIPPET_CONFIDENCE_CAP (the prompt's own rule,
+        now enforced — Bila Haut submitted 89 off one snippet).
+      * "unsupported_grape:<name>": a submitted grape, or any library synonym
+        of it, appears nowhere in web_context. The model inferred it from the
+        name, region or style (Aster → Tempranillo, Bila Haut → Cinsault).
+    """
+    reasons: list[str] = []
+    if normalized is None:
+        return reasons
+    if (
+        web_context is not None
+        and context_snippet_count(web_context) <= 1
+        and normalized.confidence is not None
+        and normalized.confidence > SINGLE_SNIPPET_CONFIDENCE_CAP
+    ):
+        normalized.confidence = SINGLE_SNIPPET_CONFIDENCE_CAP
+        reasons.append("single_snippet_cap")
+    if REQUIRE_GRAPE_EVIDENCE and normalized.grapes:
+        for g in unsupported_grapes(normalized.grapes, web_context or ""):
+            reasons.append(f"unsupported_grape:{g}")
+    return reasons
+
+
+def decide_tag_status(
+    *,
+    normalized: Optional[ParsedTags],
+    confidence_threshold: int,
+    review_reasons: Optional[list[str]] = None,
+) -> str:
+    """None -> needs_review; no grapes -> needs_review; any evidence-rule
+    reason -> needs_review; confidence < threshold -> needs_review; else model.
 
     `submit_tags` accepts an empty grape list (with a `no_grapes` warning) so
     the country/region the model *did* find are kept on the row; the empty
-    grapes are what route it to review."""
+    grapes are what route it to review. `review_reasons` comes from
+    `apply_evidence_rules` (a "single_snippet_cap" entry only matters through
+    the clamped confidence; "unsupported_grape:*" is a hard route)."""
     if normalized is None:
         return "needs_review"
     if not normalized.grapes:
+        return "needs_review"
+    if any(r.startswith("unsupported_grape:") for r in (review_reasons or [])):
         return "needs_review"
     conf = normalized.confidence
     if conf is None or conf < confidence_threshold:
@@ -373,6 +416,7 @@ def run_tag(ctx: RunContext, start: int = 0) -> None:
             web_context: Optional[str] = score_log.get("web_context")
             normalized: Optional[ParsedTags] = None
             transcript: list[dict] = []
+            review_reasons: list[str] = []
 
             if web_context is None:
                 tag_status = "needs_review"
@@ -382,8 +426,10 @@ def run_tag(ctx: RunContext, start: int = 0) -> None:
                 normalized, transcript = tagger.infer_tags(
                     product, web_context, api_url=cfg.api_url, model=cfg.model, mcp_session=mcp,
                 )
+                review_reasons = apply_evidence_rules(normalized, web_context)
                 tag_status = decide_tag_status(
                     normalized=normalized, confidence_threshold=cfg.confidence_threshold,
+                    review_reasons=review_reasons,
                 )
                 _set_phase_status(ctx, product, "tag", "ok" if normalized else "no_submit")
 
@@ -407,6 +453,8 @@ def run_tag(ctx: RunContext, start: int = 0) -> None:
                 "product_id": product.id,
                 "name": product.name,
                 "tag_status": tag_status,
+                # Why a row that submitted fine still went to needs_review (see apply_evidence_rules).
+                "review_reasons": review_reasons,
                 "organic": organic,
                 "normalized": store_mod.parsed_tags_to_dict(normalized),
                 "tags_raw": row["tags_raw"],
@@ -416,10 +464,12 @@ def run_tag(ctx: RunContext, start: int = 0) -> None:
             counts["tagged"] += 1
             counts[tag_status if tag_status in ("model", "needs_review") else "needs_review"] += 1
             conf = normalized.confidence if normalized and normalized.confidence is not None else None
+            why = f" [{', '.join(review_reasons)}]" if review_reasons else ""
             ctx.sink.progress(
                 "tag", idx, total, product.id, product.name,
-                f"{tag_status} (conf={conf if conf is not None else '—'}) {row['tags_raw'] or ''}",
+                f"{tag_status} (conf={conf if conf is not None else '—'}){why} {row['tags_raw'] or ''}",
                 tag_status=tag_status, confidence=conf, tags_raw=row["tags_raw"],
+                review_reasons=review_reasons,
             )
             _checkpoint(ctx, "tag", idx + 1)
 

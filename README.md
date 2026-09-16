@@ -126,8 +126,10 @@ See `ingestion/PLAN.md` for the full column contract.
 the next starts:
 
 1. **search** — gather web snippets for every wine → `logs/<run>/search/`
-2. **score** — one LLM call per wine scores its snippets, applies the
-   producer-absent gate, assembles `web_context` → `logs/<run>/scorer/`
+2. **score** — the LLM scores every snippet (in batches of 8, URL shown,
+   missing indices re-asked) for same-wine match and notes which facts it
+   states; the producer-absent gate drops non-matches; the most fact-rich
+   survivors become `web_context` → `logs/<run>/scorer/`
 3. **tag** — drive the LLM through a **tool-call loop against the
    `library_mcp` server** to infer and *canonicalize* country, region(s),
    grapes, blend, organic, confidence → `logs/<run>/tagger/`, `final/`, and
@@ -149,11 +151,20 @@ modules that never import each other; config (model, api_url) is passed down:
 - **`searcher.py`** — owns the network for snippets. DuckDuckGo queries (UPC +
   per-source + fallback), cross-query URL dedupe, boilerplate strip, price-only
   filter. → `list[Snippet]`.
-- **`scorer.py`** — one LLM call scores each snippet 0–100 for product match. A
-  **producer-absent hard gate** drops snippets that don't mention the producer
-  name (a hard exclusion, not a confidence cap). Top-N survivors are assembled
-  into `web_context` — or `None`, in which case the wine routes straight to
-  `needs_review` and the tagger is skipped.
+- **`scorer.py`** — the LLM scores each snippet 0–100 for product match
+  *and* lists the facts it states (`grape` / `region` / `producer`). Snippets
+  go in batches of `SCORING_BATCH_SIZE` with their URL (the producer is often
+  only in the slug), and any index the model leaves out of its reply is
+  re-asked rather than silently scored 0 — that omission lost 28 % of matching
+  snippets on the 2026-09-15 run. A **producer-absent hard gate** drops
+  snippets that don't mention the producer name. Of the survivors above
+  `SNIPPET_MATCH_THRESHOLD` (70, the rubric's "very likely the same wine"
+  band), the grape-naming, most-fact-rich ones fill `web_context` (score
+  only gates identity) — or `None`, in which case the wine routes straight
+  to `needs_review` and the tagger is skipped. Method and evidence:
+  `fermentation/SCORING-2026-09-15.md`.
+- **`evidence.py`** — mechanical checks on the tagger's output against the
+  text it was shown (see "Confidence & review flags").
 - **`tagger.py`** — drives the MCP tool-call loop. The model browses canonical
   countries/regions/grapes via `lookup_*`/`list_*`, then commits via
   `submit_tags`. `submit_tags` **is the canonicalization gate** — whatever it
@@ -194,6 +205,16 @@ OpenAI-compatible `/v1/chat/completions` endpoint:
 - A wine with no usable `web_context` (no snippets, or all dropped by the
   producer gate) is written as `needs_review` without ever calling the tagger.
 - After tagging, `confidence < threshold` (default in `constants.py`) → `needs_review`.
+- **Evidence rules** (`phases.apply_evidence_rules`, enforced in code, not
+  just asked for in the prompt): a submitted grape that appears nowhere in
+  `web_context` — by canonical name or any library synonym — routes the row
+  to `needs_review` (`review_reasons: ["unsupported_grape:Cinsault"]` in
+  `final/<id>.json`); when only one snippet was in context, confidence is
+  clamped to `SINGLE_SNIPPET_CONFIDENCE_CAP` (84).
+- **Category**: when the CSV has no `product_category`, the tagger submits
+  one of `Red / White / Rose / Sparkling` from the snippets; the store keeps
+  it (`category_source: "model"`, shown as *inferred* in Cellar) until the
+  CSV supplies a real one. A CSV category is never overwritten.
 - `organic` is set only when explicit certification language
   (`certified organic`, `biodynamic`, `certified biodynamic`) appears.
 - Rows with `tag_status = 'human'` (edited in Cellar) are never overwritten on re-run.
@@ -252,10 +273,11 @@ final/<id>.json       normalized block + tag_status as written to wines.json
 **Tech:** Python 3.11+, sqlite3, requests, `mcp` (FastMCP), DuckDuckGo search —
 no paid APIs or keys required.
 
-> **Known issues (see `Tree.html` / `fermentation/PLAN.md`):** the default
-> confidence threshold (90) fights the prompt's confidence caps, so most wines
-> land in `needs_review`. The DDG import and the library reseed are fixed; see
-> `fermentation/BATON.md`.
+> **Scoring methodology:** see `fermentation/SCORING-2026-09-15.md` for why
+> the snippet score was rebuilt (batched per-index scoring, URL shown,
+> facts-first context, threshold 70) and the evidence rules that gate the
+> tagger's output. `fermentation/ACCURACY-2026-09-15.md` is the earlier
+> per-wine accuracy review; `fermentation/BATON.md` the library reseed.
 
 ---
 
@@ -290,11 +312,12 @@ Wine Warehouse DDD/
 │   ├── run.sh
 │   └── output/combined.csv      (generated)
 ├── fermentation/                # active
-│   ├── PLAN.md
+│   ├── PLAN.md · SCORING-2026-09-15.md · ACCURACY-2026-09-15.md · BATON.md
 │   ├── ferment.py               # CLI
 │   ├── phases.py                # search → score → tag, each over all wines
-│   ├── searcher.py · scorer.py · tagger.py
+│   ├── searcher.py · scorer.py · tagger.py · evidence.py
 │   ├── store.py · events.py · paths.py · types.py · constants.py
+│   ├── tests/                   # offline scorer / evidence / category tests
 │   └── library_mcp/
 │       ├── server.py            # FastMCP stdio server
 │       ├── schema.sql · library.db

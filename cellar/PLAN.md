@@ -143,10 +143,14 @@ The file is also written to `output/lightspeed-export.xlsx`.
 |---|---|
 | `pending` | not tagged yet |
 | `model` | the LLM tagged it and cleared the confidence threshold |
-| `needs_review` | the LLM could not tag it confidently (no context, no grapes, or low confidence) |
+| `needs_review` | the LLM could not tag it confidently (no context, no grapes, low confidence), or an evidence rule fired — `final/<id>.json` → `review_reasons` says which: `unsupported_grape:<name>` (grape not in the context it was shown) or `single_snippet_cap` (one snippet → confidence clamped to 84) |
 | `human` | a person saved tags in Cellar; fermentation skips it until "Reset human tags" |
 
 (`auto` / `manual` were the names before 2026-09-15; `store.load_store` migrates them.)
+
+A row whose CSV `product_category` is blank gets one inferred by the tagger
+(`Red` / `White` / `Rose` / `Sparkling`), stored with `category_source:
+"model"` and shown as *inferred* in the drawer. A CSV category always wins.
 
 ## Phased runs
 

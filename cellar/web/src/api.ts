@@ -135,6 +135,7 @@ export interface Wine {
   name: string;
   sku: string | null;
   category: string | null;
+  category_source?: 'model' | null;   // set when fermentation inferred the category (CSV had none)
   supply_price: number | null;
   retail_price: number | null;
   supplier: string | null;

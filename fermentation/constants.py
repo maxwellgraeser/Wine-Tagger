@@ -60,6 +60,12 @@ SCORING_SNIPPET_CHARS = 600  # Max chars of each snippet shown to the scoring LL
                              # (was 300 — the producer name is often past that point)
 SCORING_TIMEOUT_SECONDS = 120  # One scoring call: ~25 snippets x 600 chars is ~4k tokens of
                                # prompt, ~40 s on a 7B model; 45 s timed out under load
+SCORING_BATCH_SIZE = 8       # Snippets per scoring call. On the 24-wine run of 2026-09-15 the
+                             # 7B model listed only some indices when shown 15-27 snippets at
+                             # once (17/24 wines; 28% of name-matching snippets silently became
+                             # 0). Small batches plus a re-ask for any index still missing
+                             # (SCORING_MISSING_RETRIES) make every snippet get a real score.
+SCORING_MISSING_RETRIES = 2  # Re-ask rounds for indices the model left out of its reply
 DDG_SLEEP_SECONDS = 0.2      # Stagger between DDG query starts
 DDG_CONCURRENCY = 4          # DDG queries run in parallel per wine (1 = sequential)
 DDG_TIMEOUT_SECONDS = 10     # Per-engine wait inside ddgs (5 s timed out 7 of 11 queries on a busy run)
@@ -70,8 +76,13 @@ DDG_BACKEND = "yahoo,bing,duckduckgo"
 # timed out on ~70% of queries; yahoo answered the same site: queries in <1 s.
 # Bing ignores site: for its ad slots, so site-scoped results are also filtered
 # by URL host (see searcher._on_site).
-DDG_RETRY_DELAYS = (15, 45)  # If a wine gets ZERO results from every query (rate limit),
-                             # wait this many seconds and retry the whole plan, once per entry
+BLOCKED_DOMAINS = {"vinovoss.com"}  # AI-generated wine pages: fluent, confident, and wrong
+                                    # (Mont Gravet Rosé "Côtes de Gascogne"). Results from these
+                                    # hosts are dropped in the searcher before scoring.
+DDG_RETRY_DELAYS = (15, 45)  # If a wine gets ZERO results from every query, or most queries
+                             # raise (rate limit), wait this many seconds and retry the whole
+                             # plan, once per entry
+DDG_RETRY_ERROR_FRACTION = 0.5  # "most" = this fraction of the wine's queries errored
 
 # --- Snippet filtering ---
 SNIPPET_DEDUPE_JACCARD = 0.9  # Two snippets whose word sets overlap this much (Jaccard, words of
@@ -79,13 +90,36 @@ SNIPPET_DEDUPE_JACCARD = 0.9  # Two snippets whose word sets overlap this much (
                               # duplicates — e.g. one price page returned for three vintages. Only
                               # the first is kept. 0.9 collapsed 53 of 340 snippets on the 24-wine
                               # test run; 0.8 starts merging different pages that share boilerplate.
-SNIPPET_MATCH_THRESHOLD = 85  # Min match score (0-100) for a snippet to enter web_context
-TOP_N_SNIPPETS = 5            # Max number of top-scoring snippets passed to the tag-inference LLM.
-                              # Picked for source diversity: the distributor's snippet (if any) first,
-                              # then the best snippet from each distinct source, then by score.
+SNIPPET_MATCH_THRESHOLD = 70  # Min match score (0-100) for a snippet to enter web_context. The
+                              # score is an identity gate only ("is this the same wine?");
+                              # which survivors go into the context is decided by fact coverage.
+                              # 70 = the rubric's "very likely the same wine" band. 85 was tuned
+                              # when replies were bimodal (0 or 90+); with batched, per-index
+                              # scoring the model grades honestly and rated every true match for
+                              # Li Veli / Cloudline / Chapelle Bastion at 70 (replay 2026-09-15).
+TOP_N_SNIPPETS = 5            # Max number of survivors passed to the tag-inference LLM. Ordered by
+                              # how many facts the scorer says the snippet states (grape, region,
+                              # producer), then score; then the distributor's snippet (if any)
+                              # first, then the best snippet from each distinct source, then the
+                              # rest. Price pages that merely repeat the name no longer crowd out
+                              # a tech sheet that names the blend.
                               # Since tagging moved to the MCP tool loop the prompt no longer carries
                               # reference tables, so there is room for 5 x SNIPPET_CHAR_LIMIT
                               # (~2.5k tokens) — and the confidence rubric wants >= 2 sources.
+
+# --- Tagger evidence checks (phases.decide_tag_status) ---
+# The tagger prompt asks for these, but a prompt is not a guarantee: on the
+# 2026-09-15 run Bila Haut got three grapes at confidence 89 from a single
+# snippet that named none of them. Both rules are now enforced in code.
+SINGLE_SNIPPET_CONFIDENCE_CAP = 84  # confidence is clamped here when only one snippet is in context
+REQUIRE_GRAPE_EVIDENCE = True       # a submitted grape (or a library synonym of it) must appear in
+                                    # web_context, else the row routes to needs_review
+
+# --- Category ---
+# Lightspeed product_category values, in the store's spelling. When the CSV
+# has no category the tagger infers one from the snippets (see
+# SYSTEM_PROMPT_MCP); submit_tags rejects anything not in this list.
+CATEGORY_OPTIONS = ["Red", "White", "Rose", "Sparkling"]
 
 # --- Organic detection ---
 ORGANIC_PHRASES = {"certified organic", "biodynamic", "certified biodynamic"}
@@ -123,26 +157,37 @@ SNIPPET_MIN_CLEANED_CHARS = 40
 
 # --- LLM prompts ---
 BATCH_MATCH_SCORE_PROMPT = """\
-You are a wine expert. Score how well each web snippet matches the wine product name below.
+You are a wine expert. For each web snippet below, judge whether it is about the wine product named here, and note which facts it states about that wine.
 
 Product: {name}
 Brand: {brand}
 
 Product names may abbreviate the grape (PN = Pinot Noir, SB = Sauvignon Blanc,
 Cab = Cabernet Sauvignon); treat such abbreviations as the full name when comparing.
+The URL is shown for each snippet: the producer or wine name often appears only
+in the URL slug (vivino.com/en/librandi-ciro-bianco/...) while the text says just
+"A White wine from Calabria. Made from Greco Bianco." — that IS a match.
 
 Snippets:
 {snippets_block}
 
-Score each snippet 0–100:
-  90–100: clearly this exact wine — producer/brand, variety, and style all confirmed
-  70–89:  very likely the same wine — most key details align
-  50–69:  possibly the same wine — some details match but ambiguous
-  30–49:  unlikely — only loose or coincidental similarity
-  0–29:   different wine, wrong producer, or irrelevant content
+For every snippet give:
+  "score": 0–100, how sure you are it describes this exact wine
+    90–100: clearly this exact wine — producer/brand and wine name both confirmed
+    70–89:  very likely the same wine — most key details align
+    50–69:  possibly the same wine — some details match but ambiguous
+    30–49:  unlikely — only loose or coincidental similarity
+    0–29:   different wine, wrong producer, or irrelevant content
+    A snippet about a different cuvée, vintage-only page, or the producer's
+    other wine is NOT this wine — score it below 70.
+  "facts": which of these the snippet explicitly states for this wine:
+    "grape" (names one or more grape varieties), "region" (names an
+    appellation or region), "producer" (names the producer/winery).
+    A page that only repeats the product name or lists prices has no facts: [].
 
-Return ONLY a JSON object mapping snippet index (as string) to integer score.
-Example: {{"0": 85, "1": 40, "2": 72}}
+Return ONLY a JSON object with an entry for EVERY index {index_list}.
+Example for three snippets:
+{{"0": {{"score": 95, "facts": ["grape", "region"]}}, "1": {{"score": 10, "facts": []}}, "2": {{"score": 88, "facts": ["producer"]}}}}
 No explanation, no extra text."""
 
 STRICT_SUFFIX = "\n\nReturn only raw JSON, no text before or after."
@@ -164,7 +209,7 @@ Tools available:
   - list_countries()                -> string[]
   - list_regions(country?)          -> string[]
   - list_grapes(country?, region?)  -> string[]
-  - submit_tags(country, region[], grapes[], is_blend, organic, confidence)
+  - submit_tags(country, region[], grapes[], is_blend, organic, confidence, category?)
 
 The library has two tiers. Canonical entries are what submit_tags accepts
 and what list_* return. Placeholder entries (is_placeholder: true) are real
@@ -202,6 +247,10 @@ Field rules for submit_tags:
     is named; false for a confirmed single varietal.
   - organic: true only if certified organic, biodynamic, or explicitly
     marketed as certified biodynamic. Otherwise false.
+  - category: ONLY when the product's Category line says (unknown). One of
+    Red, White, Rose, Sparkling, taken from what the snippets say about the
+    wine's colour/style (a Rioja Reserva made from Tempranillo is Red). Leave
+    it null when the product already has a category.
   - confidence: integer 0-100 reflecting how sure the tags are correct.
       90-100: two or more independent web sources confirm producer, region,
               AND grape variety

@@ -67,7 +67,12 @@ export function WineDrawer({
             <h2 className="text-base font-semibold text-ink">{wine.name}</h2>
             <div className="mt-0.5 flex items-center gap-2 text-xs text-muted">
               <StatusBadge status={wine.tag_status} />
-              <span>{wine.category ?? '—'}</span>
+              <span>
+                {wine.category ?? '—'}
+                {wine.category_source === 'model' && (
+                  <span className="ml-1 text-[10px] uppercase tracking-wide">inferred</span>
+                )}
+              </span>
             </div>
           </div>
           <button type="button" onClick={onClose} className="rounded-full p-1 hover:bg-parchment">
