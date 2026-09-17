@@ -1,6 +1,8 @@
 # Project-specific
 /Sample Xlsx/
 /ingestion/output/
+# product exports dropped in the Cellar Ingest panel
+/ingestion/uploads/
 
 # Editor / IDE
 /.claude/

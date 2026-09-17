@@ -1,96 +1,99 @@
 """
-Ingestion domain: reads raw Lightspeed .xlsx exports, normalizes, joins, and
-writes clean CSV files to ingestion/output/.
+Ingestion domain: reads one Lightspeed product-export CSV, normalizes it, runs
+the filters in ingestion/filters.toml, and writes to ingestion/output/:
+
+    combined.csv    the wines fermentation should tag
+    excluded.csv    every row that was filtered out, with excluded_by / excluded_reason
+    summary.json    counts per filter and per matched value, for the dashboard
+
+Usage:
+    python ingestion/ingest.py                      # newest CSV in ingestion/uploads/ (else Sample Xlsx/)
+    python ingestion/ingest.py --input path.csv     # a specific export
+    python ingestion/ingest.py --input ingestion/fixtures/test-wines.csv   # the 24 test wines
+    python ingestion/ingest.py --events-json        # one JSON event per line (the Cellar web app)
 """
 
+from __future__ import annotations
+
+import argparse
 import csv
-import glob
-import logging
-import os
+import json
 import re
 import sys
 import uuid
+from collections import Counter
+from datetime import datetime, timezone
 from pathlib import Path
 
-import openpyxl
+HERE = Path(__file__).resolve().parent
+PROJECT_ROOT = HERE.parent
+sys.path.insert(0, str(PROJECT_ROOT))
 
-logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
-log = logging.getLogger(__name__)
+from ingestion.filters import FILTERS_PATH, STAGES, Filters  # noqa: E402
 
-SAMPLE_DIR = Path(__file__).parent.parent / "Sample Xlsx"
-OUTPUT_DIR = Path(__file__).parent / "output"
+UPLOADS_DIR = HERE / "uploads"
+FIXTURES_DIR = HERE / "fixtures"
+OUTPUT_DIR = HERE / "output"
+SAMPLE_DIR = PROJECT_ROOT / "Sample Xlsx"
 
-# Columns to drop from product export (always empty for single-variant wines)
+COMBINED_CSV = OUTPUT_DIR / "combined.csv"
+EXCLUDED_CSV = OUTPUT_DIR / "excluded.csv"
+SUMMARY_JSON = OUTPUT_DIR / "summary.json"
+
+# Columns every accepted export must have (after header normalisation).
+REQUIRED_COLUMNS = ("id", "name", "product_category", "supplier_name")
+
+# Columns dropped from the export (always empty for single-variant wines).
 PRODUCT_DROP = {
-    "composite_name",
-    "composite_sku",
-    "composite_quantity",
-    "variant_option_one_name",
-    "variant_option_one_value",
-    "variant_option_two_name",
-    "variant_option_two_value",
-    "variant_option_three_name",
-    "variant_option_three_value",
-    "account_code",
-    "account_code_purchase",
+    "composite_name", "composite_sku", "composite_quantity",
+    "variant_option_one_name", "variant_option_one_value",
+    "variant_option_two_name", "variant_option_two_value",
+    "variant_option_three_name", "variant_option_three_value",
+    "account_code", "account_code_purchase",
 }
 
-# Numeric columns in product export (stored as strings in xlsx)
-PRODUCT_NUMERIC = {"supply_price", "retail_price", "inventory_atlantic_beach_wine_warehouse"}
+# Numeric columns (stored as text in the export). Any inventory_* column counts.
+PRODUCT_NUMERIC = {"supply_price", "retail_price"}
 
-# Inventory column name normalisation map (normalized header -> output name).
-# Keys are what norm_col() produces from the raw header.
-INVENTORY_RENAME = {
-    "product": "name",
-    "margin": "margin_pct",          # "Margin (%)" normalises to "margin"
-    "avg_items_per_sale": "avg_items_per_sale",  # "Avg. Items per Sale"
-    "avg_sale_value": "avg_sale_value",           # "Avg. Sale Value"
-    "sell_through_rate": "sell_through_rate",     # "Sell-through Rate"
-}
-
-# Columns to store as float
-INVENTORY_FLOAT = {
-    "closing_inventory", "items_sold_per_day", "days_cover",
-    "sell_through_rate", "margin_pct", "avg_items_per_sale", "avg_sale_value",
-}
-
-# Columns to store as int
-INVENTORY_INT = {"items_sold", "sale_count", "customer_count"}
+# Added to every output row: how the row was decided.
+PASS_COLUMN = "ingest_pass"          # combined.csv: category | uncategorized
+EXCLUDED_BY_COLUMN = "excluded_by"   # excluded.csv: category | vendor | name | keyword
+EXCLUDED_REASON_COLUMN = "excluded_reason"
 
 
-def norm_col(name: str) -> str:
+# ---------------------------------------------------------------------------
+# Output: plain log lines, or JSON events for the Cellar job runner
+# ---------------------------------------------------------------------------
+
+class Emitter:
+    def __init__(self, json_lines: bool) -> None:
+        self.json_lines = json_lines
+
+    def __call__(self, type_: str, message: str, **fields) -> None:
+        if self.json_lines:
+            print(json.dumps({"type": type_, "message": message, **fields}), flush=True)
+        else:
+            print(f"{type_.upper():8} {message}", flush=True)
+
+
+# ---------------------------------------------------------------------------
+# Reading
+# ---------------------------------------------------------------------------
+
+def norm_col(name: str | None) -> str:
     """Lowercase, replace spaces and special chars with underscores."""
     if name is None:
         return ""
     return re.sub(r"[^a-z0-9]+", "_", name.strip().lower()).strip("_")
 
 
-def read_xlsx(path: Path) -> tuple[list[str], list[list]]:
-    """Return (headers, rows) from the active sheet."""
-    wb = openpyxl.load_workbook(path, data_only=True)
-    ws = wb.active
-    if ws is None:
-        raise ValueError("No active sheet in the workbook")
-    rows = list(ws.iter_rows(values_only=True))
-    wb.close()
-    headers = [str(h) if h is not None else "" for h in rows[0]]
-    data = [list(r) for r in rows[1:]]
-    return headers, data
-
-
 def coerce_numeric(val):
-    """Convert a value to float, returning None on failure."""
-    if val is None or val == "":
+    if val is None or str(val).strip() == "":
         return None
     try:
         return float(str(val).strip().replace(",", ""))
     except ValueError:
         return None
-
-
-def coerce_int(val):
-    n = coerce_numeric(val)
-    return int(round(n)) if n is not None else None
 
 
 def is_valid_uuid(val: str) -> bool:
@@ -102,177 +105,202 @@ def is_valid_uuid(val: str) -> bool:
 
 
 def clean_str(val) -> str:
-    if val is None:
-        return ""
-    return str(val).strip()
+    return "" if val is None else str(val).strip()
 
 
-def load_products() -> tuple[list[str], list[dict]]:
-    path = SAMPLE_DIR / "product-export.xlsx"
-    raw_headers, raw_rows = read_xlsx(path)
+class InputError(Exception):
+    pass
+
+
+def validate_headers(raw_headers: list[str]) -> list[str]:
+    """Normalise headers and check the required columns exist. Returns the
+    normalised header list. Raises InputError with a readable message."""
     headers = [norm_col(h) for h in raw_headers]
+    missing = [c for c in REQUIRED_COLUMNS if c not in headers]
+    if missing:
+        raise InputError(
+            "not a Lightspeed product export: missing column(s) "
+            + ", ".join(missing)
+            + f" (found: {', '.join(h for h in headers if h)[:200]})"
+        )
+    return headers
 
-    out_headers = [h for h in headers if h not in PRODUCT_DROP]
 
-    records = []
-    for i, row in enumerate(raw_rows, start=2):
-        rec = dict(zip(headers, row))
-
-        # Validate UUID
-        pid = clean_str(rec.get("id", ""))
-        if not is_valid_uuid(pid):
-            log.warning("Row %d: invalid UUID %r — skipping", i, pid)
-            continue
-
-        # Build cleaned record, dropping unwanted columns
-        cleaned = {}
-        for col in out_headers:
-            val = rec.get(col)
-            if col in PRODUCT_NUMERIC:
-                cleaned[col] = coerce_numeric(val)
-            elif col == "active" or col == "track_inventory":
-                cleaned[col] = clean_str(val)
-            else:
-                cleaned[col] = clean_str(val)
-
-        records.append(cleaned)
-
-    log.info("Products loaded: %d rows, %d columns", len(records), len(out_headers))
+def read_export(path: Path) -> tuple[list[str], list[dict]]:
+    """Read a product-export CSV. Returns (output headers, raw records keyed
+    by normalised header). Only `.csv` is accepted."""
+    if path.suffix.lower() != ".csv":
+        raise InputError(f"only .csv product exports are accepted, got {path.name}")
+    with open(path, newline="", encoding="utf-8-sig") as f:
+        reader = csv.reader(f)
+        try:
+            raw_headers = next(reader)
+        except StopIteration:
+            raise InputError(f"{path.name} is empty") from None
+        headers = validate_headers(raw_headers)
+        records = [dict(zip(headers, row)) for row in reader if any(c.strip() for c in row)]
+    out_headers = [h for h in headers if h and h not in PRODUCT_DROP]
     return out_headers, records
 
 
-def load_inventory() -> tuple[list[str], list[dict]]:
-    pattern = str(SAMPLE_DIR / "inventory*.xlsx")
-    matches = glob.glob(pattern)
-    if not matches:
-        log.error("No inventory xlsx found matching %s", pattern)
-        sys.exit(1)
-    path = Path(matches[0])
-    log.info("Reading inventory from %s", path.name)
-
-    raw_headers, raw_rows = read_xlsx(path)
-    norm_headers = [norm_col(h) for h in raw_headers]
-
-    # Rename to canonical output names
-    out_headers = [INVENTORY_RENAME.get(h, h) for h in norm_headers]
-
-    records = []
-    for row in raw_rows:
-        rec = dict(zip(out_headers, row))
-        cleaned = {}
-        for col in out_headers:
-            val = rec.get(col)
-            if col in INVENTORY_INT:
-                cleaned[col] = coerce_int(val)
-            elif col in INVENTORY_FLOAT:
-                cleaned[col] = coerce_numeric(val)
-            else:
-                cleaned[col] = clean_str(val)
-        # Skip blank rows (no product name)
-        if not cleaned.get("name"):
-            continue
-        records.append(cleaned)
-
-    log.info("Inventory loaded: %d rows", len(records))
-    return out_headers, records
+def clean_record(rec: dict, out_headers: list[str]) -> dict:
+    cleaned = {}
+    for col in out_headers:
+        val = rec.get(col)
+        if col in PRODUCT_NUMERIC or col.startswith("inventory_"):
+            cleaned[col] = coerce_numeric(val)
+        else:
+            cleaned[col] = clean_str(val)
+    return cleaned
 
 
-SALES_ONLY_COLS = [
-    "closing_inventory", "items_sold_per_day", "items_sold", "days_cover",
-    "sell_through_rate", "sale_count", "margin_pct", "customer_count",
-    "avg_items_per_sale", "avg_sale_value",
-]
+# ---------------------------------------------------------------------------
+# Input discovery
+# ---------------------------------------------------------------------------
+
+def newest_csv(*dirs: Path) -> Path | None:
+    candidates = [p for d in dirs if d.exists() for p in d.glob("*.csv")]
+    if not candidates:
+        return None
+    return max(candidates, key=lambda p: p.stat().st_mtime)
 
 
-def merge_datasets(
-    prod_headers: list[str],
-    products: list[dict],
-    inventory: list[dict],
-) -> tuple[list[str], list[dict]]:
-    """
-    Inner join of products and inventory on name (case-insensitive).
-    Rows not present in both sources are dropped.
-    Returns (headers, rows) for the combined CSV.
-    """
-    combined_headers = prod_headers + SALES_ONLY_COLS
-
-    inv_by_name: dict[str, dict] = {
-        row["name"].strip().lower(): row for row in inventory if row.get("name")
-    }
-
-    rows: list[dict] = []
-    products_only = 0
-
-    for prod in products:
-        key = prod.get("name", "").strip().lower()
-        inv = inv_by_name.get(key)
-        if inv is None:
-            log.warning("Dropping product with no inventory match: %r", prod.get("name"))
-            products_only += 1
-            continue
-        row = {col: prod.get(col, "") for col in prod_headers}
-        for col in SALES_ONLY_COLS:
-            row[col] = inv.get(col, "")
-        rows.append(row)
-
-    matched_names = {r["name"].strip().lower() for r in rows}
-    inventory_only = sum(
-        1 for inv in inventory if inv.get("name", "").strip().lower() not in matched_names
-    )
-    for inv in inventory:
-        key = inv.get("name", "").strip().lower()
-        if key not in matched_names:
-            log.warning("Dropping inventory row with no product match: %r", inv.get("name"))
-
-    log.info(
-        "Merge complete: %d matched, %d products-only dropped, %d inventory-only dropped",
-        len(rows),
-        products_only,
-        inventory_only,
-    )
-    return combined_headers, rows
+def default_input() -> Path | None:
+    return newest_csv(UPLOADS_DIR) or newest_csv(SAMPLE_DIR)
 
 
-def prompt_missing_categories(rows: list[dict]) -> None:
-    """Interactively prompt the user to fill in any missing product_category values."""
-    missing = [r for r in rows if not r.get("product_category")]
-    if not missing:
-        return
-    if not sys.stdin.isatty():
-        # Non-interactive (e.g. launched from the Cellar web app): leave the
-        # category blank rather than block on input().
-        for row in missing:
-            log.warning("No category for %r — leaving blank (non-interactive run)", row["name"])
-        return
-    print(f"\n{len(missing)} wine(s) have no category. Please assign one for each.\n")
-    for row in missing:
-        while True:
-            cat = input(f"  Category for '{row['name']}': ").strip()
-            if cat:
-                row["product_category"] = cat
-                break
-            print("  Category cannot be empty — try again.")
-
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
 
 def write_csv(path: Path, headers: list[str], rows: list[dict]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", newline="", encoding="utf-8") as f:
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    with open(tmp, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=headers, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(rows)
-    log.info("Wrote %d rows to %s", len(rows), path)
+    tmp.replace(path)
 
 
-def main() -> None:
-    prod_headers, products = load_products()
-    _inv_headers, inventory = load_inventory()
-    combined_headers, combined = merge_datasets(prod_headers, products, inventory)
+def run(input_path: Path, filters_path: Path = FILTERS_PATH, output_dir: Path = OUTPUT_DIR,
+        emit: Emitter | None = None) -> dict:
+    emit = emit or Emitter(False)
+    filters = Filters.load(filters_path)
+    emit("info", f"Filters: {filters_path} — {len(filters.category_whitelist)} whitelisted categories, "
+                 f"{len(filters.vendor_blacklist)} blacklisted vendors, "
+                 f"{sum(len(v) for v in filters.keywords.values())} keywords in {len(filters.keywords)} groups")
 
-    prompt_missing_categories(combined)
+    emit("info", f"Reading {input_path}")
+    out_headers, records = read_export(input_path)
+    emit("info", f"{len(records)} rows, {len(out_headers)} columns kept", rows=len(records))
 
-    write_csv(OUTPUT_DIR / "combined.csv", combined_headers, combined)
-    log.info("Ingestion complete.")
+    kept: list[dict] = []
+    excluded: list[dict] = []
+    invalid = 0
+    kept_by = Counter()                       # category | uncategorized
+    kept_categories: Counter = Counter()      # Red: n, ...
+    excluded_by: Counter = Counter()          # category | vendor | name | keyword
+    breakdown: dict[str, Counter] = {s: Counter() for s in STAGES}
+    keyword_groups: Counter = Counter()
+
+    total = len(records)
+    for i, rec in enumerate(records, start=1):
+        pid = clean_str(rec.get("id"))
+        if not is_valid_uuid(pid):
+            invalid += 1
+            emit("log", f"row {i + 1}: invalid id {pid!r} — skipped")
+            continue
+        row = clean_record(rec, out_headers)
+        d = filters.decide_row(row)
+        if d.keep:
+            row[PASS_COLUMN] = d.stage
+            kept.append(row)
+            kept_by[d.stage] += 1
+            if d.stage == "category":
+                kept_categories[d.match] += 1
+        else:
+            row[EXCLUDED_BY_COLUMN] = d.stage
+            row[EXCLUDED_REASON_COLUMN] = d.reason
+            excluded.append(row)
+            excluded_by[d.stage] += 1
+            breakdown[d.stage][d.match] += 1
+            if d.stage == "keyword":
+                keyword_groups[d.group] += 1
+        if i % 500 == 0 or i == total:
+            emit("progress", f"{i}/{total} rows — {len(kept)} kept, {len(excluded)} excluded",
+                 index=i, total=total, kept=len(kept), excluded=len(excluded))
+
+    kept.sort(key=lambda r: r.get("name", "").casefold())
+    excluded.sort(key=lambda r: (STAGES.index(r[EXCLUDED_BY_COLUMN]), r.get("name", "").casefold()))
+
+    write_csv(output_dir / "combined.csv", out_headers + [PASS_COLUMN], kept)
+    write_csv(output_dir / "excluded.csv", out_headers + [EXCLUDED_BY_COLUMN, EXCLUDED_REASON_COLUMN], excluded)
+
+    st = input_path.stat()
+    summary = {
+        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "input": {
+            "path": str(input_path), "name": input_path.name, "size": st.st_size,
+            "mtime": datetime.fromtimestamp(st.st_mtime, tz=timezone.utc).isoformat(timespec="seconds"),
+            "rows": total, "invalid_rows": invalid,
+        },
+        "filters_path": str(filters_path),
+        "kept": {
+            "total": len(kept),
+            "by_category": kept_by["category"],
+            "uncategorized": kept_by["uncategorized"],
+            "categories": dict(kept_categories.most_common()),
+        },
+        "excluded": {
+            "total": len(excluded),
+            "by": {s: excluded_by[s] for s in STAGES},
+            "breakdown": {s: dict(breakdown[s].most_common()) for s in STAGES},
+            "keyword_groups": dict(keyword_groups.most_common()),
+        },
+        "output": {
+            "combined": str(output_dir / "combined.csv"),
+            "excluded": str(output_dir / "excluded.csv"),
+        },
+    }
+    with open(output_dir / "summary.json", "w", encoding="utf-8") as f:
+        json.dump(summary, f, indent=2)
+
+    emit("info", f"Kept {len(kept)} wines ({kept_by['category']} by category, "
+                 f"{kept_by['uncategorized']} uncategorized); excluded {len(excluded)} "
+                 f"({', '.join(f'{s} {excluded_by[s]}' for s in STAGES)}); {invalid} invalid ids skipped")
+    emit("done", f"Wrote {output_dir / 'combined.csv'} and {output_dir / 'excluded.csv'}", summary=summary)
+    return summary
+
+
+def build_parser() -> argparse.ArgumentParser:
+    p = argparse.ArgumentParser(description="Ingestion: Lightspeed product export CSV → combined.csv")
+    p.add_argument("--input", default=None,
+                   help="Product export CSV (default: newest in ingestion/uploads/, else Sample Xlsx/)")
+    p.add_argument("--filters", default=str(FILTERS_PATH), help="Filters TOML (default: ingestion/filters.toml)")
+    p.add_argument("--output-dir", default=str(OUTPUT_DIR))
+    p.add_argument("--events-json", action="store_true",
+                   help="Print one JSON event per line on stdout (for the Cellar web app).")
+    return p
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = build_parser().parse_args(argv)
+    emit = Emitter(args.events_json)
+    input_path = Path(args.input) if args.input else default_input()
+    if input_path is None:
+        emit("error", "no input CSV: upload one in Cellar or pass --input")
+        return 2
+    if not input_path.exists():
+        emit("error", f"input not found: {input_path}")
+        return 2
+    try:
+        run(input_path, Path(args.filters), Path(args.output_dir), emit)
+    except InputError as e:
+        emit("error", str(e))
+        return 2
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

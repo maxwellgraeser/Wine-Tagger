@@ -1,0 +1,100 @@
+# Ingestion filters — decides which rows of the Lightspeed product export are
+# wines worth tagging. Edit freely; the next ingestion run picks it up.
+#
+# Rows are decided in this order:
+#
+#   1. categories.whitelist  A row whose product_category is on the whitelist
+#                            is kept, no further checks ("green-lit").
+#                            A row with any OTHER non-empty category is excluded.
+#   2. vendors.blacklist     An UNCATEGORIZED row from a blacklisted supplier is
+#                            excluded (these suppliers only sell beer/accessories).
+#   3. names.exclude         An uncategorized row whose exact name is listed here
+#                            is excluded (one-offs no keyword can catch safely).
+#   4. keywords.*            An uncategorized row whose name contains any of these
+#                            terms is excluded. Everything else is kept as an
+#                            uncategorized wine for fermentation to categorize.
+#
+# Matching rules (all case- and accent-insensitive):
+#   categories  exact match
+#   vendors     exact match OR the entry is the supplier's leading word(s), so
+#               "Cavalier" matches "Cavalier Distributing Florida" but "True"
+#               does not match "Truett-Hurst"
+#   names       exact match (whitespace collapsed)
+#   keywords    whole-word match, so "port" matches "Fonseca Ruby Port" and
+#               "Kopke White Porto" needs its own entry, while "Portugal",
+#               "Portuguese" and "Porta" never match. Multi-word phrases are
+#               matched as a phrase ("beaumes de venise").
+
+[categories]
+# The 13 Lightspeed categories seen in the export: Red, White, Sparkling, Rose,
+# Orange/Amber, Dessert, Sherry, Aperitif, Cider, Beer, Accessories, Food, Tasting.
+whitelist = ["Red", "White", "Rose", "Sparkling", "Orange/Amber"]
+
+[vendors]
+# Suppliers that only sell beer, sake, or accessories.
+blacklist = [
+  "Cavalier",          # Cavalier Distributing Florida
+  "Progressive",
+  "North Fl Sales",
+  "Champion",
+  "True",              # True brand accessories
+  "Lottie Dottie",     # Lottie Dottie Cards
+  "Warehouse",
+]
+
+[names]
+# Exact product names to exclude when no keyword can do it safely.
+exclude = [
+  "Kai Lychee 4pk",    # Kai sake cans ("4pk" alone also matches canned wine)
+  "Kai Tamarind 4pk",
+]
+
+# Keyword groups. The group name is only used for reporting ("excluded by
+# keyword: beer"), so add groups as you like.
+[keywords]
+beer = [
+  "ipa", "dipa", "hazy", "stout", "porter", "ale", "lager", "pils", "pilsner",
+  "saison", "witbier", "hefeweizen", "kolsch", "kölsch", "gose", "sour ale",
+  "seltzer", "hard seltzer", "mead", "kombucha", "n/a",
+  "tank 7",            # Boulevard Tank 7 (Boulevard also appears in a wine name)
+  "6pk", "12pk",
+]
+cider = ["cider", "cidre"]
+sake = ["sake", "saké", "junmai", "ginjo", "daiginjo", "nigori", "honjozo"]
+# Port and other fortified wines (the store files these under Dessert / Sherry).
+fortified = [
+  "port", "porto", "oporto", "tawny", "ruby", "lbv", "vintage port",
+  "sherry", "amontillado", "fino", "oloroso", "manzanilla", "palo cortado",
+  "pedro ximenez", "pedro ximénez", "en rama", "montilla", "jerez",
+  "madeira", "sercial", "bual", "malmsey", "rainwater", "marsala",
+  "vermouth", "vermut", "banyuls", "maury", "rivesaltes", "beaumes de venise",
+  "vin doux", "mistelle", "pineau", "ratafia",
+]
+# Port and sherry houses whose bottles are often named by vintage only
+# ("Warre's 1994 Vintage", "Taylor Fladgate 1970").
+fortified_producers = [
+  "taylor fladgate", "warre's", "graham's", "dow's", "cockburn's", "kopke",
+  "churchill's", "maynard's", "sandeman", "lustau", "alvear", "equipo navazos",
+]
+# Dessert wines. NOT listed on purpose: "tokaji" (the Tokaj region also makes
+# dry Furmint) and Spätlese/Auslese/Kabinett (German ripeness levels the store
+# files under White).
+dessert = [
+  "aszu", "aszú", "eszencia", "tokay",
+  "sauternes", "barsac", "eiswein", "icewine", "ice wine", "late harvest",
+  "vendange tardive", "vin santo", "recioto", "passito", "brachetto",
+  "muscat", "moscato", "sangria", "creme de", "crème de", "creme cassis",
+  "licor", "liqueur",
+]
+spirits = [
+  "gin", "vodka", "whiskey", "whisky", "bourbon", "rum", "tequila", "mezcal",
+  "amaro", "aperitivo", "americano", "brandy", "cognac", "armagnac", "grappa",
+]
+accessories = [
+  "corkscrew", "foil cutter", "decanter", "stopper", "stoppers", "pourer",
+  "aerator", "aerating", "wine glass", "stemless", "single glass", "glass 4pk",
+  "sparkling glass", "beer glass", "tumbler", "cooler", "wine rack", "tote",
+  "gift bag", "gift card", "gift cards", "ornament", "ice cubes",
+  "stain remover", "wine box", "wood box", "vacu vin", "cork pops",
+]
+services = ["delivery", "tasting", "ticket", "deposit", "shipping", "fee"]
