@@ -224,21 +224,89 @@ def _word_set(text: str) -> set[str]:
     return set(_WORD_RE.findall(text.lower()))
 
 
+def _same_url(a: Snippet, b: Snippet) -> bool:
+    return (a.url or "").strip().lower().rstrip("/") == (b.url or "").strip().lower().rstrip("/")
+
+
+def split_aggregate_bodies(snippets: list[Snippet]) -> tuple[list[Snippet], int]:
+    """Cut engine answer-blobs back to their own page's text.
+
+    A long body that verbatim-contains at least SNIPPET_BLOB_MIN_SEGMENTS other
+    snippets' whole bodies, from other URLs, is not a page description — it is
+    several results glued together under one attribution. Everything from the
+    first foreign segment onward belongs to some other page (which is already
+    in the list, under its own URL and source label), so it is cut. A blob with
+    nothing of its own before the splice is dropped outright.
+
+    Returns (snippets, n_trimmed). This must run BEFORE dedupe_near_duplicates:
+    trimming is what makes the remaining bodies comparable.
+    """
+    out: list[Snippet] = []
+    trimmed = 0
+    for i, snip in enumerate(snippets):
+        body = snip.body
+        if len(body) < constants.SNIPPET_BLOB_MIN_CHARS:
+            out.append(snip)
+            continue
+        cuts: list[int] = []
+        for j, other in enumerate(snippets):
+            if i == j or _same_url(snip, other):
+                continue
+            ob = other.body
+            if len(ob) < constants.SNIPPET_BLOB_MIN_SEGMENT or len(ob) >= len(body):
+                continue
+            at = body.find(ob)
+            if at >= 0:
+                cuts.append(at)
+        if len(cuts) < constants.SNIPPET_BLOB_MIN_SEGMENTS:
+            out.append(snip)
+            continue
+        trimmed += 1
+        own = body[:min(cuts)].strip()
+        if len(own) < constants.SNIPPET_MIN_CLEANED_CHARS:
+            continue
+        out.append(Snippet(source=snip.source, domain=snip.domain, body=own, url=snip.url))
+    return out, trimmed
+
+
 def dedupe_near_duplicates(snippets: list[Snippet]) -> tuple[list[Snippet], int]:
-    """Drop snippets whose word set overlaps an earlier kept one by at least
-    SNIPPET_DEDUPE_JACCARD. Returns (kept, dropped_count). Order (and so
-    source labels) is preserved; the earlier snippet wins because the plan
-    lists higher-value sources first."""
+    """Drop snippets that repeat an earlier kept one. Returns (kept, dropped).
+    Order (and so source labels) is preserved; the earlier snippet wins because
+    the plan lists higher-value sources first.
+
+    Two rules, either of which marks a duplicate:
+
+    * word-set Jaccard >= SNIPPET_DEDUPE_JACCARD — the original rule, for one
+      page returned under several vintages.
+    * both bodies over SNIPPET_BLOB_MIN_CHARS and overlap against the *smaller*
+      word set >= SNIPPET_BLOB_CONTAINMENT — the same engine blob served under
+      different URLs. Jaccard misses these because each copy is truncated at
+      SNIPPET_CHAR_LIMIT at a different offset, so the tails differ enough to
+      hold the score just under the threshold (Chocapalha Tinto: 0.84/0.89/0.75
+      across three copies of one sentence). Containment is only safe between two
+      long bodies; a short snippet's words are routinely a subset of a long
+      one's without the two being duplicates at all.
+    """
     kept: list[Snippet] = []
     kept_words: list[set[str]] = []
     dropped = 0
+    blob_floor = constants.SNIPPET_BLOB_MIN_CHARS
     for s in snippets:
         words = _word_set(s.body)
+        is_long = len(s.body) >= blob_floor
         dup = False
-        for other in kept_words:
+        for other_snip, other in zip(kept, kept_words):
             if not words or not other:
                 continue
-            if len(words & other) / len(words | other) >= constants.SNIPPET_DEDUPE_JACCARD:
+            overlap = len(words & other)
+            if overlap / len(words | other) >= constants.SNIPPET_DEDUPE_JACCARD:
+                dup = True
+                break
+            if (
+                is_long
+                and len(other_snip.body) >= blob_floor
+                and overlap / min(len(words), len(other)) >= constants.SNIPPET_BLOB_CONTAINMENT
+            ):
                 dup = True
                 break
         if dup:
@@ -271,8 +339,11 @@ def gather_snippets(product: Product, *, return_errors: bool = False):
     mostly boilerplate or price-only dropped. Producer/name verification and
     LLM scoring are downstream (scorer.py).
 
-    Near-duplicate bodies (word-set Jaccard >= SNIPPET_DEDUPE_JACCARD, e.g.
-    one price page listed for three vintages) are collapsed to the first.
+    Engine answer-blobs — one long body that splices several results together
+    under a single URL — are cut back to their own page's text first
+    (split_aggregate_bodies), then near-duplicate bodies are collapsed to the
+    first (dedupe_near_duplicates: one price page listed for three vintages,
+    and the same blob served under different URLs).
 
     If *every* query comes back empty, or most of them raised, the engine is
     almost certainly throttling us (Zenato Pinot Grigio got nothing from any
@@ -303,7 +374,10 @@ def gather_snippets(product: Product, *, return_errors: bool = False):
             body=cleaned,
             url=snip.url,
         ))
+    out, n_blob = split_aggregate_bodies(out)
     out, n_dup = dedupe_near_duplicates(out)
+    if n_blob:
+        errors.append({"source": "*", "query": "", "error": f"{n_blob} aggregate bodies trimmed to their own page"})
     if return_errors:
         return out, errors, n_dup
     return out

@@ -7,7 +7,7 @@ import json
 
 import pytest
 
-from fermentation import constants, evidence, scorer
+from fermentation import constants, evidence, scorer, searcher
 from fermentation.phases import apply_evidence_rules, decide_tag_status
 from fermentation.types import ParsedTags, Product, ScoredSnippet, Snippet
 
@@ -112,10 +112,23 @@ CTX_ONE = "[CellarTracker | match=89]\nCommunity wine reviews on 2017 M. Chapout
 CTX_TWO = CTX_ONE + "\n\n[Vivino #1 | match=90]\nA Red wine from Rioja. Made from Tempranillo and Garnacha."
 
 
+CTX_ONE_SITE = (CTX_ONE.replace("CellarTracker", "Vivino #3") + "\n\n"
+                + "[Vivino #4 | match=88]\nAnother Vivino page for the same wine.")
+
+
 def test_context_snippet_count():
     assert evidence.context_snippet_count(CTX_ONE) == 1
     assert evidence.context_snippet_count(CTX_TWO) == 2
     assert evidence.context_snippet_count("") == 0
+
+
+def test_context_source_count_folds_numbered_results():
+    assert evidence.context_source_count(CTX_ONE) == 1
+    assert evidence.context_source_count(CTX_TWO) == 2     # CellarTracker + Vivino
+    assert evidence.context_source_count("") == 0
+    # Two snippets, one site: snippet count says 2, source count says 1.
+    assert evidence.context_snippet_count(CTX_ONE_SITE) == 2
+    assert evidence.context_source_count(CTX_ONE_SITE) == 1
 
 
 def test_unsupported_grapes_by_canonical_name():
@@ -129,13 +142,34 @@ def test_unsupported_grapes_accepts_library_synonyms():
     assert evidence.unsupported_grapes(["Grenache"], CTX_TWO) == []
 
 
-def test_single_snippet_confidence_is_clamped():
+def test_single_source_confidence_is_clamped():
     tags = ParsedTags(country="France", grapes=["Cinsault"], confidence=89)
     reasons = apply_evidence_rules(tags, CTX_ONE)
-    assert "single_snippet_cap" in reasons
-    assert tags.confidence == constants.SINGLE_SNIPPET_CONFIDENCE_CAP
+    assert "single_source" in reasons
+    assert tags.confidence == constants.SINGLE_SOURCE_CONFIDENCE_CAP
     assert any(r == "unsupported_grape:Cinsault" for r in reasons)
     assert decide_tag_status(normalized=tags, confidence_threshold=85, review_reasons=reasons) == "needs_review"
+
+
+def test_several_snippets_from_one_site_are_still_one_source():
+    # The old snippet-count rule saw two snippets here and let the row pass.
+    tags = ParsedTags(country="Spain", grapes=["Tempranillo"], confidence=95)
+    ctx = ("[Vivino #1 | match=95]\nA Red wine from Rioja. Made from Tempranillo.\n\n"
+           "[Vivino #2 | match=92]\nRioja Reserva, Tempranillo, from the same shop page.")
+    reasons = apply_evidence_rules(tags, ctx)
+    assert reasons == ["single_source"]
+    assert tags.confidence == constants.SINGLE_SOURCE_CONFIDENCE_CAP
+    assert decide_tag_status(normalized=tags, confidence_threshold=85, review_reasons=reasons) == "needs_review"
+
+
+def test_single_source_routes_to_review_below_the_cap_too():
+    # A hard route, so it holds however low the threshold is set.
+    tags = ParsedTags(country="Spain", grapes=["Tempranillo"], confidence=60)
+    ctx = "[Vivino #1 | match=95]\nA Red wine from Rioja. Made from Tempranillo."
+    reasons = apply_evidence_rules(tags, ctx)
+    assert reasons == ["single_source"]
+    assert tags.confidence == 60        # already below the cap; not raised to it
+    assert decide_tag_status(normalized=tags, confidence_threshold=50, review_reasons=reasons) == "needs_review"
 
 
 def test_supported_grapes_and_two_snippets_pass():
@@ -231,3 +265,144 @@ def test_scorer_flags_name_only_in_url(monkeypatch):
     scorer._batch_match_score(_product("Aster Ribera del Duero"), snippets, "u", "m")
     assert seen["p"].count('[note: "aster" from the product name appears in this URL') == 1
     assert seen["p"].index("[note:") < seen["p"].index("A Red wine from Ribera")
+
+
+# ---------------------------------------------------------------------------
+# Engine answer-blobs (2026-09-15 accuracy review)
+# ---------------------------------------------------------------------------
+
+def _body(source, body, url):
+    return Snippet(source=source, domain="*", body=body, url=url)
+
+
+def _vocab(prefix: str, n: int) -> list[str]:
+    """n distinct words. `searcher._word_set` keeps only [a-z]{3,}, so numbered
+    tokens ("word1", "word2") would all fold to one word and every fixture would
+    look like a perfect duplicate of itself."""
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    return [f"{prefix}{alphabet[i // 26]}{alphabet[i % 26]}" for i in range(n)]
+
+
+def test_aggregate_body_is_trimmed_to_its_own_page():
+    """Curator White: the 'grapewitches.com' snippet spliced in two other
+    results, one of which named a different vintage's blend, and the tagger
+    submitted the union of both grape lists."""
+    own = ("Winemaker Adi Badenhorst's idea behind the Curator is unpretentious "
+           "drinkability, mostly from plots of bush-vines in granite and slate soils. ") * 6
+    seg_a = "The grapes for the Curator White are grown in the Swartland region on the West Coast of Southern Africa."
+    seg_b = "Made from Semillon, Chardonnay, Chenin Blanc. This wine has 227 mentions of tree fruit notes."
+    snips = [
+        _body("Grapes Q #1", own + seg_a + " " + seg_b, "https://grapewitches.com/curator"),
+        _body("Grapes Q #2", seg_a, "https://winegoddess.com/curator"),
+        _body("Region Q #2", seg_b, "https://vivino.com/curator"),
+    ]
+    out, trimmed = searcher.split_aggregate_bodies(snips)
+    assert trimmed == 1
+    assert out[0].body == own.strip()
+    assert "Semillon" not in out[0].body
+    # the absorbed segments survive under their own URLs and source labels
+    assert [s.source for s in out] == ["Grapes Q #1", "Grapes Q #2", "Region Q #2"]
+
+
+def test_aggregate_with_nothing_of_its_own_is_dropped():
+    seg_a = "A" * 120
+    seg_b = "B" * 120
+    snips = [
+        _body("Region Q #3", seg_a + " " + seg_b + " tail " + "C" * 600, "https://falstaff.com/x"),
+        _body("Region Q #1", seg_a, "https://vivino.com/x"),
+        _body("Region Q #2", seg_b, "https://wine.com/x"),
+    ]
+    out, trimmed = searcher.split_aggregate_bodies(snips)
+    assert trimmed == 1
+    assert [s.source for s in out] == ["Region Q #1", "Region Q #2"]
+
+
+def test_short_bodies_and_same_url_are_never_treated_as_aggregates():
+    seg = "x" * 100
+    short = _body("Wine.com #1", seg + seg, "https://wine.com/a")          # under the blob floor
+    same_url = _body("Region Q #1", seg * 12, "https://vivino.com/w")
+    other = _body("Region Q #2", seg, "https://vivino.com/w")               # same URL -> not foreign
+    out, trimmed = searcher.split_aggregate_bodies([short, same_url, other])
+    assert trimmed == 0 and len(out) == 3
+
+
+def test_same_blob_under_different_urls_is_deduped_despite_low_jaccard():
+    """Chocapalha Tinto: one merchant sentence came back from vivino.com,
+    vivino.com/US and falstaff.com. Each copy was truncated at a different
+    offset, so Jaccard stayed under SNIPPET_DEDUPE_JACCARD and all three were
+    kept as separate evidence."""
+    shared = " ".join(_vocab("shared", 400))
+    a = shared + " " + " ".join(_vocab("taila", 40))
+    b = shared + " " + " ".join(_vocab("tailb", 40))
+    assert len(a) >= constants.SNIPPET_BLOB_MIN_CHARS
+    snips = [_body("Region Q #1", a, "https://vivino.com/w"),
+             _body("Region Q #2", b, "https://falstaff.com/w")]
+    words = lambda t: searcher._word_set(t)
+    jac = len(words(a) & words(b)) / len(words(a) | words(b))
+    assert jac < constants.SNIPPET_DEDUPE_JACCARD          # the old rule misses it
+    kept, dropped = searcher.dedupe_near_duplicates(snips)
+    assert dropped == 1 and [s.source for s in kept] == ["Region Q #1"]
+
+
+def test_containment_does_not_collapse_a_short_snippet_into_a_long_one():
+    """A short body's words are routinely a subset of a long one's without the
+    two being duplicates — containment is only applied between two long bodies."""
+    long_body = " ".join(_vocab("long", 400))
+    short = " ".join(_vocab("long", 20))
+    assert len(short) < constants.SNIPPET_BLOB_MIN_CHARS
+    kept, dropped = searcher.dedupe_near_duplicates(
+        [_body("Region Q #1", long_body, "https://a.com/w"),
+         _body("Wine.com #1", short, "https://b.com/w")]
+    )
+    assert dropped == 0 and len(kept) == 2
+
+
+# ---------------------------------------------------------------------------
+# Name-coverage note (2026-09-15 accuracy review)
+# ---------------------------------------------------------------------------
+
+_CURATOR = ("Badenhorst Curator White Blend 2020 from South Africa - Chenin Blanc, "
+            "Chardonnay, and Viognier. Adi Badenhorst has the unique ability to "
+            "fashion spectacular wines at all levels of the price spectrum.")
+_PORTFOLIO = ("Chateau Coupe Roses Chateau De Caladroy Chateau De Lascaux Chateau "
+              "Puech-Haut Domaine De La Baume Mont Gravet Domaine Lafage")
+
+
+def test_coverage_note_fires_when_every_name_word_is_present():
+    snip = Snippet(source="Wine.com #1", domain="wine.com", body=_CURATOR,
+                   url="https://www.wine.com/product/badenhorst-curator-white-blend-2020/782236")
+    note = scorer._name_coverage_note(_product("Curator White"), snip, ["curator"])
+    assert '"curator"' in note and "every distinctive word" in note
+
+
+def test_coverage_note_is_withheld_from_a_portfolio_index():
+    """Winebow's index page contains both "mont" and "gravet" by accident;
+    asserting coverage there promoted it from 0 to 70."""
+    snip = Snippet(source="Winebow (distributor) #3", domain="winebow.com",
+                   body=_PORTFOLIO, url="https://www.winebow.com/brands")
+    assert scorer._is_list_page(_PORTFOLIO)
+    assert scorer._name_coverage_note(_product("Mont Gravet Rose"), snip,
+                                      ["mont", "gravet"]) == ""
+
+
+def test_coverage_note_needs_every_token_not_just_one():
+    snip = Snippet(source="Wine.com #1", domain="wine.com", body=_CURATOR, url="")
+    assert scorer._name_coverage_note(_product("Curator White"), snip,
+                                      ["curator", "tessellae"]) == ""
+
+
+def test_short_bodies_are_never_called_list_pages():
+    """A three-word title is trivially all-capitals; the ratio means nothing."""
+    assert not scorer._is_list_page("Badenhorst Curator White")
+    assert not scorer._is_list_page("")
+
+
+def test_coverage_note_reaches_the_prompt_alongside_the_url_hint(monkeypatch):
+    seen = {}
+    monkeypatch.setattr(scorer, "_call_llm", lambda p, *a, **k: seen.setdefault("p", p) and "{}")
+    snippets = [
+        _snip(0, _CURATOR, url="https://www.wine.com/product/badenhorst-curator-white-blend-2020/1"),
+        _snip(1, _PORTFOLIO, url="https://www.winebow.com/brands"),
+    ]
+    scorer._batch_match_score(_product("Curator White"), snippets, "u", "m")
+    assert seen["p"].count("every distinctive word of the product name") == 1

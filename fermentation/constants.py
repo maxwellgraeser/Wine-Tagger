@@ -90,6 +90,30 @@ SNIPPET_DEDUPE_JACCARD = 0.9  # Two snippets whose word sets overlap this much (
                               # duplicates — e.g. one price page returned for three vintages. Only
                               # the first is kept. 0.9 collapsed 53 of 340 snippets on the 24-wine
                               # test run; 0.8 starts merging different pages that share boilerplate.
+SNIPPET_BLOB_MIN_CHARS = 800  # A DDG "body" this long is not a page description: the engines
+                              # (yahoo/bing especially) return a spliced answer blob that glues
+                              # several results together and attributes the whole thing to one URL.
+                              # Median real body on the 2026-09-15 run was 245 chars; 70 of 309
+                              # were over this line and every one of those was a blob.
+SNIPPET_BLOB_MIN_SEGMENT = 80   # Shortest other-snippet body treated as evidence of a splice. Below
+                                # this a verbatim match is just a shared stock phrase.
+SNIPPET_BLOB_MIN_SEGMENTS = 2   # A long body that verbatim-contains this many OTHER snippets' whole
+                                # bodies, from other URLs, is an aggregate. It is cut back to the text
+                                # before the first foreign segment — the part that is actually its own
+                                # page. Curator White's "grapewitches.com" snippet spliced in the
+                                # winegoddess body, the Easterly tech sheet and a Vivino line reading
+                                # "Made from Semillon, Chardonnay, Chenin Blanc" (a different vintage),
+                                # and the tagger submitted the union of two grape lists.
+SNIPPET_BLOB_CONTAINMENT = 0.9  # Two bodies BOTH over SNIPPET_BLOB_MIN_CHARS whose word sets overlap
+                                # this much, measured against the smaller (overlap coefficient, not
+                                # Jaccard), are the same blob returned under different URLs. Chocapalha
+                                # Tinto got one merchant sentence back from vivino.com, vivino.com/US
+                                # and falstaff.com; all three pairs scored 0.75-0.89 Jaccard — under
+                                # SNIPPET_DEDUPE_JACCARD purely because each was truncated at
+                                # SNIPPET_CHAR_LIMIT at a different offset — so dedupe kept them and
+                                # context_source_count read one sentence as three-source corroboration,
+                                # which is why a wrong Syrah shipped at confidence 85.
+
 SNIPPET_MATCH_THRESHOLD = 70  # Min match score (0-100) for a snippet to enter web_context. The
                               # score is an identity gate only ("is this the same wine?");
                               # which survivors go into the context is decided by fact coverage.
@@ -107,11 +131,43 @@ TOP_N_SNIPPETS = 5            # Max number of survivors passed to the tag-infere
                               # reference tables, so there is room for 5 x SNIPPET_CHAR_LIMIT
                               # (~2.5k tokens) — and the confidence rubric wants >= 2 sources.
 
+# --- Name-coverage note (2026-09-15 accuracy review) ---
+# The scoring model reads extra words in a snippet as evidence of a DIFFERENT
+# wine: it rejected "Masseria Li Veli Passamante" for "Li Veli Passamante"
+# ("the producer does not match"), read the producer "Bodegas Aster by La Rioja
+# Alta" as the REGION La Rioja and called that a conflict with Ribera del Duero,
+# and split "Txakoli" from "Txakolina". 45 of the run's 261 snippets containing
+# every distinctive word of the product name were scored 0 — including the
+# snippets carrying the true blend for Bila Haut and Curator White. Stating the
+# coverage outright, the way the URL hint already does, recovered 22 snippets
+# across 9 wines in a batch-mode replay (2 moved down, both toward their logged
+# value).
+NAME_COVERAGE_LIST_PAGE_CAP_RATIO = 0.7  # Fraction of words starting with a capital above which a
+                                         # snippet is a link list (a distributor portfolio index),
+                                         # not prose about one wine. The note must be suppressed
+                                         # there: Winebow's index page happens to contain both
+                                         # "mont" and "gravet", and asserting coverage promoted it
+                                         # 0 -> 70. Measured on the run: real list pages sit at
+                                         # 98-100%, prose snippets at 13-43%, so the gap is wide.
+                                         # NB a minimum token count is NOT a usable guard here —
+                                         # Mont Gravet has two distinctive tokens and would pass it,
+                                         # while "Curator White" has one and would be blocked,
+                                         # losing a 0 -> 100 recovery.
+NAME_COVERAGE_MIN_WORDS = 8              # Below this a body is too short for the ratio to mean
+                                         # anything (a 3-word title is trivially "all capitals").
+
 # --- Tagger evidence checks (phases.decide_tag_status) ---
 # The tagger prompt asks for these, but a prompt is not a guarantee: on the
 # 2026-09-15 run Bila Haut got three grapes at confidence 89 from a single
 # snippet that named none of them. Both rules are now enforced in code.
-SINGLE_SNIPPET_CONFIDENCE_CAP = 84  # confidence is clamped here when only one snippet is in context
+SINGLE_SOURCE_CONFIDENCE_CAP = 69   # confidence is clamped here when the context draws on a single
+                                    # source, and the row routes to needs_review outright. Was 84 (and
+                                    # measured in snippets): 84 only reached review while the threshold
+                                    # stayed above it, and five results from one site counted as five
+                                    # snippets. 69 is the prompt rubric's own ceiling for one-sided
+                                    # evidence, and the route no longer depends on the threshold.
+                                    # Sources are counted by family, so "Vivino #1" and "Vivino #2"
+                                    # are one source (see scorer.source_family).
 REQUIRE_GRAPE_EVIDENCE = True       # a submitted grape (or a library synonym of it) must appear in
                                     # web_context, else the row routes to needs_review
 
@@ -161,6 +217,16 @@ You are a wine expert. For each web snippet below, judge whether it is about the
 
 Product: {name}
 Brand: {brand}
+
+The product name comes from a retail point-of-sale system and is ABBREVIATED: it
+usually drops the producer and shortens the cuvee. "Bila Haut Roussillon" is
+M. Chapoutier's "Les Vignes de Bila-Haut Cotes du Roussillon Villages"; "Bayten
+Sauvignon Blanc" is Buitenverwachting's; "Curator White" is A.A. Badenhorst's
+"The Curator White Blend". So a snippet that names a producer, a fuller cuvee
+name, or a vintage that the product name does not mention is NOT thereby a
+different wine — that is the missing information, which is what you are looking
+for. Treat it as a different wine only when something actually CONFLICTS: a
+different cuvee, a different grape, or a different appellation.
 
 Product names may abbreviate the grape (PN = Pinot Noir, SB = Sauvignon Blanc,
 Cab = Cabernet Sauvignon); treat such abbreviations as the full name when comparing.

@@ -127,6 +127,35 @@ def _parse_entry(value) -> Optional[tuple[int, list[str]]]:
     return min(100, max(0, score)), sorted({f.lower() for f in facts})
 
 
+def _is_list_page(body: str) -> bool:
+    """True when a snippet is a link list rather than prose about one wine.
+
+    A distributor's portfolio index ("Chateau Coupe Roses Chateau De Caladroy
+    Chateau De Lascaux ...") is almost all capitalized words and has no
+    sentences. Such a page can contain every word of a product name by accident,
+    so the coverage note must not vouch for it.
+    """
+    words = re.findall(r"[A-Za-z][A-Za-z'\-]*", body or "")
+    if len(words) < constants.NAME_COVERAGE_MIN_WORDS:
+        return False
+    capitalized = sum(1 for w in words if w[0].isupper())
+    return capitalized / len(words) >= constants.NAME_COVERAGE_LIST_PAGE_CAP_RATIO
+
+
+def _name_coverage_note(product: Product, snip: Snippet, name_tokens: list[str]) -> str:
+    """A prompt line stating that the snippet carries every distinctive word of
+    the product name. See NAME_COVERAGE_LIST_PAGE_CAP_RATIO for why this is
+    needed and when it is withheld."""
+    if not name_tokens or _is_list_page(snip.body):
+        return ""
+    haystack = _strip_accents(f"{snip.body} {snip.url or ''}")
+    if not all(t in haystack for t in name_tokens):
+        return ""
+    listed = ", ".join(f'"{t}"' for t in name_tokens)
+    return (f"    [note: every distinctive word of the product name ({listed}) "
+            f"appears in this snippet or its URL]\n")
+
+
 def _score_batch(
     product: Product,
     snippets: list[Snippet],
@@ -150,6 +179,7 @@ def _score_batch(
         if url_only:
             hint = (f"    [note: \"{', '.join(url_only)}\" from the product name appears in "
                     f"this URL but not in the text]\n")
+        hint += _name_coverage_note(product, snip, name_tokens)
         lines.append(f"[{i}] ({snip.source}) {snip.url}\n{hint}    {body}")
     prompt = constants.BATCH_MATCH_SCORE_PROMPT.format(
         name=product.name,
@@ -264,10 +294,18 @@ def _apply_producer_gate(
 # Web-context assembly
 # ---------------------------------------------------------------------------
 
-def _source_family(s: ScoredSnippet) -> str:
+def source_family(label: str) -> str:
     """'Wine Searcher (UPC) #2' -> 'wine searcher (upc)'; groups a source's
-    numbered results together so diversity is measured across sources."""
-    return re.sub(r"\s*#\d+$", "", s.snippet.source or "").strip().lower()
+    numbered results together so diversity is measured across sources.
+
+    Public because `evidence` folds the source labels back out of an assembled
+    web_context the same way, to count distinct sources rather than snippets.
+    """
+    return re.sub(r"\s*#\d+$", "", label or "").strip().lower()
+
+
+def _source_family(s: ScoredSnippet) -> str:
+    return source_family(s.snippet.source or "")
 
 
 def _fact_rank(s: ScoredSnippet) -> tuple[int, int, int]:
