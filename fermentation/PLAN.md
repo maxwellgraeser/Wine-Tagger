@@ -64,8 +64,8 @@ post-hoc normalization pass.
 
 **Not built (out of fermentation's current scope):**
 
-- Phase 4 cutover landed as `ferment.sh` at the repo root (not
-  `fermentation/run.sh`); it also starts `llama-server` if it isn't up. Run
+- Phase 4 cutover: runs are launched from Cellar, which also starts/stops
+  `llama-server`. Run
   the bare module via `python -m fermentation.ferment`.
 - Tests cover `library_mcp` only (`fermentation/library_mcp/tests/`:
   allowlist validation, 24-wine coverage, server gate). `searcher` /
@@ -390,8 +390,12 @@ stated, now enforced in code):
   shorter than 5 chars and generic words like "Tinto" are ignored). A miss
   routes the row to `needs_review` with
   `review_reasons: ["unsupported_grape:<name>"]` in `final/<id>.json`.
-- **Single-snippet cap.** One snippet in context clamps confidence to
-  `SINGLE_SNIPPET_CONFIDENCE_CAP` (84), i.e. below the default threshold.
+- **Single-source cap.** A context whose snippets all come from one site
+  clamps confidence to `SINGLE_SOURCE_CONFIDENCE_CAP` (69) and routes the row
+  to `needs_review` with `review_reasons: ["single_source"]`. Sources are
+  counted by family (`scorer.source_family`), so "Vivino #1" and "Vivino #2"
+  are one source — the earlier rule counted snippets and let that case pass.
+  The route is unconditional, not a by-product of the threshold.
 
 ### Public surface
 
