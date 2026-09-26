@@ -1,0 +1,17 @@
+# ================= SOUTH AFRICA (ZA) — research =================
+
+# ---- New grapes: South African crossings on commercial labels ----
+- {name: "Roobernet", color: red, synonyms: [], source: "https://southafrica.co.za/roobernet.html"}
+- {name: "Chenel", color: white, synonyms: [], source: "https://en.wikipedia.org/wiki/Chenel"}
+- {name: "Weldra", color: white, synonyms: [], source: "https://en.wikipedia.org/wiki/Weldra"}
+- {name: "Nouvelle", color: white, synonyms: [], source: "https://southafrica.co.za/nouvelle.html"}
+- {name: "Therona", color: white, synonyms: [], source: "https://stellenboschvineyards.co.za/therona-south-africas-most-unique-wine-varietal/"}
+- {name: "Bukettraube", color: white, synonyms: ["Bukettrebe", "Bouquet Blanc"], source: "https://en.wikipedia.org/wiki/Bukettraube"}
+- {name: "Crouchen Blanc", color: white, synonyms: ["Crouchen", "Cape Riesling", "South African Riesling", "SA Riesling", "Paarl Riesling"], source: "https://www.wine-searcher.com/grape-122-crouchen-cape-riesling"}
+
+# ---- Existing grapes: South African names not yet listed as synonyms ----
+- {name: "Muscat Blanc à Petits Grains", existing: true, synonyms: ["Muscadel", "Muskadel", "Red Muscadel", "White Muscadel"], source: "https://southafrica.co.za/muscat-de-frontgnan-muscadel.html"}
+- {name: "Colombard", existing: true, synonyms: ["Colombar"], source: "https://southafrica.co.za/colombar.html"}
+- {name: "Sémillon", existing: true, synonyms: ["Groendruif"], source: "https://winemag.co.za/wine/opinion/tim-james-history-of-grape-varieties-in-the-cape/"}
+- {name: "Palomino", existing: true, synonyms: ["Fransdruif", "White French"], source: "https://wineanorak.com/2021/09/12/an-ode-to-palomino-still-wines-made-from-old-vine-palomino-offer-a-new-narrative-for-this-neutral-industrialised-yet-historic-grape-variety/"}
+- {name: "Riesling", existing: true, synonyms: ["Weisser Riesling", "Rhine Riesling"], source: "https://southafrica.co.za/weisser-riesling.html"}

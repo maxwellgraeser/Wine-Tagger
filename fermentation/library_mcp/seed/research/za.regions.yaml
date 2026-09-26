@@ -1,0 +1,176 @@
+# ================= SOUTH AFRICA (ZA) — research =================
+# Source of the hierarchy throughout: SAWIS "Production Areas Defined in
+# Terms of the Wine of Origin Scheme", June 2024 (the current official
+# demarcation list), unless another source is given for a specific entry.
+# SAWIS = "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"
+
+# ---- Geographical Units ----
+- {name: "Western Cape", country: ZA, classification: GU, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Northern Cape", country: ZA, classification: GU, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Eastern Cape", country: ZA, classification: GU, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "KwaZulu-Natal", country: ZA, classification: GU, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Free State", country: ZA, classification: GU, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Limpopo", country: ZA, classification: GU, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "North West", country: ZA, classification: GU, synonyms: ["North-West Province"], source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+
+# ---- Western Cape: overarching region ----
+- {name: "Cape Coast", country: ZA, parent: "Western Cape", classification: Region, synonyms: ["Cape Coastal"], source: "https://www.decanter.com/premium/regional-profile-cape-west-coast-487766/"}
+
+# ---- Western Cape: Cape South Coast region ----
+- {name: "Cape South Coast", country: ZA, parent: "Western Cape", classification: Region, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Herbertsdale", country: ZA, parent: "Cape South Coast", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Napier", country: ZA, parent: "Cape South Coast", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Still Bay East", country: ZA, parent: "Cape South Coast", classification: Ward, synonyms: ["Stilbaai East"], source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Cape Agulhas", country: ZA, parent: "Cape South Coast", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Elim", country: ZA, parent: "Cape Agulhas", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Elgin", country: ZA, parent: "Cape South Coast", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Lower Duivenhoks River", country: ZA, parent: "Cape South Coast", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Overberg", country: ZA, parent: "Cape South Coast", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Elandskloof", country: ZA, parent: "Overberg", classification: Ward, synonyms: ["Kaaimansgat"], source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Greyton", country: ZA, parent: "Overberg", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Klein River", country: ZA, parent: "Overberg", classification: Ward, synonyms: ["Klein Rivier"], source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Theewater", country: ZA, parent: "Overberg", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Plettenberg Bay", country: ZA, parent: "Cape South Coast", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Swellendam", country: ZA, parent: "Cape South Coast", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Buffeljags", country: ZA, parent: "Swellendam", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Malgas", country: ZA, parent: "Swellendam", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Stormsvlei", country: ZA, parent: "Swellendam", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Walker Bay", country: ZA, parent: "Cape South Coast", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Bot River", country: ZA, parent: "Walker Bay", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Hemel-en-Aarde Ridge", country: ZA, parent: "Walker Bay", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Hemel-en-Aarde Valley", country: ZA, parent: "Walker Bay", classification: Ward, was: "Hemel-en-Aarde", synonyms: ["Hemel-en-Aarde", "Hemel en Aarde"], source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Sunday's Glen", country: ZA, parent: "Walker Bay", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Springfontein Rim", country: ZA, parent: "Walker Bay", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Stanford Foothills", country: ZA, parent: "Walker Bay", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Upper Hemel-en-Aarde Valley", country: ZA, parent: "Walker Bay", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+
+# ---- Western Cape: Coastal Region ----
+- {name: "Coastal Region", country: ZA, parent: "Western Cape", classification: Region, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Cape Town", country: ZA, parent: "Coastal Region", classification: District, source: "https://www.winepaths.com/articles/editorial/south-africa/cape-town-s-new-wine-of-origin-region"}
+- {name: "Constantia", country: ZA, parent: "Cape Town", classification: Ward, synonyms: ["Constantia Valley"], source: "https://www.winepaths.com/articles/editorial/south-africa/cape-town-s-new-wine-of-origin-region"}
+- {name: "Durbanville", country: ZA, parent: "Cape Town", classification: Ward, source: "https://www.winepaths.com/articles/editorial/south-africa/cape-town-s-new-wine-of-origin-region"}
+- {name: "Hout Bay", country: ZA, parent: "Cape Town", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Philadelphia", country: ZA, parent: "Cape Town", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Darling", country: ZA, parent: "Cape West Coast", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Groenekloof", country: ZA, parent: "Darling", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Franschhoek", country: ZA, parent: "Coastal Region", classification: District, synonyms: ["Franschhoek Valley"], source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Paarl", country: ZA, parent: "Coastal Region", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Agter-Paarl", country: ZA, parent: "Paarl", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Simonsberg-Paarl", country: ZA, parent: "Paarl", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Voor-Paardeberg", country: ZA, parent: "Paarl", classification: Ward, synonyms: ["Voor Paardeberg"], source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Stellenbosch", country: ZA, parent: "Coastal Region", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Banghoek", country: ZA, parent: "Stellenbosch", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Bottelary", country: ZA, parent: "Stellenbosch", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Devon Valley", country: ZA, parent: "Stellenbosch", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Jonkershoek Valley", country: ZA, parent: "Stellenbosch", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Papegaaiberg", country: ZA, parent: "Stellenbosch", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Polkadraai Hills", country: ZA, parent: "Stellenbosch", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Simonsberg-Stellenbosch", country: ZA, parent: "Stellenbosch", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Vlottenburg", country: ZA, parent: "Stellenbosch", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Swartland", country: ZA, parent: "Coastal Region", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Malmesbury", country: ZA, parent: "Swartland", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Paardeberg", country: ZA, parent: "Swartland", classification: Ward, synonyms: ["Perdeberg"], source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Paardeberg South", country: ZA, parent: "Swartland", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Piket-Bo-Berg", country: ZA, parent: "Swartland", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Porseleinberg", country: ZA, parent: "Swartland", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Riebeekberg", country: ZA, parent: "Swartland", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Riebeeksrivier", country: ZA, parent: "Swartland", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "St Helena Bay", country: ZA, parent: "Swartland", classification: Ward, synonyms: ["St. Helena Bay"], source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Tulbagh", country: ZA, parent: "Coastal Region", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Wellington", country: ZA, parent: "Coastal Region", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Blouvlei", country: ZA, parent: "Wellington", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Bovlei", country: ZA, parent: "Wellington", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Groenberg", country: ZA, parent: "Wellington", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Limietberg", country: ZA, parent: "Wellington", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Mid-Berg River", country: ZA, parent: "Wellington", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+
+# ---- Western Cape: Cape West Coast (subregion, modeled as Region) ----
+- {name: "Cape West Coast", country: ZA, parent: "Coastal Region", classification: Region, source: "https://www.decanter.com/premium/regional-profile-cape-west-coast-487766/"}
+- {name: "Lutzville Valley", country: ZA, parent: "Cape West Coast", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Koekenaap", country: ZA, parent: "Lutzville Valley", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Bamboes Bay", country: ZA, parent: "Cape West Coast", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Lamberts Bay", country: ZA, parent: "Cape West Coast", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+
+# ---- Western Cape: Breede River Valley region ----
+- {name: "Breede River Valley", country: ZA, parent: "Western Cape", classification: Region, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Breedekloof", country: ZA, parent: "Breede River Valley", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Goudini", country: ZA, parent: "Breedekloof", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Slanghoek", country: ZA, parent: "Breedekloof", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Robertson", country: ZA, parent: "Breede River Valley", classification: District, synonyms: ["Robertson Valley", "Robertson Wine Valley"], source: "https://www.wine-searcher.com/regions-robertson"}
+- {name: "Agterkliphoogte", country: ZA, parent: "Robertson", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Ashton", country: ZA, parent: "Robertson", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Boesmansrivier", country: ZA, parent: "Robertson", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Bonnievale", country: ZA, parent: "Robertson", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Eilandia", country: ZA, parent: "Robertson", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Goedemoed", country: ZA, parent: "Robertson", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Goree", country: ZA, parent: "Robertson", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Goudmyn", country: ZA, parent: "Robertson", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Hoopsrivier", country: ZA, parent: "Robertson", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Klaasvoogds", country: ZA, parent: "Robertson", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Le Chasseur", country: ZA, parent: "Robertson", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "McGregor", country: ZA, parent: "Robertson", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Vinkrivier", country: ZA, parent: "Robertson", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Zandrivier", country: ZA, parent: "Robertson", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Worcester", country: ZA, parent: "Breede River Valley", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Hex River Valley", country: ZA, parent: "Worcester", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Keeromsberg", country: ZA, parent: "Worcester", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Moordkuil", country: ZA, parent: "Worcester", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Nuy", country: ZA, parent: "Worcester", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Rooikrans", country: ZA, parent: "Worcester", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Scherpenheuvel", country: ZA, parent: "Worcester", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Stettyn", country: ZA, parent: "Worcester", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+
+# ---- Western Cape: Klein Karoo region ----
+- {name: "Klein Karoo", country: ZA, parent: "Western Cape", classification: Region, synonyms: ["Little Karoo"], source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Montagu", country: ZA, parent: "Klein Karoo", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Outeniqua", country: ZA, parent: "Klein Karoo", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Tradouw", country: ZA, parent: "Klein Karoo", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Tradouw Highlands", country: ZA, parent: "Klein Karoo", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Upper Langkloof", country: ZA, parent: "Klein Karoo", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Cango Valley", country: ZA, parent: "Klein Karoo", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Koo Plateau", country: ZA, parent: "Klein Karoo", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Calitzdorp", country: ZA, parent: "Klein Karoo", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Groenfontein", country: ZA, parent: "Calitzdorp", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Langeberg-Garcia", country: ZA, parent: "Klein Karoo", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+
+# ---- Western Cape: Olifants River region ----
+- {name: "Olifants River", country: ZA, parent: "Western Cape", classification: Region, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Spruitdrift", country: ZA, parent: "Olifants River", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Vredendal", country: ZA, parent: "Olifants River", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Citrusdal Mountain", country: ZA, parent: "Olifants River", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Piekenierskloof", country: ZA, parent: "Citrusdal Mountain", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Citrusdal Valley", country: ZA, parent: "Olifants River", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+
+# ---- Western Cape: units directly under the GU (no Region) ----
+- {name: "Ceres Plateau", country: ZA, parent: "Western Cape", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Ceres", country: ZA, parent: "Ceres Plateau", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Prince Albert", country: ZA, parent: "Western Cape", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Kweekvallei", country: ZA, parent: "Prince Albert", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Prince Albert Valley", country: ZA, parent: "Prince Albert", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Swartberg", country: ZA, parent: "Prince Albert", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Nieuwoudtville", country: ZA, parent: "Western Cape", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Cederberg", country: ZA, parent: "Western Cape", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Leipoldtville-Sandveld", country: ZA, parent: "Western Cape", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+
+# ---- Northern Cape ----
+- {name: "Douglas", country: ZA, parent: "Northern Cape", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Karoo-Hoogland", country: ZA, parent: "Northern Cape", classification: Region, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Sutherland-Karoo", country: ZA, parent: "Karoo-Hoogland", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Central Orange River", country: ZA, parent: "Karoo-Hoogland", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Groblershoop", country: ZA, parent: "Central Orange River", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Grootdrink", country: ZA, parent: "Central Orange River", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Kakamas", country: ZA, parent: "Central Orange River", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Keimoes", country: ZA, parent: "Central Orange River", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Upington", country: ZA, parent: "Central Orange River", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Hartswater", country: ZA, parent: "Karoo-Hoogland", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Prieska", country: ZA, parent: "Karoo-Hoogland", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+
+# ---- Eastern Cape ----
+- {name: "St Francis Bay", country: ZA, parent: "Eastern Cape", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+
+# ---- KwaZulu-Natal ----
+- {name: "Central Drakensberg", country: ZA, parent: "KwaZulu-Natal", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+- {name: "Lions River", country: ZA, parent: "KwaZulu-Natal", classification: District, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}
+
+# ---- Free State ----
+- {name: "Rietrivier FS", country: ZA, parent: "Free State", classification: Ward, source: "https://www.sawis.co.za/cert/download/Production_areas_-_June_2024.pdf"}

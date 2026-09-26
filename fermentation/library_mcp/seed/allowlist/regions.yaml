@@ -500,29 +500,150 @@
 
 # ======================= SOUTH AFRICA =======================
 - {name: "Western Cape", country: ZA, classification: GU}
-- {name: "Coastal Region", country: ZA, parent: "Western Cape", classification: Region}
-- {name: "Stellenbosch", country: ZA, parent: "Coastal Region", classification: District, synonyms: ["Simonsberg-Stellenbosch", "Stellenbosch WO"]}
-- {name: "Paarl", country: ZA, parent: "Coastal Region", classification: District, synonyms: ["Paarl WO"]}
-- {name: "Franschhoek", country: ZA, parent: "Paarl", classification: Ward, synonyms: ["Franschhoek Valley"]}
-- {name: "Wellington", country: ZA, parent: "Paarl", classification: District}
-- {name: "Constantia", country: ZA, parent: "Coastal Region", classification: Ward, synonyms: ["Constantia Valley", "Constantia WO"]}
-- {name: "Swartland", country: ZA, parent: "Coastal Region", classification: District}
-- {name: "Darling", country: ZA, parent: "Coastal Region", classification: District}
-- {name: "Durbanville", country: ZA, parent: "Coastal Region", classification: Ward}
-- {name: "Tulbagh", country: ZA, parent: "Coastal Region", classification: District}
-- {name: "Breede River Valley", country: ZA, parent: "Western Cape", classification: Region}
-- {name: "Robertson", country: ZA, parent: "Breede River Valley", classification: District, synonyms: ["Robertson WO"]}
-- {name: "Worcester", country: ZA, parent: "Breede River Valley", classification: District}
-- {name: "Breedekloof", country: ZA, parent: "Breede River Valley", classification: District}
-- {name: "Cape South Coast", country: ZA, parent: "Western Cape", classification: Region}
-- {name: "Walker Bay", country: ZA, parent: "Cape South Coast", classification: District}
-- {name: "Hemel-en-Aarde", country: ZA, parent: "Walker Bay", classification: Ward, synonyms: ["Hemel-en-Aarde Valley", "Hemel en Aarde"]}
-- {name: "Elgin", country: ZA, parent: "Cape South Coast", classification: District}
-- {name: "Overberg", country: ZA, parent: "Cape South Coast", classification: District}
-- {name: "Klein Karoo", country: ZA, parent: "Western Cape", classification: Region, synonyms: ["Little Karoo"]}
-- {name: "Olifants River", country: ZA, parent: "Western Cape", classification: Region}
-- {name: "Cape Town", country: ZA, parent: "Coastal Region", classification: District}
 - {name: "Northern Cape", country: ZA, classification: GU}
+- {name: "Eastern Cape", country: ZA, classification: GU}
+- {name: "KwaZulu-Natal", country: ZA, classification: GU}
+- {name: "Free State", country: ZA, classification: GU}
+- {name: "Limpopo", country: ZA, classification: GU}
+- {name: "North West", country: ZA, classification: GU, synonyms: ["North-West Province"]}
+- {name: "Cape Coast", country: ZA, parent: "Western Cape", classification: Region, synonyms: ["Cape Coastal"]}
+- {name: "Cape South Coast", country: ZA, parent: "Western Cape", classification: Region}
+- {name: "Herbertsdale", country: ZA, parent: "Cape South Coast", classification: Ward}
+- {name: "Napier", country: ZA, parent: "Cape South Coast", classification: Ward}
+- {name: "Still Bay East", country: ZA, parent: "Cape South Coast", classification: Ward, synonyms: ["Stilbaai East"]}
+- {name: "Cape Agulhas", country: ZA, parent: "Cape South Coast", classification: District}
+- {name: "Elim", country: ZA, parent: "Cape Agulhas", classification: Ward}
+- {name: "Elgin", country: ZA, parent: "Cape South Coast", classification: District}
+- {name: "Lower Duivenhoks River", country: ZA, parent: "Cape South Coast", classification: District}
+- {name: "Overberg", country: ZA, parent: "Cape South Coast", classification: District}
+- {name: "Elandskloof", country: ZA, parent: "Overberg", classification: Ward, synonyms: ["Kaaimansgat"]}
+- {name: "Greyton", country: ZA, parent: "Overberg", classification: Ward}
+- {name: "Klein River", country: ZA, parent: "Overberg", classification: Ward, synonyms: ["Klein Rivier"]}
+- {name: "Theewater", country: ZA, parent: "Overberg", classification: Ward}
+- {name: "Plettenberg Bay", country: ZA, parent: "Cape South Coast", classification: District}
+- {name: "Swellendam", country: ZA, parent: "Cape South Coast", classification: District}
+- {name: "Buffeljags", country: ZA, parent: "Swellendam", classification: Ward}
+- {name: "Malgas", country: ZA, parent: "Swellendam", classification: Ward}
+- {name: "Stormsvlei", country: ZA, parent: "Swellendam", classification: Ward}
+- {name: "Walker Bay", country: ZA, parent: "Cape South Coast", classification: District}
+- {name: "Bot River", country: ZA, parent: "Walker Bay", classification: Ward}
+- {name: "Hemel-en-Aarde Ridge", country: ZA, parent: "Walker Bay", classification: Ward}
+- {name: "Hemel-en-Aarde Valley", country: ZA, parent: "Walker Bay", classification: Ward, synonyms: ["Hemel-en-Aarde", "Hemel en Aarde"]}
+- {name: "Sunday's Glen", country: ZA, parent: "Walker Bay", classification: Ward}
+- {name: "Springfontein Rim", country: ZA, parent: "Walker Bay", classification: Ward}
+- {name: "Stanford Foothills", country: ZA, parent: "Walker Bay", classification: Ward}
+- {name: "Upper Hemel-en-Aarde Valley", country: ZA, parent: "Walker Bay", classification: Ward}
+- {name: "Coastal Region", country: ZA, parent: "Western Cape", classification: Region}
+- {name: "Cape Town", country: ZA, parent: "Coastal Region", classification: District}
+- {name: "Constantia", country: ZA, parent: "Cape Town", classification: Ward, synonyms: ["Constantia Valley"]}
+- {name: "Durbanville", country: ZA, parent: "Cape Town", classification: Ward}
+- {name: "Hout Bay", country: ZA, parent: "Cape Town", classification: Ward}
+- {name: "Philadelphia", country: ZA, parent: "Cape Town", classification: Ward}
+- {name: "Darling", country: ZA, parent: "Cape West Coast", classification: District}
+- {name: "Groenekloof", country: ZA, parent: "Darling", classification: Ward}
+- {name: "Franschhoek", country: ZA, parent: "Coastal Region", classification: District, synonyms: ["Franschhoek Valley"]}
+- {name: "Paarl", country: ZA, parent: "Coastal Region", classification: District}
+- {name: "Agter-Paarl", country: ZA, parent: "Paarl", classification: Ward}
+- {name: "Simonsberg-Paarl", country: ZA, parent: "Paarl", classification: Ward}
+- {name: "Voor-Paardeberg", country: ZA, parent: "Paarl", classification: Ward, synonyms: ["Voor Paardeberg"]}
+- {name: "Stellenbosch", country: ZA, parent: "Coastal Region", classification: District}
+- {name: "Banghoek", country: ZA, parent: "Stellenbosch", classification: Ward}
+- {name: "Bottelary", country: ZA, parent: "Stellenbosch", classification: Ward}
+- {name: "Devon Valley", country: ZA, parent: "Stellenbosch", classification: Ward}
+- {name: "Jonkershoek Valley", country: ZA, parent: "Stellenbosch", classification: Ward}
+- {name: "Papegaaiberg", country: ZA, parent: "Stellenbosch", classification: Ward}
+- {name: "Polkadraai Hills", country: ZA, parent: "Stellenbosch", classification: Ward}
+- {name: "Simonsberg-Stellenbosch", country: ZA, parent: "Stellenbosch", classification: Ward}
+- {name: "Vlottenburg", country: ZA, parent: "Stellenbosch", classification: Ward}
+- {name: "Swartland", country: ZA, parent: "Coastal Region", classification: District}
+- {name: "Malmesbury", country: ZA, parent: "Swartland", classification: Ward}
+- {name: "Paardeberg", country: ZA, parent: "Swartland", classification: Ward, synonyms: ["Perdeberg"]}
+- {name: "Paardeberg South", country: ZA, parent: "Swartland", classification: Ward}
+- {name: "Piket-Bo-Berg", country: ZA, parent: "Swartland", classification: Ward}
+- {name: "Porseleinberg", country: ZA, parent: "Swartland", classification: Ward}
+- {name: "Riebeekberg", country: ZA, parent: "Swartland", classification: Ward}
+- {name: "Riebeeksrivier", country: ZA, parent: "Swartland", classification: Ward}
+- {name: "St Helena Bay", country: ZA, parent: "Swartland", classification: Ward, synonyms: ["St. Helena Bay"]}
+- {name: "Tulbagh", country: ZA, parent: "Coastal Region", classification: District}
+- {name: "Wellington", country: ZA, parent: "Coastal Region", classification: District}
+- {name: "Blouvlei", country: ZA, parent: "Wellington", classification: Ward}
+- {name: "Bovlei", country: ZA, parent: "Wellington", classification: Ward}
+- {name: "Groenberg", country: ZA, parent: "Wellington", classification: Ward}
+- {name: "Limietberg", country: ZA, parent: "Wellington", classification: Ward}
+- {name: "Mid-Berg River", country: ZA, parent: "Wellington", classification: Ward}
+- {name: "Cape West Coast", country: ZA, parent: "Coastal Region", classification: Region}
+- {name: "Lutzville Valley", country: ZA, parent: "Cape West Coast", classification: District}
+- {name: "Koekenaap", country: ZA, parent: "Lutzville Valley", classification: Ward}
+- {name: "Bamboes Bay", country: ZA, parent: "Cape West Coast", classification: Ward}
+- {name: "Lamberts Bay", country: ZA, parent: "Cape West Coast", classification: Ward}
+- {name: "Breede River Valley", country: ZA, parent: "Western Cape", classification: Region}
+- {name: "Breedekloof", country: ZA, parent: "Breede River Valley", classification: District}
+- {name: "Goudini", country: ZA, parent: "Breedekloof", classification: Ward}
+- {name: "Slanghoek", country: ZA, parent: "Breedekloof", classification: Ward}
+- {name: "Robertson", country: ZA, parent: "Breede River Valley", classification: District, synonyms: ["Robertson Valley", "Robertson Wine Valley"]}
+- {name: "Agterkliphoogte", country: ZA, parent: "Robertson", classification: Ward}
+- {name: "Ashton", country: ZA, parent: "Robertson", classification: Ward}
+- {name: "Boesmansrivier", country: ZA, parent: "Robertson", classification: Ward}
+- {name: "Bonnievale", country: ZA, parent: "Robertson", classification: Ward}
+- {name: "Eilandia", country: ZA, parent: "Robertson", classification: Ward}
+- {name: "Goedemoed", country: ZA, parent: "Robertson", classification: Ward}
+- {name: "Goree", country: ZA, parent: "Robertson", classification: Ward}
+- {name: "Goudmyn", country: ZA, parent: "Robertson", classification: Ward}
+- {name: "Hoopsrivier", country: ZA, parent: "Robertson", classification: Ward}
+- {name: "Klaasvoogds", country: ZA, parent: "Robertson", classification: Ward}
+- {name: "Le Chasseur", country: ZA, parent: "Robertson", classification: Ward}
+- {name: "McGregor", country: ZA, parent: "Robertson", classification: Ward}
+- {name: "Vinkrivier", country: ZA, parent: "Robertson", classification: Ward}
+- {name: "Zandrivier", country: ZA, parent: "Robertson", classification: Ward}
+- {name: "Worcester", country: ZA, parent: "Breede River Valley", classification: District}
+- {name: "Hex River Valley", country: ZA, parent: "Worcester", classification: Ward}
+- {name: "Keeromsberg", country: ZA, parent: "Worcester", classification: Ward}
+- {name: "Moordkuil", country: ZA, parent: "Worcester", classification: Ward}
+- {name: "Nuy", country: ZA, parent: "Worcester", classification: Ward}
+- {name: "Rooikrans", country: ZA, parent: "Worcester", classification: Ward}
+- {name: "Scherpenheuvel", country: ZA, parent: "Worcester", classification: Ward}
+- {name: "Stettyn", country: ZA, parent: "Worcester", classification: Ward}
+- {name: "Klein Karoo", country: ZA, parent: "Western Cape", classification: Region, synonyms: ["Little Karoo"]}
+- {name: "Montagu", country: ZA, parent: "Klein Karoo", classification: Ward}
+- {name: "Outeniqua", country: ZA, parent: "Klein Karoo", classification: Ward}
+- {name: "Tradouw", country: ZA, parent: "Klein Karoo", classification: Ward}
+- {name: "Tradouw Highlands", country: ZA, parent: "Klein Karoo", classification: Ward}
+- {name: "Upper Langkloof", country: ZA, parent: "Klein Karoo", classification: Ward}
+- {name: "Cango Valley", country: ZA, parent: "Klein Karoo", classification: Ward}
+- {name: "Koo Plateau", country: ZA, parent: "Klein Karoo", classification: Ward}
+- {name: "Calitzdorp", country: ZA, parent: "Klein Karoo", classification: District}
+- {name: "Groenfontein", country: ZA, parent: "Calitzdorp", classification: Ward}
+- {name: "Langeberg-Garcia", country: ZA, parent: "Klein Karoo", classification: District}
+- {name: "Olifants River", country: ZA, parent: "Western Cape", classification: Region}
+- {name: "Spruitdrift", country: ZA, parent: "Olifants River", classification: Ward}
+- {name: "Vredendal", country: ZA, parent: "Olifants River", classification: Ward}
+- {name: "Citrusdal Mountain", country: ZA, parent: "Olifants River", classification: District}
+- {name: "Piekenierskloof", country: ZA, parent: "Citrusdal Mountain", classification: Ward}
+- {name: "Citrusdal Valley", country: ZA, parent: "Olifants River", classification: District}
+- {name: "Ceres Plateau", country: ZA, parent: "Western Cape", classification: District}
+- {name: "Ceres", country: ZA, parent: "Ceres Plateau", classification: Ward}
+- {name: "Prince Albert", country: ZA, parent: "Western Cape", classification: District}
+- {name: "Kweekvallei", country: ZA, parent: "Prince Albert", classification: Ward}
+- {name: "Prince Albert Valley", country: ZA, parent: "Prince Albert", classification: Ward}
+- {name: "Swartberg", country: ZA, parent: "Prince Albert", classification: Ward}
+- {name: "Nieuwoudtville", country: ZA, parent: "Western Cape", classification: Ward}
+- {name: "Cederberg", country: ZA, parent: "Western Cape", classification: Ward}
+- {name: "Leipoldtville-Sandveld", country: ZA, parent: "Western Cape", classification: Ward}
+- {name: "Douglas", country: ZA, parent: "Northern Cape", classification: District}
+- {name: "Karoo-Hoogland", country: ZA, parent: "Northern Cape", classification: Region}
+- {name: "Sutherland-Karoo", country: ZA, parent: "Karoo-Hoogland", classification: District}
+- {name: "Central Orange River", country: ZA, parent: "Karoo-Hoogland", classification: District}
+- {name: "Groblershoop", country: ZA, parent: "Central Orange River", classification: Ward}
+- {name: "Grootdrink", country: ZA, parent: "Central Orange River", classification: Ward}
+- {name: "Kakamas", country: ZA, parent: "Central Orange River", classification: Ward}
+- {name: "Keimoes", country: ZA, parent: "Central Orange River", classification: Ward}
+- {name: "Upington", country: ZA, parent: "Central Orange River", classification: Ward}
+- {name: "Hartswater", country: ZA, parent: "Karoo-Hoogland", classification: Ward}
+- {name: "Prieska", country: ZA, parent: "Karoo-Hoogland", classification: Ward}
+- {name: "St Francis Bay", country: ZA, parent: "Eastern Cape", classification: Ward}
+- {name: "Central Drakensberg", country: ZA, parent: "KwaZulu-Natal", classification: District}
+- {name: "Lions River", country: ZA, parent: "KwaZulu-Natal", classification: District}
+- {name: "Rietrivier FS", country: ZA, parent: "Free State", classification: Ward}
 
 # ======================= AUSTRALIA =======================
 - {name: "South Australia", country: AU, classification: Zone, synonyms: ["SA"]}

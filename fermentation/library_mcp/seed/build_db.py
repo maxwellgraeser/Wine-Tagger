@@ -11,7 +11,8 @@ Pipeline (see fermentation/PLAN.md, "Reseed plan"):
          grapes    -- VALUES-bound SPARQL over the locked QIDs
                       (altLabel synonyms + origin country); color from YAML
          regions   -- straight from YAML (hierarchy/country/classification
-                      are authored, not fetched); QID attached when locked
+                      are authored, not fetched); QID attached when locked;
+                      a region's `grapes:` become region_grapes edges
     4. Placeholder tier (is_canonical=0, skipped with --no-placeholders):
          grapes    -- every Wikidata grape variety that has an English
                       Wikipedia article and isn't already canonical
@@ -144,20 +145,30 @@ class _SynonymGuard:
     """Tracks which folded labels are already taken (as canonical names or
     synonyms) so Wikidata altLabels can't silently alias one canonical
     entity to another. First claim wins; YAML claims are registered before
-    any Wikidata data."""
+    any Wikidata data.
+
+    Claims are per `scope`. Regions claim with their country id, because
+    the same label may name regions in two countries (La Rioja ES / AR);
+    grapes use the single default scope."""
 
     def __init__(self) -> None:
-        self.owner: dict[str, int] = {}
+        self.owner: dict[tuple[object, str], int] = {}
+        self._labels: set[str] = set()
 
-    def claim(self, label: str, owner_id: int) -> bool:
+    def claim(self, label: str, owner_id: int, scope: object = None) -> bool:
         key = _fold(label)
         if not key:
             return False
-        cur = self.owner.get(key)
+        cur = self.owner.get((scope, key))
         if cur is None:
-            self.owner[key] = owner_id
+            self.owner[(scope, key)] = owner_id
+            self._labels.add(key)
             return True
         return cur == owner_id
+
+    def taken(self, label: str) -> bool:
+        """True if any scope has claimed `label`."""
+        return _fold(label) in self._labels
 
 
 # ---------- canonical: countries ----------
@@ -299,26 +310,36 @@ WHERE {{
 def ingest_regions(conn: sqlite3.Connection, al: Allowlist, country_ids: dict[str, int]) -> _SynonymGuard:
     cur = conn.cursor()
     guard = _SynonymGuard()
-    ids: dict[str, int] = {}
+    ids: dict[tuple[str, str], int] = {}       # (name, iso) -> id; names repeat across countries
     for r in al.regions:
         cur.execute(
             """INSERT INTO regions (name, country_id, classification, wikidata_qid, is_canonical)
                VALUES (?, ?, ?, ?, 1)""",
             (r.name, country_ids[r.country], r.classification, al.region_qid(r)),
         )
-        ids[r.name] = cur.lastrowid
-        guard.claim(r.name, ids[r.name])
+        ids[(r.name, r.country)] = cur.lastrowid
+        guard.claim(r.name, cur.lastrowid, scope=r.country)
     for r in al.regions:
+        rid = ids[(r.name, r.country)]
         if r.parent:
             cur.execute("UPDATE regions SET parent_region_id = ? WHERE id = ?",
-                        (ids[r.parent], ids[r.name]))
+                        (ids[(r.parent, r.country)], rid))
         for s in r.synonyms:
-            if guard.claim(s, ids[r.name]) and _fold(s) != _fold(r.name):
+            if guard.claim(s, rid, scope=r.country) and _fold(s) != _fold(r.name):
                 cur.execute("INSERT OR IGNORE INTO region_synonyms (region_id, synonym) VALUES (?, ?)",
-                            (ids[r.name], s))
+                            (rid, s))
+    edges = 0
+    for r in al.regions:
+        for g in r.grapes:
+            gid = _find_grape(conn, g)
+            if gid is None:                    # validator guarantees this; belt and braces
+                raise RuntimeError(f"regions: {r.name} ({r.country}) grape {g!r} not in the grapes table")
+            cur.execute("INSERT OR IGNORE INTO region_grapes (region_id, grape_id) VALUES (?, ?)",
+                        (ids[(r.name, r.country)], gid))
+            edges += cur.rowcount
     conn.commit()
     with_qid = sum(1 for r in al.regions if al.region_qid(r))
-    log(f"[regions] {len(ids)} canonical ({with_qid} with QID)")
+    log(f"[regions] {len(ids)} canonical ({with_qid} with QID), {edges} region_grapes edges from YAML")
     return guard
 
 
@@ -345,7 +366,7 @@ WHERE {
         name = _val(b, "gLabel")
         if not q or not name or name.startswith("Q") or q in have:
             continue
-        if _fold(name) in guard.owner:          # would shadow a canonical name/synonym
+        if guard.taken(name):                   # would shadow a canonical name/synonym
             continue
         origin_id = qid_to_country.get(_qid(_val(b, "origin")))
         try:
@@ -391,7 +412,7 @@ SELECT DISTINCT ?r ?rLabel ?country WHERE {{
             # "Fixin AOC" / "Napa Valley AVA" must not land as a placeholder twin
             # of canonical "Fixin" / "Napa Valley".
             bare = re.sub(r"\s+(AOC|AOP|AVA|DOC|DOCG|DO|DOP|IGT|IGP|GI|WO)$", "", name, flags=re.I)
-            if _fold(name) in guard.owner or _fold(bare) in guard.owner:
+            if guard.taken(name) or guard.taken(bare):
                 continue
             try:
                 cur.execute(

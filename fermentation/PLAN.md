@@ -53,7 +53,7 @@ post-hoc normalization pass.
 2. ~~The "Reseed plan" below is UNBUILT.~~ **Built 2026-09-15.** Allowlist
    YAMLs, QID resolver + lock file, allowlist-driven `build_db.py`,
    placeholder pass, canonical-first server, and a test suite are in.
-   `BATON.md` records what changed versus the first draft (every
+   `journal/2026-09-15-BATON.md` records what changed versus the first draft (every
    hand-typed QID in it was wrong) and how to re-seed.
 3. **Confidence threshold is self-defeating.** `DEFAULT_CONFIDENCE_THRESHOLD
    = 90`, but `SYSTEM_PROMPT_MCP` caps confidence at 84 for single-snippet
@@ -224,7 +224,7 @@ Browse tools (read-only):
 | Tool | Returns | Use case |
 |------|---------|----------|
 | `lookup_country(name)` | `{canonical, iso, known}` | Model has a country string. |
-| `lookup_region(name)` | `{canonical, country, parents[], known}` | Region → parent chain + pinned country. |
+| `lookup_region(name, country?)` | `{canonical, country, parents[], known, alternatives?}` | Region → parent chain + pinned country. `country` picks between same-named regions. |
 | `lookup_grape(name)` | `{canonical, color, origin, synonyms[], is_placeholder, known}` | Per-grape resolve; QID-aware so synonyms collapse. |
 | `list_countries()` | `string[]` | ~30 names. |
 | `list_regions(country?)` | `string[]` | Filtered by canonical country. |
@@ -339,7 +339,7 @@ def gather_snippets(product: Product) -> list[Snippet]:
 context selection, `web_context` assembly.
 
 > **2026-09-15 — scoring methodology revised.** The full review, with the
-> per-wine evidence, is in `SCORING-2026-09-15.md`. Summary of what was
+> per-wine evidence, is in `journal/2026-09-15-SCORING.md`. Summary of what was
 > wrong with the first design: the 7B model listed only some indices when
 > shown 15–27 snippets at once (17/24 wines; 72 of 255 name-matching
 > snippets silently became 0), scores were bimodal (0 or ≥85) so the
@@ -954,7 +954,7 @@ allowlist canonicals (the v1 source of `Emilia Romagna` /
 
 Everything above in this section is the *intended* design; the build
 diverges from it in these specific ways, each forced by what Wikidata
-actually contains. `BATON.md` has the longer rationale.
+actually contains. `journal/2026-09-15-BATON.md` has the longer rationale.
 
 - **Allowlists keyed by name; QIDs machine-resolved into
   `allowlist/qids.lock.yaml`.** Every hand-typed QID in the first draft
@@ -987,7 +987,7 @@ actually contains. `BATON.md` has the longer rationale.
 
 Built 2026-09-15: 46 countries; 675 canonical + 275 placeholder regions;
 335 canonical + 375 placeholder grapes; 48 tests green. Counts and the
-re-seed procedure live in `BATON.md`.
+re-seed procedure live in `journal/2026-09-15-BATON.md`.
 
 ### Coverage notes — `library_mcp/tests/fixtures/combined.csv`
 

@@ -15,6 +15,12 @@ and unknowns so the model is steered back to the canonical vocabulary.
 All name resolution runs against in-memory accent-folded indexes built
 once at startup (the DB is a few thousand rows) -- no per-call table scans.
 
+Region names can repeat across countries (La Rioja in Spain and
+Argentina); `lookup_region`, `list_grapes` and `submit_tags` use the
+wine's country to pick one. A region string that misses exactly is
+retried without classification words ("Barolo DOCG", "W.O. Stellenbosch")
+and split on commas ("Coastal Region, Western Cape, South Africa").
+
 Run standalone for smoke testing:
     python -m fermentation.library_mcp.server
 """
@@ -85,6 +91,77 @@ def _is_phrase(name: str) -> bool:
     return any(p in f for p in _PHRASE_PATTERNS)
 
 
+# Classification words that labels and web pages attach to a region name.
+# Folded (lowercase, no accents). Stripped from either end of a region
+# string only after the exact lookup misses, so names that contain one
+# ("Chianti Classico", "Saint-Émilion Grand Cru") still match first.
+_CLASS_TOKENS = sorted({
+    "appellation d'origine controlee", "appellation d'origine protegee",
+    "appellation controlee", "appellation", "aoc", "aop", "ac",
+    "denominazione di origine controllata e garantita",
+    "denominazione di origine controllata", "indicazione geografica tipica",
+    "docg", "doc", "igt", "igp", "dop",
+    "denominacion de origen calificada", "denominacion de origen",
+    "vino de la tierra", "vino de pago", "doca", "doq", "do", "vp",
+    "denominacao de origem controlada", "vinho regional", "vr",
+    "vin de pays", "indication geographique protegee",
+    "american viticultural area", "ava",
+    "wine of origin", "w.o.", "wo",
+    "qualitatswein", "pradikatswein", "dac",
+    "geographical indication", "gi", "ig", "pdo", "pgi", "vqa",
+    "premier cru", "1er cru", "grand cru",
+    # dotted label forms: "D.O. Rioja", "D.O.Ca.", "A.O.C."
+    "d.o.", "d.o", "d.o.ca.", "d.o.ca", "d.o.c.", "d.o.c", "d.o.c.g.", "d.o.c.g",
+    "a.o.c.", "a.o.c", "a.o.p.", "a.o.p", "a.v.a.", "a.v.a", "i.g.t.", "i.g.t",
+    "i.g.p.", "i.g.p", "w.o",
+}, key=len, reverse=True)
+_CLASS_ALT = "|".join(re.escape(t) for t in _CLASS_TOKENS)
+_CLASS_LEAD = re.compile(rf"^(?:{_CLASS_ALT})(?:\s+|$)")
+_CLASS_TRAIL = re.compile(rf"(?:^|\s+)(?:{_CLASS_ALT})$")
+_PAREN_TAIL = re.compile(r"\s*\([^()]*\)$")
+# "Appellation Margaux Contrôlée" puts the name in the middle.
+_APPELLATION_WRAP = re.compile(r"^appellation (.+?) (?:controlee|protegee)$")
+# Commas, semicolons, slashes, and a dash with spaces round it; a bare
+# hyphen is part of names (Languedoc-Roussillon).
+_REGION_SPLIT = re.compile(r"\s*(?:[,;/]|\s-\s)\s*")
+
+
+def _strip_classification(folded: str) -> str:
+    s = folded
+    prev = None
+    while s != prev:
+        prev = s
+        m = _APPELLATION_WRAP.match(s)
+        if m:
+            s = m.group(1)
+        s = _PAREN_TAIL.sub("", s)
+        s = _CLASS_LEAD.sub("", s)
+        s = _CLASS_TRAIL.sub("", s)
+        s = s.strip(" -–")
+    return s
+
+
+def _region_variants(name: str) -> list[str]:
+    """Folded strings to try for a region, in order: as given, without
+    classification words, then each comma-separated part (most specific
+    first in the usual "Swartland, Western Cape, South Africa" order)."""
+    base = _fold(name)
+    out = [base]
+
+    def add(v: str) -> None:
+        if v and v not in out:
+            out.append(v)
+
+    add(_strip_classification(base))
+    add(re.sub(r"\s[-\u2013]\s", " ", base))       # "Côtes du Rhône - Villages"
+    parts = [p for p in _REGION_SPLIT.split(base) if p]
+    if len(parts) > 1:
+        for part in parts:
+            add(part)
+            add(_strip_classification(part))
+    return out
+
+
 # ---------- in-memory index ----------
 
 @dataclass
@@ -117,26 +194,29 @@ class Grape:
 
 class _Index:
     """Folded label -> candidate ids. Canonical rows are listed before
-    placeholders for the same label, so `first()` is canonical-first."""
+    placeholders for the same label (insertion order within each tier), so
+    `first()` is canonical-first. A label can name several rows: region
+    names repeat across countries."""
 
     def __init__(self) -> None:
-        self._map: dict[str, list[int]] = {}
+        self._map: dict[str, tuple[list[int], list[int]]] = {}
 
     def add(self, label: str, row_id: int, canonical: bool) -> None:
         key = _fold(label)
         if not key:
             return
-        bucket = self._map.setdefault(key, [])
-        if row_id in bucket:
+        canon, place = self._map.setdefault(key, ([], []))
+        if row_id in canon or row_id in place:
             return
-        if canonical:
-            bucket.insert(0, row_id)
-        else:
-            bucket.append(row_id)
+        (canon if canonical else place).append(row_id)
+
+    def all(self, label: str) -> list[int]:
+        canon, place = self._map.get(_fold(label), ((), ()))
+        return [*canon, *place]
 
     def first(self, label: str) -> Optional[int]:
-        bucket = self._map.get(_fold(label))
-        return bucket[0] if bucket else None
+        ids = self.all(label)
+        return ids[0] if ids else None
 
 
 def _load_index(conn: sqlite3.Connection):
@@ -189,11 +269,41 @@ def _resolve_country(name: str) -> Optional[Country]:
     return _COUNTRIES.get(cid) if cid is not None else None
 
 
-def _resolve_region(name: str) -> Optional[Region]:
+def _region_candidates(name: str) -> list[Region]:
+    """Regions for the first variant of `name` that matches anything.
+    Fallback variants that are country names ("Kakheti, Georgia", "Napa,
+    CA") are tried only after every other variant has missed, so they can't
+    beat the real region; "Georgia, United States" still finds a Georgia
+    region that way."""
     if not name:
-        return None
-    rid = _R_IDX.first(name)
-    return _REGIONS.get(rid) if rid is not None else None
+        return []
+    variants = _region_variants(name)
+    countryish = {v for v in variants[1:] if _C_IDX.first(v) is not None}
+    for v in [*(v for v in variants if v not in countryish), *(v for v in variants if v in countryish)]:
+        ids = _R_IDX.all(v)
+        if ids:
+            return [_REGIONS[r] for r in ids if r in _REGIONS]
+    return []
+
+
+def _pick_region(cands: list[Region], country_id: Optional[int]) -> tuple[Optional[Region], list[Region]]:
+    """Choose one candidate. With a country: that country's rows first
+    (canonical, then placeholder), then the rest. Returns (choice,
+    alternatives), where alternatives are canonical candidates in OTHER
+    countries that the choice was made over without a country to go on."""
+    if not cands:
+        return None, []
+    if country_id is not None:
+        local = [r for r in cands if r.country_id == country_id]
+        if local:
+            return local[0], []
+    choice = cands[0]
+    alts = [r for r in cands if r.canonical and r.country_id != choice.country_id]
+    return choice, alts
+
+
+def _resolve_region(name: str, country_id: Optional[int] = None) -> Optional[Region]:
+    return _pick_region(_region_candidates(name), country_id)[0]
 
 
 def _resolve_grape(name: str) -> Optional[Grape]:
@@ -239,8 +349,13 @@ def lookup_country(name: str) -> dict:
 
 
 @mcp.tool()
-def lookup_region(name: str) -> dict:
+def lookup_region(name: str, country: Optional[str] = None) -> dict:
     """Resolve a wine region (or a synonym: Piemonte, Bourgogne, Napa).
+
+    Pass `country` when you know it: a few names exist in more than one
+    country (La Rioja: Spain and Argentina). Without it, the answer may
+    carry `alternatives` ("La Rioja (Argentina)") -- look up again with the
+    country if the first answer is in the wrong one.
 
     Returns {canonical, country, parents[], classification, is_placeholder,
     known}. `parents` is the broader chain, nearest first (Russian River
@@ -249,11 +364,12 @@ def lookup_region(name: str) -> dict:
     submit_tags -- pick the nearest canonical parent or a region from
     list_regions(country) instead.
     """
-    row = _resolve_region(name)
+    crow = _resolve_country(country) if country else None
+    row, alts = _pick_region(_region_candidates(name), crow.id if crow else None)
     if not row:
         return {"canonical": None, "country": None, "parents": [], "classification": None,
                 "is_placeholder": False, "known": False}
-    return {
+    out = {
         "canonical": row.name,
         "country": _region_country(row),
         "parents": [p.name for p in _region_chain(row)],
@@ -261,6 +377,9 @@ def lookup_region(name: str) -> dict:
         "is_placeholder": not row.canonical,
         "known": True,
     }
+    if alts:
+        out["alternatives"] = [f"{a.name} ({_region_country(a)})" for a in alts]
+    return out
 
 
 @mcp.tool()
@@ -320,7 +439,8 @@ def list_grapes(country: Optional[str] = None, region: Optional[str] = None) -> 
     grapes recorded as grown there (via `region_grapes`). If only
     `country` is provided, filter to grapes whose origin matches."""
     if region:
-        rrow = _resolve_region(region)
+        crow = _resolve_country(country) if country else None
+        rrow = _resolve_region(region, crow.id if crow else None)
         if not rrow:
             return []
         ids = [r["grape_id"] for r in _CONN.execute(
@@ -375,6 +495,10 @@ _HINTS = {
         "One or more regions resolved to a real but non-canonical entry. Use "
         "lookup_region on it and submit the nearest canonical parent from "
         "its `parents` list instead (or another region from list_regions)."
+    ),
+    "ambiguous_region": (
+        "A region name exists in more than one country. Pass `country` so "
+        "the right one is used."
     ),
     "region_country_mismatch": (
         "A region resolves to a different country than the one you submitted. "
@@ -447,12 +571,30 @@ def submit_tags(
         detail["unknown_country"] = [country]
 
     # --- regions ---
+    # Which country picks between same-named regions: the submitted one, or
+    # else the single country of the regions that aren't ambiguous.
+    pick_country_id = country_row.id if country_row else None
+    if pick_country_id is None:
+        sure = {
+            row.country_id
+            for row, alts in (_pick_region(_region_candidates(r), None) for r in region if r)
+            if row is not None and row.canonical and not alts
+        }
+        if len(sure) == 1:
+            pick_country_id = next(iter(sure))
+
     normalized_regions: list[str] = []
     region_countries: set[str] = set()
     for r in region:
         if not r or not str(r).strip():
             continue
-        rrow = _resolve_region(r)
+        rrow, alts = _pick_region(_region_candidates(r), pick_country_id)
+        if rrow is not None and alts and pick_country_id is None:
+            _add_issue(issues, "ambiguous_region")
+            detail.setdefault("ambiguous_region", []).append(
+                f"{r} -> {', '.join(f'{x.name} ({_region_country(x)})' for x in [rrow, *alts])}"
+            )
+            continue
         if rrow is None:
             if _resolve_country(r):
                 _add_issue(issues, "country_in_region_slot")

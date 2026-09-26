@@ -154,7 +154,7 @@ modules that never import each other; config (model, api_url) is passed down:
   band), the grape-naming, most-fact-rich ones fill `web_context` (score
   only gates identity) — or `None`, in which case the wine routes straight
   to `needs_review` and the tagger is skipped. Method and evidence:
-  `fermentation/SCORING-2026-09-15.md`.
+  `journal/2026-09-15-SCORING.md`.
 - **`evidence.py`** — mechanical checks on the tagger's output against the
   text it was shown (see "Confidence & review flags").
 - **`tagger.py`** — drives the MCP tool-call loop. The model browses canonical
@@ -175,6 +175,11 @@ Wikipedia (`seed/build_db.py`). Tool surface:
 
 - Browse (read-only): `lookup_country`, `lookup_region`, `lookup_grape`,
   `list_countries`, `list_regions`, `list_grapes`.
+- Region names resolve leniently: when the exact name misses, the lookup
+  drops classification words ("Barolo DOCG", "W.O. Stellenbosch") and tries
+  each comma-separated part ("Swartland, Western Cape, South Africa"). The
+  same region name may exist in two countries (La Rioja: Spain, Argentina);
+  `lookup_region(name, country?)` and `submit_tags` pick by the wine's country.
 - Terminal: `submit_tags(country, region[], grapes[], is_blend, organic, confidence)`
   → `{ok, normalized}` on success, or `{ok:false, issues, hints}` so the model
   can correct and retry in-loop.
@@ -267,11 +272,13 @@ final/<id>.json       normalized block + tag_status as written to wines.json
 **Tech:** Python 3.11+, sqlite3, requests, `mcp` (FastMCP), DuckDuckGo search —
 no paid APIs or keys required.
 
-> **Scoring methodology:** see `fermentation/SCORING-2026-09-15.md` for why
+> **Scoring methodology:** see `journal/2026-09-15-SCORING.md` for why
 > the snippet score was rebuilt (batched per-index scoring, URL shown,
 > facts-first context, threshold 70) and the evidence rules that gate the
-> tagger's output. `fermentation/ACCURACY-2026-09-15.md` is the earlier
-> per-wine accuracy review; `fermentation/BATON.md` the library reseed.
+> tagger's output. `journal/2026-09-15-ACCURACY.md` is the earlier
+> per-wine accuracy review; `journal/2026-09-15-BATON.md` the library reseed.
+> Every dated note (reviews, batons, run comparisons) lives in `journal/`,
+> named `YYYY-MM-DD-TOPIC.md` so it sorts in the order it was written.
 
 ---
 
@@ -298,6 +305,7 @@ Wine Warehouse DDD/
 ├── Tree.html                    # visual architecture map + findings
 ├── requirements.txt
 ├── run.sh                       # starts the Cellar dashboard
+├── journal/                     # dated notes, YYYY-MM-DD-TOPIC.md (read newest first)
 ├── ingestion/
 │   ├── PLAN.md
 │   ├── ingest.py                # product-export CSV → filters → combined.csv
@@ -307,7 +315,7 @@ Wine Warehouse DDD/
 │   ├── uploads/                 (git-ignored) exports dropped in the Ingest panel
 │   └── output/                  (generated) combined.csv · excluded.csv · summary.json
 ├── fermentation/                # active
-│   ├── PLAN.md · SCORING-2026-09-15.md · ACCURACY-2026-09-15.md · BATON.md
+│   ├── PLAN.md
 │   ├── ferment.py               # CLI
 │   ├── phases.py                # search → score → tag, each over all wines
 │   ├── searcher.py · scorer.py · tagger.py · evidence.py

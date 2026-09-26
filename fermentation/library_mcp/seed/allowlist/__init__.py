@@ -4,7 +4,7 @@ Three hand-edited YAMLs live next to this file:
 
     countries.yaml   -- {name, iso, synonyms[]}            keyed by ISO-3166-1 alpha-2
     grapes.yaml      -- {name, color, synonyms[], qid?}    keyed by name
-    regions.yaml     -- {name, country, parent?, classification?, synonyms[], qid?}
+    regions.yaml     -- {name, country, parent?, classification?, synonyms[], grapes[], qid?}
 
 plus one machine-generated lock file, `qids.lock.yaml`, written by
 `seed/resolve_qids.py`. The lock maps grape / region names to the Wikidata
@@ -69,6 +69,7 @@ class RegionEntry:
     parent: str | None = None       # region name, must exist in regions.yaml
     classification: str | None = None
     synonyms: list[str] = field(default_factory=list)
+    grapes: list[str] = field(default_factory=list)  # principal grapes the appellation's rules name
     qid: str | None = None          # manual pin; overrides the lock file
 
 
@@ -101,11 +102,11 @@ class Allowlist:
         lk = self.lock_regions.get(_region_key(entry))
         return lk.qid if lk else None
 
-    def region_by_name(self, name: str) -> RegionEntry | None:
-        return self._regions_by_name.get(name)
+    def region_by_name(self, name: str, country: str) -> RegionEntry | None:
+        return self._regions_by_name.get((name, country))
 
     def __post_init__(self) -> None:
-        self._regions_by_name = {r.name: r for r in self.regions}
+        self._regions_by_name = {(r.name, r.country): r for r in self.regions}
 
 
 def _region_key(entry: RegionEntry) -> str:
@@ -132,7 +133,7 @@ def _str_list(v, where: str) -> list[str]:
     if v is None:
         return []
     if not isinstance(v, list) or not all(isinstance(x, str) for x in v):
-        raise AllowlistError(f"{where}: synonyms must be a list of strings")
+        raise AllowlistError(f"{where}: expected a list of strings")
     return [x.strip() for x in v if x.strip()]
 
 
@@ -202,6 +203,7 @@ def _load_regions(path: Path) -> list[RegionEntry]:
                 parent=_opt_str(d.get("parent"), where),
                 classification=_opt_str(d.get("classification"), where),
                 synonyms=_str_list(d.get("synonyms"), where),
+                grapes=_str_list(d.get("grapes"), where),
                 qid=_opt_qid(d.get("qid"), where),
             )
         )
@@ -295,27 +297,30 @@ def validate(al: Allowlist) -> None:
             if q in rqids:
                 problems.append(f"regions: {r.name!r} and {rqids[q]!r} share QID {q}")
             rqids[q] = r.name
-    # region names + synonyms must be globally unambiguous: the server
-    # resolves a bare string to ONE region, so "Styria" cannot mean both
-    # Steiermark (AT) and Štajerska (SI).
-    rlabel_owner: dict[str, str] = {}
+    # Region names + synonyms must be unambiguous WITHIN a country. The same
+    # label may name regions in different countries (La Rioja in ES and AR,
+    # Central Coast in US and AU): the server picks by the wine's country.
+    rlabel_owner: dict[tuple[str, str], str] = {}
     for r in al.regions:
         for label in [r.name, *r.synonyms]:
-            key = label.lower()
+            key = (label.lower(), r.country)
             owner = f"{r.name} ({r.country})"
             if key in rlabel_owner and rlabel_owner[key] != owner:
                 problems.append(f"regions: label {label!r} claimed by both {rlabel_owner[key]} and {owner}")
             rlabel_owner.setdefault(key, owner)
-    by_name = {r.name: r for r in al.regions}
+    # A parent is looked up in the child's own country.
+    by_key = {(r.name, r.country): r for r in al.regions}
     for r in al.regions:
         if r.parent is None:
             continue
-        p = by_name.get(r.parent)
+        p = by_key.get((r.parent, r.country))
         if p is None:
-            problems.append(f"regions: {r.name!r} parent {r.parent!r} is not in regions.yaml")
+            elsewhere = sorted(c for (n, c) in by_key if n == r.parent)
+            if elsewhere:
+                problems.append(f"regions: {r.name!r} ({r.country}) has parent {r.parent!r} in {', '.join(elsewhere)}")
+            else:
+                problems.append(f"regions: {r.name!r} parent {r.parent!r} is not in regions.yaml")
             continue
-        if p.country != r.country:
-            problems.append(f"regions: {r.name!r} ({r.country}) has parent {r.parent!r} in {p.country}")
         # cycle check
         seen = {r.name}
         cur = p
@@ -324,7 +329,13 @@ def validate(al: Allowlist) -> None:
                 problems.append(f"regions: parent cycle through {r.name!r}")
                 break
             seen.add(cur.name)
-            cur = by_name.get(cur.parent) if cur.parent else None
+            cur = by_key.get((cur.parent, cur.country)) if cur.parent else None
+    # A region's principal grapes must be allowlisted grapes (name or synonym).
+    grape_labels = {label.lower() for g in al.grapes for label in [g.name, *g.synonyms]}
+    for r in al.regions:
+        for g in r.grapes:
+            if g.lower() not in grape_labels:
+                problems.append(f"regions: {r.name!r} ({r.country}) grape {g!r} is not in grapes.yaml")
 
     if problems:
         raise AllowlistError("allowlist validation failed:\n  " + "\n  ".join(problems))

@@ -212,6 +212,11 @@ grapes:
     label: Brachetto
     note: ok
     qid: Q896583
+  Bukettraube:
+    description: Italian grape variety
+    label: Bukettraube
+    note: ok
+    qid: Q1003251
   Băbească Neagră:
     description: varietal
     label: Băbească Neagră
@@ -302,6 +307,11 @@ grapes:
     label: Chasselas
     note: ok
     qid: Q939724
+  Chenel:
+    description: Italian grape variety
+    label: Chenel
+    note: ok
+    qid: Q1069851
   Chenin Blanc:
     description: varietal
     label: Chenin blanc
@@ -377,6 +387,11 @@ grapes:
     label: Croatina
     note: ok
     qid: Q1140698
+  Crouchen Blanc:
+    description: white South African and Australian wine grape variety
+    label: Crouchen
+    note: ok
+    qid: Q1141642
   Cserszegi Fűszeres:
     description: varietal
     label: Cserszegi Fűszeres
@@ -417,7 +432,6 @@ grapes:
     label: Elbling
     note: ok
     qid: Q1325364
-  Emir: null
   Encruzado:
     description: variety of grape
     label: Encruzado
@@ -853,7 +867,6 @@ grapes:
     label: Mavrud
     note: ok
     qid: Q731972
-  Melnik: null
   Melon de Bourgogne:
     description: varietal
     label: Melon de Bourgogne
@@ -1269,6 +1282,11 @@ grapes:
     label: Rondinella
     note: ok
     qid: Q860892
+  Roobernet:
+    description: grape variety
+    label: Roobernet
+    note: ok
+    qid: Q2166124
   Rossese:
     description: Italian grape variety
     label: Rossese nero
@@ -1439,6 +1457,11 @@ grapes:
     label: Terret noir
     note: ok
     qid: Q2405349
+  Therona:
+    description: grape variety
+    label: Therona
+    note: ok
+    qid: Q2420182
   Timorasso:
     description: Italian grape variety
     label: Timorasso
@@ -1509,7 +1532,6 @@ grapes:
     label: Trousseau
     note: ok
     qid: Q6160560
-  Tsitska: null
   Tsolikouri:
     description: variety of grape
     label: Tsolikouri
@@ -1590,12 +1612,16 @@ grapes:
     label: Viosinho
     note: ok
     qid: Q2527531
-  Voskehat: null
   Vranac:
     description: variety of grape
     label: Vranec
     note: ok
     qid: Q678124
+  Weldra:
+    description: variety of grape
+    label: Weldra
+    note: ok
+    qid: Q2557499
   Welschriesling:
     description: Italian grape variety
     label: Italian Riesling
@@ -1668,6 +1694,8 @@ regions:
     label: Aglianico del Vulture DOC
     note: ok
     qid: Q338771
+  Agter-Paarl (ZA): null
+  Agterkliphoogte (ZA): null
   Ahr (DE): null
   Alella (ES):
     description: Spanish wine
@@ -1764,6 +1792,7 @@ regions:
     label: Arroyo Seco AVA
     note: ok
     qid: Q263615
+  Ashton (ZA): null
   Asti (IT):
     description: Italian controlled and guaranteed designation of origin wine from Piedmont
     label: Asti DOCG
@@ -1812,11 +1841,13 @@ regions:
     label: Ballard Canyon AVA
     note: ok
     qid: Q107261141
+  Bamboes Bay (ZA): null
   Bandol (FR):
     description: French wine
     label: Bandol AOC
     note: ok
     qid: Q2882372
+  Banghoek (ZA): null
   Banyuls (FR): null
   Barbaresco (IT):
     description: Italian controlled and guaranteed designation of origin wine from Piedmont
@@ -1907,6 +1938,8 @@ regions:
     label: Blaye
     note: ok
     qid: Q2655967
+  Blouvlei (ZA): null
+  Boesmansrivier (ZA): null
   Bolgheri (IT):
     description: Italian controlled designation of origin wine from Tuscany
     label: Bolgheri DOC
@@ -1917,17 +1950,21 @@ regions:
     label: Bonnezeaux
     note: ok
     qid: Q892806
+  Bonnievale (ZA): null
   Bordeaux (FR):
     description: brownish red colour associated with Bordeaux wine
     label: bordeaux
     note: ok
     qid: Q10859033
   Bordeaux Supérieur (FR): null
+  Bot River (ZA): null
+  Bottelary (ZA): null
   Bourgueil (FR):
     description: French wine
     label: Bourgueil AOC
     note: ok
     qid: Q2922370
+  Bovlei (ZA): null
   Breede River Valley (ZA): null
   Breedekloof (ZA):
     description: wine district in South Africa
@@ -1955,6 +1992,7 @@ regions:
     note: ok
     qid: Q26667
   Bucelas (PT): null
+  Buffeljags (ZA): null
   Bullas (ES):
     description: wine-producing region
     label: Bullas Wine Region
@@ -2006,6 +2044,7 @@ regions:
     label: Calistoga AVA
     note: ok
     qid: Q5021434
+  Calitzdorp (ZA): null
   Campanha (BR):
     description: town (município) in the Brazilian state of Minas Gerais
     label: Campanha
@@ -2033,14 +2072,22 @@ regions:
     note: ok
     qid: Q5031253
   Canelones (UY): null
+  Cango Valley (ZA): null
   Cannonau di Sardegna (IT):
     description: Italian controlled designation of origin wine from Sardinia
     label: Cannonau di Sardegna DOC
     note: ok
     qid: Q31841466
   Canterbury (NZ): null
+  Cape Agulhas (ZA):
+    description: wine producing district in South Africa
+    label: Cape Agulhas
+    note: ok
+    qid: Q15873714
+  Cape Coast (ZA): null
   Cape South Coast (ZA): null
   Cape Town (ZA): null
+  Cape West Coast (ZA): null
   Cappadocia (TR):
     description: historical region of Anatolia in Turkey
     label: Cappadocia
@@ -2087,11 +2134,14 @@ regions:
     note: non-wine class -- review
     qid: Q5705
   Cava (ES): null
+  Cederberg (ZA): null
   Central Coast (US):
     description: winemaking region
     label: Central Coast AVA
     note: ok
     qid: Q1053730
+  Central Drakensberg (ZA): null
+  Central Orange River (ZA): null
   Central Otago (NZ):
     description: wine region in New Zealand
     label: Central Otago wine region
@@ -2113,6 +2163,8 @@ regions:
     label: Cerasuolo di Vittoria DOCG
     note: ok
     qid: Q1054633
+  Ceres (ZA): null
+  Ceres Plateau (ZA): null
   Chablis (FR):
     description: French white wine
     label: Chablis wine
@@ -2206,6 +2258,8 @@ regions:
     label: Cirò DOC
     note: ok
     qid: Q139916959
+  Citrusdal Mountain (ZA): null
+  Citrusdal Valley (ZA): null
   Clare Valley (AU):
     description: region of South Australia
     label: Clare Valley
@@ -2407,6 +2461,7 @@ regions:
     label: Dealu Mare wine region
     note: ok
     qid: Q5245932
+  Devon Valley (ZA): null
   Dogliani (IT):
     description: Italian controlled and guaranteed designation of origin wine from Piedmont
     label: Dogliani DOCG
@@ -2417,6 +2472,7 @@ regions:
     label: Dolcetto d'Alba DOC
     note: ok
     qid: Q1235386
+  Douglas (ZA): null
   Douro (PT): null
   Drama (GR): null
   Dry Creek Valley (US):
@@ -2436,6 +2492,7 @@ regions:
     qid: Q251411
   Durbanville (ZA): null
   Dão (PT): null
+  Eastern Cape (ZA): null
   Eden Valley (AU):
     description: wine region in South Australia, Australia
     label: Eden Valley wine region
@@ -2451,13 +2508,16 @@ regions:
     label: Eger
     note: non-wine class -- review
     qid: Q167109
+  Eilandia (ZA): null
   Eisenberg (AT): null
   El Dorado (US):
     description: American Viticultural Area located in El Dorado County, California
     label: El Dorado AVA
     note: ok
     qid: Q1324076
+  Elandskloof (ZA): null
   Elgin (ZA): null
+  Elim (ZA): null
   Elqui Valley (CL):
     description: wine region in northern Chile
     label: Elqui Valley
@@ -2545,6 +2605,7 @@ regions:
     label: Frascati DOC
     note: ok
     qid: Q457946
+  Free State (ZA): null
   Friuli Grave (IT):
     description: Italian controlled designation of origin wine from Friuli-Venezia Giulia
     label: Friuli Grave DOC
@@ -2622,8 +2683,12 @@ regions:
     qid: Q3765075
   Gisborne (NZ): null
   Givry (FR): null
+  Goedemoed (ZA): null
   Golan Heights (IL): null
+  Goree (ZA): null
   Goriška Brda (SI): null
+  Goudini (ZA): null
+  Goudmyn (ZA): null
   Goumenissa (GR): null
   Grampians (AU):
     description: wine-producing region in Victoria, Australia
@@ -2645,11 +2710,18 @@ regions:
     label: Greco di Tufo DOCG
     note: ok
     qid: Q1391506
+  Greyton (ZA): null
+  Groblershoop (ZA): null
+  Groenberg (ZA): null
+  Groenekloof (ZA): null
+  Groenfontein (ZA): null
+  Grootdrink (ZA): null
   Happy Canyon of Santa Barbara (US):
     description: winemaking region in California, United States
     label: Happy Canyon of Santa Barbara AVA
     note: ok
     qid: Q5652573
+  Hartswater (ZA): null
   Haut-Médoc (FR):
     description: French wine AOC, sub-region of the Medoc and Bordeaux
     label: Haut-Médoc AOC
@@ -2665,23 +2737,32 @@ regions:
     label: Heathcote wine region
     note: ok
     qid: Q5693656
-  Hemel-en-Aarde (ZA): null
+  Hemel-en-Aarde Ridge (ZA): null
+  Hemel-en-Aarde Valley (ZA):
+    description: wine region
+    label: Hemel-en-Aarde Valley
+    note: ok
+    qid: Q31919666
+  Herbertsdale (ZA): null
   Hermitage (FR): null
   Hessische Bergstraße (DE):
     description: wine-producing region
     label: Hessische Bergstraße
     note: ok
     qid: Q323855
+  Hex River Valley (ZA): null
   Hokkaido (JP):
     description: prefecture of Japan
     label: Hokkaido
     note: non-wine class -- review
     qid: Q1037393
+  Hoopsrivier (ZA): null
   Horse Heaven Hills (US):
     description: viticultural area in southeastern Washington, USA
     label: Horse Heaven Hills AVA
     note: ok
     qid: Q1628973
+  Hout Bay (ZA): null
   Howell Mountain (US):
     description: American Viticultural Area located in Napa County, California
     label: Howell Mountain AVA
@@ -2726,6 +2807,7 @@ regions:
     qid: Q5053165
   Itata Valley (CL): null
   Jerez (ES): null
+  Jonkershoek Valley (ZA): null
   Judean Hills (IL): null
   Jujuy (AR): null
   Juliénas (FR):
@@ -2748,17 +2830,21 @@ regions:
     label: Jurançon AOC
     note: ok
     qid: Q921560
+  Kakamas (ZA): null
   Kakheti (GE):
     description: ''
     label: Kakheti
     note: non-wine class -- review
     qid: Q16371011
   Kamptal (AT): null
+  Karoo-Hoogland (ZA): null
   Kartli (GE):
     description: historical region in central-to-eastern Georgia
     label: Kartli
     note: non-wine class -- review
     qid: Q459875
+  Keeromsberg (ZA): null
+  Keimoes (ZA): null
   Kent (GB):
     description: historic county of England
     label: Kent
@@ -2770,14 +2856,20 @@ regions:
     note: ok
     qid: Q2030130
   King Valley (AU): null
+  Klaasvoogds (ZA): null
   Klein Karoo (ZA): null
+  Klein River (ZA): null
   Knights Valley (US):
     description: American wine region
     label: Knights Valley AVA
     note: ok
     qid: Q1493028
+  Koekenaap (ZA): null
+  Koo Plateau (ZA): null
   Kras (SI): null
   Kremstal (AT): null
+  KwaZulu-Natal (ZA): null
+  Kweekvallei (ZA): null
   La Clape (FR): null
   La Mancha (ES):
     description: La Mancha is a Spanish Denominación de Origen Protegida (DOP) for wines,
@@ -2794,6 +2886,8 @@ regions:
     label: Lalande-de-Pomerol AOC
     note: ok
     qid: Q669737
+  Lamberts Bay (ZA): null
+  Langeberg-Garcia (ZA): null
   Langhe (IT):
     description: Italian controlled designation of origin wine from Piedmont
     label: Langhe DOC
@@ -2821,6 +2915,8 @@ regions:
     label: Lazio
     note: non-wine class -- review
     qid: Q1282
+  Le Chasseur (ZA): null
+  Leipoldtville-Sandveld (ZA): null
   Leithaberg (AT): null
   Les Baux-de-Provence (FR): null
   Leyda Valley (CL): null
@@ -2831,7 +2927,10 @@ regions:
     qid: Q1256
   Limarí Valley (CL): null
   Limestone Coast (AU): null
+  Limietberg (ZA): null
   Limoux (FR): null
+  Limpopo (ZA): null
+  Lions River (ZA): null
   Lirac (FR):
     description: Southern Rhône wine appelation
     label: Lirac AOC
@@ -2873,6 +2972,7 @@ regions:
     label: Los Carneros AVA
     note: ok
     qid: Q1870486
+  Lower Duivenhoks River (ZA): null
   Luberon (FR): null
   Lugana (IT):
     description: Italian controlled designation of origin wine from Lombardy
@@ -2880,6 +2980,7 @@ regions:
     note: ok
     qid: Q1875978
   Luján de Cuyo (AR): null
+  Lutzville Valley (ZA): null
   Macedon Ranges (AU):
     description: wine region in Victoria, Australia
     label: Macedon Ranges wine region
@@ -2904,8 +3005,10 @@ regions:
     note: non-wine class -- review
     qid: Q16918
   Maldonado (UY): null
+  Malgas (ZA): null
   Malleco Valley (CL): null
   Mallorca (ES): null
+  Malmesbury (ZA): null
   Manchuela (ES):
     description: is a Spanish Denominación de Origen Protegida (DOP) for wines located in the historical
       Manchuela comarca, in the east of the provinces of Albacete and Cuenca (Castile-La Mancha, Spain)
@@ -2964,6 +3067,7 @@ regions:
     label: Maury AOC
     note: ok
     qid: Q2120260
+  McGregor (ZA): null
   McLaren Vale (AU):
     description: Australian Geographical indication
     label: McLaren Vale
@@ -3014,6 +3118,7 @@ regions:
     label: Michigan
     note: non-wine class -- review
     qid: Q1166
+  Mid-Berg River (ZA): null
   Minervois (FR):
     description: appellation d'origine contrôlée
     label: Minervois AOC
@@ -3051,6 +3156,7 @@ regions:
     note: ok
     qid: Q3322288
   Montagny (FR): null
+  Montagu (ZA): null
   Montalcino (IT):
     description: wine-producing area in Tuscany, Italy
     label: Montalcino
@@ -3093,6 +3199,7 @@ regions:
     label: Montsant DO
     note: ok
     qid: Q1808846
+  Moordkuil (ZA): null
   Moravia (CZ):
     description: historical land in the Czech Republic
     label: Moravia
@@ -3195,6 +3302,7 @@ regions:
     label: Napa Valley AVA
     note: ok
     qid: Q1151105
+  Napier (ZA): null
   Nashik (IN): null
   Navarra (ES):
     description: Spanish Denominación de Origen Protegida (DOP) for wines from the southern half of the
@@ -3234,6 +3342,7 @@ regions:
     qid: Q1384
   Niagara Peninsula (CA): null
   Niederösterreich (AT): null
+  Nieuwoudtville (ZA): null
   Ningxia (CN):
     description: autonomous region of China
     label: Ningxia
@@ -3249,6 +3358,7 @@ regions:
     label: North Coast AVA
     note: ok
     qid: Q2000573
+  North West (ZA): null
   Northern Cape (ZA): null
   Northern Rhône (FR): null
   Nova Scotia (CA):
@@ -3261,6 +3371,7 @@ regions:
     label: Nuits-Saint-Georges wine
     note: ok
     qid: Q3346179
+  Nuy (ZA): null
   Oakville (US):
     description: American Viticultural Area
     label: Oakville AVA
@@ -3307,7 +3418,10 @@ regions:
     label: Orvieto DOC
     note: ok
     qid: Q1404965
+  Outeniqua (ZA): null
   Overberg (ZA): null
+  Paardeberg (ZA): null
+  Paardeberg South (ZA): null
   Paarl (ZA): null
   Padthaway (AU):
     description: wine-growing region in South Australia
@@ -3320,6 +3434,7 @@ regions:
     label: Pantelleria DOC
     note: ok
     qid: Q3893429
+  Papegaaiberg (ZA): null
   Paso Robles (US):
     description: wine region
     label: Paso Robles AVA
@@ -3367,6 +3482,7 @@ regions:
     note: ok
     qid: Q107223280
   Pfalz (DE): null
+  Philadelphia (ZA): null
   Pic Saint-Loup (FR): null
   Picpoul de Pinet (FR):
     description: French wine
@@ -3378,7 +3494,11 @@ regions:
     label: Piedmont
     note: non-wine class -- review
     qid: Q3382642
+  Piekenierskloof (ZA): null
+  Piket-Bo-Berg (ZA): null
+  Plettenberg Bay (ZA): null
   Podravje (SI): null
+  Polkadraai Hills (ZA): null
   Pomerol (FR):
     description: Bordeaux wine appellation
     label: Pomerol AOC
@@ -3389,6 +3509,7 @@ regions:
     label: Pommard wine
     note: ok
     qid: Q13210563
+  Porseleinberg (ZA): null
   Porto (PT): null
   Pouilly-Fuissé (FR):
     description: French wine region in Burgundy
@@ -3400,6 +3521,7 @@ regions:
     label: Pouilly-Fumé
     note: ok
     qid: Q2106740
+  Prieska (ZA): null
   Primitivo di Manduria (IT):
     description: Italian controlled designation of origin wine from Apulia
     label: Primitivo di Manduria DOC
@@ -3410,6 +3532,8 @@ regions:
     label: Primorska wine region
     note: ok
     qid: Q19937667
+  Prince Albert (ZA): null
+  Prince Albert Valley (ZA): null
   Prince Edward County (CA): null
   Priorat (ES):
     description: Spanish wine
@@ -3501,6 +3625,9 @@ regions:
     label: Ribera del Duero
     note: ok
     qid: Q2167338
+  Riebeekberg (ZA): null
+  Riebeeksrivier (ZA): null
+  Rietrivier FS (ZA): null
   Rioja (ES):
     description: Spanish wine region
     label: Rioja
@@ -3540,6 +3667,7 @@ regions:
     label: Rogue Valley AVA
     note: ok
     qid: Q266538
+  Rooikrans (ZA): null
   Rosso Conero (IT):
     description: Italian controlled designation of origin wine from Marche
     label: Rosso Conero DOC
@@ -3754,6 +3882,7 @@ regions:
     label: Savoie
     note: non-wine class -- review
     qid: Q12745
+  Scherpenheuvel (ZA): null
   Serra Gaúcha (BR): null
   Shandong (CN):
     description: province in East China
@@ -3773,6 +3902,9 @@ regions:
     qid: Q1646258
   Sierra de Gredos (ES): null
   Similkameen Valley (CA): null
+  Simonsberg-Paarl (ZA): null
+  Simonsberg-Stellenbosch (ZA): null
+  Slanghoek (ZA): null
   Slavonia (HR):
     description: historical region of Croatia
     label: Slavonia
@@ -3831,6 +3963,10 @@ regions:
     label: Spring Mountain District AVA
     note: ok
     qid: Q2313841
+  Springfontein Rim (ZA): null
+  Spruitdrift (ZA): null
+  St Francis Bay (ZA): null
+  St Helena Bay (ZA): null
   St. Helena (US):
     description: California wine region in Napa Valley
     label: St. Helena AVA
@@ -3846,20 +3982,28 @@ regions:
     label: Stags Leap District AVA
     note: ok
     qid: Q2328901
+  Stanford Foothills (ZA): null
   Steiermark (AT): null
   Stellenbosch (ZA): null
+  Stettyn (ZA): null
+  Still Bay East (ZA): null
+  Stormsvlei (ZA): null
   Struma Valley (BG): null
+  Sunday's Glen (ZA): null
   Sussex (GB):
     description: historic county of England, United Kingdom
     label: Sussex
     note: non-wine class -- review
     qid: Q23346
+  Sutherland-Karoo (ZA): null
   Swan Valley (AU):
     description: region in north eastern Perth, Western Australia.
     label: Swan Valley
     note: ok
     qid: Q641419
+  Swartberg (ZA): null
   Swartland (ZA): null
+  Swellendam (ZA): null
   Szekszárd (HU):
     description: ''
     label: Szekszárd Wine Region
@@ -3913,6 +4057,7 @@ regions:
     label: Texas Hill Country AVA
     note: ok
     qid: Q634633
+  Theewater (ZA): null
   Thermenregion (AT): null
   Thrace (TR):
     description: geographical and historical region in Southeast Europe
@@ -3942,6 +4087,8 @@ regions:
     label: Touraine AOC
     note: ok
     qid: Q3533893
+  Tradouw (ZA): null
+  Tradouw Highlands (ZA): null
   Traisental (AT): null
   Trebbiano d'Abruzzo (IT):
     description: Italian controlled designation of origin wine from Abruzzo
@@ -3981,6 +4128,9 @@ regions:
     label: Umpqua Valley AVA
     note: ok
     qid: Q7881781
+  Upington (ZA): null
+  Upper Hemel-en-Aarde Valley (ZA): null
+  Upper Langkloof (ZA): null
   Utiel-Requena (ES):
     description: Spanish Denominación de Origen Protegida (DOP) for wines located in the province of Valencia
       (Valencian Community)
@@ -4077,6 +4227,7 @@ regions:
     note: ok
     qid: Q7931336
   Vinho Verde (PT): null
+  Vinkrivier (ZA): null
   Vino Nobile di Montepulciano (IT):
     description: Italian controlled and guaranteed designation of origin wine from Tuscany
     label: Vino Nobile di Montepulciano DOCG
@@ -4107,11 +4258,13 @@ regions:
     label: Viré-Clessé
     note: ok
     qid: Q3560958
+  Vlottenburg (ZA): null
   Volnay (FR):
     description: French wine
     label: Volnay wine
     note: ok
     qid: Q3562921
+  Voor-Paardeberg (ZA): null
   Vosne-Romanée (FR):
     description: French wine
     label: Vosne-Romanée wine
@@ -4127,6 +4280,7 @@ regions:
     label: Vouvray
     note: ok
     qid: Q13420363
+  Vredendal (ZA): null
   Vulkanland Steiermark (AT): null
   Wachau (AT): null
   Wagram (AT): null
@@ -4198,6 +4352,7 @@ regions:
     label: Yunnan
     note: non-wine class -- review
     qid: Q43194
+  Zandrivier (ZA): null
   delle Venezie (IT):
     description: Italian interregional controlled designation of origin wine
     label: Delle Venezie DOC

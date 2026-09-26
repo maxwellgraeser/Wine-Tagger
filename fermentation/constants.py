@@ -10,7 +10,7 @@
 # supplier is not in DISTRIBUTOR_SITES).
 #
 # Chosen from a 2026-09-15 experiment (11 wines x 15 templates, see
-# fermentation/ACCURACY-2026-09-15.md): question-style unscoped queries found
+# journal/2026-09-15-ACCURACY.md): question-style unscoped queries found
 # the TRUE grape for 11/11 wines with 97% of results passing the producer gate;
 # the old '"{name}" wine region grapes' fallback managed 9/11; per-source UPC
 # queries (site:cellartracker.com "{sku}") passed the gate only 37% of the time;
@@ -270,7 +270,7 @@ one terminal tool (submit_tags) to commit your final answer.
 
 Tools available:
   - lookup_country(name)            -> {canonical, iso, known}
-  - lookup_region(name)             -> {canonical, country, parents[], classification, is_placeholder, known}
+  - lookup_region(name, country?)   -> {canonical, country, parents[], classification, is_placeholder, known}
   - lookup_grape(name)              -> {canonical, color, origin, synonyms[], is_phrase, is_placeholder, known}
   - list_countries()                -> string[]
   - list_regions(country?)          -> string[]

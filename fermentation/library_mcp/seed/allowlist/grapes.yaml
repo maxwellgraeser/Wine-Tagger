@@ -48,7 +48,7 @@
 # ---------------- International / French whites ----------------
 - {name: "Chardonnay", color: white, synonyms: ["Chard"]}
 - {name: "Sauvignon Blanc", color: white, synonyms: ["Sauv Blanc", "SB", "Blanc Fumé", "Fumé Blanc", "Fume Blanc", "Sauvignon"]}
-- {name: "Sémillon", color: white, synonyms: ["Semillon"]}
+- {name: "Sémillon", color: white, synonyms: ["Semillon", "Groendruif"]}
 - {name: "Muscadelle", color: white}
 - {name: "Chenin Blanc", color: white, synonyms: ["Chenin", "Steen", "Pineau de la Loire"]}
 - {name: "Melon de Bourgogne", color: white, synonyms: ["Muscadet (grape)", "Melon"]}
@@ -61,16 +61,16 @@
 - {name: "Bourboulenc", color: white}
 - {name: "Picpoul Blanc", color: white, qid: Q20723604, synonyms: ["Picpoul", "Piquepoul", "Piquepoul Blanc", "Picapoll"]}
 - {name: "Trebbiano", color: white, synonyms: ["Ugni Blanc", "Trebbiano Toscano", "Saint-Émilion (grape)"]}
-- {name: "Colombard", color: white, synonyms: ["French Colombard"]}
+- {name: "Colombard", color: white, synonyms: ["French Colombard", "Colombar"]}
 - {name: "Gros Manseng", color: white}
 - {name: "Petit Manseng", color: white}
-- {name: "Riesling", color: white, synonyms: ["Johannisberg Riesling", "White Riesling", "Rheinriesling", "Riesling Renano"]}
+- {name: "Riesling", color: white, synonyms: ["Johannisberg Riesling", "White Riesling", "Rheinriesling", "Riesling Renano", "Weisser Riesling", "Rhine Riesling"]}
 - {name: "Gewürztraminer", color: white, synonyms: ["Gewurztraminer", "Traminer", "Traminer Aromatico"]}
 - {name: "Pinot Gris", color: white, synonyms: ["Pinot Grigio", "Grauburgunder", "Ruländer", "Rulander", "PG", "Grauer Burgunder"]}
 - {name: "Pinot Blanc", color: white, synonyms: ["Pinot Bianco", "Weissburgunder", "Weißburgunder", "Weisser Burgunder"]}
 - {name: "Auxerrois Blanc", color: white, synonyms: ["Auxerrois"]}
 - {name: "Silvaner", color: white, synonyms: ["Sylvaner", "Grüner Silvaner"]}
-- {name: "Muscat Blanc à Petits Grains", color: white, synonyms: ["Muscat", "Moscato", "Moscato Bianco", "Muscat Canelli", "Muscat Blanc", "Moscatel Galego", "Gelber Muskateller", "Muskateller", "Tamjanika", "Muscat de Frontignan", "Moscato d'Asti (grape)"]}
+- {name: "Muscat Blanc à Petits Grains", color: white, synonyms: ["Muscat", "Moscato", "Moscato Bianco", "Muscat Canelli", "Muscat Blanc", "Moscatel Galego", "Gelber Muskateller", "Muskateller", "Tamjanika", "Muscat de Frontignan", "Moscato d'Asti (grape)", "Muscadel", "Muskadel", "Red Muscadel", "White Muscadel"]}
 - {name: "Muscat of Alexandria", color: white, synonyms: ["Moscatel", "Zibibbo", "Moscatel de Alejandría", "Muscat Gordo Blanco", "Gordo", "Hanepoot", "Moscatel de Setúbal (grape)"]}
 - {name: "Muscat Ottonel", color: white}
 - {name: "Aligoté", color: white, synonyms: ["Aligote"]}
@@ -204,7 +204,7 @@
 - {name: "Graciano", color: red, synonyms: ["Morrastel", "Tintilla de Rota"]}
 - {name: "Prieto Picudo", color: red}
 - {name: "Listán Negro", color: red, synonyms: ["Listan Negro"]}
-- {name: "Palomino", color: white, synonyms: ["Palomino Fino", "Listán Blanco", "Listan Blanco"]}
+- {name: "Palomino", color: white, synonyms: ["Palomino Fino", "Listán Blanco", "Listan Blanco", "Fransdruif", "White French"]}
 - {name: "Pedro Ximénez", color: white, synonyms: ["Pedro Ximenez", "PX"]}
 - {name: "Airén", color: white, synonyms: ["Airen"]}
 - {name: "Verdejo", color: white}
@@ -363,3 +363,11 @@
 - {name: "La Crescent", color: white}
 - {name: "Baco Noir", color: red}
 - {name: "Cayuga White", color: white}
+
+# ---------------- research: za ----------------
+- {name: "Roobernet", color: red}
+- {name: "Chenel", color: white}
+- {name: "Weldra", color: white}
+- {name: "Therona", color: white}
+- {name: "Bukettraube", color: white, synonyms: ["Bukettrebe", "Bouquet Blanc"]}
+- {name: "Crouchen Blanc", color: white, synonyms: ["Crouchen", "Cape Riesling", "South African Riesling", "SA Riesling", "Paarl Riesling"]}

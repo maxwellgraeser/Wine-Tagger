@@ -1,0 +1,37 @@
+# Label strings as they appear on real labels and retailer pages, and the
+# canonical entry each must resolve to. Curated from the research agents'
+# tables (seed/research/<slug>.md): pairs are checked before they land
+# here. Keyed by ISO country; region lookups pass that country.
+#
+# `not_grapes` lists strings that must NOT resolve as grapes, because they
+# would mislead the tagger or evidence.py (a place name that was once a grape
+# synonym).
+
+ZA:
+  regions:
+    "Robertson Valley": Robertson
+    "W.O. Stellenbosch": Stellenbosch
+    "Stellenbosch WO": Stellenbosch
+    "Franschhoek Valley": Franschhoek
+    "Constantia Valley": Constantia
+    "Hemel-en-Aarde Valley": Hemel-en-Aarde Valley
+    "Upper Hemel-en-Aarde Valley": Upper Hemel-en-Aarde Valley
+    "Perdeberg": Paardeberg
+    "Klein Rivier": Klein River
+    "Little Karoo": Klein Karoo
+    "North-West Province": North West
+  grapes:
+    "Steen": Chenin Blanc
+    "Hanepoot": Muscat of Alexandria
+    "Cape Riesling": Crouchen Blanc
+    "South African Riesling": Crouchen Blanc
+    "Colombar": Colombard
+    "Red Muscadel": Muscat Blanc à Petits Grains
+    "Fransdruif": Palomino
+    "Groendruif": Sémillon
+    "Cinsaut": Cinsault
+    "Weisser Riesling": Riesling
+    "Shiraz": Syrah
+    "Bukettrebe": Bukettraube
+  not_grapes: ["Hermitage"]
+

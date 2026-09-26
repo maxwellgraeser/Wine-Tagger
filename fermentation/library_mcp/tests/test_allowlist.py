@@ -96,6 +96,33 @@ def test_validation_errors(base, grapes, regions, msg):
     assert msg in str(exc.value)
 
 
+def test_region_label_may_repeat_across_countries(base):
+    _write(base, [{"name": "Spain", "iso": "ES"}, {"name": "Argentina", "iso": "AR"}],
+           [{"name": "Torrontés", "qid": "Q1"}],
+           [{"name": "Rioja", "country": "ES", "synonyms": ["La Rioja"]},
+            {"name": "La Rioja", "country": "AR", "grapes": ["Torrontés"]},
+            {"name": "Famatina", "country": "AR", "parent": "La Rioja"}],
+           {"grapes": {}, "regions": {}})
+    al = load_allowlists(base)
+    assert al.region_by_name("La Rioja", "AR").grapes == ["Torrontés"]
+    assert al.region_by_name("La Rioja", "ES") is None
+
+
+@pytest.mark.parametrize("regions,msg", [
+    # a parent is looked up in the child's own country only
+    ([{"name": "La Rioja", "country": "ES"}, {"name": "Famatina", "country": "AR", "parent": "La Rioja"}],
+     "has parent 'La Rioja' in ES"),
+    # principal grapes must be allowlisted (name or synonym)
+    ([{"name": "La Rioja", "country": "AR", "grapes": ["Torrontes Riojano"]}], "is not in grapes.yaml"),
+])
+def test_region_country_scoping_errors(base, regions, msg):
+    _write(base, [{"name": "Spain", "iso": "ES"}, {"name": "Argentina", "iso": "AR"}],
+           [{"name": "Torrontés", "qid": "Q1"}], regions, {"grapes": {}, "regions": {}})
+    with pytest.raises(AllowlistError) as exc:
+        load_allowlists(base)
+    assert msg in str(exc.value)
+
+
 def test_bad_qid_format_rejected(base):
     _write(base, [{"name": "Italy", "iso": "IT"}], [{"name": "A", "qid": "12"}], [])
     with pytest.raises(AllowlistError):

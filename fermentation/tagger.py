@@ -51,10 +51,13 @@ TOOL_SCHEMAS: list[dict[str, Any]] = [
         "type": "function",
         "function": {
             "name": "lookup_region",
-            "description": "Resolve a wine region or synonym (Piemonte, Napa). Returns {canonical, country, parents[], classification, is_placeholder, known}. is_placeholder=true means real but non-canonical: it will not pass submit_tags -- use a canonical parent instead.",
+            "description": "Resolve a wine region or synonym (Piemonte, Napa). Pass country when known: a few names exist in more than one country, and without it the answer may list alternatives. Returns {canonical, country, parents[], classification, is_placeholder, known}. is_placeholder=true means real but non-canonical: it will not pass submit_tags -- use a canonical parent instead.",
             "parameters": {
                 "type": "object",
-                "properties": {"name": {"type": "string"}},
+                "properties": {
+                    "name": {"type": "string"},
+                    "country": {"type": ["string", "null"]},
+                },
                 "required": ["name"],
             },
         },
