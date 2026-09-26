@@ -15,7 +15,7 @@
 - {name: "Malbec", color: red, synonyms: ["Côt", "Cot", "Auxerrois Noir"]}
 - {name: "Carménère", color: red, synonyms: ["Carmenere", "Grande Vidure"]}
 - {name: "Syrah", color: red, synonyms: ["Shiraz"]}
-- {name: "Grenache", color: red, synonyms: ["Garnacha", "Garnacha Tinta", "Grenache Noir", "Cannonau", "GR"]}
+- {name: "Grenache", color: red, synonyms: ["Garnacha", "Garnacha Tinta", "Grenache Noir", "Cannonau", "GR", "Garnatxa"]}
 - {name: "Mourvèdre", color: red, synonyms: ["Mourvedre", "Monastrell", "Mataro"]}
 - {name: "Cinsault", color: red, synonyms: ["Cinsaut"]}
 - {name: "Carignan", color: red, synonyms: ["Carignane", "Cariñena", "Carinena", "Mazuelo", "Mazuela", "Carignano", "Samsó"]}
@@ -36,10 +36,10 @@
 - {name: "Duras", color: red}
 - {name: "Mondeuse", color: red, synonyms: ["Mondeuse Noire"]}
 - {name: "Poulsard", color: red, synonyms: ["Ploussard"]}
-- {name: "Trousseau", color: red, synonyms: ["Bastardo"]}
+- {name: "Trousseau", color: red, synonyms: ["Bastardo", "Merenzao", "Maturana Tinta", "Verdejo Negro"]}
 - {name: "Pineau d'Aunis", color: red}
 - {name: "Grolleau", color: red, synonyms: ["Groslot"]}
-- {name: "Piquepoul Noir", color: red, synonyms: ["Picpoul Noir"]}
+- {name: "Piquepoul Noir", color: red, synonyms: ["Picpoul Noir", "Picapoll Negre", "Picapoll Negro"]}
 - {name: "Terret Noir", color: red}
 - {name: "Abouriou", color: red}
 - {name: "Manseng Noir", color: red}
@@ -70,7 +70,7 @@
 - {name: "Pinot Blanc", color: white, synonyms: ["Pinot Bianco", "Weissburgunder", "Weißburgunder", "Weisser Burgunder"]}
 - {name: "Auxerrois Blanc", color: white, synonyms: ["Auxerrois", "Pinot Auxerrois"]}
 - {name: "Silvaner", color: white, synonyms: ["Sylvaner", "Grüner Silvaner"]}
-- {name: "Muscat Blanc à Petits Grains", color: white, synonyms: ["Muscat", "Moscato", "Moscato Bianco", "Muscat Canelli", "Muscat Blanc", "Moscatel Galego", "Gelber Muskateller", "Muskateller", "Tamjanika", "Muscat de Frontignan", "Moscato d'Asti (grape)", "Muscadel", "Muskadel", "Red Muscadel", "White Muscadel"]}
+- {name: "Muscat Blanc à Petits Grains", color: white, synonyms: ["Muscat", "Moscato", "Moscato Bianco", "Muscat Canelli", "Muscat Blanc", "Moscatel Galego", "Gelber Muskateller", "Muskateller", "Tamjanika", "Muscat de Frontignan", "Moscato d'Asti (grape)", "Muscadel", "Muskadel", "Red Muscadel", "White Muscadel", "Moscatel de Grano Menudo"]}
 - {name: "Muscat of Alexandria", color: white, synonyms: ["Moscatel", "Zibibbo", "Moscatel de Alejandría", "Muscat Gordo Blanco", "Gordo", "Hanepoot", "Moscatel de Setúbal (grape)", "Muscat d'Alexandrie"]}
 - {name: "Muscat Ottonel", color: white}
 - {name: "Aligoté", color: white, synonyms: ["Aligote"]}
@@ -206,7 +206,7 @@
 - {name: "Listán Negro", color: red, synonyms: ["Listan Negro"]}
 - {name: "Palomino", color: white, synonyms: ["Palomino Fino", "Listán Blanco", "Listan Blanco", "Fransdruif", "White French"]}
 - {name: "Pedro Ximénez", color: white, synonyms: ["Pedro Ximenez", "PX"]}
-- {name: "Airén", color: white, synonyms: ["Airen"]}
+- {name: "Airén", color: white, synonyms: ["Airen", "Forcallat Blanca", "Forcayat"]}
 - {name: "Verdejo", color: white}
 - {name: "Albariño", color: white, synonyms: ["Albarino", "Alvarinho"]}
 - {name: "Godello", color: white, synonyms: ["Gouveio", "Verdelho do Dão"]}
@@ -231,9 +231,9 @@
 - {name: "Castelão", color: red, synonyms: ["Castelao", "Periquita", "Castelão Francês", "João de Santarém"]}
 - {name: "Baga", color: red}
 - {name: "Trincadeira", color: red, synonyms: ["Tinta Amarela"]}
-- {name: "Alfrocheiro", color: red}
+- {name: "Alfrocheiro", color: red, synonyms: ["Baboso Negro", "Bruñal", "Bastardillo Chico"]}
 - {name: "Rufete", color: red}
-- {name: "Vinhão", color: red, synonyms: ["Vinhao", "Sousão", "Sousao", "Souzao"]}
+- {name: "Vinhão", color: red, synonyms: ["Vinhao", "Sousão", "Sousao", "Souzao", "Sousón"]}
 - {name: "Arinto", color: white, synonyms: ["Pedernã"]}
 - {name: "Fernão Pires", color: white, synonyms: ["Fernao Pires", "Maria Gomes"]}
 - {name: "Encruzado", color: white}
@@ -241,7 +241,7 @@
 - {name: "Bical", color: white, synonyms: ["Borrado das Moscas"]}
 - {name: "Verdelho", color: white}
 - {name: "Sercial", color: white}
-- {name: "Malvasia Fina", color: white, synonyms: ["Boal", "Bual"]}
+- {name: "Malvasia Fina", color: white, synonyms: ["Boal", "Bual", "Gual"]}
 - {name: "Rabigato", color: white}
 - {name: "Viosinho", color: white}
 - {name: "Síria", color: white, synonyms: ["Siria", "Roupeiro", "Códega"]}
@@ -424,3 +424,42 @@
 - {name: "Scuppernong", color: white}
 - {name: "Diamond", color: white, synonyms: ["Moore's Diamond"]}
 - {name: "Isabella", color: red}
+
+# ---------------- research: es-n ----------------
+- {name: "Brancellao", color: red}
+- {name: "Espadeiro", color: red}
+- {name: "Caíño Tinto", color: red, synonyms: ["Caino Tinto"]}
+- {name: "Juan García", color: red, synonyms: ["Juan Garcia"]}
+- {name: "Alcañón", color: white, synonyms: ["Alcanon"]}
+- {name: "Parraleta", color: red}
+- {name: "Mandó", color: red, synonyms: ["Garró", "Mando"]}
+- {name: "Albarín Blanco", color: white, synonyms: ["Albarin Blanco"]}
+- {name: "Albarín Negro", color: red, synonyms: ["Albarin Negro"]}
+- {name: "Carrasquín", color: red, synonyms: ["Carrasquin"]}
+- {name: "Dona Branca", color: white, synonyms: ["Doña Blanca", "Malvasía Castellana", "Cigüente", "Moza Fresca"]}
+- {name: "Garnacha Peluda", color: red, synonyms: ["Garnatxa Peluda", "Grenache Poilu", "Grenache Velu", "Lledoner Pelut"]}
+- {name: "Albillo Mayor", color: white}
+- {name: "Albillo Real", color: white, synonyms: ["Albillo de Madrid"]}
+
+# ---------------- research: es-s1 ----------------
+- {name: "Negramoll", color: red, synonyms: ["Tinta Negra"]}
+- {name: "Vijariego Blanco", color: white, synonyms: ["Vigiriega", "Vigiriego", "Bujariego"]}
+- {name: "Malvasía Aromática", color: white, qid: Q1887941}
+- {name: "Malvasía Rosada", color: rose}
+- {name: "Marmajuelo", color: white, synonyms: ["Bermejuela"]}
+- {name: "Forastera Blanca", color: white, qid: Q16972358}
+- {name: "Fogoneu", color: red}
+- {name: "Moll", color: white, synonyms: ["Prensal Blanc", "Prensal"]}
+- {name: "Zalema", color: white}
+- {name: "Garrido Fino", color: white}
+- {name: "Romé", color: red}
+- {name: "Doradilla", color: white}
+
+# ---------------- research: es-s2 ----------------
+- {name: "Merseguera", color: white, synonyms: ["Meseguera", "Blanquilla"]}
+- {name: "Pardina", color: white, synonyms: ["Jaén Blanco"]}
+- {name: "Cayetana Blanca", color: white, synonyms: ["Cayetana"]}
+- {name: "Moravia Agria", color: red}
+- {name: "Forcallat Tinta", color: red, synonyms: ["Forcallà"]}
+- {name: "Malvar", color: white}
+- {name: "Verdil", color: white}

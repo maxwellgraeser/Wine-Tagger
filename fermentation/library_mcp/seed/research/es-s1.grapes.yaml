@@ -1,0 +1,21 @@
+# es-s1: Andalucía, Balearics, Canaries grapes. Checked each name with
+# `context --grape` first; only missing grapes/synonyms are added.
+
+- {name: "Malvasia Fina", existing: true, synonyms: ["Gual"], source: "https://www.foodswinesfromspain.com/en/wine/articles/2021/october/the-canary-islands-and-their-iconic-grape-varieties-an-exciting-world-to-explore"}
+- {name: "Negramoll", color: red, synonyms: ["Tinta Negra"], source: "https://en.wikipedia.org/wiki/List%C3%A1n_negro"}
+- {name: "Vijariego Blanco", color: white, synonyms: ["Vigiriega", "Vigiriego", "Bujariego"], source: "https://www.wine-searcher.com/grape-1633-vijariego-blanco"}
+- {name: "Vijariego Negro", color: red, synonyms: [], source: "https://www.canarywine.com/en/varieties/"}
+- {name: "Alfrocheiro", existing: true, synonyms: ["Baboso Negro", "Bruñal", "Brunal", "Bastardillo Chico"], source: "https://en.wikipedia.org/wiki/Alfrocheiro"}
+- {name: "Malvasía Volcánica", color: white, synonyms: [], source: "https://marcacanaria.com/malvasia-volcanica-la-uva-de-lanzarote/"}
+- {name: "Malvasía Aromática", color: white, synonyms: [], source: "https://www.canarywine.com/en/varieties/"}
+- {name: "Malvasía Rosada", color: rose, synonyms: [], source: "https://www.icia.es/icia/download/Publicaciones/Variedades_Vid_Canarias.pdf"}
+- {name: "Marmajuelo", color: white, synonyms: ["Bermejuela"], source: "https://saboreandocanarias.com/2016/10/16/las-denominaciones-de-origen-de-canarias-do-vino-el-hierro-4/"}
+- {name: "Forastera Blanca", color: white, synonyms: [], source: "https://vinoslagomera.com/viticultura/"}
+- {name: "Fogoneu", color: red, synonyms: [], source: "https://www.foodswinesfromspain.com/en/wine/articles/2020/june/mallorcas-native-wine-grapes"}
+- {name: "Moll", color: white, synonyms: ["Prensal Blanc", "Prensal"], source: "https://www.foodswinesfromspain.com/en/wine/articles/2020/june/mallorcas-native-wine-grapes"}
+- {name: "Giró Ros", color: white, synonyms: [], source: "https://www.canfeliu.es/bodega/blog/variedades-uva-mallorca"}
+- {name: "Zalema", color: white, synonyms: [], source: "https://www.juntadeandalucia.es/export/drupaljda/V_DO_CONDADO_DE_HUELVA.pdf"}
+- {name: "Garrido Fino", color: white, synonyms: [], source: "https://www.juntadeandalucia.es/export/drupaljda/V_DO_CONDADO_DE_HUELVA.pdf"}
+- {name: "Baladí Verdejo", color: white, synonyms: [], source: "https://bodegasmunana.com/denominacion-origen-vinos-de-granada/"}
+- {name: "Romé", color: red, synonyms: [], source: "https://vinomalaga.com/en/consejo-regulador/d-o-sierras-de-malaga/"}
+- {name: "Doradilla", color: white, synonyms: [], source: "https://vinomalaga.com/en/consejo-regulador/d-o-sierras-de-malaga/"}

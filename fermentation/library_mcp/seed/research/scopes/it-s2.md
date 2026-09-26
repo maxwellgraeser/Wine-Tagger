@@ -40,6 +40,10 @@ synonyms. Run `context --grape` on each one first.
 - Sicily: Nerello Mascalese, Nerello Cappuccio, Frappato, Nero d'Avola /
   Calabrese, Perricone, Carricante, Catarratto, Grillo, Inzolia /
   Ansonica, Zibibbo (Muscat of Alexandria), Malvasia di Lipari.
+  **Malvasia di Lipari = Malvasia di Sardegna** already exists in the
+  library as `Malvasía Aromática` (Q1887941, from es-s1). Add the Italian
+  names as synonyms with `existing: true`. Don't create a new grape. If you
+  think the Italian name should be canonical, say so in the `.md`.
 - Sardinia: Cannonau (= Grenache), Bovale, Monica, Nasco, Nuragus,
   Torbato, Vernaccia di Oristano (distinct from the other Vernaccias),
   Girò.

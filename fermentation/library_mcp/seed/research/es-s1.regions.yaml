@@ -1,0 +1,54 @@
+# es-s1: Andalucía, Balearics, Canaries. Official counts verified against
+# MAPA "02_vinos.pdf" (list of DOP/IGP wines by autonomous community).
+
+# --- Andalucía (top: existing "Andalusia") ---
+- {name: "Andalusia", country: ES, synonyms: ["Andalucía", "Andalucia"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Jerez", country: ES, parent: "Andalusia", classification: DO, synonyms: ["Jerez-Xérès-Sherry", "Xérès", "Sherry", "Jerez de la Frontera"], grapes: ["Palomino", "Pedro Ximénez", "Muscat of Alexandria"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Manzanilla-Sanlúcar de Barrameda", country: ES, parent: "Andalusia", classification: DO, synonyms: ["Manzanilla"], grapes: ["Palomino", "Pedro Ximénez", "Muscat of Alexandria"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Montilla-Moriles", country: ES, parent: "Andalusia", classification: DO, synonyms: ["Montilla Moriles", "Montilla"], grapes: ["Pedro Ximénez", "Baladí Verdejo", "Muscat of Alexandria", "Torrontés"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Málaga", country: ES, parent: "Andalusia", classification: DO, synonyms: ["Malaga"], grapes: ["Muscat of Alexandria", "Pedro Ximénez"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Sierras de Málaga", country: ES, parent: "Andalusia", classification: DO, grapes: ["Pedro Ximénez", "Muscat of Alexandria", "Doradilla", "Romé"], source: "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/malaga_2019_01_01.pdf"}
+- {name: "Condado de Huelva", country: ES, parent: "Andalusia", classification: DO, grapes: ["Zalema", "Palomino", "Garrido Fino", "Muscat of Alexandria", "Pedro Ximénez"], source: "https://www.juntadeandalucia.es/export/drupaljda/V_DO_CONDADO_DE_HUELVA.pdf"}
+- {name: "Granada", country: ES, parent: "Andalusia", classification: DO, grapes: ["Vijariego Blanco", "Pedro Ximénez", "Tempranillo", "Garnacha", "Romé"], source: "https://en.wikipedia.org/wiki/Granada_(wine)"}
+- {name: "Lebrija", country: ES, parent: "Andalusia", classification: VC, grapes: ["Palomino", "Muscat of Alexandria"], source: "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/lebrija_2021_09_14.pdf"}
+- {name: "Cádiz", country: ES, parent: "Andalusia", classification: IGP, synonyms: ["VT Cádiz"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Altiplano de Sierra Nevada", country: ES, parent: "Andalusia", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Bailén", country: ES, parent: "Andalusia", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Córdoba", country: ES, parent: "Andalusia", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Cumbres del Guadalfeo", country: ES, parent: "Andalusia", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Desierto de Almería", country: ES, parent: "Andalusia", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Laderas del Genil", country: ES, parent: "Andalusia", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Laujar-Alpujarra", country: ES, parent: "Andalusia", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Los Palacios", country: ES, parent: "Andalusia", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Norte de Almería", country: ES, parent: "Andalusia", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Ribera del Andarax", country: ES, parent: "Andalusia", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Sierra Norte de Sevilla", country: ES, parent: "Andalusia", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Sierra Sur de Jaén", country: ES, parent: "Andalusia", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Sierras de Las Estancias y Los Filabres", country: ES, parent: "Andalusia", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Torreperogil", country: ES, parent: "Andalusia", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Villaviciosa de Córdoba", country: ES, parent: "Andalusia", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+
+# --- Balearics ---
+- {name: "Balearic Islands", country: ES, synonyms: ["Balearics", "Islas Baleares"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Mallorca", country: ES, parent: "Balearic Islands", classification: IGP, synonyms: ["Majorca", "Vi de la Terra Mallorca"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Binissalem", country: ES, parent: "Mallorca", classification: DO, synonyms: ["Binissalem-Mallorca"], grapes: ["Manto Negro", "Moll", "Muscat of Alexandria"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Pla i Llevant", country: ES, parent: "Mallorca", classification: DO, grapes: ["Callet", "Manto Negro", "Fogoneu", "Moll"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Serra de Tramuntana-Costa Nord", country: ES, parent: "Mallorca", classification: IGP, synonyms: ["Vi de la Terra Serra de Tramuntana-Costa Nord"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Illes Balears", country: ES, parent: "Balearic Islands", classification: IGP, synonyms: ["Vi de la Terra Illes Balears"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Ibiza", country: ES, parent: "Balearic Islands", classification: IGP, synonyms: ["Eivissa"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Formentera", country: ES, parent: "Balearic Islands", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Menorca", country: ES, parent: "Balearic Islands", classification: IGP, synonyms: ["Illa de Menorca", "Isla de Menorca"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+
+# --- Canaries (top: existing "Canary Islands") ---
+- {name: "Canary Islands", country: ES, classification: DO, synonyms: ["Islas Canarias", "Canarias", "Canaries"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Tenerife", country: ES, parent: "Canary Islands", source: "https://en.wikipedia.org/wiki/Tenerife_(DO)"}
+- {name: "Tacoronte-Acentejo", country: ES, parent: "Tenerife", classification: DO, grapes: ["Listán Negro", "Negramoll", "Listán Blanco"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Valle de la Orotava", country: ES, parent: "Tenerife", classification: DO, grapes: ["Listán Blanco", "Negramoll", "Listán Negro"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Ycoden-Daute-Isora", country: ES, parent: "Tenerife", classification: DO, grapes: ["Listán Blanco", "Negramoll", "Listán Negro"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Abona", country: ES, parent: "Tenerife", classification: DO, grapes: ["Listán Blanco", "Listán Negro"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Valle de Güímar", country: ES, parent: "Tenerife", classification: DO, synonyms: ["Valle de Guimar"], grapes: ["Listán Blanco", "Negramoll", "Listán Negro"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Lanzarote", country: ES, parent: "Canary Islands", classification: DO, grapes: ["Malvasía Volcánica", "Listán Negro", "Muscat of Alexandria"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "El Hierro", country: ES, parent: "Canary Islands", classification: DO, grapes: ["Listán Blanco", "Vijariego Blanco", "Listán Negro", "Baboso Negro"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Gran Canaria", country: ES, parent: "Canary Islands", classification: DO, grapes: ["Listán Negro", "Listán Blanco", "Vijariego Blanco"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "La Gomera", country: ES, parent: "Canary Islands", classification: DO, grapes: ["Forastera Blanca", "Listán Negro"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "La Palma", country: ES, parent: "Canary Islands", classification: DO, grapes: ["Negramoll", "Listán Negro", "Malvasía Aromática", "Gual"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}

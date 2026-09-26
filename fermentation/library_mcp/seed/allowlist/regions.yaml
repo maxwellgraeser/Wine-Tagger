@@ -671,67 +671,198 @@
 - {name: "Carignano del Sulcis", country: IT, parent: "Sardinia", classification: DOC, synonyms: ["Sulcis"]}
 
 # ======================= SPAIN =======================
-- {name: "Rioja", country: ES, classification: DOCa, synonyms: ["La Rioja", "Rioja DOCa", "DOCa Rioja", "Rioja DOC"]}
+- {name: "Cava", country: ES, classification: DO, synonyms: ["Cava DO"], grapes: ["Macabeo", "Xarel·lo", "Parellada", "Chardonnay", "Garnacha", "Monastrell", "Pinot Noir", "Trepat"]}
+- {name: "Rioja", country: ES, classification: DOCa, synonyms: ["La Rioja", "Rioja DOCa", "DOCa Rioja", "Rioja DOC"], grapes: ["Tempranillo", "Garnacha", "Graciano", "Mazuelo", "Viura"]}
 - {name: "Rioja Alta", country: ES, parent: "Rioja"}
 - {name: "Rioja Alavesa", country: ES, parent: "Rioja"}
 - {name: "Rioja Oriental", country: ES, parent: "Rioja", synonyms: ["Rioja Baja"]}
-- {name: "Castilla y León", country: ES, synonyms: ["Castilla y Leon", "Castile and León", "Castile and Leon", "Vino de la Tierra de Castilla y León", "VT Castilla y León"]}
-- {name: "Ribera del Duero", country: ES, parent: "Castilla y León", classification: DO, synonyms: ["Ribera del Duero DO", "Ribera"]}
-- {name: "Toro", country: ES, parent: "Castilla y León", classification: DO, synonyms: ["Toro DO"]}
-- {name: "Rueda", country: ES, parent: "Castilla y León", classification: DO, synonyms: ["Rueda DO"]}
-- {name: "Bierzo", country: ES, parent: "Castilla y León", classification: DO, synonyms: ["El Bierzo"]}
-- {name: "Cigales", country: ES, parent: "Castilla y León", classification: DO}
-- {name: "Arribes", country: ES, parent: "Castilla y León", classification: DO, synonyms: ["Arribes del Duero"]}
-- {name: "Navarra", country: ES, classification: DO, synonyms: ["Navarre", "Navarra DO"]}
-- {name: "Aragón", country: ES, synonyms: ["Aragon"]}
-- {name: "Cariñena", country: ES, parent: "Aragón", classification: DO, synonyms: ["Carinena", "Cariñena DO"]}
-- {name: "Calatayud", country: ES, parent: "Aragón", classification: DO}
-- {name: "Campo de Borja", country: ES, parent: "Aragón", classification: DO, synonyms: ["Borja"]}
-- {name: "Somontano", country: ES, parent: "Aragón", classification: DO}
-- {name: "Catalonia", country: ES, synonyms: ["Cataluña", "Catalunya", "Catalonia DO", "Catalunya DO"]}
-- {name: "Priorat", country: ES, parent: "Catalonia", classification: DOQ, synonyms: ["Priorato", "Priorat DOQ"]}
-- {name: "Montsant", country: ES, parent: "Catalonia", classification: DO}
-- {name: "Penedès", country: ES, parent: "Catalonia", classification: DO, synonyms: ["Penedes", "Penedès DO"]}
-- {name: "Costers del Segre", country: ES, parent: "Catalonia", classification: DO}
-- {name: "Empordà", country: ES, parent: "Catalonia", classification: DO, synonyms: ["Emporda", "Ampurdán", "Empordà DO"]}
-- {name: "Terra Alta", country: ES, parent: "Catalonia", classification: DO}
-- {name: "Conca de Barberà", country: ES, parent: "Catalonia", classification: DO, synonyms: ["Conca de Barbera"]}
-- {name: "Alella", country: ES, parent: "Catalonia", classification: DO}
-- {name: "Cava", country: ES, classification: DO, synonyms: ["Cava DO"]}
+- {name: "Ribera del Queiles", country: ES, classification: IGP}
+- {name: "Valles de Sadacia", country: ES, classification: IGP}
 - {name: "Galicia", country: ES, synonyms: ["Galiza"]}
-- {name: "Rías Baixas", country: ES, parent: "Galicia", classification: DO, synonyms: ["Rias Baixas", "Rías Baixas DO", "Rias Baixas DO"]}
-- {name: "Ribeiro", country: ES, parent: "Galicia", classification: DO}
-- {name: "Ribeira Sacra", country: ES, parent: "Galicia", classification: DO}
-- {name: "Valdeorras", country: ES, parent: "Galicia", classification: DO}
-- {name: "Monterrei", country: ES, parent: "Galicia", classification: DO}
+- {name: "Rías Baixas", country: ES, parent: "Galicia", classification: DO, synonyms: ["Rias Baixas", "Rías Baixas DO", "Rias Baixas DO"], grapes: ["Albariño", "Loureira", "Treixadura", "Caíño Blanco"]}
+- {name: "Val do Salnés", country: ES, parent: "Rías Baixas", classification: Subzona}
+- {name: "Condado do Tea", country: ES, parent: "Rías Baixas", classification: Subzona}
+- {name: "O Rosal", country: ES, parent: "Rías Baixas", classification: Subzona}
+- {name: "Soutomaior", country: ES, parent: "Rías Baixas", classification: Subzona}
+- {name: "Ribeira do Ulla", country: ES, parent: "Rías Baixas", classification: Subzona}
+- {name: "Ribeiro", country: ES, parent: "Galicia", classification: DO, grapes: ["Treixadura", "Godello", "Loureira", "Albariño", "Mencía", "Caíño Tinto", "Sousón", "Brancellao"]}
+- {name: "Ribeira Sacra", country: ES, parent: "Galicia", classification: DO, grapes: ["Mencía", "Brancellao", "Merenzao", "Caíño Tinto", "Sousón", "Godello", "Treixadura", "Loureira", "Dona Branca", "Albariño"]}
+- {name: "Amandi", country: ES, parent: "Ribeira Sacra", classification: Subzona}
+- {name: "Chantada", country: ES, parent: "Ribeira Sacra", classification: Subzona}
+- {name: "Quiroga-Bibei", country: ES, parent: "Ribeira Sacra", classification: Subzona}
+- {name: "Ribeiras do Miño", country: ES, parent: "Ribeira Sacra", classification: Subzona}
+- {name: "Ribeiras do Sil", country: ES, parent: "Ribeira Sacra", classification: Subzona}
+- {name: "Valdeorras", country: ES, parent: "Galicia", classification: DO, grapes: ["Godello", "Dona Branca", "Mencía", "Merenzao"]}
+- {name: "Monterrei", country: ES, parent: "Galicia", classification: DO, grapes: ["Dona Branca", "Godello", "Treixadura", "Mencía", "Merenzao"]}
+- {name: "Val de Monterrei", country: ES, parent: "Monterrei", classification: Subzona}
+- {name: "Ladeira de Monterrei", country: ES, parent: "Monterrei", classification: Subzona, synonyms: ["Ladeiras de Monterrei"]}
+- {name: "Barbanza e Iria", country: ES, parent: "Galicia", classification: IGP}
+- {name: "Betanzos", country: ES, parent: "Galicia", classification: IGP}
+- {name: "Ribeiras do Morrazo", country: ES, parent: "Galicia", classification: IGP}
+- {name: "Terras do Navia", country: ES, parent: "Galicia", classification: IGP}
+- {name: "Val do Miño-Ourense", country: ES, parent: "Galicia", classification: IGP, synonyms: ["Valle del Miño-Ourense"]}
+- {name: "Asturias", country: ES, qid: Q3934, synonyms: ["Principado de Asturias"]}
+- {name: "Cangas", country: ES, parent: "Asturias", classification: VC}
+- {name: "Cantabria", country: ES}
+- {name: "Costa de Cantabria", country: ES, parent: "Cantabria", classification: IGP}
+- {name: "Liébana", country: ES, parent: "Cantabria", classification: IGP}
 - {name: "Basque Country", country: ES, synonyms: ["País Vasco", "Pais Vasco", "Euskadi", "Basque", "Basque Country (Spain)"]}
-- {name: "Getariako Txakolina", country: ES, parent: "Basque Country", classification: DO, synonyms: ["Txakoli de Getaria", "Txakolina", "Txakoli", "Chacolí de Guetaria", "Chacoli", "Getaria"]}
-- {name: "Bizkaiko Txakolina", country: ES, parent: "Basque Country", classification: DO, synonyms: ["Txakoli de Bizkaia", "Chacolí de Vizcaya"]}
-- {name: "Arabako Txakolina", country: ES, parent: "Basque Country", classification: DO, synonyms: ["Txakoli de Álava"]}
-- {name: "Valencia", country: ES, classification: DO, synonyms: ["Comunidad Valenciana", "Valencian Community", "Valencia DO"]}
-- {name: "Utiel-Requena", country: ES, parent: "Valencia", classification: DO, synonyms: ["Utiel Requena", "Requena"]}
-- {name: "Alicante", country: ES, parent: "Valencia", classification: DO, synonyms: ["Alicante DO"]}
-- {name: "Murcia", country: ES, synonyms: ["Región de Murcia"]}
-- {name: "Jumilla", country: ES, parent: "Murcia", classification: DO, synonyms: ["Jumilla DO"]}
-- {name: "Yecla", country: ES, parent: "Murcia", classification: DO}
-- {name: "Bullas", country: ES, parent: "Murcia", classification: DO}
-- {name: "Castilla-La Mancha", country: ES, synonyms: ["Castilla La Mancha", "Vino de la Tierra de Castilla", "VT Castilla", "Castilla"]}
-- {name: "La Mancha", country: ES, parent: "Castilla-La Mancha", classification: DO, synonyms: ["La Mancha DO"]}
-- {name: "Valdepeñas", country: ES, parent: "Castilla-La Mancha", classification: DO, synonyms: ["Valdepenas"]}
-- {name: "Manchuela", country: ES, parent: "Castilla-La Mancha", classification: DO}
-- {name: "Almansa", country: ES, parent: "Castilla-La Mancha", classification: DO}
-- {name: "Méntrida", country: ES, parent: "Castilla-La Mancha", classification: DO, synonyms: ["Mentrida"]}
-- {name: "Vinos de Madrid", country: ES, classification: DO, synonyms: ["Madrid"]}
-- {name: "Sierra de Gredos", country: ES, synonyms: ["Gredos", "Cebreros"]}
-- {name: "Extremadura", country: ES, synonyms: ["Ribera del Guadiana"]}
+- {name: "Getariako Txakolina", country: ES, parent: "Basque Country", classification: DO, synonyms: ["Txakoli de Getaria", "Txakolina", "Txakoli", "Chacolí de Guetaria", "Chacoli", "Getaria"], grapes: ["Hondarrabi Zuri", "Hondarrabi Beltza"]}
+- {name: "Bizkaiko Txakolina", country: ES, parent: "Basque Country", classification: DO, synonyms: ["Txakoli de Bizkaia", "Chacolí de Vizcaya", "Chacolí de Bizkaia"], grapes: ["Hondarrabi Zuri", "Hondarrabi Beltza"]}
+- {name: "Arabako Txakolina", country: ES, parent: "Basque Country", classification: DO, synonyms: ["Txakoli de Álava"], grapes: ["Hondarrabi Zuri", "Hondarrabi Beltza"]}
+- {name: "Navarra", country: ES, classification: DO, synonyms: ["Navarre", "Navarra DO"], grapes: ["Tempranillo", "Garnacha", "Graciano", "Mazuelo", "Cabernet Sauvignon", "Merlot", "Chardonnay", "Viura", "Moscatel de Grano Menudo"]}
+- {name: "Pago de Arínzano", country: ES, parent: "Navarra", classification: VP, grapes: ["Tempranillo", "Cabernet Sauvignon", "Merlot", "Chardonnay"]}
+- {name: "Pago de Otazu", country: ES, parent: "Navarra", classification: VP, grapes: ["Tempranillo", "Cabernet Sauvignon", "Merlot", "Cabernet Franc", "Chardonnay"]}
+- {name: "Prado de Irache", country: ES, parent: "Navarra", classification: VP, synonyms: ["Pago de Prado de Irache"], grapes: ["Tempranillo", "Cabernet Sauvignon", "Merlot", "Garnacha", "Viura", "Chardonnay"]}
+- {name: "Bolandin", country: ES, parent: "Navarra", classification: VP, synonyms: ["Pago Bolandín"], grapes: ["Cabernet Sauvignon", "Merlot", "Syrah", "Tempranillo", "Chardonnay", "Sauvignon Blanc", "Moscatel de Grano Menudo"]}
+- {name: "3 Riberas", country: ES, parent: "Navarra", classification: IGP}
+- {name: "Aragón", country: ES, synonyms: ["Aragon"]}
+- {name: "Cariñena", country: ES, parent: "Aragón", classification: DO, synonyms: ["Carinena", "Cariñena DO"], grapes: ["Garnacha", "Tempranillo", "Mazuelo", "Viura", "Garnacha Blanca", "Moscatel de Alejandría"]}
+- {name: "Calatayud", country: ES, parent: "Aragón", classification: DO, grapes: ["Garnacha", "Tempranillo", "Mazuelo", "Monastrell", "Viura", "Moscatel de Alejandría"]}
+- {name: "Campo de Borja", country: ES, parent: "Aragón", classification: DO, synonyms: ["Borja"], grapes: ["Garnacha", "Tempranillo", "Mazuelo", "Viura", "Garnacha Blanca"]}
+- {name: "Somontano", country: ES, parent: "Aragón", classification: DO, grapes: ["Moristel", "Parraleta", "Tempranillo", "Cabernet Sauvignon", "Merlot", "Syrah", "Alcañón", "Chardonnay", "Gewürztraminer"]}
+- {name: "Aylés", country: ES, parent: "Aragón", classification: VP, synonyms: ["Pago Aylés"], grapes: ["Garnacha", "Tempranillo", "Cabernet Sauvignon", "Merlot", "Syrah", "Chardonnay"]}
+- {name: "Urbezo", country: ES, parent: "Aragón", classification: DO, grapes: ["Garnacha", "Cabernet Sauvignon", "Mazuelo", "Merlot", "Syrah", "Tempranillo", "Chardonnay", "Garnacha Blanca", "Moscatel de Alejandría"]}
+- {name: "Bajo Aragón", country: ES, parent: "Aragón", classification: IGP}
+- {name: "Ribera del Gállego-Cinco Villas", country: ES, parent: "Aragón", classification: IGP, synonyms: ["Ribera del Gállego - Cinco Villas"]}
+- {name: "Ribera del Jiloca", country: ES, parent: "Aragón", classification: IGP}
+- {name: "Valdejalón", country: ES, parent: "Aragón", classification: IGP}
+- {name: "Valle del Cinca", country: ES, parent: "Aragón", classification: IGP}
+- {name: "Catalonia", country: ES, classification: DO, synonyms: ["Cataluña", "Catalunya", "Catalonia DO", "Catalunya DO"]}
+- {name: "Alella", country: ES, parent: "Catalonia", classification: DO, grapes: ["Xarel·lo", "Garnacha Blanca", "Tempranillo", "Chardonnay"]}
+- {name: "Priorat", country: ES, parent: "Catalonia", classification: DOQ, synonyms: ["Priorato", "Priorat DOQ"], grapes: ["Garnacha", "Mazuelo", "Cabernet Sauvignon", "Merlot", "Syrah", "Garnacha Blanca"]}
+- {name: "Montsant", country: ES, parent: "Catalonia", classification: DO, grapes: ["Garnacha", "Mazuelo", "Syrah", "Cabernet Sauvignon", "Merlot", "Tempranillo", "Garnacha Blanca"]}
+- {name: "Penedès", country: ES, parent: "Catalonia", classification: DO, synonyms: ["Penedes", "Penedès DO", "Clàssic Penedès"], grapes: ["Xarel·lo", "Macabeo", "Parellada", "Tempranillo", "Garnacha", "Cabernet Sauvignon", "Merlot"]}
+- {name: "Costers del Segre", country: ES, parent: "Catalonia", classification: DO, grapes: ["Tempranillo", "Cabernet Sauvignon", "Merlot", "Garnacha", "Macabeo", "Chardonnay"]}
+- {name: "Artesa de Segre", country: ES, parent: "Costers del Segre", classification: Subzona}
+- {name: "Urgell", country: ES, parent: "Costers del Segre", classification: Subzona}
+- {name: "Garrigues", country: ES, parent: "Costers del Segre", classification: Subzona, synonyms: ["Les Garrigues"]}
+- {name: "Pallars Jussà", country: ES, parent: "Costers del Segre", classification: Subzona}
+- {name: "Raimat", country: ES, parent: "Costers del Segre", classification: Subzona}
+- {name: "Segrià", country: ES, parent: "Costers del Segre", classification: Subzona}
+- {name: "Valls de Riu Corb", country: ES, parent: "Costers del Segre", classification: Subzona, synonyms: ["Valls del Riu Corb"]}
+- {name: "Empordà", country: ES, parent: "Catalonia", classification: DO, synonyms: ["Emporda", "Ampurdán", "Empordà DO"], grapes: ["Garnacha", "Mazuelo", "Garnacha Blanca", "Macabeo"]}
+- {name: "Terra Alta", country: ES, parent: "Catalonia", classification: DO, grapes: ["Garnacha Blanca", "Garnacha", "Mazuelo", "Macabeo"]}
+- {name: "Conca de Barberà", country: ES, parent: "Catalonia", classification: DO, synonyms: ["Conca de Barbera"], grapes: ["Trepat", "Macabeo", "Parellada", "Tempranillo"]}
+- {name: "Tarragona", country: ES, parent: "Catalonia", classification: DO, grapes: ["Garnacha", "Mazuelo", "Tempranillo", "Macabeo", "Parellada", "Garnacha Blanca"]}
+- {name: "Pla de Bages", country: ES, parent: "Catalonia", classification: DO, grapes: ["Picapoll", "Picapoll Negre", "Mandó", "Sumoll", "Garnacha"]}
+- {name: "Castilla y León", country: ES, synonyms: ["Castilla y Leon", "Castile and León", "Castile and Leon", "Vino de la Tierra de Castilla y León", "VT Castilla y León"]}
+- {name: "Ribera del Duero", country: ES, parent: "Castilla y León", classification: DO, synonyms: ["Ribera del Duero DO", "Ribera"], grapes: ["Tempranillo", "Cabernet Sauvignon", "Merlot", "Malbec", "Garnacha", "Albillo Mayor"]}
+- {name: "Toro", country: ES, parent: "Castilla y León", classification: DO, synonyms: ["Toro DO"], grapes: ["Tempranillo", "Garnacha", "Dona Branca", "Verdejo"]}
+- {name: "Rueda", country: ES, parent: "Castilla y León", classification: DO, synonyms: ["Rueda DO"], grapes: ["Verdejo", "Viura", "Sauvignon Blanc", "Palomino"]}
+- {name: "Bierzo", country: ES, parent: "Castilla y León", classification: DO, synonyms: ["El Bierzo"], grapes: ["Mencía", "Godello", "Dona Branca", "Palomino"]}
+- {name: "Cigales", country: ES, parent: "Castilla y León", classification: DO, grapes: ["Tempranillo", "Garnacha", "Verdejo", "Albillo Mayor"]}
+- {name: "Arribes", country: ES, parent: "Castilla y León", classification: DO, synonyms: ["Arribes del Duero"], grapes: ["Juan García", "Rufete", "Tempranillo", "Bruñal", "Dona Branca", "Verdejo"]}
+- {name: "Arlanza", country: ES, parent: "Castilla y León", classification: DO, grapes: ["Tempranillo", "Garnacha", "Mencía"]}
+- {name: "Tierra del Vino de Zamora", country: ES, parent: "Castilla y León", classification: DO, grapes: ["Tempranillo", "Dona Branca", "Moscatel de Grano Menudo", "Verdejo", "Godello"]}
+- {name: "León", country: ES, parent: "Castilla y León", classification: DO, synonyms: ["Tierra de León"], grapes: ["Prieto Picudo", "Mencía", "Albarín Blanco"]}
+- {name: "Valles de Benavente", country: ES, parent: "Castilla y León", classification: VC}
+- {name: "Sierra de Salamanca", country: ES, parent: "Castilla y León", classification: VC}
+- {name: "Valtiendas", country: ES, parent: "Castilla y León", classification: VC}
+- {name: "Cebreros", country: ES, parent: "Castilla y León", classification: VC}
+- {name: "Abadía Retuerta", country: ES, parent: "Castilla y León", classification: VP, grapes: ["Tempranillo", "Cabernet Sauvignon", "Syrah", "Merlot", "Verdejo", "Godello"]}
+- {name: "Dehesa Peñalba", country: ES, parent: "Castilla y León", classification: VP, grapes: ["Cabernet Sauvignon", "Merlot", "Tempranillo", "Syrah"]}
+- {name: "Urueña", country: ES, parent: "Castilla y León", classification: VP, grapes: ["Tempranillo", "Cabernet Sauvignon", "Merlot", "Syrah"]}
 - {name: "Andalusia", country: ES, synonyms: ["Andalucía", "Andalucia"]}
-- {name: "Jerez", country: ES, parent: "Andalusia", classification: DO, synonyms: ["Sherry", "Jerez-Xérès-Sherry", "Xérès", "Jerez de la Frontera", "Manzanilla-Sanlúcar de Barrameda", "Manzanilla"]}
-- {name: "Montilla-Moriles", country: ES, parent: "Andalusia", classification: DO, synonyms: ["Montilla Moriles", "Montilla"]}
-- {name: "Málaga", country: ES, parent: "Andalusia", classification: DO, synonyms: ["Malaga", "Sierras de Málaga"]}
-- {name: "Canary Islands", country: ES, synonyms: ["Islas Canarias", "Canarias", "Canaries"]}
-- {name: "Lanzarote", country: ES, parent: "Canary Islands", classification: DO}
-- {name: "Tenerife", country: ES, parent: "Canary Islands", synonyms: ["Tacoronte-Acentejo", "Valle de la Orotava", "Ycoden-Daute-Isora"]}
-- {name: "Mallorca", country: ES, synonyms: ["Majorca", "Binissalem", "Pla i Llevant", "Balearic Islands", "Islas Baleares"]}
+- {name: "Jerez", country: ES, parent: "Andalusia", classification: DO, synonyms: ["Jerez-Xérès-Sherry", "Xérès", "Sherry", "Jerez de la Frontera"], grapes: ["Palomino", "Pedro Ximénez", "Muscat of Alexandria"]}
+- {name: "Manzanilla-Sanlúcar de Barrameda", country: ES, parent: "Andalusia", classification: DO, synonyms: ["Manzanilla"], grapes: ["Palomino", "Pedro Ximénez", "Muscat of Alexandria"]}
+- {name: "Montilla-Moriles", country: ES, parent: "Andalusia", classification: DO, synonyms: ["Montilla Moriles", "Montilla"], grapes: ["Pedro Ximénez", "Muscat of Alexandria", "Torrontés"]}
+- {name: "Málaga", country: ES, parent: "Andalusia", classification: DO, synonyms: ["Malaga"], grapes: ["Muscat of Alexandria", "Pedro Ximénez"]}
+- {name: "Sierras de Málaga", country: ES, parent: "Andalusia", classification: DO, grapes: ["Pedro Ximénez", "Muscat of Alexandria", "Doradilla", "Romé"]}
+- {name: "Condado de Huelva", country: ES, parent: "Andalusia", classification: DO, grapes: ["Zalema", "Palomino", "Garrido Fino", "Muscat of Alexandria", "Pedro Ximénez"]}
+- {name: "Granada", country: ES, parent: "Andalusia", classification: DO, grapes: ["Vijariego Blanco", "Pedro Ximénez", "Tempranillo", "Garnacha", "Romé"]}
+- {name: "Lebrija", country: ES, parent: "Andalusia", classification: VC, grapes: ["Palomino", "Muscat of Alexandria"]}
+- {name: "Cádiz", country: ES, parent: "Andalusia", classification: IGP, synonyms: ["VT Cádiz"]}
+- {name: "Altiplano de Sierra Nevada", country: ES, parent: "Andalusia", classification: IGP}
+- {name: "Bailén", country: ES, parent: "Andalusia", classification: IGP}
+- {name: "Córdoba", country: ES, parent: "Andalusia", classification: IGP}
+- {name: "Cumbres del Guadalfeo", country: ES, parent: "Andalusia", classification: IGP}
+- {name: "Desierto de Almería", country: ES, parent: "Andalusia", classification: IGP}
+- {name: "Laderas del Genil", country: ES, parent: "Andalusia", classification: IGP}
+- {name: "Laujar-Alpujarra", country: ES, parent: "Andalusia", classification: IGP}
+- {name: "Los Palacios", country: ES, parent: "Andalusia", classification: IGP}
+- {name: "Norte de Almería", country: ES, parent: "Andalusia", classification: IGP}
+- {name: "Ribera del Andarax", country: ES, parent: "Andalusia", classification: IGP}
+- {name: "Sierra Norte de Sevilla", country: ES, parent: "Andalusia", classification: IGP}
+- {name: "Sierra Sur de Jaén", country: ES, parent: "Andalusia", classification: IGP}
+- {name: "Sierras de Las Estancias y Los Filabres", country: ES, parent: "Andalusia", classification: IGP}
+- {name: "Torreperogil", country: ES, parent: "Andalusia", classification: IGP}
+- {name: "Villaviciosa de Córdoba", country: ES, parent: "Andalusia", classification: IGP}
+- {name: "Balearic Islands", country: ES, synonyms: ["Balearics", "Islas Baleares"]}
+- {name: "Mallorca", country: ES, parent: "Balearic Islands", classification: IGP, synonyms: ["Majorca", "Vi de la Terra Mallorca"]}
+- {name: "Binissalem", country: ES, parent: "Mallorca", classification: DO, synonyms: ["Binissalem-Mallorca"], grapes: ["Manto Negro", "Moll", "Muscat of Alexandria"]}
+- {name: "Pla i Llevant", country: ES, parent: "Mallorca", classification: DO, grapes: ["Callet", "Manto Negro", "Fogoneu", "Moll"]}
+- {name: "Serra de Tramuntana-Costa Nord", country: ES, parent: "Mallorca", classification: IGP, synonyms: ["Vi de la Terra Serra de Tramuntana-Costa Nord"]}
+- {name: "Illes Balears", country: ES, parent: "Balearic Islands", classification: IGP, synonyms: ["Vi de la Terra Illes Balears"]}
+- {name: "Ibiza", country: ES, parent: "Balearic Islands", classification: IGP, synonyms: ["Eivissa"]}
+- {name: "Formentera", country: ES, parent: "Balearic Islands", classification: IGP}
+- {name: "Menorca", country: ES, parent: "Balearic Islands", classification: IGP, synonyms: ["Illa de Menorca", "Isla de Menorca"]}
+- {name: "Canary Islands", country: ES, classification: DO, synonyms: ["Islas Canarias", "Canarias", "Canaries"]}
+- {name: "Tenerife", country: ES, parent: "Canary Islands"}
+- {name: "Tacoronte-Acentejo", country: ES, parent: "Tenerife", classification: DO, grapes: ["Listán Negro", "Negramoll", "Listán Blanco"]}
+- {name: "Valle de la Orotava", country: ES, parent: "Tenerife", classification: DO, grapes: ["Listán Blanco", "Negramoll", "Listán Negro"]}
+- {name: "Ycoden-Daute-Isora", country: ES, parent: "Tenerife", classification: DO, grapes: ["Listán Blanco", "Negramoll", "Listán Negro"]}
+- {name: "Abona", country: ES, parent: "Tenerife", classification: DO, grapes: ["Listán Blanco", "Listán Negro"]}
+- {name: "Valle de Güímar", country: ES, parent: "Tenerife", classification: DO, synonyms: ["Valle de Guimar"], grapes: ["Listán Blanco", "Negramoll", "Listán Negro"]}
+- {name: "Lanzarote", country: ES, parent: "Canary Islands", classification: DO, grapes: ["Listán Negro", "Muscat of Alexandria"]}
+- {name: "El Hierro", country: ES, parent: "Canary Islands", classification: DO, grapes: ["Listán Blanco", "Vijariego Blanco", "Listán Negro", "Baboso Negro"]}
+- {name: "Gran Canaria", country: ES, parent: "Canary Islands", classification: DO, grapes: ["Listán Negro", "Listán Blanco", "Vijariego Blanco"]}
+- {name: "La Gomera", country: ES, parent: "Canary Islands", classification: DO, grapes: ["Forastera Blanca", "Listán Negro"]}
+- {name: "La Palma", country: ES, parent: "Canary Islands", classification: DO, grapes: ["Negramoll", "Listán Negro", "Malvasía Aromática", "Gual"]}
+- {name: "Castilla-La Mancha", country: ES, synonyms: ["Castilla La Mancha", "Vino de la Tierra de Castilla", "VT Castilla", "Castilla"]}
+- {name: "La Mancha", country: ES, parent: "Castilla-La Mancha", classification: DO, synonyms: ["La Mancha DO"], grapes: ["Airén", "Tempranillo"]}
+- {name: "Valdepeñas", country: ES, parent: "Castilla-La Mancha", classification: DO, synonyms: ["Valdepenas"], grapes: ["Airén", "Tempranillo"]}
+- {name: "Manchuela", country: ES, parent: "Castilla-La Mancha", classification: DO, grapes: ["Bobal", "Tempranillo"]}
+- {name: "Almansa", country: ES, parent: "Castilla-La Mancha", classification: DO, grapes: ["Garnacha Tintorera", "Mourvèdre"]}
+- {name: "Méntrida", country: ES, parent: "Castilla-La Mancha", classification: DO, synonyms: ["Mentrida"], grapes: ["Grenache"]}
+- {name: "Ribera del Júcar", country: ES, parent: "Castilla-La Mancha", classification: DO, synonyms: ["Ribera del Jucar"], grapes: ["Bobal", "Tempranillo"]}
+- {name: "Uclés", country: ES, parent: "Castilla-La Mancha", classification: DO, synonyms: ["Ucles"], grapes: ["Tempranillo", "Bobal"]}
+- {name: "Mondéjar", country: ES, parent: "Castilla-La Mancha", classification: DO, synonyms: ["Mondejar"], grapes: ["Tempranillo"]}
+- {name: "Campo de Calatrava", country: ES, parent: "Castilla-La Mancha", classification: DO, grapes: ["Tempranillo"]}
+- {name: "Dominio de Valdepusa", country: ES, parent: "Castilla-La Mancha", classification: VP}
+- {name: "Finca Élez", country: ES, parent: "Castilla-La Mancha", classification: VP, synonyms: ["Finca Elez"]}
+- {name: "Guijoso", country: ES, parent: "Castilla-La Mancha", classification: VP}
+- {name: "Dehesa del Carrizal", country: ES, parent: "Castilla-La Mancha", classification: VP}
+- {name: "Campo de la Guardia", country: ES, parent: "Castilla-La Mancha", classification: VP}
+- {name: "Pago Florentino", country: ES, parent: "Castilla-La Mancha", classification: VP}
+- {name: "Casa del Blanco", country: ES, parent: "Castilla-La Mancha", classification: VP}
+- {name: "Calzadilla", country: ES, parent: "Castilla-La Mancha", classification: VP}
+- {name: "El Vicario", country: ES, parent: "Castilla-La Mancha", classification: VP, synonyms: ["Pago del Vicario"]}
+- {name: "Los Cerrillos", country: ES, parent: "Castilla-La Mancha", classification: VP, synonyms: ["Pago Los Cerrillos"]}
+- {name: "Vallegarcía", country: ES, parent: "Castilla-La Mancha", classification: VP, synonyms: ["Vallegarcia", "Pago de Vallegarcía"]}
+- {name: "La Jaraba", country: ES, parent: "Castilla-La Mancha", classification: VP, synonyms: ["Pago de La Jaraba"]}
+- {name: "Rosalejo", country: ES, parent: "Castilla-La Mancha", classification: VP}
+- {name: "Río Negro", country: ES, parent: "Castilla-La Mancha", classification: VP, synonyms: ["Finca Río Negro"]}
+- {name: "Vinos de Madrid", country: ES, classification: DO, synonyms: ["Madrid"], grapes: ["Tempranillo", "Grenache", "Malvar"]}
+- {name: "Arganda", country: ES, parent: "Vinos de Madrid"}
+- {name: "Navalcarnero", country: ES, parent: "Vinos de Madrid"}
+- {name: "San Martín de Valdeiglesias", country: ES, parent: "Vinos de Madrid", synonyms: ["San Martin de Valdeiglesias"]}
+- {name: "El Molar", country: ES, parent: "Vinos de Madrid"}
+- {name: "Sierra de Gredos", country: ES, synonyms: ["Gredos"]}
+- {name: "Valencian Community", country: ES, synonyms: ["Comunidad Valenciana", "Comunitat Valenciana"]}
+- {name: "Valencia", country: ES, parent: "Valencian Community", classification: DO, synonyms: ["Valencia DO"], grapes: ["Merseguera", "Bobal", "Muscat of Alexandria"]}
+- {name: "Utiel-Requena", country: ES, parent: "Valencian Community", classification: DO, synonyms: ["Utiel Requena", "Requena"], grapes: ["Bobal"]}
+- {name: "Alicante", country: ES, parent: "Valencian Community", classification: DO, synonyms: ["Alicante DO"], grapes: ["Mourvèdre", "Muscat of Alexandria"]}
+- {name: "Chozas Carrascal", country: ES, parent: "Valencian Community", classification: VP, synonyms: ["Pago Chozas Carrascal"]}
+- {name: "El Terrerazo", country: ES, parent: "Valencian Community", classification: VP}
+- {name: "Los Balagueses", country: ES, parent: "Valencian Community", classification: VP, synonyms: ["Pago de Los Balagueses"]}
+- {name: "Tharsys", country: ES, parent: "Valencian Community", classification: VP}
+- {name: "Vera de Estenas", country: ES, parent: "Valencian Community", classification: VP}
+- {name: "Castelló", country: ES, parent: "Valencian Community", classification: IGP, synonyms: ["Castellón", "Castellon"]}
+- {name: "Murcia", country: ES, synonyms: ["Región de Murcia"]}
+- {name: "Jumilla", country: ES, parent: "Murcia", classification: DO, synonyms: ["Jumilla DO"], grapes: ["Mourvèdre"]}
+- {name: "Yecla", country: ES, parent: "Murcia", classification: DO, grapes: ["Mourvèdre"]}
+- {name: "Bullas", country: ES, parent: "Murcia", classification: DO, grapes: ["Mourvèdre"]}
+- {name: "Campo de Cartagena", country: ES, parent: "Murcia", classification: IGP}
+- {name: "Vino de la Tierra de Murcia", country: ES, parent: "Murcia", classification: IGP, synonyms: ["VT Murcia"]}
+- {name: "Extremadura", country: ES, synonyms: ["VT Extremadura"]}
+- {name: "Ribera del Guadiana", country: ES, parent: "Extremadura", classification: DO, grapes: ["Tempranillo", "Pardina", "Cayetana Blanca"]}
+- {name: "Tierra de Barros", country: ES, parent: "Ribera del Guadiana"}
+- {name: "Cañamero", country: ES, parent: "Ribera del Guadiana", synonyms: ["Canamero"]}
+- {name: "Montánchez", country: ES, parent: "Ribera del Guadiana", synonyms: ["Montanchez"]}
+- {name: "Ribera Alta", country: ES, parent: "Ribera del Guadiana"}
+- {name: "Ribera Baja", country: ES, parent: "Ribera del Guadiana"}
+- {name: "Matanegra", country: ES, parent: "Ribera del Guadiana"}
 
 # ======================= PORTUGAL =======================
 - {name: "Douro", country: PT, classification: DOC, synonyms: ["Douro DOC", "Douro Valley", "Alto Douro", "Cima Corgo", "Baixo Corgo", "Douro Superior"]}

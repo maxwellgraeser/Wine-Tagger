@@ -1,0 +1,118 @@
+# ================= NORTHERN SPAIN (ES-N) — research =================
+# Official register: MAPA "Listado de Denominaciones de Origen Protegidas e
+# Indicaciones Geográficas Protegidas de Vinos registradas en la Unión
+# Europea", updated 2 July 2026 (downloaded as a PDF and read directly).
+# MAPA = "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"
+# Subzone- and grape-level detail (below the MAPA list's granularity) is
+# cited per entry from each Consejo Regulador or the DOP's pliego de
+# condiciones.
+
+# ---- SUPRAAUTONÓMICO (touches my communities) ----
+- {name: "Cava", country: ES, classification: DO, synonyms: ["Cava DO"], grapes: ["Macabeo", "Xarel·lo", "Parellada", "Chardonnay", "Garnacha", "Monastrell", "Pinot Noir", "Trepat"], source: "https://winewitandwisdomswe.com/wp-content/uploads/2021/06/Proposed-Pliego-2022-Changes-CAVA-DO.pdf"}
+- {name: "Rioja", country: ES, classification: DOCa, synonyms: ["La Rioja", "Rioja DOCa", "DOCa Rioja", "Rioja DOC"], grapes: ["Tempranillo", "Garnacha", "Graciano", "Mazuelo", "Viura"], source: "https://riojawine.com/wp-content/uploads/2025/11/pliego-de-condiciones-am13.pdf"}
+- {name: "Rioja Alta", country: ES, parent: "Rioja", source: "https://riojawine.com/wp-content/uploads/2025/11/pliego-de-condiciones-am13.pdf"}
+- {name: "Rioja Alavesa", country: ES, parent: "Rioja", source: "https://riojawine.com/wp-content/uploads/2025/11/pliego-de-condiciones-am13.pdf"}
+- {name: "Rioja Oriental", country: ES, parent: "Rioja", synonyms: ["Rioja Baja"], source: "https://riojawine.com/wp-content/uploads/2025/11/pliego-de-condiciones-am13.pdf"}
+- {name: "Ribera del Queiles", country: ES, classification: IGP, source: "https://www.mapa.gob.es/es/alimentacion/temas/calidad-diferenciada/dop-igp/detalle/vinos_tierra/igp_ribera_queiles"}
+- {name: "Valles de Sadacia", country: ES, classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+
+# ======================= GALICIA =======================
+- {name: "Galicia", country: ES, synonyms: ["Galiza"], source: "existing library entry, unchanged"}
+- {name: "Rías Baixas", country: ES, parent: "Galicia", classification: DO, synonyms: ["Rias Baixas", "Rías Baixas DO", "Rias Baixas DO"], grapes: ["Albariño", "Loureira", "Treixadura", "Caíño Blanco"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Val do Salnés", country: ES, parent: "Rías Baixas", classification: Subzona, source: "https://www.doriasbaixas.com/en/subzones/"}
+- {name: "Condado do Tea", country: ES, parent: "Rías Baixas", classification: Subzona, source: "https://www.doriasbaixas.com/en/subzones/"}
+- {name: "O Rosal", country: ES, parent: "Rías Baixas", classification: Subzona, source: "https://www.doriasbaixas.com/en/subzones/"}
+- {name: "Soutomaior", country: ES, parent: "Rías Baixas", classification: Subzona, source: "https://www.doriasbaixas.com/en/subzones/"}
+- {name: "Ribeira do Ulla", country: ES, parent: "Rías Baixas", classification: Subzona, source: "https://www.doriasbaixas.com/en/subzones/"}
+- {name: "Ribeiro", country: ES, parent: "Galicia", classification: DO, grapes: ["Treixadura", "Godello", "Loureira", "Albariño", "Mencía", "Caíño Tinto", "Sousón", "Brancellao"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Ribeira Sacra", country: ES, parent: "Galicia", classification: DO, grapes: ["Mencía", "Brancellao", "Merenzao", "Caíño Tinto", "Sousón", "Godello", "Treixadura", "Loureira", "Dona Branca", "Albariño"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Amandi", country: ES, parent: "Ribeira Sacra", classification: Subzona, source: "https://ribeirasacra.org/subzona-amandi/es"}
+- {name: "Chantada", country: ES, parent: "Ribeira Sacra", classification: Subzona, source: "https://ribeirasacra.org/subzona-ribeiras-minho/es"}
+- {name: "Quiroga-Bibei", country: ES, parent: "Ribeira Sacra", classification: Subzona, source: "https://ribeirasacra.org/subzona-quiroga-bibei/es"}
+- {name: "Ribeiras do Miño", country: ES, parent: "Ribeira Sacra", classification: Subzona, source: "https://ribeirasacra.org/subzona-ribeiras-minho/es"}
+- {name: "Ribeiras do Sil", country: ES, parent: "Ribeira Sacra", classification: Subzona, source: "https://ribeirasacra.org/subzona-ribeiras-sil/es"}
+- {name: "Valdeorras", country: ES, parent: "Galicia", classification: DO, grapes: ["Godello", "Dona Branca", "Mencía", "Merenzao"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Monterrei", country: ES, parent: "Galicia", classification: DO, grapes: ["Dona Branca", "Godello", "Treixadura", "Mencía", "Merenzao"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Val de Monterrei", country: ES, parent: "Monterrei", classification: Subzona, source: "https://en.wikipedia.org/wiki/Monterrei_(DO)"}
+- {name: "Ladeira de Monterrei", country: ES, parent: "Monterrei", classification: Subzona, synonyms: ["Ladeiras de Monterrei"], source: "https://en.wikipedia.org/wiki/Monterrei_(DO)"}
+- {name: "Barbanza e Iria", country: ES, parent: "Galicia", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Betanzos", country: ES, parent: "Galicia", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Ribeiras do Morrazo", country: ES, parent: "Galicia", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Terras do Navia", country: ES, parent: "Galicia", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Val do Miño-Ourense", country: ES, parent: "Galicia", classification: IGP, synonyms: ["Valle del Miño-Ourense"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+
+# ======================= ASTURIAS =======================
+- {name: "Asturias", country: ES, synonyms: ["Principado de Asturias"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Cangas", country: ES, parent: "Asturias", classification: VC, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+
+# ======================= CANTABRIA =======================
+- {name: "Cantabria", country: ES, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Costa de Cantabria", country: ES, parent: "Cantabria", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Liébana", country: ES, parent: "Cantabria", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+
+# ======================= PAÍS VASCO =======================
+- {name: "Basque Country", country: ES, synonyms: ["País Vasco", "Pais Vasco", "Euskadi", "Basque", "Basque Country (Spain)"], source: "existing library entry, unchanged"}
+- {name: "Getariako Txakolina", country: ES, parent: "Basque Country", classification: DO, synonyms: ["Txakoli de Getaria", "Txakolina", "Txakoli", "Chacolí de Guetaria", "Chacoli", "Getaria"], grapes: ["Hondarrabi Zuri", "Hondarrabi Beltza"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Bizkaiko Txakolina", country: ES, parent: "Basque Country", classification: DO, synonyms: ["Txakoli de Bizkaia", "Chacolí de Vizcaya", "Chacolí de Bizkaia"], grapes: ["Hondarrabi Zuri", "Hondarrabi Beltza"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Arabako Txakolina", country: ES, parent: "Basque Country", classification: DO, synonyms: ["Txakoli de Álava"], grapes: ["Hondarrabi Zuri", "Hondarrabi Beltza"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+
+# ======================= NAVARRA =======================
+- {name: "Navarra", country: ES, classification: DO, synonyms: ["Navarre", "Navarra DO"], grapes: ["Tempranillo", "Garnacha", "Graciano", "Mazuelo", "Cabernet Sauvignon", "Merlot", "Chardonnay", "Viura", "Moscatel de Grano Menudo"], source: "https://www.navarrawine.com/en/do-navarra/regulatory-council/"}
+- {name: "Pago de Arínzano", country: ES, parent: "Navarra", classification: VP, grapes: ["Tempranillo", "Cabernet Sauvignon", "Merlot", "Chardonnay"], source: "https://en.wikipedia.org/wiki/Ar%C3%ADnzano"}
+- {name: "Pago de Otazu", country: ES, parent: "Navarra", classification: VP, grapes: ["Tempranillo", "Cabernet Sauvignon", "Merlot", "Cabernet Franc", "Chardonnay"], source: "https://en.wikipedia.org/wiki/Otazu"}
+- {name: "Prado de Irache", country: ES, parent: "Navarra", classification: VP, synonyms: ["Pago de Prado de Irache"], grapes: ["Tempranillo", "Cabernet Sauvignon", "Merlot", "Garnacha", "Viura", "Chardonnay"], source: "https://en.wikipedia.org/wiki/Prado_de_Irache"}
+- {name: "Bolandin", country: ES, parent: "Navarra", classification: VP, synonyms: ["Pago Bolandín"], grapes: ["Cabernet Sauvignon", "Merlot", "Syrah", "Tempranillo", "Chardonnay", "Sauvignon Blanc", "Moscatel de Grano Menudo"], source: "https://winewitandwisdomswe.com/2022/06/02/welcome-to-the-world-vino-de-pago-bolandin/"}
+- {name: "3 Riberas", country: ES, parent: "Navarra", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+
+# ======================= ARAGÓN =======================
+- {name: "Aragón", country: ES, synonyms: ["Aragon"], source: "existing library entry, unchanged"}
+- {name: "Cariñena", country: ES, parent: "Aragón", classification: DO, synonyms: ["Carinena", "Cariñena DO"], grapes: ["Garnacha", "Tempranillo", "Mazuelo", "Viura", "Garnacha Blanca", "Moscatel de Alejandría"], source: "https://en.wikipedia.org/wiki/Cari%C3%B1ena_DOP"}
+- {name: "Calatayud", country: ES, parent: "Aragón", classification: DO, grapes: ["Garnacha", "Tempranillo", "Mazuelo", "Monastrell", "Viura", "Moscatel de Alejandría"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Campo de Borja", country: ES, parent: "Aragón", classification: DO, synonyms: ["Borja"], grapes: ["Garnacha", "Tempranillo", "Mazuelo", "Viura", "Garnacha Blanca"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Somontano", country: ES, parent: "Aragón", classification: DO, grapes: ["Moristel", "Parraleta", "Tempranillo", "Cabernet Sauvignon", "Merlot", "Syrah", "Alcañón", "Chardonnay", "Gewürztraminer"], source: "https://turismosomontano.es/es/que-ver-que-hacer/sabores/enoturismo/la-uva-y-el-vino"}
+- {name: "Aylés", country: ES, parent: "Aragón", classification: VP, synonyms: ["Pago Aylés"], grapes: ["Garnacha", "Tempranillo", "Cabernet Sauvignon", "Merlot", "Syrah", "Chardonnay"], source: "https://en.wikipedia.org/wiki/Pago_Ayl%C3%A9s"}
+- {name: "Urbezo", country: ES, parent: "Aragón", classification: DO, grapes: ["Garnacha", "Cabernet Sauvignon", "Mazuelo", "Merlot", "Syrah", "Tempranillo", "Chardonnay", "Garnacha Blanca", "Moscatel de Alejandría"], source: "https://agrodigital.com/2024/10/28/la-union-europea-reconoce-la-denominacion-de-origen-protegida-urbezo-en-aragon/"}
+- {name: "Bajo Aragón", country: ES, parent: "Aragón", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Ribera del Gállego-Cinco Villas", country: ES, parent: "Aragón", classification: IGP, synonyms: ["Ribera del Gállego - Cinco Villas"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Ribera del Jiloca", country: ES, parent: "Aragón", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Valdejalón", country: ES, parent: "Aragón", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Valle del Cinca", country: ES, parent: "Aragón", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+
+# ======================= CATALONIA =======================
+- {name: "Catalonia", country: ES, classification: DO, synonyms: ["Cataluña", "Catalunya", "Catalonia DO", "Catalunya DO"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Alella", country: ES, parent: "Catalonia", classification: DO, grapes: ["Xarel·lo", "Garnacha Blanca", "Tempranillo", "Chardonnay"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Priorat", country: ES, parent: "Catalonia", classification: DOQ, synonyms: ["Priorato", "Priorat DOQ"], grapes: ["Garnacha", "Mazuelo", "Cabernet Sauvignon", "Merlot", "Syrah", "Garnacha Blanca"], source: "https://en.wikipedia.org/wiki/Priorat_DOQ"}
+- {name: "Montsant", country: ES, parent: "Catalonia", classification: DO, grapes: ["Garnacha", "Mazuelo", "Syrah", "Cabernet Sauvignon", "Merlot", "Tempranillo", "Garnacha Blanca"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Penedès", country: ES, parent: "Catalonia", classification: DO, synonyms: ["Penedes", "Penedès DO", "Clàssic Penedès"], grapes: ["Xarel·lo", "Macabeo", "Parellada", "Tempranillo", "Garnacha", "Cabernet Sauvignon", "Merlot"], source: "https://dopenedes.cat/wp-content/uploads/2025/11/pliego-de-condiciones-dop-penedes.pdf"}
+- {name: "Costers del Segre", country: ES, parent: "Catalonia", classification: DO, grapes: ["Tempranillo", "Cabernet Sauvignon", "Merlot", "Garnacha", "Macabeo", "Chardonnay"], source: "https://incavi.gencat.cat/ca/coneix-vi-catala/denominacions-origen-catalanes/costers-segre/"}
+- {name: "Artesa de Segre", country: ES, parent: "Costers del Segre", classification: Subzona, source: "https://incavi.gencat.cat/ca/coneix-vi-catala/denominacions-origen-catalanes/costers-segre/"}
+- {name: "Urgell", country: ES, parent: "Costers del Segre", classification: Subzona, source: "https://incavi.gencat.cat/ca/coneix-vi-catala/denominacions-origen-catalanes/costers-segre/"}
+- {name: "Garrigues", country: ES, parent: "Costers del Segre", classification: Subzona, synonyms: ["Les Garrigues"], source: "https://incavi.gencat.cat/ca/coneix-vi-catala/denominacions-origen-catalanes/costers-segre/"}
+- {name: "Pallars Jussà", country: ES, parent: "Costers del Segre", classification: Subzona, source: "https://incavi.gencat.cat/ca/coneix-vi-catala/denominacions-origen-catalanes/costers-segre/"}
+- {name: "Raimat", country: ES, parent: "Costers del Segre", classification: Subzona, source: "https://incavi.gencat.cat/ca/coneix-vi-catala/denominacions-origen-catalanes/costers-segre/"}
+- {name: "Segrià", country: ES, parent: "Costers del Segre", classification: Subzona, source: "https://incavi.gencat.cat/ca/coneix-vi-catala/denominacions-origen-catalanes/costers-segre/"}
+- {name: "Valls de Riu Corb", country: ES, parent: "Costers del Segre", classification: Subzona, synonyms: ["Valls del Riu Corb"], source: "https://incavi.gencat.cat/ca/coneix-vi-catala/denominacions-origen-catalanes/costers-segre/"}
+- {name: "Empordà", country: ES, parent: "Catalonia", classification: DO, synonyms: ["Emporda", "Ampurdán", "Empordà DO"], grapes: ["Garnacha", "Mazuelo", "Garnacha Blanca", "Macabeo"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Terra Alta", country: ES, parent: "Catalonia", classification: DO, grapes: ["Garnacha Blanca", "Garnacha", "Mazuelo", "Macabeo"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Conca de Barberà", country: ES, parent: "Catalonia", classification: DO, synonyms: ["Conca de Barbera"], grapes: ["Trepat", "Macabeo", "Parellada", "Tempranillo"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Tarragona", country: ES, parent: "Catalonia", classification: DO, grapes: ["Garnacha", "Mazuelo", "Tempranillo", "Macabeo", "Parellada", "Garnacha Blanca"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Pla de Bages", country: ES, parent: "Catalonia", classification: DO, grapes: ["Picapoll", "Picapoll Negre", "Mandó", "Sumoll", "Garnacha"], source: "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/pla_de_bages_2024_09_13.pdf"}
+
+# ======================= CASTILLA Y LEÓN =======================
+- {name: "Castilla y León", country: ES, synonyms: ["Castilla y Leon", "Castile and León", "Castile and Leon", "Vino de la Tierra de Castilla y León", "VT Castilla y León"], source: "existing library entry, unchanged (already covers IGP Castilla y León as a synonym)"}
+- {name: "Ribera del Duero", country: ES, parent: "Castilla y León", classification: DO, synonyms: ["Ribera del Duero DO", "Ribera"], grapes: ["Tempranillo", "Cabernet Sauvignon", "Merlot", "Malbec", "Garnacha", "Albillo Mayor"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Toro", country: ES, parent: "Castilla y León", classification: DO, synonyms: ["Toro DO"], grapes: ["Tempranillo", "Garnacha", "Dona Branca", "Verdejo"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Rueda", country: ES, parent: "Castilla y León", classification: DO, synonyms: ["Rueda DO"], grapes: ["Verdejo", "Viura", "Sauvignon Blanc", "Palomino"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Bierzo", country: ES, parent: "Castilla y León", classification: DO, synonyms: ["El Bierzo"], grapes: ["Mencía", "Godello", "Dona Branca", "Palomino"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Cigales", country: ES, parent: "Castilla y León", classification: DO, grapes: ["Tempranillo", "Garnacha", "Verdejo", "Albillo Mayor"], source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Arribes", country: ES, parent: "Castilla y León", classification: DO, synonyms: ["Arribes del Duero"], grapes: ["Juan García", "Rufete", "Tempranillo", "Bruñal", "Dona Branca", "Verdejo"], source: "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/arribes_2025_11_07.pdf"}
+- {name: "Arlanza", country: ES, parent: "Castilla y León", classification: DO, grapes: ["Tempranillo", "Garnacha", "Mencía"], source: "https://en.wikipedia.org/wiki/Arlanza_(DO)"}
+- {name: "Tierra del Vino de Zamora", country: ES, parent: "Castilla y León", classification: DO, grapes: ["Tempranillo", "Dona Branca", "Moscatel de Grano Menudo", "Verdejo", "Godello"], source: "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/tierradel_vino_de_zamora_2011_01_01.pdf"}
+- {name: "León", country: ES, parent: "Castilla y León", classification: DO, synonyms: ["Tierra de León"], grapes: ["Prieto Picudo", "Mencía", "Albarín Blanco"], source: "https://ileon.eldiario.es/actualidad/do-leon_1_9503513.html"}
+- {name: "Valles de Benavente", country: ES, parent: "Castilla y León", classification: VC, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Sierra de Salamanca", country: ES, parent: "Castilla y León", classification: VC, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Valtiendas", country: ES, parent: "Castilla y León", classification: VC, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Cebreros", country: ES, parent: "Castilla y León", classification: VC, source: "https://www.mapa.gob.es/es/dam/jcr:f9643333-ef75-4a2f-8864-afd1ade63fd1/02_vinos.pdf"}
+- {name: "Abadía Retuerta", country: ES, parent: "Castilla y León", classification: VP, grapes: ["Tempranillo", "Cabernet Sauvignon", "Syrah", "Merlot", "Verdejo", "Godello"], source: "https://www.itacyl.es/-/solicitud-de-registro-de-la-dop-avadia-retuerta-vino-de-pago-"}
+- {name: "Dehesa Peñalba", country: ES, parent: "Castilla y León", classification: VP, grapes: ["Cabernet Sauvignon", "Merlot", "Tempranillo", "Syrah"], source: "https://www.mapa.gob.es/es/alimentacion/temas/calidad-diferenciada/dop-igp/detalle/vcprd/dop_dehesa_penalba"}
+- {name: "Urueña", country: ES, parent: "Castilla y León", classification: VP, source: "https://www.itacyl.es/en/-/solicitud-de-registro-de-la-dop-heredad-de-uruena-", grapes: ["Tempranillo", "Cabernet Sauvignon", "Merlot", "Syrah"]}

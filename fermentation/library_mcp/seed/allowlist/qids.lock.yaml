@@ -32,6 +32,31 @@ grapes:
     label: Albarola
     note: ok
     qid: Q443625
+  Albarín Blanco:
+    description: grape variety
+    label: Albarín blanco
+    note: ok
+    qid: Q5662521
+  Albarín Negro:
+    description: grape variety
+    label: Albarín negro
+    note: ok
+    qid: Q5662524
+  Albillo Mayor:
+    description: Italian grape variety
+    label: Albillo Mayor
+    note: ok
+    qid: Q115812962
+  Albillo Real:
+    description: varietal
+    label: Albillo
+    note: inexact label match -- review
+    qid: Q719516
+  Alcañón:
+    description: variety of grape
+    label: Alcañón
+    note: ok
+    qid: Q85740590
   Aleatico:
     description: Italian grape variety
     label: Aleatico
@@ -222,6 +247,11 @@ grapes:
     label: Brachetto
     note: ok
     qid: Q896583
+  Brancellao:
+    description: grape variety
+    label: Brancellao
+    note: ok
+    qid: Q5733191
   Braquet:
     description: varietal
     label: Braquet
@@ -282,6 +312,11 @@ grapes:
     label: Carménère
     note: ok
     qid: Q1043868
+  Carrasquín:
+    description: grape variety
+    label: Carrasquín
+    note: ok
+    qid: Q5753448
   Carricante:
     description: Italian grape variety
     label: Carricante
@@ -307,6 +342,11 @@ grapes:
     label: Catawba
     note: ok
     qid: Q989673
+  Cayetana Blanca:
+    description: Italian grape variety
+    label: Cayetana
+    note: ok
+    qid: Q1051963
   Cayuga White:
     description: variety of grape from the Finger Lakes region of New York
     label: Cayuga White
@@ -317,6 +357,11 @@ grapes:
     label: Caíño blanco
     note: ok
     qid: Q2933217
+  Caíño Tinto:
+    description: varietal
+    label: Caiño tinto
+    note: ok
+    qid: Q894137
   Cereza:
     description: wine grape variety
     label: Cereza
@@ -482,6 +527,16 @@ grapes:
     label: Dolcetto
     note: ok
     qid: Q1235396
+  Dona Branca:
+    description: variety of grape
+    label: Doña Blanca
+    note: ok
+    qid: Q1253592
+  Doradilla:
+    description: variety of grape
+    label: Doradilla
+    note: ok
+    qid: Q85757450
   Dornfelder:
     description: variety of grape
     label: Dornfelder
@@ -512,6 +567,11 @@ grapes:
     label: Erbaluce
     note: ok
     qid: Q454835
+  Espadeiro:
+    description: varietal
+    label: Espadeiro
+    note: ok
+    qid: Q489307
   Falanghina:
     description: Italian grape variety
     label: Falanghina
@@ -547,6 +607,11 @@ grapes:
     label: Fiano
     note: ok
     qid: Q1410399
+  Fogoneu:
+    description: grape variety
+    label: fogoneu
+    note: ok
+    qid: Q8961918
   Folle Blanche:
     description: French grape variety
     label: Folle blanche
@@ -557,6 +622,11 @@ grapes:
     label: Forastera
     note: ok
     qid: Q260710
+  Forcallat Tinta:
+    description: grape variety
+    label: Forcallat tinta
+    note: ok
+    qid: Q5863749
   Frappato:
     description: Italian grape variety
     label: Frappato
@@ -617,6 +687,16 @@ grapes:
     label: Garganega
     note: ok
     qid: Q1422786
+  Garnacha Peluda:
+    description: variety of grape
+    label: Lledoner Pelut
+    note: ok
+    qid: Q475009
+  Garrido Fino:
+    description: variety of grape
+    label: Garrido Fino
+    note: ok
+    qid: Q1494464
   Gewürztraminer:
     description: Italian grape variety
     label: Gewürztraminer
@@ -747,6 +827,11 @@ grapes:
     label: Jacquère
     note: ok
     qid: Q282095
+  Juan García:
+    description: Spanish red grape variety
+    label: Juan García
+    note: ok
+    qid: Q6299861
   Juhfark:
     description: varietal
     label: Juhfark
@@ -872,6 +957,11 @@ grapes:
     label: Malbec
     note: ok
     qid: Q1414045
+  Malvar:
+    description: grape cultivar
+    label: Malvar
+    note: ok
+    qid: Q1887925
   Malvasia Bianca:
     description: Italian grape variety
     label: Malvasia bianca
@@ -897,6 +987,11 @@ grapes:
     label: Malvasia di Candia Aromatica
     note: ok
     qid: Q1449907
+  Malvasía Rosada:
+    description: grape variety
+    label: Malvasia Di Sardegna Rosada
+    note: inexact label match -- review
+    qid: Q1887942
   Mammolo:
     description: Italian grape variety
     label: Mammolo
@@ -907,6 +1002,11 @@ grapes:
     label: Mandilaria
     note: ok
     qid: Q384968
+  Mandó:
+    description: Italian grape variety
+    label: Mandó
+    note: ok
+    qid: Q108775340
   Manseng Noir:
     description: varietal
     label: Manseng Noir
@@ -932,6 +1032,11 @@ grapes:
     label: Marechal Foch
     note: ok
     qid: Q1417596
+  Marmajuelo:
+    description: grape variety
+    label: Bermejuela
+    note: ok
+    qid: Q5726420
   Marquette:
     description: variety of grape
     label: Marquette
@@ -987,6 +1092,11 @@ grapes:
     label: Merlot
     note: ok
     qid: Q213338
+  Merseguera:
+    description: variety of grape
+    label: Merseguera
+    note: ok
+    qid: Q247861
   Minutolo:
     description: Italian grape variety
     label: Minutolo
@@ -1002,6 +1112,11 @@ grapes:
     label: Molinara
     note: ok
     qid: Q1753085
+  Moll:
+    description: variety of grape
+    label: Prensal
+    note: ok
+    qid: Q5855763
   Mondeuse:
     description: Italian grape variety
     label: Mondeuse Noire
@@ -1017,6 +1132,11 @@ grapes:
     label: Montepulciano
     note: ok
     qid: Q1937737
+  Moravia Agria:
+    description: grape variety
+    label: Moravia agria
+    note: ok
+    qid: Q6023555
   Moristel:
     description: variety of grape
     label: Moristel
@@ -1102,6 +1222,11 @@ grapes:
     label: Negoska
     note: ok
     qid: Q488220
+  Negramoll:
+    description: variety of grape
+    label: Tinta Negra Mole
+    note: inexact label match -- review
+    qid: Q2435939
   Negroamaro:
     description: Italian grape variety
     label: Negroamaro
@@ -1202,11 +1327,21 @@ grapes:
     label: Pamid
     note: ok
     qid: Q1099124
+  Pardina:
+    description: grape variety
+    label: Pardina
+    note: ok
+    qid: Q2052096
   Parellada:
     description: grape variety
     label: Parellada
     note: ok
     qid: Q1751915
+  Parraleta:
+    description: variety of grape
+    label: Parraleta
+    note: ok
+    qid: Q7139732
   Passerina:
     description: Italian grape variety
     label: Passerina
@@ -1262,7 +1397,6 @@ grapes:
     label: Petite Arvine
     note: ok
     qid: Q392270
-  Petite Pearl: null
   Petite Sirah:
     description: varietal
     label: Durif
@@ -1433,6 +1567,11 @@ grapes:
     label: Romorantin
     note: ok
     qid: Q1645138
+  Romé:
+    description: wine of Spain
+    label: Romé
+    note: ok
+    qid: Q7363437
   Rondinella:
     description: Italian grape variety
     label: Rondinella
@@ -1763,6 +1902,11 @@ grapes:
     label: Verdicchio
     note: ok
     qid: Q1937755
+  Verdil:
+    description: grape variety
+    label: Verdil
+    note: ok
+    qid: Q2514577
   Verduzzo:
     description: Italian grape variety
     label: Verduzzo
@@ -1798,6 +1942,11 @@ grapes:
     label: Vignoles
     note: ok
     qid: Q1586047
+  Vijariego Blanco:
+    description: Italian grape variety
+    label: Vijariego Blanco
+    note: ok
+    qid: Q115620977
   Vilana:
     description: white Greek wine grape variety planted primarily in Crete
     label: Vilana
@@ -1848,6 +1997,11 @@ grapes:
     label: Xynisteri
     note: ok
     qid: Q2598571
+  Zalema:
+    description: variety of grape
+    label: Zalema
+    note: ok
+    qid: Q145045
   Zelen:
     description: white grape variety
     label: Zelen
@@ -1879,6 +2033,17 @@ grapes:
     note: ok
     qid: Q3445835
 regions:
+  3 Riberas (ES): null
+  Abadía Retuerta (ES):
+    description: Spanish wine
+    label: Abadia Retuerta
+    note: ok
+    qid: Q4663219
+  Abona (ES):
+    description: Spanish wine area
+    label: Abona
+    note: ok
+    qid: Q322801
   Abruzzo (IT):
     description: region in Italy
     label: Abruzzo
@@ -1985,6 +2150,7 @@ regions:
     label: Altenberg de Wolxheim
     note: ok
     qid: Q436731
+  Altiplano de Sierra Nevada (ES): null
   Alto Adige (IT):
     description: Italian controlled designation of origin wine from Trentino-Alto Adige
     label: Alto Adige DOC
@@ -2000,6 +2166,7 @@ regions:
     label: Amador County
     note: non-wine class -- review
     qid: Q156177
+  Amandi (ES): null
   Amarone della Valpolicella (IT):
     description: Italian controlled and guaranteed designation of origin wine from Veneto
     label: Amarone della Valpolicella DOCG
@@ -2070,6 +2237,7 @@ regions:
     qid: Q630166
   Arbois Pupillin (FR): null
   Ardèche (FR): null
+  Arganda (ES): null
   Arizona (US):
     description: state of the United States of America
     label: Arizona
@@ -2085,6 +2253,7 @@ regions:
     label: Arkansas Mountain AVA
     note: ok
     qid: Q672893
+  Arlanza (ES): null
   Arribes (ES):
     description: Spanish Denominación de Origen Protegida (DOP) for wines
     label: Arribes
@@ -2100,6 +2269,7 @@ regions:
     label: Arroyo Seco AVA
     note: ok
     qid: Q263615
+  Artesa de Segre (ES): null
   Ashton (ZA): null
   Asti (IT):
     description: Italian controlled and guaranteed designation of origin wine from Piedmont
@@ -2142,6 +2312,7 @@ regions:
     label: Avize
     note: non-wine class -- review
     qid: Q791195
+  Aylés (ES): null
   Ayze (FR): null
   Açores (PT): null
   Aÿ (FR): null
@@ -2151,17 +2322,24 @@ regions:
     note: ok
     qid: Q788297
   Baden (DE): null
+  Bailén (ES): null
   Bairrada (PT): null
   Baja California (MX):
     description: state of Mexico
     label: Baja California
     note: non-wine class -- review
     qid: Q58731
+  Bajo Aragón (ES): null
   Balaton (HU):
     description: wine region of Hungary
     label: Balaton wine region
     note: ok
     qid: Q4049117
+  Balearic Islands (ES):
+    description: autonomous community of Spain
+    label: Balearic Islands
+    note: non-wine class -- review
+    qid: Q107356467
   Ballard Canyon (US):
     description: winemaking region in California, United States
     label: Ballard Canyon AVA
@@ -2176,6 +2354,11 @@ regions:
   Banghoek (ZA): null
   Banyuls (FR): null
   Banyuls Grand Cru (FR): null
+  Barbanza e Iria (ES):
+    description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
+    label: Barbanza e Iria
+    note: ok
+    qid: Q534819
   Barbaresco (IT):
     description: Italian controlled and guaranteed designation of origin wine from Piedmont
     label: Barbaresco DOCG
@@ -2269,6 +2452,11 @@ regions:
     label: Bergerac wine
     note: ok
     qid: Q595034
+  Betanzos (ES):
+    description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
+    label: Betanzos
+    note: ok
+    qid: Q3392360
   Beverly, Washington (US):
     description: American Viticultural Area in Washington
     label: Beverly, Washington AVA
@@ -2290,6 +2478,7 @@ regions:
     label: Big Valley District-Lake County AVA
     note: ok
     qid: Q96373547
+  Binissalem (ES): null
   Bizkaiko Txakolina (ES):
     description: 'is a Spanish Denominación de Origen Protegida (DOP) (Basque: Jatorri Deitura Babestua)
       for wines, located in the province of Bizkaia, Basque Country, Spain'
@@ -2314,6 +2503,7 @@ regions:
   Blaye Côtes de Bordeaux (FR): null
   Blouvlei (ZA): null
   Boesmansrivier (ZA): null
+  Bolandin (ES): null
   Bolgheri (IT):
     description: Italian controlled designation of origin wine from Tuscany
     label: Bolgheri DOC
@@ -2522,6 +2712,7 @@ regions:
     note: ok
     qid: Q5021434
   Calitzdorp (ZA): null
+  Calzadilla (ES): null
   Campanha (BR):
     description: town (município) in the Brazilian state of Minas Gerais
     label: Campanha
@@ -2538,6 +2729,17 @@ regions:
     note: ok
     qid: Q3651973
   Campo de Borja (ES): null
+  Campo de Calatrava (ES): null
+  Campo de Cartagena (ES):
+    description: class of Spanish wines
+    label: Campo de Cartagena
+    note: ok
+    qid: Q8261178
+  Campo de la Guardia (ES):
+    description: ''
+    label: Campo de La Guardia
+    note: ok
+    qid: Q5028475
   Canary Islands (ES):
     description: autonomous community of Spain, and archipelago in the Atlantic Ocean
     label: Canary Islands
@@ -2554,6 +2756,11 @@ regions:
     note: ok
     qid: Q125470292
   Canelones (UY): null
+  Cangas (ES):
+    description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
+    label: Cangas
+    note: ok
+    qid: Q8261964
   Cango Valley (ZA): null
   Cannonau di Sardegna (IT):
     description: Italian controlled designation of origin wine from Sardinia
@@ -2561,6 +2768,11 @@ regions:
     note: ok
     qid: Q31841466
   Canon-Fronsac (FR): null
+  Cantabria (ES):
+    description: autonomous community of Spain
+    label: Cantabria
+    note: non-wine class -- review
+    qid: Q3946
   Canterbury (NZ): null
   Capay Valley (US):
     description: American Viticultural Area in Yolo County, California
@@ -2607,6 +2819,11 @@ regions:
     note: ok
     qid: Q912059
   Carnuntum (AT): null
+  Casa del Blanco (ES):
+    description: Spanish winery
+    label: Casa del Blanco
+    note: ok
+    qid: Q5755401
   Casablanca Valley (CL): null
   Cassis (FR):
     description: French wine
@@ -2618,6 +2835,7 @@ regions:
     label: Castel del Monte DOC
     note: ok
     qid: Q2941364
+  Castelló (ES): null
   Castilla y León (ES):
     description: Spanish geographical indication for Vino de la Tierra wines located in the autonomous
       region of Castile and León
@@ -2642,6 +2860,17 @@ regions:
     label: Cayuga Lake AVA
     note: ok
     qid: Q1052050
+  Cañamero (ES):
+    description: capital of Cañamero Municipality, Spain
+    label: Cañamero
+    note: non-wine class -- review
+    qid: Q24010231
+  Cebreros (ES):
+    description: Spanish Denominación de Origen Protegida (DOP) for wines in southeast of Castile and
+      Léon
+    label: Cebreros
+    note: ok
+    qid: Q104521643
   Cederberg (ZA): null
   Central Coast (US):
     description: winemaking region
@@ -2725,6 +2954,7 @@ regions:
     label: Champlain Valley of New York AVA
     note: ok
     qid: Q134622225
+  Chantada (ES): null
   Chantonnay (FR): null
   Chapelle-Chambertin (FR):
     description: vineyard for red wine
@@ -2807,6 +3037,7 @@ regions:
     label: Chouilly
     note: non-wine class -- review
     qid: Q1063932
+  Chozas Carrascal (ES): null
   Château-Chalon (FR):
     description: French wine
     label: Château-Chalon AOC
@@ -2978,6 +3209,12 @@ regions:
     label: Conca de Barberà
     note: ok
     qid: Q2991609
+  Condado de Huelva (ES):
+    description: Denominación de Origen (DO) for wines located in the south-east of the province of Huelva
+    label: Condado de Huelva
+    note: ok
+    qid: Q1124398
+  Condado do Tea (ES): null
   Condrieu (FR):
     description: French wine-growing region
     label: Condrieu AOC
@@ -3042,6 +3279,11 @@ regions:
     label: Cortona DOC
     note: ok
     qid: Q3694867
+  Costa de Cantabria (ES):
+    description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
+    label: Costa de Cantabria
+    note: ok
+    qid: Q5174958
   Costers del Segre (ES):
     description: Spanish wine
     label: Costers del Segre
@@ -3190,13 +3432,20 @@ regions:
     label: Cumberland Valley AVA
     note: ok
     qid: Q1143716
+  Cumbres del Guadalfeo (ES):
+    description: Wine region in Spain
+    label: Cumbres del Guadalfeo
+    note: ok
+    qid: Q5165777
   Curicó Valley (CL): null
   Custoza (IT):
     description: wine-producing area in Veneto, Italy
     label: Custoza
     note: ok
     qid: Q140131098
+  Cádiz (ES): null
   Cérons (FR): null
+  Córdoba (ES): null
   Côte Chalonnaise (FR):
     description: subregion of the Burgundy wine region of France
     label: Côte Chalonnaise
@@ -3353,6 +3602,17 @@ regions:
     label: Dealu Mare wine region
     note: ok
     qid: Q5245932
+  Dehesa Peñalba (ES): null
+  Dehesa del Carrizal (ES):
+    description: class of Spanish wine
+    label: Dehesa del Carrizal
+    note: ok
+    qid: Q5252235
+  Desierto de Almería (ES):
+    description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
+    label: Desierto de Almería
+    note: ok
+    qid: Q5264233
   Devon Valley (ZA): null
   Diablo Grande (US):
     description: American Viticultural Area in Stanislaus County, California
@@ -3374,6 +3634,7 @@ regions:
     label: Dolcetto d'Alba DOC
     note: ok
     qid: Q1235386
+  Dominio de Valdepusa (ES): null
   Dos Rios (US):
     description: California wine region in Mendocino County
     label: Dos Rios AVA
@@ -3444,11 +3705,32 @@ regions:
     label: El Dorado AVA
     note: ok
     qid: Q1324076
+  El Hierro (ES):
+    description: is a Spanish Denominación de Origen Protegida (DOP) for wines that covers the entire
+      island of El Hierro,
+    label: El Hierro
+    note: ok
+    qid: Q5351384
+  El Molar (ES):
+    description: municipality in Spain
+    label: El Molar
+    note: non-wine class -- review
+    qid: Q1915119
   El Pomar District (US):
     description: appelation that designates wine in San Luis Obispo County, CA
     label: El Pomar District AVA
     note: ok
     qid: Q132398237
+  El Terrerazo (ES):
+    description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
+    label: El Terrerazo
+    note: ok
+    qid: Q5352238
+  El Vicario (ES):
+    description: Spanish wine region
+    label: El Vicario
+    note: ok
+    qid: Q85758841
   Elandskloof (ZA): null
   Elgin (ZA): null
   Elim (ZA): null
@@ -3537,6 +3819,11 @@ regions:
     note: ok
     qid: Q1411155
   Fiefs Vendéens (FR): null
+  Finca Élez (ES):
+    description: ''
+    label: Finca Élez
+    note: ok
+    qid: Q5449803
   Finger Lakes (US):
     description: American Viticultural Area in New York
     label: Finger Lakes AVA
@@ -3562,6 +3849,11 @@ regions:
     label: Florimont
     note: ok
     qid: Q3074296
+  Formentera (ES):
+    description: Vino de la Terra
+    label: Formentera
+    note: ok
+    qid: Q4893450
   Fort Ross-Seaview (US):
     description: American Viticultural Area in Sonoma County, California
     label: Fort Ross-Seaview AVA
@@ -3644,6 +3936,7 @@ regions:
     label: Gard
     note: ok
     qid: Q3095358
+  Garrigues (ES): null
   Gattinara (IT):
     description: Italian controlled and guaranteed designation of origin wine from Piedmont
     label: Gattinara DOCG
@@ -3712,6 +4005,12 @@ regions:
     label: Grampians
     note: ok
     qid: Q5593940
+  Gran Canaria (ES):
+    description: Spanish wine denomination
+    label: Gran Canaria
+    note: ok
+    qid: Q5593979
+  Granada (ES): null
   Grand River Valley (US):
     description: American Viticultural Area in Ohio
     label: Grand River Valley AVA
@@ -3772,6 +4071,11 @@ regions:
     label: Guenoc Valley AVA
     note: ok
     qid: Q5614823
+  Guijoso (ES):
+    description: Spanish wine region
+    label: Guijoso
+    note: ok
+    qid: Q11682259
   Hames Valley (US):
     description: viticultural area in Monterey County, California
     label: Hames Valley AVA
@@ -3864,12 +4168,22 @@ regions:
     qid: Q5944605
   Hvar (HR): null
   Hérault (FR): null
+  Ibiza (ES):
+    description: Spanish geographical indication for wines in the Balearic Islands
+    label: Ibiza
+    note: ok
+    qid: Q4886725
   Ica (PE): null
   Idaho (US):
     description: state of the United States of America
     label: Idaho
     note: non-wine class -- review
     qid: Q1221
+  Illes Balears (ES):
+    description: wine
+    label: Illes Balears
+    note: ok
+    qid: Q6745086
   Illinois (US):
     description: state of the United States of America
     label: Illinois
@@ -4025,16 +4339,28 @@ regions:
   Kweekvallei (ZA): null
   L'Étoile (FR): null
   La Clape (FR): null
+  La Gomera (ES):
+    description: La Gomera is a Spanish Denominación de Origen Protegida (DOP) for wines that covers the
+      entire island of La Gomera (Canary Islands, Spain)
+    label: La Gomera
+    note: ok
+    qid: Q6462787
   La Grande Rue (FR):
     description: winery
     label: La Grande Rue
     note: ok
     qid: Q1555244
+  La Jaraba (ES):
+    description: Spanish winery in Castilla–La Mancha
+    label: La Jaraba
+    note: ok
+    qid: Q85775405
   La Mancha (ES):
     description: La Mancha is a Spanish Denominación de Origen Protegida (DOP) for wines,
     label: La Mancha
     note: ok
     qid: Q6463671
+  La Palma (ES): null
   La Romanée (FR):
     description: French wine
     label: La Romanée
@@ -4045,6 +4371,12 @@ regions:
     label: La Tâche AOC
     note: ok
     qid: Q923449
+  Ladeira de Monterrei (ES): null
+  Laderas del Genil (ES):
+    description: Wine region in Spain
+    label: Laderas del Genil
+    note: ok
+    qid: Q5594110
   Ladoix (FR):
     description: French wine
     label: Ladoix wine
@@ -4130,6 +4462,12 @@ regions:
     note: ok
     qid: Q283167
   Laudun (FR): null
+  Laujar-Alpujarra (ES):
+    description: '''''Vino de la Tierra'''' Laujar-Alpujarra, classification of Spanish wines with protected
+      geographical indication'
+    label: Laujar-Alpujarra
+    note: ok
+    qid: Q6498256
   Laurelwood District (US):
     description: American wine region located in Oregon
     label: Laurelwood District AVA
@@ -4147,6 +4485,7 @@ regions:
     note: non-wine class -- review
     qid: Q845984
   Le Pallet (FR): null
+  Lebrija (ES): null
   Leelanau Peninsula (US):
     description: American Viticultural Area in Michigan
     label: Leelanau Peninsula AVA
@@ -4171,6 +4510,7 @@ regions:
     note: ok
     qid: Q106946507
   Leyda Valley (CL): null
+  León (ES): null
   Liguria (IT):
     description: Italian region
     label: Liguria
@@ -4208,6 +4548,11 @@ regions:
     label: Livermore Valley AVA
     note: ok
     qid: Q1866441
+  Liébana (ES):
+    description: wine region in Spain
+    label: Liébana
+    note: ok
+    qid: Q6660796
   Lodi (US):
     description: Wine grape-growing region in California
     label: Lodi AVA
@@ -4243,16 +4588,23 @@ regions:
     label: Loramie Creek AVA
     note: ok
     qid: Q1340893
+  Los Balagueses (ES): null
   Los Carneros (US):
     description: wine region in California
     label: Los Carneros AVA
     note: ok
     qid: Q1870486
+  Los Cerrillos (ES): null
   Los Olivos District (US):
     description: winemaking region in California, United States
     label: Los Olivos District AVA
     note: ok
     qid: Q107261149
+  Los Palacios (ES):
+    description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
+    label: Los Palacios
+    note: ok
+    qid: Q6683050
   Louisiana (US):
     description: state of the United States of America
     label: Louisiana
@@ -4355,6 +4707,7 @@ regions:
     label: Manton Valley AVA
     note: ok
     qid: Q134376419
+  Manzanilla-Sanlúcar de Barrameda (ES): null
   Maranges (FR):
     description: French wine
     label: Maranges
@@ -4421,6 +4774,7 @@ regions:
     label: Massachusetts
     note: non-wine class -- review
     qid: Q771
+  Matanegra (ES): null
   Maule Valley (CL):
     description: sub-region of the Viticultural Region of Chile's Central Valley
     label: Maule Valley
@@ -4493,6 +4847,7 @@ regions:
     label: Menfi DOC
     note: ok
     qid: Q3854658
+  Menorca (ES): null
   Mercurey (FR):
     description: Burgundy area wine
     label: Mercurey wine
@@ -4579,6 +4934,12 @@ regions:
     label: Monbazillac AOC
     note: ok
     qid: Q1430928
+  Mondéjar (ES):
+    description: is a Spanish Denominación de Origen Protegida (DOP) for wines located in the southeast
+      corner of the province of Guadalajara (Castile-La Mancha, Spain)
+    label: Mondéjar
+    note: ok
+    qid: Q5404477
   Monferrato (IT):
     description: Italian controlled designation of origin wine from Piedmont
     label: Monferrato DOC
@@ -4664,6 +5025,11 @@ regions:
     label: Montsant DO
     note: ok
     qid: Q1808846
+  Montánchez (ES):
+    description: capital of Montánchez Municipality, Spain
+    label: Montánchez
+    note: non-wine class -- review
+    qid: Q24010150
   Moon Mountain District Sonoma County (US):
     description: American Viticultural Area in California
     label: Moon Mountain District Sonoma County
@@ -4829,6 +5195,11 @@ regions:
     label: Nashoba Valley AVA
     note: ok
     qid: Q139328870
+  Navalcarnero (ES):
+    description: capital of Navalcarnero Municipality, Spain
+    label: Navalcarnero
+    note: non-wine class -- review
+    qid: Q24012716
   Navarra (ES):
     description: Spanish Denominación de Origen Protegida (DOP) for wines from the southern half of the
       autonomous community of Navarr
@@ -4888,6 +5259,11 @@ regions:
     label: Ningxia
     note: non-wine class -- review
     qid: Q57448
+  Norte de Almería (ES):
+    description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
+    label: Norte de Almería
+    note: ok
+    qid: Q7053503
   North Carolina (US):
     description: state of the United States of America
     label: North Carolina
@@ -4937,6 +5313,7 @@ regions:
     note: ok
     qid: Q3346179
   Nuy (ZA): null
+  O Rosal (ES): null
   Oak Knoll District of Napa Valley (US):
     description: California wine region in Napa County, California
     label: Oak Knoll District of Napa Valley AVA
@@ -5046,6 +5423,17 @@ regions:
     label: Padthaway wine region
     note: ok
     qid: Q19573545
+  Pago Florentino (ES):
+    description: wine region of Spain
+    label: Pago Florentino
+    note: ok
+    qid: Q7124388
+  Pago de Arínzano (ES): null
+  Pago de Otazu (ES):
+    description: pago wine of Spain
+    label: Pago de Otazu
+    note: ok
+    qid: Q6054447
   Paicines (US):
     description: American grape-growing area
     label: Paicines AVA
@@ -5056,6 +5444,7 @@ regions:
     label: Palette AOC
     note: ok
     qid: Q471013
+  Pallars Jussà (ES): null
   Palmela (PT): null
   Palos Verdes Peninsula (US):
     description: American Viticultural Area in Los Angeles County, California
@@ -5165,6 +5554,13 @@ regions:
   Piket-Bo-Berg (ZA): null
   Pine Mountain-Cloverdale Peak (US): null
   Pissotte (FR): null
+  Pla de Bages (ES): null
+  Pla i Llevant (ES):
+    description: Spanish Denominación de Origen Protegida (DOP) (Denominació d'Origen Protegida in Catalan)
+      for wines located on the island of Majorca, Balearic Islands, Spain
+    label: Plà i Llevant
+    note: ok
+    qid: Q7205907
   Plettenberg Bay (ZA): null
   Podravje (SI): null
   Polkadraai Hills (ZA): null
@@ -5210,6 +5606,11 @@ regions:
     label: Pouilly-sur-Loire AOC
     note: ok
     qid: Q3400220
+  Prado de Irache (ES):
+    description: pago wine of Spain
+    label: Prado de Irache
+    note: ok
+    qid: Q378265
   Praelatenberg (FR): null
   Premières Côtes de Bordeaux (FR): null
   Prieska (ZA): null
@@ -5274,11 +5675,13 @@ regions:
     label: Quincy AOC
     note: ok
     qid: Q2123199
+  Quiroga-Bibei (ES): null
   Racha (GE):
     description: geographic region
     label: Racha
     note: non-wine class -- review
     qid: Q1463301
+  Raimat (ES): null
   Ramona Valley (US):
     description: California wine region in San Diego County
     label: Ramona Valley AVA
@@ -5352,17 +5755,41 @@ regions:
     label: Ribeira Sacra
     note: ok
     qid: Q624736
+  Ribeira do Ulla (ES): null
+  Ribeiras do Miño (ES): null
+  Ribeiras do Morrazo (ES): null
+  Ribeiras do Sil (ES): null
   Ribeiro (ES):
     description: Spanish Denominación de Origen (DO) for wines
     label: Ribeiro
     note: ok
     qid: Q1473908
+  Ribera Alta (ES): null
+  Ribera Baja (ES): null
+  Ribera del Andarax (ES):
+    description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
+    label: Ribera del Andarax
+    note: ok
+    qid: Q7322324
   Ribera del Duero (ES):
     description: Spanish Denominación de Origen Protegida (DOP) located in the autonomous community of
       Castile and León
     label: Ribera del Duero
     note: ok
     qid: Q2167338
+  Ribera del Guadiana (ES):
+    description: Spanish wine
+    label: Ribera del Guadiana
+    note: ok
+    qid: Q386686
+  Ribera del Gállego-Cinco Villas (ES): null
+  Ribera del Jiloca (ES): null
+  Ribera del Júcar (ES):
+    description: Spanish wine DO
+    label: Ribera del Júcar
+    note: ok
+    qid: Q7322328
+  Ribera del Queiles (ES): null
   Richebourg (FR):
     description: winery
     label: Richebourg
@@ -5447,6 +5874,7 @@ regions:
     qid: Q2165002
   Rooikrans (ZA): null
   Rosacker (FR): null
+  Rosalejo (ES): null
   Rosette (FR):
     description: French wine
     label: Rosette AOC
@@ -5529,6 +5957,7 @@ regions:
     label: Rio negro
     note: non-wine class -- review
     qid: Q1774644
+  Río Negro (ES): null
   Saale-Unstrut (DE):
     description: wine-producing region
     label: Saale-Unstrut
@@ -5680,6 +6109,11 @@ regions:
     label: San Luis Rey AVA
     note: ok
     qid: Q131860871
+  San Martín de Valdeiglesias (ES):
+    description: municipality of Spain
+    label: San Martín de Valdeiglesias
+    note: non-wine class -- review
+    qid: Q1751908
   San Miguel District (US):
     description: appelation that designates wine in San Luis Obispo County, CA
     label: San Miguel District AVA
@@ -5801,6 +6235,7 @@ regions:
   Scherpenheuvel (ZA): null
   Schlossberg (FR): null
   Schoenenbourg (FR): null
+  Segrià (ES): null
   Seiad Valley (US):
     description: American Viticultural Area
     label: Seiad Valley AVA
@@ -5812,6 +6247,11 @@ regions:
     note: ok
     qid: Q1408902
   Serra Gaúcha (BR): null
+  Serra de Tramuntana-Costa Nord (ES):
+    description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
+    label: Serra de Tramuntana-Costa Nord
+    note: ok
+    qid: Q2894847
   Seyssel (FR): null
   Shandong (CN):
     description: province in East China
@@ -5839,12 +6279,34 @@ regions:
     label: Sierra Foothills AVA
     note: ok
     qid: Q1646258
+  Sierra Norte de Sevilla (ES):
+    description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
+    label: Sierra Norte de Sevilla
+    note: ok
+    qid: Q9077075
   Sierra Pelona Valley (US):
     description: American viticultural area
     label: Sierra Pelona Valley AVA
     note: ok
     qid: Q7511543
+  Sierra Sur de Jaén (ES):
+    description: Spanish geographical indication for Vino de la Tierra wines located in the Sierra Sur
+      de Jaén area, Andalusia, Spain
+    label: Sierra Sur de Jaén
+    note: ok
+    qid: Q2452313
   Sierra de Gredos (ES): null
+  Sierra de Salamanca (ES): null
+  Sierras de Las Estancias y Los Filabres (ES):
+    description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
+    label: Sierras de las Estancias y los Filabres
+    note: ok
+    qid: Q388176
+  Sierras de Málaga (ES):
+    description: wine producing area in Spain
+    label: Sierras de Málaga
+    note: ok
+    qid: Q4353834
   Sillery (FR):
     description: neighborhood in Quebec City, Quebec, Canada, former town
     label: Sillery
@@ -5959,6 +6421,7 @@ regions:
     note: ok
     qid: Q7570232
   Southern Rhône (FR): null
+  Soutomaior (ES): null
   Spiegel (FR): null
   Sporen (FR): null
   Spring Mountain District (US):
@@ -6031,6 +6494,12 @@ regions:
     note: ok
     qid: Q1295655
   Südsteiermark (AT): null
+  Tacoronte-Acentejo (ES):
+    description: DO Spain wine
+    label: Tacoronte-Acentejo
+    note: ok
+    qid: Q1719149
+  Tarragona (ES): null
   Tasmania (AU): null
   Taurasi (IT):
     description: Italian controlled and guaranteed designation of origin wine from Campania
@@ -6073,6 +6542,7 @@ regions:
     label: Terra Alta
     note: ok
     qid: Q849852
+  Terras do Navia (ES): null
   Terrasses du Larzac (FR):
     description: French wine
     label: Terrasses du Larzac
@@ -6103,6 +6573,7 @@ regions:
     label: Texoma AVA
     note: ok
     qid: Q17108846
+  Tharsys (ES): null
   The Burn of Columbia Valley (US):
     description: viticultural area in Washington, USA
     label: The Burn of Columbia Valley AVA
@@ -6127,6 +6598,16 @@ regions:
     label: Ticino Wine Region
     note: ok
     qid: Q7800612
+  Tierra de Barros (ES):
+    description: comarca of Spain
+    label: Tierra de Barros
+    note: non-wine class -- review
+    qid: Q751003
+  Tierra del Vino de Zamora (ES):
+    description: ''
+    label: Tierra del Vino de Zamora DO
+    note: ok
+    qid: Q544423
   Tikveš (MK): null
   Tip of the Mitt (US):
     description: American Viticultural Area in Michigan
@@ -6144,6 +6625,11 @@ regions:
     label: Toro
     note: ok
     qid: Q765567
+  Torreperogil (ES):
+    description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
+    label: Torreperogil
+    note: ok
+    qid: Q7827056
   Touraine (FR):
     description: appellation d'Origine Contrôlée (AOC)
     label: Touraine AOC
@@ -6219,6 +6705,7 @@ regions:
     note: non-wine class -- review
     qid: Q1273
   Târnave (RO): null
+  Uclés (ES): null
   Uco Valley (AR): null
   Ulupalakua (US):
     description: American Viticultural Area in Hawaii
@@ -6263,6 +6750,9 @@ regions:
     label: Upper Mississippi River Valley AVA
     note: ok
     qid: Q7898802
+  Urbezo (ES): null
+  Urgell (ES): null
+  Urueña (ES): null
   Utiel-Requena (ES):
     description: Spanish Denominación de Origen Protegida (DOP) for wines located in the province of Valencia
       (Valencian Community)
@@ -6275,11 +6765,15 @@ regions:
     note: ok
     qid: Q7888536
   Val de Loire (FR): null
+  Val de Monterrei (ES): null
+  Val do Miño-Ourense (ES): null
+  Val do Salnés (ES): null
   Valais (CH):
     description: housing estate in Kwu Tung
     label: Valais
     note: non-wine class -- review
     qid: Q140285751
+  Valdejalón (ES): null
   Valdeorras (ES):
     description: Spanish wine
     label: Valdeorras
@@ -6292,6 +6786,11 @@ regions:
     note: ok
     qid: Q4570695
   Valencia (ES): null
+  Valencian Community (ES):
+    description: autonomous community of Spain
+    label: Valencian Community
+    note: non-wine class -- review
+    qid: Q5720
   Valençay (FR):
     description: French wine
     label: Valençay AOC
@@ -6303,6 +6802,25 @@ regions:
     note: ok
     qid: Q140130978
   Valle de Guadalupe (MX): null
+  Valle de Güímar (ES): null
+  Valle de la Orotava (ES):
+    description: ''
+    label: Valle de la Orotava
+    note: ok
+    qid: Q2509282
+  Valle del Cinca (ES): null
+  Vallegarcía (ES):
+    description: winery in Castilla–La Mancha, Spain
+    label: Vallegarcía
+    note: ok
+    qid: Q85812689
+  Valles de Benavente (ES): null
+  Valles de Sadacia (ES):
+    description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
+    label: Valles de Sadacia
+    note: ok
+    qid: Q7911955
+  Valls de Riu Corb (ES): null
   Vallée de la Marne (FR):
     description: French wine region
     label: Vallée de la Marne
@@ -6323,6 +6841,7 @@ regions:
     label: Valtellina
     note: ok
     qid: Q140131037
+  Valtiendas (ES): null
   Valul lui Traian (MD): null
   Van Duzer Corridor (US):
     description: American Viticultural Area of Oregon
@@ -6338,6 +6857,11 @@ regions:
     note: non-wine class -- review
     qid: Q1243
   Ventoux (FR): null
+  Vera de Estenas (ES):
+    description: Winery in Spain
+    label: Vera de Estenas
+    note: ok
+    qid: Q85812962
   Verde Valley (US):
     description: American Viticultural Area in Arizona
     label: Verde Valley AVA
@@ -6379,6 +6903,11 @@ regions:
     note: non-wine class -- review
     qid: Q839779
   Victoria (AU): null
+  Villaviciosa de Córdoba (ES):
+    description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
+    label: Villaviciosa de Córdoba
+    note: ok
+    qid: Q7930976
   Villány (HU): null
   Vin de Corse (FR):
     description: French wine
@@ -6407,6 +6936,7 @@ regions:
     label: Vino Nobile di Montepulciano DOCG
     note: ok
     qid: Q541959
+  Vino de la Tierra de Murcia (ES): null
   Vinos de Madrid (ES):
     description: Spanish designation of origin for wines
     label: Vinos de Madrid
@@ -6597,6 +7127,11 @@ regions:
     label: Yarra Valley
     note: ok
     qid: Q8049508
+  Ycoden-Daute-Isora (ES):
+    description: Spanish wine region certificate
+    label: Ycoden-Daute-Isora
+    note: ok
+    qid: Q2599921
   Yecla (ES):
     description: Spanish Denominación de Origen Protegida (DOP) for wines
     label: Yecla

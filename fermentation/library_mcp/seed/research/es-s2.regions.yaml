@@ -1,0 +1,55 @@
+# es-s2: Castilla-La Mancha, Madrid, Valencia, Murcia, Extremadura
+- {name: "Castilla-La Mancha", country: ES, synonyms: ["Castilla La Mancha", "Vino de la Tierra de Castilla", "VT Castilla", "Castilla"], source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "La Mancha", country: ES, parent: "Castilla-La Mancha", classification: DO, synonyms: ["La Mancha DO"], grapes: ["Airén", "Tempranillo"], source: "https://lamanchawines.com/uvas-2/"}
+- {name: "Valdepeñas", country: ES, parent: "Castilla-La Mancha", classification: DO, synonyms: ["Valdepenas"], grapes: ["Airén", "Tempranillo"], source: "https://vinosdecastillalamancha.es/denominacion-de-origen/do-valdepenas/"}
+- {name: "Manchuela", country: ES, parent: "Castilla-La Mancha", classification: DO, grapes: ["Bobal", "Tempranillo"], source: "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/manchuela_2026_04_21.pdf"}
+- {name: "Almansa", country: ES, parent: "Castilla-La Mancha", classification: DO, grapes: ["Garnacha Tintorera", "Mourvèdre"], source: "https://denominacion-origen-almansa.com/en/types-of-wines/"}
+- {name: "Méntrida", country: ES, parent: "Castilla-La Mancha", classification: DO, synonyms: ["Mentrida"], grapes: ["Grenache"], source: "https://www.jancisrobinson.com/articles/mntrida-garnacha-and-more"}
+- {name: "Ribera del Júcar", country: ES, parent: "Castilla-La Mancha", classification: DO, synonyms: ["Ribera del Jucar"], grapes: ["Bobal", "Tempranillo"], source: "https://vinosdecastillalamancha.es/denominacion-de-origen/ribera-jucar/"}
+- {name: "Uclés", country: ES, parent: "Castilla-La Mancha", classification: DO, synonyms: ["Ucles"], grapes: ["Tempranillo", "Bobal"], source: "https://vinosriberadeljucar.com/en/"}
+- {name: "Mondéjar", country: ES, parent: "Castilla-La Mancha", classification: DO, synonyms: ["Mondejar"], grapes: ["Tempranillo"], source: "https://vinosdecastillalamancha.es/la-do-mondejar-acepta-una-nueva-variedad-de-uva-para-sus-vinos/"}
+- {name: "Campo de Calatrava", country: ES, parent: "Castilla-La Mancha", classification: DO, grapes: ["Tempranillo"], source: "https://vinosdecastillalamancha.es/vino-campo-de-calatrava-nueva-denominacion-de-origen/"}
+- {name: "Dominio de Valdepusa", country: ES, parent: "Castilla-La Mancha", classification: VP, source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "Finca Élez", country: ES, parent: "Castilla-La Mancha", classification: VP, synonyms: ["Finca Elez"], source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "Guijoso", country: ES, parent: "Castilla-La Mancha", classification: VP, source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "Dehesa del Carrizal", country: ES, parent: "Castilla-La Mancha", classification: VP, source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "Campo de la Guardia", country: ES, parent: "Castilla-La Mancha", classification: VP, source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "Pago Florentino", country: ES, parent: "Castilla-La Mancha", classification: VP, source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "Casa del Blanco", country: ES, parent: "Castilla-La Mancha", classification: VP, source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "Calzadilla", country: ES, parent: "Castilla-La Mancha", classification: VP, source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "El Vicario", country: ES, parent: "Castilla-La Mancha", classification: VP, synonyms: ["Pago del Vicario"], source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "Los Cerrillos", country: ES, parent: "Castilla-La Mancha", classification: VP, synonyms: ["Pago Los Cerrillos"], source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "Vallegarcía", country: ES, parent: "Castilla-La Mancha", classification: VP, synonyms: ["Vallegarcia", "Pago de Vallegarcía"], source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "La Jaraba", country: ES, parent: "Castilla-La Mancha", classification: VP, synonyms: ["Pago de La Jaraba"], source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "Rosalejo", country: ES, parent: "Castilla-La Mancha", classification: VP, source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "Río Negro", country: ES, parent: "Castilla-La Mancha", classification: VP, synonyms: ["Finca Río Negro"], source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "Vinos de Madrid", country: ES, classification: DO, synonyms: ["Madrid"], grapes: ["Tempranillo", "Grenache", "Malvar"], source: "https://vinosdemadrid.es/wp-content/uploads/2019/12/dossier-de-informacioxxn.-vinos-de-madrid-denominacioxxn-origen-protegida.pdf"}
+- {name: "Arganda", country: ES, parent: "Vinos de Madrid", source: "https://www.hoteles.net/madrid/arganda-del-rey/vinos-de-madrid-subzona-arganda.html"}
+- {name: "Navalcarnero", country: ES, parent: "Vinos de Madrid", source: "https://www.vinerra.com/sub-region/spain-vinos-de-madrid-navalcarnero-do"}
+- {name: "San Martín de Valdeiglesias", country: ES, parent: "Vinos de Madrid", synonyms: ["San Martin de Valdeiglesias"], source: "https://www.conmuchagula.com/vinos-de-madrid-subzona-san-martin-de-valdeiglesias/"}
+- {name: "El Molar", country: ES, parent: "Vinos de Madrid", source: "https://www.diariosalir.es/articulo/Eno-gastronomia/vinos-zonas-d-vinos-madrid/20190506122348001043.html"}
+- {name: "Sierra de Gredos", country: ES, synonyms: ["Gredos"], source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "Valencian Community", country: ES, synonyms: ["Comunidad Valenciana", "Comunitat Valenciana"], source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "Valencia", country: ES, parent: "Valencian Community", classification: DO, synonyms: ["Valencia DO"], grapes: ["Merseguera", "Bobal", "Muscat of Alexandria"], source: "https://sevi.net/art/23015/el-caracter-varietal-de-las-uvas-bobal-merseguera-moscatel-y-monastrell-brilla-en-el-sexto-concurso-oficial-de-la-c-valenciana-proava"}
+- {name: "Utiel-Requena", country: ES, parent: "Valencian Community", classification: DO, synonyms: ["Utiel Requena", "Requena"], grapes: ["Bobal"], source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "Alicante", country: ES, parent: "Valencian Community", classification: DO, synonyms: ["Alicante DO"], grapes: ["Mourvèdre", "Muscat of Alexandria"], source: "https://vinosalicantedop.org/vino-alicante-moscatel-monastrell/"}
+- {name: "Chozas Carrascal", country: ES, parent: "Valencian Community", classification: VP, synonyms: ["Pago Chozas Carrascal"], source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "El Terrerazo", country: ES, parent: "Valencian Community", classification: VP, source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "Los Balagueses", country: ES, parent: "Valencian Community", classification: VP, synonyms: ["Pago de Los Balagueses"], source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "Tharsys", country: ES, parent: "Valencian Community", classification: VP, source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "Vera de Estenas", country: ES, parent: "Valencian Community", classification: VP, source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "Castelló", country: ES, parent: "Valencian Community", classification: IGP, synonyms: ["Castellón", "Castellon"], source: "https://en.wikipedia.org/wiki/Castell%C3%B3_(Vino_de_la_Tierra)"}
+- {name: "Murcia", country: ES, synonyms: ["Región de Murcia"], source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "Jumilla", country: ES, parent: "Murcia", classification: DO, synonyms: ["Jumilla DO"], grapes: ["Mourvèdre"], source: "https://en.wikipedia.org/wiki/Jumilla_(DO)"}
+- {name: "Yecla", country: ES, parent: "Murcia", classification: DO, grapes: ["Mourvèdre"], source: "https://www.catadelvino.com/blog-cata-vino/la-uva-monastrell-en-la-do-de-yecla"}
+- {name: "Bullas", country: ES, parent: "Murcia", classification: DO, grapes: ["Mourvèdre"], source: "https://winetourismspain.com/wine-regions/murcia-jumilla/"}
+- {name: "Campo de Cartagena", country: ES, parent: "Murcia", classification: IGP, source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "Vino de la Tierra de Murcia", country: ES, parent: "Murcia", classification: IGP, synonyms: ["VT Murcia"], source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "Extremadura", country: ES, synonyms: ["VT Extremadura"], source: "https://www.mapa.gob.es/es/dam/jcr:3a6d87c6-1b15-4777-941e-0caacb1ac2e3/06_igs_por_provincias.pdf"}
+- {name: "Ribera del Guadiana", country: ES, parent: "Extremadura", classification: DO, grapes: ["Tempranillo", "Pardina", "Cayetana Blanca"], source: "https://riberadelguadiana.eu/region-y-subzonas/"}
+- {name: "Tierra de Barros", country: ES, parent: "Ribera del Guadiana", source: "https://riberadelguadiana.eu/region-y-subzonas/"}
+- {name: "Cañamero", country: ES, parent: "Ribera del Guadiana", synonyms: ["Canamero"], source: "https://riberadelguadiana.eu/region-y-subzonas/"}
+- {name: "Montánchez", country: ES, parent: "Ribera del Guadiana", synonyms: ["Montanchez"], source: "https://riberadelguadiana.eu/region-y-subzonas/"}
+- {name: "Ribera Alta", country: ES, parent: "Ribera del Guadiana", source: "https://riberadelguadiana.eu/region-y-subzonas/"}
+- {name: "Ribera Baja", country: ES, parent: "Ribera del Guadiana", source: "https://riberadelguadiana.eu/region-y-subzonas/"}
+- {name: "Matanegra", country: ES, parent: "Ribera del Guadiana", source: "https://riberadelguadiana.eu/region-y-subzonas/"}

@@ -1,0 +1,9 @@
+# es-s2: Castilla-La Mancha, Madrid, Valencia, Murcia, Extremadura
+- {name: "Merseguera", color: white, synonyms: ["Meseguera", "Blanquilla"], source: "https://en.wikipedia.org/wiki/Merseguera"}
+- {name: "Pardina", color: white, synonyms: ["Jaén Blanco"], source: "http://www.sevi.net/es/3469/94/8927/Verdoncho-y-Pardina-un-caso-de-sinonimia.htm"}
+- {name: "Cayetana Blanca", color: white, synonyms: ["Cayetana"], source: "https://en.wikipedia.org/wiki/Cayetana_blanca"}
+- {name: "Moravia Agria", color: red, source: "https://es.wikipedia.org/wiki/Moravia_agria"}
+- {name: "Forcallat Tinta", color: red, synonyms: ["Forcallà"], source: "https://en.wikipedia.org/wiki/Forcallat_tinta"}
+- {name: "Forcallat Blanca", color: white, synonyms: ["Forcayat"], source: "https://glossaire.wein.plus/forcallat-blanca-4"}
+- {name: "Malvar", color: white, source: "https://vinosdemadrid.es/wp-content/uploads/2019/12/dossier-de-informacioxxn.-vinos-de-madrid-denominacioxxn-origen-protegida.pdf"}
+- {name: "Verdil", color: white, source: "https://vinosalicantedop.org/vino-alicante-moscatel-monastrell/"}
