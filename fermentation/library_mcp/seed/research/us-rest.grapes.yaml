@@ -1,0 +1,20 @@
+# us-rest: North American native and French-American hybrid grapes on
+# commercial labels in states other than CA/OR/WA/ID. grapes.yaml already
+# has Marquette, Frontenac, La Crescent, Baco Noir, Cayuga White, Norton,
+# Chambourcin, Vidal Blanc, Seyval Blanc and Traminette -- not repeated here.
+
+- {name: "Vignoles", color: white, synonyms: ["Ravat 51"], source: "https://en.wikipedia.org/wiki/Vignoles_(grape)"}
+- {name: "Chardonel", color: white, source: "https://en.wikipedia.org/wiki/Chardonel"}
+- {name: "Catawba", color: rose, source: "https://en.wikipedia.org/wiki/Catawba_(grape)"}
+- {name: "Concord", color: red, source: "https://en.wikipedia.org/wiki/Concord_(grape)"}
+- {name: "Niagara", color: white, source: "https://en.wikipedia.org/wiki/Niagara_(grape)"}
+- {name: "Delaware", color: rose, source: "https://en.wikipedia.org/wiki/Delaware_(grape)"}
+- {name: "Noiret", color: red, source: "https://en.wikipedia.org/wiki/Noiret"}
+- {name: "Corot Noir", color: red, source: "https://en.wikipedia.org/wiki/Corot_noir"}
+- {name: "Marechal Foch", color: red, synonyms: ["Foch"], source: "https://en.wikipedia.org/wiki/Marechal_Foch"}
+- {name: "Leon Millot", color: red, source: "https://en.wikipedia.org/wiki/Leon_Millot"}
+- {name: "Itasca", color: white, source: "https://mnhardy.umn.edu/itasca-grape"}
+- {name: "Brianna", color: white, source: "https://en.wikipedia.org/wiki/Brianna_(grape)"}
+- {name: "Scuppernong", color: white, source: "https://en.wikipedia.org/wiki/Scuppernong_(grape)"}
+- {name: "Diamond", color: white, synonyms: ["Moore's Diamond"], source: "https://en.wikipedia.org/wiki/Diamond_(grape)"}
+- {name: "Isabella", color: red, source: "https://en.wikipedia.org/wiki/Isabella_(grape)"}

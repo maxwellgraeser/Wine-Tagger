@@ -227,13 +227,13 @@
 - {name: "Touriga Nacional", color: red}
 - {name: "Touriga Franca", color: red, synonyms: ["Touriga Francesa"]}
 - {name: "Tinta Barroca", color: red}
-- {name: "Tinto Cão", color: red, synonyms: ["Tinto Cao"]}
+- {name: "Tinto Cão", color: red, synonyms: ["Tinto Cao", "Tinta Cao"]}
 - {name: "Castelão", color: red, synonyms: ["Castelao", "Periquita", "Castelão Francês", "João de Santarém"]}
 - {name: "Baga", color: red}
 - {name: "Trincadeira", color: red, synonyms: ["Tinta Amarela"]}
 - {name: "Alfrocheiro", color: red}
 - {name: "Rufete", color: red}
-- {name: "Vinhão", color: red, synonyms: ["Vinhao", "Sousão", "Sousao"]}
+- {name: "Vinhão", color: red, synonyms: ["Vinhao", "Sousão", "Sousao", "Souzao"]}
 - {name: "Arinto", color: white, synonyms: ["Pedernã"]}
 - {name: "Fernão Pires", color: white, synonyms: ["Fernao Pires", "Maria Gomes"]}
 - {name: "Encruzado", color: white}
@@ -402,3 +402,25 @@
 - {name: "Raffiat de Moncade", color: white}
 - {name: "Courbu Noir", color: red}
 - {name: "Mérille", color: red}
+
+# ---------------- research: us-ca ----------------
+- {name: "Valdiguié", color: red, synonyms: ["Valdiguie", "Napa Gamay"]}
+- {name: "Trousseau Gris", color: gris, synonyms: ["Gray Riesling", "Grey Riesling"]}
+- {name: "Rubired", color: red}
+
+# ---------------- research: us-rest ----------------
+- {name: "Vignoles", color: white, synonyms: ["Ravat 51"]}
+- {name: "Chardonel", color: white}
+- {name: "Catawba", color: rose}
+- {name: "Concord", color: red}
+- {name: "Niagara", color: white}
+- {name: "Delaware", color: rose}
+- {name: "Noiret", color: red}
+- {name: "Corot Noir", color: red}
+- {name: "Marechal Foch", color: red, synonyms: ["Foch"]}
+- {name: "Leon Millot", color: red}
+- {name: "Itasca", color: white}
+- {name: "Brianna", color: white}
+- {name: "Scuppernong", color: white}
+- {name: "Diamond", color: white, synonyms: ["Moore's Diamond"]}
+- {name: "Isabella", color: red}

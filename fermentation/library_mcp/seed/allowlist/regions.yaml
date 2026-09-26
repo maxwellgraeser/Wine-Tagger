@@ -1080,83 +1080,322 @@
 - {name: "St. Helena", country: US, parent: "Napa Valley", classification: AVA, synonyms: ["Saint Helena", "St Helena"]}
 - {name: "Stags Leap District", country: US, parent: "Napa Valley", classification: AVA, synonyms: ["Stags Leap", "Stag's Leap District", "Stag's Leap"]}
 - {name: "Howell Mountain", country: US, parent: "Napa Valley", classification: AVA}
-- {name: "Mount Veeder", country: US, parent: "Napa Valley", classification: AVA}
+- {name: "Mount Veeder", country: US, parent: "Napa Valley", classification: AVA, synonyms: ["Mt. Veeder"]}
 - {name: "Calistoga", country: US, parent: "Napa Valley", classification: AVA}
 - {name: "Yountville", country: US, parent: "Napa Valley", classification: AVA}
 - {name: "Atlas Peak", country: US, parent: "Napa Valley", classification: AVA}
 - {name: "Coombsville", country: US, parent: "Napa Valley", classification: AVA}
 - {name: "Spring Mountain District", country: US, parent: "Napa Valley", classification: AVA, synonyms: ["Spring Mountain"]}
+- {name: "Chiles Valley", country: US, parent: "Napa Valley", classification: AVA}
+- {name: "Diamond Mountain District", country: US, parent: "Napa Valley", classification: AVA}
+- {name: "Oak Knoll District of Napa Valley", country: US, parent: "Napa Valley", classification: AVA, synonyms: ["Oak Knoll District"]}
+- {name: "Wild Horse Valley", country: US, parent: "Napa Valley", classification: AVA}
+- {name: "Crystal Springs of Napa Valley", country: US, parent: "Napa Valley", classification: AVA}
 - {name: "Los Carneros", country: US, parent: "North Coast", classification: AVA, synonyms: ["Carneros"]}
 - {name: "Sonoma County", country: US, parent: "North Coast", synonyms: ["Sonoma"]}
-- {name: "Russian River Valley", country: US, parent: "Sonoma County", classification: AVA, synonyms: ["Russian River", "Russian River Valley AVA", "Green Valley of Russian River Valley"]}
+- {name: "Russian River Valley", country: US, parent: "Sonoma County", classification: AVA, synonyms: ["Russian River", "RRV", "Russian River Valley AVA"]}
+- {name: "Green Valley of Russian River Valley", country: US, parent: "Russian River Valley", classification: AVA, synonyms: ["Green Valley of Russian River Valley AVA", "Sonoma County Green Valley"]}
 - {name: "Dry Creek Valley", country: US, parent: "Sonoma County", classification: AVA, synonyms: ["Dry Creek"]}
 - {name: "Alexander Valley", country: US, parent: "Sonoma County", classification: AVA}
-- {name: "Sonoma Coast", country: US, parent: "Sonoma County", classification: AVA, synonyms: ["West Sonoma Coast", "Fort Ross-Seaview"]}
+- {name: "Sonoma Coast", country: US, parent: "Sonoma County", classification: AVA}
+- {name: "Fort Ross-Seaview", country: US, parent: "Sonoma Coast", classification: AVA, synonyms: ["Fort Ross Seaview"]}
+- {name: "West Sonoma Coast", country: US, parent: "Sonoma Coast", classification: AVA}
 - {name: "Sonoma Valley", country: US, parent: "Sonoma County", classification: AVA}
 - {name: "Knights Valley", country: US, parent: "Sonoma County", classification: AVA}
 - {name: "Chalk Hill", country: US, parent: "Sonoma County", classification: AVA}
 - {name: "Petaluma Gap", country: US, parent: "Sonoma County", classification: AVA}
 - {name: "Bennett Valley", country: US, parent: "Sonoma County", classification: AVA}
-- {name: "Mendocino County", country: US, parent: "North Coast", synonyms: ["Mendocino"]}
-- {name: "Anderson Valley", country: US, parent: "Mendocino County", classification: AVA}
-- {name: "Lake County", country: US, parent: "North Coast", synonyms: ["Clear Lake"]}
+- {name: "Sonoma Mountain", country: US, parent: "Sonoma County", classification: AVA}
+- {name: "Moon Mountain District Sonoma County", country: US, parent: "Sonoma County", classification: AVA, synonyms: ["Moon Mountain District"]}
+- {name: "Fountaingrove District", country: US, parent: "Sonoma County", classification: AVA}
+- {name: "Rockpile", country: US, parent: "Sonoma County", classification: AVA}
+- {name: "Northern Sonoma", country: US, parent: "Sonoma County", classification: AVA}
+- {name: "Mendocino County", country: US, parent: "North Coast"}
+- {name: "Mendocino", country: US, parent: "Mendocino County", classification: AVA}
+- {name: "Anderson Valley", country: US, parent: "Mendocino", classification: AVA}
+- {name: "Cole Ranch", country: US, parent: "Mendocino", classification: AVA}
+- {name: "Covelo", country: US, parent: "Mendocino", classification: AVA}
+- {name: "Dos Rios", country: US, parent: "Mendocino", classification: AVA}
+- {name: "McDowell Valley", country: US, parent: "Mendocino", classification: AVA}
+- {name: "Potter Valley", country: US, parent: "Mendocino", classification: AVA}
+- {name: "Redwood Valley", country: US, parent: "Mendocino", classification: AVA}
+- {name: "Yorkville Highlands", country: US, parent: "Mendocino", classification: AVA}
+- {name: "Eagle Peak Mendocino County", country: US, parent: "Mendocino County", classification: AVA, synonyms: ["Eagle Peak"]}
+- {name: "Comptche", country: US, parent: "Mendocino County", classification: AVA}
+- {name: "Mendocino Ridge", country: US, parent: "Mendocino County", classification: AVA}
+- {name: "Pine Mountain-Cloverdale Peak", country: US, parent: "Mendocino County", classification: AVA}
+- {name: "Lake County", country: US, parent: "North Coast"}
+- {name: "Clear Lake", country: US, parent: "Lake County", classification: AVA}
+- {name: "Big Valley District-Lake County", country: US, parent: "Clear Lake", classification: AVA, synonyms: ["Big Valley District"]}
+- {name: "High Valley", country: US, parent: "Clear Lake", classification: AVA}
+- {name: "Kelsey Bench-Lake County", country: US, parent: "Clear Lake", classification: AVA, synonyms: ["Kelsey Bench"]}
+- {name: "Red Hills Lake County", country: US, parent: "Clear Lake", classification: AVA, synonyms: ["Red Hills"]}
+- {name: "Upper Lake Valley", country: US, parent: "Clear Lake", classification: AVA}
+- {name: "Benmore Valley", country: US, parent: "Lake County", classification: AVA}
+- {name: "Guenoc Valley", country: US, parent: "Lake County", classification: AVA}
+- {name: "Long Valley-Lake County", country: US, parent: "Lake County", classification: AVA, synonyms: ["Long Valley"]}
+- {name: "Solano County", country: US, parent: "North Coast"}
+- {name: "Suisun Valley", country: US, parent: "Solano County", classification: AVA}
+- {name: "Solano County Green Valley", country: US, parent: "Solano County", classification: AVA}
 - {name: "Sierra Foothills", country: US, parent: "California", classification: AVA}
-- {name: "Amador County", country: US, parent: "Sierra Foothills", synonyms: ["Amador", "Shenandoah Valley (California)", "Fiddletown"]}
+- {name: "Amador County", country: US, parent: "Sierra Foothills", synonyms: ["Amador"]}
+- {name: "California Shenandoah Valley", country: US, parent: "Sierra Foothills", classification: AVA, synonyms: ["Shenandoah Valley (California)"]}
+- {name: "Fiddletown", country: US, parent: "Sierra Foothills", classification: AVA}
 - {name: "El Dorado", country: US, parent: "Sierra Foothills", classification: AVA, synonyms: ["El Dorado County"]}
-- {name: "Lodi", country: US, parent: "California", classification: AVA}
-- {name: "Clarksburg", country: US, parent: "California", classification: AVA}
+- {name: "Fair Play", country: US, parent: "El Dorado", classification: AVA}
+- {name: "North Yuba", country: US, parent: "Sierra Foothills", classification: AVA}
 - {name: "Central Coast", country: US, parent: "California", classification: AVA}
-- {name: "Monterey County", country: US, parent: "Central Coast", synonyms: ["Monterey", "Monterey AVA"]}
-- {name: "Santa Lucia Highlands", country: US, parent: "Monterey County", classification: AVA}
-- {name: "Arroyo Seco", country: US, parent: "Monterey County", classification: AVA}
-- {name: "Paso Robles", country: US, parent: "Central Coast", classification: AVA, synonyms: ["Paso", "Paso Robles AVA", "Adelaida District", "Willow Creek District"]}
-- {name: "San Luis Obispo County", country: US, parent: "Central Coast", synonyms: ["San Luis Obispo", "SLO Coast"]}
-- {name: "Edna Valley", country: US, parent: "San Luis Obispo County", classification: AVA}
-- {name: "Arroyo Grande Valley", country: US, parent: "San Luis Obispo County", classification: AVA}
+- {name: "San Francisco Bay", country: US, parent: "Central Coast", classification: AVA}
+- {name: "Livermore Valley", country: US, parent: "San Francisco Bay", classification: AVA, synonyms: ["Livermore"]}
+- {name: "Santa Clara Valley", country: US, parent: "San Francisco Bay", classification: AVA}
+- {name: "San Ysidro District", country: US, parent: "Santa Clara Valley", classification: AVA}
+- {name: "Lamorinda", country: US, parent: "San Francisco Bay", classification: AVA}
+- {name: "Contra Costa", country: US, parent: "San Francisco Bay", classification: AVA, synonyms: ["Contra Costa County"]}
+- {name: "Santa Cruz Mountains", country: US, parent: "San Francisco Bay", classification: AVA}
+- {name: "Ben Lomond Mountain", country: US, parent: "San Francisco Bay", classification: AVA}
+- {name: "Monterey County", country: US, parent: "Central Coast"}
+- {name: "Monterey", country: US, parent: "Monterey County", classification: AVA, synonyms: ["Monterey AVA"]}
+- {name: "Arroyo Seco", country: US, parent: "Monterey", classification: AVA}
+- {name: "Hames Valley", country: US, parent: "Monterey", classification: AVA}
+- {name: "San Bernabe", country: US, parent: "Monterey", classification: AVA}
+- {name: "San Lucas", country: US, parent: "Monterey", classification: AVA}
+- {name: "Santa Lucia Highlands", country: US, parent: "Monterey", classification: AVA}
+- {name: "Carmel Valley", country: US, parent: "Monterey County", classification: AVA}
+- {name: "San Antonio Valley", country: US, parent: "Monterey County", classification: AVA}
+- {name: "San Benito County", country: US, parent: "Central Coast"}
+- {name: "San Benito", country: US, parent: "San Benito County", classification: AVA}
+- {name: "Cienega Valley", country: US, parent: "San Benito", classification: AVA}
+- {name: "Lime Kiln Valley", country: US, parent: "San Benito", classification: AVA}
+- {name: "Paicines", country: US, parent: "San Benito", classification: AVA}
+- {name: "Mt. Harlan", country: US, parent: "San Benito County", classification: AVA}
+- {name: "Gabilan Mountains", country: US, parent: "San Benito County", classification: AVA}
+- {name: "Chalone", country: US, parent: "San Benito County", classification: AVA}
+- {name: "Pacheco Pass", country: US, parent: "San Benito County", classification: AVA}
+- {name: "San Luis Obispo County", country: US, parent: "Central Coast", synonyms: ["San Luis Obispo"]}
+- {name: "San Luis Obispo Coast", country: US, parent: "San Luis Obispo County", classification: AVA, synonyms: ["SLO Coast"]}
+- {name: "Edna Valley", country: US, parent: "San Luis Obispo Coast", classification: AVA}
+- {name: "Arroyo Grande Valley", country: US, parent: "San Luis Obispo Coast", classification: AVA}
+- {name: "York Mountain", country: US, parent: "San Luis Obispo County", classification: AVA}
+- {name: "Paso Robles", country: US, parent: "San Luis Obispo County", classification: AVA, synonyms: ["Paso", "Paso Robles AVA"]}
+- {name: "Adelaida District", country: US, parent: "Paso Robles", classification: AVA}
+- {name: "Creston District", country: US, parent: "Paso Robles", classification: AVA}
+- {name: "El Pomar District", country: US, parent: "Paso Robles", classification: AVA}
+- {name: "Paso Robles Estrella District", country: US, parent: "Paso Robles", classification: AVA, synonyms: ["Estrella District"]}
+- {name: "Paso Robles Geneseo District", country: US, parent: "Paso Robles", classification: AVA, synonyms: ["Geneseo District"]}
+- {name: "Paso Robles Highlands District", country: US, parent: "Paso Robles", classification: AVA, synonyms: ["Highlands District"]}
+- {name: "Paso Robles Willow Creek District", country: US, parent: "Paso Robles", classification: AVA, synonyms: ["Willow Creek District"]}
+- {name: "San Juan Creek", country: US, parent: "Paso Robles", classification: AVA}
+- {name: "San Miguel District", country: US, parent: "Paso Robles", classification: AVA}
+- {name: "Santa Margarita Ranch", country: US, parent: "Paso Robles", classification: AVA}
+- {name: "Templeton Gap District", country: US, parent: "Paso Robles", classification: AVA}
 - {name: "Santa Barbara County", country: US, parent: "Central Coast", synonyms: ["Santa Barbara"]}
 - {name: "Santa Ynez Valley", country: US, parent: "Santa Barbara County", classification: AVA, synonyms: ["Santa Ynez"]}
 - {name: "Sta. Rita Hills", country: US, parent: "Santa Ynez Valley", classification: AVA, synonyms: ["Santa Rita Hills", "Sta Rita Hills"]}
 - {name: "Happy Canyon of Santa Barbara", country: US, parent: "Santa Ynez Valley", classification: AVA, synonyms: ["Happy Canyon"]}
 - {name: "Ballard Canyon", country: US, parent: "Santa Ynez Valley", classification: AVA}
+- {name: "Los Olivos District", country: US, parent: "Santa Ynez Valley", classification: AVA}
 - {name: "Santa Maria Valley", country: US, parent: "Santa Barbara County", classification: AVA}
-- {name: "Livermore Valley", country: US, parent: "California", classification: AVA, synonyms: ["Livermore"]}
-- {name: "Santa Cruz Mountains", country: US, parent: "California", classification: AVA}
-- {name: "Temecula Valley", country: US, parent: "California", classification: AVA, synonyms: ["Temecula"]}
+- {name: "Alisos Canyon", country: US, parent: "Santa Barbara County", classification: AVA}
+- {name: "Central Valley", country: US, parent: "California", synonyms: ["Central Valley (California)"]}
+- {name: "Lodi", country: US, parent: "Central Valley", classification: AVA}
+- {name: "Alta Mesa", country: US, parent: "Lodi", classification: AVA}
+- {name: "Borden Ranch", country: US, parent: "Lodi", classification: AVA}
+- {name: "Clements Hills", country: US, parent: "Lodi", classification: AVA}
+- {name: "Cosumnes River", country: US, parent: "Lodi", classification: AVA}
+- {name: "Jahant", country: US, parent: "Lodi", classification: AVA}
+- {name: "Mokelumne River", country: US, parent: "Lodi", classification: AVA}
+- {name: "Sloughhouse", country: US, parent: "Lodi", classification: AVA}
+- {name: "Clarksburg", country: US, parent: "Central Valley", classification: AVA}
+- {name: "Merritt Island", country: US, parent: "Clarksburg", classification: AVA}
+- {name: "Madera", country: US, parent: "Central Valley", classification: AVA}
+- {name: "Dunnigan Hills", country: US, parent: "Central Valley", classification: AVA}
+- {name: "Capay Valley", country: US, parent: "Central Valley", classification: AVA}
+- {name: "Winters Highlands", country: US, parent: "Central Valley", classification: AVA}
+- {name: "Diablo Grande", country: US, parent: "Central Valley", classification: AVA}
+- {name: "Tracy Hills", country: US, parent: "Central Valley", classification: AVA}
+- {name: "River Junction", country: US, parent: "Central Valley", classification: AVA}
+- {name: "Salado Creek", country: US, parent: "Central Valley", classification: AVA}
+- {name: "Paulsell Valley", country: US, parent: "Central Valley", classification: AVA}
+- {name: "Squaw Valley-Miramonte", country: US, parent: "Central Valley", classification: AVA}
+- {name: "South Coast", country: US, parent: "California", classification: AVA}
+- {name: "Temecula Valley", country: US, parent: "South Coast", classification: AVA, synonyms: ["Temecula"]}
+- {name: "Ramona Valley", country: US, parent: "South Coast", classification: AVA}
+- {name: "San Luis Rey", country: US, parent: "South Coast", classification: AVA}
+- {name: "San Pasqual Valley", country: US, parent: "South Coast", classification: AVA}
+- {name: "Malibu Coast", country: US, parent: "California", classification: AVA}
+- {name: "Malibu-Newton Canyon", country: US, parent: "Malibu Coast", classification: AVA}
+- {name: "Saddle Rock-Malibu", country: US, parent: "Malibu Coast", classification: AVA}
+- {name: "Antelope Valley of the California High Desert", country: US, parent: "California", classification: AVA, synonyms: ["Antelope Valley"]}
+- {name: "Leona Valley", country: US, parent: "California", classification: AVA}
+- {name: "Sierra Pelona Valley", country: US, parent: "California", classification: AVA}
+- {name: "Cucamonga Valley", country: US, parent: "California", classification: AVA}
+- {name: "Palos Verdes Peninsula", country: US, parent: "California", classification: AVA}
+- {name: "Tehachapi Mountains", country: US, parent: "California", classification: AVA}
+- {name: "Yucaipa Valley", country: US, parent: "California", classification: AVA}
+- {name: "Seiad Valley", country: US, parent: "California", classification: AVA}
+- {name: "Trinity Lakes", country: US, parent: "California", classification: AVA}
+- {name: "Willow Creek", country: US, parent: "California", classification: AVA}
+- {name: "Inwood Valley", country: US, parent: "California", classification: AVA}
+- {name: "Manton Valley", country: US, parent: "California", classification: AVA}
 - {name: "Oregon", country: US, synonyms: ["OR"]}
-- {name: "Willamette Valley", country: US, parent: "Oregon", classification: AVA, synonyms: ["Willamette", "Willamette Valley AVA"]}
+- {name: "Washington", country: US, synonyms: ["Washington State"]}
+- {name: "Idaho", country: US, synonyms: ["ID"]}
+- {name: "Southern Oregon", country: US, parent: "Oregon", classification: AVA}
+- {name: "Rogue Valley", country: US, parent: "Southern Oregon", classification: AVA}
+- {name: "Applegate Valley", country: US, parent: "Rogue Valley", classification: AVA}
+- {name: "Umpqua Valley", country: US, parent: "Southern Oregon", classification: AVA}
+- {name: "Elkton Oregon", country: US, parent: "Umpqua Valley", classification: AVA, synonyms: ["Elkton"]}
+- {name: "Red Hill Douglas County, Oregon", country: US, parent: "Umpqua Valley", classification: AVA, synonyms: ["Red Hill Douglas County"]}
+- {name: "Willamette Valley", country: US, parent: "Oregon", classification: AVA, synonyms: ["Willamette"]}
 - {name: "Dundee Hills", country: US, parent: "Willamette Valley", classification: AVA}
 - {name: "Yamhill-Carlton", country: US, parent: "Willamette Valley", classification: AVA, synonyms: ["Yamhill Carlton"]}
-- {name: "Ribbon Ridge", country: US, parent: "Willamette Valley", classification: AVA}
-- {name: "Eola-Amity Hills", country: US, parent: "Willamette Valley", classification: AVA, synonyms: ["Eola Amity Hills"]}
 - {name: "Chehalem Mountains", country: US, parent: "Willamette Valley", classification: AVA}
+- {name: "Ribbon Ridge", country: US, parent: "Chehalem Mountains", classification: AVA}
+- {name: "Laurelwood District", country: US, parent: "Chehalem Mountains", classification: AVA}
+- {name: "Eola-Amity Hills", country: US, parent: "Willamette Valley", classification: AVA, synonyms: ["Eola Amity Hills"]}
 - {name: "McMinnville", country: US, parent: "Willamette Valley", classification: AVA}
-- {name: "Umpqua Valley", country: US, parent: "Oregon", classification: AVA}
-- {name: "Rogue Valley", country: US, parent: "Oregon", classification: AVA, synonyms: ["Applegate Valley"]}
-- {name: "Washington", country: US, synonyms: ["Washington State"]}
+- {name: "Van Duzer Corridor", country: US, parent: "Willamette Valley", classification: AVA}
+- {name: "Tualatin Hills", country: US, parent: "Willamette Valley", classification: AVA}
+- {name: "Lower Long Tom", country: US, parent: "Willamette Valley", classification: AVA}
+- {name: "Mount Pisgah, Polk County, Oregon", country: US, parent: "Willamette Valley", classification: AVA, synonyms: ["Mount Pisgah, Polk County", "Mt. Pisgah, Polk County, Oregon"]}
 - {name: "Columbia Valley", country: US, parent: "Washington", classification: AVA}
-- {name: "Yakima Valley", country: US, parent: "Columbia Valley", classification: AVA}
 - {name: "Walla Walla Valley", country: US, parent: "Columbia Valley", classification: AVA, synonyms: ["Walla Walla"]}
-- {name: "Red Mountain", country: US, parent: "Columbia Valley", classification: AVA}
+- {name: "The Rocks District of Milton-Freewater", country: US, parent: "Walla Walla Valley", classification: AVA, synonyms: ["The Rocks District", "Rocks District of Milton-Freewater"]}
+- {name: "Columbia Gorge", country: US, parent: "Washington", classification: AVA}
+- {name: "Snake River Valley", country: US, parent: "Idaho", classification: AVA}
+- {name: "Lewis-Clark Valley", country: US, parent: "Idaho", classification: AVA}
+- {name: "Yakima Valley", country: US, parent: "Columbia Valley", classification: AVA}
+- {name: "Rattlesnake Hills", country: US, parent: "Yakima Valley", classification: AVA}
+- {name: "Red Mountain", country: US, parent: "Yakima Valley", classification: AVA}
+- {name: "Snipes Mountain", country: US, parent: "Yakima Valley", classification: AVA}
+- {name: "Candy Mountain", country: US, parent: "Yakima Valley", classification: AVA}
+- {name: "Goose Gap", country: US, parent: "Yakima Valley", classification: AVA}
 - {name: "Horse Heaven Hills", country: US, parent: "Columbia Valley", classification: AVA}
 - {name: "Wahluke Slope", country: US, parent: "Columbia Valley", classification: AVA}
-- {name: "Rattlesnake Hills", country: US, parent: "Yakima Valley", classification: AVA}
-- {name: "Idaho", country: US, synonyms: ["Snake River Valley"]}
+- {name: "Naches Heights", country: US, parent: "Columbia Valley", classification: AVA}
+- {name: "Royal Slope", country: US, parent: "Columbia Valley", classification: AVA}
+- {name: "Beverly, Washington", country: US, parent: "Columbia Valley", classification: AVA, synonyms: ["Beverly"]}
+- {name: "Rocky Reach", country: US, parent: "Columbia Valley", classification: AVA}
+- {name: "Lake Chelan", country: US, parent: "Columbia Valley", classification: AVA}
+- {name: "White Bluffs", country: US, parent: "Columbia Valley", classification: AVA}
+- {name: "The Burn of Columbia Valley", country: US, parent: "Columbia Valley", classification: AVA, synonyms: ["The Burn"]}
+- {name: "Columbia Hills", country: US, parent: "Columbia Valley", classification: AVA}
+- {name: "Ancient Lakes of Columbia Valley", country: US, parent: "Columbia Valley", classification: AVA, synonyms: ["Ancient Lakes"]}
+- {name: "Puget Sound", country: US, parent: "Washington", classification: AVA}
+- {name: "Eagle Foothills", country: US, parent: "Idaho", classification: AVA}
 - {name: "New York", country: US, synonyms: ["New York State", "NY"]}
-- {name: "Finger Lakes", country: US, parent: "New York", classification: AVA, synonyms: ["Seneca Lake", "Cayuga Lake", "Keuka Lake"]}
-- {name: "Long Island", country: US, parent: "New York", classification: AVA, synonyms: ["North Fork of Long Island", "North Fork", "Hamptons"]}
+- {name: "Finger Lakes", country: US, parent: "New York", classification: AVA}
+- {name: "Cayuga Lake", country: US, parent: "Finger Lakes", classification: AVA}
+- {name: "Seneca Lake", country: US, parent: "Finger Lakes", classification: AVA}
+- {name: "Long Island", country: US, parent: "New York", classification: AVA}
+- {name: "North Fork of Long Island", country: US, parent: "Long Island", classification: AVA, synonyms: ["North Fork"]}
+- {name: "The Hamptons, Long Island", country: US, parent: "Long Island", classification: AVA, synonyms: ["The Hamptons", "Hamptons"]}
 - {name: "Hudson River Region", country: US, parent: "New York", classification: AVA, synonyms: ["Hudson Valley"]}
-- {name: "Virginia", country: US, synonyms: ["Monticello", "VA"]}
+- {name: "Upper Hudson", country: US, parent: "New York", classification: AVA}
+- {name: "Niagara Escarpment", country: US, parent: "New York", classification: AVA}
+- {name: "Champlain Valley of New York", country: US, parent: "New York", classification: AVA}
+- {name: "Virginia", country: US, synonyms: ["VA"]}
+- {name: "Monticello", country: US, parent: "Virginia", classification: AVA}
+- {name: "Middleburg Virginia", country: US, parent: "Virginia", classification: AVA, synonyms: ["Middleburg"]}
+- {name: "Rocky Knob", country: US, parent: "Virginia", classification: AVA}
+- {name: "North Fork of Roanoke", country: US, parent: "Virginia", classification: AVA}
+- {name: "Northern Neck George Washington Birthplace", country: US, parent: "Virginia", classification: AVA, synonyms: ["Northern Neck"]}
+- {name: "Virginia's Eastern Shore", country: US, parent: "Virginia", classification: AVA}
+- {name: "Virginia Peninsula", country: US, parent: "Virginia", classification: AVA}
 - {name: "Texas", country: US, synonyms: ["TX"]}
 - {name: "Texas Hill Country", country: US, parent: "Texas", classification: AVA, synonyms: ["Hill Country"]}
+- {name: "Fredericksburg in the Texas Hill Country", country: US, parent: "Texas Hill Country", classification: AVA, synonyms: ["Fredericksburg"]}
+- {name: "Bell Mountain", country: US, parent: "Texas Hill Country", classification: AVA}
 - {name: "Texas High Plains", country: US, parent: "Texas", classification: AVA, synonyms: ["High Plains"]}
-- {name: "Michigan", country: US, synonyms: ["Leelanau Peninsula", "Old Mission Peninsula"]}
-- {name: "Missouri", country: US, synonyms: ["Augusta (Missouri)"]}
-- {name: "Colorado", country: US, synonyms: ["Grand Valley"]}
-- {name: "Arizona", country: US, synonyms: ["Willcox", "Verde Valley"]}
+- {name: "Escondido Valley", country: US, parent: "Texas", classification: AVA}
+- {name: "Texas Davis Mountains", country: US, parent: "Texas", classification: AVA, synonyms: ["Davis Mountains"]}
+- {name: "Texoma", country: US, parent: "Texas", classification: AVA}
+- {name: "Michigan", country: US}
+- {name: "Leelanau Peninsula", country: US, parent: "Michigan", classification: AVA}
+- {name: "Old Mission Peninsula", country: US, parent: "Michigan", classification: AVA}
+- {name: "Lake Michigan Shore", country: US, parent: "Michigan", classification: AVA}
+- {name: "Fennville", country: US, parent: "Michigan", classification: AVA}
+- {name: "Tip of the Mitt", country: US, parent: "Michigan", classification: AVA}
+- {name: "Missouri", country: US}
+- {name: "Ozark Mountain", country: US, classification: AVA}
+- {name: "Ozark Highlands", country: US, parent: "Missouri", classification: AVA}
+- {name: "Augusta", country: US, parent: "Missouri", classification: AVA}
+- {name: "Hermann", country: US, parent: "Missouri", classification: AVA}
+- {name: "Loess Hills District", country: US, parent: "Iowa", classification: AVA}
+- {name: "Arkansas", country: US}
+- {name: "Altus", country: US, parent: "Arkansas", classification: AVA}
+- {name: "Arkansas Mountain", country: US, parent: "Arkansas", classification: AVA}
+- {name: "Iowa", country: US}
+- {name: "Oklahoma", country: US}
+- {name: "Colorado", country: US}
+- {name: "Grand Valley", country: US, parent: "Colorado", classification: AVA}
+- {name: "West Elks", country: US, parent: "Colorado", classification: AVA}
+- {name: "Arizona", country: US}
+- {name: "Willcox", country: US, parent: "Arizona", classification: AVA}
+- {name: "Verde Valley", country: US, parent: "Arizona", classification: AVA}
+- {name: "Sonoita", country: US, parent: "Arizona", classification: AVA}
 - {name: "New Mexico", country: US}
-- {name: "North Carolina", country: US, synonyms: ["Yadkin Valley"]}
-- {name: "Pennsylvania", country: US}
+- {name: "Mesilla Valley", country: US, parent: "New Mexico", classification: AVA}
+- {name: "Mimbres Valley", country: US, parent: "New Mexico", classification: AVA}
+- {name: "Middle Rio Grande Valley", country: US, parent: "New Mexico", classification: AVA}
+- {name: "North Carolina", country: US}
+- {name: "Yadkin Valley", country: US, parent: "North Carolina", classification: AVA}
+- {name: "Swan Creek", country: US, parent: "North Carolina", classification: AVA}
+- {name: "Haw River Valley", country: US, parent: "North Carolina", classification: AVA}
+- {name: "Crest of the Blue Ridge Henderson County", country: US, parent: "North Carolina", classification: AVA}
+- {name: "Tryon Foothills", country: US, parent: "North Carolina", classification: AVA}
+- {name: "Appalachian High Country", country: US, parent: "North Carolina", classification: AVA}
+- {name: "Georgia", country: US}
+- {name: "Dahlonega Plateau", country: US, parent: "Georgia", classification: AVA}
+- {name: "Upper Hiwassee Highlands", country: US, parent: "Georgia", classification: AVA}
+- {name: "Tennessee", country: US}
+- {name: "Nine Lakes of East Tennessee", country: US, parent: "Tennessee", classification: AVA}
+- {name: "Upper Cumberland", country: US, parent: "Tennessee", classification: AVA}
+- {name: "Mississippi", country: US}
+- {name: "Mississippi Delta", country: US, parent: "Mississippi", classification: AVA}
+- {name: "Louisiana", country: US}
 - {name: "Ohio", country: US}
+- {name: "Lake Erie", country: US, classification: AVA}
+- {name: "Grand River Valley", country: US, parent: "Ohio", classification: AVA}
+- {name: "Isle St. George", country: US, parent: "Ohio", classification: AVA}
+- {name: "Loramie Creek", country: US, parent: "Ohio", classification: AVA}
+- {name: "Ohio River Valley", country: US, parent: "Ohio", classification: AVA}
+- {name: "Indiana", country: US}
+- {name: "Indiana Uplands", country: US, parent: "Indiana", classification: AVA}
+- {name: "Kentucky", country: US}
+- {name: "West Virginia", country: US}
+- {name: "Kanawha River Valley", country: US, parent: "West Virginia", classification: AVA}
+- {name: "Shenandoah Valley", country: US, parent: "Virginia", classification: AVA}
+- {name: "Pennsylvania", country: US}
+- {name: "Lancaster Valley", country: US, parent: "Pennsylvania", classification: AVA}
+- {name: "Lehigh Valley", country: US, parent: "Pennsylvania", classification: AVA}
+- {name: "Central Delaware Valley", country: US, parent: "Pennsylvania", classification: AVA}
+- {name: "Cumberland Valley", country: US, parent: "Pennsylvania", classification: AVA}
+- {name: "Maryland", country: US}
+- {name: "Catoctin", country: US, parent: "Maryland", classification: AVA}
+- {name: "Linganore", country: US, parent: "Maryland", classification: AVA}
+- {name: "New Jersey", country: US}
+- {name: "Outer Coastal Plain", country: US, parent: "New Jersey", classification: AVA}
+- {name: "Cape May Peninsula", country: US, parent: "Outer Coastal Plain", classification: AVA}
+- {name: "Warren Hills", country: US, parent: "New Jersey", classification: AVA}
+- {name: "Wisconsin", country: US}
+- {name: "Upper Mississippi River Valley", country: US, classification: AVA}
+- {name: "Lake Wisconsin", country: US, parent: "Wisconsin", classification: AVA}
+- {name: "Wisconsin Ledge", country: US, parent: "Wisconsin", classification: AVA}
+- {name: "Illinois", country: US}
+- {name: "Shawnee Hills", country: US, parent: "Illinois", classification: AVA}
+- {name: "Minnesota", country: US}
+- {name: "Alexandria Lakes", country: US, parent: "Minnesota", classification: AVA}
+- {name: "Connecticut", country: US}
+- {name: "Eastern Connecticut Highlands", country: US, parent: "Connecticut", classification: AVA}
+- {name: "Western Connecticut Highlands", country: US, parent: "Connecticut", classification: AVA}
+- {name: "Massachusetts", country: US}
+- {name: "Nashoba Valley", country: US, parent: "Massachusetts", classification: AVA}
+- {name: "Rhode Island", country: US}
+- {name: "Southeastern New England", country: US, classification: AVA}
+- {name: "Martha's Vineyard", country: US, parent: "Massachusetts", classification: AVA}
+- {name: "Hawaii", country: US}
+- {name: "Ulupalakua", country: US, parent: "Hawaii", classification: AVA}
 
 # ======================= CANADA / MEXICO =======================
 - {name: "British Columbia", country: CA, synonyms: ["BC"]}

@@ -227,6 +227,11 @@ grapes:
     label: Braquet
     note: ok
     qid: Q898962
+  Brianna:
+    description: varietal
+    label: Brianna
+    note: ok
+    qid: Q100264191
   Bukettraube:
     description: Italian grape variety
     label: Bukettraube
@@ -297,6 +302,11 @@ grapes:
     label: Catarratto
     note: ok
     qid: Q469331
+  Catawba:
+    description: grape variety
+    label: Catawba
+    note: ok
+    qid: Q989673
   Cayuga White:
     description: variety of grape from the Finger Lakes region of New York
     label: Cayuga White
@@ -322,6 +332,11 @@ grapes:
     label: Chambourcin
     note: ok
     qid: Q731043
+  Chardonel:
+    description: variety of grape
+    label: Chardonel
+    note: ok
+    qid: Q914961
   Chardonnay:
     description: Italian grape variety
     label: Chardonnay
@@ -377,11 +392,21 @@ grapes:
     label: Colorino
     note: ok
     qid: Q1111611
+  Concord:
+    description: grape variety
+    label: Concord
+    note: ok
+    qid: Q393047
   Cornalin:
     description: Italian grape variety
     label: Cornalin
     note: ok
     qid: Q139941580
+  Corot Noir:
+    description: varietal
+    label: Corot noir
+    note: ok
+    qid: Q869196
   Cortese:
     description: Italian grape variety
     label: Cortese
@@ -437,6 +462,16 @@ grapes:
     label: Debina
     note: ok
     qid: Q1181500
+  Delaware:
+    description: grape variety
+    label: Delaware
+    note: ok
+    qid: Q730314
+  Diamond:
+    description: white grape cultivar
+    label: Diamond
+    note: ok
+    qid: Q1208651
   Dimyat:
     description: White wine grape variety
     label: Smederevka
@@ -697,6 +732,16 @@ grapes:
     label: Irsai Olivér
     note: ok
     qid: Q897321
+  Isabella:
+    description: grape variety
+    label: Isabella
+    note: ok
+    qid: Q393040
+  Itasca:
+    description: hybrid grape cultivar
+    label: Itasca
+    note: ok
+    qid: Q141555096
   Jacquère:
     description: variety of grape
     label: Jacquère
@@ -777,6 +822,11 @@ grapes:
     label: Len de l'El
     note: ok
     qid: Q464799
+  Leon Millot:
+    description: varietal of wine grape
+    label: Léon Millot
+    note: ok
+    qid: Q733094
   Liatiko:
     description: variety of grape
     label: Liatiko
@@ -877,6 +927,11 @@ grapes:
     label: Maratheftiko
     note: ok
     qid: Q6754977
+  Marechal Foch:
+    description: varietal
+    label: Marechal Foch
+    note: ok
+    qid: Q1417596
   Marquette:
     description: variety of grape
     label: Marquette
@@ -1077,6 +1132,16 @@ grapes:
     label: Neuburger
     note: ok
     qid: Q1414057
+  Niagara:
+    description: grape varietal
+    label: Niagara
+    note: ok
+    qid: Q392699
+  Noiret:
+    description: grape variety
+    label: Noiret
+    note: ok
+    qid: Q17129023
   Norton:
     description: grape variety
     label: Cynthiana
@@ -1197,6 +1262,7 @@ grapes:
     label: Petite Arvine
     note: ok
     qid: Q392270
+  Petite Pearl: null
   Petite Sirah:
     description: varietal
     label: Durif
@@ -1402,6 +1468,11 @@ grapes:
     label: Rubín
     note: ok
     qid: Q12050086
+  Rubired:
+    description: grape variety
+    label: Rubired
+    note: ok
+    qid: Q136083811
   Ruby Cabernet:
     description: varietal
     label: Ruby Cabernet
@@ -1487,6 +1558,11 @@ grapes:
     label: Sciacarello
     note: ok
     qid: Q1527364
+  Scuppernong:
+    description: variety of muscadine (Vitis rotundifolia) grape
+    label: Scuppernong
+    note: ok
+    qid: Q2261774
   Sercial:
     description: grape variety
     label: Sercial
@@ -1642,6 +1718,11 @@ grapes:
     label: Trousseau
     note: ok
     qid: Q6160560
+  Trousseau Gris:
+    description: French grape variety made into white wine
+    label: Trousseau gris
+    note: ok
+    qid: Q2455859
   Tsolikouri:
     description: variety of grape
     label: Tsolikouri
@@ -1657,6 +1738,11 @@ grapes:
     label: Brun Argenté
     note: ok
     qid: Q992489
+  Valdiguié:
+    description: varietal
+    label: Valdiguié
+    note: ok
+    qid: Q489816
   Verdeca:
     description: Italian grape variety
     label: Verdeca
@@ -1707,6 +1793,11 @@ grapes:
     label: Vidiano
     note: ok
     qid: Q60754481
+  Vignoles:
+    description: grape variety
+    label: Vignoles
+    note: ok
+    qid: Q1586047
   Vilana:
     description: white Greek wine grape variety planted primarily in Crete
     label: Vilana
@@ -1715,7 +1806,7 @@ grapes:
   Vinhão:
     description: varietal
     label: Souzão
-    note: inexact label match -- review
+    note: ok
     qid: Q1421949
   Viognier:
     description: Italian grape variety
@@ -1799,6 +1890,11 @@ regions:
     label: Aconcagua
     note: ok
     qid: Q4674490
+  Adelaida District (US):
+    description: appelation that designates wine in San Luis Obispo County, California
+    label: Adelaida District AVA
+    note: ok
+    qid: Q18350205
   Adelaide Hills (AU):
     description: wine region in South Australia
     label: Adelaide Hills wine region
@@ -1831,12 +1927,22 @@ regions:
     label: Alexander Valley AVA
     note: ok
     qid: Q1669449
+  Alexandria Lakes (US):
+    description: American Viticultural Area in Minnesota
+    label: Alexandria Lakes AVA
+    note: ok
+    qid: Q4720978
   Algarve (PT): null
   Alicante (ES):
     description: denomination of wine
     label: Alicante
     note: ok
     qid: Q2836483
+  Alisos Canyon (US):
+    description: American Viticultural Area in Santa Barbara, California
+    label: Alisos Canyon AVA
+    note: ok
+    qid: Q107313688
   Allobrogie (FR): null
   Almansa (ES):
     description: Spanish wine
@@ -1859,6 +1965,11 @@ regions:
     label: Alsace Grand Cru AOC
     note: ok
     qid: Q1596430
+  Alta Mesa (US):
+    description: American Viticultural Area in Sacramento County, California
+    label: Alta Mesa AVA
+    note: ok
+    qid: Q433582
   Altenberg de Bergbieten (FR):
     description: French white wine produced in Alsace
     label: Altenberg de Bergbieten
@@ -1879,6 +1990,11 @@ regions:
     label: Alto Adige DOC
     note: ok
     qid: Q20009612
+  Altus (US):
+    description: wine-growing region near Altus, Arkansas
+    label: Altus AVA
+    note: ok
+    qid: Q446275
   Amador County (US):
     description: county in California, United States
     label: Amador County
@@ -1895,6 +2011,7 @@ regions:
     note: non-wine class -- review
     qid: Q1018399
   Amyndeon (GR): null
+  Ancient Lakes of Columbia Valley (US): null
   Andalusia (ES):
     description: autonomous community of Spain
     label: Andalusia
@@ -1915,6 +2032,21 @@ regions:
   Anjou Gamay (FR): null
   Anjou Mousseux (FR): null
   Anjou-Villages (FR): null
+  Antelope Valley of the California High Desert (US):
+    description: American Viticultural Area in California
+    label: Antelope Valley of the California High Desert AVA
+    note: ok
+    qid: Q4771211
+  Appalachian High Country (US):
+    description: American Viticultural Area in Virginia and West Virginia
+    label: Appalachian High Country AVA
+    note: ok
+    qid: Q130478551
+  Applegate Valley (US):
+    description: American Viticultural Area
+    label: Applegate Valley AVA
+    note: ok
+    qid: Q621543
   Apremont (FR):
     description: wine region
     label: Apremont
@@ -1943,6 +2075,16 @@ regions:
     label: Arizona
     note: non-wine class -- review
     qid: Q816
+  Arkansas (US):
+    description: state of the United States of America
+    label: Arkansas
+    note: non-wine class -- review
+    qid: Q1612
+  Arkansas Mountain (US):
+    description: viticultural area
+    label: Arkansas Mountain AVA
+    note: ok
+    qid: Q672893
   Arribes (ES):
     description: Spanish Denominación de Origen Protegida (DOP) for wines
     label: Arribes
@@ -1985,6 +2127,11 @@ regions:
     label: Aude
     note: ok
     qid: Q2870693
+  Augusta (US):
+    description: American Viticultural Area in Missouri
+    label: Augusta AVA
+    note: ok
+    qid: Q765628
   Auxey-Duresses (FR):
     description: French wine
     label: Auxey-Duresses wine
@@ -2096,7 +2243,22 @@ regions:
     label: Bekaa Valley
     note: non-wine class -- review
     qid: Q21576015
+  Bell Mountain (US):
+    description: viticultural area in Gillespie County, Texas
+    label: Bell Mountain AVA
+    note: ok
+    qid: Q815710
   Bellet (FR): null
+  Ben Lomond Mountain (US):
+    description: California wine region in Santa Cruz County
+    label: Ben Lomond Mountain AVA
+    note: ok
+    qid: Q816548
+  Benmore Valley (US):
+    description: wine growing region in Lake County, California
+    label: Benmore Valley AVA
+    note: ok
+    qid: Q817804
   Bennett Valley (US):
     description: California wine region
     label: Bennett Valley AVA
@@ -2107,6 +2269,11 @@ regions:
     label: Bergerac wine
     note: ok
     qid: Q595034
+  Beverly, Washington (US):
+    description: American Viticultural Area in Washington
+    label: Beverly, Washington AVA
+    note: ok
+    qid: Q134563553
   Bienvenues-Bâtard-Montrachet (FR):
     description: French wine
     label: Bienvenues-Bâtard-Montrachet
@@ -2118,6 +2285,11 @@ regions:
     label: Bierzo
     note: ok
     qid: Q624640
+  Big Valley District-Lake County (US):
+    description: viticultural area in California
+    label: Big Valley District-Lake County AVA
+    note: ok
+    qid: Q96373547
   Bizkaiko Txakolina (ES):
     description: 'is a Spanish Denominación de Origen Protegida (DOP) (Basque: Jatorri Deitura Babestua)
       for wines, located in the province of Bizkaia, Basque Country, Spain'
@@ -2162,6 +2334,11 @@ regions:
   Bordeaux Clairet (FR): null
   Bordeaux Haut-Benauge (FR): null
   Bordeaux Supérieur (FR): null
+  Borden Ranch (US):
+    description: California wine region
+    label: Borden Ranch AVA
+    note: ok
+    qid: Q893402
   Bot River (ZA): null
   Bottelary (ZA): null
   Bourgogne Aligoté (FR):
@@ -2333,6 +2510,11 @@ regions:
     label: California
     note: non-wine class -- review
     qid: Q99
+  California Shenandoah Valley (US):
+    description: American viticultural area
+    label: California Shenandoah Valley AVA
+    note: ok
+    qid: Q771542
   Calistoga (US):
     description: 'an American Viticultural Area: a designated wine grape-growing region in the United
       States'
@@ -2366,6 +2548,11 @@ regions:
     label: Canberra District wine region
     note: ok
     qid: Q5031253
+  Candy Mountain (US):
+    description: viticultural area in Washington, USA
+    label: Candy Mountain AVA
+    note: ok
+    qid: Q125470292
   Canelones (UY): null
   Cango Valley (ZA): null
   Cannonau di Sardegna (IT):
@@ -2375,12 +2562,22 @@ regions:
     qid: Q31841466
   Canon-Fronsac (FR): null
   Canterbury (NZ): null
+  Capay Valley (US):
+    description: American Viticultural Area in Yolo County, California
+    label: Capay Valley AVA
+    note: ok
+    qid: Q1034211
   Cape Agulhas (ZA):
     description: wine producing district in South Africa
     label: Cape Agulhas
     note: ok
     qid: Q15873714
   Cape Coast (ZA): null
+  Cape May Peninsula (US):
+    description: American Viticultural Area in New Jersey
+    label: Cape May Peninsula AVA
+    note: ok
+    qid: Q65084213
   Cape South Coast (ZA): null
   Cape Town (ZA): null
   Cape West Coast (ZA): null
@@ -2399,6 +2596,11 @@ regions:
     label: Cariñena
     note: ok
     qid: Q2832748
+  Carmel Valley (US):
+    description: American Viticultural Area in Monterey County, California
+    label: Carmel Valley AVA
+    note: ok
+    qid: Q1043531
   Carmignano (IT):
     description: Italian controlled and guaranteed designation of origin wine from Tuscany
     label: Carmignano DOCG
@@ -2429,13 +2631,28 @@ regions:
     label: Catalonia
     note: non-wine class -- review
     qid: Q5705
+  Catoctin (US):
+    description: wine-producing region in Maryland
+    label: Catoctin AVA
+    note: ok
+    qid: Q1051244
   Cava (ES): null
+  Cayuga Lake (US):
+    description: New York wine region
+    label: Cayuga Lake AVA
+    note: ok
+    qid: Q1052050
   Cederberg (ZA): null
   Central Coast (US):
     description: winemaking region
     label: Central Coast AVA
     note: ok
     qid: Q1053730
+  Central Delaware Valley (US):
+    description: American Viticultural Area in New Jersey
+    label: Central Delaware Valley AVA
+    note: ok
+    qid: Q1053753
   Central Drakensberg (ZA): null
   Central Orange River (ZA): null
   Central Otago (NZ):
@@ -2443,7 +2660,8 @@ regions:
     label: Central Otago wine region
     note: ok
     qid: Q5061573
-  Central Valley (CL):
+  Central Valley (CL): null
+  Central Valley (US):
     description: valley in central California, USA
     label: Central Valley
     note: non-wine class -- review
@@ -2477,6 +2695,11 @@ regions:
     label: Chalk Hill AVA
     note: ok
     qid: Q1059721
+  Chalone (US):
+    description: American Viticultural Area in the Monterey and San Benito counties of California
+    label: Chalone AVA
+    note: ok
+    qid: Q1060179
   Chambertin (FR):
     description: vineyard
     label: Chambertin
@@ -2497,6 +2720,11 @@ regions:
     label: champagne
     note: ok
     qid: Q134862
+  Champlain Valley of New York (US):
+    description: American Viticultural Area in New York
+    label: Champlain Valley of New York AVA
+    note: ok
+    qid: Q134622225
   Chantonnay (FR): null
   Chapelle-Chambertin (FR):
     description: vineyard for red wine
@@ -2553,6 +2781,11 @@ regions:
     qid: Q3667446
   Chignin (FR): null
   Chignin-Bergeron (FR): null
+  Chiles Valley (US):
+    description: American Viticultural Area in Napa County, California
+    label: Chiles Valley AVA
+    note: ok
+    qid: Q1072890
   Chinon (FR):
     description: wine region in Touraine, France
     label: Chinon AOC
@@ -2597,6 +2830,11 @@ regions:
     label: Chenas
     note: ok
     qid: Q1090927
+  Cienega Valley (US):
+    description: American Viticultural Area in California
+    label: Cienega Valley AVA
+    note: ok
+    qid: Q1091786
   Cigales (ES): null
   Cinque Terre (IT):
     description: Italian controlled designation of origin wine from Liguria
@@ -2626,6 +2864,16 @@ regions:
     label: Clarksburg AVA
     note: ok
     qid: Q1095860
+  Clear Lake (US):
+    description: California wine region in Lake County
+    label: Clear Lake AVA
+    note: ok
+    qid: Q224762
+  Clements Hills (US):
+    description: California wine region in San Joaquin County
+    label: Clements Hills AVA
+    note: ok
+    qid: Q1100382
   Clisson (FR): null
   Clos Saint-Denis (FR):
     description: winery
@@ -2660,6 +2908,11 @@ regions:
     label: Colchagua Valley
     note: ok
     qid: Q6159082
+  Cole Ranch (US):
+    description: California wine region in Mendocino County
+    label: Cole Ranch AVA
+    note: ok
+    qid: Q828795
   Colli Orientali del Friuli (IT):
     description: wine-producing area in Friuli-Venezia Giulia, Italy
     label: Colli Orientali del Friuli
@@ -2691,6 +2944,16 @@ regions:
     label: Colorado
     note: non-wine class -- review
     qid: Q1261
+  Columbia Gorge (US):
+    description: American Viticultural Area
+    label: Columbia Gorge AVA
+    note: ok
+    qid: Q1112474
+  Columbia Hills (US):
+    description: viticultural area in Washington, USA
+    label: Columbia Hills AVA
+    note: ok
+    qid: Q141310200
   Columbia Valley (US):
     description: American Viticultural Area in Washington and Oregon
     label: Columbia Valley AVA
@@ -2702,6 +2965,11 @@ regions:
     label: Commandaria
     note: ok
     qid: Q1115080
+  Comptche (US):
+    description: appelation that designates wine in Mendocino County, California, U.S
+    label: Comptche AVA
+    note: ok
+    qid: Q131747678
   Comté Tolosan (FR): null
   Comtés Rhodaniens (FR): null
   Conca de Barberà (ES):
@@ -2720,7 +2988,17 @@ regions:
     label: Conegliano Valdobbiadene
     note: ok
     qid: Q140131089
+  Connecticut (US):
+    description: state of the United States of America
+    label: Connecticut
+    note: non-wine class -- review
+    qid: Q779
   Constantia (ZA): null
+  Contra Costa (US):
+    description: ''
+    label: Contra Costa AVA
+    note: ok
+    qid: Q131447844
   Coombsville (US):
     description: American Viticultural Area in California
     label: Coombsville AVA
@@ -2774,6 +3052,11 @@ regions:
     label: Costières de Nîmes AOC
     note: ok
     qid: Q470355
+  Cosumnes River (US):
+    description: American Viticultural Area in Sacramento County and San Joaquin County
+    label: Cosumnes River AVA
+    note: ok
+    qid: Q1136553
   Coteaux Bourguignons (FR):
     description: French wine geographic appellation
     label: Coteaux Bourguignons
@@ -2819,11 +3102,26 @@ regions:
     qid: Q12113776
   Coulée de Serrant (FR): null
   Cour-Cheverny (FR): null
+  Covelo (US):
+    description: California wine region in Mendocino County
+    label: Covelo AVA
+    note: ok
+    qid: Q735126
   Cramant (FR):
     description: commune in Marne, France
     label: Cramant
     note: non-wine class -- review
     qid: Q750246
+  Crest of the Blue Ridge Henderson County (US):
+    description: American Viticultural Area in North Carolina
+    label: Crest of the Blue Ridge Henderson County AVA
+    note: ok
+    qid: Q130742015
+  Creston District (US):
+    description: appelation that designates wine in San Luis Obispo County, CA
+    label: Creston District AVA
+    note: ok
+    qid: Q19867019
   Crete (GR):
     description: city in Saline County, Nebraska, United States
     label: Crete
@@ -2840,6 +3138,11 @@ regions:
     label: Cruet AOC
     note: ok
     qid: Q28496739
+  Crystal Springs of Napa Valley (US):
+    description: appelation that designates wine in Napa County, California
+    label: Crystal Springs of Napa Valley AVA
+    note: ok
+    qid: Q131437681
   Crémant d'Alsace (FR):
     description: sparkling Wine of France
     label: Crémant d'Alsace
@@ -2877,6 +3180,16 @@ regions:
     label: Crépy AOC
     note: ok
     qid: Q1142517
+  Cucamonga Valley (US):
+    description: American Viticultural Area in California
+    label: Cucamonga Valley AVA
+    note: ok
+    qid: Q1142996
+  Cumberland Valley (US):
+    description: wine region
+    label: Cumberland Valley AVA
+    note: ok
+    qid: Q1143716
   Curicó Valley (CL): null
   Custoza (IT):
     description: wine-producing area in Veneto, Italy
@@ -3023,6 +3336,11 @@ regions:
     label: Côtes du Vivarais AOC
     note: ok
     qid: Q1151015
+  Dahlonega Plateau (US):
+    description: American Viticultural Area in Georgia
+    label: Dahlonega Plateau AVA
+    note: ok
+    qid: Q131198571
   Dalmatia (HR):
     description: historical and cultural Croatian region
     label: Dalmatia
@@ -3036,6 +3354,16 @@ regions:
     note: ok
     qid: Q5245932
   Devon Valley (ZA): null
+  Diablo Grande (US):
+    description: American Viticultural Area in Stanislaus County, California
+    label: Diablo Grande AVA
+    note: ok
+    qid: Q1207979
+  Diamond Mountain District (US):
+    description: winemaking region
+    label: Diamond Mountain District AVA
+    note: ok
+    qid: Q1110765
   Dogliani (IT):
     description: Italian controlled and guaranteed designation of origin wine from Piedmont
     label: Dogliani DOCG
@@ -3046,6 +3374,11 @@ regions:
     label: Dolcetto d'Alba DOC
     note: ok
     qid: Q1235386
+  Dos Rios (US):
+    description: California wine region in Mendocino County
+    label: Dos Rios AVA
+    note: ok
+    qid: Q1250917
   Douglas (ZA): null
   Douro (PT): null
   Drama (GR): null
@@ -3065,9 +3398,29 @@ regions:
     label: Dundee Hills AVA
     note: ok
     qid: Q251411
+  Dunnigan Hills (US):
+    description: wine-growing region in Yolo County, California
+    label: Dunnigan Hills AVA
+    note: ok
+    qid: Q1266207
   Durbanville (ZA): null
   Dão (PT): null
+  Eagle Foothills (US):
+    description: appelation that designates wine in Gem and Ada Counties, Idaho
+    label: Eagle Foothills AVA
+    note: ok
+    qid: Q107451820
+  Eagle Peak Mendocino County (US):
+    description: American Viticultural Area in Mendocino County, California
+    label: Eagle Peak Mendocino County AVA
+    note: ok
+    qid: Q19461467
   Eastern Cape (ZA): null
+  Eastern Connecticut Highlands (US):
+    description: American Viticultural Area in Connecticut
+    label: Eastern Connecticut Highlands AVA
+    note: ok
+    qid: Q106959125
   Eden Valley (AU):
     description: wine region in South Australia, Australia
     label: Eden Valley wine region
@@ -3091,9 +3444,15 @@ regions:
     label: El Dorado AVA
     note: ok
     qid: Q1324076
+  El Pomar District (US):
+    description: appelation that designates wine in San Luis Obispo County, CA
+    label: El Pomar District AVA
+    note: ok
+    qid: Q132398237
   Elandskloof (ZA): null
   Elgin (ZA): null
   Elim (ZA): null
+  Elkton Oregon (US): null
   Elqui Valley (CL):
     description: wine region in northern Chile
     label: Elqui Valley
@@ -3131,6 +3490,11 @@ regions:
     label: Eola-Amity Hills AVA
     note: ok
     qid: Q1346283
+  Escondido Valley (US):
+    description: wine area in Texas, United States
+    label: Escondido Valley AVA
+    note: ok
+    qid: Q1367302
   Estaing (FR): null
   Etna (IT):
     description: Italian controlled designation of origin wine from Sicily
@@ -3142,6 +3506,11 @@ regions:
     label: Extremadura
     note: ok
     qid: Q5422290
+  Fair Play (US):
+    description: California wine region in El Dorado County
+    label: Fair Play AVA
+    note: ok
+    qid: Q1393017
   Falerno del Massico (IT):
     description: Italian controlled designation of origin wine from Campania
     label: Falerno del Massico DOC
@@ -3152,11 +3521,21 @@ regions:
     label: Faugères AOC
     note: ok
     qid: Q1398382
+  Fennville (US):
+    description: American Viticultural Area in Michigan
+    label: Fennville AVA
+    note: ok
+    qid: Q1404805
   Fiano di Avellino (IT):
     description: Italian controlled and guaranteed designation of origin wine from Campania
     label: Fiano di Avellino DOCG
     note: ok
     qid: Q457894
+  Fiddletown (US):
+    description: California wine region in Amador County
+    label: Fiddletown AVA
+    note: ok
+    qid: Q1411155
   Fiefs Vendéens (FR): null
   Finger Lakes (US):
     description: American Viticultural Area in New York
@@ -3183,6 +3562,16 @@ regions:
     label: Florimont
     note: ok
     qid: Q3074296
+  Fort Ross-Seaview (US):
+    description: American Viticultural Area in Sonoma County, California
+    label: Fort Ross-Seaview AVA
+    note: ok
+    qid: Q133816353
+  Fountaingrove District (US):
+    description: American Viticultural Area in Sonoma County, California
+    label: Fountaingrove District AVA
+    note: ok
+    qid: Q133828726
   Franche-Comté (FR): null
   Franciacorta (IT):
     description: Italian controlled and guaranteed designation of origin wine from Lombardy
@@ -3199,6 +3588,11 @@ regions:
     label: Frascati DOC
     note: ok
     qid: Q457946
+  Fredericksburg in the Texas Hill Country (US):
+    description: American Viticultural Area located in central Texas
+    label: Fredericksburg in the Texas Hill Country AVA
+    note: ok
+    qid: Q113309
   Free State (ZA): null
   Friuli Grave (IT):
     description: Italian controlled designation of origin wine from Friuli-Venezia Giulia
@@ -3224,6 +3618,11 @@ regions:
     qid: Q1150996
   Fruška Gora (RS): null
   Furstentum (FR): null
+  Gabilan Mountains (US):
+    description: appelation that designates wine in Monterey County, CA
+    label: Gabilan Mountains AVA
+    note: ok
+    qid: Q124550462
   Gaillac (FR):
     description: French wine designation
     label: Gaillac AOC
@@ -3266,6 +3665,11 @@ regions:
     label: Geneva
     note: non-wine class -- review
     qid: Q71
+  Georgia (US):
+    description: state of the United States of America
+    label: Georgia
+    note: non-wine class -- review
+    qid: Q1428
   Gers (FR): null
   Getariako Txakolina (ES): null
   Gevrey-Chambertin (FR): null
@@ -3291,6 +3695,11 @@ regions:
   Goedemoed (ZA): null
   Golan Heights (IL): null
   Goldert (FR): null
+  Goose Gap (US):
+    description: viticultural area in Washington, USA
+    label: Goose Gap AVA
+    note: ok
+    qid: Q125447748
   Goree (ZA): null
   Gorges (FR): null
   Goriška Brda (SI): null
@@ -3303,6 +3712,16 @@ regions:
     label: Grampians
     note: ok
     qid: Q5593940
+  Grand River Valley (US):
+    description: American Viticultural Area in Ohio
+    label: Grand River Valley AVA
+    note: ok
+    qid: Q1542850
+  Grand Valley (US):
+    description: Viticultural area in Colorado
+    label: Grand Valley AVA
+    note: ok
+    qid: Q1542895
   Grands Échezeaux (FR):
     description: winery
     label: Grands Échezeaux
@@ -3329,6 +3748,11 @@ regions:
     label: Greco di Tufo DOCG
     note: ok
     qid: Q1391506
+  Green Valley of Russian River Valley (US):
+    description: American wine region
+    label: Green Valley of Russian River Valley AVA
+    note: ok
+    qid: Q1544659
   Greyton (ZA): null
   Grignan-les-Adhémar (FR): null
   Griotte-Chambertin (FR):
@@ -3343,6 +3767,16 @@ regions:
   Grootdrink (ZA): null
   Gros Plant du Pays Nantais (FR): null
   Grès de Montpellier (FR): null
+  Guenoc Valley (US):
+    description: American Viticultural Area
+    label: Guenoc Valley AVA
+    note: ok
+    qid: Q5614823
+  Hames Valley (US):
+    description: viticultural area in Monterey County, California
+    label: Hames Valley AVA
+    note: ok
+    qid: Q1573357
   Happy Canyon of Santa Barbara (US):
     description: winemaking region in California, United States
     label: Happy Canyon of Santa Barbara AVA
@@ -3356,6 +3790,16 @@ regions:
     label: Haut-Médoc AOC
     note: ok
     qid: Q1591387
+  Haw River Valley (US):
+    description: American Viticultural Area in North Carolina
+    label: Haw River Valley AVA
+    note: ok
+    qid: Q16928188
+  Hawaii (US):
+    description: state of the United States of America
+    label: Hawaii
+    note: non-wine class -- review
+    qid: Q782
   Hawke's Bay (NZ):
     description: wine region in New Zealand
     label: Hawke's Bay wine region
@@ -3374,6 +3818,11 @@ regions:
     qid: Q31919666
   Hengst (FR): null
   Herbertsdale (ZA): null
+  Hermann (US):
+    description: Missouri wine region
+    label: Hermann AVA
+    note: ok
+    qid: Q1610495
   Hermitage (FR): null
   Hessische Bergstraße (DE):
     description: wine-producing region
@@ -3381,6 +3830,11 @@ regions:
     note: ok
     qid: Q323855
   Hex River Valley (ZA): null
+  High Valley (US):
+    description: wine region in Lake County, California
+    label: High Valley AVA
+    note: ok
+    qid: Q1455026
   Hokkaido (JP):
     description: prefecture of Japan
     label: Hokkaido
@@ -3416,11 +3870,36 @@ regions:
     label: Idaho
     note: non-wine class -- review
     qid: Q1221
+  Illinois (US):
+    description: state of the United States of America
+    label: Illinois
+    note: non-wine class -- review
+    qid: Q1204
   Imereti (GE):
     description: historical province in Georgia
     label: Imereti
     note: non-wine class -- review
     qid: Q6455147
+  Indiana (US):
+    description: state of the United States of America
+    label: Indiana
+    note: non-wine class -- review
+    qid: Q1415
+  Indiana Uplands (US):
+    description: American Viticultural Area in Indiana
+    label: Indiana Uplands AVA
+    note: ok
+    qid: Q104871823
+  Inwood Valley (US):
+    description: appelation that designates wine in Shasta County, California
+    label: Inwood Valley AVA
+    note: ok
+    qid: Q134311725
+  Iowa (US):
+    description: state of the United States of America
+    label: Iowa
+    note: non-wine class -- review
+    qid: Q1546
   Irancy (FR):
     description: French red wine
     label: Irancy
@@ -3436,12 +3915,22 @@ regions:
     label: Irpinia DOC
     note: ok
     qid: Q31842077
+  Isle St. George (US):
+    description: Ohio wine region
+    label: Isle St. George AVA
+    note: ok
+    qid: Q1454225
   Istria (HR):
     description: commune in Constanța County, Romania
     label: Istria
     note: non-wine class -- review
     qid: Q5053165
   Itata Valley (CL): null
+  Jahant (US):
+    description: American Viticultural Area in San Joaquin County, California
+    label: Jahant AVA
+    note: ok
+    qid: Q1233697
   Jasnières (FR):
     description: French wine
     label: Jasnières
@@ -3480,6 +3969,11 @@ regions:
     note: non-wine class -- review
     qid: Q16371011
   Kamptal (AT): null
+  Kanawha River Valley (US):
+    description: West Virginia wine region
+    label: Kanawha River Valley AVA
+    note: ok
+    qid: Q6360817
   Kanzlerberg (FR): null
   Karoo-Hoogland (ZA): null
   Kartli (GE):
@@ -3490,11 +3984,21 @@ regions:
   Kastelberg (FR): null
   Keeromsberg (ZA): null
   Keimoes (ZA): null
+  Kelsey Bench-Lake County (US):
+    description: American Viticultural Area in Lake County, California
+    label: Kelsey Bench-Lake County AVA
+    note: ok
+    qid: Q96385612
   Kent (GB):
     description: historic county of England
     label: Kent
     note: non-wine class -- review
     qid: Q67479626
+  Kentucky (US):
+    description: state of the United States of America
+    label: Kentucky
+    note: non-wine class -- review
+    qid: Q1603
   Kessler (FR): null
   Kindzmarauli (GE):
     description: Georgian wine variety
@@ -3546,17 +4050,47 @@ regions:
     label: Ladoix wine
     note: ok
     qid: Q3215969
+  Lake Chelan (US):
+    description: Washington wine region in Chelan County
+    label: Lake Chelan AVA
+    note: ok
+    qid: Q6475300
   Lake County (US):
     description: county in Oregon, United States
     label: Lake County
     note: non-wine class -- review
     qid: Q495340
+  Lake Erie (US):
+    description: American wine region in the Great Lakes region
+    label: Lake Erie AVA
+    note: ok
+    qid: Q477264
+  Lake Michigan Shore (US):
+    description: Michigan wine region
+    label: Lake Michigan Shore AVA
+    note: ok
+    qid: Q1801007
+  Lake Wisconsin (US):
+    description: American Viticultural Area located in south central Wisconsin
+    label: Lake Wisconsin AVA
+    note: ok
+    qid: Q138556
   Lalande-de-Pomerol (FR):
     description: appellation d'origine contrôlée
     label: Lalande-de-Pomerol AOC
     note: ok
     qid: Q669737
   Lamberts Bay (ZA): null
+  Lamorinda (US):
+    description: ''
+    label: Lamorinda AVA
+    note: ok
+    qid: Q107133177
+  Lancaster Valley (US):
+    description: American Viticultural Area in Pennsylvania
+    label: Lancaster Valley AVA
+    note: ok
+    qid: Q1801780
   Landes (FR): null
   Langeberg-Garcia (ZA): null
   Langhe (IT):
@@ -3596,6 +4130,11 @@ regions:
     note: ok
     qid: Q283167
   Laudun (FR): null
+  Laurelwood District (US):
+    description: American wine region located in Oregon
+    label: Laurelwood District AVA
+    note: ok
+    qid: Q107071961
   Lazio (IT):
     description: region of Italy
     label: Lazio
@@ -3608,9 +4147,29 @@ regions:
     note: non-wine class -- review
     qid: Q845984
   Le Pallet (FR): null
+  Leelanau Peninsula (US):
+    description: American Viticultural Area in Michigan
+    label: Leelanau Peninsula AVA
+    note: ok
+    qid: Q954423
+  Lehigh Valley (US):
+    description: Pennsylvania wine region
+    label: Lehigh Valley AVA
+    note: ok
+    qid: Q1813109
   Leipoldtville-Sandveld (ZA): null
   Leithaberg (AT): null
+  Leona Valley (US):
+    description: California wine region in Los Angeles County
+    label: Leona Valley AVA
+    note: ok
+    qid: Q6525017
   Les Baux-de-Provence (FR): null
+  Lewis-Clark Valley (US):
+    description: American Viticultural Area in Washington and Oregon
+    label: Lewis-Clark Valley AVA
+    note: ok
+    qid: Q106946507
   Leyda Valley (CL): null
   Liguria (IT):
     description: Italian region
@@ -3618,10 +4177,20 @@ regions:
     note: non-wine class -- review
     qid: Q1256
   Limarí Valley (CL): null
+  Lime Kiln Valley (US):
+    description: wine growing region of California
+    label: Lime Kiln Valley AVA
+    note: ok
+    qid: Q1825414
   Limestone Coast (AU): null
   Limietberg (ZA): null
   Limoux (FR): null
   Limpopo (ZA): null
+  Linganore (US):
+    description: American Viticultural Area in parts of Frederick and Carroll counties, Maryland
+    label: Linganore AVA
+    note: ok
+    qid: Q6553771
   Lions River (ZA): null
   Lirac (FR):
     description: Southern Rhône wine appelation
@@ -3644,6 +4213,11 @@ regions:
     label: Lodi AVA
     note: ok
     qid: Q1867760
+  Loess Hills District (US):
+    description: American Viticultural Area in western Iowa and northwestern Missouri
+    label: Loess Hills District AVA
+    note: ok
+    qid: Q107057632
   Loire Valley (FR):
     description: wine region in France
     label: Loire Valley
@@ -3659,11 +4233,31 @@ regions:
     label: Long Island AVA
     note: ok
     qid: Q736525
+  Long Valley-Lake County (US):
+    description: American Viticultural Area in Lake County, California
+    label: Long Valley-Lake County AVA
+    note: ok
+    qid: Q126178413
+  Loramie Creek (US):
+    description: American Viticultural Area in Ohio
+    label: Loramie Creek AVA
+    note: ok
+    qid: Q1340893
   Los Carneros (US):
     description: wine region in California
     label: Los Carneros AVA
     note: ok
     qid: Q1870486
+  Los Olivos District (US):
+    description: winemaking region in California, United States
+    label: Los Olivos District AVA
+    note: ok
+    qid: Q107261149
+  Louisiana (US):
+    description: state of the United States of America
+    label: Louisiana
+    note: non-wine class -- review
+    qid: Q1588
   Loupiac (FR):
     description: French dessert wine
     label: Loupiac
@@ -3675,6 +4269,11 @@ regions:
     note: non-wine class -- review
     qid: Q777764
   Lower Duivenhoks River (ZA): null
+  Lower Long Tom (US):
+    description: wine region in Oregon, United States
+    label: Lower Long Tom AVA
+    note: ok
+    qid: Q116030282
   Luberon (FR): null
   Lugana (IT):
     description: Italian controlled designation of origin wine from Lombardy
@@ -3701,6 +4300,11 @@ regions:
     qid: Q103251
   Macvin du Jura (FR): null
   Madeira (PT): null
+  Madera (US):
+    description: California wine region
+    label: Madera AVA
+    note: ok
+    qid: Q608542
   Madiran (FR):
     description: wine region in Gascony, south west France
     label: Madiran wine
@@ -3724,6 +4328,16 @@ regions:
     note: ok
     qid: Q1887161
   Malgas (ZA): null
+  Malibu Coast (US):
+    description: ''
+    label: Malibu Coast AVA
+    note: ok
+    qid: Q29641548
+  Malibu-Newton Canyon (US):
+    description: appelation that designates wine in Los Angeles County, California
+    label: Malibu-Newton Canyon AVA
+    note: ok
+    qid: Q1887322
   Malleco Valley (CL): null
   Mallorca (ES): null
   Malmesbury (ZA): null
@@ -3736,6 +4350,11 @@ regions:
     qid: Q6747630
   Mandelberg (FR): null
   Mantinia (GR): null
+  Manton Valley (US):
+    description: appelation that designates wine in Shasta County, California
+    label: Manton Valley AVA
+    note: ok
+    qid: Q134376419
   Maranges (FR):
     description: French wine
     label: Maranges
@@ -3786,7 +4405,22 @@ regions:
     label: Marsannay wine
     note: ok
     qid: Q532437
+  Martha's Vineyard (US):
+    description: appelation that designates wine in Massachusetts
+    label: Martha's Vineyard AVA
+    note: ok
+    qid: Q1903116
   Martinborough (NZ): null
+  Maryland (US):
+    description: state of the United States of America
+    label: Maryland
+    note: non-wine class -- review
+    qid: Q1391
+  Massachusetts (US):
+    description: state of the United States of America
+    label: Massachusetts
+    note: non-wine class -- review
+    qid: Q771
   Maule Valley (CL):
     description: sub-region of the Viticultural Region of Chile's Central Valley
     label: Maule Valley
@@ -3808,6 +4442,11 @@ regions:
     label: Mazoyères-Chambertin
     note: ok
     qid: Q3303152
+  McDowell Valley (US):
+    description: California wine region in Mendocino County
+    label: McDowell Valley AVA
+    note: ok
+    qid: Q1915122
   McGregor (ZA): null
   McLaren Vale (AU):
     description: Australian Geographical indication
@@ -3824,11 +4463,21 @@ regions:
     label: Meknes
     note: non-wine class -- review
     qid: Q178663
+  Mendocino (US):
+    description: American Viticultural Area in California
+    label: Mendocino AVA
+    note: ok
+    qid: Q1278962
   Mendocino County (US):
     description: county in northwestern California, United States
     label: Mendocino County
     note: non-wine class -- review
     qid: Q108087
+  Mendocino Ridge (US):
+    description: wine region in California, USA
+    label: Mendocino Ridge AVA
+    note: ok
+    qid: Q1920369
   Mendoza (AR):
     description: city in Argentina
     label: Mendoza
@@ -3849,6 +4498,16 @@ regions:
     label: Mercurey wine
     note: ok
     qid: Q2749134
+  Merritt Island (US):
+    description: Island and viticultural area in California
+    label: Merritt Island AVA
+    note: ok
+    qid: Q1922041
+  Mesilla Valley (US):
+    description: wine growing area (Viticulture) in New Mexico and Texas
+    label: Mesilla Valley AVA
+    note: ok
+    qid: Q6821327
   Meursault (FR):
     description: French wine from Burgundy
     label: Meursault wine
@@ -3860,12 +4519,39 @@ regions:
     note: non-wine class -- review
     qid: Q1166
   Mid-Berg River (ZA): null
+  Middle Rio Grande Valley (US):
+    description: American Viticultural Area located in the watershed of the Rio Grande in central New
+      Mexico
+    label: Middle Rio Grande Valley AVA
+    note: ok
+    qid: Q14706065
+  Middleburg Virginia (US): null
+  Mimbres Valley (US):
+    description: American Viticultural Area in southwestern New Mexico
+    label: Mimbres Valley AVA
+    note: ok
+    qid: Q6862022
   Minervois (FR):
     description: appellation d'origine contrôlée
     label: Minervois AOC
     note: ok
     qid: Q441995
   Minervois-La Livinière (FR): null
+  Minnesota (US):
+    description: state of the United States of America
+    label: Minnesota
+    note: non-wine class -- review
+    qid: Q1527
+  Mississippi (US):
+    description: state of the United States of America
+    label: Mississippi
+    note: non-wine class -- review
+    qid: Q1494
+  Mississippi Delta (US):
+    description: American Viticultural Area
+    label: Mississippi Delta AVA
+    note: ok
+    qid: Q6879116
   Missouri (US):
     description: state of the United States of America
     label: Missouri
@@ -3878,6 +4564,11 @@ regions:
     note: ok
     qid: Q464929
   Moenchberg (FR): null
+  Mokelumne River (US):
+    description: American Viticultural Area in San Joaquin County, California
+    label: Mokelumne River AVA
+    note: ok
+    qid: Q768554
   Molise (IT):
     description: Italian controlled designation of origin wine from Molise
     label: Molise DOC
@@ -3927,6 +4618,11 @@ regions:
     label: Montepulciano d'Abruzzo DOC
     note: ok
     qid: Q1946117
+  Monterey (US):
+    description: viticultural area in Monterey County, California
+    label: Monterey AVA
+    note: ok
+    qid: Q1946108
   Monterey County (US):
     description: county in California, United States
     label: Monterey County
@@ -3945,6 +4641,11 @@ regions:
     label: Monthélie wine
     note: ok
     qid: Q3322760
+  Monticello (US):
+    description: American Viticultural Area in Virginia
+    label: Monticello AVA
+    note: ok
+    qid: Q1946331
   Montilla-Moriles (ES):
     description: Spanish Denominación de Origen (DO) for wines
     label: Montilla-Moriles
@@ -3963,6 +4664,11 @@ regions:
     label: Montsant DO
     note: ok
     qid: Q1808846
+  Moon Mountain District Sonoma County (US):
+    description: American Viticultural Area in California
+    label: Moon Mountain District Sonoma County
+    note: ok
+    qid: Q107299166
   Moordkuil (ZA): null
   Moravia (CZ):
     description: historical land in the Czech Republic
@@ -4007,12 +4713,18 @@ regions:
     label: Mount Lebanon
     note: non-wine class -- review
     qid: Q2087150
+  Mount Pisgah, Polk County, Oregon (US):
+    description: American Viticultural Area in Oregon
+    label: Mount Pisgah, Polk County, Oregon AVA
+    note: ok
+    qid: Q131824397
   Mount Veeder (US):
     description: American wine region
     label: Mount Veeder AVA
     note: ok
     qid: Q183511
   Mouzillon-Tillières (FR): null
+  Mt. Harlan (US): null
   Mudgee (AU):
     description: ''
     label: Mudgee wine region
@@ -4093,6 +4805,11 @@ regions:
     label: Méntrida DO
     note: ok
     qid: Q3170850
+  Naches Heights (US):
+    description: viticultural area in Yakima County, Washington, USA
+    label: Naches Heights AVA
+    note: ok
+    qid: Q6957146
   Nagano (JP): null
   Nahe (DE):
     description: German wine region
@@ -4107,6 +4824,11 @@ regions:
     qid: Q1151105
   Napier (ZA): null
   Nashik (IN): null
+  Nashoba Valley (US):
+    description: American Viticultural Area in Massachusetts
+    label: Nashoba Valley AVA
+    note: ok
+    qid: Q139328870
   Navarra (ES):
     description: Spanish Denominación de Origen Protegida (DOP) for wines from the southern half of the
       autonomous community of Navarr
@@ -4132,6 +4854,11 @@ regions:
     note: non-wine class -- review
     qid: Q44239
   Neusiedlersee (AT): null
+  New Jersey (US):
+    description: state of the United States of America
+    label: New Jersey
+    note: non-wine class -- review
+    qid: Q1408
   New Mexico (US):
     description: state of the United States of America
     label: New Mexico
@@ -4143,9 +4870,19 @@ regions:
     label: New York
     note: non-wine class -- review
     qid: Q1384
+  Niagara Escarpment (US):
+    description: New York wine region
+    label: Niagara Escarpment AVA
+    note: ok
+    qid: Q1984507
   Niagara Peninsula (CA): null
   Niederösterreich (AT): null
   Nieuwoudtville (ZA): null
+  Nine Lakes of East Tennessee (US):
+    description: viticultural area in Tennessee
+    label: Nine Lakes of East Tennessee AVA
+    note: ok
+    qid: Q139328915
   Ningxia (CN):
     description: autonomous region of China
     label: Ningxia
@@ -4161,9 +4898,34 @@ regions:
     label: North Coast AVA
     note: ok
     qid: Q2000573
+  North Fork of Long Island (US):
+    description: wine growing region in New York
+    label: North Fork of Long Island AVA
+    note: ok
+    qid: Q2000670
+  North Fork of Roanoke (US):
+    description: American Viticultural Area l
+    label: North Fork of Roanoke AVA
+    note: ok
+    qid: Q1337328
   North West (ZA): null
+  North Yuba (US):
+    description: California wine region in Yuba County
+    label: North Yuba AVA
+    note: ok
+    qid: Q371146
   Northern Cape (ZA): null
+  Northern Neck George Washington Birthplace (US):
+    description: American Viticultural Area in Virginia
+    label: Northern Neck George Washington Birthplace AVA
+    note: ok
+    qid: Q751581
   Northern Rhône (FR): null
+  Northern Sonoma (US):
+    description: American wine region
+    label: Northern Sonoma AVA
+    note: ok
+    qid: Q1454419
   Nova Scotia (CA):
     description: province of Canada
     label: Nova Scotia
@@ -4175,6 +4937,11 @@ regions:
     note: ok
     qid: Q3346179
   Nuy (ZA): null
+  Oak Knoll District of Napa Valley (US):
+    description: California wine region in Napa County, California
+    label: Oak Knoll District of Napa Valley AVA
+    note: ok
+    qid: Q1319214
   Oakville (US):
     description: American Viticultural Area
     label: Oakville AVA
@@ -4195,6 +4962,11 @@ regions:
     label: Ohio
     note: non-wine class -- review
     qid: Q1397
+  Ohio River Valley (US):
+    description: wine region along the Ohio River
+    label: Ohio River Valley AVA
+    note: ok
+    qid: Q1260347
   Oiry (FR):
     description: commune in Marne, France
     label: Oiry
@@ -4205,6 +4977,16 @@ regions:
     label: Okanagan Valley
     note: ok
     qid: Q7081806
+  Oklahoma (US):
+    description: state of the United States of America
+    label: Oklahoma
+    note: non-wine class -- review
+    qid: Q1649
+  Old Mission Peninsula (US):
+    description: American Viticultural Area in Michigan
+    label: Old Mission Peninsula AVA
+    note: ok
+    qid: Q7084546
   Olifants River (ZA): null
   Ollwiller (FR): null
   Oltrepò Pavese (IT):
@@ -4234,22 +5016,52 @@ regions:
     qid: Q1404965
   Osterberg (FR): null
   Outeniqua (ZA): null
+  Outer Coastal Plain (US):
+    description: wine region in New Jersey recognized as an American Viticultural Area
+    label: Outer Coastal Plain AVA
+    note: ok
+    qid: Q2041950
   Overberg (ZA): null
+  Ozark Highlands (US):
+    description: American Viticultural Area located in southern Missouri
+    label: Ozark Highlands AVA
+    note: ok
+    qid: Q2043033
+  Ozark Mountain (US):
+    description: American Viticultural Area in Arkansas, Missouri, and Oklahoma
+    label: Ozark Mountain AVA
+    note: ok
+    qid: Q642565
   Paardeberg (ZA): null
   Paardeberg South (ZA): null
   Paarl (ZA): null
+  Pacheco Pass (US):
+    description: appelation that designates wine in Santa Clara County, California
+    label: Pacheco Pass AVA
+    note: ok
+    qid: Q2045379
   Pacherenc du Vic-Bilh (FR): null
   Padthaway (AU):
     description: wine-growing region in South Australia
     label: Padthaway wine region
     note: ok
     qid: Q19573545
+  Paicines (US):
+    description: American grape-growing area
+    label: Paicines AVA
+    note: ok
+    qid: Q2046371
   Palette (FR):
     description: wine Appellation d'Origine Contrôlée in the Provence region of southern France
     label: Palette AOC
     note: ok
     qid: Q471013
   Palmela (PT): null
+  Palos Verdes Peninsula (US):
+    description: American Viticultural Area in Los Angeles County, California
+    label: Palos Verdes Peninsula AVA
+    note: ok
+    qid: Q133850419
   Pantelleria (IT):
     description: Italian controlled designation of origin wine from Sicily
     label: Pantelleria DOC
@@ -4261,6 +5073,26 @@ regions:
     label: Paso Robles AVA
     note: ok
     qid: Q2055633
+  Paso Robles Estrella District (US):
+    description: appelation that designates wine in San Luis Obispo County, CA
+    label: Paso Robles Estrella District AVA
+    note: ok
+    qid: Q132175239
+  Paso Robles Geneseo District (US):
+    description: appelation that designates wine in San Luis Obispo County, CA
+    label: Paso Robles Geneseo District AVA
+    note: ok
+    qid: Q132200537
+  Paso Robles Highlands District (US):
+    description: appelation that designates wine in San Luis Obispo County, CA
+    label: Paso Robles Highlands District AVA
+    note: ok
+    qid: Q131995697
+  Paso Robles Willow Creek District (US):
+    description: appelation that designates wine in San Luis Obispo County, CA
+    label: Paso Robles Willow Creek District AVA
+    note: ok
+    qid: Q133093969
   Patagonia (AR):
     description: town in Santa Cruz County, Arizona, United States
     label: Patagonia
@@ -4273,6 +5105,11 @@ regions:
     label: Pauillac wine
     note: ok
     qid: Q770230
+  Paulsell Valley (US):
+    description: American Viticultural Area in California
+    label: Paulsell Valley AVA
+    note: ok
+    qid: Q133579113
   Pays d'Oc (FR): null
   Pelješac (HR): null
   Peloponnese (GR):
@@ -4326,6 +5163,7 @@ regions:
   Piekenierskloof (ZA): null
   Pierrevert (FR): null
   Piket-Bo-Berg (ZA): null
+  Pine Mountain-Cloverdale Peak (US): null
   Pissotte (FR): null
   Plettenberg Bay (ZA): null
   Podravje (SI): null
@@ -4342,6 +5180,11 @@ regions:
     qid: Q13210563
   Porseleinberg (ZA): null
   Porto (PT): null
+  Potter Valley (US):
+    description: California wine region in Mendocino County
+    label: Potter Valley AVA
+    note: ok
+    qid: Q2106600
   Pouilly-Fuissé (FR):
     description: French wine region in Burgundy
     label: Pouilly-Fuissé
@@ -4398,6 +5241,11 @@ regions:
     label: Provence
     note: non-wine class -- review
     qid: Q70450
+  Puget Sound (US):
+    description: viticultural area in Washington, USA
+    label: Puget Sound AVA
+    note: ok
+    qid: Q1616505
   Puglia (IT): null
   Puisieulx (FR):
     description: commune in Marne, France
@@ -4431,6 +5279,11 @@ regions:
     label: Racha
     note: non-wine class -- review
     qid: Q1463301
+  Ramona Valley (US):
+    description: California wine region in San Diego County
+    label: Ramona Valley AVA
+    note: ok
+    qid: Q1302923
   Rangen (FR): null
   Rapel Valley (CL): null
   Rapsani (GR): null
@@ -4444,11 +5297,26 @@ regions:
     label: Rattlesnake Hills AVA
     note: ok
     qid: Q1569501
+  Red Hill Douglas County, Oregon (US):
+    description: located in the Umpqua Valley AVA of Oregon
+    label: Red Hill Douglas County, Oregon AVA
+    note: ok
+    qid: Q7304271
+  Red Hills Lake County (US):
+    description: located in North Coast AVA of California
+    label: Red Hills Lake County AVA
+    note: ok
+    qid: Q2135997
   Red Mountain (US):
     description: US viticultural area
     label: Red Mountain AVA
     note: ok
     qid: Q1572683
+  Redwood Valley (US):
+    description: California wine region in Mendocino County
+    label: Redwood Valley AVA
+    note: ok
+    qid: Q1624781
   Reuilly (FR):
     description: French wine
     label: Reuilly AOC
@@ -4464,6 +5332,11 @@ regions:
     label: Rheinhessen
     note: ok
     qid: Q567327
+  Rhode Island (US):
+    description: state of the United States of America
+    label: Rhode Island
+    note: non-wine class -- review
+    qid: Q1387
   Rhône Valley (FR):
     description: region on either side of the Rhône River in France
     label: Rhône Valley
@@ -4515,6 +5388,11 @@ regions:
     label: Ripaille AOC
     note: ok
     qid: Q28496945
+  River Junction (US):
+    description: viticultural area in California
+    label: River Junction AVA
+    note: ok
+    qid: Q2155493
   Riverina (AU): null
   Riverland (AU):
     description: wine region in South Australia
@@ -4532,6 +5410,21 @@ regions:
     note: ok
     qid: Q134580741
   Robertson (ZA): null
+  Rockpile (US):
+    description: wine region in California
+    label: Rockpile AVA
+    note: ok
+    qid: Q2160744
+  Rocky Knob (US):
+    description: Virginia wine region
+    label: Rocky Knob AVA
+    note: ok
+    qid: Q2160809
+  Rocky Reach (US):
+    description: viticultural area in Washington, USA
+    label: Rocky Reach AVA
+    note: ok
+    qid: Q131378492
   Roero (IT):
     description: Italian controlled and guaranteed designation of origin wine from Piedmont
     label: Roero DOCG
@@ -4597,6 +5490,7 @@ regions:
     qid: Q2169345
   Roussette du Bugey (FR): null
   Roussillon (FR): null
+  Royal Slope (US): null
   Ruchottes-Chambertin (FR):
     description: French wine
     label: Ruchottes-Chambertin
@@ -4641,6 +5535,11 @@ regions:
     note: ok
     qid: Q683582
   Sachsen (DE): null
+  Saddle Rock-Malibu (US):
+    description: appelation that designates wine in Los Angeles County, California
+    label: Saddle Rock-Malibu AVA
+    note: ok
+    qid: Q1513613
   Saering (FR): null
   Saint-Amour (FR): null
   Saint-Aubin (FR): null
@@ -4708,6 +5607,11 @@ regions:
   Sainte-Croix-du-Mont (FR): null
   Sainte-Foy Côtes de Bordeaux (FR): null
   Sainte-Foy-Bordeaux (FR): null
+  Salado Creek (US):
+    description: wine region in Stanislaus County, California
+    label: Salado Creek AVA
+    note: ok
+    qid: Q1393909
   Salento (IT):
     description: Italian typical geographical indication wine from Apulia
     label: Salento IGT
@@ -4720,26 +5624,82 @@ regions:
     qid: Q11262139
   Salta (AR): null
   Samos (GR): null
-  San Antonio Valley (CL):
+  San Antonio Valley (CL): null
+  San Antonio Valley (US):
     description: wine region in Monterey County
     label: San Antonio Valley AVA
     note: ok
     qid: Q2219237
+  San Benito (US):
+    description: California wine region in San Benito County
+    label: San Benito AVA
+    note: ok
+    qid: Q222950
+  San Benito County (US):
+    description: county in California, United States
+    label: San Benito County
+    note: non-wine class -- review
+    qid: Q109656
+  San Bernabe (US):
+    description: American Viticultural Area in California
+    label: San Bernabe AVA
+    note: ok
+    qid: Q2219290
+  San Francisco Bay (US):
+    description: wine-growing region in the US state of California
+    label: San Francisco Bay AVA
+    note: ok
+    qid: Q2219535
   San Juan (AR):
     description: capital of San Juan Province, Argentina
     label: San Juan
     note: non-wine class -- review
     qid: Q44241
+  San Juan Creek (US):
+    description: appelation that designates wine in San Luis Obispo County, CA
+    label: San Juan Creek AVA
+    note: ok
+    qid: Q131933420
+  San Lucas (US):
+    description: appelation that designates wine in Monterey County, CA
+    label: San Lucas AVA
+    note: ok
+    qid: Q1678633
+  San Luis Obispo Coast (US):
+    description: appelation that designates wine in San Luis Obispo County, California
+    label: San Luis Obispo Coast AVA
+    note: ok
+    qid: Q123998127
   San Luis Obispo County (US):
     description: appelation that designates wine in San Luis Obispo County, CA
     label: San Luis Obispo County wine
     note: ok
     qid: Q124255720
+  San Luis Rey (US):
+    description: appelation that designates wine in San Diego County, California
+    label: San Luis Rey AVA
+    note: ok
+    qid: Q131860871
+  San Miguel District (US):
+    description: appelation that designates wine in San Luis Obispo County, CA
+    label: San Miguel District AVA
+    note: ok
+    qid: Q132797959
+  San Pasqual Valley (US):
+    description: wine region in San Diego County, California
+    label: San Pasqual Valley AVA
+    note: ok
+    qid: Q2219868
   San Rafael (AR):
     description: city and the county seat of Marin County, California, United States
     label: San Rafael
     note: non-wine class -- review
     qid: Q631915
+  San Ysidro District (US):
+    description: Californian wine region in Santa Clara County
+    label: San Ysidro District AVA
+    note: ok
+    qid: Q2220146
   Sancerre (FR):
     description: French wine from the Loire Valley
     label: Sancerre
@@ -4755,6 +5715,11 @@ regions:
     label: Santa Barbara County
     note: non-wine class -- review
     qid: Q108106
+  Santa Clara Valley (US):
+    description: California wine region in Santa Clara County
+    label: Santa Clara Valley AVA
+    note: ok
+    qid: Q2222839
   Santa Cruz Mountains (US):
     description: American Viticultural Area (AVA)
     label: Santa Cruz Mountains AVA
@@ -4765,6 +5730,11 @@ regions:
     label: Santa Lucia Highlands AVA
     note: ok
     qid: Q2222992
+  Santa Margarita Ranch (US):
+    description: appelation that designates wine in San Luis Obispo County, CA
+    label: Santa Margarita Ranch AVA
+    note: ok
+    qid: Q133091074
   Santa Maria Valley (US):
     description: American wine region located in California
     label: Santa Maria Valley AVA
@@ -4831,6 +5801,16 @@ regions:
   Scherpenheuvel (ZA): null
   Schlossberg (FR): null
   Schoenenbourg (FR): null
+  Seiad Valley (US):
+    description: American Viticultural Area
+    label: Seiad Valley AVA
+    note: ok
+    qid: Q2800372
+  Seneca Lake (US):
+    description: New York wine region
+    label: Seneca Lake AVA
+    note: ok
+    qid: Q1408902
   Serra Gaúcha (BR): null
   Seyssel (FR): null
   Shandong (CN):
@@ -4838,6 +5818,16 @@ regions:
     label: Shandong
     note: non-wine class -- review
     qid: Q43407
+  Shawnee Hills (US):
+    description: wine region
+    label: Shawnee Hills AVA
+    note: ok
+    qid: Q7491533
+  Shenandoah Valley (US):
+    description: American Viticultural Area in Virginia and West Virginia
+    label: Shenandoah Valley AVA
+    note: ok
+    qid: Q2278039
   Shomron (IL): null
   Sicily (IT):
     description: island in the Mediterranean, region of Italy
@@ -4849,6 +5839,11 @@ regions:
     label: Sierra Foothills AVA
     note: ok
     qid: Q1646258
+  Sierra Pelona Valley (US):
+    description: American viticultural area
+    label: Sierra Pelona Valley AVA
+    note: ok
+    qid: Q7511543
   Sierra de Gredos (ES): null
   Sillery (FR):
     description: neighborhood in Quebec City, Quebec, Canada, former town
@@ -4864,11 +5859,36 @@ regions:
     label: Slavonia
     note: non-wine class -- review
     qid: Q681964
+  Sloughhouse (US):
+    description: American Viticultural Area in Sacramento County, California
+    label: Sloughhouse AVA
+    note: ok
+    qid: Q2294439
+  Snake River Valley (US):
+    description: viticultural area in Idaho and Oregon, USA
+    label: Snake River Valley AVA
+    note: ok
+    qid: Q2295723
+  Snipes Mountain (US):
+    description: wine region in Washington State
+    label: Snipes Mountain AVA
+    note: ok
+    qid: Q7547826
   Soave (IT):
     description: Italian controlled designation of origin wine from Veneto
     label: Soave DOC
     note: ok
     qid: Q1933708
+  Solano County (US):
+    description: county in California, United States
+    label: Solano County
+    note: non-wine class -- review
+    qid: Q108083
+  Solano County Green Valley (US):
+    description: American Viticultural Area in Solano County, California
+    label: Solano County Green Valley AVA
+    note: ok
+    qid: Q2298239
   Somló (HU):
     description: wine region
     label: Somló
@@ -4881,6 +5901,11 @@ regions:
     note: ok
     qid: Q1938017
   Sonnenglanz (FR): null
+  Sonoita (US):
+    description: Wine region in Arizona
+    label: Sonoita AVA
+    note: ok
+    qid: Q2302334
   Sonoma Coast (US):
     description: American wine region
     label: Sonoma Coast AVA
@@ -4891,6 +5916,11 @@ regions:
     label: Sonoma County
     note: non-wine class -- review
     qid: Q108067
+  Sonoma Mountain (US):
+    description: American wine region
+    label: Sonoma Mountain AVA
+    note: ok
+    qid: Q2302339
   Sonoma Valley (US):
     description: American wine region
     label: Sonoma Valley AVA
@@ -4902,17 +5932,32 @@ regions:
     note: ok
     qid: Q1290341
   South Australia (AU): null
+  South Coast (US):
+    description: California wine region
+    label: South Coast AVA
+    note: ok
+    qid: Q2304380
   South Eastern Australia (AU): null
   South West France (FR):
     description: French wine region
     label: South West France
     note: ok
     qid: Q927571
+  Southeastern New England (US):
+    description: American wine region compromising of several New England states
+    label: Southeastern New England AVA
+    note: ok
+    qid: Q2304646
   Southern Chile (CL):
     description: wine region
     label: Southern Chile
     note: ok
     qid: Q6104318
+  Southern Oregon (US):
+    description: American Viticultural Area
+    label: Southern Oregon AVA
+    note: ok
+    qid: Q7570232
   Southern Rhône (FR): null
   Spiegel (FR): null
   Sporen (FR): null
@@ -4923,6 +5968,11 @@ regions:
     qid: Q2313841
   Springfontein Rim (ZA): null
   Spruitdrift (ZA): null
+  Squaw Valley-Miramonte (US):
+    description: appelation that designates wine in Fresno County, California
+    label: Squaw Valley-Miramonte AVA
+    note: ok
+    qid: Q107203465
   St Francis Bay (ZA): null
   St Helena Bay (ZA): null
   St. Helena (US):
@@ -4950,6 +6000,11 @@ regions:
   Still Bay East (ZA): null
   Stormsvlei (ZA): null
   Struma Valley (BG): null
+  Suisun Valley (US):
+    description: American Viticultural Area in California
+    label: Suisun Valley AVA
+    note: ok
+    qid: Q1707546
   Sunday's Glen (ZA): null
   Sussex (GB):
     description: historic county of England, United Kingdom
@@ -4957,6 +6012,11 @@ regions:
     note: non-wine class -- review
     qid: Q23346
   Sutherland-Karoo (ZA): null
+  Swan Creek (US):
+    description: American wine region
+    label: Swan Creek AVA
+    note: ok
+    qid: Q7653432
   Swan Valley (AU):
     description: region in north eastern Perth, Western Australia.
     label: Swan Valley
@@ -4982,17 +6042,32 @@ regions:
     label: Tavel AOC
     note: ok
     qid: Q3516286
+  Tehachapi Mountains (US):
+    description: American Viticultural Area in California
+    label: Tehachapi Mountains AVA
+    note: ok
+    qid: Q133891330
   Tejo (PT): null
   Temecula Valley (US):
     description: American Viticultural Area
     label: Temecula Valley AVA
     note: ok
     qid: Q2402542
+  Templeton Gap District (US):
+    description: appelation that designates wine in San Luis Obispo County, CA
+    label: Templeton Gap District AVA
+    note: ok
+    qid: Q132572901
   Tenerife (ES):
     description: Colombian municipality in the department of Magdalena
     label: Tenerife
     note: non-wine class -- review
     qid: Q1525827
+  Tennessee (US):
+    description: state of the United States of America
+    label: Tennessee
+    note: non-wine class -- review
+    qid: Q1509
   Terra Alta (ES):
     description: Spanish wine
     label: Terra Alta
@@ -5008,6 +6083,11 @@ regions:
     label: Texas
     note: non-wine class -- review
     qid: Q1439
+  Texas Davis Mountains (US):
+    description: American Viticultural Area located in western Texas
+    label: Texas Davis Mountains AVA
+    note: ok
+    qid: Q764154
   Texas High Plains (US):
     description: American Viticultural Area located in northwest Texas
     label: Texas High Plains AVA
@@ -5018,6 +6098,22 @@ regions:
     label: Texas Hill Country AVA
     note: ok
     qid: Q634633
+  Texoma (US):
+    description: American Viticultural Area located in north Texas
+    label: Texoma AVA
+    note: ok
+    qid: Q17108846
+  The Burn of Columbia Valley (US):
+    description: viticultural area in Washington, USA
+    label: The Burn of Columbia Valley AVA
+    note: ok
+    qid: Q125510530
+  The Hamptons, Long Island (US):
+    description: wine growing region in New York
+    label: The Hamptons, Long Island AVA
+    note: ok
+    qid: Q788845
+  The Rocks District of Milton-Freewater (US): null
   Theewater (ZA): null
   Thermenregion (AT): null
   Thrace (TR):
@@ -5032,6 +6128,11 @@ regions:
     note: ok
     qid: Q7800612
   Tikveš (MK): null
+  Tip of the Mitt (US):
+    description: American Viticultural Area in Michigan
+    label: Tip of the Mitt AVA
+    note: ok
+    qid: Q30595493
   Tokaj (HU):
     description: wine-producing region
     label: Tokaj wine region
@@ -5063,6 +6164,11 @@ regions:
     label: Tours-sur-Marne
     note: non-wine class -- review
     qid: Q1342783
+  Tracy Hills (US):
+    description: California wine region
+    label: Tracy Hills AVA
+    note: ok
+    qid: Q1478702
   Tradouw (ZA): null
   Tradouw Highlands (ZA): null
   Traisental (AT): null
@@ -5078,12 +6184,27 @@ regions:
     qid: Q3965106
   Trentino-Alto Adige (IT): null
   Trento (IT): null
+  Trinity Lakes (US):
+    description: California wine region in Trinity County
+    label: Trinity Lakes AVA
+    note: ok
+    qid: Q2453586
+  Tryon Foothills (US):
+    description: American Viticultural Area in North Carolina
+    label: Tryon Foothills AVA
+    note: ok
+    qid: Q137271572
   Trás-os-Montes (PT): null
   Tsinandali (GE):
     description: white wine from Georgia
     label: Tsinandali wine
     note: ok
     qid: Q204269
+  Tualatin Hills (US):
+    description: American wine region located in Oregon
+    label: Tualatin Hills AVA
+    note: ok
+    qid: Q107104695
   Tulbagh (ZA): null
   Tunuyán (AR): null
   Tupungato (AR): null
@@ -5099,6 +6220,11 @@ regions:
     qid: Q1273
   Târnave (RO): null
   Uco Valley (AR): null
+  Ulupalakua (US):
+    description: American Viticultural Area in Hawaii
+    label: Ulupalakua AVA
+    note: ok
+    qid: Q134514049
   Umbria (IT):
     description: region of Italy
     label: Umbria
@@ -5110,8 +6236,33 @@ regions:
     note: ok
     qid: Q7881781
   Upington (ZA): null
+  Upper Cumberland (US):
+    description: viticultural area in Tennessee
+    label: Upper Cumberland AVA
+    note: ok
+    qid: Q130553460
   Upper Hemel-en-Aarde Valley (ZA): null
+  Upper Hiwassee Highlands (US):
+    description: American Viticultural Area in North Carolina and Georgia
+    label: Upper Hiwassee Highlands AVA
+    note: ok
+    qid: Q23018036
+  Upper Hudson (US):
+    description: American Viticultural Area in New York
+    label: Upper Hudson AVA
+    note: ok
+    qid: Q48739548
+  Upper Lake Valley (US):
+    description: American Viticultural Area in Lake County, California
+    label: Upper Lake Valley AVA
+    note: ok
+    qid: Q125986261
   Upper Langkloof (ZA): null
+  Upper Mississippi River Valley (US):
+    description: American wine grape-growing region
+    label: Upper Mississippi River Valley AVA
+    note: ok
+    qid: Q7898802
   Utiel-Requena (ES):
     description: Spanish Denominación de Origen Protegida (DOP) for wines located in the province of Valencia
       (Valencian Community)
@@ -5173,6 +6324,11 @@ regions:
     note: ok
     qid: Q140131037
   Valul lui Traian (MD): null
+  Van Duzer Corridor (US):
+    description: American Viticultural Area of Oregon
+    label: Van Duzer Corridor AVA
+    note: ok
+    qid: Q60774354
   Vaucluse (FR): null
   Vaud (CH): null
   Vayots Dzor (AM): null
@@ -5182,6 +6338,11 @@ regions:
     note: non-wine class -- review
     qid: Q1243
   Ventoux (FR): null
+  Verde Valley (US):
+    description: American Viticultural Area in Arizona
+    label: Verde Valley AVA
+    note: ok
+    qid: Q134437581
   Verdicchio dei Castelli di Jesi (IT):
     description: Italian controlled designation of origin wine from Marche
     label: Verdicchio dei Castelli di Jesi DOC
@@ -5266,6 +6427,16 @@ regions:
     label: Virginia
     note: non-wine class -- review
     qid: Q1370
+  Virginia Peninsula (US):
+    description: American Viticultural Area in Virginia
+    label: Virginia Peninsula AVA
+    note: ok
+    qid: Q134543425
+  Virginia's Eastern Shore (US):
+    description: American Viticultural Area
+    label: Virginia's Eastern Shore AVA
+    note: ok
+    qid: Q2527817
   Virieu-le-Grand (FR): null
   Viré-Clessé (FR):
     description: ''
@@ -5320,6 +6491,11 @@ regions:
     label: Walla Walla Valley AVA
     note: ok
     qid: Q7962694
+  Warren Hills (US):
+    description: American Viticultural Area in New Jersey
+    label: Warren Hills AVA
+    note: ok
+    qid: Q2549710
   Washington (US):
     description: state of the United States of America
     label: Washington
@@ -5327,24 +6503,84 @@ regions:
     qid: Q1223
   Weinviertel (AT): null
   Wellington (ZA): null
+  West Elks (US):
+    description: Colorado wine region in Delta County
+    label: West Elks AVA
+    note: ok
+    qid: Q602661
+  West Sonoma Coast (US):
+    description: American Viticultural Area in Sonoma County, California
+    label: West Sonoma Coast AVA
+    note: ok
+    qid: Q133501387
+  West Virginia (US):
+    description: state of the United States of America
+    label: West Virginia
+    note: non-wine class -- review
+    qid: Q1371
   Western Australia (AU): null
   Western Cape (ZA): null
+  Western Connecticut Highlands (US):
+    description: American Viticultural Area in Connecticut
+    label: Western Connecticut Highlands AVA
+    note: ok
+    qid: Q7987754
   Weststeiermark (AT): null
+  White Bluffs (US):
+    description: American viticultural area in Washington, USA
+    label: White Bluffs AVA
+    note: ok
+    qid: Q131123744
   Wiebelsberg (FR):
     description: Alsatian white wine
     label: Wiebelsberg
     note: ok
     qid: Q3567955
   Wien (AT): null
+  Wild Horse Valley (US):
+    description: American Viticultural Area in California
+    label: Wild Horse Valley AVA
+    note: ok
+    qid: Q2570330
   Willamette Valley (US):
     description: American Viticultural Area in the region
     label: Willamette Valley AVA
     note: ok
     qid: Q919057
+  Willcox (US):
+    description: Wine-growing region in southeastern Arizona, US
+    label: Willcox AVA
+    note: ok
+    qid: Q104872955
+  Willow Creek (US):
+    description: American Viticultural Area
+    label: Willow Creek AVA
+    note: ok
+    qid: Q1633697
   Wineck-Schlossberg (FR): null
+  Winters Highlands (US):
+    description: American Viticultural Area in California
+    label: Winters Highlands AVA
+    note: ok
+    qid: Q133568190
   Winzenberg (FR): null
+  Wisconsin (US):
+    description: state of the United States of America
+    label: Wisconsin
+    note: non-wine class -- review
+    qid: Q1537
+  Wisconsin Ledge (US):
+    description: American Viticultural Area in northeast Wisconsin
+    label: Wisconsin Ledge AVA
+    note: ok
+    qid: Q8027221
   Worcester (ZA): null
   Württemberg (DE): null
+  Yadkin Valley (US):
+    description: American Viticultural Area in North Carolina
+    label: Yadkin Valley AVA
+    note: ok
+    qid: Q2598874
   Yakima Valley (US):
     description: American Viticultural Area in Washington state
     label: Yakima Valley AVA
@@ -5366,11 +6602,26 @@ regions:
     label: Yecla
     note: ok
     qid: Q910645
+  York Mountain (US):
+    description: American Viticultural Area in San Luis Obispo County, California
+    label: York Mountain AVA
+    note: ok
+    qid: Q2600822
+  Yorkville Highlands (US):
+    description: winegrowing region in California
+    label: Yorkville Highlands AVA
+    note: ok
+    qid: Q2600872
   Yountville (US):
     description: American Viticultural Area in California
     label: Yountville AVA
     note: ok
     qid: Q2601337
+  Yucaipa Valley (US):
+    description: American Viticultural Area in California
+    label: Yucaipa Valley AVA
+    note: ok
+    qid: Q133871214
   Yunnan (CN):
     description: province of China
     label: Yunnan

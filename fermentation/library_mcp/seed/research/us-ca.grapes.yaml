@@ -1,0 +1,10 @@
+# ================= UNITED STATES: CALIFORNIA (us-ca) — research =================
+
+# ---- New grapes: California-specific varieties/crossings on commercial labels ----
+- {name: "Valdiguié", color: red, synonyms: ["Valdiguie", "Napa Gamay"], source: "https://en.wikipedia.org/wiki/Valdigui%C3%A9"}
+- {name: "Trousseau Gris", color: gris, synonyms: ["Gray Riesling", "Grey Riesling"], source: "https://en.wikipedia.org/wiki/Trousseau_(grape)"}
+- {name: "Rubired", color: red, synonyms: [], source: "https://en.wikipedia.org/wiki/Rubired"}
+
+# ---- Existing grapes: California/US names not yet listed as synonyms ----
+- {name: "Tinto Cão", existing: true, synonyms: ["Tinta Cao", "Tinta Cão"], source: "https://en.wikipedia.org/wiki/Monterey_AVA"}
+- {name: "Vinhão", existing: true, synonyms: ["Souzao"], source: "https://en.wikipedia.org/wiki/Lodi_AVA"}

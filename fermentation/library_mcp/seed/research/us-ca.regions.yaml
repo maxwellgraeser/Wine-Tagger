@@ -1,0 +1,213 @@
+# ================= UNITED STATES: CALIFORNIA (us-ca) — research =================
+# Status: in progress (North Coast, Sierra Foothills, Central Coast, Central
+# Valley, South Coast, Klamath Mountains, Cascade Foothills all drafted)
+#
+# Primary sources: TTB "Established American Viticultural Areas"
+# (https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas)
+# for the official roster; Wikipedia "List of American Viticultural Areas"
+# (https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas), updated
+# Aug 2026, for the complete California roster and county/grouping; individual
+# AVA Wikipedia pages (cited per entry) for exact nesting, since TTB's own list
+# does not encode hierarchy. Every individual-page source below was fetched and
+# read directly (not summarized secondhand).
+
+# ---- Root ----
+- {name: "California", country: US, synonyms: ["CA", "Calif."], source: "https://en.wikipedia.org/wiki/California_wine"}
+
+# ================= NORTH COAST =================
+- {name: "North Coast", country: US, parent: "California", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+
+# ---- Napa Valley and its 16 nested AVAs ----
+- {name: "Napa Valley", country: US, parent: "North Coast", classification: AVA, synonyms: ["Napa", "Napa Valley AVA", "Napa County"], source: "https://en.wikipedia.org/wiki/Napa_Valley_AVA"}
+- {name: "Oakville", country: US, parent: "Napa Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Napa_Valley_AVA"}
+- {name: "Rutherford", country: US, parent: "Napa Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Napa_Valley_AVA"}
+- {name: "St. Helena", country: US, parent: "Napa Valley", classification: AVA, synonyms: ["Saint Helena", "St Helena"], source: "https://en.wikipedia.org/wiki/Napa_Valley_AVA"}
+- {name: "Stags Leap District", country: US, parent: "Napa Valley", classification: AVA, synonyms: ["Stags Leap", "Stag's Leap District", "Stag's Leap"], source: "https://en.wikipedia.org/wiki/Napa_Valley_AVA"}
+- {name: "Howell Mountain", country: US, parent: "Napa Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Napa_Valley_AVA"}
+- {name: "Mount Veeder", country: US, parent: "Napa Valley", classification: AVA, synonyms: ["Mt. Veeder"], source: "https://en.wikipedia.org/wiki/Napa_Valley_AVA"}
+- {name: "Calistoga", country: US, parent: "Napa Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Napa_Valley_AVA"}
+- {name: "Yountville", country: US, parent: "Napa Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Napa_Valley_AVA"}
+- {name: "Atlas Peak", country: US, parent: "Napa Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Napa_Valley_AVA"}
+- {name: "Coombsville", country: US, parent: "Napa Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Napa_Valley_AVA"}
+- {name: "Spring Mountain District", country: US, parent: "Napa Valley", classification: AVA, synonyms: ["Spring Mountain"], source: "https://en.wikipedia.org/wiki/Napa_Valley_AVA"}
+- {name: "Chiles Valley", country: US, parent: "Napa Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Napa_Valley_AVA"}
+- {name: "Diamond Mountain District", country: US, parent: "Napa Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Napa_Valley_AVA"}
+- {name: "Oak Knoll District of Napa Valley", country: US, parent: "Napa Valley", classification: AVA, synonyms: ["Oak Knoll District"], source: "https://en.wikipedia.org/wiki/Napa_Valley_AVA"}
+- {name: "Wild Horse Valley", country: US, parent: "Napa Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Napa_Valley_AVA"}
+- {name: "Crystal Springs of Napa Valley", country: US, parent: "Napa Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Napa_Valley_AVA"}
+- {name: "Los Carneros", country: US, parent: "North Coast", classification: AVA, synonyms: ["Carneros"], source: "https://en.wikipedia.org/wiki/Napa_Valley_AVA"}
+
+# ---- Sonoma County ----
+- {name: "Sonoma County", country: US, parent: "North Coast", synonyms: ["Sonoma"], source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Russian River Valley", country: US, parent: "Sonoma County", classification: AVA, synonyms: ["Russian River", "RRV", "Russian River Valley AVA"], source: "https://en.wikipedia.org/wiki/Sonoma_Coast_AVA"}
+- {name: "Green Valley of Russian River Valley", country: US, parent: "Russian River Valley", classification: AVA, synonyms: ["Green Valley of Russian River Valley AVA", "Sonoma County Green Valley"], source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Dry Creek Valley", country: US, parent: "Sonoma County", classification: AVA, synonyms: ["Dry Creek"], source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Alexander Valley", country: US, parent: "Sonoma County", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Sonoma Coast", country: US, parent: "Sonoma County", classification: AVA, source: "https://en.wikipedia.org/wiki/Sonoma_Coast_AVA"}
+- {name: "Fort Ross-Seaview", country: US, parent: "Sonoma Coast", classification: AVA, synonyms: ["Fort Ross Seaview"], source: "https://en.wikipedia.org/wiki/Sonoma_Coast_AVA"}
+- {name: "West Sonoma Coast", country: US, parent: "Sonoma Coast", classification: AVA, source: "https://en.wikipedia.org/wiki/Sonoma_Coast_AVA"}
+- {name: "Sonoma Valley", country: US, parent: "Sonoma County", classification: AVA, source: "https://en.wikipedia.org/wiki/Sonoma_Coast_AVA"}
+- {name: "Knights Valley", country: US, parent: "Sonoma County", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Chalk Hill", country: US, parent: "Sonoma County", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Petaluma Gap", country: US, parent: "Sonoma County", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Bennett Valley", country: US, parent: "Sonoma County", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Sonoma Mountain", country: US, parent: "Sonoma County", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Moon Mountain District Sonoma County", country: US, parent: "Sonoma County", classification: AVA, synonyms: ["Moon Mountain District"], source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Fountaingrove District", country: US, parent: "Sonoma County", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Rockpile", country: US, parent: "Sonoma County", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Northern Sonoma", country: US, parent: "Sonoma County", classification: AVA, source: "https://en.wikipedia.org/wiki/Sonoma_Coast_AVA"}
+
+# ---- Mendocino County ----
+- {name: "Mendocino County", country: US, parent: "North Coast", source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Mendocino", country: US, parent: "Mendocino County", classification: AVA, source: "https://en.wikipedia.org/wiki/Mendocino_AVA"}
+- {name: "Anderson Valley", country: US, parent: "Mendocino", classification: AVA, source: "https://en.wikipedia.org/wiki/Mendocino_AVA"}
+- {name: "Cole Ranch", country: US, parent: "Mendocino", classification: AVA, source: "https://en.wikipedia.org/wiki/Mendocino_AVA"}
+- {name: "Covelo", country: US, parent: "Mendocino", classification: AVA, source: "https://en.wikipedia.org/wiki/Mendocino_AVA"}
+- {name: "Dos Rios", country: US, parent: "Mendocino", classification: AVA, source: "https://en.wikipedia.org/wiki/Mendocino_AVA"}
+- {name: "McDowell Valley", country: US, parent: "Mendocino", classification: AVA, source: "https://en.wikipedia.org/wiki/Mendocino_AVA"}
+- {name: "Potter Valley", country: US, parent: "Mendocino", classification: AVA, source: "https://en.wikipedia.org/wiki/Mendocino_AVA"}
+- {name: "Redwood Valley", country: US, parent: "Mendocino", classification: AVA, source: "https://en.wikipedia.org/wiki/Mendocino_AVA"}
+- {name: "Yorkville Highlands", country: US, parent: "Mendocino", classification: AVA, source: "https://en.wikipedia.org/wiki/Mendocino_AVA"}
+- {name: "Eagle Peak Mendocino County", country: US, parent: "Mendocino County", classification: AVA, synonyms: ["Eagle Peak"], source: "https://en.wikipedia.org/wiki/Mendocino_AVA"}
+- {name: "Comptche", country: US, parent: "Mendocino County", classification: AVA, source: "https://en.wikipedia.org/wiki/Mendocino_AVA"}
+- {name: "Mendocino Ridge", country: US, parent: "Mendocino County", classification: AVA, source: "https://en.wikipedia.org/wiki/Mendocino_AVA"}
+- {name: "Pine Mountain-Cloverdale Peak", country: US, parent: "Mendocino County", classification: AVA, source: "https://en.wikipedia.org/wiki/Mendocino_AVA"}
+
+# ---- Lake County ----
+- {name: "Lake County", country: US, parent: "North Coast", source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Clear Lake", country: US, parent: "Lake County", classification: AVA, source: "https://en.wikipedia.org/wiki/Clear_Lake_AVA"}
+- {name: "Big Valley District-Lake County", country: US, parent: "Clear Lake", classification: AVA, synonyms: ["Big Valley District"], source: "https://en.wikipedia.org/wiki/Clear_Lake_AVA"}
+- {name: "High Valley", country: US, parent: "Clear Lake", classification: AVA, source: "https://en.wikipedia.org/wiki/Clear_Lake_AVA"}
+- {name: "Kelsey Bench-Lake County", country: US, parent: "Clear Lake", classification: AVA, synonyms: ["Kelsey Bench"], source: "https://en.wikipedia.org/wiki/Clear_Lake_AVA"}
+- {name: "Red Hills Lake County", country: US, parent: "Clear Lake", classification: AVA, synonyms: ["Red Hills"], source: "https://en.wikipedia.org/wiki/Clear_Lake_AVA"}
+- {name: "Upper Lake Valley", country: US, parent: "Clear Lake", classification: AVA, source: "https://en.wikipedia.org/wiki/Clear_Lake_AVA"}
+- {name: "Benmore Valley", country: US, parent: "Lake County", classification: AVA, source: "https://en.wikipedia.org/wiki/Clear_Lake_AVA"}
+- {name: "Guenoc Valley", country: US, parent: "Lake County", classification: AVA, source: "https://en.wikipedia.org/wiki/Clear_Lake_AVA"}
+- {name: "Long Valley-Lake County", country: US, parent: "Lake County", classification: AVA, synonyms: ["Long Valley"], source: "https://en.wikipedia.org/wiki/Clear_Lake_AVA"}
+
+# ---- Solano County ----
+- {name: "Solano County", country: US, parent: "North Coast", source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Suisun Valley", country: US, parent: "Solano County", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Solano County Green Valley", country: US, parent: "Solano County", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+
+# ================= SIERRA FOOTHILLS =================
+- {name: "Sierra Foothills", country: US, parent: "California", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Amador County", country: US, parent: "Sierra Foothills", synonyms: ["Amador"], source: "https://en.wikipedia.org/wiki/California_Shenandoah_Valley_AVA"}
+- {name: "California Shenandoah Valley", country: US, parent: "Sierra Foothills", classification: AVA, synonyms: ["Shenandoah Valley (California)"], source: "https://en.wikipedia.org/wiki/California_Shenandoah_Valley_AVA"}
+- {name: "Fiddletown", country: US, parent: "Sierra Foothills", classification: AVA, source: "https://en.wikipedia.org/wiki/California_Shenandoah_Valley_AVA"}
+- {name: "El Dorado", country: US, parent: "Sierra Foothills", classification: AVA, synonyms: ["El Dorado County"], source: "https://en.wikipedia.org/wiki/Fair_Play_AVA"}
+- {name: "Fair Play", country: US, parent: "El Dorado", classification: AVA, source: "https://en.wikipedia.org/wiki/Fair_Play_AVA"}
+- {name: "North Yuba", country: US, parent: "Sierra Foothills", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+
+# ================= CENTRAL COAST =================
+- {name: "Central Coast", country: US, parent: "California", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+
+# ---- San Francisco Bay Area ----
+- {name: "San Francisco Bay", country: US, parent: "Central Coast", classification: AVA, source: "https://en.wikipedia.org/wiki/San_Francisco_Bay_AVA"}
+- {name: "Livermore Valley", country: US, parent: "San Francisco Bay", classification: AVA, synonyms: ["Livermore"], source: "https://en.wikipedia.org/wiki/San_Francisco_Bay_AVA"}
+- {name: "Santa Clara Valley", country: US, parent: "San Francisco Bay", classification: AVA, source: "https://en.wikipedia.org/wiki/San_Francisco_Bay_AVA"}
+- {name: "San Ysidro District", country: US, parent: "Santa Clara Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/San_Ysidro_District_AVA"}
+- {name: "Lamorinda", country: US, parent: "San Francisco Bay", classification: AVA, source: "https://en.wikipedia.org/wiki/San_Francisco_Bay_AVA"}
+- {name: "Contra Costa", country: US, parent: "San Francisco Bay", classification: AVA, synonyms: ["Contra Costa County"], source: "https://en.wikipedia.org/wiki/San_Francisco_Bay_AVA"}
+- {name: "Santa Cruz Mountains", country: US, parent: "San Francisco Bay", classification: AVA, source: "https://en.wikipedia.org/wiki/San_Francisco_Bay_AVA"}
+- {name: "Ben Lomond Mountain", country: US, parent: "San Francisco Bay", classification: AVA, source: "https://en.wikipedia.org/wiki/San_Francisco_Bay_AVA"}
+
+# ---- Monterey County ----
+- {name: "Monterey County", country: US, parent: "Central Coast", source: "https://en.wikipedia.org/wiki/Monterey_AVA"}
+- {name: "Monterey", country: US, parent: "Monterey County", classification: AVA, synonyms: ["Monterey AVA"], source: "https://en.wikipedia.org/wiki/Monterey_AVA"}
+- {name: "Arroyo Seco", country: US, parent: "Monterey", classification: AVA, source: "https://en.wikipedia.org/wiki/Monterey_AVA"}
+- {name: "Hames Valley", country: US, parent: "Monterey", classification: AVA, source: "https://en.wikipedia.org/wiki/Monterey_AVA"}
+- {name: "San Bernabe", country: US, parent: "Monterey", classification: AVA, source: "https://en.wikipedia.org/wiki/Monterey_AVA"}
+- {name: "San Lucas", country: US, parent: "Monterey", classification: AVA, source: "https://en.wikipedia.org/wiki/Monterey_AVA"}
+- {name: "Santa Lucia Highlands", country: US, parent: "Monterey", classification: AVA, source: "https://en.wikipedia.org/wiki/Monterey_AVA"}
+- {name: "Carmel Valley", country: US, parent: "Monterey County", classification: AVA, source: "https://en.wikipedia.org/wiki/Monterey_AVA"}
+- {name: "San Antonio Valley", country: US, parent: "Monterey County", classification: AVA, source: "https://en.wikipedia.org/wiki/Monterey_AVA"}
+
+# ---- San Benito County ----
+- {name: "San Benito County", country: US, parent: "Central Coast", source: "https://en.wikipedia.org/wiki/San_Benito_AVA"}
+- {name: "San Benito", country: US, parent: "San Benito County", classification: AVA, source: "https://en.wikipedia.org/wiki/San_Benito_AVA"}
+- {name: "Cienega Valley", country: US, parent: "San Benito", classification: AVA, source: "https://en.wikipedia.org/wiki/San_Benito_AVA"}
+- {name: "Lime Kiln Valley", country: US, parent: "San Benito", classification: AVA, source: "https://en.wikipedia.org/wiki/San_Benito_AVA"}
+- {name: "Paicines", country: US, parent: "San Benito", classification: AVA, source: "https://en.wikipedia.org/wiki/San_Benito_AVA"}
+- {name: "Mt. Harlan", country: US, parent: "San Benito County", classification: AVA, source: "https://en.wikipedia.org/wiki/San_Benito_AVA"}
+- {name: "Gabilan Mountains", country: US, parent: "San Benito County", classification: AVA, source: "https://en.wikipedia.org/wiki/San_Benito_AVA"}
+- {name: "Chalone", country: US, parent: "San Benito County", classification: AVA, source: "https://en.wikipedia.org/wiki/San_Benito_AVA"}
+- {name: "Pacheco Pass", country: US, parent: "San Benito County", classification: AVA, source: "https://en.wikipedia.org/wiki/San_Benito_AVA"}
+
+# ---- San Luis Obispo County ----
+- {name: "San Luis Obispo County", country: US, parent: "Central Coast", synonyms: ["San Luis Obispo"], source: "https://en.wikipedia.org/wiki/San_Luis_Obispo_Coast_AVA"}
+- {name: "San Luis Obispo Coast", country: US, parent: "San Luis Obispo County", classification: AVA, synonyms: ["SLO Coast"], source: "https://en.wikipedia.org/wiki/San_Luis_Obispo_Coast_AVA"}
+- {name: "Edna Valley", country: US, parent: "San Luis Obispo Coast", classification: AVA, source: "https://en.wikipedia.org/wiki/San_Luis_Obispo_Coast_AVA"}
+- {name: "Arroyo Grande Valley", country: US, parent: "San Luis Obispo Coast", classification: AVA, source: "https://en.wikipedia.org/wiki/San_Luis_Obispo_Coast_AVA"}
+- {name: "York Mountain", country: US, parent: "San Luis Obispo County", classification: AVA, source: "https://en.wikipedia.org/wiki/Paso_Robles_AVA"}
+- {name: "Paso Robles", country: US, parent: "San Luis Obispo County", classification: AVA, synonyms: ["Paso", "Paso Robles AVA"], source: "https://en.wikipedia.org/wiki/Paso_Robles_AVA"}
+- {name: "Adelaida District", country: US, parent: "Paso Robles", classification: AVA, source: "https://en.wikipedia.org/wiki/Paso_Robles_AVA"}
+- {name: "Creston District", country: US, parent: "Paso Robles", classification: AVA, source: "https://en.wikipedia.org/wiki/Paso_Robles_AVA"}
+- {name: "El Pomar District", country: US, parent: "Paso Robles", classification: AVA, source: "https://en.wikipedia.org/wiki/Paso_Robles_AVA"}
+- {name: "Paso Robles Estrella District", country: US, parent: "Paso Robles", classification: AVA, synonyms: ["Estrella District"], source: "https://en.wikipedia.org/wiki/Paso_Robles_AVA"}
+- {name: "Paso Robles Geneseo District", country: US, parent: "Paso Robles", classification: AVA, synonyms: ["Geneseo District"], source: "https://en.wikipedia.org/wiki/Paso_Robles_AVA"}
+- {name: "Paso Robles Highlands District", country: US, parent: "Paso Robles", classification: AVA, synonyms: ["Highlands District"], source: "https://en.wikipedia.org/wiki/Paso_Robles_AVA"}
+- {name: "Paso Robles Willow Creek District", country: US, parent: "Paso Robles", classification: AVA, synonyms: ["Willow Creek District"], source: "https://en.wikipedia.org/wiki/Paso_Robles_AVA"}
+- {name: "San Juan Creek", country: US, parent: "Paso Robles", classification: AVA, source: "https://en.wikipedia.org/wiki/Paso_Robles_AVA"}
+- {name: "San Miguel District", country: US, parent: "Paso Robles", classification: AVA, source: "https://en.wikipedia.org/wiki/Paso_Robles_AVA"}
+- {name: "Santa Margarita Ranch", country: US, parent: "Paso Robles", classification: AVA, source: "https://en.wikipedia.org/wiki/Paso_Robles_AVA"}
+- {name: "Templeton Gap District", country: US, parent: "Paso Robles", classification: AVA, source: "https://en.wikipedia.org/wiki/Paso_Robles_AVA"}
+
+# ---- Santa Barbara County ----
+- {name: "Santa Barbara County", country: US, parent: "Central Coast", synonyms: ["Santa Barbara"], source: "https://en.wikipedia.org/wiki/Alisos_Canyon_AVA"}
+- {name: "Santa Ynez Valley", country: US, parent: "Santa Barbara County", classification: AVA, synonyms: ["Santa Ynez"], source: "https://en.wikipedia.org/wiki/Los_Olivos_District_AVA"}
+- {name: "Sta. Rita Hills", country: US, parent: "Santa Ynez Valley", classification: AVA, synonyms: ["Santa Rita Hills", "Sta Rita Hills"], source: "https://en.wikipedia.org/wiki/Los_Olivos_District_AVA"}
+- {name: "Happy Canyon of Santa Barbara", country: US, parent: "Santa Ynez Valley", classification: AVA, synonyms: ["Happy Canyon"], source: "https://en.wikipedia.org/wiki/Los_Olivos_District_AVA"}
+- {name: "Ballard Canyon", country: US, parent: "Santa Ynez Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Los_Olivos_District_AVA"}
+- {name: "Los Olivos District", country: US, parent: "Santa Ynez Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Los_Olivos_District_AVA"}
+- {name: "Santa Maria Valley", country: US, parent: "Santa Barbara County", classification: AVA, source: "https://en.wikipedia.org/wiki/Alisos_Canyon_AVA"}
+- {name: "Alisos Canyon", country: US, parent: "Santa Barbara County", classification: AVA, source: "https://en.wikipedia.org/wiki/Alisos_Canyon_AVA"}
+
+# ================= CENTRAL VALLEY (informal; not itself an AVA) =================
+- {name: "Central Valley", country: US, parent: "California", synonyms: ["Central Valley (California)"], source: "https://en.wikipedia.org/wiki/Lodi_AVA"}
+- {name: "Lodi", country: US, parent: "Central Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Lodi_AVA"}
+- {name: "Alta Mesa", country: US, parent: "Lodi", classification: AVA, source: "https://en.wikipedia.org/wiki/Lodi_AVA"}
+- {name: "Borden Ranch", country: US, parent: "Lodi", classification: AVA, source: "https://en.wikipedia.org/wiki/Lodi_AVA"}
+- {name: "Clements Hills", country: US, parent: "Lodi", classification: AVA, source: "https://en.wikipedia.org/wiki/Lodi_AVA"}
+- {name: "Cosumnes River", country: US, parent: "Lodi", classification: AVA, source: "https://en.wikipedia.org/wiki/Lodi_AVA"}
+- {name: "Jahant", country: US, parent: "Lodi", classification: AVA, source: "https://en.wikipedia.org/wiki/Lodi_AVA"}
+- {name: "Mokelumne River", country: US, parent: "Lodi", classification: AVA, source: "https://en.wikipedia.org/wiki/Lodi_AVA"}
+- {name: "Sloughhouse", country: US, parent: "Lodi", classification: AVA, source: "https://en.wikipedia.org/wiki/Lodi_AVA"}
+- {name: "Clarksburg", country: US, parent: "Central Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Clarksburg_AVA"}
+- {name: "Merritt Island", country: US, parent: "Clarksburg", classification: AVA, source: "https://en.wikipedia.org/wiki/Clarksburg_AVA"}
+- {name: "Madera", country: US, parent: "Central Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Dunnigan Hills", country: US, parent: "Central Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Capay Valley", country: US, parent: "Central Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Winters Highlands", country: US, parent: "Central Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Diablo Grande", country: US, parent: "Central Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Diablo_Grande_AVA"}
+- {name: "Tracy Hills", country: US, parent: "Central Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Tracy_Hills_AVA"}
+- {name: "River Junction", country: US, parent: "Central Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Salado Creek", country: US, parent: "Central Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Salado_Creek_AVA"}
+- {name: "Paulsell Valley", country: US, parent: "Central Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Paulsell_Valley_AVA"}
+- {name: "Squaw Valley-Miramonte", country: US, parent: "Central Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Squaw_Valley-Miramonte_AVA"}
+
+# ================= SOUTH COAST =================
+- {name: "South Coast", country: US, parent: "California", classification: AVA, source: "https://en.wikipedia.org/wiki/South_Coast_AVA"}
+- {name: "Temecula Valley", country: US, parent: "South Coast", classification: AVA, synonyms: ["Temecula"], source: "https://en.wikipedia.org/wiki/South_Coast_AVA"}
+- {name: "Ramona Valley", country: US, parent: "South Coast", classification: AVA, source: "https://en.wikipedia.org/wiki/South_Coast_AVA"}
+- {name: "San Luis Rey", country: US, parent: "South Coast", classification: AVA, source: "https://en.wikipedia.org/wiki/South_Coast_AVA"}
+- {name: "San Pasqual Valley", country: US, parent: "South Coast", classification: AVA, source: "https://en.wikipedia.org/wiki/South_Coast_AVA"}
+- {name: "Malibu Coast", country: US, parent: "California", classification: AVA, source: "https://en.wikipedia.org/wiki/Malibu_Coast_AVA"}
+- {name: "Malibu-Newton Canyon", country: US, parent: "Malibu Coast", classification: AVA, source: "https://en.wikipedia.org/wiki/Malibu_Coast_AVA"}
+- {name: "Saddle Rock-Malibu", country: US, parent: "Malibu Coast", classification: AVA, source: "https://en.wikipedia.org/wiki/Malibu_Coast_AVA"}
+- {name: "Antelope Valley of the California High Desert", country: US, parent: "California", classification: AVA, synonyms: ["Antelope Valley"], source: "https://en.wikipedia.org/wiki/Antelope_Valley_of_the_California_High_Desert_AVA"}
+- {name: "Leona Valley", country: US, parent: "California", classification: AVA, source: "https://en.wikipedia.org/wiki/Antelope_Valley_of_the_California_High_Desert_AVA"}
+- {name: "Sierra Pelona Valley", country: US, parent: "California", classification: AVA, source: "https://en.wikipedia.org/wiki/Antelope_Valley_of_the_California_High_Desert_AVA"}
+- {name: "Cucamonga Valley", country: US, parent: "California", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Palos Verdes Peninsula", country: US, parent: "California", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Tehachapi Mountains", country: US, parent: "California", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Yucaipa Valley", country: US, parent: "California", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+
+# ================= KLAMATH MOUNTAINS =================
+- {name: "Seiad Valley", country: US, parent: "California", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Trinity Lakes", country: US, parent: "California", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Willow Creek", country: US, parent: "California", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+
+# ================= CASCADE FOOTHILLS =================
+- {name: "Inwood Valley", country: US, parent: "California", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}
+- {name: "Manton Valley", country: US, parent: "California", classification: AVA, source: "https://en.wikipedia.org/wiki/List_of_American_Viticultural_Areas"}

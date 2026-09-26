@@ -1,0 +1,62 @@
+# us-pnw: Oregon, Washington, Idaho AVAs. Existing library entries included in full,
+# with reparents/synonym fixes noted in us-pnw.md.
+
+# --- State-level (existing) ---
+- {name: "Oregon", country: US, synonyms: ["OR"]}
+- {name: "Washington", country: US, synonyms: ["Washington State"]}
+- {name: "Idaho", country: US, synonyms: ["ID"]}
+
+# --- Oregon: Southern Oregon group ---
+- {name: "Southern Oregon", country: US, parent: "Oregon", classification: AVA, synonyms: [], source: "https://en.wikipedia.org/wiki/Southern_Oregon_AVA"}
+- {name: "Rogue Valley", country: US, parent: "Southern Oregon", classification: AVA, synonyms: [], source: "https://en.wikipedia.org/wiki/Rogue_Valley_AVA"}
+- {name: "Applegate Valley", country: US, parent: "Rogue Valley", classification: AVA, synonyms: [], source: "https://en.wikipedia.org/wiki/Applegate_Valley_AVA"}
+- {name: "Umpqua Valley", country: US, parent: "Southern Oregon", classification: AVA, synonyms: [], source: "https://en.wikipedia.org/wiki/Umpqua_Valley_AVA"}
+- {name: "Elkton Oregon", country: US, parent: "Umpqua Valley", classification: AVA, synonyms: ["Elkton"], source: "https://www.ttb.gov/news/establishment-of-the-elkton-oregon-vit-area"}
+- {name: "Red Hill Douglas County, Oregon", country: US, parent: "Umpqua Valley", classification: AVA, synonyms: ["Red Hill Douglas County"], source: "https://www.federalregister.gov/documents/2005/10/14/05-20551/establishment-of-the-red-hill-douglas-county-or-viticultural-area-2001r-88p"}
+
+# --- Oregon: Willamette Valley group ---
+- {name: "Willamette Valley", country: US, parent: "Oregon", classification: AVA, synonyms: ["Willamette"]}
+- {name: "Dundee Hills", country: US, parent: "Willamette Valley", classification: AVA}
+- {name: "Yamhill-Carlton", country: US, parent: "Willamette Valley", classification: AVA, synonyms: ["Yamhill Carlton"]}
+- {name: "Chehalem Mountains", country: US, parent: "Willamette Valley", classification: AVA}
+- {name: "Ribbon Ridge", country: US, parent: "Chehalem Mountains", classification: AVA}
+- {name: "Laurelwood District", country: US, parent: "Chehalem Mountains", classification: AVA, source: "https://en.wikipedia.org/wiki/Laurelwood_District_AVA"}
+- {name: "Eola-Amity Hills", country: US, parent: "Willamette Valley", classification: AVA, synonyms: ["Eola Amity Hills"]}
+- {name: "McMinnville", country: US, parent: "Willamette Valley", classification: AVA}
+- {name: "Van Duzer Corridor", country: US, parent: "Willamette Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Van_Duzer_Corridor_AVA"}
+- {name: "Tualatin Hills", country: US, parent: "Willamette Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Tualatin_Hills_AVA"}
+- {name: "Lower Long Tom", country: US, parent: "Willamette Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Lower_Long_Tom_AVA"}
+- {name: "Mount Pisgah, Polk County, Oregon", country: US, parent: "Willamette Valley", classification: AVA, synonyms: ["Mount Pisgah, Polk County", "Mt. Pisgah, Polk County, Oregon"], source: "https://en.wikipedia.org/wiki/Mount_Pisgah,_Polk_County,_Oregon_AVA"}
+
+# --- Straddling AVAs (Oregon/Washington/Idaho) ---
+- {name: "Columbia Valley", country: US, parent: "Washington", classification: AVA}
+- {name: "Walla Walla Valley", country: US, parent: "Columbia Valley", classification: AVA, synonyms: ["Walla Walla"]}
+- {name: "The Rocks District of Milton-Freewater", country: US, parent: "Walla Walla Valley", classification: AVA, synonyms: ["The Rocks District", "Rocks District of Milton-Freewater"], source: "https://en.wikipedia.org/wiki/The_Rocks_District_of_Milton-Freewater_AVA"}
+- {name: "Columbia Gorge", country: US, parent: "Washington", classification: AVA, source: "https://en.wikipedia.org/wiki/Columbia_Gorge_AVA"}
+- {name: "Snake River Valley", country: US, parent: "Idaho", classification: AVA, source: "https://en.wikipedia.org/wiki/Snake_River_Valley_AVA"}
+- {name: "Lewis-Clark Valley", country: US, parent: "Idaho", classification: AVA, source: "https://en.wikipedia.org/wiki/Lewis-Clark_Valley_AVA"}
+
+# --- Washington: Columbia Valley group ---
+- {name: "Yakima Valley", country: US, parent: "Columbia Valley", classification: AVA}
+- {name: "Rattlesnake Hills", country: US, parent: "Yakima Valley", classification: AVA}
+- {name: "Red Mountain", country: US, parent: "Yakima Valley", classification: AVA}
+- {name: "Snipes Mountain", country: US, parent: "Yakima Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Snipes_Mountain_AVA"}
+- {name: "Candy Mountain", country: US, parent: "Yakima Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Candy_Mountain_AVA"}
+- {name: "Goose Gap", country: US, parent: "Yakima Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Goose_Gap_AVA"}
+- {name: "Horse Heaven Hills", country: US, parent: "Columbia Valley", classification: AVA}
+- {name: "Wahluke Slope", country: US, parent: "Columbia Valley", classification: AVA}
+- {name: "Naches Heights", country: US, parent: "Columbia Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Naches_Heights_AVA"}
+- {name: "Royal Slope", country: US, parent: "Columbia Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Royal_Slope_AVA"}
+- {name: "Beverly, Washington", country: US, parent: "Columbia Valley", classification: AVA, synonyms: ["Beverly"], source: "https://www.federalregister.gov/documents/2024/10/29/2024-25076/establishment-of-the-beverly-washington-viticultural-area"}
+- {name: "Rocky Reach", country: US, parent: "Columbia Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Rocky_Reach_AVA"}
+- {name: "Lake Chelan", country: US, parent: "Columbia Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/Lake_Chelan_AVA"}
+- {name: "White Bluffs", country: US, parent: "Columbia Valley", classification: AVA, source: "https://en.wikipedia.org/wiki/White_Bluffs_AVA"}
+- {name: "The Burn of Columbia Valley", country: US, parent: "Columbia Valley", classification: AVA, synonyms: ["The Burn"], source: "https://en.wikipedia.org/wiki/The_Burn_of_Columbia_Valley_AVA"}
+- {name: "Columbia Hills", country: US, parent: "Columbia Valley", classification: AVA, source: "https://www.federalregister.gov/documents/2026/08/17/2026-16701/establishment-of-the-columbia-hills-viticultural-area"}
+- {name: "Ancient Lakes of Columbia Valley", country: US, parent: "Columbia Valley", classification: AVA, synonyms: ["Ancient Lakes"], source: "https://en.wikipedia.org/wiki/Ancient_Lakes_of_Columbia_Valley_AVA"}
+
+# --- Washington: standalone ---
+- {name: "Puget Sound", country: US, parent: "Washington", classification: AVA, source: "https://en.wikipedia.org/wiki/Puget_Sound_AVA"}
+
+# --- Idaho ---
+- {name: "Eagle Foothills", country: US, parent: "Idaho", classification: AVA, source: "https://en.wikipedia.org/wiki/Eagle_Foothills_AVA"}

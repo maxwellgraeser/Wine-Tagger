@@ -1,0 +1,162 @@
+# us-rest: US states other than California, Oregon, Washington, Idaho.
+
+# --- New York ---
+- {name: "New York", country: US, synonyms: ["New York State", "NY"], source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Finger Lakes", country: US, parent: "New York", classification: AVA, synonyms: [], source: "https://en.wikipedia.org/wiki/Finger_Lakes_AVA"}
+- {name: "Cayuga Lake", country: US, parent: "Finger Lakes", classification: AVA, source: "https://en.wikipedia.org/wiki/Cayuga_Lake_AVA"}
+- {name: "Seneca Lake", country: US, parent: "Finger Lakes", classification: AVA, source: "https://en.wikipedia.org/wiki/Seneca_Lake_AVA"}
+- {name: "Long Island", country: US, parent: "New York", classification: AVA, synonyms: [], source: "https://en.wikipedia.org/wiki/Long_Island_AVA"}
+- {name: "North Fork of Long Island", country: US, parent: "Long Island", classification: AVA, synonyms: ["North Fork"], source: "https://en.wikipedia.org/wiki/North_Fork_of_Long_Island_AVA"}
+- {name: "The Hamptons, Long Island", country: US, parent: "Long Island", classification: AVA, synonyms: ["The Hamptons", "Hamptons"], source: "https://en.wikipedia.org/wiki/Long_Island_AVA"}
+- {name: "Hudson River Region", country: US, parent: "New York", classification: AVA, synonyms: ["Hudson Valley"], source: "https://en.wikipedia.org/wiki/Hudson_River_Region_AVA"}
+- {name: "Upper Hudson", country: US, parent: "New York", classification: AVA, source: "https://en.wikipedia.org/wiki/Upper_Hudson_AVA"}
+- {name: "Niagara Escarpment", country: US, parent: "New York", classification: AVA, source: "https://en.wikipedia.org/wiki/Niagara_Escarpment_AVA"}
+- {name: "Champlain Valley of New York", country: US, parent: "New York", classification: AVA, source: "https://en.wikipedia.org/wiki/Champlain_Valley_of_New_York_AVA"}
+
+# --- Virginia ---
+- {name: "Virginia", country: US, synonyms: ["VA"], source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Monticello", country: US, parent: "Virginia", classification: AVA, source: "https://en.wikipedia.org/wiki/Monticello_AVA"}
+- {name: "Middleburg Virginia", country: US, parent: "Virginia", classification: AVA, synonyms: ["Middleburg"], source: "https://en.wikipedia.org/wiki/Middleburg_Virginia_AVA"}
+- {name: "Rocky Knob", country: US, parent: "Virginia", classification: AVA, source: "https://en.wikipedia.org/wiki/Rocky_Knob_AVA"}
+- {name: "North Fork of Roanoke", country: US, parent: "Virginia", classification: AVA, source: "https://en.wikipedia.org/wiki/North_Fork_of_Roanoke_AVA"}
+- {name: "Northern Neck George Washington Birthplace", country: US, parent: "Virginia", classification: AVA, synonyms: ["Northern Neck"], source: "https://en.wikipedia.org/wiki/Northern_Neck_George_Washington_Birthplace_AVA"}
+- {name: "Virginia's Eastern Shore", country: US, parent: "Virginia", classification: AVA, source: "https://en.wikipedia.org/wiki/Virginia%27s_Eastern_Shore_AVA"}
+- {name: "Virginia Peninsula", country: US, parent: "Virginia", classification: AVA, source: "https://en.wikipedia.org/wiki/Virginia_Peninsula_AVA"}
+
+# --- Texas ---
+- {name: "Texas", country: US, synonyms: ["TX"], source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Texas Hill Country", country: US, parent: "Texas", classification: AVA, synonyms: ["Hill Country"], source: "https://en.wikipedia.org/wiki/Texas_Hill_Country_AVA"}
+- {name: "Fredericksburg in the Texas Hill Country", country: US, parent: "Texas Hill Country", classification: AVA, synonyms: ["Fredericksburg"], source: "https://en.wikipedia.org/wiki/Fredericksburg_in_the_Texas_Hill_Country_AVA"}
+- {name: "Bell Mountain", country: US, parent: "Texas Hill Country", classification: AVA, source: "https://en.wikipedia.org/wiki/Bell_Mountain_AVA"}
+- {name: "Texas High Plains", country: US, parent: "Texas", classification: AVA, synonyms: ["High Plains"], source: "https://en.wikipedia.org/wiki/Texas_High_Plains_AVA"}
+- {name: "Escondido Valley", country: US, parent: "Texas", classification: AVA, source: "https://en.wikipedia.org/wiki/Escondido_Valley_AVA"}
+- {name: "Texas Davis Mountains", country: US, parent: "Texas", classification: AVA, synonyms: ["Davis Mountains"], source: "https://en.wikipedia.org/wiki/Texas_Davis_Mountains_AVA"}
+- {name: "Texoma", country: US, parent: "Texas", classification: AVA, source: "https://en.wikipedia.org/wiki/Texoma_AVA"}
+
+# --- Michigan ---
+- {name: "Michigan", country: US, source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Leelanau Peninsula", country: US, parent: "Michigan", classification: AVA, source: "https://en.wikipedia.org/wiki/Leelanau_Peninsula_AVA"}
+- {name: "Old Mission Peninsula", country: US, parent: "Michigan", classification: AVA, source: "https://en.wikipedia.org/wiki/Old_Mission_Peninsula_AVA"}
+- {name: "Lake Michigan Shore", country: US, parent: "Michigan", classification: AVA, source: "https://en.wikipedia.org/wiki/Lake_Michigan_Shore_AVA"}
+- {name: "Fennville", country: US, parent: "Michigan", classification: AVA, source: "https://en.wikipedia.org/wiki/Fennville_AVA"}
+- {name: "Tip of the Mitt", country: US, parent: "Michigan", classification: AVA, source: "https://en.wikipedia.org/wiki/Tip_of_the_Mitt_AVA"}
+
+# --- Missouri / Ozark Mountain group (multi-state MO/AR/OK) ---
+- {name: "Missouri", country: US, source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Ozark Mountain", country: US, classification: AVA, source: "https://en.wikipedia.org/wiki/Ozark_Mountain_AVA"}
+- {name: "Ozark Highlands", country: US, parent: "Missouri", classification: AVA, source: "https://en.wikipedia.org/wiki/Ozark_Highlands_AVA"}
+- {name: "Augusta", country: US, parent: "Missouri", classification: AVA, source: "https://en.wikipedia.org/wiki/Augusta_AVA"}
+- {name: "Hermann", country: US, parent: "Missouri", classification: AVA, source: "https://en.wikipedia.org/wiki/Hermann_AVA"}
+- {name: "Loess Hills District", country: US, parent: "Iowa", classification: AVA, source: "https://en.wikipedia.org/wiki/Loess_Hills_District_AVA"}
+
+# --- Arkansas ---
+- {name: "Arkansas", country: US, source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Altus", country: US, parent: "Arkansas", classification: AVA, source: "https://en.wikipedia.org/wiki/Altus_AVA"}
+- {name: "Arkansas Mountain", country: US, parent: "Arkansas", classification: AVA, source: "https://en.wikipedia.org/wiki/Arkansas_Mountain_AVA"}
+
+# --- Iowa ---
+- {name: "Iowa", country: US, source: "https://en.wikipedia.org/wiki/Loess_Hills_District_AVA"}
+
+# --- Oklahoma (Ozark Mountain straddles into Oklahoma; no single-state AVA) ---
+- {name: "Oklahoma", country: US, source: "https://en.wikipedia.org/wiki/Ozark_Mountain_AVA"}
+
+# --- Colorado ---
+- {name: "Colorado", country: US, source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Grand Valley", country: US, parent: "Colorado", classification: AVA, source: "https://en.wikipedia.org/wiki/Grand_Valley_AVA"}
+- {name: "West Elks", country: US, parent: "Colorado", classification: AVA, source: "https://en.wikipedia.org/wiki/West_Elks_AVA"}
+
+# --- Arizona ---
+- {name: "Arizona", country: US, source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Willcox", country: US, parent: "Arizona", classification: AVA, source: "https://en.wikipedia.org/wiki/Willcox_AVA"}
+- {name: "Verde Valley", country: US, parent: "Arizona", classification: AVA, source: "https://en.wikipedia.org/wiki/Verde_Valley_AVA"}
+- {name: "Sonoita", country: US, parent: "Arizona", classification: AVA, source: "https://en.wikipedia.org/wiki/Sonoita_AVA"}
+
+# --- New Mexico (incl. Mesilla Valley, multi-state NM/TX) ---
+- {name: "New Mexico", country: US, source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Mesilla Valley", country: US, parent: "New Mexico", classification: AVA, source: "https://en.wikipedia.org/wiki/Mesilla_Valley_AVA"}
+- {name: "Mimbres Valley", country: US, parent: "New Mexico", classification: AVA, source: "https://en.wikipedia.org/wiki/Mimbres_Valley_AVA"}
+- {name: "Middle Rio Grande Valley", country: US, parent: "New Mexico", classification: AVA, source: "https://en.wikipedia.org/wiki/Middle_Rio_Grande_Valley_AVA"}
+
+# --- North Carolina (incl. Appalachian High Country NC/TN/VA, Upper Hiwassee Highlands GA/NC) ---
+- {name: "North Carolina", country: US, source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Yadkin Valley", country: US, parent: "North Carolina", classification: AVA, source: "https://en.wikipedia.org/wiki/Yadkin_Valley_AVA"}
+- {name: "Swan Creek", country: US, parent: "North Carolina", classification: AVA, source: "https://en.wikipedia.org/wiki/Swan_Creek_AVA"}
+- {name: "Haw River Valley", country: US, parent: "North Carolina", classification: AVA, source: "https://en.wikipedia.org/wiki/Haw_River_Valley_AVA"}
+- {name: "Crest of the Blue Ridge Henderson County", country: US, parent: "North Carolina", classification: AVA, source: "https://en.wikipedia.org/wiki/Crest_of_the_Blue_Ridge_Henderson_County_AVA"}
+- {name: "Tryon Foothills", country: US, parent: "North Carolina", classification: AVA, source: "https://en.wikipedia.org/wiki/Tryon_Foothills_AVA"}
+- {name: "Appalachian High Country", country: US, parent: "North Carolina", classification: AVA, source: "https://en.wikipedia.org/wiki/Appalachian_High_Country_AVA"}
+
+# --- Georgia (US state; homonym of the country Georgia, see .md) ---
+- {name: "Georgia", country: US, source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Dahlonega Plateau", country: US, parent: "Georgia", classification: AVA, source: "https://en.wikipedia.org/wiki/Dahlonega_Plateau_AVA"}
+- {name: "Upper Hiwassee Highlands", country: US, parent: "Georgia", classification: AVA, source: "https://en.wikipedia.org/wiki/Upper_Hiwassee_Highlands_AVA"}
+
+# --- Tennessee (incl. Mississippi Delta MS/LA/TN, Appalachian High Country NC/TN/VA already listed under NC) ---
+- {name: "Tennessee", country: US, source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Nine Lakes of East Tennessee", country: US, parent: "Tennessee", classification: AVA, source: "https://en.wikipedia.org/wiki/Nine_Lakes_of_East_Tennessee_AVA"}
+- {name: "Upper Cumberland", country: US, parent: "Tennessee", classification: AVA, source: "https://en.wikipedia.org/wiki/Upper_Cumberland_AVA"}
+
+# --- Mississippi / Louisiana (Mississippi Delta AVA, multi-state MS/LA/TN) ---
+- {name: "Mississippi", country: US, source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Mississippi Delta", country: US, parent: "Mississippi", classification: AVA, source: "https://en.wikipedia.org/wiki/Mississippi_Delta_AVA"}
+- {name: "Louisiana", country: US, source: "https://en.wikipedia.org/wiki/Mississippi_Delta_AVA"}
+
+# --- Ohio, Lake Erie group (multi-state NY/PA/OH), Ohio River Valley (multi-state OH/IN/KY/WV) ---
+- {name: "Ohio", country: US, source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Lake Erie", country: US, classification: AVA, source: "https://en.wikipedia.org/wiki/Lake_Erie_AVA"}
+- {name: "Grand River Valley", country: US, parent: "Ohio", classification: AVA, source: "https://en.wikipedia.org/wiki/Grand_River_Valley_AVA"}
+- {name: "Isle St. George", country: US, parent: "Ohio", classification: AVA, source: "https://en.wikipedia.org/wiki/Isle_St._George_AVA"}
+- {name: "Loramie Creek", country: US, parent: "Ohio", classification: AVA, source: "https://en.wikipedia.org/wiki/Loramie_Creek_AVA"}
+- {name: "Ohio River Valley", country: US, parent: "Ohio", classification: AVA, source: "https://en.wikipedia.org/wiki/Ohio_River_Valley_AVA"}
+
+# --- Indiana ---
+- {name: "Indiana", country: US, source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Indiana Uplands", country: US, parent: "Indiana", classification: AVA, source: "https://en.wikipedia.org/wiki/Indiana_Uplands_AVA"}
+
+# --- Kentucky, West Virginia (Ohio River Valley + Shenandoah Valley straddles) ---
+- {name: "Kentucky", country: US, source: "https://en.wikipedia.org/wiki/Ohio_River_Valley_AVA"}
+- {name: "West Virginia", country: US, source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Kanawha River Valley", country: US, parent: "West Virginia", classification: AVA, source: "https://en.wikipedia.org/wiki/Kanawha_River_Valley_AVA"}
+- {name: "Shenandoah Valley", country: US, parent: "Virginia", classification: AVA, source: "https://en.wikipedia.org/wiki/Shenandoah_Valley_AVA"}
+
+# --- Pennsylvania (incl. Central Delaware Valley NJ/PA, Cumberland Valley MD/PA) ---
+- {name: "Pennsylvania", country: US, source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Lancaster Valley", country: US, parent: "Pennsylvania", classification: AVA, source: "https://en.wikipedia.org/wiki/Lancaster_Valley_AVA"}
+- {name: "Lehigh Valley", country: US, parent: "Pennsylvania", classification: AVA, source: "https://en.wikipedia.org/wiki/Lehigh_Valley_AVA"}
+- {name: "Central Delaware Valley", country: US, parent: "Pennsylvania", classification: AVA, source: "https://en.wikipedia.org/wiki/Central_Delaware_Valley_AVA"}
+- {name: "Cumberland Valley", country: US, parent: "Pennsylvania", classification: AVA, source: "https://en.wikipedia.org/wiki/Cumberland_Valley_AVA"}
+
+# --- Maryland ---
+- {name: "Maryland", country: US, source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Catoctin", country: US, parent: "Maryland", classification: AVA, source: "https://en.wikipedia.org/wiki/Catoctin_AVA"}
+- {name: "Linganore", country: US, parent: "Maryland", classification: AVA, source: "https://en.wikipedia.org/wiki/Linganore_AVA"}
+
+# --- New Jersey ---
+- {name: "New Jersey", country: US, source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Outer Coastal Plain", country: US, parent: "New Jersey", classification: AVA, source: "https://en.wikipedia.org/wiki/Outer_Coastal_Plain_AVA"}
+- {name: "Cape May Peninsula", country: US, parent: "Outer Coastal Plain", classification: AVA, source: "https://en.wikipedia.org/wiki/Cape_May_Peninsula_AVA"}
+- {name: "Warren Hills", country: US, parent: "New Jersey", classification: AVA, source: "https://en.wikipedia.org/wiki/Warren_Hills_AVA"}
+
+# --- Wisconsin, Illinois, Minnesota, Iowa: Upper Mississippi River Valley group (multi-state IL/IA/MN/WI) ---
+- {name: "Wisconsin", country: US, source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Upper Mississippi River Valley", country: US, classification: AVA, source: "https://en.wikipedia.org/wiki/Upper_Mississippi_River_Valley_AVA"}
+- {name: "Lake Wisconsin", country: US, parent: "Wisconsin", classification: AVA, source: "https://en.wikipedia.org/wiki/Lake_Wisconsin_AVA"}
+- {name: "Wisconsin Ledge", country: US, parent: "Wisconsin", classification: AVA, source: "https://en.wikipedia.org/wiki/Wisconsin_Ledge_AVA"}
+- {name: "Illinois", country: US, source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Shawnee Hills", country: US, parent: "Illinois", classification: AVA, source: "https://en.wikipedia.org/wiki/Shawnee_Hills_AVA"}
+- {name: "Minnesota", country: US, source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Alexandria Lakes", country: US, parent: "Minnesota", classification: AVA, source: "https://en.wikipedia.org/wiki/Alexandria_Lakes_AVA"}
+
+# --- New England: Connecticut, Massachusetts, Rhode Island (Southeastern New England, multi-state CT/RI/MA) ---
+- {name: "Connecticut", country: US, source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Eastern Connecticut Highlands", country: US, parent: "Connecticut", classification: AVA, source: "https://en.wikipedia.org/wiki/Eastern_Connecticut_Highlands_AVA"}
+- {name: "Western Connecticut Highlands", country: US, parent: "Connecticut", classification: AVA, source: "https://en.wikipedia.org/wiki/Western_Connecticut_Highlands_AVA"}
+- {name: "Massachusetts", country: US, source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Nashoba Valley", country: US, parent: "Massachusetts", classification: AVA, source: "https://en.wikipedia.org/wiki/Nashoba_Valley_AVA"}
+- {name: "Rhode Island", country: US, source: "https://en.wikipedia.org/wiki/Southeastern_New_England_AVA"}
+- {name: "Southeastern New England", country: US, classification: AVA, source: "https://en.wikipedia.org/wiki/Southeastern_New_England_AVA"}
+- {name: "Martha's Vineyard", country: US, parent: "Massachusetts", classification: AVA, source: "https://en.wikipedia.org/wiki/Martha%27s_Vineyard_AVA"}
+
+# --- Hawaii ---
+- {name: "Hawaii", country: US, source: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"}
+- {name: "Ulupalakua", country: US, parent: "Hawaii", classification: AVA, source: "https://en.wikipedia.org/wiki/Ulupalakua_AVA"}
