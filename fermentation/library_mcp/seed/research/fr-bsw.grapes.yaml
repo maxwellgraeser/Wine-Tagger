@@ -1,0 +1,7 @@
+# fr-bsw: new/local grapes for Bordeaux and South West France
+- {name: "Camaralet", color: white, synonyms: ["Camaralet de Lasseube"], source: "https://fr.wikipedia.org/wiki/Camaralet"}
+- {name: "Lauzet", color: white, source: "https://fr.wikipedia.org/wiki/Lauzet_(cépage)"}
+- {name: "Ondenc", color: white, source: "https://fr.wikipedia.org/wiki/Ondenc"}
+- {name: "Raffiat de Moncade", color: white, source: "https://fr.wikipedia.org/wiki/Raffiat_de_Moncade"}
+- {name: "Courbu Noir", color: red, source: "https://fr.wikipedia.org/wiki/Courbu_noir"}
+- {name: "Mérille", color: red, source: "https://fr.wikipedia.org/wiki/M%C3%A9rille"}

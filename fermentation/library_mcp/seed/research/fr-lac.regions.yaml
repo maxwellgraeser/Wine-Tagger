@@ -1,0 +1,202 @@
+# ============ fr-lac research: Loire, Alsace, Champagne, national France ============
+# Slice owner: fr-lac. Sources cited per entry; see fr-lac.md for dates/versions
+# and full source list. INAO cahier des charges / eAmbrosia are the primary
+# register; vinsdeloire.fr, vins-centre-loire.com, vinsalsace.com (CIVA) and
+# champagne.fr (Comité Champagne) are the national interprofessions, used to
+# corroborate and for lists INAO's per-appellation fiches don't summarize in
+# one place (crus, villages, denominations).
+
+# Existing national entry, included per coverage rule. Dropped the "Val de
+# Loire" synonym: the IGP below is renamed to that exact name (was: "IGP Val
+# de Loire") and a name may not collide with another entry's synonym in the
+# same country. See fr-lac.md.
+- {name: "Loire Valley", country: FR, synonyms: ["Loire", "Vallée de la Loire", "Vallee de la Loire"]}
+
+# ---- Pays Nantais (Muscadet, Gros Plant, and neighbors) ----
+- {name: "Muscadet", country: FR, parent: "Loire Valley", classification: AOC, synonyms: [], grapes: ["Melon de Bourgogne"], source: "https://www.inao.gouv.fr/produit/muscadet-17263"}
+- {name: "Muscadet Sèvre et Maine", country: FR, parent: "Muscadet", classification: AOC, synonyms: ["Muscadet-Sèvre-et-Maine", "Muscadet Sevre et Maine"], grapes: ["Melon de Bourgogne"], source: "https://www.inao.gouv.fr/produit/muscadet-sevre-et-maine-17264"}
+- {name: "Clisson", country: FR, parent: "Muscadet Sèvre et Maine", classification: AOC, grapes: ["Melon de Bourgogne"], source: "https://www.muscadet.fr/en/aoc-wines/muscadet-sevre-et-maine-crus/"}
+- {name: "Gorges", country: FR, parent: "Muscadet Sèvre et Maine", classification: AOC, grapes: ["Melon de Bourgogne"], source: "https://www.muscadet.fr/en/aoc-wines/muscadet-sevre-et-maine-crus/"}
+- {name: "Le Pallet", country: FR, parent: "Muscadet Sèvre et Maine", classification: AOC, grapes: ["Melon de Bourgogne"], source: "https://www.muscadet.fr/en/aoc-wines/muscadet-sevre-et-maine-crus/"}
+- {name: "Château-Thébaud", country: FR, parent: "Muscadet Sèvre et Maine", classification: AOC, synonyms: ["Chateau-Thebaud"], grapes: ["Melon de Bourgogne"], source: "https://www.muscadet.fr/en/aoc-wines/muscadet-sevre-et-maine-crus/"}
+- {name: "Monnières-Saint-Fiacre", country: FR, parent: "Muscadet Sèvre et Maine", classification: AOC, synonyms: ["Monnieres-Saint-Fiacre"], grapes: ["Melon de Bourgogne"], source: "https://www.muscadet.fr/en/aoc-wines/muscadet-sevre-et-maine-crus/"}
+- {name: "Mouzillon-Tillières", country: FR, parent: "Muscadet Sèvre et Maine", classification: AOC, synonyms: ["Mouzillon-Tillieres"], grapes: ["Melon de Bourgogne"], source: "https://www.muscadet.fr/en/aoc-wines/muscadet-sevre-et-maine-crus/"}
+- {name: "Goulaine", country: FR, parent: "Muscadet Sèvre et Maine", classification: AOC, grapes: ["Melon de Bourgogne"], source: "https://www.muscadet.fr/en/aoc-wines/muscadet-sevre-et-maine-crus/"}
+- {name: "Muscadet Côtes de Grandlieu", country: FR, parent: "Muscadet", classification: AOC, synonyms: ["Muscadet-Côtes-de-Grandlieu", "Muscadet Cotes de Grandlieu"], grapes: ["Melon de Bourgogne"], source: "https://www.inao.gouv.fr/produit/muscadet-cotes-de-grandlieu-17265"}
+- {name: "Muscadet Coteaux de la Loire", country: FR, parent: "Muscadet", classification: AOC, synonyms: ["Muscadet-Coteaux-de-la-Loire"], grapes: ["Melon de Bourgogne"], source: "https://www.inao.gouv.fr/produit/muscadet-coteaux-de-la-loire-17266"}
+- {name: "Gros Plant du Pays Nantais", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Gros Plant", "Gros-Plant du Pays Nantais"], grapes: ["Folle Blanche"], source: "https://en.wikipedia.org/wiki/Gros-plant-du-pays-nantais"}
+- {name: "Coteaux d'Ancenis", country: FR, parent: "Loire Valley", classification: AOC, grapes: ["Gamay", "Pinot Gris"], source: "https://www.inao.gouv.fr/produit/coteaux-dancenis-15241"}
+- {name: "Fiefs Vendéens", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Fiefs Vendeens"], grapes: ["Chenin Blanc", "Chardonnay", "Cabernet Franc", "Cabernet Sauvignon", "Gamay", "Pinot Noir"], source: "https://extranet.inao.gouv.fr/fichier/CNAOV-2018-118-FiefsVendeens.pdf"}
+- {name: "Brem", country: FR, parent: "Fiefs Vendéens", classification: AOC, source: "https://www.fiefsvendeens.com/"}
+- {name: "Chantonnay", country: FR, parent: "Fiefs Vendéens", classification: AOC, source: "https://www.fiefsvendeens.com/"}
+- {name: "Mareuil", country: FR, parent: "Fiefs Vendéens", classification: AOC, source: "https://www.fiefsvendeens.com/"}
+- {name: "Pissotte", country: FR, parent: "Fiefs Vendéens", classification: AOC, source: "https://www.fiefsvendeens.com/"}
+- {name: "Vix", country: FR, parent: "Fiefs Vendéens", classification: AOC, source: "https://www.fiefsvendeens.com/"}
+
+# ---- Anjou-Saumur ----
+- {name: "Anjou", country: FR, parent: "Loire Valley", classification: AOC, synonyms: [], grapes: ["Chenin Blanc", "Cabernet Franc"], source: "https://www.inao.gouv.fr/produit/anjou-15243"}
+- {name: "Anjou-Villages", country: FR, parent: "Anjou", classification: AOC, synonyms: ["Anjou Villages"], grapes: ["Cabernet Franc", "Cabernet Sauvignon"], source: "https://www.inao.gouv.fr/produit/anjou-villages-15244"}
+- {name: "Anjou Brissac", country: FR, parent: "Anjou-Villages", classification: AOC, was: "Anjou-Villages Brissac", synonyms: ["Anjou-Villages Brissac", "Anjou Villages Brissac"], grapes: ["Cabernet Franc", "Cabernet Sauvignon"], source: "https://divineloire.fr/en/aop/anjou-appellations-aoc/"}
+- {name: "Anjou Mousseux", country: FR, parent: "Anjou", classification: AOC, source: "https://divineloire.fr/en/aop/anjou-appellations-aoc/"}
+- {name: "Anjou Coteaux de la Loire", country: FR, parent: "Anjou", classification: AOC, grapes: ["Chenin Blanc"], source: "https://divineloire.fr/en/aop/anjou-appellations-aoc/"}
+- {name: "Anjou Gamay", country: FR, parent: "Anjou", classification: AOC, grapes: ["Gamay"], source: "https://divineloire.fr/en/aop/anjou-appellations-aoc/"}
+- {name: "Rosé d'Anjou", country: FR, parent: "Anjou", classification: AOC, synonyms: ["Rose d'Anjou"], grapes: ["Grolleau", "Gamay", "Cabernet Franc", "Cabernet Sauvignon"], source: "https://www.inao.gouv.fr/produit/rose-danjou-15246"}
+- {name: "Cabernet d'Anjou", country: FR, parent: "Anjou", classification: AOC, grapes: ["Cabernet Franc", "Cabernet Sauvignon"], source: "https://www.inao.gouv.fr/produit/cabernet-danjou-15247"}
+- {name: "Rosé de Loire", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Rose de Loire"], grapes: ["Cabernet Franc", "Cabernet Sauvignon", "Gamay", "Grolleau", "Pinot Noir"], source: "https://www.inao.gouv.fr/produit/rose-de-loire-15248"}
+- {name: "Crémant de Loire", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Cremant de Loire"], grapes: ["Chenin Blanc", "Chardonnay", "Cabernet Franc"], source: "https://www.inao.gouv.fr/produit/cremant-de-loire-15361"}
+- {name: "Savennières", country: FR, parent: "Anjou", classification: AOC, synonyms: ["Savennieres"], grapes: ["Chenin Blanc"], source: "https://www.inao.gouv.fr/produit/savennieres-15249"}
+- {name: "Savennières-Roche-aux-Moines", country: FR, parent: "Savennières", classification: AOC, synonyms: ["Savennieres-Roche-aux-Moines", "Savennières Roche aux Moines", "Roche aux Moines"], grapes: ["Chenin Blanc"], source: "https://fr.wikipedia.org/wiki/Savenni%C3%A8res-roche-aux-moines"}
+- {name: "Coulée de Serrant", country: FR, parent: "Savennières", classification: AOC, synonyms: ["Savennières-Coulée-de-Serrant", "Clos de la Coulée de Serrant", "Coulee de Serrant"], grapes: ["Chenin Blanc"], source: "https://en.wikipedia.org/wiki/Clos_de_la_Coul%C3%A9e_de_Serrant"}
+- {name: "Coteaux du Layon", country: FR, parent: "Anjou", classification: AOC, grapes: ["Chenin Blanc"], source: "https://www.inao.gouv.fr/produit/coteaux-du-layon-15250"}
+- {name: "Coteaux du Layon Beaulieu", country: FR, parent: "Coteaux du Layon", classification: AOC, synonyms: ["Coteaux du Layon-Beaulieu"], grapes: ["Chenin Blanc"], source: "https://en.wikipedia.org/wiki/Coteaux_du_Layon"}
+- {name: "Coteaux du Layon Faye", country: FR, parent: "Coteaux du Layon", classification: AOC, synonyms: ["Coteaux du Layon-Faye"], grapes: ["Chenin Blanc"], source: "https://en.wikipedia.org/wiki/Coteaux_du_Layon"}
+- {name: "Coteaux du Layon Rablay", country: FR, parent: "Coteaux du Layon", classification: AOC, synonyms: ["Coteaux du Layon-Rablay"], grapes: ["Chenin Blanc"], source: "https://en.wikipedia.org/wiki/Coteaux_du_Layon"}
+- {name: "Coteaux du Layon Rochefort", country: FR, parent: "Coteaux du Layon", classification: AOC, synonyms: ["Coteaux du Layon-Rochefort"], grapes: ["Chenin Blanc"], source: "https://en.wikipedia.org/wiki/Coteaux_du_Layon"}
+- {name: "Coteaux du Layon Saint-Aubin", country: FR, parent: "Coteaux du Layon", classification: AOC, synonyms: ["Coteaux du Layon-Saint-Aubin"], grapes: ["Chenin Blanc"], source: "https://en.wikipedia.org/wiki/Coteaux_du_Layon"}
+- {name: "Coteaux du Layon Saint-Lambert", country: FR, parent: "Coteaux du Layon", classification: AOC, synonyms: ["Coteaux du Layon-Saint-Lambert"], grapes: ["Chenin Blanc"], source: "https://en.wikipedia.org/wiki/Coteaux_du_Layon"}
+- {name: "Chaume", country: FR, parent: "Coteaux du Layon", classification: AOC, synonyms: ["Coteaux du Layon-Chaume", "Chaume Premier Cru des Coteaux du Layon"], grapes: ["Chenin Blanc"], source: "https://divineloire.fr/en/aop/coteau-layon-chaume-aoc/"}
+- {name: "Quarts de Chaume", country: FR, parent: "Coteaux du Layon", classification: AOC, synonyms: ["Quarts de Chaume Grand Cru"], grapes: ["Chenin Blanc"], source: "https://www.inao.gouv.fr/produit/quarts-de-chaume-15251"}
+- {name: "Bonnezeaux", country: FR, parent: "Coteaux du Layon", classification: AOC, grapes: ["Chenin Blanc"], source: "https://www.inao.gouv.fr/produit/bonnezeaux-15252"}
+- {name: "Coteaux de l'Aubance", country: FR, parent: "Anjou", classification: AOC, grapes: ["Chenin Blanc"], source: "https://www.inao.gouv.fr/produit/coteaux-de-laubance-15253"}
+- {name: "Saumur", country: FR, parent: "Loire Valley", classification: AOC, grapes: ["Chenin Blanc", "Cabernet Franc"], source: "https://www.inao.gouv.fr/produit/saumur-15254"}
+- {name: "Saumur-Champigny", country: FR, parent: "Saumur", classification: AOC, synonyms: ["Saumur Champigny"], grapes: ["Cabernet Franc"], source: "https://www.inao.gouv.fr/produit/saumur-champigny-15255"}
+- {name: "Saumur-Puy-Notre-Dame", country: FR, parent: "Saumur-Champigny", classification: AOC, synonyms: ["Saumur Puy-Notre-Dame"], grapes: ["Cabernet Franc", "Cabernet Sauvignon"], source: "https://www.ot-saumur.fr/sinspirer/tout-savoir-sur/a-chacun-son-aoc/appellation-dorigine-controlee-saumur-puy-notre-dame/"}
+- {name: "Saumur Mousseux", country: FR, parent: "Saumur", classification: AOC, grapes: ["Chenin Blanc"], source: "https://www.vinsvignesvignerons.com/Les-regions-viticoles-de-France/Region-viticole-Loire/ANJOU-SAUMUR/Les-appellations-d-Anjou-Saumur/(aoc)/Les-appellations/Saumur-mousseux-A.O.C"}
+- {name: "Coteaux de Saumur", country: FR, parent: "Saumur", classification: AOC, grapes: ["Chenin Blanc"], source: "https://www.ot-saumur.fr/sinspirer/tout-savoir-sur/a-chacun-son-aoc/appellation-dorigine-controlee-coteaux-de-saumur/"}
+
+# ---- Touraine ----
+- {name: "Touraine", country: FR, parent: "Loire Valley", classification: AOC, grapes: ["Sauvignon Blanc", "Chenin Blanc", "Cabernet Franc", "Gamay", "Malbec"], source: "https://www.inao.gouv.fr/produit/touraine-15256"}
+- {name: "Touraine Amboise", country: FR, parent: "Touraine", classification: AOC, synonyms: ["Touraine-Amboise"], grapes: ["Chenin Blanc", "Cabernet Franc", "Malbec", "Gamay"], source: "https://extranet.inao.gouv.fr/fichier/CNAOV-2016-02-10-116-TouraineAmboise.pdf"}
+- {name: "Touraine Azay-le-Rideau", country: FR, parent: "Touraine", classification: AOC, synonyms: ["Touraine-Azay-le-Rideau"], grapes: ["Chenin Blanc"], source: "https://divineloire.fr/aop/touraine-aoc/"}
+- {name: "Touraine Chenonceaux", country: FR, parent: "Touraine", classification: AOC, synonyms: ["Touraine-Chenonceaux"], grapes: ["Sauvignon Blanc", "Cabernet Franc", "Malbec"], source: "https://divineloire.fr/aop/touraine-aoc/"}
+- {name: "Touraine Mesland", country: FR, parent: "Touraine", classification: AOC, synonyms: ["Touraine-Mesland"], grapes: ["Gamay", "Cabernet Franc", "Malbec", "Chenin Blanc"], source: "https://divineloire.fr/aop/touraine-aoc/"}
+- {name: "Touraine Oisly", country: FR, parent: "Touraine", classification: AOC, synonyms: ["Touraine-Oisly"], grapes: ["Sauvignon Blanc"], source: "https://divineloire.fr/aop/touraine-aoc/"}
+- {name: "Touraine Noble-Joué", country: FR, parent: "Touraine", classification: AOC, synonyms: ["Touraine-Noble-Joué", "Noble Joué"], grapes: ["Pinot Meunier", "Pinot Gris", "Pinot Noir"], source: "https://www.inao.gouv.fr/produit/touraine-noble-joue-7891"}
+- {name: "Vouvray", country: FR, parent: "Touraine", classification: AOC, grapes: ["Chenin Blanc"], source: "https://www.inao.gouv.fr/produit/vouvray-15257"}
+- {name: "Montlouis-sur-Loire", country: FR, parent: "Touraine", classification: AOC, synonyms: ["Montlouis"], grapes: ["Chenin Blanc"], source: "https://www.inao.gouv.fr/produit/montlouis-sur-loire-15258"}
+- {name: "Chinon", country: FR, parent: "Touraine", classification: AOC, grapes: ["Cabernet Franc", "Chenin Blanc"], source: "https://www.inao.gouv.fr/produit/chinon-15259"}
+- {name: "Bourgueil", country: FR, parent: "Touraine", classification: AOC, grapes: ["Cabernet Franc", "Cabernet Sauvignon"], source: "https://www.inao.gouv.fr/produit/bourgueil-15260"}
+- {name: "Saint-Nicolas-de-Bourgueil", country: FR, parent: "Touraine", classification: AOC, synonyms: ["St-Nicolas-de-Bourgueil"], grapes: ["Cabernet Franc"], source: "https://www.inao.gouv.fr/produit/saint-nicolas-de-bourgueil-15261"}
+- {name: "Cheverny", country: FR, parent: "Touraine", classification: AOC, grapes: ["Sauvignon Blanc", "Chardonnay", "Gamay", "Cabernet Franc", "Pinot Noir"], source: "https://www.vignes-vins.fr/Appellations/Vins_AOC_Cheverny.html"}
+- {name: "Cour-Cheverny", country: FR, parent: "Touraine", classification: AOC, grapes: ["Romorantin"], source: "https://www.vignes-vins.fr/Cepages/Cepage_Orbois.html"}
+- {name: "Valençay", country: FR, parent: "Touraine", classification: AOC, synonyms: ["Valencay"], grapes: ["Sauvignon Blanc", "Chenin Blanc", "Cabernet Franc", "Malbec", "Gamay", "Pinot Noir"], source: "https://www.inao.gouv.fr/produit/valencay-15262"}
+- {name: "Coteaux du Loir", country: FR, parent: "Touraine", classification: AOC, grapes: ["Chenin Blanc", "Cabernet Franc", "Gamay", "Malbec", "Pineau d'Aunis"], source: "https://www.loir-valley.com/discover/sites-to-visit/vineyards/"}
+- {name: "Jasnières", country: FR, parent: "Coteaux du Loir", classification: AOC, synonyms: ["Jasnieres"], grapes: ["Chenin Blanc"], source: "https://www.inao.gouv.fr/produit/jasnieres-15263"}
+- {name: "Coteaux du Vendômois", country: FR, parent: "Touraine", classification: AOC, synonyms: ["Coteaux du Vendomois"], grapes: ["Pineau d'Aunis", "Chenin Blanc", "Cabernet Franc", "Gamay", "Pinot Noir"], source: "https://dico-du-vin.com/coteaux-du-vendomois-vallee-de-la-loire/"}
+
+# ---- Centre-Loire ----
+# Trade name for the scattered Sauvignon-country appellations upstream of
+# Touraine; re-parented from bare "Loire Valley" to this informal node (see
+# fr-lac.md, Changes to existing entries).
+- {name: "Centre-Loire", country: FR, parent: "Loire Valley", synonyms: ["Centre Loire", "Central Vineyards", "Vignoble du Centre"], source: "https://www.vins-centre-loire.com/fr/home"}
+- {name: "Sancerre", country: FR, parent: "Centre-Loire", classification: AOC, grapes: ["Sauvignon Blanc", "Pinot Noir"], source: "https://www.inao.gouv.fr/produit/sancerre-15264"}
+- {name: "Pouilly-Fumé", country: FR, parent: "Centre-Loire", classification: AOC, synonyms: ["Pouilly-Fume", "Pouilly Fumé", "Pouilly Fume"], grapes: ["Sauvignon Blanc"], source: "https://www.inao.gouv.fr/produit/pouilly-fume-15265"}
+- {name: "Pouilly-sur-Loire", country: FR, parent: "Centre-Loire", classification: AOC, grapes: ["Chasselas"], source: "https://en.wikipedia.org/wiki/Pouilly-sur-Loire_AOC"}
+- {name: "Menetou-Salon", country: FR, parent: "Centre-Loire", classification: AOC, synonyms: ["Menetou Salon"], grapes: ["Sauvignon Blanc", "Pinot Noir"], source: "https://www.inao.gouv.fr/produit/menetou-salon-15266"}
+- {name: "Quincy", country: FR, parent: "Centre-Loire", classification: AOC, grapes: ["Sauvignon Blanc"], source: "https://www.inao.gouv.fr/produit/quincy-15267"}
+- {name: "Reuilly", country: FR, parent: "Centre-Loire", classification: AOC, grapes: ["Sauvignon Blanc", "Pinot Noir", "Pinot Gris"], source: "https://www.inao.gouv.fr/produit/reuilly-15268"}
+- {name: "Coteaux du Giennois", country: FR, parent: "Centre-Loire", classification: AOC, grapes: ["Sauvignon Blanc", "Gamay", "Pinot Noir"], source: "https://www.inao.gouv.fr/produit/coteaux-du-giennois-15269"}
+- {name: "Châteaumeillant", country: FR, parent: "Centre-Loire", classification: AOC, synonyms: ["Chateaumeillant"], grapes: ["Gamay", "Pinot Noir"], source: "https://www.inao.gouv.fr/produit/chateaumeillant-15270"}
+
+# ---- Auvergne and the upper Loire ----
+- {name: "Côte Roannaise", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Cote Roannaise"], grapes: ["Gamay"], source: "https://www.inao.gouv.fr/produit/cote-roannaise-15271"}
+- {name: "Côtes du Forez", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Cotes du Forez"], grapes: ["Gamay"], source: "https://www.inao.gouv.fr/produit/cotes-du-forez-15272"}
+- {name: "Côtes d'Auvergne", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Cotes d'Auvergne"], grapes: ["Gamay", "Pinot Noir", "Chardonnay"], source: "https://www.inao.gouv.fr/produit/cotes-dauvergne-15273"}
+- {name: "Saint-Pourçain", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Saint-Poursain", "St-Pourçain"], grapes: ["Chardonnay", "Sauvignon Blanc", "Gamay", "Pinot Noir", "Tressallier"], source: "https://www.inao.gouv.fr/produit/saint-pourcain-15274"}
+
+# ---- Alsace ----
+# Existing "Alsace" entry wrongly carried "Alsace Grand Cru" and "Crémant
+# d'Alsace" as synonyms; both are their own AOCs (see fr-lac.md).
+- {name: "Alsace", country: FR, classification: AOC, synonyms: [], source: "https://www.inao.gouv.fr/produit/alsace-15361"}
+- {name: "Crémant d'Alsace", country: FR, parent: "Alsace", classification: AOC, synonyms: ["Cremant d'Alsace"], grapes: ["Pinot Blanc", "Riesling", "Pinot Gris", "Pinot Noir", "Auxerrois Blanc", "Chardonnay"], source: "https://www.inao.gouv.fr/produit/cremant-dalsace-15362"}
+- {name: "Alsace Grand Cru", country: FR, parent: "Alsace", classification: AOC, source: "https://www.vinsalsace.com/fr/gouts-et-couleurs/aoc/aoc-alsace-grands-crus/"}
+- {name: "Altenberg de Bergbieten", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Altenberg de Bergheim", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Altenberg de Wolxheim", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Brand", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Bruderthal", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Eichberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Engelberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Florimont", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Frankstein", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Froehn", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Furstentum", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Geisberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Gloeckelberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Goldert", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Hatschbourg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Hengst", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Kaefferkopf", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Kanzlerberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Kastelberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Kessler", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Kirchberg de Barr", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Kirchberg de Ribeauvillé", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Kitterlé", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Mambourg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Mandelberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Marckrain", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Moenchberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Muenchberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Ollwiller", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Osterberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Pfersigberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Pfingstberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Praelatenberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Rangen", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Rosacker", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Saering", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Schlossberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Schoenenbourg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Sommerberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Sonnenglanz", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Spiegel", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Sporen", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Steinert", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Steingrubler", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Steinklotz", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Vorbourg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Wiebelsberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Wineck-Schlossberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Winzenberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Zinnkoepflé", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+- {name: "Zotzenberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Sylvaner", "Riesling", "Gewürztraminer", "Pinot Gris"], source: "https://en.wikipedia.org/wiki/Alsace_Grand_Cru_AOC"}
+
+# ---- Champagne ----
+- {name: "Champagne", country: FR, classification: AOC, synonyms: [], grapes: ["Chardonnay", "Pinot Noir", "Pinot Meunier"], source: "https://www.inao.gouv.fr/produit/champagne-15360"}
+- {name: "Coteaux Champenois", country: FR, parent: "Champagne", classification: AOC, grapes: ["Chardonnay", "Pinot Noir", "Pinot Meunier"], source: "https://en.wikipedia.org/wiki/Coteaux_Champenois_AOC"}
+- {name: "Rosé des Riceys", country: FR, parent: "Champagne", classification: AOC, synonyms: ["Rose des Riceys"], grapes: ["Pinot Noir"], source: "https://en.wikipedia.org/wiki/Ros%C3%A9_des_Riceys_AOC"}
+- {name: "Côte des Blancs", country: FR, parent: "Champagne", synonyms: ["Cote des Blancs"], source: "https://www.champagne.fr/"}
+- {name: "Montagne de Reims", country: FR, parent: "Champagne", source: "https://www.champagne.fr/"}
+- {name: "Vallée de la Marne", country: FR, parent: "Champagne", synonyms: ["Vallee de la Marne"], source: "https://www.champagne.fr/"}
+- {name: "Côte de Sézanne", country: FR, parent: "Champagne", synonyms: ["Cote de Sezanne", "Côte de Sézanne"], source: "https://www.champagne.fr/"}
+- {name: "Côte des Bar", country: FR, parent: "Champagne", synonyms: ["Cote des Bar", "Aube"], source: "https://www.champagne.fr/"}
+- {name: "Mailly-Champagne", country: FR, parent: "Montagne de Reims", synonyms: ["Mailly"], source: "https://en.wikipedia.org/wiki/Classification_of_Champagne_vineyards"}
+- {name: "Verzenay", country: FR, parent: "Montagne de Reims", source: "https://en.wikipedia.org/wiki/Classification_of_Champagne_vineyards"}
+- {name: "Verzy", country: FR, parent: "Montagne de Reims", source: "https://en.wikipedia.org/wiki/Classification_of_Champagne_vineyards"}
+- {name: "Sillery", country: FR, parent: "Montagne de Reims", source: "https://en.wikipedia.org/wiki/Classification_of_Champagne_vineyards"}
+- {name: "Puisieulx", country: FR, parent: "Montagne de Reims", synonyms: ["Puisieux"], source: "https://en.wikipedia.org/wiki/Classification_of_Champagne_vineyards"}
+- {name: "Beaumont-sur-Vesle", country: FR, parent: "Montagne de Reims", source: "https://en.wikipedia.org/wiki/Classification_of_Champagne_vineyards"}
+- {name: "Louvois", country: FR, parent: "Montagne de Reims", source: "https://en.wikipedia.org/wiki/Classification_of_Champagne_vineyards"}
+- {name: "Ambonnay", country: FR, parent: "Montagne de Reims", source: "https://en.wikipedia.org/wiki/Classification_of_Champagne_vineyards"}
+- {name: "Bouzy", country: FR, parent: "Montagne de Reims", source: "https://en.wikipedia.org/wiki/Classification_of_Champagne_vineyards"}
+- {name: "Tours-sur-Marne", country: FR, parent: "Vallée de la Marne", source: "https://en.wikipedia.org/wiki/Classification_of_Champagne_vineyards"}
+- {name: "Aÿ", country: FR, parent: "Vallée de la Marne", synonyms: ["Ay", "Aÿ-Champagne", "Ay-Champagne"], source: "https://en.wikipedia.org/wiki/Classification_of_Champagne_vineyards"}
+- {name: "Avize", country: FR, parent: "Côte des Blancs", source: "https://en.wikipedia.org/wiki/Classification_of_Champagne_vineyards"}
+- {name: "Chouilly", country: FR, parent: "Côte des Blancs", source: "https://en.wikipedia.org/wiki/Classification_of_Champagne_vineyards"}
+- {name: "Cramant", country: FR, parent: "Côte des Blancs", source: "https://en.wikipedia.org/wiki/Classification_of_Champagne_vineyards"}
+- {name: "Oger", country: FR, parent: "Côte des Blancs", source: "https://en.wikipedia.org/wiki/Classification_of_Champagne_vineyards"}
+- {name: "Oiry", country: FR, parent: "Côte des Blancs", source: "https://en.wikipedia.org/wiki/Classification_of_Champagne_vineyards"}
+- {name: "Le Mesnil-sur-Oger", country: FR, parent: "Côte des Blancs", source: "https://en.wikipedia.org/wiki/Classification_of_Champagne_vineyards"}
+
+# ---- Lorraine ----
+# Top-level (not under Loire Valley): a separate wine region on the Moselle,
+# not the Loire.
+- {name: "Côtes de Toul", country: FR, classification: AOC, synonyms: ["Cotes de Toul"], grapes: ["Gamay", "Pinot Noir", "Auxerrois Blanc"], source: "https://en.wikipedia.org/wiki/C%C3%B4tes_de_Toul"}
+- {name: "Moselle", country: FR, classification: AOC, grapes: ["Pinot Blanc", "Auxerrois Blanc", "Müller-Thurgau", "Gamay", "Pinot Noir"], source: "https://en.wikipedia.org/wiki/Moselle_wine"}
+
+# ---- National IGP ----
+- {name: "Val de Loire", country: FR, parent: "Loire Valley", classification: IGP, was: "IGP Val de Loire", synonyms: ["Vin de Pays du Val de Loire"], source: "https://www.igpvaldeloire.fr/wp-content/uploads/sites/4/2021/07/Cahier-des-charges-IGP-Val-de-Loire.pdf"}
+
+# ---- Existing, unchanged ----
+- {name: "Vin de France", country: FR, classification: "Vin de France", synonyms: ["VdF", "Vin de Table", "France (Vin de France)"], source: "https://www.inao.gouv.fr/produit/vin-de-france-15290"}

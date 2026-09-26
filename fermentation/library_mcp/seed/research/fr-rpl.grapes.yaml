@@ -1,0 +1,16 @@
+# ============ fr-rpl research: grapes for Rhône, Provence, Corsica, Languedoc-Roussillon ============
+# New grapes (not in grapes.yaml under any name/synonym) and new local names for
+# existing grapes. See fr-rpl.md for identity notes and homonym flags.
+
+# ---- New grapes ----
+- {name: "Tibouren", color: red, synonyms: [], source: "https://fr.wikipedia.org/wiki/Tibouren"}
+- {name: "Braquet", color: red, synonyms: ["Brachet"], source: "https://en.wikipedia.org/wiki/Braquet"}
+- {name: "Calitor", color: red, synonyms: [], source: "https://fr.wikipedia.org/wiki/Calitor"}
+- {name: "Vaccarèse", color: red, synonyms: ["Brun Argenté", "Camarese"], source: "https://fr.wikipedia.org/wiki/Vaccar%C3%A8se"}
+- {name: "Muscardin", color: red, synonyms: [], source: "https://fr.wikipedia.org/wiki/Muscardin_(cépage)"}
+- {name: "Aspiran", color: red, synonyms: ["Aspiran Noir"], source: "https://fr.wikipedia.org/wiki/Aspiran_(cépage)"}
+- {name: "Picardan", color: white, synonyms: [], source: "https://fr.wikipedia.org/wiki/Picardan"}
+
+# ---- Existing grapes: new local synonyms ----
+- {name: "Vermentino", existing: true, synonyms: ["Vermentinu"], source: "https://fr.wikipedia.org/wiki/Vermentino"}
+- {name: "Muscat of Alexandria", existing: true, synonyms: ["Muscat d'Alexandrie"], source: "https://en.wikipedia.org/wiki/Muscat_of_Alexandria"}

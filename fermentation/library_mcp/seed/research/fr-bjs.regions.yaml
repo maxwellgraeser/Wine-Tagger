@@ -1,0 +1,181 @@
+# ============ fr-bjs research: Burgundy, Beaujolais, Jura, Savoie, Bugey ============
+# Slice owner: fr-bjs. Sources cited per entry; see fr-bjs.md for dates/versions
+# and full source list. INAO cahier des charges are the primary register;
+# vins-bourgogne.fr / jura-vins.com / vin-de-savoie.fr / beaujolais.com are the
+# national interprofessions, used to corroborate and for the crus/denominations
+# lists INAO's per-appellation fiches don't summarize in one place.
+
+# ---- Burgundy: regional AOCs (Bourgogne + geographical denominations) ----
+- {name: "Burgundy", country: FR, classification: AOC, synonyms: ["Bourgogne", "Bourgogne AOC"], grapes: ["Pinot Noir", "Chardonnay"], source: "https://extranet.inao.gouv.fr/fichier/PNO-cdc-Bourgogne-cn23062930.pdf"}
+- {name: "Bourgogne Aligoté", country: FR, parent: "Burgundy", classification: AOC, grapes: ["Aligoté"], source: "https://extranet.inao.gouv.fr/fichier/PNO-cdc-Bourgogne-cn23062930.pdf"}
+- {name: "Bourgogne Passe-Tout-Grains", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Bourgogne Passetoutgrain"], grapes: ["Pinot Noir", "Gamay"], source: "https://extranet.inao.gouv.fr/fichier/PNO-cdc-Bourgogne-cn23062930.pdf"}
+- {name: "Coteaux Bourguignons", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Bourgogne Grand Ordinaire", "Bourgogne Ordinaire"], grapes: ["Gamay", "Pinot Noir", "Chardonnay", "Aligoté"], source: "https://www.inao.gouv.fr/produit/coteaux-bourguignons-ou-bourgogne-grand-ordinaire-ou-bourgogne-ordinaire-blanc-nouveau-ou-0"}
+- {name: "Crémant de Bourgogne", country: FR, parent: "Burgundy", classification: AOC, grapes: ["Chardonnay", "Pinot Noir", "Aligoté", "Gamay"], source: "https://extranet.inao.gouv.fr/fichier/PNOCDC-CremantDeBourgogne.pdf"}
+- {name: "Bourgogne Mousseux", country: FR, parent: "Burgundy", classification: AOC, source: "https://www.inao.gouv.fr/produit/8950"}
+- {name: "Bourgogne Côte d'Or", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Bourgogne Cote d'Or"], grapes: ["Pinot Noir", "Chardonnay"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Bourgogne Côte Chalonnaise", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Bourgogne Cote Chalonnaise"], grapes: ["Pinot Noir", "Chardonnay"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Bourgogne Hautes-Côtes de Nuits", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Bourgogne Hautes Cotes de Nuits", "Hautes-Côtes de Nuits"], grapes: ["Pinot Noir", "Chardonnay"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Bourgogne Hautes-Côtes de Beaune", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Bourgogne Hautes Cotes de Beaune", "Hautes-Côtes de Beaune"], grapes: ["Pinot Noir", "Chardonnay"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Bourgogne Chitry", country: FR, parent: "Burgundy", classification: AOC, grapes: ["Chardonnay", "Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Bourgogne Côtes d'Auxerre", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Bourgogne Cotes d'Auxerre"], grapes: ["Chardonnay", "Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Bourgogne Côtes du Couchois", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Bourgogne Cotes du Couchois"], grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Bourgogne Coulanges-la-Vineuse", country: FR, parent: "Burgundy", classification: AOC, grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Bourgogne Épineuil", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Bourgogne Epineuil"], grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Bourgogne Tonnerre", country: FR, parent: "Burgundy", classification: AOC, grapes: ["Chardonnay"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Bourgogne Côte Saint-Jacques", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Bourgogne Cote Saint-Jacques"], grapes: ["Pinot Noir", "Chardonnay"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+
+# ---- Chablis and the Grand Auxerrois ----
+- {name: "Petit Chablis", country: FR, parent: "Burgundy", classification: AOC, grapes: ["Chardonnay"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/petit-chablis,2377,9170.html"}
+- {name: "Chablis", country: FR, parent: "Burgundy", classification: AOC, grapes: ["Chardonnay"], source: "https://www.inao.gouv.fr/produit/chablis-23041"}
+- {name: "Chablis Grand Cru", country: FR, parent: "Chablis", classification: AOC, grapes: ["Chardonnay"], source: "https://www.chablis.fr/gallery_files/site/25717/25779/25782.pdf"}
+- {name: "Irancy", country: FR, parent: "Burgundy", classification: AOC, grapes: ["Pinot Noir", "César"], source: "https://www.inao.gouv.fr/produit/irancy-7698"}
+- {name: "Saint-Bris", country: FR, parent: "Burgundy", classification: AOC, grapes: ["Sauvignon Blanc"], source: "https://www.inao.gouv.fr/produit/saint-bris-7671"}
+- {name: "Vézelay", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Bourgogne Vézelay", "Bourgogne Vezelay"], grapes: ["Chardonnay"], source: "https://www.inao.gouv.fr/cp-aop-vezelay"}
+
+# ---- Côte de Nuits ----
+- {name: "Côte d'Or", country: FR, parent: "Burgundy", synonyms: ["Cote d'Or"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Côte de Nuits", country: FR, parent: "Côte d'Or", synonyms: ["Cote de Nuits"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Marsannay", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Marsannay-la-Côte"], grapes: ["Pinot Noir", "Chardonnay"], source: "https://www.inao.gouv.fr/produit/marsannay-rouge-16406"}
+- {name: "Fixin", country: FR, parent: "Côte de Nuits", classification: AOC, grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Gevrey-Chambertin", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Gevrey Chambertin"], grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Chambertin", country: FR, parent: "Gevrey-Chambertin", classification: AOC, grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Chambertin-Clos de Bèze", country: FR, parent: "Gevrey-Chambertin", classification: AOC, synonyms: ["Chambertin-Clos de Beze"], grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Chapelle-Chambertin", country: FR, parent: "Gevrey-Chambertin", classification: AOC, grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Charmes-Chambertin", country: FR, parent: "Gevrey-Chambertin", classification: AOC, grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Griotte-Chambertin", country: FR, parent: "Gevrey-Chambertin", classification: AOC, grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Latricières-Chambertin", country: FR, parent: "Gevrey-Chambertin", classification: AOC, synonyms: ["Latricieres-Chambertin"], grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Mazoyères-Chambertin", country: FR, parent: "Gevrey-Chambertin", classification: AOC, synonyms: ["Mazoyeres-Chambertin"], grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Mazis-Chambertin", country: FR, parent: "Gevrey-Chambertin", classification: AOC, synonyms: ["Mazy-Chambertin"], grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Ruchottes-Chambertin", country: FR, parent: "Gevrey-Chambertin", classification: AOC, grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Morey-Saint-Denis", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Morey-St-Denis", "Morey Saint-Denis"], grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Clos de la Roche", country: FR, parent: "Morey-Saint-Denis", classification: AOC, grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Clos Saint-Denis", country: FR, parent: "Morey-Saint-Denis", classification: AOC, grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Clos des Lambrays", country: FR, parent: "Morey-Saint-Denis", classification: AOC, grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Clos de Tart", country: FR, parent: "Morey-Saint-Denis", classification: AOC, grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Chambolle-Musigny", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Chambolle Musigny"], grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Musigny", country: FR, parent: "Chambolle-Musigny", classification: AOC, grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Bonnes-Mares", country: FR, parent: "Chambolle-Musigny", classification: AOC, grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Vougeot", country: FR, parent: "Côte de Nuits", classification: AOC, grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Clos de Vougeot", country: FR, parent: "Vougeot", classification: AOC, synonyms: ["Clos Vougeot"], grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Vosne-Romanée", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Vosne-Romanee", "Vosne Romanée"], grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Romanée-Conti", country: FR, parent: "Vosne-Romanée", classification: AOC, synonyms: ["Romanee-Conti"], grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "La Romanée", country: FR, parent: "Vosne-Romanée", classification: AOC, synonyms: ["La Romanee"], grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Romanée-Saint-Vivant", country: FR, parent: "Vosne-Romanée", classification: AOC, synonyms: ["Romanee-Saint-Vivant"], grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "La Tâche", country: FR, parent: "Vosne-Romanée", classification: AOC, synonyms: ["La Tache"], grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Richebourg", country: FR, parent: "Vosne-Romanée", classification: AOC, grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "La Grande Rue", country: FR, parent: "Vosne-Romanée", classification: AOC, grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Échezeaux", country: FR, parent: "Vosne-Romanée", classification: AOC, synonyms: ["Echezeaux"], grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Grands Échezeaux", country: FR, parent: "Vosne-Romanée", classification: AOC, synonyms: ["Grands Echezeaux"], grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Nuits-Saint-Georges", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Nuits-St-Georges", "Nuits Saint Georges"], grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Côte de Nuits-Villages", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Cote de Nuits-Villages", "Côte de Nuits Villages"], grapes: ["Pinot Noir", "Chardonnay"], source: "https://www.inao.gouv.fr/produit/cote-de-nuits-villages-rouge-ou-vins-fins-de-la-cote-de-nuits-rouge-8156"}
+
+# ---- Côte de Beaune ----
+- {name: "Côte de Beaune", country: FR, parent: "Côte d'Or", synonyms: ["Cote de Beaune"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/cote-de-beaune,2377,9170.html"}
+- {name: "Ladoix", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["Ladoix-Serrigny"], grapes: ["Pinot Noir", "Chardonnay"], source: "https://en.wikipedia.org/wiki/Ladoix_wine"}
+- {name: "Aloxe-Corton", country: FR, parent: "Côte de Beaune", classification: AOC, grapes: ["Pinot Noir"], source: "https://en.wikipedia.org/wiki/Aloxe-Corton_wine"}
+- {name: "Corton", country: FR, parent: "Aloxe-Corton", classification: AOC, grapes: ["Pinot Noir", "Chardonnay"], source: "https://www.inao.gouv.fr/produit/10272"}
+- {name: "Corton-Charlemagne", country: FR, parent: "Aloxe-Corton", classification: AOC, grapes: ["Chardonnay"], source: "https://www.inao.gouv.fr/produit/7716"}
+- {name: "Charlemagne", country: FR, parent: "Aloxe-Corton", classification: AOC, grapes: ["Chardonnay"], source: "https://www.inao.gouv.fr/produit/7716"}
+- {name: "Pernand-Vergelesses", country: FR, parent: "Côte de Beaune", classification: AOC, grapes: ["Pinot Noir", "Chardonnay"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Savigny-lès-Beaune", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["Savigny-les-Beaune", "Savigny"], grapes: ["Pinot Noir", "Chardonnay"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Chorey-lès-Beaune", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["Chorey-les-Beaune", "Chorey"], grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Beaune", country: FR, parent: "Côte de Beaune", classification: AOC, grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Pommard", country: FR, parent: "Côte de Beaune", classification: AOC, grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Volnay", country: FR, parent: "Côte de Beaune", classification: AOC, grapes: ["Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Monthélie", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["Monthelie"], grapes: ["Pinot Noir", "Chardonnay"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Auxey-Duresses", country: FR, parent: "Côte de Beaune", classification: AOC, grapes: ["Pinot Noir", "Chardonnay"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Saint-Romain", country: FR, parent: "Côte de Beaune", classification: AOC, grapes: ["Chardonnay", "Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Meursault", country: FR, parent: "Côte de Beaune", classification: AOC, grapes: ["Chardonnay"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Blagny", country: FR, parent: "Meursault", classification: AOC, grapes: ["Pinot Noir"], source: "https://en.wikipedia.org/wiki/Blagny_AOC"}
+- {name: "Puligny-Montrachet", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["Puligny Montrachet"], grapes: ["Chardonnay"], source: "https://extranet.inao.gouv.fr/fichier/pnocdcpuligny-montrachet.pdf"}
+- {name: "Montrachet", country: FR, parent: "Puligny-Montrachet", classification: AOC, grapes: ["Chardonnay"], source: "https://www.inao.gouv.fr/produit/6022"}
+- {name: "Chevalier-Montrachet", country: FR, parent: "Puligny-Montrachet", classification: AOC, grapes: ["Chardonnay"], source: "https://en.wikipedia.org/wiki/Chevalier-Montrachet"}
+- {name: "Bienvenues-Bâtard-Montrachet", country: FR, parent: "Puligny-Montrachet", classification: AOC, synonyms: ["Bienvenues-Batard-Montrachet"], grapes: ["Chardonnay"], source: "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/bienvenues-batard-montrachet,2458,9253.html"}
+- {name: "Bâtard-Montrachet", country: FR, parent: "Puligny-Montrachet", classification: AOC, synonyms: ["Batard-Montrachet"], grapes: ["Chardonnay"], source: "https://www.inao.gouv.fr/produit/batard-montrachet-7679"}
+- {name: "Chassagne-Montrachet", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["Chassagne Montrachet"], grapes: ["Chardonnay", "Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Criots-Bâtard-Montrachet", country: FR, parent: "Chassagne-Montrachet", classification: AOC, synonyms: ["Criots-Batard-Montrachet"], grapes: ["Chardonnay"], source: "https://extranet.inao.gouv.fr/fichier/PNOCDC-Criots-Batard-Montrachet.pdf"}
+- {name: "Saint-Aubin", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["St-Aubin"], grapes: ["Chardonnay", "Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Santenay", country: FR, parent: "Côte de Beaune", classification: AOC, grapes: ["Pinot Noir", "Chardonnay"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Maranges", country: FR, parent: "Côte de Beaune", classification: AOC, grapes: ["Pinot Noir", "Chardonnay"], source: "https://en.wikipedia.org/wiki/Maranges_wine"}
+- {name: "Côte de Beaune-Villages", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["Cote de Beaune-Villages", "Côte de Beaune Villages"], grapes: ["Pinot Noir"], source: "https://www.inao.gouv.fr/produit/cote-de-beaune-villages-7688"}
+
+# ---- Côte Chalonnaise ----
+- {name: "Côte Chalonnaise", country: FR, parent: "Burgundy", synonyms: ["Cote Chalonnaise"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Bouzeron", country: FR, parent: "Côte Chalonnaise", classification: AOC, grapes: ["Aligoté"], source: "https://en.wikipedia.org/wiki/Bouzeron_AOC"}
+- {name: "Rully", country: FR, parent: "Côte Chalonnaise", classification: AOC, grapes: ["Chardonnay", "Pinot Noir"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Mercurey", country: FR, parent: "Côte Chalonnaise", classification: AOC, grapes: ["Pinot Noir", "Chardonnay"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Givry", country: FR, parent: "Côte Chalonnaise", classification: AOC, grapes: ["Pinot Noir", "Chardonnay"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Montagny", country: FR, parent: "Côte Chalonnaise", classification: AOC, grapes: ["Chardonnay"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+
+# ---- Mâconnais ----
+- {name: "Mâconnais", country: FR, parent: "Burgundy", synonyms: ["Maconnais", "Mâcon", "Macon"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Mâcon-Villages", country: FR, parent: "Mâconnais", classification: AOC, synonyms: ["Macon-Villages", "Mâcon Villages"], grapes: ["Chardonnay"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Pouilly-Fuissé", country: FR, parent: "Mâconnais", classification: AOC, synonyms: ["Pouilly-Fuisse", "Pouilly Fuissé"], grapes: ["Chardonnay"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Pouilly-Vinzelles", country: FR, parent: "Mâconnais", classification: AOC, grapes: ["Chardonnay"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Pouilly-Loché", country: FR, parent: "Mâconnais", classification: AOC, synonyms: ["Pouilly-Loche"], grapes: ["Chardonnay"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Saint-Véran", country: FR, parent: "Mâconnais", classification: AOC, synonyms: ["Saint-Veran", "St-Véran"], grapes: ["Chardonnay"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+- {name: "Viré-Clessé", country: FR, parent: "Mâconnais", classification: AOC, synonyms: ["Vire-Clesse"], grapes: ["Chardonnay"], source: "https://www.vins-bourgogne.fr/vins-et-terroirs/la-bourgogne-et-ses-appellations/bourgogne,2377,9170.html"}
+
+# ---- Beaujolais ----
+- {name: "Beaujolais", country: FR, classification: AOC, grapes: ["Gamay"], source: "https://extranet.inao.gouv.fr/fichier/PNO-cdcBeaujolais-cn220210.pdf"}
+- {name: "Beaujolais Supérieur", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Beaujolais Superieur"], grapes: ["Gamay"], source: "https://www.inao.gouv.fr/produit/beaujolais-superieur-16919"}
+- {name: "Beaujolais-Villages", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Beaujolais Villages"], grapes: ["Gamay"], source: "https://www.beaujolais.com/en/discover/nos-12-appellations/"}
+- {name: "Brouilly", country: FR, parent: "Beaujolais", classification: AOC, grapes: ["Gamay"], source: "https://www.beaujolais.com/en/discover/nos-12-appellations/"}
+- {name: "Côte de Brouilly", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Cote de Brouilly"], grapes: ["Gamay"], source: "https://www.beaujolais.com/en/discover/nos-12-appellations/"}
+- {name: "Morgon", country: FR, parent: "Beaujolais", classification: AOC, grapes: ["Gamay"], source: "https://www.beaujolais.com/en/discover/nos-12-appellations/"}
+- {name: "Fleurie", country: FR, parent: "Beaujolais", classification: AOC, grapes: ["Gamay"], source: "https://www.beaujolais.com/en/discover/nos-12-appellations/"}
+- {name: "Moulin-à-Vent", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Moulin-a-Vent", "Moulin à Vent"], grapes: ["Gamay"], source: "https://www.beaujolais.com/en/discover/nos-12-appellations/"}
+- {name: "Chénas", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Chenas"], grapes: ["Gamay"], source: "https://www.beaujolais.com/en/discover/nos-12-appellations/"}
+- {name: "Chiroubles", country: FR, parent: "Beaujolais", classification: AOC, grapes: ["Gamay"], source: "https://www.beaujolais.com/en/discover/nos-12-appellations/"}
+- {name: "Juliénas", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Julienas"], grapes: ["Gamay"], source: "https://www.beaujolais.com/en/discover/nos-12-appellations/"}
+- {name: "Régnié", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Regnie"], grapes: ["Gamay"], source: "https://www.beaujolais.com/en/discover/nos-12-appellations/"}
+- {name: "Saint-Amour", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["St-Amour"], grapes: ["Gamay"], source: "https://www.beaujolais.com/en/discover/nos-12-appellations/"}
+
+# ---- Jura ----
+- {name: "Jura", country: FR, source: "https://www.sv-jura.com/cahier-des-charges.htm"}
+- {name: "Côtes du Jura", country: FR, parent: "Jura", classification: AOC, synonyms: ["Cotes du Jura"], grapes: ["Chardonnay", "Savagnin", "Poulsard", "Trousseau", "Pinot Noir"], source: "https://extranet.inao.gouv.fr/fichier/PNO-cdcC%C3%B4tesduJURA-cn220210.pdf"}
+- {name: "Arbois", country: FR, parent: "Jura", classification: AOC, grapes: ["Chardonnay", "Savagnin", "Poulsard", "Trousseau", "Pinot Noir"], source: "https://www.sv-jura.com/medias/aoc/cahier-des-charges/CdC_Arbois_V2.pdf"}
+- {name: "Arbois Pupillin", country: FR, parent: "Arbois", classification: AOC, synonyms: ["Arbois-Pupillin"], grapes: ["Chardonnay", "Savagnin", "Poulsard", "Trousseau", "Pinot Noir"], source: "https://www.sv-jura.com/medias/aoc/cahier-des-charges/CdC_Arbois_V2.pdf"}
+- {name: "Château-Chalon", country: FR, parent: "Jura", classification: AOC, synonyms: ["Chateau-Chalon"], grapes: ["Savagnin"], source: "https://www.sv-jura.com/cahier-des-charges.htm"}
+- {name: "L'Étoile", country: FR, parent: "Jura", classification: AOC, synonyms: ["L'Etoile", "Etoile"], grapes: ["Chardonnay", "Savagnin", "Poulsard"], source: "https://www.jura-vins.com/aoc-l-etoile.htm"}
+- {name: "Crémant du Jura", country: FR, parent: "Jura", classification: AOC, grapes: ["Chardonnay", "Pinot Noir", "Poulsard", "Trousseau", "Savagnin"], source: "https://www.sv-jura.com/cahier-des-charges.htm"}
+- {name: "Macvin du Jura", country: FR, parent: "Jura", classification: AOC, grapes: ["Chardonnay", "Savagnin", "Poulsard", "Trousseau", "Pinot Noir"], source: "https://www.jura-vins.com/medias/nos-vins/1-appellations/6-macvin-jura/Cahier_des_charges_Macvin_du_Jura.pdf"}
+
+# ---- Savoie ----
+- {name: "Savoie", country: FR, synonyms: ["Savoy"], source: "https://extranet.inao.gouv.fr/fichier/CDC-Savoie-PNOcn210211.pdf"}
+- {name: "Vin de Savoie", country: FR, parent: "Savoie", classification: AOC, grapes: ["Jacquère", "Altesse", "Mondeuse", "Gamay", "Chardonnay"], source: "https://extranet.inao.gouv.fr/fichier/CDC-Savoie-PNOcn210211.pdf"}
+- {name: "Abymes", country: FR, parent: "Vin de Savoie", classification: AOC, synonyms: ["Les Abymes"], grapes: ["Jacquère"], source: "https://www.vin-de-savoie.fr/"}
+- {name: "Apremont", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Jacquère"], source: "https://www.vin-de-savoie.fr/"}
+- {name: "Arbin", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Mondeuse"], source: "https://www.vin-de-savoie.fr/"}
+- {name: "Ayze", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Gringet"], source: "https://www.vin-de-savoie.fr/"}
+- {name: "Chautagne", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Gamay", "Mondeuse"], source: "https://www.vin-de-savoie.fr/"}
+- {name: "Chignin", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Jacquère"], source: "https://www.vin-de-savoie.fr/"}
+- {name: "Chignin-Bergeron", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Roussanne"], source: "https://www.vin-de-savoie.fr/"}
+- {name: "Crépy", country: FR, parent: "Vin de Savoie", classification: AOC, synonyms: ["Crepy"], grapes: ["Chasselas"], source: "https://www.vin-de-savoie.fr/"}
+- {name: "Cruet", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Jacquère"], source: "https://www.vin-de-savoie.fr/"}
+- {name: "Jongieux", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Jacquère", "Altesse"], source: "https://www.vin-de-savoie.fr/"}
+- {name: "Marignan", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Chasselas"], source: "https://www.vin-de-savoie.fr/"}
+- {name: "Marin", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Chasselas"], source: "https://www.vin-de-savoie.fr/"}
+- {name: "Montmélian", country: FR, parent: "Vin de Savoie", classification: AOC, synonyms: ["Montmelian"], grapes: ["Jacquère"], source: "https://www.vin-de-savoie.fr/"}
+- {name: "Ripaille", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Chasselas"], source: "https://www.vin-de-savoie.fr/"}
+- {name: "Saint-Jean-de-la-Porte", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Mondeuse"], source: "https://www.vin-de-savoie.fr/"}
+- {name: "Saint-Jeoire-Prieuré", country: FR, parent: "Vin de Savoie", classification: AOC, synonyms: ["Saint-Jeoire-Prieure"], grapes: ["Jacquère"], source: "https://www.vin-de-savoie.fr/"}
+- {name: "Roussette de Savoie", country: FR, parent: "Savoie", classification: AOC, grapes: ["Altesse"], source: "https://en.wikipedia.org/wiki/Roussette_de_Savoie"}
+- {name: "Frangy", country: FR, parent: "Roussette de Savoie", classification: AOC, grapes: ["Altesse"], source: "https://en.wikipedia.org/wiki/Roussette_de_Savoie"}
+- {name: "Marestel", country: FR, parent: "Roussette de Savoie", classification: AOC, grapes: ["Altesse"], source: "https://en.wikipedia.org/wiki/Roussette_de_Savoie"}
+- {name: "Monterminod", country: FR, parent: "Roussette de Savoie", classification: AOC, grapes: ["Altesse"], source: "https://en.wikipedia.org/wiki/Roussette_de_Savoie"}
+- {name: "Monthoux", country: FR, parent: "Roussette de Savoie", classification: AOC, grapes: ["Altesse"], source: "https://en.wikipedia.org/wiki/Roussette_de_Savoie"}
+- {name: "Seyssel", country: FR, parent: "Savoie", classification: AOC, grapes: ["Altesse", "Molette"], source: "https://www.inao.gouv.fr/produit/seyssel-13180"}
+- {name: "Crémant de Savoie", country: FR, parent: "Savoie", classification: AOC, grapes: ["Jacquère", "Altesse"], source: "https://fr.wikipedia.org/wiki/Cr%C3%A9mant_de_Savoie"}
+
+# ---- Bugey ----
+- {name: "Bugey", country: FR, classification: AOC, grapes: ["Gamay", "Chardonnay", "Mondeuse", "Pinot Noir"], source: "https://extranet.inao.gouv.fr/fichier/pno-cdc-Bugey-cn240911.pdf"}
+- {name: "Bugey Cerdon", country: FR, parent: "Bugey", classification: AOC, synonyms: ["Cerdon"], grapes: ["Gamay", "Poulsard"], source: "https://www.ain-tourisme.com/en/enjoy/emblematic-ain-products/our-14-pdo-aoc-pgi-products-of-excellence/cerdon/"}
+- {name: "Bugey Manicle", country: FR, parent: "Bugey", classification: AOC, synonyms: ["Manicle"], grapes: ["Chardonnay", "Pinot Noir"], source: "https://extranet.inao.gouv.fr/fichier/pno-cdc-Bugey-cn240911.pdf"}
+- {name: "Montagnieu", country: FR, parent: "Bugey", classification: AOC, source: "https://www.inao.gouv.fr/produit/roussette-du-bugey-montagnieu-9200"}
+- {name: "Roussette du Bugey", country: FR, parent: "Bugey", classification: AOC, grapes: ["Altesse"], source: "https://www.inao.gouv.fr/produit/roussette-du-bugey-9199"}
+- {name: "Virieu-le-Grand", country: FR, parent: "Roussette du Bugey", classification: AOC, grapes: ["Altesse"], source: "https://www.inao.gouv.fr/produit/roussette-du-bugey-virieu-le-grand-9201"}
+
+# ---- IGPs of these areas ----
+- {name: "Franche-Comté", country: FR, classification: IGP, synonyms: ["Franche-Comte", "IGP Franche-Comté", "Vin de Pays de Franche-Comté"], source: "https://extranet.inao.gouv.fr/fichier/PNOCDCIGPFRANCHECOMTE.pdf"}
+- {name: "Allobrogie", country: FR, classification: IGP, synonyms: ["IGP Allobrogie", "Vin des Allobroges", "Vin de Pays d'Allobrogie", "Vin de Pays des Allobroges"], source: "https://extranet.inao.gouv.fr/fichier/pnocdcigpallobrogie.pdf"}

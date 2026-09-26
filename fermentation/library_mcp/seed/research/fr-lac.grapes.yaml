@@ -1,0 +1,12 @@
+# ============ fr-lac research: Loire, Alsace, Champagne, national France ============
+
+# ---- New grapes: not in grapes.yaml under any name or synonym ----
+- {name: "Savagnin Rose", color: rose, synonyms: ["Klevener de Heiligenstein"], source: "https://fr.wikipedia.org/wiki/Klevener"}
+- {name: "Sauvignon Gris", color: gris, synonyms: ["Fié Gris", "Fie Gris"], source: "https://en.wikipedia.org/wiki/Sauvignon_gris"}
+- {name: "Grolleau Gris", color: gris, synonyms: ["Groslot Gris"], source: "https://www.vinsdeloire.fr/en/grape-varieties"}
+- {name: "Arbane", color: white, synonyms: [], source: "https://en.wikipedia.org/wiki/Classification_of_Champagne_vineyards"}
+- {name: "Petit Meslier", color: white, synonyms: [], source: "https://en.wikipedia.org/wiki/Classification_of_Champagne_vineyards"}
+
+# ---- Existing grapes: local/regional names not yet listed as synonyms ----
+- {name: "Auxerrois Blanc", existing: true, synonyms: ["Pinot Auxerrois"], source: "https://fr.wikipedia.org/wiki/Auxerrois_(c%C3%A9page)"}
+- {name: "Pinot Gris", existing: true, synonyms: ["Tokay d'Alsace", "Tokay Pinot Gris"], source: "https://en.wikipedia.org/wiki/Alsace_wine_region"}

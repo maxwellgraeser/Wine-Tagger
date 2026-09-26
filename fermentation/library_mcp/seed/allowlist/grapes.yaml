@@ -54,7 +54,7 @@
 - {name: "Melon de Bourgogne", color: white, synonyms: ["Muscadet (grape)", "Melon"]}
 - {name: "Viognier", color: white}
 - {name: "Marsanne", color: white}
-- {name: "Roussanne", color: white}
+- {name: "Roussanne", color: white, synonyms: ["Bergeron"]}
 - {name: "Grenache Blanc", color: white, synonyms: ["Garnacha Blanca"]}
 - {name: "Grenache Gris", color: white, synonyms: ["Garnacha Gris"]}
 - {name: "Clairette", color: white, synonyms: ["Clairette Blanche"]}
@@ -66,12 +66,12 @@
 - {name: "Petit Manseng", color: white}
 - {name: "Riesling", color: white, synonyms: ["Johannisberg Riesling", "White Riesling", "Rheinriesling", "Riesling Renano", "Weisser Riesling", "Rhine Riesling"]}
 - {name: "Gewürztraminer", color: white, synonyms: ["Gewurztraminer", "Traminer", "Traminer Aromatico"]}
-- {name: "Pinot Gris", color: white, synonyms: ["Pinot Grigio", "Grauburgunder", "Ruländer", "Rulander", "PG", "Grauer Burgunder"]}
+- {name: "Pinot Gris", color: white, synonyms: ["Pinot Grigio", "Grauburgunder", "Ruländer", "Rulander", "PG", "Grauer Burgunder", "Pinot Beurot", "Tokay d'Alsace", "Tokay Pinot Gris"]}
 - {name: "Pinot Blanc", color: white, synonyms: ["Pinot Bianco", "Weissburgunder", "Weißburgunder", "Weisser Burgunder"]}
-- {name: "Auxerrois Blanc", color: white, synonyms: ["Auxerrois"]}
+- {name: "Auxerrois Blanc", color: white, synonyms: ["Auxerrois", "Pinot Auxerrois"]}
 - {name: "Silvaner", color: white, synonyms: ["Sylvaner", "Grüner Silvaner"]}
 - {name: "Muscat Blanc à Petits Grains", color: white, synonyms: ["Muscat", "Moscato", "Moscato Bianco", "Muscat Canelli", "Muscat Blanc", "Moscatel Galego", "Gelber Muskateller", "Muskateller", "Tamjanika", "Muscat de Frontignan", "Moscato d'Asti (grape)", "Muscadel", "Muskadel", "Red Muscadel", "White Muscadel"]}
-- {name: "Muscat of Alexandria", color: white, synonyms: ["Moscatel", "Zibibbo", "Moscatel de Alejandría", "Muscat Gordo Blanco", "Gordo", "Hanepoot", "Moscatel de Setúbal (grape)"]}
+- {name: "Muscat of Alexandria", color: white, synonyms: ["Moscatel", "Zibibbo", "Moscatel de Alejandría", "Muscat Gordo Blanco", "Gordo", "Hanepoot", "Moscatel de Setúbal (grape)", "Muscat d'Alexandrie"]}
 - {name: "Muscat Ottonel", color: white}
 - {name: "Aligoté", color: white, synonyms: ["Aligote"]}
 - {name: "Savagnin", color: white, synonyms: ["Savagnin Blanc", "Naturé", "Heida", "Païen", "Paien"]}
@@ -82,7 +82,7 @@
 - {name: "Romorantin", color: white}
 - {name: "Mauzac", color: white, synonyms: ["Mauzac Blanc"]}
 - {name: "Len de l'El", color: white, synonyms: ["Loin de l'Oeil"]}
-- {name: "Vermentino", color: white, synonyms: ["Rolle", "Favorita", "Pigato"]}
+- {name: "Vermentino", color: white, synonyms: ["Rolle", "Favorita", "Pigato", "Vermentinu"]}
 - {name: "Terret Blanc", color: white, synonyms: ["Terret"]}
 - {name: "Macabeo", color: white, synonyms: ["Viura", "Macabeu", "Maccabeu"]}
 - {name: "Baroque", color: white}
@@ -371,3 +371,34 @@
 - {name: "Therona", color: white}
 - {name: "Bukettraube", color: white, synonyms: ["Bukettrebe", "Bouquet Blanc"]}
 - {name: "Crouchen Blanc", color: white, synonyms: ["Crouchen", "Cape Riesling", "South African Riesling", "SA Riesling", "Paarl Riesling"]}
+
+# ---------------- research: fr-bjs ----------------
+- {name: "César", color: red, synonyms: ["Cesar"]}
+- {name: "Sacy", color: white, synonyms: ["Sacy B", "Tressallier"]}
+- {name: "Gringet", color: white}
+- {name: "Persan", color: red}
+- {name: "Molette", color: white}
+
+# ---------------- research: fr-lac ----------------
+- {name: "Savagnin Rose", color: rose, synonyms: ["Klevener de Heiligenstein"]}
+- {name: "Sauvignon Gris", color: gris, synonyms: ["Fié Gris", "Fie Gris"]}
+- {name: "Grolleau Gris", color: gris, synonyms: ["Groslot Gris"]}
+- {name: "Arbane", color: white}
+- {name: "Petit Meslier", color: white}
+
+# ---------------- research: fr-rpl ----------------
+- {name: "Tibouren", color: red}
+- {name: "Braquet", color: red, synonyms: ["Brachet"]}
+- {name: "Calitor", color: red}
+- {name: "Vaccarèse", color: red, synonyms: ["Brun Argenté", "Camarese"]}
+- {name: "Muscardin", color: red}
+- {name: "Aspiran", color: red, synonyms: ["Aspiran Noir"]}
+- {name: "Picardan", color: white}
+
+# ---------------- research: fr-bsw ----------------
+- {name: "Camaralet", color: white, synonyms: ["Camaralet de Lasseube"]}
+- {name: "Lauzet", color: white}
+- {name: "Ondenc", color: white}
+- {name: "Raffiat de Moncade", color: white}
+- {name: "Courbu Noir", color: red}
+- {name: "Mérille", color: red}

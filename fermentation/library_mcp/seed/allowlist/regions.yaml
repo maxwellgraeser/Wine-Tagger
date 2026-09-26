@@ -14,173 +14,550 @@
 #     ("single-region floor") so "country known, region placeholder" is rare.
 
 # ======================= FRANCE =======================
-- {name: "Bordeaux", country: FR, classification: AOC, synonyms: ["Bordelais"]}
-- {name: "Médoc", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Medoc"]}
-- {name: "Haut-Médoc", country: FR, parent: "Médoc", classification: AOC, synonyms: ["Haut-Medoc", "Haut Médoc"]}
-- {name: "Margaux", country: FR, parent: "Haut-Médoc", classification: AOC}
-- {name: "Pauillac", country: FR, parent: "Haut-Médoc", classification: AOC}
-- {name: "Saint-Julien", country: FR, parent: "Haut-Médoc", classification: AOC, synonyms: ["St-Julien", "St. Julien", "Saint Julien"]}
-- {name: "Saint-Estèphe", country: FR, parent: "Haut-Médoc", classification: AOC, synonyms: ["St-Estèphe", "Saint-Estephe", "St. Estephe"]}
-- {name: "Listrac-Médoc", country: FR, parent: "Haut-Médoc", classification: AOC, synonyms: ["Listrac"]}
-- {name: "Moulis-en-Médoc", country: FR, parent: "Haut-Médoc", classification: AOC, synonyms: ["Moulis"]}
-- {name: "Graves", country: FR, parent: "Bordeaux", classification: AOC}
-- {name: "Pessac-Léognan", country: FR, parent: "Graves", classification: AOC, synonyms: ["Pessac-Leognan", "Pessac Léognan"]}
-- {name: "Sauternes", country: FR, parent: "Graves", classification: AOC}
-- {name: "Barsac", country: FR, parent: "Sauternes", classification: AOC}
-- {name: "Saint-Émilion", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Saint-Emilion", "St-Émilion", "St. Emilion", "St-Emilion", "Saint Emilion", "Saint-Émilion Grand Cru"]}
-- {name: "Pomerol", country: FR, parent: "Bordeaux", classification: AOC}
-- {name: "Lalande-de-Pomerol", country: FR, parent: "Bordeaux", classification: AOC}
-- {name: "Fronsac", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Canon-Fronsac"]}
-- {name: "Côtes de Bourg", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Cotes de Bourg", "Bourg"]}
-- {name: "Blaye", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Côtes de Blaye", "Blaye Côtes de Bordeaux"]}
-- {name: "Entre-Deux-Mers", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Entre Deux Mers"]}
-- {name: "Bordeaux Supérieur", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Bordeaux Superieur"]}
-- {name: "Castillon Côtes de Bordeaux", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Castillon", "Côtes de Castillon"]}
-- {name: "Côtes de Bordeaux", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Cotes de Bordeaux"]}
-- {name: "Burgundy", country: FR, classification: AOC, synonyms: ["Bourgogne", "Bourgogne AOC"]}
-- {name: "Chablis", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Petit Chablis", "Chablis Premier Cru", "Chablis Grand Cru"]}
+- {name: "Burgundy", country: FR, classification: AOC, synonyms: ["Bourgogne", "Bourgogne AOC"], grapes: ["Pinot Noir", "Chardonnay"]}
+- {name: "Bourgogne Aligoté", country: FR, parent: "Burgundy", classification: AOC, grapes: ["Aligoté"]}
+- {name: "Bourgogne Passe-Tout-Grains", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Bourgogne Passetoutgrain"], grapes: ["Pinot Noir", "Gamay"]}
+- {name: "Coteaux Bourguignons", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Bourgogne Grand Ordinaire", "Bourgogne Ordinaire"], grapes: ["Gamay", "Pinot Noir", "Chardonnay", "Aligoté"]}
+- {name: "Crémant de Bourgogne", country: FR, parent: "Burgundy", classification: AOC, grapes: ["Chardonnay", "Pinot Noir", "Aligoté", "Gamay"]}
+- {name: "Bourgogne Mousseux", country: FR, parent: "Burgundy", classification: AOC}
+- {name: "Bourgogne Côte d'Or", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Bourgogne Cote d'Or"], grapes: ["Pinot Noir", "Chardonnay"]}
+- {name: "Bourgogne Côte Chalonnaise", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Bourgogne Cote Chalonnaise"], grapes: ["Pinot Noir", "Chardonnay"]}
+- {name: "Bourgogne Hautes-Côtes de Nuits", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Bourgogne Hautes Cotes de Nuits", "Hautes-Côtes de Nuits"], grapes: ["Pinot Noir", "Chardonnay"]}
+- {name: "Bourgogne Hautes-Côtes de Beaune", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Bourgogne Hautes Cotes de Beaune", "Hautes-Côtes de Beaune"], grapes: ["Pinot Noir", "Chardonnay"]}
+- {name: "Bourgogne Chitry", country: FR, parent: "Burgundy", classification: AOC, grapes: ["Chardonnay", "Pinot Noir"]}
+- {name: "Bourgogne Côtes d'Auxerre", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Bourgogne Cotes d'Auxerre"], grapes: ["Chardonnay", "Pinot Noir"]}
+- {name: "Bourgogne Côtes du Couchois", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Bourgogne Cotes du Couchois"], grapes: ["Pinot Noir"]}
+- {name: "Bourgogne Coulanges-la-Vineuse", country: FR, parent: "Burgundy", classification: AOC, grapes: ["Pinot Noir"]}
+- {name: "Bourgogne Épineuil", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Bourgogne Epineuil"], grapes: ["Pinot Noir"]}
+- {name: "Bourgogne Tonnerre", country: FR, parent: "Burgundy", classification: AOC, grapes: ["Chardonnay"]}
+- {name: "Bourgogne Côte Saint-Jacques", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Bourgogne Cote Saint-Jacques"], grapes: ["Pinot Noir", "Chardonnay"]}
+- {name: "Petit Chablis", country: FR, parent: "Burgundy", classification: AOC, grapes: ["Chardonnay"]}
+- {name: "Chablis", country: FR, parent: "Burgundy", classification: AOC, grapes: ["Chardonnay"]}
+- {name: "Chablis Grand Cru", country: FR, parent: "Chablis", classification: AOC, grapes: ["Chardonnay"]}
+- {name: "Irancy", country: FR, parent: "Burgundy", classification: AOC, grapes: ["Pinot Noir", "César"]}
+- {name: "Saint-Bris", country: FR, parent: "Burgundy", classification: AOC, grapes: ["Sauvignon Blanc"]}
+- {name: "Vézelay", country: FR, parent: "Burgundy", classification: AOC, synonyms: ["Bourgogne Vézelay", "Bourgogne Vezelay"], grapes: ["Chardonnay"]}
 - {name: "Côte d'Or", country: FR, parent: "Burgundy", synonyms: ["Cote d'Or"]}
-- {name: "Côte de Nuits", country: FR, parent: "Côte d'Or", synonyms: ["Cote de Nuits", "Côte de Nuits-Villages"]}
-- {name: "Marsannay", country: FR, parent: "Côte de Nuits", classification: AOC}
-- {name: "Fixin", country: FR, parent: "Côte de Nuits", classification: AOC}
-- {name: "Gevrey-Chambertin", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Gevrey Chambertin"]}
-- {name: "Morey-Saint-Denis", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Morey-St-Denis"]}
-- {name: "Chambolle-Musigny", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Chambolle Musigny"]}
-- {name: "Vougeot", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Clos de Vougeot"]}
-- {name: "Vosne-Romanée", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Vosne-Romanee", "Vosne Romanée"]}
-- {name: "Nuits-Saint-Georges", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Nuits-St-Georges", "Nuits Saint Georges"]}
-- {name: "Côte de Beaune", country: FR, parent: "Côte d'Or", synonyms: ["Cote de Beaune", "Côte de Beaune-Villages"]}
-- {name: "Aloxe-Corton", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["Corton", "Corton-Charlemagne"]}
-- {name: "Savigny-lès-Beaune", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["Savigny-les-Beaune", "Savigny"]}
-- {name: "Beaune", country: FR, parent: "Côte de Beaune", classification: AOC}
-- {name: "Pommard", country: FR, parent: "Côte de Beaune", classification: AOC}
-- {name: "Volnay", country: FR, parent: "Côte de Beaune", classification: AOC}
-- {name: "Meursault", country: FR, parent: "Côte de Beaune", classification: AOC}
-- {name: "Puligny-Montrachet", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["Puligny Montrachet"]}
-- {name: "Chassagne-Montrachet", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["Chassagne Montrachet"]}
-- {name: "Saint-Aubin", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["St-Aubin"]}
-- {name: "Santenay", country: FR, parent: "Côte de Beaune", classification: AOC}
-- {name: "Auxey-Duresses", country: FR, parent: "Côte de Beaune", classification: AOC}
-- {name: "Côte Chalonnaise", country: FR, parent: "Burgundy", synonyms: ["Cote Chalonnaise", "Bourgogne Côte Chalonnaise"]}
-- {name: "Mercurey", country: FR, parent: "Côte Chalonnaise", classification: AOC}
-- {name: "Givry", country: FR, parent: "Côte Chalonnaise", classification: AOC}
-- {name: "Rully", country: FR, parent: "Côte Chalonnaise", classification: AOC}
-- {name: "Montagny", country: FR, parent: "Côte Chalonnaise", classification: AOC}
+- {name: "Côte de Nuits", country: FR, parent: "Côte d'Or", synonyms: ["Cote de Nuits"]}
+- {name: "Marsannay", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Marsannay-la-Côte"], grapes: ["Pinot Noir", "Chardonnay"]}
+- {name: "Fixin", country: FR, parent: "Côte de Nuits", classification: AOC, grapes: ["Pinot Noir"]}
+- {name: "Gevrey-Chambertin", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Gevrey Chambertin"], grapes: ["Pinot Noir"]}
+- {name: "Chambertin", country: FR, parent: "Gevrey-Chambertin", classification: AOC, grapes: ["Pinot Noir"]}
+- {name: "Chambertin-Clos de Bèze", country: FR, parent: "Gevrey-Chambertin", classification: AOC, synonyms: ["Chambertin-Clos de Beze"], grapes: ["Pinot Noir"]}
+- {name: "Chapelle-Chambertin", country: FR, parent: "Gevrey-Chambertin", classification: AOC, grapes: ["Pinot Noir"]}
+- {name: "Charmes-Chambertin", country: FR, parent: "Gevrey-Chambertin", classification: AOC, grapes: ["Pinot Noir"]}
+- {name: "Griotte-Chambertin", country: FR, parent: "Gevrey-Chambertin", classification: AOC, grapes: ["Pinot Noir"]}
+- {name: "Latricières-Chambertin", country: FR, parent: "Gevrey-Chambertin", classification: AOC, synonyms: ["Latricieres-Chambertin"], grapes: ["Pinot Noir"]}
+- {name: "Mazoyères-Chambertin", country: FR, parent: "Gevrey-Chambertin", classification: AOC, synonyms: ["Mazoyeres-Chambertin"], grapes: ["Pinot Noir"]}
+- {name: "Mazis-Chambertin", country: FR, parent: "Gevrey-Chambertin", classification: AOC, synonyms: ["Mazy-Chambertin"], grapes: ["Pinot Noir"]}
+- {name: "Ruchottes-Chambertin", country: FR, parent: "Gevrey-Chambertin", classification: AOC, grapes: ["Pinot Noir"]}
+- {name: "Morey-Saint-Denis", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Morey-St-Denis", "Morey Saint-Denis"], grapes: ["Pinot Noir"]}
+- {name: "Clos de la Roche", country: FR, parent: "Morey-Saint-Denis", classification: AOC, grapes: ["Pinot Noir"]}
+- {name: "Clos Saint-Denis", country: FR, parent: "Morey-Saint-Denis", classification: AOC, grapes: ["Pinot Noir"]}
+- {name: "Clos des Lambrays", country: FR, parent: "Morey-Saint-Denis", classification: AOC, grapes: ["Pinot Noir"]}
+- {name: "Clos de Tart", country: FR, parent: "Morey-Saint-Denis", classification: AOC, grapes: ["Pinot Noir"]}
+- {name: "Chambolle-Musigny", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Chambolle Musigny"], grapes: ["Pinot Noir"]}
+- {name: "Musigny", country: FR, parent: "Chambolle-Musigny", classification: AOC, grapes: ["Pinot Noir"]}
+- {name: "Bonnes-Mares", country: FR, parent: "Chambolle-Musigny", classification: AOC, grapes: ["Pinot Noir"]}
+- {name: "Vougeot", country: FR, parent: "Côte de Nuits", classification: AOC, grapes: ["Pinot Noir"]}
+- {name: "Clos de Vougeot", country: FR, parent: "Vougeot", classification: AOC, synonyms: ["Clos Vougeot"], grapes: ["Pinot Noir"]}
+- {name: "Vosne-Romanée", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Vosne-Romanee", "Vosne Romanée"], grapes: ["Pinot Noir"]}
+- {name: "Romanée-Conti", country: FR, parent: "Vosne-Romanée", classification: AOC, synonyms: ["Romanee-Conti"], grapes: ["Pinot Noir"]}
+- {name: "La Romanée", country: FR, parent: "Vosne-Romanée", classification: AOC, synonyms: ["La Romanee"], grapes: ["Pinot Noir"]}
+- {name: "Romanée-Saint-Vivant", country: FR, parent: "Vosne-Romanée", classification: AOC, synonyms: ["Romanee-Saint-Vivant"], grapes: ["Pinot Noir"]}
+- {name: "La Tâche", country: FR, parent: "Vosne-Romanée", classification: AOC, synonyms: ["La Tache"], grapes: ["Pinot Noir"]}
+- {name: "Richebourg", country: FR, parent: "Vosne-Romanée", classification: AOC, grapes: ["Pinot Noir"]}
+- {name: "La Grande Rue", country: FR, parent: "Vosne-Romanée", classification: AOC, grapes: ["Pinot Noir"]}
+- {name: "Échezeaux", country: FR, parent: "Vosne-Romanée", classification: AOC, synonyms: ["Echezeaux"], grapes: ["Pinot Noir"]}
+- {name: "Grands Échezeaux", country: FR, parent: "Vosne-Romanée", classification: AOC, synonyms: ["Grands Echezeaux"], grapes: ["Pinot Noir"]}
+- {name: "Nuits-Saint-Georges", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Nuits-St-Georges", "Nuits Saint Georges"], grapes: ["Pinot Noir"]}
+- {name: "Côte de Nuits-Villages", country: FR, parent: "Côte de Nuits", classification: AOC, synonyms: ["Cote de Nuits-Villages", "Côte de Nuits Villages"], grapes: ["Pinot Noir", "Chardonnay"]}
+- {name: "Côte de Beaune", country: FR, parent: "Côte d'Or", synonyms: ["Cote de Beaune"]}
+- {name: "Ladoix", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["Ladoix-Serrigny"], grapes: ["Pinot Noir", "Chardonnay"]}
+- {name: "Aloxe-Corton", country: FR, parent: "Côte de Beaune", classification: AOC, grapes: ["Pinot Noir"]}
+- {name: "Corton", country: FR, parent: "Aloxe-Corton", classification: AOC, grapes: ["Pinot Noir", "Chardonnay"]}
+- {name: "Corton-Charlemagne", country: FR, parent: "Aloxe-Corton", classification: AOC, grapes: ["Chardonnay"]}
+- {name: "Charlemagne", country: FR, parent: "Aloxe-Corton", classification: AOC, grapes: ["Chardonnay"]}
+- {name: "Pernand-Vergelesses", country: FR, parent: "Côte de Beaune", classification: AOC, grapes: ["Pinot Noir", "Chardonnay"]}
+- {name: "Savigny-lès-Beaune", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["Savigny-les-Beaune", "Savigny"], grapes: ["Pinot Noir", "Chardonnay"]}
+- {name: "Chorey-lès-Beaune", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["Chorey-les-Beaune", "Chorey"], grapes: ["Pinot Noir"]}
+- {name: "Beaune", country: FR, parent: "Côte de Beaune", classification: AOC, grapes: ["Pinot Noir"]}
+- {name: "Pommard", country: FR, parent: "Côte de Beaune", classification: AOC, grapes: ["Pinot Noir"]}
+- {name: "Volnay", country: FR, parent: "Côte de Beaune", classification: AOC, grapes: ["Pinot Noir"]}
+- {name: "Monthélie", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["Monthelie"], grapes: ["Pinot Noir", "Chardonnay"]}
+- {name: "Auxey-Duresses", country: FR, parent: "Côte de Beaune", classification: AOC, grapes: ["Pinot Noir", "Chardonnay"]}
+- {name: "Saint-Romain", country: FR, parent: "Côte de Beaune", classification: AOC, grapes: ["Chardonnay", "Pinot Noir"]}
+- {name: "Meursault", country: FR, parent: "Côte de Beaune", classification: AOC, grapes: ["Chardonnay"]}
+- {name: "Blagny", country: FR, parent: "Meursault", classification: AOC, grapes: ["Pinot Noir"]}
+- {name: "Puligny-Montrachet", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["Puligny Montrachet"], grapes: ["Chardonnay"]}
+- {name: "Montrachet", country: FR, parent: "Puligny-Montrachet", classification: AOC, grapes: ["Chardonnay"]}
+- {name: "Chevalier-Montrachet", country: FR, parent: "Puligny-Montrachet", classification: AOC, grapes: ["Chardonnay"]}
+- {name: "Bienvenues-Bâtard-Montrachet", country: FR, parent: "Puligny-Montrachet", classification: AOC, synonyms: ["Bienvenues-Batard-Montrachet"], grapes: ["Chardonnay"]}
+- {name: "Bâtard-Montrachet", country: FR, parent: "Puligny-Montrachet", classification: AOC, synonyms: ["Batard-Montrachet"], grapes: ["Chardonnay"]}
+- {name: "Chassagne-Montrachet", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["Chassagne Montrachet"], grapes: ["Chardonnay", "Pinot Noir"]}
+- {name: "Criots-Bâtard-Montrachet", country: FR, parent: "Chassagne-Montrachet", classification: AOC, synonyms: ["Criots-Batard-Montrachet"], grapes: ["Chardonnay"]}
+- {name: "Saint-Aubin", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["St-Aubin"], grapes: ["Chardonnay", "Pinot Noir"]}
+- {name: "Santenay", country: FR, parent: "Côte de Beaune", classification: AOC, grapes: ["Pinot Noir", "Chardonnay"]}
+- {name: "Maranges", country: FR, parent: "Côte de Beaune", classification: AOC, grapes: ["Pinot Noir", "Chardonnay"]}
+- {name: "Côte de Beaune-Villages", country: FR, parent: "Côte de Beaune", classification: AOC, synonyms: ["Cote de Beaune-Villages", "Côte de Beaune Villages"], grapes: ["Pinot Noir"]}
+- {name: "Côte Chalonnaise", country: FR, parent: "Burgundy", synonyms: ["Cote Chalonnaise"]}
+- {name: "Bouzeron", country: FR, parent: "Côte Chalonnaise", classification: AOC, grapes: ["Aligoté"]}
+- {name: "Rully", country: FR, parent: "Côte Chalonnaise", classification: AOC, grapes: ["Chardonnay", "Pinot Noir"]}
+- {name: "Mercurey", country: FR, parent: "Côte Chalonnaise", classification: AOC, grapes: ["Pinot Noir", "Chardonnay"]}
+- {name: "Givry", country: FR, parent: "Côte Chalonnaise", classification: AOC, grapes: ["Pinot Noir", "Chardonnay"]}
+- {name: "Montagny", country: FR, parent: "Côte Chalonnaise", classification: AOC, grapes: ["Chardonnay"]}
 - {name: "Mâconnais", country: FR, parent: "Burgundy", synonyms: ["Maconnais", "Mâcon", "Macon"]}
-- {name: "Mâcon-Villages", country: FR, parent: "Mâconnais", classification: AOC, synonyms: ["Macon-Villages", "Mâcon Villages"]}
-- {name: "Pouilly-Fuissé", country: FR, parent: "Mâconnais", classification: AOC, synonyms: ["Pouilly-Fuisse", "Pouilly Fuissé"]}
-- {name: "Saint-Véran", country: FR, parent: "Mâconnais", classification: AOC, synonyms: ["Saint-Veran", "St-Véran"]}
-- {name: "Viré-Clessé", country: FR, parent: "Mâconnais", classification: AOC, synonyms: ["Vire-Clesse"]}
-- {name: "Beaujolais", country: FR, classification: AOC}
-- {name: "Beaujolais-Villages", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Beaujolais Villages"]}
-- {name: "Brouilly", country: FR, parent: "Beaujolais", classification: AOC}
-- {name: "Côte de Brouilly", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Cote de Brouilly"]}
-- {name: "Morgon", country: FR, parent: "Beaujolais", classification: AOC}
-- {name: "Fleurie", country: FR, parent: "Beaujolais", classification: AOC}
-- {name: "Moulin-à-Vent", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Moulin-a-Vent", "Moulin à Vent"]}
-- {name: "Chénas", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Chenas"]}
-- {name: "Chiroubles", country: FR, parent: "Beaujolais", classification: AOC}
-- {name: "Juliénas", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Julienas"]}
-- {name: "Régnié", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Regnie"]}
-- {name: "Saint-Amour", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["St-Amour"]}
-- {name: "Champagne", country: FR, classification: AOC}
+- {name: "Mâcon-Villages", country: FR, parent: "Mâconnais", classification: AOC, synonyms: ["Macon-Villages", "Mâcon Villages"], grapes: ["Chardonnay"]}
+- {name: "Pouilly-Fuissé", country: FR, parent: "Mâconnais", classification: AOC, synonyms: ["Pouilly-Fuisse", "Pouilly Fuissé"], grapes: ["Chardonnay"]}
+- {name: "Pouilly-Vinzelles", country: FR, parent: "Mâconnais", classification: AOC, grapes: ["Chardonnay"]}
+- {name: "Pouilly-Loché", country: FR, parent: "Mâconnais", classification: AOC, synonyms: ["Pouilly-Loche"], grapes: ["Chardonnay"]}
+- {name: "Saint-Véran", country: FR, parent: "Mâconnais", classification: AOC, synonyms: ["Saint-Veran", "St-Véran"], grapes: ["Chardonnay"]}
+- {name: "Viré-Clessé", country: FR, parent: "Mâconnais", classification: AOC, synonyms: ["Vire-Clesse"], grapes: ["Chardonnay"]}
+- {name: "Beaujolais", country: FR, classification: AOC, grapes: ["Gamay"]}
+- {name: "Beaujolais Supérieur", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Beaujolais Superieur"], grapes: ["Gamay"]}
+- {name: "Beaujolais-Villages", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Beaujolais Villages"], grapes: ["Gamay"]}
+- {name: "Brouilly", country: FR, parent: "Beaujolais", classification: AOC, grapes: ["Gamay"]}
+- {name: "Côte de Brouilly", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Cote de Brouilly"], grapes: ["Gamay"]}
+- {name: "Morgon", country: FR, parent: "Beaujolais", classification: AOC, grapes: ["Gamay"]}
+- {name: "Fleurie", country: FR, parent: "Beaujolais", classification: AOC, grapes: ["Gamay"]}
+- {name: "Moulin-à-Vent", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Moulin-a-Vent", "Moulin à Vent"], grapes: ["Gamay"]}
+- {name: "Chénas", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Chenas"], grapes: ["Gamay"]}
+- {name: "Chiroubles", country: FR, parent: "Beaujolais", classification: AOC, grapes: ["Gamay"]}
+- {name: "Juliénas", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Julienas"], grapes: ["Gamay"]}
+- {name: "Régnié", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["Regnie"], grapes: ["Gamay"]}
+- {name: "Saint-Amour", country: FR, parent: "Beaujolais", classification: AOC, synonyms: ["St-Amour"], grapes: ["Gamay"]}
+- {name: "Jura", country: FR}
+- {name: "Côtes du Jura", country: FR, parent: "Jura", classification: AOC, synonyms: ["Cotes du Jura"], grapes: ["Chardonnay", "Savagnin", "Poulsard", "Trousseau", "Pinot Noir"]}
+- {name: "Arbois", country: FR, parent: "Jura", classification: AOC, grapes: ["Chardonnay", "Savagnin", "Poulsard", "Trousseau", "Pinot Noir"]}
+- {name: "Arbois Pupillin", country: FR, parent: "Arbois", classification: AOC, synonyms: ["Arbois-Pupillin"], grapes: ["Chardonnay", "Savagnin", "Poulsard", "Trousseau", "Pinot Noir"]}
+- {name: "Château-Chalon", country: FR, parent: "Jura", classification: AOC, synonyms: ["Chateau-Chalon"], grapes: ["Savagnin"]}
+- {name: "L'Étoile", country: FR, parent: "Jura", classification: AOC, synonyms: ["L'Etoile", "Etoile"], grapes: ["Chardonnay", "Savagnin", "Poulsard"]}
+- {name: "Crémant du Jura", country: FR, parent: "Jura", classification: AOC, grapes: ["Chardonnay", "Pinot Noir", "Poulsard", "Trousseau", "Savagnin"]}
+- {name: "Macvin du Jura", country: FR, parent: "Jura", classification: AOC, grapes: ["Chardonnay", "Savagnin", "Poulsard", "Trousseau", "Pinot Noir"]}
+- {name: "Savoie", country: FR, synonyms: ["Savoy"]}
+- {name: "Vin de Savoie", country: FR, parent: "Savoie", classification: AOC, grapes: ["Jacquère", "Altesse", "Mondeuse", "Gamay", "Chardonnay"]}
+- {name: "Abymes", country: FR, parent: "Vin de Savoie", classification: AOC, synonyms: ["Les Abymes"], grapes: ["Jacquère"]}
+- {name: "Apremont", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Jacquère"]}
+- {name: "Arbin", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Mondeuse"]}
+- {name: "Ayze", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Gringet"]}
+- {name: "Chautagne", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Gamay", "Mondeuse"]}
+- {name: "Chignin", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Jacquère"]}
+- {name: "Chignin-Bergeron", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Roussanne"]}
+- {name: "Crépy", country: FR, parent: "Vin de Savoie", classification: AOC, synonyms: ["Crepy"], grapes: ["Chasselas"]}
+- {name: "Cruet", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Jacquère"]}
+- {name: "Jongieux", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Jacquère", "Altesse"]}
+- {name: "Marignan", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Chasselas"]}
+- {name: "Marin", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Chasselas"]}
+- {name: "Montmélian", country: FR, parent: "Vin de Savoie", classification: AOC, synonyms: ["Montmelian"], grapes: ["Jacquère"]}
+- {name: "Ripaille", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Chasselas"]}
+- {name: "Saint-Jean-de-la-Porte", country: FR, parent: "Vin de Savoie", classification: AOC, grapes: ["Mondeuse"]}
+- {name: "Saint-Jeoire-Prieuré", country: FR, parent: "Vin de Savoie", classification: AOC, synonyms: ["Saint-Jeoire-Prieure"], grapes: ["Jacquère"]}
+- {name: "Roussette de Savoie", country: FR, parent: "Savoie", classification: AOC, grapes: ["Altesse"]}
+- {name: "Frangy", country: FR, parent: "Roussette de Savoie", classification: AOC, grapes: ["Altesse"]}
+- {name: "Marestel", country: FR, parent: "Roussette de Savoie", classification: AOC, grapes: ["Altesse"]}
+- {name: "Monterminod", country: FR, parent: "Roussette de Savoie", classification: AOC, grapes: ["Altesse"]}
+- {name: "Monthoux", country: FR, parent: "Roussette de Savoie", classification: AOC, grapes: ["Altesse"]}
+- {name: "Seyssel", country: FR, parent: "Savoie", classification: AOC, grapes: ["Altesse", "Molette"]}
+- {name: "Crémant de Savoie", country: FR, parent: "Savoie", classification: AOC, grapes: ["Jacquère", "Altesse"]}
+- {name: "Bugey", country: FR, classification: AOC, grapes: ["Gamay", "Chardonnay", "Mondeuse", "Pinot Noir"]}
+- {name: "Bugey Cerdon", country: FR, parent: "Bugey", classification: AOC, synonyms: ["Cerdon"], grapes: ["Gamay", "Poulsard"]}
+- {name: "Bugey Manicle", country: FR, parent: "Bugey", classification: AOC, synonyms: ["Manicle"], grapes: ["Chardonnay", "Pinot Noir"]}
+- {name: "Montagnieu", country: FR, parent: "Bugey", classification: AOC}
+- {name: "Roussette du Bugey", country: FR, parent: "Bugey", classification: AOC, grapes: ["Altesse"]}
+- {name: "Virieu-le-Grand", country: FR, parent: "Roussette du Bugey", classification: AOC, grapes: ["Altesse"]}
+- {name: "Franche-Comté", country: FR, classification: IGP, synonyms: ["Franche-Comte", "IGP Franche-Comté", "Vin de Pays de Franche-Comté"]}
+- {name: "Allobrogie", country: FR, classification: IGP, synonyms: ["IGP Allobrogie", "Vin des Allobroges", "Vin de Pays d'Allobrogie", "Vin de Pays des Allobroges"]}
+- {name: "Loire Valley", country: FR, synonyms: ["Loire", "Vallée de la Loire", "Vallee de la Loire"]}
+- {name: "Muscadet", country: FR, parent: "Loire Valley", classification: AOC, grapes: ["Melon de Bourgogne"]}
+- {name: "Muscadet Sèvre et Maine", country: FR, parent: "Muscadet", classification: AOC, synonyms: ["Muscadet-Sèvre-et-Maine", "Muscadet Sevre et Maine"], grapes: ["Melon de Bourgogne"]}
+- {name: "Clisson", country: FR, parent: "Muscadet Sèvre et Maine", classification: AOC, grapes: ["Melon de Bourgogne"]}
+- {name: "Gorges", country: FR, parent: "Muscadet Sèvre et Maine", classification: AOC, grapes: ["Melon de Bourgogne"]}
+- {name: "Le Pallet", country: FR, parent: "Muscadet Sèvre et Maine", classification: AOC, grapes: ["Melon de Bourgogne"]}
+- {name: "Château-Thébaud", country: FR, parent: "Muscadet Sèvre et Maine", classification: AOC, synonyms: ["Chateau-Thebaud"], grapes: ["Melon de Bourgogne"]}
+- {name: "Monnières-Saint-Fiacre", country: FR, parent: "Muscadet Sèvre et Maine", classification: AOC, synonyms: ["Monnieres-Saint-Fiacre"], grapes: ["Melon de Bourgogne"]}
+- {name: "Mouzillon-Tillières", country: FR, parent: "Muscadet Sèvre et Maine", classification: AOC, synonyms: ["Mouzillon-Tillieres"], grapes: ["Melon de Bourgogne"]}
+- {name: "Goulaine", country: FR, parent: "Muscadet Sèvre et Maine", classification: AOC, grapes: ["Melon de Bourgogne"]}
+- {name: "Muscadet Côtes de Grandlieu", country: FR, parent: "Muscadet", classification: AOC, synonyms: ["Muscadet-Côtes-de-Grandlieu", "Muscadet Cotes de Grandlieu"], grapes: ["Melon de Bourgogne"]}
+- {name: "Muscadet Coteaux de la Loire", country: FR, parent: "Muscadet", classification: AOC, synonyms: ["Muscadet-Coteaux-de-la-Loire"], grapes: ["Melon de Bourgogne"]}
+- {name: "Gros Plant du Pays Nantais", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Gros Plant", "Gros-Plant du Pays Nantais"], grapes: ["Folle Blanche"]}
+- {name: "Coteaux d'Ancenis", country: FR, parent: "Loire Valley", classification: AOC, grapes: ["Gamay", "Pinot Gris"]}
+- {name: "Fiefs Vendéens", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Fiefs Vendeens"], grapes: ["Chenin Blanc", "Chardonnay", "Cabernet Franc", "Cabernet Sauvignon", "Gamay", "Pinot Noir"]}
+- {name: "Brem", country: FR, parent: "Fiefs Vendéens", classification: AOC}
+- {name: "Chantonnay", country: FR, parent: "Fiefs Vendéens", classification: AOC}
+- {name: "Mareuil", country: FR, parent: "Fiefs Vendéens", classification: AOC}
+- {name: "Pissotte", country: FR, parent: "Fiefs Vendéens", classification: AOC}
+- {name: "Vix", country: FR, parent: "Fiefs Vendéens", classification: AOC}
+- {name: "Anjou", country: FR, parent: "Loire Valley", classification: AOC, grapes: ["Chenin Blanc", "Cabernet Franc"]}
+- {name: "Anjou-Villages", country: FR, parent: "Anjou", classification: AOC, synonyms: ["Anjou Villages"], grapes: ["Cabernet Franc", "Cabernet Sauvignon"]}
+- {name: "Anjou Brissac", country: FR, parent: "Anjou-Villages", classification: AOC, synonyms: ["Anjou-Villages Brissac", "Anjou Villages Brissac"], grapes: ["Cabernet Franc", "Cabernet Sauvignon"]}
+- {name: "Anjou Mousseux", country: FR, parent: "Anjou", classification: AOC}
+- {name: "Anjou Coteaux de la Loire", country: FR, parent: "Anjou", classification: AOC, grapes: ["Chenin Blanc"]}
+- {name: "Anjou Gamay", country: FR, parent: "Anjou", classification: AOC, grapes: ["Gamay"]}
+- {name: "Rosé d'Anjou", country: FR, parent: "Anjou", classification: AOC, synonyms: ["Rose d'Anjou"], grapes: ["Grolleau", "Gamay", "Cabernet Franc", "Cabernet Sauvignon"]}
+- {name: "Cabernet d'Anjou", country: FR, parent: "Anjou", classification: AOC, grapes: ["Cabernet Franc", "Cabernet Sauvignon"]}
+- {name: "Rosé de Loire", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Rose de Loire"], grapes: ["Cabernet Franc", "Cabernet Sauvignon", "Gamay", "Grolleau", "Pinot Noir"]}
+- {name: "Crémant de Loire", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Cremant de Loire"], grapes: ["Chenin Blanc", "Chardonnay", "Cabernet Franc"]}
+- {name: "Savennières", country: FR, parent: "Anjou", classification: AOC, synonyms: ["Savennieres"], grapes: ["Chenin Blanc"]}
+- {name: "Savennières-Roche-aux-Moines", country: FR, parent: "Savennières", classification: AOC, synonyms: ["Savennieres-Roche-aux-Moines", "Savennières Roche aux Moines", "Roche aux Moines"], grapes: ["Chenin Blanc"]}
+- {name: "Coulée de Serrant", country: FR, parent: "Savennières", classification: AOC, synonyms: ["Savennières-Coulée-de-Serrant", "Clos de la Coulée de Serrant", "Coulee de Serrant"], grapes: ["Chenin Blanc"]}
+- {name: "Coteaux du Layon", country: FR, parent: "Anjou", classification: AOC, grapes: ["Chenin Blanc"]}
+- {name: "Coteaux du Layon Beaulieu", country: FR, parent: "Coteaux du Layon", classification: AOC, synonyms: ["Coteaux du Layon-Beaulieu"], grapes: ["Chenin Blanc"]}
+- {name: "Coteaux du Layon Faye", country: FR, parent: "Coteaux du Layon", classification: AOC, synonyms: ["Coteaux du Layon-Faye"], grapes: ["Chenin Blanc"]}
+- {name: "Coteaux du Layon Rablay", country: FR, parent: "Coteaux du Layon", classification: AOC, synonyms: ["Coteaux du Layon-Rablay"], grapes: ["Chenin Blanc"]}
+- {name: "Coteaux du Layon Rochefort", country: FR, parent: "Coteaux du Layon", classification: AOC, synonyms: ["Coteaux du Layon-Rochefort"], grapes: ["Chenin Blanc"]}
+- {name: "Coteaux du Layon Saint-Aubin", country: FR, parent: "Coteaux du Layon", classification: AOC, synonyms: ["Coteaux du Layon-Saint-Aubin"], grapes: ["Chenin Blanc"]}
+- {name: "Coteaux du Layon Saint-Lambert", country: FR, parent: "Coteaux du Layon", classification: AOC, synonyms: ["Coteaux du Layon-Saint-Lambert"], grapes: ["Chenin Blanc"]}
+- {name: "Chaume", country: FR, parent: "Coteaux du Layon", classification: AOC, synonyms: ["Coteaux du Layon-Chaume", "Chaume Premier Cru des Coteaux du Layon"], grapes: ["Chenin Blanc"]}
+- {name: "Quarts de Chaume", country: FR, parent: "Coteaux du Layon", classification: AOC, synonyms: ["Quarts de Chaume Grand Cru"], grapes: ["Chenin Blanc"]}
+- {name: "Bonnezeaux", country: FR, parent: "Coteaux du Layon", classification: AOC, grapes: ["Chenin Blanc"]}
+- {name: "Coteaux de l'Aubance", country: FR, parent: "Anjou", classification: AOC, grapes: ["Chenin Blanc"]}
+- {name: "Saumur", country: FR, parent: "Loire Valley", classification: AOC, grapes: ["Chenin Blanc", "Cabernet Franc"]}
+- {name: "Saumur-Champigny", country: FR, parent: "Saumur", classification: AOC, synonyms: ["Saumur Champigny"], grapes: ["Cabernet Franc"]}
+- {name: "Saumur-Puy-Notre-Dame", country: FR, parent: "Saumur-Champigny", classification: AOC, synonyms: ["Saumur Puy-Notre-Dame"], grapes: ["Cabernet Franc", "Cabernet Sauvignon"]}
+- {name: "Saumur Mousseux", country: FR, parent: "Saumur", classification: AOC, grapes: ["Chenin Blanc"]}
+- {name: "Coteaux de Saumur", country: FR, parent: "Saumur", classification: AOC, grapes: ["Chenin Blanc"]}
+- {name: "Touraine", country: FR, parent: "Loire Valley", classification: AOC, grapes: ["Sauvignon Blanc", "Chenin Blanc", "Cabernet Franc", "Gamay", "Malbec"]}
+- {name: "Touraine Amboise", country: FR, parent: "Touraine", classification: AOC, synonyms: ["Touraine-Amboise"], grapes: ["Chenin Blanc", "Cabernet Franc", "Malbec", "Gamay"]}
+- {name: "Touraine Azay-le-Rideau", country: FR, parent: "Touraine", classification: AOC, synonyms: ["Touraine-Azay-le-Rideau"], grapes: ["Chenin Blanc"]}
+- {name: "Touraine Chenonceaux", country: FR, parent: "Touraine", classification: AOC, synonyms: ["Touraine-Chenonceaux"], grapes: ["Sauvignon Blanc", "Cabernet Franc", "Malbec"]}
+- {name: "Touraine Mesland", country: FR, parent: "Touraine", classification: AOC, synonyms: ["Touraine-Mesland"], grapes: ["Gamay", "Cabernet Franc", "Malbec", "Chenin Blanc"]}
+- {name: "Touraine Oisly", country: FR, parent: "Touraine", classification: AOC, synonyms: ["Touraine-Oisly"], grapes: ["Sauvignon Blanc"]}
+- {name: "Touraine Noble-Joué", country: FR, parent: "Touraine", classification: AOC, synonyms: ["Touraine-Noble-Joué", "Noble Joué"], grapes: ["Pinot Meunier", "Pinot Gris", "Pinot Noir"]}
+- {name: "Vouvray", country: FR, parent: "Touraine", classification: AOC, grapes: ["Chenin Blanc"]}
+- {name: "Montlouis-sur-Loire", country: FR, parent: "Touraine", classification: AOC, synonyms: ["Montlouis"], grapes: ["Chenin Blanc"]}
+- {name: "Chinon", country: FR, parent: "Touraine", classification: AOC, grapes: ["Cabernet Franc", "Chenin Blanc"]}
+- {name: "Bourgueil", country: FR, parent: "Touraine", classification: AOC, grapes: ["Cabernet Franc", "Cabernet Sauvignon"]}
+- {name: "Saint-Nicolas-de-Bourgueil", country: FR, parent: "Touraine", classification: AOC, synonyms: ["St-Nicolas-de-Bourgueil"], grapes: ["Cabernet Franc"]}
+- {name: "Cheverny", country: FR, parent: "Touraine", classification: AOC, grapes: ["Sauvignon Blanc", "Chardonnay", "Gamay", "Cabernet Franc", "Pinot Noir"]}
+- {name: "Cour-Cheverny", country: FR, parent: "Touraine", classification: AOC, grapes: ["Romorantin"]}
+- {name: "Valençay", country: FR, parent: "Touraine", classification: AOC, synonyms: ["Valencay"], grapes: ["Sauvignon Blanc", "Chenin Blanc", "Cabernet Franc", "Malbec", "Gamay", "Pinot Noir"]}
+- {name: "Coteaux du Loir", country: FR, parent: "Touraine", classification: AOC, grapes: ["Chenin Blanc", "Cabernet Franc", "Gamay", "Malbec", "Pineau d'Aunis"]}
+- {name: "Jasnières", country: FR, parent: "Coteaux du Loir", classification: AOC, synonyms: ["Jasnieres"], grapes: ["Chenin Blanc"]}
+- {name: "Coteaux du Vendômois", country: FR, parent: "Touraine", classification: AOC, synonyms: ["Coteaux du Vendomois"], grapes: ["Pineau d'Aunis", "Chenin Blanc", "Cabernet Franc", "Gamay", "Pinot Noir"]}
+- {name: "Centre-Loire", country: FR, parent: "Loire Valley", synonyms: ["Centre Loire", "Central Vineyards", "Vignoble du Centre"]}
+- {name: "Sancerre", country: FR, parent: "Centre-Loire", classification: AOC, grapes: ["Sauvignon Blanc", "Pinot Noir"]}
+- {name: "Pouilly-Fumé", country: FR, parent: "Centre-Loire", classification: AOC, synonyms: ["Pouilly-Fume", "Pouilly Fumé", "Pouilly Fume"], grapes: ["Sauvignon Blanc"]}
+- {name: "Pouilly-sur-Loire", country: FR, parent: "Centre-Loire", classification: AOC, grapes: ["Chasselas"]}
+- {name: "Menetou-Salon", country: FR, parent: "Centre-Loire", classification: AOC, synonyms: ["Menetou Salon"], grapes: ["Sauvignon Blanc", "Pinot Noir"]}
+- {name: "Quincy", country: FR, parent: "Centre-Loire", classification: AOC, grapes: ["Sauvignon Blanc"]}
+- {name: "Reuilly", country: FR, parent: "Centre-Loire", classification: AOC, grapes: ["Sauvignon Blanc", "Pinot Noir", "Pinot Gris"]}
+- {name: "Coteaux du Giennois", country: FR, parent: "Centre-Loire", classification: AOC, grapes: ["Sauvignon Blanc", "Gamay", "Pinot Noir"]}
+- {name: "Châteaumeillant", country: FR, parent: "Centre-Loire", classification: AOC, synonyms: ["Chateaumeillant"], grapes: ["Gamay", "Pinot Noir"]}
+- {name: "Côte Roannaise", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Cote Roannaise"], grapes: ["Gamay"]}
+- {name: "Côtes du Forez", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Cotes du Forez"], grapes: ["Gamay"]}
+- {name: "Côtes d'Auvergne", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Cotes d'Auvergne"], grapes: ["Gamay", "Pinot Noir", "Chardonnay"]}
+- {name: "Saint-Pourçain", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Saint-Poursain", "St-Pourçain"], grapes: ["Chardonnay", "Sauvignon Blanc", "Gamay", "Pinot Noir", "Tressallier"]}
+- {name: "Alsace", country: FR, classification: AOC}
+- {name: "Crémant d'Alsace", country: FR, parent: "Alsace", classification: AOC, synonyms: ["Cremant d'Alsace"], grapes: ["Pinot Blanc", "Riesling", "Pinot Gris", "Pinot Noir", "Auxerrois Blanc", "Chardonnay"]}
+- {name: "Alsace Grand Cru", country: FR, parent: "Alsace", classification: AOC}
+- {name: "Altenberg de Bergbieten", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Altenberg de Bergheim", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Altenberg de Wolxheim", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Brand", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Bruderthal", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Eichberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Engelberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Florimont", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Frankstein", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Froehn", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Furstentum", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Geisberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Gloeckelberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Goldert", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Hatschbourg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Hengst", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Kaefferkopf", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Kanzlerberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Kastelberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Kessler", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Kirchberg de Barr", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Kirchberg de Ribeauvillé", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Kitterlé", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Mambourg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Mandelberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Marckrain", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Moenchberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Muenchberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Ollwiller", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Osterberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Pfersigberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Pfingstberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Praelatenberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Rangen", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Rosacker", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Saering", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Schlossberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Schoenenbourg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Sommerberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Sonnenglanz", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Spiegel", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Sporen", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Steinert", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Steingrubler", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Steinklotz", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Vorbourg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Wiebelsberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Wineck-Schlossberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Winzenberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Zinnkoepflé", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Riesling", "Gewürztraminer", "Pinot Gris", "Muscat"]}
+- {name: "Zotzenberg", country: FR, parent: "Alsace Grand Cru", classification: AOC, grapes: ["Sylvaner", "Riesling", "Gewürztraminer", "Pinot Gris"]}
+- {name: "Champagne", country: FR, classification: AOC, grapes: ["Chardonnay", "Pinot Noir", "Pinot Meunier"]}
+- {name: "Coteaux Champenois", country: FR, parent: "Champagne", classification: AOC, grapes: ["Chardonnay", "Pinot Noir", "Pinot Meunier"]}
+- {name: "Rosé des Riceys", country: FR, parent: "Champagne", classification: AOC, synonyms: ["Rose des Riceys"], grapes: ["Pinot Noir"]}
 - {name: "Côte des Blancs", country: FR, parent: "Champagne", synonyms: ["Cote des Blancs"]}
 - {name: "Montagne de Reims", country: FR, parent: "Champagne"}
 - {name: "Vallée de la Marne", country: FR, parent: "Champagne", synonyms: ["Vallee de la Marne"]}
+- {name: "Côte de Sézanne", country: FR, parent: "Champagne", synonyms: ["Cote de Sezanne", "Côte de Sézanne"]}
 - {name: "Côte des Bar", country: FR, parent: "Champagne", synonyms: ["Cote des Bar", "Aube"]}
-- {name: "Loire Valley", country: FR, synonyms: ["Loire", "Val de Loire", "Vallée de la Loire", "Vallee de la Loire"]}
-- {name: "Sancerre", country: FR, parent: "Loire Valley", classification: AOC}
-- {name: "Pouilly-Fumé", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Pouilly-Fume", "Pouilly Fumé", "Pouilly Fume"]}
-- {name: "Menetou-Salon", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Menetou Salon"]}
-- {name: "Quincy", country: FR, parent: "Loire Valley", classification: AOC}
-- {name: "Reuilly", country: FR, parent: "Loire Valley", classification: AOC}
-- {name: "Touraine", country: FR, parent: "Loire Valley", classification: AOC}
-- {name: "Vouvray", country: FR, parent: "Touraine", classification: AOC}
-- {name: "Montlouis-sur-Loire", country: FR, parent: "Touraine", classification: AOC, synonyms: ["Montlouis"]}
-- {name: "Chinon", country: FR, parent: "Touraine", classification: AOC}
-- {name: "Bourgueil", country: FR, parent: "Touraine", classification: AOC}
-- {name: "Saint-Nicolas-de-Bourgueil", country: FR, parent: "Touraine", classification: AOC, synonyms: ["St-Nicolas-de-Bourgueil"]}
-- {name: "Cheverny", country: FR, parent: "Touraine", classification: AOC, synonyms: ["Cour-Cheverny"]}
-- {name: "Anjou", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Anjou-Saumur", "Rosé d'Anjou", "Cabernet d'Anjou"]}
-- {name: "Savennières", country: FR, parent: "Anjou", classification: AOC, synonyms: ["Savennieres"]}
-- {name: "Coteaux du Layon", country: FR, parent: "Anjou", classification: AOC}
-- {name: "Quarts de Chaume", country: FR, parent: "Coteaux du Layon", classification: AOC}
-- {name: "Bonnezeaux", country: FR, parent: "Coteaux du Layon", classification: AOC}
-- {name: "Saumur", country: FR, parent: "Loire Valley", classification: AOC}
-- {name: "Saumur-Champigny", country: FR, parent: "Saumur", classification: AOC, synonyms: ["Saumur Champigny"]}
-- {name: "Muscadet", country: FR, parent: "Loire Valley", classification: AOC, synonyms: ["Muscadet Sèvre et Maine", "Muscadet-Sèvre-et-Maine", "Muscadet Sevre et Maine", "Pays Nantais"]}
+- {name: "Mailly-Champagne", country: FR, parent: "Montagne de Reims", synonyms: ["Mailly"]}
+- {name: "Verzenay", country: FR, parent: "Montagne de Reims"}
+- {name: "Verzy", country: FR, parent: "Montagne de Reims"}
+- {name: "Sillery", country: FR, parent: "Montagne de Reims"}
+- {name: "Puisieulx", country: FR, parent: "Montagne de Reims", synonyms: ["Puisieux"]}
+- {name: "Beaumont-sur-Vesle", country: FR, parent: "Montagne de Reims"}
+- {name: "Louvois", country: FR, parent: "Montagne de Reims"}
+- {name: "Ambonnay", country: FR, parent: "Montagne de Reims"}
+- {name: "Bouzy", country: FR, parent: "Montagne de Reims"}
+- {name: "Tours-sur-Marne", country: FR, parent: "Vallée de la Marne"}
+- {name: "Aÿ", country: FR, parent: "Vallée de la Marne", synonyms: ["Ay", "Aÿ-Champagne", "Ay-Champagne"]}
+- {name: "Avize", country: FR, parent: "Côte des Blancs"}
+- {name: "Chouilly", country: FR, parent: "Côte des Blancs"}
+- {name: "Cramant", country: FR, parent: "Côte des Blancs"}
+- {name: "Oger", country: FR, parent: "Côte des Blancs"}
+- {name: "Oiry", country: FR, parent: "Côte des Blancs"}
+- {name: "Le Mesnil-sur-Oger", country: FR, parent: "Côte des Blancs"}
+- {name: "Côtes de Toul", country: FR, classification: AOC, synonyms: ["Cotes de Toul"], grapes: ["Gamay", "Pinot Noir", "Auxerrois Blanc"]}
+- {name: "Moselle", country: FR, classification: AOC, grapes: ["Pinot Blanc", "Auxerrois Blanc", "Müller-Thurgau", "Gamay", "Pinot Noir"]}
+- {name: "Val de Loire", country: FR, parent: "Loire Valley", classification: IGP, synonyms: ["Vin de Pays du Val de Loire"]}
+- {name: "Vin de France", country: FR, classification: Vin de France, synonyms: ["VdF", "Vin de Table", "France (Vin de France)"]}
 - {name: "Rhône Valley", country: FR, synonyms: ["Rhône", "Rhone", "Rhone Valley", "Vallée du Rhône", "Vallee du Rhone"]}
 - {name: "Northern Rhône", country: FR, parent: "Rhône Valley", synonyms: ["Northern Rhone", "Rhône Septentrional"]}
-- {name: "Côte-Rôtie", country: FR, parent: "Northern Rhône", classification: AOC, synonyms: ["Cote-Rotie", "Côte Rôtie", "Cote Rotie"]}
-- {name: "Condrieu", country: FR, parent: "Northern Rhône", classification: AOC}
-- {name: "Château-Grillet", country: FR, parent: "Northern Rhône", classification: AOC, synonyms: ["Chateau-Grillet"]}
-- {name: "Saint-Joseph", country: FR, parent: "Northern Rhône", classification: AOC, synonyms: ["St-Joseph", "Saint Joseph"]}
-- {name: "Crozes-Hermitage", country: FR, parent: "Northern Rhône", classification: AOC, synonyms: ["Crozes Hermitage"]}
-- {name: "Hermitage", country: FR, parent: "Northern Rhône", classification: AOC}
-- {name: "Cornas", country: FR, parent: "Northern Rhône", classification: AOC}
-- {name: "Saint-Péray", country: FR, parent: "Northern Rhône", classification: AOC, synonyms: ["Saint-Peray", "St-Péray"]}
 - {name: "Southern Rhône", country: FR, parent: "Rhône Valley", synonyms: ["Southern Rhone", "Rhône Méridional"]}
-- {name: "Châteauneuf-du-Pape", country: FR, parent: "Southern Rhône", classification: AOC, synonyms: ["Chateauneuf-du-Pape", "Châteauneuf du Pape", "Chateauneuf du Pape", "CdP"]}
-- {name: "Gigondas", country: FR, parent: "Southern Rhône", classification: AOC}
-- {name: "Vacqueyras", country: FR, parent: "Southern Rhône", classification: AOC}
-- {name: "Rasteau", country: FR, parent: "Southern Rhône", classification: AOC}
-- {name: "Cairanne", country: FR, parent: "Southern Rhône", classification: AOC}
-- {name: "Beaumes-de-Venise", country: FR, parent: "Southern Rhône", classification: AOC, synonyms: ["Beaumes de Venise", "Muscat de Beaumes-de-Venise"]}
-- {name: "Vinsobres", country: FR, parent: "Southern Rhône", classification: AOC}
-- {name: "Lirac", country: FR, parent: "Southern Rhône", classification: AOC}
-- {name: "Tavel", country: FR, parent: "Southern Rhône", classification: AOC}
-- {name: "Côtes du Rhône", country: FR, parent: "Southern Rhône", classification: AOC, synonyms: ["Cotes du Rhone", "Côtes-du-Rhône", "CDR"]}
-- {name: "Côtes du Rhône Villages", country: FR, parent: "Côtes du Rhône", classification: AOC, synonyms: ["Cotes du Rhone Villages", "Côtes-du-Rhône Villages"]}
-- {name: "Ventoux", country: FR, parent: "Southern Rhône", classification: AOC, synonyms: ["Côtes du Ventoux", "Cotes du Ventoux"]}
-- {name: "Luberon", country: FR, parent: "Southern Rhône", classification: AOC, synonyms: ["Côtes du Luberon"]}
-- {name: "Costières de Nîmes", country: FR, parent: "Southern Rhône", classification: AOC, synonyms: ["Costieres de Nimes"]}
-- {name: "Alsace", country: FR, classification: AOC, synonyms: ["Alsace Grand Cru", "Crémant d'Alsace"]}
+- {name: "Côte-Rôtie", country: FR, parent: "Northern Rhône", classification: AOC, synonyms: ["Cote-Rotie", "Côte Rôtie", "Cote Rotie"], grapes: ["Syrah", "Viognier"]}
+- {name: "Condrieu", country: FR, parent: "Northern Rhône", classification: AOC, grapes: ["Viognier"]}
+- {name: "Château-Grillet", country: FR, parent: "Northern Rhône", classification: AOC, synonyms: ["Chateau-Grillet"], grapes: ["Viognier"]}
+- {name: "Saint-Joseph", country: FR, parent: "Northern Rhône", classification: AOC, synonyms: ["St-Joseph", "Saint Joseph"], grapes: ["Syrah", "Marsanne", "Roussanne"]}
+- {name: "Crozes-Hermitage", country: FR, parent: "Northern Rhône", classification: AOC, synonyms: ["Crozes Hermitage"], grapes: ["Syrah", "Marsanne", "Roussanne"]}
+- {name: "Hermitage", country: FR, parent: "Northern Rhône", classification: AOC, synonyms: ["Ermitage", "L'Hermitage", "L'Ermitage"], grapes: ["Syrah", "Marsanne", "Roussanne"]}
+- {name: "Cornas", country: FR, parent: "Northern Rhône", classification: AOC, grapes: ["Syrah"]}
+- {name: "Saint-Péray", country: FR, parent: "Northern Rhône", classification: AOC, synonyms: ["Saint-Peray", "St-Péray"], grapes: ["Marsanne", "Roussanne"]}
+- {name: "Côtes du Rhône", country: FR, parent: "Southern Rhône", classification: AOC, synonyms: ["Cotes du Rhone", "Côtes-du-Rhône", "CDR"], grapes: ["Grenache", "Syrah", "Mourvèdre", "Bourboulenc", "Clairette", "Grenache Blanc", "Marsanne", "Roussanne", "Viognier"]}
+- {name: "Côtes du Rhône Villages", country: FR, parent: "Côtes du Rhône", classification: AOC, synonyms: ["Cotes du Rhone Villages", "Côtes-du-Rhône Villages"], grapes: ["Grenache", "Syrah", "Mourvèdre", "Bourboulenc", "Clairette", "Grenache Blanc", "Marsanne", "Roussanne", "Viognier"]}
+- {name: "Côtes du Rhône Villages Chusclan", country: FR, parent: "Côtes du Rhône Villages", classification: AOC, synonyms: ["Côtes-du-Rhône Villages Chusclan"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Rhône Villages Gadagne", country: FR, parent: "Côtes du Rhône Villages", classification: AOC, synonyms: ["Côtes-du-Rhône Villages Gadagne"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Rhône Villages Massif d'Uchaux", country: FR, parent: "Côtes du Rhône Villages", classification: AOC, synonyms: ["Côtes-du-Rhône Villages Massif d'Uchaux"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Rhône Villages Nyons", country: FR, parent: "Côtes du Rhône Villages", classification: AOC, synonyms: ["Côtes-du-Rhône Villages Nyons"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Rhône Villages Plan de Dieu", country: FR, parent: "Côtes du Rhône Villages", classification: AOC, synonyms: ["Côtes-du-Rhône Villages Plan de Dieu"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Rhône Villages Puyméras", country: FR, parent: "Côtes du Rhône Villages", classification: AOC, synonyms: ["Côtes-du-Rhône Villages Puymeras"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Rhône Villages Roaix", country: FR, parent: "Côtes du Rhône Villages", classification: AOC, synonyms: ["Côtes-du-Rhône Villages Roaix"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Rhône Villages Rochegude", country: FR, parent: "Côtes du Rhône Villages", classification: AOC, synonyms: ["Côtes-du-Rhône Villages Rochegude"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Rhône Villages Rousset-les-Vignes", country: FR, parent: "Côtes du Rhône Villages", classification: AOC, synonyms: ["Côtes-du-Rhône Villages Rousset les Vignes"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Rhône Villages Sablet", country: FR, parent: "Côtes du Rhône Villages", classification: AOC, synonyms: ["Côtes-du-Rhône Villages Sablet"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Rhône Villages Saint-Andéol", country: FR, parent: "Côtes du Rhône Villages", classification: AOC, synonyms: ["Côtes-du-Rhône Villages Saint Andeol"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Rhône Villages Saint-Gervais", country: FR, parent: "Côtes du Rhône Villages", classification: AOC, synonyms: ["Côtes-du-Rhône Villages Saint Gervais"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Rhône Villages Saint-Maurice", country: FR, parent: "Côtes du Rhône Villages", classification: AOC, synonyms: ["Côtes-du-Rhône Villages Saint Maurice", "Saint-Maurice-sur-Eygues"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Rhône Villages Saint-Pantaléon-les-Vignes", country: FR, parent: "Côtes du Rhône Villages", classification: AOC, synonyms: ["Côtes-du-Rhône Villages Saint Pantaleon les Vignes"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Rhône Villages Sainte-Cécile", country: FR, parent: "Côtes du Rhône Villages", classification: AOC, synonyms: ["Côtes-du-Rhône Villages Sainte Cecile"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Rhône Villages Séguret", country: FR, parent: "Côtes du Rhône Villages", classification: AOC, synonyms: ["Côtes-du-Rhône Villages Seguret"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Rhône Villages Signargues", country: FR, parent: "Côtes du Rhône Villages", classification: AOC, synonyms: ["Côtes-du-Rhône Villages Signargues"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Rhône Villages Suze-la-Rousse", country: FR, parent: "Côtes du Rhône Villages", classification: AOC, synonyms: ["Côtes-du-Rhône Villages Suze la Rousse"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Rhône Villages Vaison-la-Romaine", country: FR, parent: "Côtes du Rhône Villages", classification: AOC, synonyms: ["Côtes-du-Rhône Villages Vaison la Romaine"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Rhône Villages Valréas", country: FR, parent: "Côtes du Rhône Villages", classification: AOC, synonyms: ["Côtes-du-Rhône Villages Valreas"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Rhône Villages Visan", country: FR, parent: "Côtes du Rhône Villages", classification: AOC, synonyms: ["Côtes-du-Rhône Villages Visan"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Gigondas", country: FR, parent: "Southern Rhône", classification: AOC, grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Vacqueyras", country: FR, parent: "Southern Rhône", classification: AOC, grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Rasteau", country: FR, parent: "Southern Rhône", classification: AOC, grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Cairanne", country: FR, parent: "Southern Rhône", classification: AOC, grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Vinsobres", country: FR, parent: "Southern Rhône", classification: AOC, grapes: ["Grenache", "Mourvèdre", "Syrah"]}
+- {name: "Laudun", country: FR, parent: "Southern Rhône", classification: AOC, synonyms: ["Côtes du Rhône Laudun", "Laudun-l'Ardoise"], grapes: ["Grenache", "Syrah"]}
+- {name: "Beaumes-de-Venise", country: FR, parent: "Southern Rhône", classification: AOC, synonyms: ["Beaumes de Venise"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Muscat de Beaumes-de-Venise", country: FR, parent: "Southern Rhône", classification: AOC, grapes: ["Muscat Blanc à Petits Grains"]}
+- {name: "Lirac", country: FR, parent: "Southern Rhône", classification: AOC, grapes: ["Grenache", "Syrah", "Mourvèdre", "Cinsault"]}
+- {name: "Tavel", country: FR, parent: "Southern Rhône", classification: AOC, grapes: ["Grenache", "Cinsault", "Clairette", "Picpoul Blanc", "Calitor", "Bourboulenc", "Mourvèdre", "Syrah"]}
+- {name: "Ventoux", country: FR, parent: "Southern Rhône", classification: AOC, synonyms: ["Côtes du Ventoux", "Cotes du Ventoux"], grapes: ["Grenache", "Syrah", "Mourvèdre", "Cinsault", "Carignan"]}
+- {name: "Luberon", country: FR, parent: "Southern Rhône", classification: AOC, synonyms: ["Côtes du Luberon"], grapes: ["Grenache", "Syrah", "Mourvèdre", "Carignan", "Cinsault"]}
+- {name: "Grignan-les-Adhémar", country: FR, parent: "Southern Rhône", classification: AOC, synonyms: ["Grignan les Adhemar", "Coteaux du Tricastin"], grapes: ["Grenache", "Syrah", "Mourvèdre", "Viognier", "Grenache Blanc", "Marsanne", "Roussanne"]}
+- {name: "Costières de Nîmes", country: FR, parent: "Southern Rhône", classification: AOC, synonyms: ["Costieres de Nimes"], grapes: ["Grenache", "Syrah", "Mourvèdre", "Cinsault", "Carignan", "Grenache Blanc", "Marsanne", "Roussanne"]}
+- {name: "Clairette de Die", country: FR, parent: "Southern Rhône", classification: AOC, grapes: ["Muscat Blanc à Petits Grains", "Clairette"]}
+- {name: "Crémant de Die", country: FR, parent: "Southern Rhône", classification: AOC, grapes: ["Clairette", "Aligoté", "Muscat Blanc à Petits Grains"]}
+- {name: "Châtillon-en-Diois", country: FR, parent: "Southern Rhône", classification: AOC, grapes: ["Gamay", "Pinot Noir", "Chardonnay", "Aligoté"]}
+- {name: "Duché d'Uzès", country: FR, parent: "Southern Rhône", classification: AOC, grapes: ["Grenache", "Syrah", "Mourvèdre", "Carignan", "Grenache Blanc"]}
+- {name: "Côtes du Vivarais", country: FR, parent: "Southern Rhône", classification: AOC, grapes: ["Grenache", "Syrah", "Cinsault"]}
 - {name: "Provence", country: FR}
-- {name: "Côtes de Provence", country: FR, parent: "Provence", classification: AOC, synonyms: ["Cotes de Provence", "Côtes de Provence Sainte-Victoire"]}
-- {name: "Bandol", country: FR, parent: "Provence", classification: AOC}
-- {name: "Cassis", country: FR, parent: "Provence", classification: AOC}
-- {name: "Bellet", country: FR, parent: "Provence", classification: AOC}
-- {name: "Coteaux d'Aix-en-Provence", country: FR, parent: "Provence", classification: AOC, synonyms: ["Coteaux d'Aix", "Aix-en-Provence"]}
-- {name: "Coteaux Varois en Provence", country: FR, parent: "Provence", classification: AOC, synonyms: ["Coteaux Varois"]}
-- {name: "Les Baux-de-Provence", country: FR, parent: "Provence", classification: AOC, synonyms: ["Les Baux de Provence", "Baux-de-Provence"]}
+- {name: "Côtes de Provence", country: FR, parent: "Provence", classification: AOC, synonyms: ["Cotes de Provence"], grapes: ["Grenache", "Cinsault", "Syrah", "Mourvèdre", "Tibouren"]}
+- {name: "Côtes de Provence Sainte-Victoire", country: FR, parent: "Côtes de Provence", classification: AOC, synonyms: ["Cotes de Provence Sainte-Victoire", "Sainte-Victoire"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes de Provence Fréjus", country: FR, parent: "Côtes de Provence", classification: AOC, synonyms: ["Cotes de Provence Frejus"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes de Provence La Londe", country: FR, parent: "Côtes de Provence", classification: AOC, synonyms: ["Cotes de Provence La Londe"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes de Provence Pierrefeu", country: FR, parent: "Côtes de Provence", classification: AOC, synonyms: ["Cotes de Provence Pierrefeu"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Côtes de Provence Notre-Dame-des-Anges", country: FR, parent: "Côtes de Provence", classification: AOC, synonyms: ["Cotes de Provence Notre Dame des Anges"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Coteaux d'Aix-en-Provence", country: FR, parent: "Provence", classification: AOC, synonyms: ["Coteaux d'Aix", "Aix-en-Provence"], grapes: ["Grenache", "Cinsault", "Syrah", "Mourvèdre", "Cabernet Sauvignon"]}
+- {name: "Coteaux Varois en Provence", country: FR, parent: "Provence", classification: AOC, synonyms: ["Coteaux Varois"], grapes: ["Grenache", "Cinsault", "Syrah", "Mourvèdre"]}
+- {name: "Bandol", country: FR, parent: "Provence", classification: AOC, grapes: ["Mourvèdre", "Grenache", "Cinsault"]}
+- {name: "Cassis", country: FR, parent: "Provence", classification: AOC, grapes: ["Clairette", "Marsanne", "Ugni Blanc", "Bourboulenc", "Sauvignon Blanc"]}
+- {name: "Bellet", country: FR, parent: "Provence", classification: AOC, synonyms: ["Vin de Bellet"], grapes: ["Braquet", "Vermentino"]}
+- {name: "Palette", country: FR, parent: "Provence", classification: AOC, grapes: ["Grenache", "Mourvèdre", "Cinsault", "Clairette"]}
+- {name: "Les Baux-de-Provence", country: FR, parent: "Provence", classification: AOC, synonyms: ["Les Baux de Provence", "Baux-de-Provence"], grapes: ["Grenache", "Syrah", "Mourvèdre", "Cinsault", "Cabernet Sauvignon", "Counoise"]}
+- {name: "Pierrevert", country: FR, parent: "Provence", classification: AOC, synonyms: ["Coteaux de Pierrevert"], grapes: ["Grenache", "Syrah", "Cinsault", "Grenache Blanc", "Vermentino"]}
+- {name: "Corsica", country: FR, synonyms: ["Corse"]}
+- {name: "Île de Beauté", country: FR, parent: "Corsica", classification: IGP, synonyms: ["Ile de Beaute", "IGP Île de Beauté"]}
+- {name: "Vin de Corse", country: FR, parent: "Corsica", classification: AOC, synonyms: ["Corse (AOC)"], grapes: ["Nielluccio", "Sciacarello", "Grenache", "Vermentino"]}
+- {name: "Vin de Corse Calvi", country: FR, parent: "Vin de Corse", classification: AOC, synonyms: ["Calvi"], grapes: ["Nielluccio", "Sciacarello", "Grenache", "Vermentino"]}
+- {name: "Vin de Corse Coteaux du Cap Corse", country: FR, parent: "Vin de Corse", classification: AOC, synonyms: ["Coteaux du Cap Corse"], grapes: ["Vermentino", "Grenache"]}
+- {name: "Vin de Corse Figari", country: FR, parent: "Vin de Corse", classification: AOC, synonyms: ["Figari"], grapes: ["Nielluccio", "Sciacarello", "Vermentino"]}
+- {name: "Vin de Corse Porto-Vecchio", country: FR, parent: "Vin de Corse", classification: AOC, synonyms: ["Porto-Vecchio", "Porto Vecchio"], grapes: ["Nielluccio", "Sciacarello", "Vermentino"]}
+- {name: "Vin de Corse Sartène", country: FR, parent: "Vin de Corse", classification: AOC, synonyms: ["Sartène", "Sartene"], grapes: ["Nielluccio", "Sciacarello", "Vermentino"]}
+- {name: "Patrimonio", country: FR, parent: "Corsica", classification: AOC, grapes: ["Nielluccio", "Vermentino"]}
+- {name: "Ajaccio", country: FR, parent: "Corsica", classification: AOC, grapes: ["Sciacarello", "Nielluccio", "Vermentino"]}
+- {name: "Muscat du Cap Corse", country: FR, parent: "Corsica", classification: AOC, grapes: ["Muscat Blanc à Petits Grains"]}
 - {name: "Languedoc-Roussillon", country: FR, synonyms: ["Languedoc Roussillon", "Occitanie"]}
-- {name: "Languedoc", country: FR, parent: "Languedoc-Roussillon", classification: AOC, synonyms: ["Coteaux du Languedoc", "Languedoc AOC"]}
-- {name: "Picpoul de Pinet", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Picpoul de Pinet AOC", "Pinet"]}
-- {name: "Corbières", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Corbieres", "Corbières-Boutenac"]}
-- {name: "Minervois", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Minervois La Livinière"]}
-- {name: "Saint-Chinian", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["St-Chinian", "Saint Chinian"]}
-- {name: "Faugères", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Faugeres"]}
-- {name: "Fitou", country: FR, parent: "Languedoc", classification: AOC}
-- {name: "La Clape", country: FR, parent: "Languedoc", classification: AOC}
-- {name: "Pic Saint-Loup", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Pic St-Loup", "Pic Saint Loup"]}
-- {name: "Terrasses du Larzac", country: FR, parent: "Languedoc", classification: AOC}
-- {name: "Limoux", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Blanquette de Limoux", "Crémant de Limoux"]}
-- {name: "Cabardès", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Cabardes"]}
-- {name: "Roussillon", country: FR, parent: "Languedoc-Roussillon", classification: AOC, synonyms: ["Côtes du Roussillon", "Cotes du Roussillon", "Côtes-du-Roussillon"]}
-- {name: "Côtes du Roussillon Villages", country: FR, parent: "Roussillon", classification: AOC, synonyms: ["Cotes du Roussillon Villages", "Côtes-du-Roussillon Villages"]}
-- {name: "Collioure", country: FR, parent: "Roussillon", classification: AOC}
-- {name: "Banyuls", country: FR, parent: "Roussillon", classification: AOC}
-- {name: "Maury", country: FR, parent: "Roussillon", classification: AOC}
-- {name: "Rivesaltes", country: FR, parent: "Roussillon", classification: AOC, synonyms: ["Muscat de Rivesaltes"]}
+- {name: "Languedoc", country: FR, parent: "Languedoc-Roussillon", classification: AOC, synonyms: ["Coteaux du Languedoc", "Languedoc AOC"], grapes: ["Syrah", "Grenache", "Mourvèdre", "Carignan", "Cinsault", "Grenache Blanc", "Bourboulenc", "Clairette", "Marsanne", "Roussanne", "Viognier", "Vermentino", "Picpoul Blanc"]}
+- {name: "Pic Saint-Loup", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Pic St-Loup", "Pic Saint Loup"], grapes: ["Syrah", "Grenache", "Mourvèdre"]}
+- {name: "Terrasses du Larzac", country: FR, parent: "Languedoc", classification: AOC, grapes: ["Syrah", "Grenache", "Mourvèdre", "Carignan"]}
+- {name: "La Clape", country: FR, parent: "Languedoc", classification: AOC, grapes: ["Syrah", "Grenache", "Mourvèdre", "Bourboulenc"]}
+- {name: "Languedoc Pézenas", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Pézenas"], grapes: ["Syrah", "Grenache", "Mourvèdre", "Carignan"]}
+- {name: "Grès de Montpellier", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Languedoc Grès de Montpellier"], grapes: ["Syrah", "Grenache", "Mourvèdre"]}
+- {name: "Languedoc Cabrières", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Cabrières"], grapes: ["Cinsault", "Grenache", "Syrah"]}
+- {name: "Languedoc La Méjanelle", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["La Méjanelle"], grapes: ["Syrah", "Grenache", "Mourvèdre"]}
+- {name: "Languedoc Quatourze", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Quatourze"], grapes: ["Syrah", "Grenache", "Mourvèdre"]}
+- {name: "Languedoc Saint-Christol", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Saint-Christol"], grapes: ["Syrah", "Grenache", "Mourvèdre"]}
+- {name: "Languedoc Saint-Drézéry", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Saint-Drézéry"], grapes: ["Syrah", "Grenache", "Mourvèdre"]}
+- {name: "Languedoc Saint-Georges-d'Orques", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Saint-Georges-d'Orques"], grapes: ["Syrah", "Grenache", "Mourvèdre"]}
+- {name: "Languedoc Saint-Saturnin", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Saint-Saturnin"], grapes: ["Syrah", "Grenache", "Mourvèdre"]}
+- {name: "Languedoc Sommières", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Sommières"], grapes: ["Syrah", "Grenache", "Mourvèdre"]}
+- {name: "Picpoul de Pinet", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Picpoul de Pinet AOC", "Pinet", "Coteaux du Languedoc Picpoul-de-Pinet"], grapes: ["Picpoul Blanc"]}
+- {name: "Corbières", country: FR, parent: "Languedoc-Roussillon", classification: AOC, synonyms: ["Corbieres"], grapes: ["Carignan", "Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Boutenac", country: FR, parent: "Corbières", classification: AOC, synonyms: ["Corbières-Boutenac", "Corbieres-Boutenac"], grapes: ["Carignan", "Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Minervois", country: FR, parent: "Languedoc-Roussillon", classification: AOC, grapes: ["Grenache", "Syrah", "Mourvèdre", "Carignan", "Cinsault"]}
+- {name: "Minervois-La Livinière", country: FR, parent: "Minervois", classification: AOC, synonyms: ["Minervois La Livinière", "La Livinière"], grapes: ["Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Faugères", country: FR, parent: "Languedoc-Roussillon", classification: AOC, synonyms: ["Faugeres"], grapes: ["Syrah", "Grenache", "Mourvèdre", "Carignan"]}
+- {name: "Saint-Chinian", country: FR, parent: "Languedoc-Roussillon", classification: AOC, synonyms: ["St-Chinian", "Saint Chinian"], grapes: ["Syrah", "Grenache", "Mourvèdre", "Carignan"]}
+- {name: "Fitou", country: FR, parent: "Languedoc-Roussillon", classification: AOC, grapes: ["Carignan", "Grenache", "Syrah", "Mourvèdre"]}
+- {name: "Limoux", country: FR, parent: "Languedoc-Roussillon", classification: AOC, grapes: ["Chardonnay", "Chenin Blanc", "Mauzac", "Merlot", "Cabernet Franc", "Cabernet Sauvignon", "Malbec", "Syrah", "Grenache"]}
+- {name: "Blanquette de Limoux", country: FR, parent: "Limoux", classification: AOC, grapes: ["Mauzac", "Chardonnay", "Chenin Blanc"]}
+- {name: "Crémant de Limoux", country: FR, parent: "Limoux", classification: AOC, grapes: ["Chardonnay", "Chenin Blanc", "Mauzac", "Pinot Noir"]}
+- {name: "Cabardès", country: FR, parent: "Languedoc-Roussillon", classification: AOC, synonyms: ["Cabardes"], grapes: ["Merlot", "Cabernet Franc", "Cabernet Sauvignon", "Syrah", "Grenache"]}
+- {name: "Malepère", country: FR, parent: "Languedoc-Roussillon", classification: AOC, synonyms: ["Malepere", "Côtes de la Malepère"], grapes: ["Merlot", "Cabernet Franc", "Malbec", "Cabernet Sauvignon", "Cinsault", "Grenache"]}
+- {name: "Clairette du Languedoc", country: FR, parent: "Languedoc-Roussillon", classification: AOC, grapes: ["Clairette"]}
+- {name: "Muscat de Frontignan", country: FR, parent: "Languedoc-Roussillon", classification: AOC, grapes: ["Muscat Blanc à Petits Grains"]}
+- {name: "Muscat de Lunel", country: FR, parent: "Languedoc-Roussillon", classification: AOC, grapes: ["Muscat Blanc à Petits Grains"]}
+- {name: "Muscat de Mireval", country: FR, parent: "Languedoc-Roussillon", classification: AOC, grapes: ["Muscat Blanc à Petits Grains"]}
+- {name: "Muscat de Saint-Jean-de-Minervois", country: FR, parent: "Languedoc-Roussillon", classification: AOC, grapes: ["Muscat Blanc à Petits Grains"]}
+- {name: "Roussillon", country: FR, parent: "Languedoc-Roussillon", synonyms: ["Le Roussillon"]}
+- {name: "Côtes du Roussillon", country: FR, parent: "Roussillon", classification: AOC, synonyms: ["Cotes du Roussillon", "Côtes-du-Roussillon"], grapes: ["Grenache", "Syrah", "Carignan", "Mourvèdre"]}
+- {name: "Côtes du Roussillon Villages", country: FR, parent: "Roussillon", classification: AOC, synonyms: ["Cotes du Roussillon Villages", "Côtes-du-Roussillon Villages"], grapes: ["Grenache", "Carignan", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Roussillon Villages Caramany", country: FR, parent: "Côtes du Roussillon Villages", classification: AOC, synonyms: ["Caramany"], grapes: ["Grenache", "Carignan", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Roussillon Villages Latour-de-France", country: FR, parent: "Côtes du Roussillon Villages", classification: AOC, synonyms: ["Latour-de-France"], grapes: ["Grenache", "Carignan", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Roussillon Villages Les Aspres", country: FR, parent: "Côtes du Roussillon Villages", classification: AOC, synonyms: ["Les Aspres"], grapes: ["Grenache", "Carignan", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Roussillon Villages Lesquerde", country: FR, parent: "Côtes du Roussillon Villages", classification: AOC, synonyms: ["Lesquerde"], grapes: ["Grenache", "Carignan", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Roussillon Villages Tautavel", country: FR, parent: "Côtes du Roussillon Villages", classification: AOC, synonyms: ["Tautavel"], grapes: ["Grenache", "Carignan", "Syrah", "Mourvèdre"]}
+- {name: "Collioure", country: FR, parent: "Roussillon", classification: AOC, grapes: ["Grenache", "Syrah", "Mourvèdre", "Carignan"]}
+- {name: "Banyuls", country: FR, parent: "Roussillon", classification: AOC, grapes: ["Grenache", "Grenache Gris", "Grenache Blanc"]}
+- {name: "Banyuls Grand Cru", country: FR, parent: "Banyuls", classification: AOC, grapes: ["Grenache"]}
+- {name: "Maury", country: FR, parent: "Roussillon", classification: AOC, grapes: ["Grenache"]}
+- {name: "Maury Sec", country: FR, parent: "Roussillon", classification: AOC, grapes: ["Grenache", "Carignan", "Syrah", "Mourvèdre"]}
+- {name: "Rivesaltes", country: FR, parent: "Roussillon", classification: AOC, grapes: ["Grenache", "Grenache Blanc", "Grenache Gris", "Macabeu", "Muscat Blanc à Petits Grains", "Muscat d'Alexandrie"]}
+- {name: "Muscat de Rivesaltes", country: FR, parent: "Roussillon", classification: AOC, grapes: ["Muscat Blanc à Petits Grains", "Muscat d'Alexandrie"]}
 - {name: "Pays d'Oc", country: FR, parent: "Languedoc-Roussillon", classification: IGP, synonyms: ["Pays d'Oc IGP", "IGP Pays d'Oc", "Vin de Pays d'Oc", "Pays dOc", "Oc"]}
-- {name: "Jura", country: FR, synonyms: ["Côtes du Jura", "Cotes du Jura"]}
-- {name: "Arbois", country: FR, parent: "Jura", classification: AOC}
-- {name: "Château-Chalon", country: FR, parent: "Jura", classification: AOC, synonyms: ["Chateau-Chalon"]}
-- {name: "Savoie", country: FR, synonyms: ["Savoy", "Vin de Savoie", "Bugey"]}
+- {name: "Méditerranée", country: FR, classification: IGP}
+- {name: "Côtes Catalanes", country: FR, parent: "Roussillon", classification: IGP, synonyms: ["Cotes Catalanes"]}
+- {name: "Vaucluse", country: FR, parent: "Southern Rhône", classification: IGP}
+- {name: "Gard", country: FR, parent: "Languedoc-Roussillon", classification: IGP}
+- {name: "Hérault", country: FR, parent: "Languedoc-Roussillon", classification: IGP, synonyms: ["Pays d'Hérault"]}
+- {name: "Aude", country: FR, parent: "Languedoc-Roussillon", classification: IGP}
+- {name: "Côtes de Thongue", country: FR, parent: "Languedoc-Roussillon", classification: IGP, synonyms: ["Cotes de Thongue"]}
+- {name: "Collines Rhodaniennes", country: FR, parent: "Northern Rhône", classification: IGP}
+- {name: "Comtés Rhodaniens", country: FR, parent: "Rhône Valley", classification: IGP, synonyms: ["Comtes Rhodaniens"]}
+- {name: "Ardèche", country: FR, parent: "Rhône Valley", classification: IGP, synonyms: ["Ardeche", "Coteaux de l'Ardèche"]}
+- {name: "Alpilles", country: FR, parent: "Provence", classification: IGP, synonyms: ["Vin de Pays des Alpilles"]}
+- {name: "Châteauneuf-du-Pape", country: FR, parent: "Southern Rhône", classification: AOC, synonyms: ["Chateauneuf-du-Pape", "Châteauneuf du Pape", "Chateauneuf du Pape", "CdP"], grapes: ["Grenache", "Syrah", "Mourvèdre", "Cinsault", "Vaccarèse", "Muscardin", "Counoise", "Clairette", "Bourboulenc", "Roussanne", "Picpoul Blanc"]}
+- {name: "Bordeaux", country: FR, classification: AOC, synonyms: ["Bordelais", "Claret"], grapes: ["Cabernet Sauvignon", "Cabernet Franc", "Merlot", "Petit Verdot", "Malbec", "Sauvignon Blanc", "Sémillon", "Muscadelle"]}
+- {name: "Bordeaux Supérieur", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Bordeaux Superieur"], grapes: ["Cabernet Sauvignon", "Cabernet Franc", "Merlot", "Petit Verdot", "Malbec"]}
+- {name: "Bordeaux Clairet", country: FR, parent: "Bordeaux", classification: AOC, grapes: ["Cabernet Sauvignon", "Cabernet Franc", "Merlot"]}
+- {name: "Crémant de Bordeaux", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Cremant de Bordeaux"], grapes: ["Sémillon", "Sauvignon Blanc", "Muscadelle", "Cabernet Franc", "Merlot"]}
+- {name: "Médoc", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Medoc"], grapes: ["Cabernet Sauvignon", "Merlot", "Cabernet Franc", "Petit Verdot"]}
+- {name: "Haut-Médoc", country: FR, parent: "Médoc", classification: AOC, synonyms: ["Haut-Medoc", "Haut Médoc"], grapes: ["Cabernet Sauvignon", "Merlot", "Cabernet Franc", "Petit Verdot"]}
+- {name: "Margaux", country: FR, parent: "Haut-Médoc", classification: AOC, grapes: ["Cabernet Sauvignon", "Merlot", "Cabernet Franc", "Petit Verdot"]}
+- {name: "Pauillac", country: FR, parent: "Haut-Médoc", classification: AOC, grapes: ["Cabernet Sauvignon", "Merlot", "Cabernet Franc", "Petit Verdot"]}
+- {name: "Saint-Julien", country: FR, parent: "Haut-Médoc", classification: AOC, synonyms: ["St-Julien", "St. Julien", "Saint Julien"], grapes: ["Cabernet Sauvignon", "Merlot", "Cabernet Franc", "Petit Verdot"]}
+- {name: "Saint-Estèphe", country: FR, parent: "Haut-Médoc", classification: AOC, synonyms: ["St-Estèphe", "Saint-Estephe", "St. Estephe"], grapes: ["Cabernet Sauvignon", "Merlot", "Cabernet Franc", "Petit Verdot"]}
+- {name: "Listrac-Médoc", country: FR, parent: "Haut-Médoc", classification: AOC, synonyms: ["Listrac"], grapes: ["Cabernet Sauvignon", "Merlot", "Cabernet Franc", "Petit Verdot"]}
+- {name: "Moulis-en-Médoc", country: FR, parent: "Haut-Médoc", classification: AOC, synonyms: ["Moulis"], grapes: ["Cabernet Sauvignon", "Merlot", "Cabernet Franc", "Petit Verdot"]}
+- {name: "Graves", country: FR, parent: "Bordeaux", classification: AOC, grapes: ["Cabernet Sauvignon", "Merlot", "Cabernet Franc", "Sauvignon Blanc", "Sémillon"]}
+- {name: "Graves Supérieures", country: FR, parent: "Graves", classification: AOC, synonyms: ["Graves Superieures"], grapes: ["Sémillon", "Sauvignon Blanc", "Muscadelle"]}
+- {name: "Pessac-Léognan", country: FR, parent: "Graves", classification: AOC, synonyms: ["Pessac-Leognan", "Pessac Léognan"], grapes: ["Cabernet Sauvignon", "Merlot", "Cabernet Franc", "Sauvignon Blanc", "Sémillon"]}
+- {name: "Sauternes", country: FR, parent: "Graves", classification: AOC, grapes: ["Sémillon", "Sauvignon Blanc", "Muscadelle"]}
+- {name: "Barsac", country: FR, parent: "Sauternes", classification: AOC, grapes: ["Sémillon", "Sauvignon Blanc", "Muscadelle"]}
+- {name: "Cérons", country: FR, parent: "Graves", classification: AOC, synonyms: ["Cerons"], grapes: ["Sémillon", "Sauvignon Blanc", "Muscadelle"]}
+- {name: "Loupiac", country: FR, parent: "Bordeaux", classification: AOC, grapes: ["Sémillon", "Sauvignon Blanc", "Muscadelle"]}
+- {name: "Cadillac", country: FR, parent: "Bordeaux", classification: AOC, grapes: ["Sémillon", "Sauvignon Blanc", "Muscadelle"]}
+- {name: "Sainte-Croix-du-Mont", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Sainte-Croix du Mont"], grapes: ["Sémillon", "Sauvignon Blanc", "Muscadelle"]}
+- {name: "Saint-Émilion", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Saint-Emilion", "St-Émilion", "St. Emilion", "St-Emilion", "Saint Emilion"], grapes: ["Merlot", "Cabernet Franc", "Cabernet Sauvignon"]}
+- {name: "Saint-Émilion Grand Cru", country: FR, parent: "Saint-Émilion", classification: AOC, grapes: ["Merlot", "Cabernet Franc", "Cabernet Sauvignon"]}
+- {name: "Lussac-Saint-Émilion", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Lussac-Saint-Emilion", "Lussac Saint-Émilion"], grapes: ["Merlot", "Cabernet Franc", "Cabernet Sauvignon"]}
+- {name: "Montagne-Saint-Émilion", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Montagne-Saint-Emilion", "Montagne Saint-Émilion"], grapes: ["Merlot", "Cabernet Franc", "Cabernet Sauvignon"]}
+- {name: "Puisseguin-Saint-Émilion", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Puisseguin-Saint-Emilion", "Puisseguin Saint-Émilion"], grapes: ["Merlot", "Cabernet Franc", "Cabernet Sauvignon"]}
+- {name: "Saint-Georges-Saint-Émilion", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Saint-Georges-Saint-Emilion", "Saint-Georges Saint-Émilion"], grapes: ["Merlot", "Cabernet Franc", "Cabernet Sauvignon"]}
+- {name: "Pomerol", country: FR, parent: "Bordeaux", classification: AOC, grapes: ["Merlot", "Cabernet Franc", "Cabernet Sauvignon"]}
+- {name: "Lalande-de-Pomerol", country: FR, parent: "Bordeaux", classification: AOC, grapes: ["Merlot", "Cabernet Franc", "Cabernet Sauvignon"]}
+- {name: "Fronsac", country: FR, parent: "Bordeaux", classification: AOC, grapes: ["Merlot", "Cabernet Franc", "Cabernet Sauvignon", "Malbec"]}
+- {name: "Canon-Fronsac", country: FR, parent: "Bordeaux", classification: AOC, grapes: ["Merlot", "Cabernet Franc", "Cabernet Sauvignon", "Malbec"]}
+- {name: "Côtes de Bourg", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Cotes de Bourg", "Bourg"], grapes: ["Merlot", "Cabernet Sauvignon", "Cabernet Franc", "Malbec"]}
+- {name: "Côtes de Bordeaux", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Cotes de Bordeaux"], grapes: ["Merlot", "Cabernet Sauvignon", "Cabernet Franc", "Malbec"]}
+- {name: "Blaye Côtes de Bordeaux", country: FR, parent: "Côtes de Bordeaux", classification: AOC, grapes: ["Merlot", "Cabernet Sauvignon", "Cabernet Franc", "Malbec"]}
+- {name: "Blaye", country: FR, parent: "Bordeaux", classification: AOC, grapes: ["Merlot", "Cabernet Sauvignon", "Cabernet Franc", "Malbec"]}
+- {name: "Côtes de Blaye", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Cotes de Blaye"], grapes: ["Colombard", "Sauvignon Blanc", "Sémillon", "Muscadelle"]}
+- {name: "Cadillac Côtes de Bordeaux", country: FR, parent: "Côtes de Bordeaux", classification: AOC, synonyms: ["Cadillac Cotes de Bordeaux"], grapes: ["Merlot", "Cabernet Sauvignon", "Cabernet Franc", "Malbec"]}
+- {name: "Castillon Côtes de Bordeaux", country: FR, parent: "Côtes de Bordeaux", classification: AOC, synonyms: ["Castillon", "Côtes de Castillon", "Cotes de Castillon"], grapes: ["Merlot", "Cabernet Franc", "Cabernet Sauvignon"]}
+- {name: "Francs Côtes de Bordeaux", country: FR, parent: "Côtes de Bordeaux", classification: AOC, synonyms: ["Bordeaux Côtes de Francs", "Côtes de Francs", "Francs Cotes de Bordeaux"], grapes: ["Merlot", "Cabernet Franc", "Cabernet Sauvignon", "Malbec"]}
+- {name: "Sainte-Foy Côtes de Bordeaux", country: FR, parent: "Côtes de Bordeaux", classification: AOC, synonyms: ["Sainte-Foy Cotes de Bordeaux"], grapes: ["Merlot", "Cabernet Sauvignon", "Cabernet Franc", "Sémillon", "Sauvignon Blanc"]}
+- {name: "Sainte-Foy-Bordeaux", country: FR, parent: "Bordeaux", classification: AOC, grapes: ["Merlot", "Cabernet Sauvignon", "Cabernet Franc", "Sémillon", "Sauvignon Blanc"]}
+- {name: "Entre-Deux-Mers", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Entre Deux Mers"], grapes: ["Sauvignon Blanc", "Sémillon", "Muscadelle"]}
+- {name: "Entre-Deux-Mers Haut-Benauge", country: FR, parent: "Entre-Deux-Mers", classification: AOC, grapes: ["Sauvignon Blanc", "Sémillon", "Muscadelle"]}
+- {name: "Premières Côtes de Bordeaux", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Premieres Cotes de Bordeaux"], grapes: ["Sémillon", "Sauvignon Blanc", "Sauvignon Gris", "Muscadelle"]}
+- {name: "Côtes de Bordeaux-Saint-Macaire", country: FR, parent: "Bordeaux", classification: AOC, synonyms: ["Cotes de Bordeaux-Saint-Macaire", "Bordeaux-Saint-Macaire"], grapes: ["Sémillon", "Sauvignon Blanc", "Muscadelle"]}
+- {name: "Bordeaux Haut-Benauge", country: FR, parent: "Bordeaux", classification: AOC, grapes: ["Sémillon", "Sauvignon Blanc", "Sauvignon Gris", "Muscadelle"]}
+- {name: "Graves de Vayres", country: FR, parent: "Bordeaux", classification: AOC, grapes: ["Merlot", "Cabernet Sauvignon", "Cabernet Franc", "Sauvignon Blanc", "Sémillon"]}
 - {name: "South West France", country: FR, synonyms: ["Sud-Ouest", "Southwest France", "South-West France", "Sud Ouest"]}
-- {name: "Cahors", country: FR, parent: "South West France", classification: AOC}
-- {name: "Madiran", country: FR, parent: "South West France", classification: AOC}
-- {name: "Jurançon", country: FR, parent: "South West France", classification: AOC, synonyms: ["Jurancon"]}
-- {name: "Bergerac", country: FR, parent: "South West France", classification: AOC, synonyms: ["Côtes de Bergerac", "Pécharmant"]}
-- {name: "Monbazillac", country: FR, parent: "Bergerac", classification: AOC}
-- {name: "Gaillac", country: FR, parent: "South West France", classification: AOC}
-- {name: "Fronton", country: FR, parent: "South West France", classification: AOC}
-- {name: "Marcillac", country: FR, parent: "South West France", classification: AOC}
-- {name: "Irouléguy", country: FR, parent: "South West France", classification: AOC, synonyms: ["Irouleguy"]}
-- {name: "Côtes de Gascogne", country: FR, parent: "South West France", classification: IGP, synonyms: ["Cotes de Gascogne", "IGP Côtes de Gascogne", "Gascogne", "Gascony"]}
-- {name: "Corsica", country: FR, synonyms: ["Corse", "Vin de Corse", "Île de Beauté"]}
-- {name: "Patrimonio", country: FR, parent: "Corsica", classification: AOC}
-- {name: "Vin de France", country: FR, classification: "Vin de France", synonyms: ["VdF", "Vin de Table", "France (Vin de France)"]}
+- {name: "Bergerac", country: FR, parent: "South West France", classification: AOC, grapes: ["Merlot", "Cabernet Sauvignon", "Cabernet Franc", "Sauvignon Blanc", "Sémillon", "Muscadelle"]}
+- {name: "Côtes de Bergerac", country: FR, parent: "Bergerac", classification: AOC, synonyms: ["Cotes de Bergerac"], grapes: ["Merlot", "Cabernet Sauvignon", "Cabernet Franc", "Sémillon", "Sauvignon Blanc", "Muscadelle"]}
+- {name: "Monbazillac", country: FR, parent: "Bergerac", classification: AOC, grapes: ["Sémillon", "Sauvignon Blanc", "Muscadelle"]}
+- {name: "Pécharmant", country: FR, parent: "Bergerac", classification: AOC, synonyms: ["Pecharmant"], grapes: ["Merlot", "Cabernet Sauvignon", "Cabernet Franc", "Malbec"]}
+- {name: "Saussignac", country: FR, parent: "Bergerac", classification: AOC, grapes: ["Sémillon", "Sauvignon Blanc", "Muscadelle"]}
+- {name: "Montravel", country: FR, parent: "Bergerac", classification: AOC, grapes: ["Sauvignon Blanc", "Sémillon", "Muscadelle", "Merlot", "Cabernet Sauvignon", "Cabernet Franc"]}
+- {name: "Côtes de Montravel", country: FR, parent: "Montravel", classification: AOC, synonyms: ["Cotes de Montravel"], grapes: ["Sémillon", "Sauvignon Blanc", "Muscadelle"]}
+- {name: "Haut-Montravel", country: FR, parent: "Montravel", classification: AOC, grapes: ["Sémillon", "Sauvignon Blanc", "Muscadelle"]}
+- {name: "Rosette", country: FR, parent: "Bergerac", classification: AOC, grapes: ["Sémillon", "Sauvignon Blanc", "Muscadelle"]}
+- {name: "Côtes de Duras", country: FR, parent: "South West France", classification: AOC, synonyms: ["Cotes de Duras", "Duras"], grapes: ["Merlot", "Cabernet Sauvignon", "Cabernet Franc", "Sauvignon Blanc", "Sémillon", "Muscadelle"]}
+- {name: "Côtes du Marmandais", country: FR, parent: "South West France", classification: AOC, synonyms: ["Cotes du Marmandais", "Marmandais"], grapes: ["Merlot", "Cabernet Franc", "Cabernet Sauvignon", "Abouriou", "Syrah"]}
+- {name: "Buzet", country: FR, parent: "South West France", classification: AOC, grapes: ["Merlot", "Cabernet Sauvignon", "Cabernet Franc", "Malbec"]}
+- {name: "Brulhois", country: FR, parent: "South West France", classification: AOC, synonyms: ["Côtes du Brulhois", "Cotes du Brulhois"], grapes: ["Merlot", "Tannat", "Cabernet Franc", "Cabernet Sauvignon", "Malbec"]}
+- {name: "Coteaux du Quercy", country: FR, parent: "South West France", classification: AOC, grapes: ["Cabernet Franc", "Merlot", "Malbec", "Tannat", "Gamay"]}
+- {name: "Saint-Sardos", country: FR, parent: "South West France", classification: AOC, grapes: ["Syrah", "Tannat", "Merlot", "Cabernet Franc"]}
+- {name: "Cahors", country: FR, parent: "South West France", classification: AOC, grapes: ["Malbec", "Merlot", "Tannat"]}
+- {name: "Entraygues-Le Fel", country: FR, parent: "South West France", classification: AOC, synonyms: ["Entraygues et le Fel", "Entraygues-et-le-Fel"], grapes: ["Fer Servadou", "Chenin Blanc", "Cabernet Franc", "Cabernet Sauvignon"]}
+- {name: "Estaing", country: FR, parent: "South West France", classification: AOC, grapes: ["Fer Servadou", "Chenin Blanc", "Mauzac", "Cabernet Franc", "Cabernet Sauvignon"]}
+- {name: "Gaillac", country: FR, parent: "South West France", classification: AOC, grapes: ["Mauzac", "Len de l'El", "Muscadelle", "Sauvignon Blanc", "Braucol", "Syrah", "Duras", "Gamay"]}
+- {name: "Gaillac Premières Côtes", country: FR, parent: "Gaillac", classification: AOC, synonyms: ["Gaillac Premieres Cotes"], grapes: ["Len de l'El", "Mauzac", "Muscadelle", "Ondenc", "Sauvignon Blanc", "Sémillon"]}
+- {name: "Côtes de Millau", country: FR, parent: "South West France", classification: AOC, synonyms: ["Cotes de Millau"], grapes: ["Gamay", "Syrah", "Fer Servadou", "Cabernet Franc", "Cabernet Sauvignon"]}
+- {name: "Marcillac", country: FR, parent: "South West France", classification: AOC, grapes: ["Fer Servadou"]}
+- {name: "Fronton", country: FR, parent: "South West France", classification: AOC, grapes: ["Négrette", "Syrah", "Cabernet Franc", "Cabernet Sauvignon", "Gamay"]}
+- {name: "Madiran", country: FR, parent: "South West France", classification: AOC, grapes: ["Tannat", "Cabernet Franc", "Cabernet Sauvignon", "Fer Servadou"]}
+- {name: "Pacherenc du Vic-Bilh", country: FR, parent: "South West France", classification: AOC, synonyms: ["Pacherenc du Vic Bilh"], grapes: ["Petit Manseng", "Gros Manseng", "Petit Courbu", "Arrufiac"]}
+- {name: "Saint-Mont", country: FR, parent: "South West France", classification: AOC, grapes: ["Tannat", "Fer Servadou", "Cabernet Sauvignon", "Petit Courbu", "Gros Manseng", "Arrufiac"]}
+- {name: "Tursan", country: FR, parent: "South West France", classification: AOC, grapes: ["Baroque", "Tannat", "Cabernet Sauvignon", "Cabernet Franc"]}
+- {name: "Jurançon", country: FR, parent: "South West France", classification: AOC, synonyms: ["Jurancon"], grapes: ["Petit Manseng", "Gros Manseng", "Petit Courbu", "Camaralet", "Lauzet"]}
+- {name: "Béarn", country: FR, parent: "South West France", classification: AOC, synonyms: ["Bearn"], grapes: ["Tannat", "Cabernet Franc", "Cabernet Sauvignon", "Manseng Noir"]}
+- {name: "Irouléguy", country: FR, parent: "South West France", classification: AOC, synonyms: ["Irouleguy"], grapes: ["Tannat", "Cabernet Franc", "Cabernet Sauvignon", "Petit Manseng", "Gros Manseng", "Petit Courbu"]}
+- {name: "Côtes de Gascogne", country: FR, parent: "South West France", classification: IGP, synonyms: ["Cotes de Gascogne", "Gascogne", "Gascony"]}
+- {name: "Comté Tolosan", country: FR, parent: "South West France", classification: IGP, synonyms: ["Comte Tolosan"]}
+- {name: "Côtes du Lot", country: FR, parent: "South West France", classification: IGP, synonyms: ["Cotes du Lot"]}
+- {name: "Périgord", country: FR, parent: "South West France", classification: IGP, synonyms: ["Perigord"]}
+- {name: "Atlantique", country: FR, parent: "South West France", classification: IGP}
+- {name: "Agenais", country: FR, parent: "South West France", classification: IGP}
+- {name: "Côtes du Tarn", country: FR, parent: "South West France", classification: IGP, synonyms: ["Cotes du Tarn"]}
+- {name: "Gers", country: FR, parent: "South West France", classification: IGP}
+- {name: "Landes", country: FR, parent: "South West France", classification: IGP}
+- {name: "Corrèze", country: FR, parent: "South West France", classification: AOC, synonyms: ["Correze"], grapes: ["Merlot", "Cabernet Franc", "Cabernet Sauvignon", "Chardonnay", "Sauvignon Blanc"]}
 
 # ======================= ITALY =======================
 - {name: "Piedmont", country: IT, synonyms: ["Piemonte", "Piemonte DOC"]}

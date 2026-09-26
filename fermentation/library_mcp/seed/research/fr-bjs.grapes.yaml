@@ -1,0 +1,12 @@
+# ============ fr-bjs research: Burgundy, Beaujolais, Jura, Savoie, Bugey ============
+
+# ---- New grapes: not in grapes.yaml under any name or synonym ----
+- {name: "César", color: red, synonyms: ["Cesar"], source: "https://dico-du-vin.com/romain-cepage-rouge-ou-cesar-aoc-irancy-bourgogne/"}
+- {name: "Sacy", color: white, synonyms: ["Sacy B", "Tressallier"], source: "https://fr.wikipedia.org/wiki/Sacy_(cépage)"}
+- {name: "Gringet", color: white, synonyms: [], source: "https://fr.wikipedia.org/wiki/Gringet"}
+- {name: "Persan", color: red, synonyms: [], source: "https://fr.wikipedia.org/wiki/Persan_(cépage)"}
+- {name: "Molette", color: white, synonyms: [], source: "https://www.caves-de-seyssel.fr/deux-cepages-blancs-altitude/"}
+
+# ---- Existing grapes: local/regional names not yet listed as synonyms ----
+- {name: "Roussanne", existing: true, synonyms: ["Bergeron"], source: "https://vignobles.net/savoie/"}
+- {name: "Pinot Gris", existing: true, synonyms: ["Pinot Beurot"], source: "https://fr.wikipedia.org/wiki/Pinot_gris"}
