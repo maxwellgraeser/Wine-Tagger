@@ -1,4 +1,4 @@
-import { Wine as WineIcon, Play } from 'lucide-react';
+import { Wine as WineIcon, Play, Square } from 'lucide-react';
 import type { LlamaStatus } from '../api';
 import type { Stage } from '../api';
 import { StageTabs } from './StageTabs';
@@ -8,7 +8,8 @@ export function TopBar({
   onStageChange,
   llama,
   onStartLlama,
-  startingLlama,
+  onStopLlama,
+  llamaBusy,
   view,
   onViewChange,
 }: {
@@ -16,7 +17,8 @@ export function TopBar({
   onStageChange: (s: Stage) => void;
   llama: LlamaStatus | null;
   onStartLlama: () => void;
-  startingLlama: boolean;
+  onStopLlama: () => void;
+  llamaBusy: boolean;
   view: 'simple' | 'developer';
   onViewChange: (v: 'simple' | 'developer') => void;
 }) {
@@ -37,24 +39,38 @@ export function TopBar({
             className={`flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium ${
               llama?.ok
                 ? 'border-green-300 bg-green-100 text-green-800'
-                : 'border-red-300 bg-red-100 text-red-800'
+                : llama?.running
+                  ? 'border-amber-300 bg-amber-100 text-amber-800'
+                  : 'border-red-300 bg-red-100 text-red-800'
             }`}
             title={llama?.base_url ?? ''}
           >
             <span
-              className={`h-2 w-2 rounded-full ${llama?.ok ? 'bg-green-500' : 'bg-red-500'}`}
+              className={`h-2 w-2 rounded-full ${
+                llama?.ok ? 'bg-green-500' : llama?.running ? 'bg-amber-500' : 'bg-red-500'
+              }`}
             />
-            LLM {llama?.ok ? 'ok' : 'down'}
+            LLM {llama?.ok ? 'ok' : llama?.running ? 'loading' : 'down'}
           </div>
-          {!llama?.ok && (
+          {llama?.running ? (
+            <button
+              type="button"
+              onClick={onStopLlama}
+              disabled={llamaBusy}
+              className="flex items-center gap-1 rounded-full border border-wine px-2.5 py-1 text-xs font-medium text-wine hover:bg-wine hover:text-white disabled:opacity-50"
+            >
+              <Square className="h-3 w-3" />
+              {llamaBusy ? 'Stopping…' : 'Stop model server'}
+            </button>
+          ) : (
             <button
               type="button"
               onClick={onStartLlama}
-              disabled={startingLlama}
+              disabled={llamaBusy || !llama}
               className="flex items-center gap-1 rounded-full bg-wine px-2.5 py-1 text-xs font-medium text-white hover:bg-wine-dark disabled:opacity-50"
             >
               <Play className="h-3 w-3" />
-              {startingLlama ? 'Starting…' : 'Start model server'}
+              {llamaBusy ? 'Starting…' : 'Start model server'}
             </button>
           )}
 

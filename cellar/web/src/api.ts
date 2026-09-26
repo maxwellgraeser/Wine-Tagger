@@ -3,11 +3,53 @@
 
 export type Stage = 'ingestion' | 'fermentation' | 'distribution' | string;
 
-export interface InputFile {
+/** A product-export CSV available to ingest: an upload, or the bundled test set. */
+export interface IngestInput {
+  /** Upload file name, or "test-wines" for the fixture. Pass to runIngest. */
   name: string;
+  kind: 'upload' | 'test';
+  label?: string;
   exists: boolean;
   mtime: string | null;
   size: number | null;
+  rows: number | null;
+}
+
+/** ingestion/output/summary.json — written by every ingestion run. */
+export interface IngestSummary {
+  generated_at: string;
+  input: { path: string; name: string; size: number; mtime: string; rows: number; invalid_rows: number };
+  filters_path: string;
+  kept: {
+    total: number;
+    by_category: number;
+    uncategorized: number;
+    categories: Record<string, number>;
+  };
+  excluded: {
+    total: number;
+    by: Record<ExcludedBy, number>;
+    breakdown: Record<ExcludedBy, Record<string, number>>;
+    keyword_groups: Record<string, number>;
+  };
+  output: { combined: string; excluded: string };
+}
+
+export type ExcludedBy = 'category' | 'vendor' | 'name' | 'keyword';
+export const EXCLUDED_BY: ExcludedBy[] = ['category', 'vendor', 'name', 'keyword'];
+export const EXCLUDED_BY_LABEL: Record<ExcludedBy, string> = {
+  category: 'Category not whitelisted',
+  vendor: 'Blacklisted vendor',
+  name: 'Name on exclude list',
+  keyword: 'Keyword in name',
+};
+
+export interface IngestFilters {
+  path: string | null;
+  categories: { whitelist: string[] };
+  vendors: { blacklist: string[] };
+  names: { exclude: string[] };
+  keywords: Record<string, string[]>;
 }
 
 export interface CsvInfo {
@@ -19,6 +61,7 @@ export interface CsvInfo {
 
 export interface LlamaStatus {
   ok: boolean;
+  running: boolean;
   base_url: string;
   models: string[];
 }
@@ -76,8 +119,9 @@ export interface StatusResponse {
   settings: Settings;
   llama: LlamaStatus;
   ingestion: {
-    inputs: InputFile[];
+    uploads: IngestInput[];
     csv: CsvInfo;
+    summary: IngestSummary | null;
   };
   fermentation: FermentationStatus;
   active_job: ActiveJob | null;
@@ -88,6 +132,8 @@ export interface IngestionRowsResponse {
   path: string;
   columns: string[];
   rows: Record<string, unknown>[];
+  /** Row count of the whole file (rows may be truncated by ?limit=). */
+  total: number;
 }
 
 export interface SalesStats {
@@ -350,8 +396,10 @@ class ApiError extends Error {
 }
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
+  // FormData bodies set their own multipart Content-Type (with boundary).
+  const json = init?.body != null && !(init.body instanceof FormData);
   const res = await fetch(`${BASE}${path}`, {
-    headers: init?.body ? { 'Content-Type': 'application/json' } : undefined,
+    headers: json ? { 'Content-Type': 'application/json' } : undefined,
     ...init,
   });
   if (!res.ok) {
@@ -372,7 +420,19 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 export const api = {
   getStatus: () => request<StatusResponse>('/status'),
 
-  runIngest: () => request<JobSummary>('/ingest/run', { method: 'POST' }),
+  runIngest: (input: string) =>
+    request<JobSummary>('/ingest/run', { method: 'POST', body: JSON.stringify({ input }) }),
+  uploadIngestFile: (file: File) => {
+    const body = new FormData();
+    body.append('file', file, file.name);
+    return request<IngestInput>('/ingest/upload', { method: 'POST', body });
+  },
+  getIngestUploads: () => request<IngestInput[]>('/ingest/uploads'),
+  deleteIngestUpload: (name: string) =>
+    request<{ deleted: string }>(`/ingest/uploads/${encodeURIComponent(name)}`, { method: 'DELETE' }),
+  getIngestionSummary: () => request<IngestSummary>('/ingestion/summary'),
+  getIngestionExcluded: () => request<IngestionRowsResponse>('/ingestion/excluded'),
+  getIngestionFilters: () => request<IngestFilters>('/ingestion/filters'),
 
   runFerment: (opts: FermentRunOptions) =>
     request<JobSummary>('/ferment/run', {
@@ -381,6 +441,7 @@ export const api = {
     }),
 
   startLlama: () => request<{ started: boolean; [key: string]: unknown }>('/llama/start', { method: 'POST' }),
+  stopLlama: () => request<{ stopped: number[] }>('/llama/stop', { method: 'POST' }),
   getLlamaLog: (lines = 60) => request<{ lines: string[] }>(`/llama/log?lines=${lines}`),
 
   getJobs: () => request<JobSummary[]>('/jobs'),
@@ -388,7 +449,8 @@ export const api = {
   stopJob: (id: string) => request<void>(`/jobs/${id}/stop`, { method: 'POST' }),
   jobEventsUrl: (id: string) => `${BASE}/jobs/${id}/events`,
 
-  getIngestionRows: () => request<IngestionRowsResponse>('/ingestion/rows'),
+  getIngestionRows: (limit?: number) =>
+    request<IngestionRowsResponse>(`/ingestion/rows${limit ? `?limit=${limit}` : ''}`),
 
   getWines: () => request<WinesResponse>('/wines'),
   getWine: (id: number | string, runId?: string) =>

@@ -21,9 +21,9 @@ from typing import Any, Optional
 
 from . import scorer, searcher, store as store_mod, tagger
 from .constants import (
-    ORGANIC_PHRASES, REQUIRE_GRAPE_EVIDENCE, SINGLE_SNIPPET_CONFIDENCE_CAP,
+    ORGANIC_PHRASES, REQUIRE_GRAPE_EVIDENCE, SINGLE_SOURCE_CONFIDENCE_CAP,
 )
-from .evidence import context_snippet_count, unsupported_grapes
+from .evidence import context_source_count, unsupported_grapes
 from .events import EventSink
 from .paths import PHASES, RUN_STATE_PATH, phase_dir, run_dir
 from .types import ParsedTags, Product, ScoredSnippet, Snippet
@@ -333,9 +333,11 @@ def apply_evidence_rules(normalized: Optional[ParsedTags], web_context: Optional
     shown. Mutates `normalized` (confidence clamp) and returns the reasons
     that will route the row to needs_review:
 
-      * "single_snippet_cap": only one snippet was in context, so confidence
-        is clamped to SINGLE_SNIPPET_CONFIDENCE_CAP (the prompt's own rule,
-        now enforced — Bila Haut submitted 89 off one snippet).
+      * "single_source": every snippet in context came from the same site, so
+        nothing corroborates it. Confidence is clamped to
+        SINGLE_SOURCE_CONFIDENCE_CAP and the row is routed to review outright
+        (see decide_tag_status) — the clamp alone only worked while the
+        threshold sat above the cap.
       * "unsupported_grape:<name>": a submitted grape, or any library synonym
         of it, appears nowhere in web_context. The model inferred it from the
         name, region or style (Aster → Tempranillo, Bila Haut → Cinsault).
@@ -343,14 +345,11 @@ def apply_evidence_rules(normalized: Optional[ParsedTags], web_context: Optional
     reasons: list[str] = []
     if normalized is None:
         return reasons
-    if (
-        web_context is not None
-        and context_snippet_count(web_context) <= 1
-        and normalized.confidence is not None
-        and normalized.confidence > SINGLE_SNIPPET_CONFIDENCE_CAP
-    ):
-        normalized.confidence = SINGLE_SNIPPET_CONFIDENCE_CAP
-        reasons.append("single_snippet_cap")
+    if web_context is not None and context_source_count(web_context) <= 1:
+        if (normalized.confidence is None
+                or normalized.confidence > SINGLE_SOURCE_CONFIDENCE_CAP):
+            normalized.confidence = SINGLE_SOURCE_CONFIDENCE_CAP
+        reasons.append("single_source")
     if REQUIRE_GRAPE_EVIDENCE and normalized.grapes:
         for g in unsupported_grapes(normalized.grapes, web_context or ""):
             reasons.append(f"unsupported_grape:{g}")
@@ -369,13 +368,16 @@ def decide_tag_status(
     `submit_tags` accepts an empty grape list (with a `no_grapes` warning) so
     the country/region the model *did* find are kept on the row; the empty
     grapes are what route it to review. `review_reasons` comes from
-    `apply_evidence_rules` (a "single_snippet_cap" entry only matters through
-    the clamped confidence; "unsupported_grape:*" is a hard route)."""
+    `apply_evidence_rules`; both "unsupported_grape:*" and "single_source" are
+    hard routes, so they hold whatever the threshold is set to."""
     if normalized is None:
         return "needs_review"
     if not normalized.grapes:
         return "needs_review"
-    if any(r.startswith("unsupported_grape:") for r in (review_reasons or [])):
+    reasons = review_reasons or []
+    if any(r.startswith("unsupported_grape:") for r in reasons):
+        return "needs_review"
+    if "single_source" in reasons:
         return "needs_review"
     conf = normalized.confidence
     if conf is None or conf < confidence_threshold:

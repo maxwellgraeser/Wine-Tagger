@@ -15,15 +15,14 @@ and export the Lightspeed `.xlsx`.
 ## Run
 
 ```sh
-./cellar/run.sh          # builds the frontend once, serves on http://localhost:8000
-./cellar/run.sh dev      # uvicorn :8000 (auto-reload) + vite :5173 (HMR)
+./run.sh                 # builds the frontend once, serves on http://localhost:8000
+./run.sh dev             # uvicorn :8000 (auto-reload) + vite :5173 (HMR)
 ```
 
 ## Architecture
 
 ```
 cellar/
-  run.sh                 launcher (serve | dev)
   server/app.py          FastAPI — stage runners, SSE job streams, wines CRUD, export
   web/                   React 19 + Vite 8 + TypeScript + Tailwind v4
     src/api.ts           typed client for the /api surface
@@ -35,8 +34,10 @@ Data it reads and writes (all at the repo root):
 
 | Path | Owner | Cellar does |
 |---|---|---|
-| `Sample Xlsx/*.xlsx` | you | lists them |
-| `ingestion/output/combined.csv` | ingestion | previews rows |
+| `ingestion/uploads/*.csv` | you (drag & drop in Ingest) | stores, lists, deletes |
+| `ingestion/fixtures/test-wines.csv` | repo | offers as "Test set (24 wines)" |
+| `ingestion/filters.toml` | you | shows the rules |
+| `ingestion/output/combined.csv` · `excluded.csv` · `summary.json` | ingestion | shows counts, previews rows, browses excluded rows |
 | `output/wines.json` | fermentation | reads, `PATCH`es tag edits (marks `human`) |
 | `settings.json` | cellar | user knobs shared with the CLI (confidence threshold) |
 | `output/.run_state.json` | fermentation | shows resume cursor |
@@ -73,14 +74,20 @@ every wine, so the next run resumes where it stopped.
 
 ```
 GET    /api/status                       everything the top bar and stage cards need
-POST   /api/ingest/run                   -> job
+POST   /api/ingest/upload                multipart product-export CSV (header validated) -> stored upload
+GET    /api/ingest/uploads · DELETE /api/ingest/uploads/{name}
+POST   /api/ingest/run                   {input: upload name | "test-wines"} -> job
 POST   /api/ferment/run                  {force, limit, confidence_threshold, model,
                                           api_url, no_producer_gate, phase, run_id,
                                           stop_after} -> job
-POST   /api/llama/start                  start the llama-server script in the background
+POST   /api/llama/start                  start llama-server in the background (LLAMA_MODEL=qwen|gemma)
+POST   /api/llama/stop                   stop llama-server (pid file + whatever listens on its port)
 GET    /api/llama/log?lines=
 GET    /api/jobs · /api/jobs/{id} · /api/jobs/{id}/events (SSE) · POST /api/jobs/{id}/stop
-GET    /api/ingestion/rows               combined.csv as JSON
+GET    /api/ingestion/rows?limit=        combined.csv as JSON
+GET    /api/ingestion/excluded           excluded.csv as JSON
+GET    /api/ingestion/summary            summary.json
+GET    /api/ingestion/filters            parsed filters.toml
 GET    /api/wines                        output/wines.json
 GET    /api/wines/{id}?run_id=           wine + its search/scorer/tagger/final logs
 PATCH  /api/wines/{id}                   tag edit -> tag_status = human
@@ -143,7 +150,7 @@ The file is also written to `output/lightspeed-export.xlsx`.
 |---|---|
 | `pending` | not tagged yet |
 | `model` | the LLM tagged it and cleared the confidence threshold |
-| `needs_review` | the LLM could not tag it confidently (no context, no grapes, low confidence), or an evidence rule fired — `final/<id>.json` → `review_reasons` says which: `unsupported_grape:<name>` (grape not in the context it was shown) or `single_snippet_cap` (one snippet → confidence clamped to 84) |
+| `needs_review` | the LLM could not tag it confidently (no context, no grapes, low confidence), or an evidence rule fired — `final/<id>.json` → `review_reasons` says which: `unsupported_grape:<name>` (grape not in the context it was shown) or `single_source` (every snippet came from one site → confidence clamped to 69 and routed to review) |
 | `human` | a person saved tags in Cellar; fermentation skips it until "Reset human tags" |
 
 (`auto` / `manual` were the names before 2026-09-15; `store.load_store` migrates them.)

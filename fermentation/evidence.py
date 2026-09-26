@@ -9,6 +9,10 @@ These helpers let `phases.decide_tag_status` enforce them in code.
 Grape matching uses the library's own names and synonyms (Garnacha ≈
 Grenache, Tinta Roriz ≈ Tempranillo), read once from library.db. If the
 library is not built the check degrades to the canonical name only.
+
+`context_source_count` answers the other half of the question — how many
+*distinct sites* the context rests on, not how many snippets — which is what
+the single-source rule gates on.
 """
 
 from __future__ import annotations
@@ -19,9 +23,12 @@ import unicodedata
 from functools import lru_cache
 from pathlib import Path
 
+from .scorer import source_family
+
 LIBRARY_DB = Path(__file__).resolve().parent / "library_mcp" / "library.db"
 
-_CONTEXT_HEADER_RE = re.compile(r"^\[.+? \| match=\d+\]$", re.MULTILINE)
+# Captures the source label so the same parse serves both counts below.
+_CONTEXT_HEADER_RE = re.compile(r"^\[(.+?) \| match=\d+\]$", re.MULTILINE)
 
 # Library synonyms that are ordinary wine words, not evidence of a grape:
 # "Tinto" is listed for Tempranillo and would match "Chocapalha Tinto".
@@ -93,3 +100,15 @@ def unsupported_grapes(grapes: list[str], web_context: str) -> list[str]:
 def context_snippet_count(web_context: str) -> int:
     """Number of `[source | match=N]` blocks the scorer pasted into the context."""
     return len(_CONTEXT_HEADER_RE.findall(web_context or ""))
+
+
+def context_source_count(web_context: str) -> int:
+    """Number of *distinct sources* behind those blocks.
+
+    `_pick_diverse` only enforces source diversity while filling the first
+    slots; its final pass tops the context up from any survivor, so five
+    Wine-Searcher results are five snippets but one source. Confidence rules
+    care about corroboration, which is what this counts.
+    """
+    labels = _CONTEXT_HEADER_RE.findall(web_context or "")
+    return len({source_family(label) for label in labels})

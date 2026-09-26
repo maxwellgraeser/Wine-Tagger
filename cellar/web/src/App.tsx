@@ -34,7 +34,7 @@ export default function App() {
   const [wines, setWines] = useState<Wine[]>([]);
   const [selectedWine, setSelectedWine] = useState<Wine | null>(null);
   const [banner, setBanner] = useState<string | null>(null);
-  const [startingLlama, setStartingLlama] = useState(false);
+  const [llamaBusy, setLlamaBusy] = useState(false);
   const [activeJobId, setActiveJobId] = useState<string | null>(null);
   const [runs, setRuns] = useState<RunSummary[]>([]);
   // Which results Distribute shows: LIVE (wines.json) or a run id. Starts
@@ -142,12 +142,13 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Poll status: every 5s while a job runs, else every 20s.
+  // Poll status: every 2s while the model server is loading, 5s while a job runs, else every 20s.
+  const llamaLoading = !!status?.llama.running && !status.llama.ok;
   useEffect(() => {
-    const interval = jobStream.running ? 5000 : 20000;
+    const interval = llamaLoading ? 2000 : jobStream.running ? 5000 : 20000;
     const id = setInterval(refreshStatus, interval);
     return () => clearInterval(id);
-  }, [jobStream.running, refreshStatus]);
+  }, [llamaLoading, jobStream.running, refreshStatus]);
 
   const handleViewChange = (v: View) => {
     setView(v);
@@ -164,7 +165,7 @@ export default function App() {
       .catch((e) => showError(e, 'Failed to start job'));
   };
 
-  const runIngest = () => startJob(api.runIngest());
+  const runIngest = (input: string) => startJob(api.runIngest(input));
   const runFerment = (opts: FermentRunOptions) => startJob(api.runFerment(opts));
   const stopJob = () => {
     if (activeJobId) {
@@ -172,15 +173,15 @@ export default function App() {
     }
   };
 
-  const startLlama = async () => {
-    setStartingLlama(true);
+  const toggleLlama = async (action: 'start' | 'stop') => {
+    setLlamaBusy(true);
     try {
-      await api.startLlama();
+      await (action === 'start' ? api.startLlama() : api.stopLlama());
       await refreshStatus();
     } catch (e) {
-      showError(e, 'Failed to start model server');
+      showError(e, `Failed to ${action} model server`);
     } finally {
-      setStartingLlama(false);
+      setLlamaBusy(false);
     }
   };
 
@@ -198,8 +199,9 @@ export default function App() {
         stage={stage}
         onStageChange={setStage}
         llama={status?.llama ?? null}
-        onStartLlama={startLlama}
-        startingLlama={startingLlama}
+        onStartLlama={() => toggleLlama('start')}
+        onStopLlama={() => toggleLlama('stop')}
+        llamaBusy={llamaBusy}
         view={view}
         onViewChange={handleViewChange}
       />
@@ -215,7 +217,14 @@ export default function App() {
 
       <main className="mx-auto max-w-7xl px-4 py-6">
         {stage === 'ingestion' && (
-          <IngestPanel status={status} onRun={runIngest} running={stageIsRunning} simple={isSimple} />
+          <IngestPanel
+            status={status}
+            onRun={runIngest}
+            running={stageIsRunning}
+            events={jobStream.events}
+            onChanged={refreshStatus}
+            simple={isSimple}
+          />
         )}
 
         {stage === 'fermentation' && (

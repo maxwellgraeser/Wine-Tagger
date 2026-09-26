@@ -12,7 +12,7 @@ AI-generated wine metadata, and produces a database for review and re-upload.
         done                  active                  in Cellar
   ═══════════════════════════════════════════════════════════════════
                   Cellar — one web app that runs all three
-                  (FastAPI + React, ./cellar/run.sh, :8000)
+                  (FastAPI + React, ./run.sh, :8000)
 ```
 
 > `fermentation/` drives a local LLM through a self-built **MCP wine
@@ -25,9 +25,9 @@ AI-generated wine metadata, and produces a database for review and re-upload.
 
 | Domain | State | Entry point | In → Out |
 |---|---|---|---|
-| `ingestion/` | ✅ Implemented | `./ingestion/run.sh` | 2× `.xlsx` → `combined.csv` |
-| `fermentation/` | 🟧 Active build | `./ferment.sh` / `python -m fermentation.ferment` | `combined.csv` → `output/wines.json` + `logs/` |
-| `cellar/` | ✅ Built | `./cellar/run.sh` | web app over all stages; `wines.json` → Lightspeed `.xlsx` |
+| `ingestion/` | ✅ Implemented | Cellar → Ingest | product-export `.csv` → filters → `combined.csv` + `excluded.csv` |
+| `fermentation/` | 🟧 Active build | Cellar → Ferment / `python -m fermentation.ferment` | `combined.csv` → `output/wines.json` + `logs/` |
+| `cellar/` | ✅ Built | `./run.sh` | web app over all stages; `wines.json` → Lightspeed `.xlsx` |
 
 Each domain is self-contained. Data flows strictly downstream — no domain
 reaches back into an upstream domain's internals; the contract between domains
@@ -39,13 +39,14 @@ is their output format (`combined.csv`, then `output/wines.json`).
 and lets you inspect logs, edit tags, and export:
 
 ```sh
-./cellar/run.sh            # http://localhost:8000  (first run: npm install + build)
-./cellar/run.sh dev        # hot reload: API on :8000, Vite on :5173
+./run.sh                   # http://localhost:8000  (first run: npm install + build)
+./run.sh dev               # hot reload: API on :8000, Vite on :5173
+CELLAR_PORT=8010 VITE_PORT=5183 ./run.sh dev   # a second checkout (git worktree) beside the main one
 ```
 
 Cellar starts in **Developer** view (all logs and knobs); toggle to
-**Simple** in the top bar. If the llama-server isn't up, the top bar offers
-to start it.
+**Simple** in the top bar. The top bar shows the llama-server state and has
+**Start / Stop model server** buttons (model: `LLAMA_MODEL=qwen|gemma`, default qwen).
 
 In the Ferment panel, **Pause after each phase** runs search, stops, and
 shows a *Continue → score* button (then *Continue → tag*), so you can check
@@ -53,68 +54,59 @@ the snippets and scores in Distribute before the LLM tags anything. The
 confidence threshold you set there is saved to `settings.json` at the repo
 root and used by console runs too (initial default 85).
 
-**From the console:**
+**From the console** (without the dashboard), from the repo root:
 
 ```sh
-# 1. Ingestion — xlsx → CSV
-./ingestion/run.sh
-
-# 2. Fermentation — starts llama-server on :8080 if it isn't already up
-#    (default ./gemma3n.sh), waits for /health, then runs the module.
-#    Flags pass through to ferment.
-./ferment.sh --force --limit 3
-LLAMA_SCRIPT=./qwen25-7b.sh ./ferment.sh   # use a different model
-
+.venv/bin/python ingestion/ingest.py --input export.csv      # 1. product export → combined.csv
+.venv/bin/python -m fermentation.ferment --force --limit 3   # 2. needs llama-server on :8080
 # 3. Distribution — the export lives in Cellar (Distribute tab → Export),
 #    or GET http://localhost:8000/api/export.xlsx
 ```
 
-> `ferment.sh` leaves a server it started running, so later runs skip the model
-> load. To stop it, run `kill "$(cat .llama-server.pid)"`. To run the module
-> without the wrapper, use `python -m fermentation.ferment` from the repo root.
-
-**Stopping everything:**
-
-```sh
-./stop-all.sh   # kills cellar backend (:8000), vite dev (:5173), llama-server (:8080)
-```
-
-Run this when you're done for the day so nothing keeps eating RAM/GPU in the
-background. It's safe to run even if some or all of those servers aren't up.
-`./cellar/run.sh` (and `./cellar/run.sh dev`) also kill anything already
-bound to their own ports before starting, so re-running either one always
-gives you a fresh process — you don't need to `stop-all.sh` first just to
-restart Cellar.
+**Stopping:** Ctrl-C in the `./run.sh` terminal stops Cellar. The llama-server
+runs detached so it survives Cellar restarts — stop it with **Stop model
+server** in the top bar before you quit, so it doesn't keep eating RAM/GPU.
+Re-running `./run.sh` kills anything already on :8000 first, so it always gives
+you a fresh process.
 
 ---
 
 ## Domain 1 — Ingestion
 
-**Run:** `./ingestion/run.sh`
+**Run:** Cellar → Ingest (drag & drop the export, pick it, *Run ingestion*),
+or `.venv/bin/python ingestion/ingest.py --input <export.csv>`
 
-**What it does:** Reads the two raw `.xlsx` exports from Lightspeed, cleans and
-normalizes them, and writes a single merged CSV.
+**What it does:** Takes the Lightspeed **product export CSV** (the whole
+catalogue — wine, beer, sake, accessories…), decides which rows are wines,
+and writes them to `combined.csv`. Since the POS switch new products have no
+category, so the filters green-light what is known and sift the rest.
 
-**Inputs** (place in `Sample Xlsx/`):
-- `product-export.xlsx` — full product catalog (id, name, SKU, prices, supplier, tags, etc.)
-- `inventory-report.xlsx` — sales stats per product (units sold, margin, customer count, etc.)
+**Input:** one `product-export-*.csv` (Lightspeed → Products → Export → CSV).
+It is the only accepted format; the header row is checked on upload. Uploads
+live in `ingestion/uploads/`. The Ingest panel also offers the **Test set
+(24 wines)** — `ingestion/fixtures/test-wines.csv`, the wines the pipeline was
+developed on, kept with their sales stats for quick fermentation runs.
 
-**Output:** `ingestion/output/combined.csv` — one row per wine with all product
-columns and sales stats merged via a case-insensitive **inner join** on the
-product name. Rows present in only one source are dropped and logged as
-warnings.
+**Filters** (`ingestion/filters.toml` — edit it, run again):
+1. **Category whitelist** — Red, White, Rose, Sparkling, Orange/Amber are
+   kept as-is; any other category (Beer, Dessert, Sherry, Accessories…) is excluded.
+2. **Vendor blacklist** — uncategorized rows from beer/accessory-only
+   suppliers (Cavalier, Progressive, North Fl Sales, Champion, True,
+   Lottie Dottie, Warehouse) are excluded.
+3. **Name & keyword exclusions** — uncategorized rows whose name is on the
+   exclude list or contains a whole-word term (IPA, stout, cider, junmai, port,
+   tawny, vermouth, aszu, corkscrew, delivery…) are excluded. Whole-word
+   matching keeps `port` from hitting Portugal and `aszu` from hitting dry Tokaji.
 
-**Key processing steps:**
-1. Read both xlsx files with openpyxl.
-2. Normalize column names (lowercase, underscores).
-3. Drop always-empty variant/composite columns.
-4. Inner join on `name` — products and inventory rows must match on both sides;
-   unmatched rows are dropped and counted.
-5. Coerce numeric types, strip whitespace, validate UUIDs, handle nulls consistently.
+**Output:** `ingestion/output/combined.csv` (wines, with `ingest_pass` =
+`category` | `uncategorized`), `excluded.csv` (every dropped row with
+`excluded_by` + `excluded_reason`) and `summary.json` (the counts the
+Ingest panel shows). Uncategorized wines are categorized by fermentation.
 
-**Tech:** Python 3.11+, openpyxl, stdlib csv — no network access needed.
+**Tech:** Python 3.11+, stdlib csv + tomllib — no network access needed.
+Tests: `pytest ingestion/tests`.
 
-See `ingestion/PLAN.md` for the full column contract.
+See `ingestion/PLAN.md` for the column contract and the keyword calibration.
 
 ---
 
@@ -209,8 +201,10 @@ OpenAI-compatible `/v1/chat/completions` endpoint:
   just asked for in the prompt): a submitted grape that appears nowhere in
   `web_context` — by canonical name or any library synonym — routes the row
   to `needs_review` (`review_reasons: ["unsupported_grape:Cinsault"]` in
-  `final/<id>.json`); when only one snippet was in context, confidence is
-  clamped to `SINGLE_SNIPPET_CONFIDENCE_CAP` (84).
+  `final/<id>.json`); when every snippet in context came from the same site,
+  confidence is clamped to `SINGLE_SOURCE_CONFIDENCE_CAP` (69) and the row is
+  routed to review (`review_reasons: ["single_source"]`). Sources are counted
+  by family, so "Vivino #1" and "Vivino #2" are one source.
 - **Category**: when the CSV has no `product_category`, the tagger submits
   one of `Red / White / Rose / Sparkling` from the snippets; the store keeps
   it (`category_source: "model"`, shown as *inferred* in Cellar) until the
@@ -283,7 +277,7 @@ no paid APIs or keys required.
 
 ## Domain 3 — Distribution, and Cellar
 
-**Run:** `./cellar/run.sh` → http://localhost:8000
+**Run:** `./run.sh` → http://localhost:8000
 
 `cellar/` is the web app (FastAPI backend in `cellar/server/app.py`, React +
 Vite + TypeScript + Tailwind frontend in `cellar/web/`). It owns the
@@ -303,14 +297,15 @@ Wine Warehouse DDD/
 ├── PLAN.md
 ├── Tree.html                    # visual architecture map + findings
 ├── requirements.txt
-├── ferment.sh                   # runs fermentation, starting llama-server if needed
-├── stop-all.sh                  # kills cellar backend, vite dev, and llama-server
-├── gemma3n.sh / qwen25-7b.sh    # local LLM server helpers
+├── run.sh                       # starts the Cellar dashboard
 ├── ingestion/
 │   ├── PLAN.md
-│   ├── ingest.py
-│   ├── run.sh
-│   └── output/combined.csv      (generated)
+│   ├── ingest.py                # product-export CSV → filters → combined.csv
+│   ├── filters.py · filters.toml   # the category / vendor / keyword rules
+│   ├── fixtures/test-wines.csv  # the 24 development wines (with sales stats)
+│   ├── tests/
+│   ├── uploads/                 (git-ignored) exports dropped in the Ingest panel
+│   └── output/                  (generated) combined.csv · excluded.csv · summary.json
 ├── fermentation/                # active
 │   ├── PLAN.md · SCORING-2026-09-15.md · ACCURACY-2026-09-15.md · BATON.md
 │   ├── ferment.py               # CLI
@@ -325,10 +320,9 @@ Wine Warehouse DDD/
 ├── output/                      (generated) wines.json, .run_state.json, lightspeed-export.xlsx
 ├── logs/                        (generated) one folder per fermentation run
 ├── cellar/                      # the web app
-│   ├── PLAN.md · run.sh
+│   ├── PLAN.md
 │   ├── server/app.py            # FastAPI
 │   └── web/                     # React + Vite + Tailwind
-└── Sample Xlsx/
-    ├── product-export.xlsx
-    └── inventory-report (...).xlsx
+└── Sample Xlsx/                 (git-ignored) raw Lightspeed exports
+    └── product-export-2026-09-16.csv
 ```

@@ -19,6 +19,7 @@ import io
 import json
 import os
 import shutil
+import signal
 import sqlite3
 import subprocess
 import sys
@@ -31,7 +32,7 @@ from pathlib import Path
 from typing import Any, Optional
 
 import requests
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.responses import FileResponse, Response
 from fastapi.sse import EventSourceResponse, ServerSentEvent
 from fastapi.staticfiles import StaticFiles
@@ -51,9 +52,24 @@ PYTHON = str(PROJECT_ROOT / ".venv" / "bin" / "python")
 if not Path(PYTHON).exists():
     PYTHON = sys.executable
 LIBRARY_DB = PROJECT_ROOT / "fermentation" / "library_mcp" / "library.db"
-SAMPLE_DIR = PROJECT_ROOT / "Sample Xlsx"
+# Ingestion: product-export CSVs dropped in the dashboard land in uploads/;
+# ingest.py writes combined.csv / excluded.csv / summary.json next to INPUT_CSV.
+INGESTION_DIR = PROJECT_ROOT / "ingestion"
+UPLOADS_DIR = INGESTION_DIR / "uploads"
+FIXTURE_CSV = INGESTION_DIR / "fixtures" / "test-wines.csv"   # the 24 test wines
+FILTERS_TOML = INGESTION_DIR / "filters.toml"
+EXCLUDED_CSV = INPUT_CSV.parent / "excluded.csv"
+SUMMARY_JSON = INPUT_CSV.parent / "summary.json"
+# The input name the API uses for the fixture (not a real upload).
+TEST_INPUT = "test-wines"
 WEB_DIST = HERE.parent / "web" / "dist"
-LLAMA_SCRIPT = os.environ.get("LLAMA_SCRIPT", str(PROJECT_ROOT / "qwen25-7b.sh"))
+# Default is Qwen2.5-7B-Instruct: gemma3n has no working tool-call support in
+# llama.cpp (its chat template ignores `tools`), so wines tag as needs_review.
+LLAMA_MODELS = {
+    "qwen": ("bartowski/Qwen2.5-7B-Instruct-GGUF", "Qwen2.5-7B-Instruct-Q6_K.gguf"),
+    "gemma": ("bartowski/google_gemma-3n-E4B-it-GGUF", "google_gemma-3n-E4B-it-Q4_K_M.gguf"),
+}
+LLAMA_MODEL = os.environ.get("LLAMA_MODEL", "qwen")
 LLAMA_LOG = PROJECT_ROOT / ".llama-server.log"
 LLAMA_PID = PROJECT_ROOT / ".llama-server.pid"
 
@@ -190,15 +206,57 @@ def _csv_rows(path: Path) -> list[dict]:
         return list(csv.DictReader(f))
 
 
+def _llama_port(api_url: str = DEFAULT_API_URL) -> str:
+    return api_url.split("/v1/")[0].rsplit(":", 1)[-1] or "8080"
+
+
+def _pid_alive(pid: int) -> bool:
+    # Reap it first if it's our exited child, otherwise the zombie still answers kill(pid, 0).
+    try:
+        if os.waitpid(pid, os.WNOHANG)[0] == pid:
+            return False
+    except ChildProcessError:
+        pass
+    try:
+        os.kill(pid, 0)
+    except (ProcessLookupError, PermissionError):
+        return False
+    return True
+
+
+def _llama_pids(api_url: str = DEFAULT_API_URL) -> set[int]:
+    """PIDs of the llama-server we started (pid file) plus anything listening on its port."""
+    pids: set[int] = set()
+    if LLAMA_PID.exists():
+        try:
+            pid = int(LLAMA_PID.read_text().strip())
+            if _pid_alive(pid):
+                pids.add(pid)
+        except ValueError:
+            pass
+    try:
+        out = subprocess.run(
+            ["lsof", "-ti", f"tcp:{_llama_port(api_url)}", "-sTCP:LISTEN"],
+            capture_output=True, text=True, timeout=3,
+        ).stdout
+        pids.update(int(x) for x in out.split() if x.isdigit())
+    except (OSError, subprocess.TimeoutExpired):
+        pass
+    return pids
+
+
 def _llama_status(api_url: str = DEFAULT_API_URL) -> dict:
     base = api_url.split("/v1/")[0]
-    out: dict[str, Any] = {"ok": False, "base_url": base, "api_url": api_url, "models": []}
+    out: dict[str, Any] = {"ok": False, "running": False, "base_url": base, "api_url": api_url, "models": []}
     try:
         r = requests.get(f"{base}/health", timeout=1.5)
         out["ok"] = r.status_code == 200
         out["health"] = r.json() if r.headers.get("content-type", "").startswith("application/json") else r.text
     except requests.RequestException as exc:
         out["error"] = str(exc.__class__.__name__)
+    # "running" covers a server that is up but still loading the model (health != 200).
+    out["running"] = out["ok"] or bool(_llama_pids(api_url))
+    if not out["ok"]:
         return out
     try:
         r = requests.get(f"{base}/v1/models", timeout=1.5)
@@ -245,11 +303,9 @@ def api_status() -> dict:
         "settings": settings,
         "llama": _llama_status(),
         "ingestion": {
-            "inputs": [
-                _file_info(p) | {"name": p.name}
-                for p in sorted(SAMPLE_DIR.glob("*.xlsx"))
-            ] if SAMPLE_DIR.exists() else [],
+            "uploads": _uploads(),
             "csv": _file_info(INPUT_CSV) | {"row_count": len(csv_rows)},
+            "summary": _read_json(SUMMARY_JSON) if SUMMARY_JSON.exists() else None,
         },
         "fermentation": {
             "wines_json": _file_info(WINES_JSON) | {"count": len(wines), "by_status": by_status},
@@ -268,9 +324,101 @@ def api_status() -> dict:
 # Stage runners
 # ---------------------------------------------------------------------------
 
+def _csv_row_count(p: Path) -> Optional[int]:
+    try:
+        with open(p, newline="", encoding="utf-8-sig") as f:
+            return max(0, sum(1 for _ in csv.reader(f)) - 1)
+    except (OSError, UnicodeDecodeError, csv.Error):
+        return None
+
+
+def _uploads() -> list[dict]:
+    """Uploaded product exports, newest first, plus the test fixture last."""
+    items = []
+    if UPLOADS_DIR.exists():
+        for p in sorted(UPLOADS_DIR.glob("*.csv"), key=lambda p: p.stat().st_mtime, reverse=True):
+            items.append(_file_info(p) | {"name": p.name, "rows": _csv_row_count(p), "kind": "upload"})
+    if FIXTURE_CSV.exists():
+        items.append(_file_info(FIXTURE_CSV) | {
+            "name": TEST_INPUT, "rows": _csv_row_count(FIXTURE_CSV), "kind": "test",
+            "label": "Test set (24 wines)",
+        })
+    return items
+
+
+def _upload_path(name: str) -> Path:
+    if name == TEST_INPUT:
+        return FIXTURE_CSV
+    if not name or "/" in name or "\\" in name or name.startswith("."):
+        raise HTTPException(400, f"bad upload name {name!r}")
+    p = UPLOADS_DIR / name
+    if not p.is_file():
+        raise HTTPException(404, f"upload {name!r} not found")
+    return p
+
+
+@app.post("/api/ingest/upload")
+async def api_ingest_upload(file: UploadFile = File(...)) -> dict:
+    """Store a Lightspeed product-export CSV. The header row is validated
+    before the file is kept, so a wrong file is rejected with a reason."""
+    from ingestion.ingest import InputError, validate_headers  # noqa: PLC0415
+
+    name = Path(file.filename or "upload.csv").name
+    if not name.lower().endswith(".csv"):
+        raise HTTPException(400, f"{name}: only .csv product exports are accepted "
+                                 "(export Products from Lightspeed as CSV)")
+    data = await file.read()
+    if not data.strip():
+        raise HTTPException(400, f"{name} is empty")
+    try:
+        text = data.decode("utf-8-sig")
+    except UnicodeDecodeError:
+        raise HTTPException(400, f"{name} is not UTF-8 text (is it an .xlsx renamed to .csv?)") from None
+    try:
+        header = next(csv.reader(io.StringIO(text)))
+        validate_headers(header)
+    except (StopIteration, csv.Error):
+        raise HTTPException(400, f"{name}: could not read a header row") from None
+    except InputError as e:
+        raise HTTPException(400, f"{name}: {e}") from None
+
+    UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
+    stem, ext = os.path.splitext(name)
+    dest = UPLOADS_DIR / name
+    if dest.exists():
+        dest = UPLOADS_DIR / f"{stem}-{datetime.now().strftime('%H%M%S')}{ext}"
+    dest.write_bytes(data)
+    return _file_info(dest) | {"name": dest.name, "rows": _csv_row_count(dest), "kind": "upload"}
+
+
+@app.get("/api/ingest/uploads")
+def api_ingest_uploads() -> list[dict]:
+    return _uploads()
+
+
+@app.delete("/api/ingest/uploads/{name}")
+def api_ingest_upload_delete(name: str) -> dict:
+    if name == TEST_INPUT:
+        raise HTTPException(400, "the test set cannot be deleted")
+    _upload_path(name).unlink()
+    return {"deleted": name}
+
+
+class IngestRequest(BaseModel):
+    input: Optional[str] = None   # upload name, or TEST_INPUT; None = newest upload
+
+
 @app.post("/api/ingest/run")
-async def api_ingest_run() -> dict:
-    job = await _start_job("ingest", [PYTHON, str(PROJECT_ROOT / "ingestion" / "ingest.py")])
+async def api_ingest_run(req: Optional[IngestRequest] = None) -> dict:
+    cmd = [PYTHON, str(INGESTION_DIR / "ingest.py"), "--events-json"]
+    name = (req.input if req else None)
+    if name is None:
+        uploads = [u for u in _uploads() if u["kind"] == "upload"]
+        if not uploads:
+            raise HTTPException(400, "no product export uploaded yet — drop a CSV in the Ingest panel first")
+        name = uploads[0]["name"]
+    cmd += ["--input", str(_upload_path(name))]
+    job = await _start_job("ingest", cmd)
     return job.summary()
 
 
@@ -341,21 +489,42 @@ def api_settings_patch(patch: SettingsPatch) -> dict:
 @app.post("/api/llama/start")
 def api_llama_start() -> dict:
     st = _llama_status()
-    if st["ok"]:
+    if st["running"]:
         return {"started": False, "reason": "already running", "llama": st}
-    script = Path(LLAMA_SCRIPT)
-    if not script.exists():
-        raise HTTPException(400, f"LLAMA_SCRIPT not found: {script}")
+    if LLAMA_MODEL not in LLAMA_MODELS:
+        raise HTTPException(400, f"unknown LLAMA_MODEL {LLAMA_MODEL!r} (expected one of {sorted(LLAMA_MODELS)})")
     if shutil.which("llama-server") is None:
         raise HTTPException(400, "llama-server is not on PATH")
-    port = st["base_url"].rsplit(":", 1)[-1] or "8080"
+    repo, file = LLAMA_MODELS[LLAMA_MODEL]
+    cmd = ["llama-server", "--hf-repo", repo, "--hf-file", file, "--port", _llama_port()]
     with open(LLAMA_LOG, "ab") as log:
         proc = subprocess.Popen(
-            [str(script), "--port", port], cwd=str(PROJECT_ROOT),
+            cmd, cwd=str(PROJECT_ROOT),
             stdout=log, stderr=subprocess.STDOUT, start_new_session=True,
         )
     LLAMA_PID.write_text(str(proc.pid))
-    return {"started": True, "pid": proc.pid, "script": str(script), "log": str(LLAMA_LOG)}
+    return {"started": True, "pid": proc.pid, "model": LLAMA_MODEL, "log": str(LLAMA_LOG)}
+
+
+@app.post("/api/llama/stop")
+def api_llama_stop() -> dict:
+    pids = _llama_pids()
+    for pid in pids:
+        try:
+            os.kill(pid, signal.SIGTERM)
+        except ProcessLookupError:
+            pass
+    deadline = time.monotonic() + 5
+    while time.monotonic() < deadline and any(_pid_alive(p) for p in pids):
+        time.sleep(0.2)
+    for pid in pids:
+        if _pid_alive(pid):
+            try:
+                os.kill(pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+    LLAMA_PID.unlink(missing_ok=True)
+    return {"stopped": sorted(pids)}
 
 
 @app.get("/api/llama/log")
@@ -428,9 +597,31 @@ async def api_job_events(job_id: str, after: int = 0) -> AsyncIterable[ServerSen
 # ---------------------------------------------------------------------------
 
 @app.get("/api/ingestion/rows")
-def api_ingestion_rows() -> dict:
+def api_ingestion_rows(limit: int = 0) -> dict:
     rows = _csv_rows(INPUT_CSV)
-    return {"path": str(INPUT_CSV), "columns": list(rows[0].keys()) if rows else [], "rows": rows}
+    total = len(rows)
+    if limit > 0:
+        rows = rows[:limit]
+    return {"path": str(INPUT_CSV), "columns": list(rows[0].keys()) if rows else [], "rows": rows, "total": total}
+
+
+@app.get("/api/ingestion/excluded")
+def api_ingestion_excluded() -> dict:
+    rows = _csv_rows(EXCLUDED_CSV)
+    return {"path": str(EXCLUDED_CSV), "columns": list(rows[0].keys()) if rows else [], "rows": rows, "total": len(rows)}
+
+
+@app.get("/api/ingestion/summary")
+def api_ingestion_summary() -> dict:
+    if not SUMMARY_JSON.exists():
+        raise HTTPException(404, "ingestion has not run yet")
+    return _read_json(SUMMARY_JSON) or {}
+
+
+@app.get("/api/ingestion/filters")
+def api_ingestion_filters() -> dict:
+    from ingestion.filters import Filters  # noqa: PLC0415
+    return Filters.load(FILTERS_TOML).as_dict()
 
 
 # ---------------------------------------------------------------------------

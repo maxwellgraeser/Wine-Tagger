@@ -22,9 +22,9 @@ dashboard for review and re-upload.
 
 | Domain | State | Entry point | Notes |
 |---|---|---|---|
-| `ingestion/` | ✅ Implemented | `ingestion/run.sh` | xlsx → `combined.csv` |
-| `fermentation/` | 🟧 Active build | `./ferment.sh` / `python -m fermentation.ferment` | |
-| `cellar/` | ✅ Built | `cellar/run.sh` | web app over all three stages; owns the Lightspeed export (was `distribution/`) |
+| `ingestion/` | ✅ Implemented | Cellar → Ingest | product-export `.csv` → filters → `combined.csv` |
+| `fermentation/` | 🟧 Active build | Cellar → Ferment / `python -m fermentation.ferment` | |
+| `cellar/` | ✅ Built | `./run.sh` | web app over all three stages; owns the Lightspeed export (was `distribution/`) |
 
 See each domain's `PLAN.md` for detail, and `Tree.html` (repo root) for a
 visual component map plus an ordered list of known issues.
@@ -33,14 +33,17 @@ visual component map plus an ordered list of known issues.
 
 ### 1. Ingestion (`ingestion/`)
 
-Reads the raw `.xlsx` exports from Lightspeed (product catalog and
-inventory/sales report), cleans and normalizes the data, and outputs a single
-CSV that downstream domains consume without any xlsx dependency.
+Takes the Lightspeed product export CSV (the whole catalogue), decides which
+rows are wines, and writes them as one CSV for downstream domains. New
+products since the POS switch carry no category, so `ingestion/filters.toml`
+green-lights whitelisted categories, then drops uncategorized rows from
+beer/accessory-only vendors or with beer / fortified / accessory keywords in
+the name.
 
-**Input:** Two `.xlsx` files (product export, inventory report) in `Sample Xlsx/`
-**Output:** `ingestion/output/combined.csv` — product catalog columns and sales
-stats merged into one row per wine via a name-based **inner join**
-(case-insensitive; rows present in only one source are dropped and logged).
+**Input:** one `product-export-*.csv`, dropped in the Cellar Ingest panel
+(stored in `ingestion/uploads/`), or the bundled 24-wine test set
+**Output:** `ingestion/output/combined.csv` (wines), `excluded.csv` (dropped
+rows with the reason), `summary.json` (counts for the dashboard)
 
 ### 2. Fermentation (`fermentation/`)
 
@@ -94,15 +97,15 @@ contract between domains is their output format:
 ## Running the Pipeline
 
 ```
-./cellar/run.sh                         # everything, from the browser (:8000)
+./run.sh                                          # everything, from the browser (:8000)
 
-./ingestion/run.sh                      # or stage by stage from the console
-./ferment.sh [--force --limit N]
+.venv/bin/python ingestion/ingest.py --input export.csv   # or stage by stage from the console
+.venv/bin/python -m fermentation.ferment [--force --limit N]
 ```
 
 Fermentation needs a local OpenAI-compatible LLM endpoint running first
-(llama.cpp `llama-server` on :8080, or LM Studio on :1234). The `gemma3n.sh` /
-`qwen25-7b.sh` helper scripts at the repo root start a server.
+(llama.cpp `llama-server` on :8080, or LM Studio on :1234). The Cellar top bar
+starts and stops one (`LLAMA_MODEL=qwen|gemma`).
 
 ## Folder Structure
 
@@ -112,10 +115,13 @@ Wine Warehouse DDD/
 ├── README.md
 ├── Tree.html                # visual architecture map + findings
 ├── requirements.txt
+├── run.sh                   # starts the Cellar dashboard
 ├── ingestion/
 │   ├── PLAN.md
-│   ├── ingest.py
-│   └── run.sh
+│   ├── ingest.py · filters.py · filters.toml
+│   ├── fixtures/test-wines.csv
+│   ├── uploads/             (git-ignored) dropped exports
+│   └── output/              (generated) combined.csv · excluded.csv · summary.json
 ├── fermentation/            # active
 │   ├── PLAN.md
 │   ├── ferment.py           # CLI
@@ -124,10 +130,9 @@ Wine Warehouse DDD/
 │   ├── store.py · events.py · paths.py · types.py · constants.py
 │   └── library_mcp/         # FastMCP server + baked library.db + seed/
 ├── cellar/                  # the web app (FastAPI + React)
-│   ├── PLAN.md · run.sh · server/app.py · web/
+│   ├── PLAN.md · server/app.py · web/
 ├── output/                  (generated) wines.json, .run_state.json
 ├── logs/                    (generated) per-run phase logs
-└── Sample Xlsx/
-    ├── product-export.xlsx
-    └── inventory-report (...).xlsx
+└── Sample Xlsx/             (git-ignored) raw Lightspeed exports
+    └── product-export-2026-09-16.csv
 ```
