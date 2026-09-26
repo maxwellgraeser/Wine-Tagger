@@ -135,3 +135,14 @@ def test_country_part_does_not_beat_region(homonyms):
     assert homonyms.lookup_region("Kakheti, Georgia")["canonical"] == "Kakheti"
     r = homonyms.lookup_region("Georgia, United States")
     assert r["canonical"] == "Georgia" and r["country"] == "United States"
+
+
+def test_fold_saint_and_inner_hyphens():
+    from fermentation.library_mcp.server import _fold
+    assert _fold("Nuits St Georges") == _fold("Nuits-Saint-Georges")
+    assert _fold("St.-Émilion") == "saint emilion"
+    assert _fold("Ste-Croix-du-Mont") == "sainte croix du mont"
+    # a spaced dash still separates compound parts
+    assert _fold("Napa Valley - California") == "napa valley - california"
+    # "st" inside a word is untouched
+    assert _fold("Stellenbosch") == "stellenbosch"

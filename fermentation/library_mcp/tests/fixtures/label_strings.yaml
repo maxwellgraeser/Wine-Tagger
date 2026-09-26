@@ -37,6 +37,14 @@ ZA:
 
 FR:
   regions:
+    # St/St./Ste expand to Saint/Sainte; a hyphen inside a word is a space
+    "Nuits St Georges": "Nuits-Saint-Georges"
+    "Morey St Denis": "Morey-Saint-Denis"
+    "Lussac St-Émilion": "Lussac-Saint-Émilion"
+    "St.-Émilion": "Saint-Émilion"
+    "Ste-Croix-du-Mont": "Sainte-Croix-du-Mont"
+    "Chateau Chalon": "Château-Chalon"
+    "Coteaux-du-Layon-Chaume": "Chaume"
     "Gevrey Chambertin": "Gevrey-Chambertin"
     "Corton-Charlemagne Grand Cru": "Corton-Charlemagne"
     "Vosne-Romanée 1er Cru": "Vosne-Romanée"
@@ -130,6 +138,8 @@ FR:
 
 US:
   regions:
+    "Fort Ross Seaview": "Fort Ross-Seaview"
+    "Saint Helena": "St. Helena"
     "RRV": "Russian River Valley"
     "Santa Rita Hills": "Sta. Rita Hills"
     "Paso": "Paso Robles"

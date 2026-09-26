@@ -77,10 +77,20 @@ _CONN = _connect_ro()
 
 # ---------- normalisation helpers ----------
 
+# Label spellings that fold to one key: a hyphen inside a word is a space
+# ("Nuits-Saint-Georges" = "Nuits Saint Georges"), and "St"/"St."/"Ste"
+# abbreviate Saint/Sainte ("Morey St Denis", "St.-Émilion"). A spaced dash
+# is kept: it separates compound parts ("Napa Valley - California").
+_INNER_HYPHEN = re.compile(r"(?<=\S)[-\u2010\u2011](?=\S)")
+_SAINT = re.compile(r"\b(st|ste)\b\.?")
+
+
 def _fold(s: str) -> str:
     s = unicodedata.normalize("NFKD", s or "")
     s = "".join(ch for ch in s if not unicodedata.combining(ch))
-    return re.sub(r"\s+", " ", s).strip().lower()
+    s = _INNER_HYPHEN.sub(" ", s.lower())
+    s = _SAINT.sub(lambda m: "saint" if m.group(1) == "st" else "sainte", s)
+    return re.sub(r"\s+", " ", s).strip()
 
 
 def _is_phrase(name: str) -> bool:

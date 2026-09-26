@@ -40,7 +40,6 @@ import re
 import sqlite3
 import sys
 import time
-import unicodedata
 from pathlib import Path
 from typing import Iterable
 
@@ -49,6 +48,7 @@ try:
 except ImportError:  # offline-only mode
     requests = None  # type: ignore[assignment]
 
+from ..server import _fold
 from .allowlist import Allowlist, AllowlistError, load_allowlists
 
 HERE = Path(__file__).resolve().parent
@@ -91,10 +91,6 @@ def ensure_schema(conn: sqlite3.Connection) -> None:
 
 # ---------- helpers ----------
 
-def _fold(s: str) -> str:
-    s = unicodedata.normalize("NFKD", s or "")
-    s = "".join(ch for ch in s if not unicodedata.combining(ch))
-    return re.sub(r"\s+", " ", s).strip().lower()
 
 
 def _qid(uri: str | None) -> str | None:

@@ -31,12 +31,12 @@ import argparse
 import shutil
 import sys
 import tempfile
-import unicodedata
 from dataclasses import dataclass, field
 from pathlib import Path
 
 import yaml
 
+from ...server import _fold
 from ..allowlist import AllowlistError, load_allowlists
 
 HERE = Path(__file__).resolve().parent
@@ -45,9 +45,6 @@ REGION_KEYS = ("name", "country", "parent", "classification", "synonyms", "grape
 GRAPE_KEYS = ("name", "color", "synonyms", "qid")
 
 
-def _fold(s: str) -> str:
-    s = unicodedata.normalize("NFKD", s or "")
-    return " ".join("".join(c for c in s if not unicodedata.combining(c)).lower().split())
 
 
 # ---------- one-line flow YAML, in the allowlists' own style ----------
