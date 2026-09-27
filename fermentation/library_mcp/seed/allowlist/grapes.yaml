@@ -548,3 +548,8 @@
 # ---------------- research: gr-s ----------------
 - {name: "Thrapsathiri", color: white, synonyms: ["Thrapsathiri Aspri"]}
 - {name: "Monemvasia", color: white, synonyms: ["Monemvassia", "Monemvasitiko"]}
+
+# ---------------- research: cl ----------------
+
+# ---------------- research: ar ----------------
+- {name: "Pedro Giménez", color: white, synonyms: ["Pedro Jiménez"]}

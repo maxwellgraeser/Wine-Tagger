@@ -1,0 +1,91 @@
+# Chile (cl). Format matches regions.yaml plus research-only keys (was, grapes, source).
+# No `classification` key: existing CL entries in regions.yaml carry none, so this file
+# follows that convention (Chile's DO scheme has one register, not several parallel ones).
+
+# --- Región de Atacama (new) ---
+- {name: "Atacama", country: CL, synonyms: ["Región de Atacama", "Región Vitícola de Atacama"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Copiapó Valley", country: CL, parent: "Atacama", synonyms: ["Valle de Copiapó", "Valle del Copiapó", "Copiapo Valley", "Copiapó"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Huasco Valley", country: CL, parent: "Atacama", synonyms: ["Valle del Huasco", "Huasco"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+
+# --- Región de Coquimbo (existing region kept as-is) ---
+- {name: "Coquimbo", country: CL, source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Elqui Valley", country: CL, parent: "Coquimbo", synonyms: ["Elqui", "Valle del Elqui"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Limarí Valley", country: CL, parent: "Coquimbo", synonyms: ["Limarí", "Limari", "Limari Valley", "Valle del Limarí"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Choapa Valley", country: CL, parent: "Coquimbo", synonyms: ["Choapa"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+
+# --- Región de Aconcagua ---
+# Naming collision: the existing "Aconcagua" region entry carried "Aconcagua Valley" /
+# "Valle de Aconcagua" as synonyms, but the decree's Subregión Valle del Aconcagua (the
+# Panquehue/San Felipe/Los Andes/Quillota area, excluding Casablanca and San Antonio) is
+# a narrower, separate unit that the trade also calls "Aconcagua Valley" (e.g. Errázuriz's
+# Aconcagua Valley wines). Kept region name "Aconcagua" but dropped the valley-specific
+# synonyms from it, and gave the subregion its own entry below. See cl.md.
+- {name: "Aconcagua", country: CL, synonyms: ["Aconcagua Region", "Región de Aconcagua", "Región Vitícola de Aconcagua"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Aconcagua Valley", country: CL, parent: "Aconcagua", synonyms: ["Valle del Aconcagua", "Valle de Aconcagua"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Panquehue", country: CL, parent: "Aconcagua Valley", synonyms: [], source: "https://www.wine-searcher.com/regions-panquehue"}
+- {name: "Casablanca Valley", country: CL, parent: "Aconcagua", synonyms: ["Casablanca", "Valle de Casablanca"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "San Antonio Valley", country: CL, parent: "Aconcagua", synonyms: ["San Antonio", "Valle de San Antonio"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Leyda Valley", country: CL, parent: "San Antonio Valley", synonyms: ["Leyda", "Valle de Leyda"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Marga-Marga", country: CL, parent: "Aconcagua", synonyms: ["Valle del Marga-Marga", "Marga Marga", "Valle de Marga-Marga"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Zapallar", country: CL, parent: "Aconcagua", synonyms: [], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+
+# --- Región del Valle Central ---
+- {name: "Central Valley", country: CL, synonyms: ["Valle Central", "Central Valley (Chile)"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+
+- {name: "Maipo Valley", country: CL, parent: "Central Valley", synonyms: ["Maipo", "Valle del Maipo"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Puente Alto", country: CL, parent: "Maipo Valley", synonyms: [], source: "https://www.wine-searcher.com/regions-puente+alto"}
+- {name: "Pirque", country: CL, parent: "Maipo Valley", synonyms: [], source: "https://www.wine-searcher.com/regions-pirque"}
+- {name: "Buin", country: CL, parent: "Maipo Valley", synonyms: [], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Isla de Maipo", country: CL, parent: "Maipo Valley", synonyms: [], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Talagante", country: CL, parent: "Maipo Valley", synonyms: [], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Alto Maipo", country: CL, parent: "Maipo Valley", synonyms: [], source: "https://www.winewithseth.com/winewiki/maipo-sub-zones-alto-maipo-central-maipo-maipo-costa/"}
+
+- {name: "Rapel Valley", country: CL, parent: "Central Valley", synonyms: ["Rapel", "Valle del Rapel"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Cachapoal Valley", country: CL, parent: "Rapel Valley", synonyms: ["Cachapoal", "Valle del Cachapoal"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Peumo", country: CL, parent: "Cachapoal Valley", synonyms: [], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Requínoa", country: CL, parent: "Cachapoal Valley", synonyms: ["Requinoa"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Rengo", country: CL, parent: "Cachapoal Valley", synonyms: [], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Colchagua Valley", country: CL, parent: "Rapel Valley", synonyms: ["Colchagua", "Valle de Colchagua"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Apalta", country: CL, parent: "Colchagua Valley", synonyms: [], source: "https://www.wine-searcher.com/regions-apalta"}
+- {name: "Santa Cruz", country: CL, parent: "Colchagua Valley", synonyms: [], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Marchigüe", country: CL, parent: "Colchagua Valley", synonyms: ["Marchigue"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Lolol", country: CL, parent: "Colchagua Valley", synonyms: [], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Peralillo", country: CL, parent: "Colchagua Valley", synonyms: [], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Nancagua", country: CL, parent: "Colchagua Valley", synonyms: [], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Chimbarongo", country: CL, parent: "Colchagua Valley", synonyms: [], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+
+- {name: "Curicó Valley", country: CL, parent: "Central Valley", synonyms: ["Curicó", "Curico", "Curico Valley", "Valle de Curicó"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Teno Valley", country: CL, parent: "Curicó Valley", synonyms: ["Valle del Teno"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Lontué Valley", country: CL, parent: "Curicó Valley", synonyms: ["Valle del Lontué", "Lontue Valley", "Valle de Lontué"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Sagrada Familia", country: CL, parent: "Lontué Valley", synonyms: [], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Molina", country: CL, parent: "Lontué Valley", synonyms: [], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+
+- {name: "Maule Valley", country: CL, parent: "Central Valley", synonyms: ["Maule", "Valle del Maule"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Claro Valley", country: CL, parent: "Maule Valley", synonyms: ["Valle del Claro"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Loncomilla Valley", country: CL, parent: "Maule Valley", synonyms: ["Valle del Loncomilla"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "San Javier", country: CL, parent: "Loncomilla Valley", synonyms: [], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Tutuvén Valley", country: CL, parent: "Maule Valley", synonyms: ["Valle del Tutuvén", "Tutuven Valley"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Cauquenes", country: CL, parent: "Tutuvén Valley", synonyms: [], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+
+# --- Región del Sur (Southern Chile) ---
+- {name: "Southern Chile", country: CL, synonyms: ["Sur", "Región del Sur"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Itata Valley", country: CL, parent: "Southern Chile", synonyms: ["Itata", "Valle del Itata"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Chillán", country: CL, parent: "Itata Valley", synonyms: ["Chillan"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Quillón", country: CL, parent: "Itata Valley", synonyms: ["Quillon"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Portezuelo", country: CL, parent: "Itata Valley", synonyms: [], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Coelemu", country: CL, parent: "Itata Valley", synonyms: [], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Guarilihue", country: CL, parent: "Itata Valley", synonyms: [], source: "https://www.tedwardwines.com/products/torontel-nv"}
+- {name: "Bío-Bío Valley", country: CL, parent: "Southern Chile", synonyms: ["Bio Bio", "Biobío", "Bío Bío", "Bio-Bio Valley", "Valle del Bío-Bío"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Malleco Valley", country: CL, parent: "Southern Chile", synonyms: ["Malleco"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Traiguén", country: CL, parent: "Malleco Valley", synonyms: ["Traiguen"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+
+# --- Región Austral (new) ---
+- {name: "Austral", country: CL, synonyms: ["Región Austral", "Región Vitícola Austral"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Cautín Valley", country: CL, parent: "Austral", synonyms: ["Valle del Cautín", "Cautin Valley", "Valle del Cautin"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+- {name: "Osorno Valley", country: CL, parent: "Austral", synonyms: ["Valle de Osorno"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}
+
+# --- Special / overlay designation ---
+# Overlay: spans comunas across Maule, Ñuble and Biobío and is tied to two specific
+# grapes (País, Cinsault), not to one nested viticultural unit. Given no parent and no
+# children, per the brief's overlay-designation rule. See cl.md.
+- {name: "Secano Interior", country: CL, synonyms: [], grapes: ["País", "Cinsault"], source: "https://www.sag.gob.cl/sites/default/files/decreto_ndeg_464.pdf"}

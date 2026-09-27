@@ -1,0 +1,76 @@
+# AR: Argentina. Format matches regions.yaml plus research-only keys (was, grapes, source).
+# One agent covers all of Argentina; see ar.md for counts, skipped official IGs and homonyms.
+
+# --- Mendoza province and its IGs/DOCs ---
+- {name: "Mendoza", country: AR, classification: IG, synonyms: ["Mendoza Province"], source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Luján de Cuyo", country: AR, parent: "Mendoza", classification: DOC, synonyms: ["Lujan de Cuyo"], grapes: ["Malbec", "Cabernet Sauvignon", "Cabernet Franc", "Petit Verdot", "Bonarda"], source: "https://blog.enotek.com.ar/denominacion-de-origen-controlada-doc/"}
+- {name: "Agrelo", country: AR, parent: "Luján de Cuyo", classification: IG, source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Perdriel", country: AR, parent: "Luján de Cuyo", source: "https://www.greatwinecapitals.com/wine-stories/d-o-c-lujan-de-cuyo-showcases-its-terroir-through-science-history-and-wine/"}
+- {name: "Vistalba", country: AR, parent: "Luján de Cuyo", source: "https://v1.vinous.com/articles/lujan-de-cuyo-old-vines-and-a-patchwork-of-soils-jan-2023"}
+- {name: "Las Compuertas", country: AR, parent: "Luján de Cuyo", classification: IG, source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Ugarteche", country: AR, parent: "Luján de Cuyo", source: "https://v1.vinous.com/articles/lujan-de-cuyo-old-vines-and-a-patchwork-of-soils-jan-2023"}
+- {name: "Mayor Drummond", country: AR, parent: "Luján de Cuyo", source: "https://www.greatwinecapitals.com/wine-stories/d-o-c-lujan-de-cuyo-showcases-its-terroir-through-science-history-and-wine/"}
+- {name: "Maipú", country: AR, parent: "Mendoza", classification: IG, synonyms: ["Maipu"], source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Lunlunta", country: AR, parent: "Maipú", classification: IG, source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Barrancas", country: AR, parent: "Maipú", classification: IG, source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Russel", country: AR, parent: "Maipú", classification: IG, synonyms: ["Russell"], source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Cruz de Piedra", country: AR, parent: "Maipú", source: "https://www.wine-searcher.com/find/cruz+de+piedra+malbec+mendoza+argentina"}
+- {name: "Uco Valley", country: AR, parent: "Mendoza", classification: IG, synonyms: ["Valle de Uco"], source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Tupungato", country: AR, parent: "Uco Valley", classification: IG, synonyms: ["Valle de Tupungato", "Tupungato Valley"], source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Gualtallary", country: AR, parent: "Tupungato", source: "https://www.wine-searcher.com/regions-gualtallary"}
+- {name: "Tunuyán", country: AR, parent: "Uco Valley", classification: IG, synonyms: ["Tunuyan"], source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Los Chacayes", country: AR, parent: "Tunuyán", classification: IG, source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Vista Flores", country: AR, parent: "Tunuyán", classification: IG, source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "San Pablo", country: AR, parent: "Tunuyán", classification: IG, source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "San Carlos, Mendoza", country: AR, parent: "Uco Valley", classification: IG, source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Paraje Altamira", country: AR, parent: "San Carlos, Mendoza", classification: IG, source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Pampa El Cepillo", country: AR, parent: "San Carlos, Mendoza", classification: IG, synonyms: ["Pampa el Cepillo"], source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "La Consulta", country: AR, parent: "San Carlos, Mendoza", classification: IG, source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "San Rafael", country: AR, parent: "Mendoza", classification: DOC, grapes: ["Malbec", "Cabernet Sauvignon", "Merlot", "Pinot Noir", "Syrah"], source: "https://www.mdzol.com/estilo/2023/4/17/por-que-los-malbec-se-los-aplaude-mas-si-tienen-la-sigla-doc-en-su-etiqueta-330631.html"}
+- {name: "East Mendoza", country: AR, parent: "Mendoza", synonyms: ["Zona Este", "Eastern Mendoza"], source: "https://southamericawineguide.com/guide-to-eastern-mendoza-its-wine-regions/"}
+
+# --- Salta province and the Calchaquí Valley ---
+- {name: "Salta", country: AR, classification: IG, source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Calchaquí Valley", country: AR, parent: "Salta", classification: IG, synonyms: ["Valles Calchaquíes", "Calchaqui Valley", "Valle Calchaquí", "Valles Calchaquies"], source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Cafayate", country: AR, parent: "Calchaquí Valley", classification: IG, synonyms: ["Valle de Cafayate"], source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Molinos", country: AR, parent: "Calchaquí Valley", classification: IG, source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Cachi", country: AR, parent: "Calchaquí Valley", classification: IG, source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "San Carlos, Salta", country: AR, parent: "Calchaquí Valley", classification: IG, source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Payogasta", country: AR, parent: "Calchaquí Valley", source: "https://southamericawineguide.com/calchaqui-valley-wine-region-guide/"}
+
+# --- San Juan province ---
+- {name: "San Juan", country: AR, classification: IG, synonyms: ["San Juan Province"], source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Tulum Valley", country: AR, parent: "San Juan", classification: IG, synonyms: ["Valle del Tulum", "Valle de Tulum", "Tulum"], source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Pedernal Valley", country: AR, parent: "San Juan", classification: IG, synonyms: ["Valle del Pedernal", "Pedernal"], source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Zonda", country: AR, parent: "San Juan", classification: IG, synonyms: ["Valle de Zonda"], source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Calingasta", country: AR, parent: "San Juan", classification: IG, synonyms: ["Valle de Calingasta"], source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Ullum", country: AR, parent: "San Juan", classification: IG, source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+
+# --- La Rioja province ---
+- {name: "La Rioja", country: AR, classification: IG, synonyms: ["La Rioja Argentina", "La Rioja Province"], source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Famatina", country: AR, parent: "La Rioja", classification: IG, source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Chilecito", country: AR, parent: "La Rioja", classification: IG, source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+
+# --- Catamarca, Tucumán, Jujuy provinces (Northwest) ---
+- {name: "Catamarca", country: AR, classification: IG, source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Tucumán", country: AR, classification: IG, source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Tafí", country: AR, parent: "Tucumán", classification: IG, synonyms: ["Tafí del Valle"], source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Jujuy", country: AR, classification: IG, source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Quebrada de Humahuaca", country: AR, parent: "Jujuy", classification: IG, source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+
+# --- Patagonia (multi-province umbrella) and its provinces ---
+- {name: "Patagonia", country: AR, synonyms: ["Patagonia Argentina"], source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Neuquén", country: AR, parent: "Patagonia", classification: IG, synonyms: ["Neuquen"], source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Añelo", country: AR, parent: "Neuquén", classification: IG, synonyms: ["Anelo"], source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "San Patricio del Chañar", country: AR, parent: "Añelo", source: "https://en.wikipedia.org/wiki/Neuqu%C3%A9n_Province"}
+- {name: "Río Negro", country: AR, parent: "Patagonia", classification: IG, synonyms: ["Rio Negro"], source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Alto Valle de Río Negro", country: AR, parent: "Río Negro", classification: IG, synonyms: ["Alto Valle del Río Negro", "Alto Valle de Rio Negro"], source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Chubut", country: AR, parent: "Patagonia", source: "https://en.wikipedia.org/wiki/Chubut_Province"}
+- {name: "La Pampa", country: AR, source: "https://en.wikipedia.org/wiki/La_Pampa_Province"}
+
+# --- Buenos Aires, Córdoba, Entre Ríos (Central/Atlantic) ---
+- {name: "Buenos Aires", country: AR, synonyms: ["Buenos Aires Province"], source: "https://en.wikipedia.org/wiki/Buenos_Aires_wines"}
+- {name: "Chapadmalal", country: AR, parent: "Buenos Aires", classification: IG, source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Médanos", country: AR, parent: "Buenos Aires", source: "https://mag.sommtv.com/2022/03/atlantic-coast-of-argentina/"}
+- {name: "Córdoba", country: AR, classification: IG, synonyms: ["Córdoba Argentina"], source: "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_0.pdf"}
+- {name: "Entre Ríos", country: AR, source: "https://en.wikipedia.org/wiki/Entre_R%C3%ADos_Province"}

@@ -519,3 +519,47 @@ GR:
     "Krassato": "Krasato"
     "Vlahiko": "Vlachiko"
     "Amorgiano": "Mandilaria"
+
+CL:
+  regions:
+    "Valle del Maipo": "Maipo Valley"
+    "Valle de Colchagua": "Colchagua Valley"
+    "Apalta, Colchagua": "Apalta"
+    "Valle del Cachapoal": "Cachapoal Valley"
+    "Requinoa": "Requínoa"
+    "Valle de Casablanca": "Casablanca Valley"
+    "Leyda": "Leyda Valley"
+    "Valle de Aconcagua": "Aconcagua Valley"
+    "Marga Marga": "Marga-Marga"
+    "Curico": "Curicó Valley"
+    "Valle del Lontué": "Lontué Valley"
+    "Sagrada Familia, Curicó": "Sagrada Familia"
+    "Valle del Maule": "Maule Valley"
+    "San Javier, Maule": "San Javier"
+    "Valle del Itata": "Itata Valley"
+    "Quillon": "Quillón"
+    "Bio Bio": "Bío-Bío Valley"
+    "Valle del Elqui": "Elqui Valley"
+    "Limari": "Limarí Valley"
+  grapes:
+    "Carmenere": "Carménère"
+    "Pais": "País"
+    "Moscatel de Alejandría": "Muscat of Alexandria"
+
+AR:
+  regions:
+    "Valle de Uco": "Uco Valley"
+    "Lujan de Cuyo": "Luján de Cuyo"
+    "Valle de Cafayate": "Cafayate"
+    "Calchaqui Valley": "Calchaquí Valley"
+    "Valles Calchaquíes": "Calchaquí Valley"
+    "Alto Valle del Río Negro": "Alto Valle de Río Negro"
+    "Valle del Pedernal": "Pedernal Valley"
+    "Valle de Tulum": "Tulum Valley"
+    "Zona Este": "East Mendoza"
+    "Tafí del Valle": "Tafí"
+  grapes:
+    "Torrontes": "Torrontés"
+    "Pedro Gimenez": "Pedro Giménez"
+    "Bonarda Argentina": "Bonarda"
+    "Douce Noir": "Bonarda"

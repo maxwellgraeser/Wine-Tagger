@@ -1,0 +1,6 @@
+# AR: Argentina grapes. New varieties + missing synonyms on existing grapes. See ar.md.
+
+- {name: "Torrontés Sanjuanino", color: white, synonyms: ["Moscatel de Austria"], source: "https://en.wikipedia.org/wiki/Torront%C3%A9s"}
+- {name: "Torrontés Mendocino", color: white, synonyms: [], source: "https://en.wikipedia.org/wiki/Torront%C3%A9s"}
+- {name: "Pedro Giménez", color: white, synonyms: ["Pedro Jiménez"], source: "https://en.wikipedia.org/wiki/Pedro_Gim%C3%A9nez"}
+- {name: "Moscatel Rosado", color: rose, synonyms: [], source: "https://www.vivc.de/index.php?r=passport/view&id=8040"}

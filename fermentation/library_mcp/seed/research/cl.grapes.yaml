@@ -1,0 +1,11 @@
+# Chile (cl) grapes.
+
+# New grape not in grapes.yaml: Peruvian/Chilean criolla white, VIVC 15465, distinct
+# from Argentina's Torrontés (already canonical) and from Peru's own Torontel usage.
+- {name: "Torontel", color: white, synonyms: [], source: "https://vivc.de/index.php?id=15465&r=passport%2Fview"}
+
+# Existing grapes with a Chilean local name to add.
+# Carménère, País, Muscat of Alexandria ("Moscatel de Alejandría"), Cinsault and
+# Carignan ("Cariñena") were checked with `context --grape`: all Chilean forms used on
+# labels are already covered by grapes.yaml's canonical name or synonyms, so no entries
+# for them here.

@@ -2396,42 +2396,129 @@
 - {name: "Valle de Guadalupe", country: MX, parent: "Baja California", synonyms: ["Guadalupe Valley"]}
 
 # ======================= ARGENTINA =======================
-- {name: "Mendoza", country: AR, synonyms: ["Mendoza Province"]}
-- {name: "Luján de Cuyo", country: AR, parent: "Mendoza", synonyms: ["Lujan de Cuyo", "Agrelo", "Perdriel", "Vistalba"]}
-- {name: "Maipú", country: AR, parent: "Mendoza", synonyms: ["Maipu"]}
-- {name: "Uco Valley", country: AR, parent: "Mendoza", synonyms: ["Valle de Uco", "Gualtallary", "Paraje Altamira", "La Consulta", "Vista Flores"]}
-- {name: "Tupungato", country: AR, parent: "Uco Valley"}
-- {name: "Tunuyán", country: AR, parent: "Uco Valley", synonyms: ["Tunuyan"]}
-- {name: "San Rafael", country: AR, parent: "Mendoza"}
-- {name: "Salta", country: AR}
-- {name: "Cafayate", country: AR, parent: "Salta"}
-- {name: "Calchaquí Valley", country: AR, parent: "Salta", synonyms: ["Valles Calchaquíes", "Calchaqui Valley", "Valle Calchaquí", "Valles Calchaquies"]}
+- {name: "Mendoza", country: AR, classification: IG, synonyms: ["Mendoza Province"]}
+- {name: "Luján de Cuyo", country: AR, parent: "Mendoza", classification: DOC, synonyms: ["Lujan de Cuyo"], grapes: ["Malbec", "Cabernet Sauvignon", "Cabernet Franc", "Petit Verdot", "Bonarda"]}
+- {name: "Agrelo", country: AR, parent: "Luján de Cuyo", classification: IG}
+- {name: "Perdriel", country: AR, parent: "Luján de Cuyo"}
+- {name: "Vistalba", country: AR, parent: "Luján de Cuyo"}
+- {name: "Las Compuertas", country: AR, parent: "Luján de Cuyo", classification: IG}
+- {name: "Ugarteche", country: AR, parent: "Luján de Cuyo"}
+- {name: "Mayor Drummond", country: AR, parent: "Luján de Cuyo"}
+- {name: "Maipú", country: AR, parent: "Mendoza", classification: IG, synonyms: ["Maipu"]}
+- {name: "Lunlunta", country: AR, parent: "Maipú", classification: IG}
+- {name: "Barrancas", country: AR, parent: "Maipú", classification: IG}
+- {name: "Russel", country: AR, parent: "Maipú", classification: IG, synonyms: ["Russell"]}
+- {name: "Cruz de Piedra", country: AR, parent: "Maipú"}
+- {name: "Uco Valley", country: AR, parent: "Mendoza", classification: IG, synonyms: ["Valle de Uco"]}
+- {name: "Tupungato", country: AR, parent: "Uco Valley", classification: IG, synonyms: ["Valle de Tupungato", "Tupungato Valley"]}
+- {name: "Gualtallary", country: AR, parent: "Tupungato"}
+- {name: "Tunuyán", country: AR, parent: "Uco Valley", classification: IG, synonyms: ["Tunuyan"]}
+- {name: "Los Chacayes", country: AR, parent: "Tunuyán", classification: IG}
+- {name: "Vista Flores", country: AR, parent: "Tunuyán", classification: IG}
+- {name: "San Pablo", country: AR, parent: "Tunuyán", classification: IG}
+- {name: "San Carlos, Mendoza", country: AR, parent: "Uco Valley", classification: IG}
+- {name: "Paraje Altamira", country: AR, parent: "San Carlos, Mendoza", classification: IG}
+- {name: "Pampa El Cepillo", country: AR, parent: "San Carlos, Mendoza", classification: IG, synonyms: ["Pampa el Cepillo"]}
+- {name: "La Consulta", country: AR, parent: "San Carlos, Mendoza", classification: IG}
+- {name: "San Rafael", country: AR, parent: "Mendoza", classification: DOC, grapes: ["Malbec", "Cabernet Sauvignon", "Merlot", "Pinot Noir", "Syrah"]}
+- {name: "East Mendoza", country: AR, parent: "Mendoza", synonyms: ["Zona Este", "Eastern Mendoza"]}
+- {name: "Salta", country: AR, classification: IG}
+- {name: "Calchaquí Valley", country: AR, parent: "Salta", classification: IG, synonyms: ["Valles Calchaquíes", "Calchaqui Valley", "Valle Calchaquí", "Valles Calchaquies"]}
+- {name: "Cafayate", country: AR, parent: "Calchaquí Valley", classification: IG, synonyms: ["Valle de Cafayate"]}
+- {name: "Molinos", country: AR, parent: "Calchaquí Valley", classification: IG}
+- {name: "Cachi", country: AR, parent: "Calchaquí Valley", classification: IG}
+- {name: "San Carlos, Salta", country: AR, parent: "Calchaquí Valley", classification: IG}
+- {name: "Payogasta", country: AR, parent: "Calchaquí Valley"}
+- {name: "San Juan", country: AR, classification: IG, synonyms: ["San Juan Province"]}
+- {name: "Tulum Valley", country: AR, parent: "San Juan", classification: IG, synonyms: ["Valle del Tulum", "Valle de Tulum", "Tulum"]}
+- {name: "Pedernal Valley", country: AR, parent: "San Juan", classification: IG, synonyms: ["Valle del Pedernal", "Pedernal"]}
+- {name: "Zonda", country: AR, parent: "San Juan", classification: IG, synonyms: ["Valle de Zonda"]}
+- {name: "Calingasta", country: AR, parent: "San Juan", classification: IG, synonyms: ["Valle de Calingasta"]}
+- {name: "Ullum", country: AR, parent: "San Juan", classification: IG}
+- {name: "La Rioja", country: AR, classification: IG, synonyms: ["La Rioja Argentina", "La Rioja Province"]}
+- {name: "Famatina", country: AR, parent: "La Rioja", classification: IG}
+- {name: "Chilecito", country: AR, parent: "La Rioja", classification: IG}
+- {name: "Catamarca", country: AR, classification: IG}
+- {name: "Tucumán", country: AR, classification: IG}
+- {name: "Tafí", country: AR, parent: "Tucumán", classification: IG, synonyms: ["Tafí del Valle"]}
+- {name: "Jujuy", country: AR, classification: IG}
+- {name: "Quebrada de Humahuaca", country: AR, parent: "Jujuy", classification: IG}
 - {name: "Patagonia", country: AR, synonyms: ["Patagonia Argentina"]}
-- {name: "Neuquén", country: AR, parent: "Patagonia", synonyms: ["Neuquen"]}
-- {name: "Río Negro", country: AR, parent: "Patagonia", synonyms: ["Rio Negro"]}
-- {name: "San Juan", country: AR, synonyms: ["San Juan Province", "Pedernal Valley"]}
-- {name: "Jujuy", country: AR}
+- {name: "Neuquén", country: AR, parent: "Patagonia", classification: IG, synonyms: ["Neuquen"]}
+- {name: "Añelo", country: AR, parent: "Neuquén", classification: IG, synonyms: ["Anelo"]}
+- {name: "San Patricio del Chañar", country: AR, parent: "Añelo"}
+- {name: "Río Negro", country: AR, parent: "Patagonia", classification: IG, synonyms: ["Rio Negro"]}
+- {name: "Alto Valle de Río Negro", country: AR, parent: "Río Negro", classification: IG, synonyms: ["Alto Valle del Río Negro", "Alto Valle de Rio Negro"]}
+- {name: "Chubut", country: AR, parent: "Patagonia"}
+- {name: "La Pampa", country: AR}
+- {name: "Buenos Aires", country: AR, synonyms: ["Buenos Aires Province"]}
+- {name: "Chapadmalal", country: AR, parent: "Buenos Aires", classification: IG}
+- {name: "Médanos", country: AR, parent: "Buenos Aires"}
+- {name: "Córdoba", country: AR, classification: IG, synonyms: ["Córdoba Argentina"]}
+- {name: "Entre Ríos", country: AR}
 
 # ======================= CHILE =======================
-- {name: "Central Valley", country: CL, synonyms: ["Valle Central", "Central Valley (Chile)"]}
-- {name: "Maipo Valley", country: CL, parent: "Central Valley", synonyms: ["Maipo", "Valle del Maipo", "Alto Maipo"]}
-- {name: "Rapel Valley", country: CL, parent: "Central Valley", synonyms: ["Rapel", "Valle del Rapel"]}
-- {name: "Colchagua Valley", country: CL, parent: "Rapel Valley", synonyms: ["Colchagua", "Valle de Colchagua", "Apalta"]}
-- {name: "Cachapoal Valley", country: CL, parent: "Rapel Valley", synonyms: ["Cachapoal", "Valle del Cachapoal"]}
-- {name: "Curicó Valley", country: CL, parent: "Central Valley", synonyms: ["Curicó", "Curico", "Curico Valley", "Valle de Curicó"]}
-- {name: "Maule Valley", country: CL, parent: "Central Valley", synonyms: ["Maule", "Valle del Maule"]}
-- {name: "Aconcagua", country: CL, synonyms: ["Aconcagua Valley", "Aconcagua Region", "Valle de Aconcagua"]}
+- {name: "Atacama", country: CL, synonyms: ["Región de Atacama", "Región Vitícola de Atacama"]}
+- {name: "Copiapó Valley", country: CL, parent: "Atacama", synonyms: ["Valle de Copiapó", "Valle del Copiapó", "Copiapo Valley", "Copiapó"]}
+- {name: "Huasco Valley", country: CL, parent: "Atacama", synonyms: ["Valle del Huasco", "Huasco"]}
+- {name: "Coquimbo", country: CL}
+- {name: "Elqui Valley", country: CL, parent: "Coquimbo", synonyms: ["Elqui", "Valle del Elqui"]}
+- {name: "Limarí Valley", country: CL, parent: "Coquimbo", synonyms: ["Limarí", "Limari", "Limari Valley", "Valle del Limarí"]}
+- {name: "Choapa Valley", country: CL, parent: "Coquimbo", synonyms: ["Choapa"]}
+- {name: "Aconcagua", country: CL, synonyms: ["Aconcagua Region", "Región de Aconcagua", "Región Vitícola de Aconcagua"]}
+- {name: "Aconcagua Valley", country: CL, parent: "Aconcagua", synonyms: ["Valle del Aconcagua", "Valle de Aconcagua"]}
+- {name: "Panquehue", country: CL, parent: "Aconcagua Valley"}
 - {name: "Casablanca Valley", country: CL, parent: "Aconcagua", synonyms: ["Casablanca", "Valle de Casablanca"]}
 - {name: "San Antonio Valley", country: CL, parent: "Aconcagua", synonyms: ["San Antonio", "Valle de San Antonio"]}
 - {name: "Leyda Valley", country: CL, parent: "San Antonio Valley", synonyms: ["Leyda", "Valle de Leyda"]}
-- {name: "Coquimbo", country: CL}
-- {name: "Limarí Valley", country: CL, parent: "Coquimbo", synonyms: ["Limarí", "Limari", "Limari Valley", "Valle del Limarí"]}
-- {name: "Elqui Valley", country: CL, parent: "Coquimbo", synonyms: ["Elqui", "Valle del Elqui"]}
-- {name: "Choapa Valley", country: CL, parent: "Coquimbo", synonyms: ["Choapa"]}
+- {name: "Marga-Marga", country: CL, parent: "Aconcagua", synonyms: ["Valle del Marga-Marga", "Marga Marga", "Valle de Marga-Marga"]}
+- {name: "Zapallar", country: CL, parent: "Aconcagua"}
+- {name: "Central Valley", country: CL, synonyms: ["Valle Central", "Central Valley (Chile)"]}
+- {name: "Maipo Valley", country: CL, parent: "Central Valley", synonyms: ["Maipo", "Valle del Maipo"]}
+- {name: "Puente Alto", country: CL, parent: "Maipo Valley"}
+- {name: "Pirque", country: CL, parent: "Maipo Valley"}
+- {name: "Buin", country: CL, parent: "Maipo Valley"}
+- {name: "Isla de Maipo", country: CL, parent: "Maipo Valley"}
+- {name: "Talagante", country: CL, parent: "Maipo Valley"}
+- {name: "Alto Maipo", country: CL, parent: "Maipo Valley"}
+- {name: "Rapel Valley", country: CL, parent: "Central Valley", synonyms: ["Rapel", "Valle del Rapel"]}
+- {name: "Cachapoal Valley", country: CL, parent: "Rapel Valley", synonyms: ["Cachapoal", "Valle del Cachapoal"]}
+- {name: "Peumo", country: CL, parent: "Cachapoal Valley"}
+- {name: "Requínoa", country: CL, parent: "Cachapoal Valley", synonyms: ["Requinoa"]}
+- {name: "Rengo", country: CL, parent: "Cachapoal Valley"}
+- {name: "Colchagua Valley", country: CL, parent: "Rapel Valley", synonyms: ["Colchagua", "Valle de Colchagua"]}
+- {name: "Apalta", country: CL, parent: "Colchagua Valley"}
+- {name: "Santa Cruz", country: CL, parent: "Colchagua Valley"}
+- {name: "Marchigüe", country: CL, parent: "Colchagua Valley", synonyms: ["Marchigue"]}
+- {name: "Lolol", country: CL, parent: "Colchagua Valley"}
+- {name: "Peralillo", country: CL, parent: "Colchagua Valley"}
+- {name: "Nancagua", country: CL, parent: "Colchagua Valley"}
+- {name: "Chimbarongo", country: CL, parent: "Colchagua Valley"}
+- {name: "Curicó Valley", country: CL, parent: "Central Valley", synonyms: ["Curicó", "Curico", "Curico Valley", "Valle de Curicó"]}
+- {name: "Teno Valley", country: CL, parent: "Curicó Valley", synonyms: ["Valle del Teno"]}
+- {name: "Lontué Valley", country: CL, parent: "Curicó Valley", synonyms: ["Valle del Lontué", "Lontue Valley", "Valle de Lontué"]}
+- {name: "Sagrada Familia", country: CL, parent: "Lontué Valley"}
+- {name: "Molina", country: CL, parent: "Lontué Valley"}
+- {name: "Maule Valley", country: CL, parent: "Central Valley", synonyms: ["Maule", "Valle del Maule"]}
+- {name: "Claro Valley", country: CL, parent: "Maule Valley", synonyms: ["Valle del Claro"]}
+- {name: "Loncomilla Valley", country: CL, parent: "Maule Valley", synonyms: ["Valle del Loncomilla"]}
+- {name: "San Javier", country: CL, parent: "Loncomilla Valley"}
+- {name: "Tutuvén Valley", country: CL, parent: "Maule Valley", synonyms: ["Valle del Tutuvén", "Tutuven Valley"]}
+- {name: "Cauquenes", country: CL, parent: "Tutuvén Valley"}
 - {name: "Southern Chile", country: CL, synonyms: ["Sur", "Región del Sur"]}
 - {name: "Itata Valley", country: CL, parent: "Southern Chile", synonyms: ["Itata", "Valle del Itata"]}
+- {name: "Chillán", country: CL, parent: "Itata Valley", synonyms: ["Chillan"]}
+- {name: "Quillón", country: CL, parent: "Itata Valley", synonyms: ["Quillon"]}
+- {name: "Portezuelo", country: CL, parent: "Itata Valley"}
+- {name: "Coelemu", country: CL, parent: "Itata Valley"}
+- {name: "Guarilihue", country: CL, parent: "Itata Valley"}
 - {name: "Bío-Bío Valley", country: CL, parent: "Southern Chile", synonyms: ["Bio Bio", "Biobío", "Bío Bío", "Bio-Bio Valley", "Valle del Bío-Bío"]}
 - {name: "Malleco Valley", country: CL, parent: "Southern Chile", synonyms: ["Malleco"]}
+- {name: "Traiguén", country: CL, parent: "Malleco Valley", synonyms: ["Traiguen"]}
+- {name: "Austral", country: CL, synonyms: ["Región Austral", "Región Vitícola Austral"]}
+- {name: "Cautín Valley", country: CL, parent: "Austral", synonyms: ["Valle del Cautín", "Cautin Valley", "Valle del Cautin"]}
+- {name: "Osorno Valley", country: CL, parent: "Austral", synonyms: ["Valle de Osorno"]}
+- {name: "Secano Interior", country: CL, grapes: ["País", "Cinsault"]}
 
 # ======================= REST OF THE WORLD =======================
 - {name: "Canelones", country: UY}
