@@ -201,7 +201,7 @@
 - {name: "Tempranillo", color: red, synonyms: ["Tinto Fino", "Tinta Fina", "Tinta de Toro", "Tinta del País", "Tinta del Pais", "Tinta Roriz", "Aragonez", "Aragonês", "Aragones", "Cencibel", "Ull de Llebre", "Tinto de Madrid", "Tinto"]}
 - {name: "Bobal", color: red}
 - {name: "Mencía", color: red, synonyms: ["Mencia", "Jaen"]}
-- {name: "Graciano", color: red, synonyms: ["Morrastel", "Tintilla de Rota", "Cagnulari"]}
+- {name: "Graciano", color: red, synonyms: ["Morrastel", "Tintilla de Rota", "Cagnulari", "Tinta Miúda"]}
 - {name: "Prieto Picudo", color: red}
 - {name: "Listán Negro", color: red, synonyms: ["Listan Negro"]}
 - {name: "Palomino", color: white, synonyms: ["Palomino Fino", "Listán Blanco", "Listan Blanco", "Fransdruif", "White French"]}
@@ -240,11 +240,11 @@
 - {name: "Antão Vaz", color: white, synonyms: ["Antao Vaz"]}
 - {name: "Bical", color: white, synonyms: ["Borrado das Moscas"]}
 - {name: "Verdelho", color: white}
-- {name: "Sercial", color: white}
+- {name: "Sercial", color: white, synonyms: ["Esgana Cão"]}
 - {name: "Malvasia Fina", color: white, synonyms: ["Boal", "Bual", "Gual"]}
 - {name: "Rabigato", color: white}
 - {name: "Viosinho", color: white}
-- {name: "Síria", color: white, synonyms: ["Siria", "Roupeiro", "Códega"]}
+- {name: "Síria", color: white, synonyms: ["Siria", "Roupeiro", "Códega", "Crato Branco"]}
 - {name: "Azal", color: white, synonyms: ["Azal Branco"]}
 - {name: "Avesso", color: white}
 
@@ -442,7 +442,7 @@
 - {name: "Albillo Real", color: white, synonyms: ["Albillo de Madrid"]}
 
 # ---------------- research: es-s1 ----------------
-- {name: "Negramoll", color: red, synonyms: ["Tinta Negra"]}
+- {name: "Negramoll", color: red, synonyms: ["Tinta Negra", "Negra Mole", "Tinta Negra Mole"]}
 - {name: "Vijariego Blanco", color: white, synonyms: ["Vigiriega", "Vigiriego", "Bujariego"]}
 - {name: "Malvasía Aromática", color: white, synonyms: ["Malvasia di Lipari", "Malvasia di Sardegna"], qid: Q1887941}
 - {name: "Malvasía Rosada", color: rose}
@@ -522,3 +522,17 @@
 # ---------------- research: at ----------------
 - {name: "Blauer Wildbacher", color: red, synonyms: ["Wildbacher"]}
 - {name: "Frühroter Veltliner", color: gris}
+
+# ---------------- research: pt-n ----------------
+- {name: "Tinta Francisca", color: red}
+- {name: "Códega do Larinho", color: white, synonyms: ["Codega do Larinho"]}
+
+# ---------------- research: pt-s ----------------
+- {name: "Ramisco", color: red, synonyms: ["Ramisco de Colares"]}
+- {name: "Malvasia de Colares", color: white}
+- {name: "Camarate", color: red}
+- {name: "Vital", color: white}
+- {name: "Rabo de Ovelha", color: white}
+- {name: "Moreto", color: red}
+- {name: "Moscatel Roxo", color: rose, synonyms: ["Muscat Rouge à Petits Grains", "Muscat Rose à Petits Grains"]}
+- {name: "Terrantez", color: white}

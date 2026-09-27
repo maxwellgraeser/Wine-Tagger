@@ -1339,25 +1339,91 @@
 - {name: "Matanegra", country: ES, parent: "Ribera del Guadiana"}
 
 # ======================= PORTUGAL =======================
-- {name: "Douro", country: PT, classification: DOC, synonyms: ["Douro DOC", "Douro Valley", "Alto Douro", "Cima Corgo", "Baixo Corgo", "Douro Superior"]}
-- {name: "Porto", country: PT, parent: "Douro", classification: DOC, synonyms: ["Port", "Oporto", "Porto DOC", "Port wine", "Vinho do Porto"]}
-- {name: "Vinho Verde", country: PT, classification: DOC, synonyms: ["Vinhos Verdes", "Minho", "Vinho Verde DOC"]}
-- {name: "Dão", country: PT, classification: DOC, synonyms: ["Dao", "Dão DOC"]}
-- {name: "Bairrada", country: PT, classification: DOC}
-- {name: "Beira Interior", country: PT, classification: DOC, synonyms: ["Beiras", "Beira Atlântico"]}
-- {name: "Lisboa", country: PT, classification: VR, synonyms: ["Lisbon", "Estremadura", "Lisboa VR", "Vinho Regional Lisboa", "Regional Lisboa"]}
-- {name: "Alenquer", country: PT, parent: "Lisboa", classification: DOC, synonyms: ["Alenquer DOC"]}
-- {name: "Bucelas", country: PT, parent: "Lisboa", classification: DOC}
-- {name: "Colares", country: PT, parent: "Lisboa", classification: DOC}
-- {name: "Óbidos", country: PT, parent: "Lisboa", classification: DOC, synonyms: ["Obidos"]}
-- {name: "Tejo", country: PT, classification: DOC, synonyms: ["Ribatejo", "Do Tejo"]}
-- {name: "Alentejo", country: PT, classification: DOC, synonyms: ["Alentejano", "Vinho Regional Alentejano", "Alentejo DOC", "Regional Alentejano"]}
-- {name: "Península de Setúbal", country: PT, classification: VR, synonyms: ["Peninsula de Setubal", "Setúbal", "Setubal", "Terras do Sado", "Moscatel de Setúbal"]}
-- {name: "Palmela", country: PT, parent: "Península de Setúbal", classification: DOC}
-- {name: "Madeira", country: PT, classification: DOC, synonyms: ["Madeira DOC", "Madeira wine"]}
+- {name: "Vinho Verde", country: PT, classification: DOC, synonyms: ["Vinhos Verdes", "Vinho Verde DOC"], grapes: ["Alvarinho", "Loureiro", "Arinto", "Avesso", "Azal", "Trajadura"]}
+- {name: "Monção e Melgaço", country: PT, parent: "Vinho Verde", classification: "Sub-região"}
+- {name: "Lima", country: PT, parent: "Vinho Verde", classification: "Sub-região"}
+- {name: "Cávado", country: PT, parent: "Vinho Verde", classification: "Sub-região", synonyms: ["Cavado"]}
+- {name: "Ave", country: PT, parent: "Vinho Verde", classification: "Sub-região"}
+- {name: "Basto", country: PT, parent: "Vinho Verde", classification: "Sub-região"}
+- {name: "Sousa", country: PT, parent: "Vinho Verde", classification: "Sub-região"}
+- {name: "Baião", country: PT, parent: "Vinho Verde", classification: "Sub-região", synonyms: ["Baiao"]}
+- {name: "Paiva", country: PT, parent: "Vinho Verde", classification: "Sub-região"}
+- {name: "Amarante", country: PT, parent: "Vinho Verde", classification: "Sub-região"}
+- {name: "Minho", country: PT, classification: IGP}
+- {name: "Trás-os-Montes", country: PT, classification: DOC, synonyms: ["Tras-os-Montes"]}
+- {name: "Chaves", country: PT, parent: "Trás-os-Montes", classification: "Sub-região"}
+- {name: "Valpaços", country: PT, parent: "Trás-os-Montes", classification: "Sub-região", synonyms: ["Valpacos"]}
+- {name: "Planalto Mirandês", country: PT, parent: "Trás-os-Montes", classification: "Sub-região", synonyms: ["Planalto Mirandes"]}
+- {name: "Transmontano", country: PT, classification: IGP}
+- {name: "Douro", country: PT, classification: DOC, synonyms: ["Douro DOC", "Douro Valley", "Alto Douro"], grapes: ["Touriga Nacional", "Touriga Franca", "Tinta Roriz", "Tinta Barroca", "Tinto Cão", "Sousão", "Gouveio", "Malvasia Fina", "Rabigato", "Viosinho", "Códega do Larinho"]}
+- {name: "Baixo Corgo", country: PT, parent: "Douro", classification: "Sub-região"}
+- {name: "Cima Corgo", country: PT, parent: "Douro", classification: "Sub-região"}
+- {name: "Douro Superior", country: PT, parent: "Douro", classification: "Sub-região"}
+- {name: "Porto", country: PT, parent: "Douro", classification: DOC, synonyms: ["Port", "Oporto", "Porto DOC", "Port wine", "Vinho do Porto"], grapes: ["Touriga Nacional", "Touriga Franca", "Tinta Roriz", "Tinta Barroca", "Tinto Cão", "Gouveio", "Malvasia Fina", "Rabigato", "Viosinho", "Moscatel"]}
+- {name: "Duriense", country: PT, classification: IGP}
+- {name: "Dão", country: PT, classification: DOC, synonyms: ["Dao", "Dão DOC"], grapes: ["Touriga Nacional", "Encruzado", "Jaen", "Alfrocheiro", "Tinta Roriz"]}
+- {name: "Alva", country: PT, parent: "Dão", classification: "Sub-região"}
+- {name: "Besteiros", country: PT, parent: "Dão", classification: "Sub-região"}
+- {name: "Castendo", country: PT, parent: "Dão", classification: "Sub-região"}
+- {name: "Serra da Estrela", country: PT, parent: "Dão", classification: "Sub-região"}
+- {name: "Silgueiros", country: PT, parent: "Dão", classification: "Sub-região"}
+- {name: "Terras de Azurara", country: PT, parent: "Dão", classification: "Sub-região"}
+- {name: "Terras de Senhorim", country: PT, parent: "Dão", classification: "Sub-região"}
+- {name: "Terras do Dão", country: PT, classification: IGP}
+- {name: "Bairrada", country: PT, classification: DOC, grapes: ["Baga", "Castelão", "Bical", "Fernão Pires", "Arinto"]}
+- {name: "Beira Interior", country: PT, classification: DOC, grapes: ["Arinto", "Fernão Pires", "Síria", "Malvasia Fina", "Alfrocheiro", "Tinta Roriz", "Touriga Nacional", "Rufete"]}
+- {name: "Castelo Rodrigo", country: PT, parent: "Beira Interior", classification: "Sub-região"}
+- {name: "Pinhel", country: PT, parent: "Beira Interior", classification: "Sub-região"}
+- {name: "Cova da Beira", country: PT, parent: "Beira Interior", classification: "Sub-região"}
+- {name: "Terras da Beira", country: PT, classification: IGP}
+- {name: "Beira Atlântico", country: PT, classification: IGP, synonyms: ["Beira Atlantico"]}
+- {name: "Távora-Varosa", country: PT, classification: DOC, synonyms: ["Tavora-Varosa", "Távora e Varosa"], grapes: ["Bical", "Fernão Pires", "Gouveio", "Malvasia Fina", "Tinta Barroca", "Tinta Roriz", "Touriga Franca", "Touriga Nacional"]}
+- {name: "Terras de Cister", country: PT, classification: IGP}
+- {name: "Lafões", country: PT, classification: DOC, synonyms: ["Lafoes"], grapes: ["Jaen", "Arinto"]}
+- {name: "Encostas d'Aire", country: PT, classification: DOC, synonyms: ["Encostas de Aire"]}
+- {name: "Alcobaça", country: PT, parent: "Encostas d'Aire", classification: "Sub-região", grapes: ["Aragonez", "Baga", "Castelão", "Touriga Nacional", "Fernão Pires"]}
+- {name: "Ourém", country: PT, parent: "Encostas d'Aire", classification: "Sub-região", synonyms: ["Ourem", "Medieval de Ourém"], grapes: ["Trincadeira", "Fernão Pires"]}
+- {name: "Lisboa", country: PT, classification: VR, synonyms: ["Lisbon", "Estremadura", "Regional Lisboa"]}
+- {name: "Alenquer", country: PT, parent: "Lisboa", classification: DOC, grapes: ["Castelão", "Trincadeira", "Touriga Nacional", "Arinto"]}
+- {name: "Arruda", country: PT, parent: "Lisboa", classification: DOC, synonyms: ["Arruda dos Vinhos"], grapes: ["Castelão", "Tinta Miúda", "Camarate"]}
+- {name: "Bucelas", country: PT, parent: "Lisboa", classification: DOC, grapes: ["Arinto", "Sercial", "Rabo de Ovelha"]}
+- {name: "Carcavelos", country: PT, parent: "Lisboa", classification: DOC, grapes: ["Arinto"]}
+- {name: "Colares", country: PT, parent: "Lisboa", classification: DOC, grapes: ["Ramisco", "Malvasia de Colares"]}
+- {name: "Óbidos", country: PT, parent: "Lisboa", classification: DOC, synonyms: ["Obidos"], grapes: ["Arinto", "Vital", "Castelão"]}
+- {name: "Lourinhã", country: PT, parent: "Lisboa", classification: DOC, synonyms: ["Lourinha"], grapes: ["Vital", "Arinto"]}
+- {name: "Torres Vedras", country: PT, parent: "Lisboa", classification: DOC}
+- {name: "Tejo", country: PT, classification: DOC, synonyms: ["Ribatejo"], grapes: ["Castelão", "Aragonez", "Trincadeira", "Alicante Bouschet", "Touriga Nacional", "Touriga Franca", "Tinta Miúda", "Fernão Pires", "Arinto"]}
+- {name: "Almeirim", country: PT, parent: "Tejo", classification: "Sub-região"}
+- {name: "Cartaxo", country: PT, parent: "Tejo", classification: "Sub-região"}
+- {name: "Chamusca", country: PT, parent: "Tejo", classification: "Sub-região"}
+- {name: "Coruche", country: PT, parent: "Tejo", classification: "Sub-região"}
+- {name: "Santarém", country: PT, parent: "Tejo", classification: "Sub-região", synonyms: ["Santarem"]}
+- {name: "Tomar", country: PT, parent: "Tejo", classification: "Sub-região"}
+- {name: "Alentejo", country: PT, classification: DOC, grapes: ["Alfrocheiro", "Alicante Bouschet", "Aragonez", "Cabernet Sauvignon", "Castelão", "Syrah", "Touriga Nacional", "Trincadeira", "Antão Vaz", "Arinto", "Fernão Pires", "Rabo de Ovelha", "Síria"]}
+- {name: "Alentejano", country: PT, classification: IGP}
+- {name: "Borba", country: PT, parent: "Alentejo", classification: "Sub-região"}
+- {name: "Évora", country: PT, parent: "Alentejo", classification: "Sub-região", synonyms: ["Evora"]}
+- {name: "Granja-Amareleja", country: PT, parent: "Alentejo", classification: "Sub-região", synonyms: ["Granja/Amareleja"]}
+- {name: "Moura", country: PT, parent: "Alentejo", classification: "Sub-região"}
+- {name: "Portalegre", country: PT, parent: "Alentejo", classification: "Sub-região"}
+- {name: "Redondo", country: PT, parent: "Alentejo", classification: "Sub-região"}
+- {name: "Reguengos", country: PT, parent: "Alentejo", classification: "Sub-região", synonyms: ["Reguengos de Monsaraz"]}
+- {name: "Vidigueira", country: PT, parent: "Alentejo", classification: "Sub-região"}
+- {name: "Península de Setúbal", country: PT, classification: VR, synonyms: ["Peninsula de Setubal", "Terras do Sado"]}
+- {name: "Palmela", country: PT, parent: "Península de Setúbal", classification: DOC, grapes: ["Castelão"]}
+- {name: "Setúbal", country: PT, parent: "Península de Setúbal", classification: DOC, synonyms: ["Setubal", "Moscatel de Setúbal"], grapes: ["Muscat of Alexandria", "Moscatel Roxo"]}
 - {name: "Algarve", country: PT, classification: VR}
-- {name: "Trás-os-Montes", country: PT, classification: DOC, synonyms: ["Tras-os-Montes", "Transmontano"]}
-- {name: "Açores", country: PT, classification: VR, synonyms: ["Azores", "Pico"]}
+- {name: "Lagos", country: PT, parent: "Algarve", classification: DOC, grapes: ["Negra Mole", "Trincadeira", "Castelão", "Arinto", "Síria"]}
+- {name: "Lagoa", country: PT, parent: "Algarve", classification: DOC, grapes: ["Castelão", "Negra Mole", "Arinto", "Síria"]}
+- {name: "Portimão", country: PT, parent: "Algarve", classification: DOC, synonyms: ["Portimao"], grapes: ["Castelão", "Negra Mole", "Arinto", "Síria"]}
+- {name: "Tavira", country: PT, parent: "Algarve", classification: DOC, grapes: ["Castelão", "Negra Mole", "Arinto", "Síria"]}
+- {name: "Madeira", country: PT, classification: DOC, synonyms: ["Madeira wine"], grapes: ["Sercial", "Verdelho", "Malvasia Fina", "Terrantez", "Negramoll"]}
+- {name: "Madeirense", country: PT, classification: DOC}
+- {name: "Terras Madeirenses", country: PT, classification: IGP}
+- {name: "Açores", country: PT, classification: VR, synonyms: ["Azores"]}
+- {name: "Biscoitos", country: PT, parent: "Açores", classification: DOC, grapes: ["Verdelho"]}
+- {name: "Graciosa", country: PT, parent: "Açores", classification: DOC, grapes: ["Fernão Pires", "Verdelho"]}
+- {name: "Pico", country: PT, parent: "Açores", classification: DOC, grapes: ["Verdelho"]}
 
 # ======================= GERMANY =======================
 - {name: "Mosel", country: DE, classification: Anbaugebiet, synonyms: ["Mosel-Saar-Ruwer", "Moselle"]}

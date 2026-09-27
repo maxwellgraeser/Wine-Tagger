@@ -347,6 +347,11 @@ grapes:
     label: Camaralet
     note: ok
     qid: Q1028021
+  Camarate:
+    description: Italian grape variety
+    label: Camarate
+    note: ok
+    qid: Q1028037
   Canaiolo:
     description: Italian grape variety
     label: Canaiolo
@@ -557,6 +562,11 @@ grapes:
     label: César
     note: ok
     qid: Q1150538
+  Códega do Larinho:
+    description: grape variety
+    label: Côdega do Larinho
+    note: ok
+    qid: Q15874158
   Debina:
     description: variety of grape
     label: Debina
@@ -1092,6 +1102,11 @@ grapes:
     label: Malvasia Nera di Brindisi
     note: ok
     qid: Q1887934
+  Malvasia de Colares:
+    description: Italian grape variety
+    label: Malvasia
+    note: inexact label match -- review
+    qid: Q22675183
   Malvasia di Candia Aromatica:
     description: Italian grape variety
     label: Malvasia di Candia Aromatica
@@ -1257,11 +1272,21 @@ grapes:
     label: Moravia agria
     note: ok
     qid: Q6023555
+  Moreto:
+    description: red Portuguese wine grape variety
+    label: Moreto
+    note: ok
+    qid: Q1947574
   Moristel:
     description: variety of grape
     label: Moristel
     note: ok
     qid: Q3324130
+  Moscatel Roxo:
+    description: variety of grape
+    label: Muscat Rouge à Petits Grains
+    note: ok
+    qid: Q2168413
   Moscato Giallo:
     description: Italian grape variety
     label: Moscato Giallo
@@ -1353,10 +1378,10 @@ grapes:
     note: ok
     qid: Q488220
   Negramoll:
-    description: variety of grape
-    label: Tinta Negra Mole
-    note: inexact label match -- review
-    qid: Q2435939
+    description: ''
+    label: Negra Mole
+    note: ok
+    qid: Q139973981
   Negroamaro:
     description: Italian grape variety
     label: Negroamaro
@@ -1662,6 +1687,11 @@ grapes:
     label: Rabigato
     note: ok
     qid: Q2125034
+  Rabo de Ovelha:
+    description: Italian grape variety
+    label: Rabo de Ovelha
+    note: ok
+    qid: Q1231048
   Raboso:
     description: Italian grape variety
     label: Raboso
@@ -1672,6 +1702,11 @@ grapes:
     label: Raffiat de Moncade
     note: ok
     qid: Q2127132
+  Ramisco:
+    description: variety of grape
+    label: Ramisco
+    note: ok
+    qid: Q2130180
   Red Misket:
     description: variety of grape
     label: Misket Cherven
@@ -1947,6 +1982,11 @@ grapes:
     label: Teroldego
     note: ok
     qid: Q2405039
+  Terrantez:
+    description: variety of grape
+    label: Terrantez
+    note: ok
+    qid: Q1649009
   Terret Blanc:
     description: variety of grape
     label: Terret blanc
@@ -1977,6 +2017,11 @@ grapes:
     label: Tinta Barroca
     note: ok
     qid: Q861834
+  Tinta Francisca:
+    description: variety of grape
+    label: Tinta Francisca
+    note: ok
+    qid: Q2368131
   Tintilia:
     description: Italian grape variety
     label: Tintilia
@@ -2182,6 +2227,11 @@ grapes:
     label: Viosinho
     note: ok
     qid: Q2527531
+  Vital:
+    description: grape variety
+    label: Vital
+    note: ok
+    qid: Q2528538
   Vranac:
     description: variety of grape
     label: Vranec
@@ -2322,6 +2372,7 @@ regions:
     label: Alcamo DOC
     note: ok
     qid: Q1285128
+  Alcobaça (PT): null
   Aleatico di Gradoli (IT):
     description: Italian controlled designation of origin wine from Lazio
     label: Aleatico di Gradoli DOC
@@ -2338,6 +2389,7 @@ regions:
     note: ok
     qid: Q1507028
   Alenquer (PT): null
+  Alentejano (PT): null
   Alentejo (PT): null
   Alexander Valley (US):
     description: wine region in California
@@ -2382,6 +2434,7 @@ regions:
     label: Almansa
     note: ok
     qid: Q4733688
+  Almeirim (PT): null
   Aloxe-Corton (FR):
     description: appellation d'origine contrôlée
     label: Aloxe-Corton wine
@@ -2471,12 +2524,14 @@ regions:
     label: Altus AVA
     note: ok
     qid: Q446275
+  Alva (PT): null
   Amador County (US):
     description: county in California, United States
     label: Amador County
     note: non-wine class -- review
     qid: Q156177
   Amandi (ES): null
+  Amarante (PT): null
   Amarone della Valpolicella (IT):
     description: Italian controlled and guaranteed designation of origin wine from Veneto
     label: Amarone della Valpolicella DOCG
@@ -2611,6 +2666,7 @@ regions:
     label: Arroyo Seco AVA
     note: ok
     qid: Q263615
+  Arruda (PT): null
   Artesa de Segre (ES): null
   Ashton (ZA): null
   Asolo Prosecco (IT):
@@ -2665,6 +2721,7 @@ regions:
     label: Auxey-Duresses wine
     note: ok
     qid: Q2873188
+  Ave (PT): null
   Aversa (IT):
     description: Italian controlled designation of origin wine from Campania
     label: Aversa DOC
@@ -2710,6 +2767,8 @@ regions:
   Bagnoli di Sopra (IT): null
   Bailén (ES): null
   Bairrada (PT): null
+  Baixo Corgo (PT): null
+  Baião (PT): null
   Baja California (MX):
     description: state of Mexico
     label: Baja California
@@ -2821,6 +2880,7 @@ regions:
     label: Basque Country
     note: non-wine class -- review
     qid: Q47588
+  Basto (PT): null
   Batroun (LB): null
   Beaujolais (FR):
     description: wine from the Beaujolais region of France
@@ -2838,6 +2898,7 @@ regions:
   Beaune (FR): null
   Bechtheim (DE): null
   Beechworth (AU): null
+  Beira Atlântico (PT): null
   Beira Interior (PT): null
   Bekaa Valley (LB):
     description: valley in Beqaa Governorate, Lebanon
@@ -2891,6 +2952,7 @@ regions:
   Bernkastel (DE): null
   Bernkastel-Kues (DE): null
   Besigheim (DE): null
+  Besteiros (PT): null
   Betanzos (ES):
     description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
     label: Betanzos
@@ -2955,6 +3017,7 @@ regions:
   Bingen (DE): null
   Binissalem (ES): null
   Birkweiler (DE): null
+  Biscoitos (PT): null
   Bivongi (IT):
     description: Italian controlled designation of origin wine from Calabria
     label: Bivongi DOC
@@ -3016,6 +3079,7 @@ regions:
     qid: Q892806
   Bonnievale (ZA): null
   Boppard (DE): null
+  Borba (PT): null
   Bordeaux (FR):
     description: brownish red colour associated with Bordeaux wine
     label: bordeaux
@@ -3399,6 +3463,7 @@ regions:
     label: Capriano del Colle DOC
     note: ok
     qid: Q15639721
+  Carcavelos (PT): null
   Carema (IT):
     description: Italian controlled designation of origin wine from Piedmont
     label: Carema DOC
@@ -3430,6 +3495,7 @@ regions:
     label: Carso DOC
     note: ok
     qid: Q387806
+  Cartaxo (PT): null
   Cartizze (IT): null
   Casa del Blanco (ES):
     description: Spanish winery
@@ -3493,6 +3559,8 @@ regions:
     note: ok
     qid: Q3662273
   Castelló (ES): null
+  Castelo Rodrigo (PT): null
+  Castendo (PT): null
   Castilla y León (ES):
     description: Spanish geographical indication for Vino de la Tierra wines located in the autonomous
       region of Castile and León
@@ -3643,6 +3711,7 @@ regions:
     label: Champlain Valley of New York AVA
     note: ok
     qid: Q134622225
+  Chamusca (PT): null
   Chantada (ES): null
   Chantonnay (FR): null
   Chapelle-Chambertin (FR):
@@ -3663,6 +3732,7 @@ regions:
     label: Chautagne AOC
     note: ok
     qid: Q28496741
+  Chaves (PT): null
   Chehalem Mountains (US):
     description: American Viticultural Area
     label: Chehalem Mountains AVA
@@ -3787,6 +3857,7 @@ regions:
     label: Cilento DOC
     note: ok
     qid: Q3676631
+  Cima Corgo (PT): null
   Cinque Terre (IT):
     description: Italian controlled designation of origin wine from Liguria
     label: Cinque Terre DOC
@@ -4273,6 +4344,7 @@ regions:
     label: Cortona DOC
     note: ok
     qid: Q3694867
+  Coruche (PT): null
   Costa Etrusco Romana (IT):
     description: Italian typical geographical indication wine from Lazio
     label: Costa Etrusco Romana IGT
@@ -4363,6 +4435,7 @@ regions:
     qid: Q12113776
   Coulée de Serrant (FR): null
   Cour-Cheverny (FR): null
+  Cova da Beira (PT): null
   Covelo (US):
     description: California wine region in Mendocino County
     label: Covelo AVA
@@ -4469,6 +4542,7 @@ regions:
     note: ok
     qid: Q140131098
   Cádiz (ES): null
+  Cávado (PT): null
   Cérons (FR): null
   Córdoba (ES): null
   Côte Chalonnaise (FR):
@@ -4711,6 +4785,7 @@ regions:
     qid: Q1250917
   Douglas (ZA): null
   Douro (PT): null
+  Douro Superior (PT): null
   Drama (GR): null
   Dry Creek Valley (US):
     description: California wine region
@@ -4740,6 +4815,7 @@ regions:
     qid: Q1266207
   Durbach (DE): null
   Durbanville (ZA): null
+  Duriense (PT): null
   Dão (PT): null
   Dürnstein (AT): null
   Eagle Foothills (US):
@@ -4851,6 +4927,7 @@ regions:
     label: Empordà
     note: ok
     qid: Q3053356
+  Encostas d'Aire (PT): null
   Enfer d'Arvier (IT): null
   Engelberg (FR):
     description: French white wine
@@ -5277,6 +5354,7 @@ regions:
   Goulaine (FR): null
   Goumenissa (GR): null
   Graach (DE): null
+  Graciosa (PT): null
   Grampians (AU):
     description: wine-producing region in Victoria, Australia
     label: Grampians
@@ -5308,6 +5386,7 @@ regions:
     label: Grands Échezeaux
     note: ok
     qid: Q1542916
+  Granja-Amareleja (PT): null
   Graves (FR):
     description: French wine
     label: Graves
@@ -5741,6 +5820,7 @@ regions:
     label: Ladoix wine
     note: ok
     qid: Q3215969
+  Lafões (PT): null
   Lago di Caldaro (IT):
     description: Italian interregional controlled designation of origin wine (Trentino-Alto Adige, Veneto)
     label: Lago di Caldaro DOC
@@ -5751,6 +5831,8 @@ regions:
     label: Lago di Corbara DOC
     note: ok
     qid: Q1800420
+  Lagoa (PT): null
+  Lagos (PT): null
   Lake Chelan (US):
     description: Washington wine region in Chelan County
     label: Lake Chelan AVA
@@ -5942,6 +6024,7 @@ regions:
     label: Liguria di Levante IGT
     note: ok
     qid: Q139883107
+  Lima (PT): null
   Limarí Valley (CL): null
   Lime Kiln Valley (US):
     description: wine growing region of California
@@ -6079,6 +6162,7 @@ regions:
     label: Loupiac
     note: ok
     qid: Q1797824
+  Lourinhã (PT): null
   Louvois (FR):
     description: former commune in Marne, France
     label: Louvois
@@ -6117,6 +6201,7 @@ regions:
     qid: Q103251
   Macvin du Jura (FR): null
   Madeira (PT): null
+  Madeirense (PT): null
   Madera (US):
     description: California wine region
     label: Madera AVA
@@ -6429,6 +6514,7 @@ regions:
     note: ok
     qid: Q441995
   Minervois-La Livinière (FR): null
+  Minho (PT): null
   Minnesota (US):
     description: state of the United States of America
     label: Minnesota
@@ -6642,6 +6728,7 @@ regions:
     note: non-wine class -- review
     qid: Q24010150
   Monzingen (DE): null
+  Monção e Melgaço (PT): null
   Moon Mountain District Sonoma County (US):
     description: American Viticultural Area in California
     label: Moon Mountain District Sonoma County
@@ -6722,6 +6809,7 @@ regions:
     label: Mount Veeder AVA
     note: ok
     qid: Q183511
+  Moura (PT): null
   Moutere Hills (NZ): null
   Mouzillon-Tillières (FR): null
   Mt. Harlan (US): null
@@ -7137,6 +7225,7 @@ regions:
     label: Ostuni DOC
     note: ok
     qid: Q3886982
+  Ourém (PT): null
   Outeniqua (ZA): null
   Outer Coastal Plain (US):
     description: wine region in New Jersey recognized as an American Viticultural Area
@@ -7190,6 +7279,7 @@ regions:
     label: Paicines AVA
     note: ok
     qid: Q2046371
+  Paiva (PT): null
   Palette (FR):
     description: wine Appellation d'Origine Contrôlée in the Provence region of southern France
     label: Palette AOC
@@ -7336,6 +7426,7 @@ regions:
     note: ok
     qid: Q109377223
   Pic Saint-Loup (FR): null
+  Pico (PT): null
   Picpoul de Pinet (FR):
     description: French wine
     label: Picpoul de Pinet
@@ -7356,6 +7447,7 @@ regions:
     label: Pinerolese DOC
     note: ok
     qid: Q3388675
+  Pinhel (PT): null
   Pinot Nero dell'Oltrepò Pavese (IT):
     description: Italian controlled designation of origin wine from Lombardy
     label: Pinot Nero dell'Oltrepò Pavese DOC
@@ -7370,6 +7462,7 @@ regions:
     label: Plà i Llevant
     note: ok
     qid: Q7205907
+  Planalto Mirandês (PT): null
   Planargia (IT):
     description: Italian typical geographical indication wine from Sardinia
     label: Planargia IGT
@@ -7409,6 +7502,8 @@ regions:
     note: ok
     qid: Q140131032
   Porseleinberg (ZA): null
+  Portalegre (PT): null
+  Portimão (PT): null
   Porto (PT): null
   Potter Valley (US):
     description: California wine region in Mendocino County
@@ -7607,6 +7702,7 @@ regions:
     label: Red Mountain AVA
     note: ok
     qid: Q1572683
+  Redondo (PT): null
   Redwood Valley (US):
     description: California wine region in Mendocino County
     label: Redwood Valley AVA
@@ -7617,6 +7713,7 @@ regions:
     label: Reggiano DOC
     note: ok
     qid: Q3826423
+  Reguengos (PT): null
   Remstal-Stuttgart (DE): null
   Reno (IT):
     description: Italian controlled designation of origin wine from Emilia-Romagna
@@ -8266,6 +8363,7 @@ regions:
     label: Santa Ynez Valley AVA
     note: ok
     qid: Q2223286
+  Santarém (PT): null
   Santenay (FR):
     description: French wine
     label: Santenay wine
@@ -8377,6 +8475,7 @@ regions:
     qid: Q1408902
   Senftenberg (AT): null
   Serra Gaúcha (BR): null
+  Serra da Estrela (PT): null
   Serra de Tramuntana-Costa Nord (ES):
     description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
     label: Serra de Tramuntana-Costa Nord
@@ -8388,6 +8487,7 @@ regions:
     note: ok
     qid: Q138660802
   Serrig (DE): null
+  Setúbal (PT): null
   Seyssel (FR): null
   Sforzato di Valtellina (IT):
     description: type of the Sforzato di Valtellina Italian DOCG
@@ -8459,6 +8559,7 @@ regions:
     label: Sierras de Málaga
     note: ok
     qid: Q4353834
+  Silgueiros (PT): null
   Sillaro (IT):
     description: Italian typical geographical indication wine from Emilia-Romagna
     label: Sillaro IGT
@@ -8571,6 +8672,7 @@ regions:
     label: Sopron wine region
     note: ok
     qid: Q1290341
+  Sousa (PT): null
   South Australia (AU): null
   South Coast (US):
     description: California wine region
@@ -8744,6 +8846,7 @@ regions:
     label: Tavel AOC
     note: ok
     qid: Q3516286
+  Tavira (PT): null
   Tavoliere delle Puglie (IT):
     description: type of the Tavoliere delle Puglie Italian controlled designation of origin
     label: Tavoliere delle Puglie DOC
@@ -8791,6 +8894,12 @@ regions:
     note: ok
     qid: Q26898065
   Terracina (IT): null
+  Terras Madeirenses (PT): null
+  Terras da Beira (PT): null
+  Terras de Azurara (PT): null
+  Terras de Cister (PT): null
+  Terras de Senhorim (PT): null
+  Terras do Dão (PT): null
   Terras do Navia (ES): null
   Terrasses du Larzac (FR):
     description: French wine
@@ -8960,6 +9069,7 @@ regions:
     label: Tokaj wine region
     note: ok
     qid: Q828125
+  Tomar (PT): null
   Torgiano (IT):
     description: Italian controlled designation of origin wine from Umbria
     label: Torgiano DOC
@@ -8981,6 +9091,7 @@ regions:
     label: Torreperogil
     note: ok
     qid: Q7827056
+  Torres Vedras (PT): null
   Torrette (IT): null
   Touraine (FR):
     description: appellation d'Origine Contrôlée (AOC)
@@ -9012,6 +9123,7 @@ regions:
   Tradouw Highlands (ZA): null
   Traisen (DE): null
   Traisental (AT): null
+  Transmontano (PT): null
   Trebbianino Val Trebbia (IT): null
   Trebbiano d'Abruzzo (IT):
     description: Italian controlled designation of origin wine from Abruzzo
@@ -9071,6 +9183,7 @@ regions:
     label: Tuscany
     note: non-wine class -- review
     qid: Q1273
+  Távora-Varosa (PT): null
   Târnave (RO): null
   Uclés (ES): null
   Uco Valley (AR): null
@@ -9301,6 +9414,7 @@ regions:
     note: ok
     qid: Q3554035
   Valpantena (IT): null
+  Valpaços (PT): null
   Valpolicella (IT):
     description: Italian controlled designation of origin wine from Veneto
     label: Valpolicella DOC
@@ -9461,6 +9575,7 @@ regions:
     note: ok
     qid: Q137708523
   Victoria (AU): null
+  Vidigueira (PT): null
   Vignanello (IT):
     description: Italian controlled designation of origin wine from Lazio
     label: Vignanello DOC
@@ -9810,6 +9925,7 @@ regions:
     label: Échezeaux
     note: ok
     qid: Q273390
+  Évora (PT): null
   Île de Beauté (FR): null
   Óbidos (PT): null
   Ürzig (DE): null

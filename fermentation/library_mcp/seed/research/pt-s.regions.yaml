@@ -1,0 +1,56 @@
+# pt-s: Portugal south and islands (Lisboa, Tejo, Península de Setúbal, Alentejo, Algarve, Madeira, Açores)
+
+# --- Lisboa region ---
+- {name: "Lisboa", country: PT, classification: VR, synonyms: ["Lisbon", "Estremadura", "Regional Lisboa"], source: "https://www.cvrlisboa.pt"}
+- {name: "Alenquer", country: PT, parent: "Lisboa", classification: DOC, synonyms: [], grapes: ["Castelão", "Trincadeira", "Touriga Nacional", "Arinto"], source: "https://www.cvrlisboa.pt"}
+- {name: "Arruda", country: PT, parent: "Lisboa", classification: DOC, synonyms: ["Arruda dos Vinhos"], grapes: ["Castelão", "Tinta Miúda", "Camarate"], source: "https://www.cvrlisboa.pt"}
+- {name: "Bucelas", country: PT, parent: "Lisboa", classification: DOC, grapes: ["Arinto", "Sercial", "Rabo de Ovelha"], source: "https://www.cvrlisboa.pt"}
+- {name: "Carcavelos", country: PT, parent: "Lisboa", classification: DOC, grapes: ["Galego Dourado", "Arinto", "Ratinho"], source: "https://en.wikipedia.org/wiki/Carcavelos_DOC"}
+- {name: "Colares", country: PT, parent: "Lisboa", classification: DOC, grapes: ["Ramisco", "Malvasia de Colares"], source: "https://www.jancisrobinson.com/learn/wine-regions/portugal/lisboa/colares"}
+- {name: "Óbidos", country: PT, parent: "Lisboa", classification: DOC, synonyms: ["Obidos"], grapes: ["Arinto", "Vital", "Castelão"], source: "https://www.cvrlisboa.pt"}
+- {name: "Lourinhã", country: PT, parent: "Lisboa", classification: DOC, synonyms: ["Lourinha"], grapes: ["Vital", "Arinto"], source: "https://www.cvrlisboa.pt"}
+- {name: "Torres Vedras", country: PT, parent: "Lisboa", classification: DOC, source: "https://www.cvrlisboa.pt"}
+
+# --- Tejo region ---
+- {name: "Tejo", country: PT, classification: DOC, synonyms: ["Ribatejo"], grapes: ["Castelão", "Aragonez", "Trincadeira", "Alicante Bouschet", "Touriga Nacional", "Touriga Franca", "Tinta Miúda", "Fernão Pires", "Arinto"], source: "https://magnacasta.com/info/docribatejo/index.html"}
+- {name: "Almeirim", country: PT, parent: "Tejo", classification: "Sub-região", source: "https://magnacasta.com/info/docribatejo/index.html"}
+- {name: "Cartaxo", country: PT, parent: "Tejo", classification: "Sub-região", source: "https://magnacasta.com/info/docribatejo/index.html"}
+- {name: "Chamusca", country: PT, parent: "Tejo", classification: "Sub-região", source: "https://magnacasta.com/info/docribatejo/index.html"}
+- {name: "Coruche", country: PT, parent: "Tejo", classification: "Sub-região", source: "https://magnacasta.com/info/docribatejo/index.html"}
+- {name: "Santarém", country: PT, parent: "Tejo", classification: "Sub-região", synonyms: ["Santarem"], source: "https://magnacasta.com/info/docribatejo/index.html"}
+- {name: "Tomar", country: PT, parent: "Tejo", classification: "Sub-região", source: "https://magnacasta.com/info/docribatejo/index.html"}
+
+# --- Alentejo region ---
+- {name: "Alentejo", country: PT, classification: DOC, synonyms: [], grapes: ["Alfrocheiro", "Alicante Bouschet", "Aragonez", "Cabernet Sauvignon", "Castelão", "Syrah", "Touriga Nacional", "Trincadeira", "Antão Vaz", "Arinto", "Fernão Pires", "Rabo de Ovelha", "Síria"], source: "https://www.vinhosdoalentejo.pt/pt/vinhos/denominacao-origem-alentejo/"}
+- {name: "Alentejano", country: PT, classification: IGP, source: "https://www.vinhosdoalentejo.pt"}
+- {name: "Borba", country: PT, parent: "Alentejo", classification: "Sub-região", source: "https://www.vinhosdoalentejo.pt/pt/vinhos/denominacao-origem-alentejo/"}
+- {name: "Évora", country: PT, parent: "Alentejo", classification: "Sub-região", synonyms: ["Evora"], source: "https://www.vinhosdoalentejo.pt/pt/vinhos/denominacao-origem-alentejo/"}
+- {name: "Granja-Amareleja", country: PT, parent: "Alentejo", classification: "Sub-região", synonyms: ["Granja/Amareleja"], source: "https://www.vinhosdoalentejo.pt/pt/vinhos/denominacao-origem-alentejo/"}
+- {name: "Moura", country: PT, parent: "Alentejo", classification: "Sub-região", source: "https://www.vinhosdoalentejo.pt/pt/vinhos/denominacao-origem-alentejo/"}
+- {name: "Portalegre", country: PT, parent: "Alentejo", classification: "Sub-região", source: "https://www.vinhosdoalentejo.pt/pt/vinhos/denominacao-origem-alentejo/"}
+- {name: "Redondo", country: PT, parent: "Alentejo", classification: "Sub-região", source: "https://www.vinhosdoalentejo.pt/pt/vinhos/denominacao-origem-alentejo/"}
+- {name: "Reguengos", country: PT, parent: "Alentejo", classification: "Sub-região", synonyms: ["Reguengos de Monsaraz"], source: "https://www.vinhosdoalentejo.pt/pt/vinhos/denominacao-origem-alentejo/"}
+- {name: "Vidigueira", country: PT, parent: "Alentejo", classification: "Sub-região", source: "https://www.vinhosdoalentejo.pt/pt/vinhos/denominacao-origem-alentejo/"}
+
+# --- Península de Setúbal region ---
+- {name: "Península de Setúbal", country: PT, classification: VR, synonyms: ["Peninsula de Setubal", "Terras do Sado"], source: "https://profissionais.vinhosdapeninsuladesetubal.org"}
+- {name: "Palmela", country: PT, parent: "Península de Setúbal", classification: DOC, grapes: ["Castelão"], source: "https://profissionais.vinhosdapeninsuladesetubal.org/viticultura/castas/"}
+- {name: "Setúbal", country: PT, parent: "Península de Setúbal", classification: DOC, synonyms: ["Setubal", "Moscatel de Setúbal"], grapes: ["Muscat of Alexandria", "Moscatel Roxo"], source: "https://pt.wikipedia.org/wiki/Moscatel_de_Set%C3%BAbal"}
+
+# --- Algarve region ---
+- {name: "Algarve", country: PT, classification: VR, synonyms: [], source: "https://www.vinhosdoalgarve.pt"}
+- {name: "Lagos", country: PT, parent: "Algarve", classification: DOC, grapes: ["Negra Mole", "Trincadeira", "Castelão", "Arinto", "Síria"], source: "https://www.vinhosdoalgarve.pt/en/region/grape-varieties/"}
+- {name: "Lagoa", country: PT, parent: "Algarve", classification: DOC, grapes: ["Castelão", "Negra Mole", "Arinto", "Síria"], source: "https://en.wikipedia.org/wiki/Lagoa_DOC"}
+- {name: "Portimão", country: PT, parent: "Algarve", classification: DOC, synonyms: ["Portimao"], grapes: ["Castelão", "Negra Mole", "Arinto", "Síria"], source: "https://www.vinhosdoalgarve.pt/en/region/grape-varieties/"}
+- {name: "Tavira", country: PT, parent: "Algarve", classification: DOC, grapes: ["Castelão", "Negra Mole", "Arinto", "Síria"], source: "https://www.vinhosdoalgarve.pt/en/region/grape-varieties/"}
+
+# --- Madeira ---
+- {name: "Madeira", country: PT, classification: DOC, synonyms: ["Madeira wine"], grapes: ["Sercial", "Verdelho", "Malvasia Fina", "Malvasia Cândida", "Terrantez", "Negramoll"], source: "https://www.ivv.gov.pt/np4/283"}
+- {name: "Madeirense", country: PT, classification: DOC, source: "https://www.ivv.gov.pt/np4/284"}
+- {name: "Terras Madeirenses", country: PT, classification: IGP, source: "https://en.wikipedia.org/wiki/Terras_Madeirenses_wine_region"}
+
+# --- Açores ---
+- {name: "Açores", country: PT, classification: VR, synonyms: ["Azores"], source: "https://winesofportugal.com/pt/descobrir/regioes-vitivinicolas/acores/"}
+- {name: "Biscoitos", country: PT, parent: "Açores", classification: DOC, grapes: ["Arinto dos Açores", "Terrantez do Pico", "Verdelho"], source: "https://en.wikipedia.org/wiki/Biscoitos_IPR"}
+- {name: "Graciosa", country: PT, parent: "Açores", classification: DOC, grapes: ["Arinto dos Açores", "Fernão Pires", "Terrantez do Pico", "Verdelho"], source: "https://winesofportugal.com/pt/descobrir/regioes-vitivinicolas/acores/"}
+- {name: "Pico", country: PT, parent: "Açores", classification: DOC, grapes: ["Arinto dos Açores", "Terrantez do Pico", "Verdelho"], source: "https://en.wikipedia.org/wiki/Pico_IPR"}

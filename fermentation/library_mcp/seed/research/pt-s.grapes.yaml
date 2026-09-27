@@ -1,0 +1,26 @@
+# pt-s: Portugal south and islands — new grapes and local synonyms for existing grapes
+
+# --- existing grapes: add missing local synonyms ---
+- {name: "Graciano", existing: true, synonyms: ["Tinta Miúda"], source: "https://www.jancisrobinson.com/learn/grape-varieties/red/tinta-miuda"}
+- {name: "Síria", existing: true, synonyms: ["Crato Branco"], source: "https://glossary.wein.plus/crato-branco"}
+- {name: "Sercial", existing: true, synonyms: ["Esgana Cão"], source: "https://www.madeirawineanddine.com/madeira-wines-styles/"}
+
+# --- new grapes: Lisboa / Tejo / Alentejo / Setúbal / Algarve mainland natives ---
+- {name: "Ramisco", color: red, synonyms: ["Ramisco de Colares"], source: "https://en.wikipedia.org/wiki/Ramisco"}
+- {name: "Malvasia de Colares", color: white, synonyms: [], source: "https://vinovoss.com/grapes/malvasia-de-colares/"}
+- {name: "Galego Dourado", color: white, synonyms: [], source: "https://en.wikipedia.org/wiki/Carcavelos_DOC"}
+- {name: "Ratinho", color: red, synonyms: [], source: "https://en.wikipedia.org/wiki/Carcavelos_DOC"}
+- {name: "Camarate", color: red, synonyms: [], source: "https://www.wine-searcher.com/grape-2160-camarate"}
+- {name: "Vital", color: white, synonyms: [], source: "https://en.wikipedia.org/wiki/Vital_(grape)"}
+- {name: "Rabo de Ovelha", color: white, synonyms: [], source: "https://www.vinhosdoalentejo.pt/pt/vinhos/denominacao-origem-alentejo/"}
+- {name: "Moreto", color: red, synonyms: [], source: "https://en.wikipedia.org/wiki/Moreto"}
+- {name: "Negramoll", existing: true, synonyms: ["Negra Mole", "Tinta Negra Mole"], source: "https://www.vivc.de/"}
+- {name: "Moscatel Roxo", color: rose, synonyms: ["Muscat Rouge à Petits Grains", "Muscat Rose à Petits Grains"], source: "https://www.vivc.de/index.php?r=akzessionen%2Fviewacc&id=8620"}
+
+# --- new grapes: Madeira ---
+- {name: "Malvasia Cândida", color: white, synonyms: ["Malvasia Candida"], source: "https://www.madeirawineanddine.com/madeira-wines-styles/"}
+- {name: "Terrantez", color: white, synonyms: [], source: "https://www.madeirawineanddine.com/madeira-wines-styles/"}
+
+# --- new grapes: Açores ---
+- {name: "Arinto dos Açores", color: white, synonyms: ["Arinto dos Acores"], source: "https://winesofportugal.com/pt/descobrir/regioes-vitivinicolas/acores/"}
+- {name: "Terrantez do Pico", color: white, synonyms: [], source: "https://winesofportugal.com/pt/descobrir/regioes-vitivinicolas/acores/"}

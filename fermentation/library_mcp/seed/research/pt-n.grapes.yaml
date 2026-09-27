@@ -1,0 +1,3 @@
+- {name: "Tinta Francisca", color: red, synonyms: [], source: "https://en.wikipedia.org/wiki/Tinta_Francisca"}
+- {name: "Códega do Larinho", color: white, synonyms: ["Codega do Larinho"], source: "https://www.antoniomacanita.com/en/all-about-wines/grape-list/codega-do-larinho"}
+- {name: "Cerceal", color: white, synonyms: ["Cercial", "Cerceal Branco"], source: "https://bubblyprofessor.com/2021/06/20/confusion-corner-sercial-cerceal-cercial/"}

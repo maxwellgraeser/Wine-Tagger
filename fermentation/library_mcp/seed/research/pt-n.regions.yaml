@@ -1,0 +1,44 @@
+- {name: "Vinho Verde", country: PT, classification: DOC, synonyms: ["Vinhos Verdes", "Vinho Verde DOC"], grapes: ["Alvarinho", "Loureiro", "Arinto", "Avesso", "Azal", "Trajadura"], source: "https://www.vinhoverde.pt/pt/"}
+- {name: "Monção e Melgaço", country: PT, parent: "Vinho Verde", classification: "Sub-região", synonyms: [], source: "https://www.vinhoverde.pt/pt/regiao/sub-regioes"}
+- {name: "Lima", country: PT, parent: "Vinho Verde", classification: "Sub-região", synonyms: [], source: "https://www.vinhoverde.pt/pt/regiao/sub-regioes"}
+- {name: "Cávado", country: PT, parent: "Vinho Verde", classification: "Sub-região", synonyms: ["Cavado"], source: "https://www.vinhoverde.pt/pt/regiao/sub-regioes"}
+- {name: "Ave", country: PT, parent: "Vinho Verde", classification: "Sub-região", synonyms: [], source: "https://www.vinhoverde.pt/pt/regiao/sub-regioes"}
+- {name: "Basto", country: PT, parent: "Vinho Verde", classification: "Sub-região", synonyms: [], source: "https://www.vinhoverde.pt/pt/regiao/sub-regioes"}
+- {name: "Sousa", country: PT, parent: "Vinho Verde", classification: "Sub-região", synonyms: [], source: "https://www.vinhoverde.pt/pt/regiao/sub-regioes"}
+- {name: "Baião", country: PT, parent: "Vinho Verde", classification: "Sub-região", synonyms: ["Baiao"], source: "https://www.vinhoverde.pt/pt/regiao/sub-regioes"}
+- {name: "Paiva", country: PT, parent: "Vinho Verde", classification: "Sub-região", synonyms: [], source: "https://www.vinhoverde.pt/pt/regiao/sub-regioes"}
+- {name: "Amarante", country: PT, parent: "Vinho Verde", classification: "Sub-região", synonyms: [], source: "https://www.vinhoverde.pt/pt/regiao/sub-regioes"}
+- {name: "Minho", country: PT, classification: IGP, synonyms: [], source: "https://www.ivv.gov.pt/np4/415"}
+- {name: "Trás-os-Montes", country: PT, classification: DOC, synonyms: ["Tras-os-Montes"], source: "https://www.ivv.gov.pt/np4/76/"}
+- {name: "Chaves", country: PT, parent: "Trás-os-Montes", classification: "Sub-região", synonyms: [], source: "https://www.cim-ttm.pt/cimttm/uploads/document/file/231/vinho.pdf"}
+- {name: "Valpaços", country: PT, parent: "Trás-os-Montes", classification: "Sub-região", synonyms: ["Valpacos"], source: "https://www.cim-ttm.pt/cimttm/uploads/document/file/231/vinho.pdf"}
+- {name: "Planalto Mirandês", country: PT, parent: "Trás-os-Montes", classification: "Sub-região", synonyms: ["Planalto Mirandes"], source: "https://www.cim-ttm.pt/cimttm/uploads/document/file/231/vinho.pdf"}
+- {name: "Transmontano", country: PT, classification: IGP, synonyms: [], source: "https://www.ivv.gov.pt/np4/76/"}
+- {name: "Douro", country: PT, classification: DOC, synonyms: ["Douro DOC", "Douro Valley", "Alto Douro"], grapes: ["Touriga Nacional", "Touriga Franca", "Tinta Roriz", "Tinta Barroca", "Tinto Cão", "Sousão", "Gouveio", "Malvasia Fina", "Rabigato", "Viosinho", "Códega do Larinho"], source: "https://www.ivdp.pt/pt/vinha/regiao/regiao-caracteristicas/"}
+- {name: "Baixo Corgo", country: PT, parent: "Douro", classification: "Sub-região", synonyms: [], source: "https://www.ivdp.pt/pt/vinha/regiao/regiao-caracteristicas/"}
+- {name: "Cima Corgo", country: PT, parent: "Douro", classification: "Sub-região", synonyms: [], source: "https://www.ivdp.pt/pt/vinha/regiao/regiao-caracteristicas/"}
+- {name: "Douro Superior", country: PT, parent: "Douro", classification: "Sub-região", synonyms: [], source: "https://www.ivdp.pt/pt/vinha/regiao/regiao-caracteristicas/"}
+- {name: "Porto", country: PT, parent: "Douro", classification: DOC, synonyms: ["Port", "Oporto", "Porto DOC", "Port wine", "Vinho do Porto"], grapes: ["Touriga Nacional", "Touriga Franca", "Tinta Roriz", "Tinta Barroca", "Tinto Cão", "Gouveio", "Malvasia Fina", "Rabigato", "Viosinho", "Moscatel"], source: "https://www.ivdp.pt/pt/vinha/castas/"}
+- {name: "Duriense", country: PT, classification: IGP, synonyms: [], source: "https://www.ivdp.pt/"}
+- {name: "Dão", country: PT, classification: DOC, synonyms: ["Dao", "Dão DOC"], grapes: ["Touriga Nacional", "Encruzado", "Jaen", "Alfrocheiro", "Tinta Roriz"], source: "https://www.cvrdao.pt/media/1/documentos/1709/6500131928851O.pdf"}
+- {name: "Alva", country: PT, parent: "Dão", classification: "Sub-região", synonyms: [], source: "https://rotavinhosdao.pt/o-dao/a-regiao"}
+- {name: "Besteiros", country: PT, parent: "Dão", classification: "Sub-região", synonyms: [], source: "https://rotavinhosdao.pt/o-dao/a-regiao"}
+- {name: "Castendo", country: PT, parent: "Dão", classification: "Sub-região", synonyms: [], source: "https://rotavinhosdao.pt/o-dao/a-regiao"}
+- {name: "Serra da Estrela", country: PT, parent: "Dão", classification: "Sub-região", synonyms: [], source: "https://rotavinhosdao.pt/o-dao/a-regiao"}
+- {name: "Silgueiros", country: PT, parent: "Dão", classification: "Sub-região", synonyms: [], source: "https://rotavinhosdao.pt/o-dao/a-regiao"}
+- {name: "Terras de Azurara", country: PT, parent: "Dão", classification: "Sub-região", synonyms: [], source: "https://rotavinhosdao.pt/o-dao/a-regiao"}
+- {name: "Terras de Senhorim", country: PT, parent: "Dão", classification: "Sub-região", synonyms: [], source: "https://rotavinhosdao.pt/o-dao/a-regiao"}
+- {name: "Terras do Dão", country: PT, classification: IGP, synonyms: [], source: "https://www.ivv.gov.pt/np4/508/"}
+- {name: "Bairrada", country: PT, classification: DOC, synonyms: [], grapes: ["Baga", "Castelão", "Bical", "Fernão Pires", "Arinto"], source: "https://heldercunha.com/castas-autoctones-da-bairrada-doc/"}
+- {name: "Beira Interior", country: PT, classification: DOC, synonyms: [], grapes: ["Arinto", "Fernão Pires", "Síria", "Malvasia Fina", "Alfrocheiro", "Tinta Roriz", "Touriga Nacional", "Rufete"], source: "https://www.ivv.gov.pt/regioes-vitivinicolas/mapa-das-regioes/beira-interior/"}
+- {name: "Castelo Rodrigo", country: PT, parent: "Beira Interior", classification: "Sub-região", synonyms: [], source: "https://www.clubevinhosportugueses.pt/vinhos/vinhos-doc-da-beira-interior-e-sub-regiao-da-cova-da-beira/"}
+- {name: "Pinhel", country: PT, parent: "Beira Interior", classification: "Sub-região", synonyms: [], source: "https://www.clubevinhosportugueses.pt/vinhos/vinhos-doc-da-beira-interior-e-sub-regiao-da-cova-da-beira/"}
+- {name: "Cova da Beira", country: PT, parent: "Beira Interior", classification: "Sub-região", synonyms: [], source: "https://www.clubevinhosportugueses.pt/vinhos/vinhos-doc-da-beira-interior-e-sub-regiao-da-cova-da-beira/"}
+- {name: "Terras da Beira", country: PT, classification: IGP, synonyms: [], source: "https://www.ivv.gov.pt/np4/509/"}
+- {name: "Beira Atlântico", country: PT, classification: IGP, synonyms: ["Beira Atlantico"], source: "https://www.ivv.gov.pt/np4/503/"}
+- {name: "Távora-Varosa", country: PT, classification: DOC, synonyms: ["Tavora-Varosa", "Távora e Varosa"], grapes: ["Bical", "Cerceal", "Fernão Pires", "Gouveio", "Malvasia Fina", "Tinta Barroca", "Tinta Roriz", "Touriga Franca", "Touriga Nacional"], source: "https://winesofportugal.com/pt/descobrir/regioes-vitivinicolas/tavora-varosa/"}
+- {name: "Terras de Cister", country: PT, classification: IGP, synonyms: [], source: "https://www.ivv.gov.pt/np4/510"}
+- {name: "Lafões", country: PT, classification: DOC, synonyms: ["Lafoes"], grapes: ["Jaen", "Arinto", "Cerceal"], source: "http://www.infovini.com/pagina.php?codNode=3899"}
+- {name: "Encostas d'Aire", country: PT, classification: DOC, synonyms: ["Encostas de Aire"], source: "https://www.ivv.gov.pt/np4/296/"}
+- {name: "Alcobaça", country: PT, parent: "Encostas d'Aire", classification: "Sub-região", synonyms: [], grapes: ["Aragonez", "Baga", "Castelão", "Touriga Nacional", "Fernão Pires"], source: "https://dre.tretas.org/dre/37911/decreto-lei-333-89-de-28-de-setembro"}
+- {name: "Ourém", country: PT, parent: "Encostas d'Aire", classification: "Sub-região", synonyms: ["Ourem", "Medieval de Ourém"], grapes: ["Trincadeira", "Fernão Pires"], source: "https://dre.tretas.org/dre/37911/decreto-lei-333-89-de-28-de-setembro"}
