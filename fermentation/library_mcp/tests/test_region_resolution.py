@@ -25,6 +25,8 @@ SCHEMA = Path(__file__).resolve().parents[1] / "schema.sql"
     ("Mosel Qualitätswein", "Mosel"),
     ("Getariako Txakolina D.O", "Getariako Txakolina"),
     ("D.O.Ca. Rioja", "Rioja"),
+    ("PGE Halkidiki", "Halkidiki"),
+    ("Naoussa POP", "Naoussa"),
     # compound strings: most specific part first, country parts skipped
     ("Coastal Region, Western Cape, South Africa", "Coastal Region"),
     ("Western Cape, South Africa", "Western Cape"),

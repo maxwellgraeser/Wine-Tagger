@@ -120,10 +120,11 @@ _CLASS_TOKENS = sorted({
     "qualitatswein", "pradikatswein", "dac",
     "geographical indication", "gi", "ig", "pdo", "pgi", "vqa",
     "premier cru", "1er cru", "grand cru",
+    "pge", "pop",                    # Greek PGI / PDO
     # dotted label forms: "D.O. Rioja", "D.O.Ca.", "A.O.C."
     "d.o.", "d.o", "d.o.ca.", "d.o.ca", "d.o.c.", "d.o.c", "d.o.c.g.", "d.o.c.g",
     "a.o.c.", "a.o.c", "a.o.p.", "a.o.p", "a.v.a.", "a.v.a", "i.g.t.", "i.g.t",
-    "i.g.p.", "i.g.p", "w.o",
+    "i.g.p.", "i.g.p", "w.o", "p.g.e.", "p.g.e", "p.o.p.", "p.o.p",
 }, key=len, reverse=True)
 _CLASS_ALT = "|".join(re.escape(t) for t in _CLASS_TOKENS)
 _CLASS_LEAD = re.compile(rf"^(?:{_CLASS_ALT})(?:\s+|$)")

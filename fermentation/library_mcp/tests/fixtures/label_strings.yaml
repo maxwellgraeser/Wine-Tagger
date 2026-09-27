@@ -486,6 +486,8 @@ PT:
 GR:
   regions:
     "Naoussa PDO": "Naoussa"
+    "PGE Halkidiki": "Halkidiki"
+    "POP Naoussa": "Naoussa"
     "Náoussa": "Naoussa"
     "Amyntaio": "Amyndeon"
     "Amynteo AOC": "Amyndeon"
