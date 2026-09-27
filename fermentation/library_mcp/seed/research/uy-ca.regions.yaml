@@ -1,0 +1,79 @@
+# UY: INAVI zones
+- {name: "Litoral Norte", country: UY, synonyms: [], source: "https://www.inavi.com.uy/regiones/"}
+- {name: "Litoral Sur", country: UY, synonyms: [], source: "https://www.inavi.com.uy/regiones/"}
+- {name: "Metropolitana", country: UY, synonyms: ["Región Metropolitana"], source: "https://www.inavi.com.uy/regiones/"}
+- {name: "Central", country: UY, synonyms: [], source: "https://www.inavi.com.uy/regiones/"}
+- {name: "Oceánica", country: UY, synonyms: ["Costa Oceánica", "Región Oceánica"], source: "https://www.inavi.com.uy/regiones/"}
+- {name: "Norte", country: UY, synonyms: ["Región Norte"], source: "https://www.inavi.com.uy/regiones/"}
+- {name: "Centro-Este", country: UY, synonyms: ["Centro Este"], source: "https://www.inavi.com.uy/regiones/"}
+# UY: departments
+- {name: "Artigas", country: UY, parent: "Litoral Norte", source: "https://www.inavi.com.uy/regiones/"}
+- {name: "Paysandú", country: UY, parent: "Litoral Norte", source: "https://www.inavi.com.uy/regiones/"}
+- {name: "Salto", country: UY, parent: "Litoral Norte", source: "https://www.inavi.com.uy/regiones/"}
+- {name: "Colonia", country: UY, parent: "Litoral Sur", source: "https://www.inavi.com.uy/regiones/"}
+- {name: "Río Negro", country: UY, parent: "Litoral Sur", synonyms: ["Rio Negro"], source: "https://www.inavi.com.uy/regiones/"}
+- {name: "Soriano", country: UY, parent: "Litoral Sur", source: "https://www.inavi.com.uy/regiones/"}
+- {name: "Canelones", country: UY, parent: "Metropolitana", source: "https://www.inavi.com.uy/regiones/"}
+- {name: "Montevideo", country: UY, parent: "Metropolitana", source: "https://www.inavi.com.uy/regiones/"}
+- {name: "San José", country: UY, parent: "Metropolitana", synonyms: ["San Jose"], source: "https://www.inavi.com.uy/regiones/"}
+- {name: "Durazno", country: UY, parent: "Central", source: "https://www.inavi.com.uy/regiones/"}
+- {name: "Florida", country: UY, parent: "Central", source: "https://www.inavi.com.uy/regiones/"}
+- {name: "Lavalleja", country: UY, parent: "Central", source: "https://www.inavi.com.uy/regiones/"}
+- {name: "Maldonado", country: UY, parent: "Oceánica", source: "https://www.inavi.com.uy/regiones/"}
+- {name: "Rocha", country: UY, parent: "Oceánica", source: "https://www.inavi.com.uy/regiones/"}
+- {name: "Rivera", country: UY, parent: "Norte", source: "https://www.inavi.com.uy/regiones/"}
+- {name: "Tacuarembó", country: UY, parent: "Norte", synonyms: ["Tacuarembo"], source: "https://www.inavi.com.uy/regiones/"}
+- {name: "Treinta y Tres", country: UY, parent: "Centro-Este", source: "https://www.inavi.com.uy/regiones/"}
+# UY: informal label areas
+- {name: "Garzón", country: UY, parent: "Maldonado", synonyms: ["Garzon"], source: "https://www.wineenthusiast.com/culture/wine/uruguay-wine-country/"}
+- {name: "Las Violetas", country: UY, parent: "Canelones", source: "https://southamericawineguide.com/a-guide-to-canelones-montevideo-wine-regions/"}
+- {name: "Progreso", country: UY, parent: "Canelones", source: "https://southamericawineguide.com/a-guide-to-canelones-montevideo-wine-regions/"}
+- {name: "Juanicó", country: UY, parent: "Canelones", synonyms: ["Juanico"], source: "https://southamericawineguide.com/a-guide-to-canelones-montevideo-wine-regions/"}
+- {name: "Carmelo", country: UY, parent: "Colonia", source: "https://southamericawineguide.com/uruguay-wine-regions-guide/"}
+- {name: "Atlántida", country: UY, parent: "Canelones", synonyms: ["Atlantida"], source: "https://daily.sevenfifty.com/exploring-the-wines-of-uruguay/"}
+# CA: Ontario VQA
+- {name: "Ontario", country: CA, source: "https://vqaontario.ca/ontario-appellations/"}
+- {name: "Niagara Peninsula", country: CA, parent: "Ontario", classification: DVA, synonyms: ["Niagara"], source: "https://vqaontario.ca/ontario-appellations/niagara-peninsula/"}
+- {name: "Lake Erie North Shore", country: CA, parent: "Ontario", classification: DVA, source: "https://vqaontario.ca/ontario-appellations/"}
+- {name: "Prince Edward County", country: CA, parent: "Ontario", classification: DVA, source: "https://vqaontario.ca/ontario-appellations/"}
+- {name: "Niagara Escarpment", country: CA, parent: "Niagara Peninsula", classification: "Regional appellation", source: "https://vqaontario.ca/ontario-appellations/niagara-peninsula/niagara-escarpment/"}
+- {name: "Niagara-on-the-Lake", country: CA, parent: "Niagara Peninsula", classification: "Regional appellation", source: "https://vqaontario.ca/ontario-appellations/niagara-peninsula/niagara-on-the-lake/"}
+- {name: "West Niagara", country: CA, parent: "Niagara Peninsula", classification: "Regional appellation", source: "https://vqaontario.ca/ontario-appellations/niagara-peninsula/west-niagara/"}
+- {name: "Short Hills Bench", country: CA, parent: "Niagara Escarpment", classification: "Sub-appellation", source: "https://vqaontario.ca/ontario-appellations/niagara-peninsula/"}
+- {name: "Twenty Mile Bench", country: CA, parent: "Niagara Escarpment", classification: "Sub-appellation", source: "https://vqaontario.ca/ontario-appellations/niagara-peninsula/twenty-mile-bench/"}
+- {name: "Beamsville Bench", country: CA, parent: "Niagara Escarpment", classification: "Sub-appellation", source: "https://vqaontario.ca/ontario-appellations/niagara-peninsula/"}
+- {name: "Vinemount Ridge", country: CA, parent: "West Niagara", classification: "Sub-appellation", source: "https://vqaontario.ca/ontario-appellations/niagara-peninsula/west-niagara/"}
+- {name: "Creek Shores", country: CA, parent: "West Niagara", classification: "Sub-appellation", source: "https://vqaontario.ca/ontario-appellations/niagara-peninsula/west-niagara/"}
+- {name: "Lincoln Lakeshore", country: CA, parent: "West Niagara", classification: "Sub-appellation", source: "https://vqaontario.ca/ontario-appellations/niagara-peninsula/west-niagara/"}
+- {name: "Four Mile Creek", country: CA, parent: "Niagara-on-the-Lake", classification: "Sub-appellation", source: "https://vqaontario.ca/ontario-appellations/niagara-peninsula/four-mile-creek/"}
+- {name: "Niagara River", country: CA, parent: "Niagara-on-the-Lake", classification: "Sub-appellation", source: "https://vqaontario.ca/ontario-appellations/niagara-peninsula/niagara-river/"}
+- {name: "St. David's Bench", country: CA, parent: "Niagara-on-the-Lake", classification: "Sub-appellation", synonyms: ["St David's Bench", "Saint David's Bench"], source: "https://vqaontario.ca/ontario-appellations/niagara-peninsula/niagara-on-the-lake/"}
+- {name: "Niagara Lakeshore", country: CA, parent: "Niagara-on-the-Lake", classification: "Sub-appellation", source: "https://vqaontario.ca/ontario-appellations/niagara-peninsula/niagara-on-the-lake/"}
+# CA: British Columbia VQA
+- {name: "British Columbia", country: CA, synonyms: ["BC"], source: "https://bcvqa.ca/wine-regions/"}
+- {name: "Okanagan Valley", country: CA, parent: "British Columbia", classification: GI, synonyms: ["Okanagan"], source: "https://bcvqa.ca/geo_indication/okanagan-valley/"}
+- {name: "Similkameen Valley", country: CA, parent: "British Columbia", classification: GI, synonyms: ["Similkameen"], source: "https://bcvqa.ca/wine-regions/"}
+- {name: "Fraser Valley", country: CA, parent: "British Columbia", classification: GI, source: "https://bcvqa.ca/wine-regions/"}
+- {name: "Vancouver Island", country: CA, parent: "British Columbia", classification: GI, source: "https://bcvqa.ca/wine-regions/"}
+- {name: "Gulf Islands", country: CA, parent: "British Columbia", classification: GI, source: "https://bcvqa.ca/wine-regions/"}
+- {name: "Thompson Valley", country: CA, parent: "British Columbia", classification: GI, source: "https://bcvqa.ca/wine-regions/"}
+- {name: "Shuswap", country: CA, parent: "British Columbia", classification: GI, source: "https://bcvqa.ca/wine-regions/"}
+- {name: "Lillooet", country: CA, parent: "British Columbia", classification: GI, source: "https://bcvqa.ca/wine-regions/"}
+- {name: "Kootenays", country: CA, parent: "British Columbia", classification: GI, source: "https://bcvqa.ca/wine-regions/"}
+- {name: "Golden Mile Bench", country: CA, parent: "Okanagan Valley", classification: "Sub-GI", source: "https://bcvqa.ca/geo_indication/okanagan-valley/"}
+- {name: "Golden Mile Slopes", country: CA, parent: "Okanagan Valley", classification: "Sub-GI", source: "https://news.gov.bc.ca/releases/2022AF0045-001014"}
+- {name: "Naramata Bench", country: CA, parent: "Okanagan Valley", classification: "Sub-GI", source: "https://bcvqa.ca/geo_indication/okanagan-valley/"}
+- {name: "Okanagan Falls", country: CA, parent: "Okanagan Valley", classification: "Sub-GI", source: "https://bcvqa.ca/geo_indication/okanagan-valley/"}
+- {name: "Skaha Bench", country: CA, parent: "Okanagan Valley", classification: "Sub-GI", source: "https://news.gov.bc.ca/releases/2022AF0045-001014"}
+- {name: "East Kelowna Slopes", country: CA, parent: "Okanagan Valley", classification: "Sub-GI", source: "https://news.gov.bc.ca/releases/2022AF0045-001014"}
+- {name: "South Kelowna Slopes", country: CA, parent: "Okanagan Valley", classification: "Sub-GI", source: "https://news.gov.bc.ca/releases/2022AF0045-001014"}
+- {name: "Lake Country", country: CA, parent: "Okanagan Valley", classification: "Sub-GI", source: "https://news.gov.bc.ca/releases/2022AF0045-001014"}
+- {name: "Summerland Bench", country: CA, parent: "Okanagan Valley", classification: "Sub-GI", source: "https://news.gov.bc.ca/releases/2022AF0045-001014"}
+- {name: "Summerland Lakefront", country: CA, parent: "Okanagan Valley", classification: "Sub-GI", source: "https://news.gov.bc.ca/releases/2022AF0045-001014"}
+- {name: "Summerland Valleys", country: CA, parent: "Okanagan Valley", classification: "Sub-GI", source: "https://news.gov.bc.ca/releases/2022AF0045-001014"}
+- {name: "Cowichan Valley", country: CA, parent: "Vancouver Island", classification: "Sub-GI", source: "https://bcvqa.ca/wine-regions/"}
+# CA: Nova Scotia, Quebec
+- {name: "Nova Scotia", country: CA, source: "https://winesofnovascotia.ca/nova-scotia-wine-regions/"}
+- {name: "Annapolis Valley", country: CA, parent: "Nova Scotia", source: "https://en.wikipedia.org/wiki/Annapolis_Valley"}
+- {name: "Québec", country: CA, synonyms: ["Quebec"], source: "https://vinsduquebec.com/en/quebec-wines/igp/"}
+- {name: "Vin du Québec", country: CA, parent: "Québec", classification: IGP, synonyms: ["Vin du Quebec"], source: "https://vinsduquebec.com/en/quebec-wines/igp/"}

@@ -695,3 +695,21 @@ LB:
     "Zahle": "Zahlé"
   grapes:
     "Obeideh": "Obeidi"
+
+UY:
+  regions:
+    "Atlantida": "Atlántida"
+    "Garzon": "Garzón"
+  grapes:
+    "Harriague": "Tannat"
+
+CA:
+  regions:
+    "West Niagara VQA": "West Niagara"
+    "Okanagan": "Okanagan Valley"
+    "IGP Vin du Québec": "Vin du Québec"
+    "Vin du Quebec": "Vin du Québec"
+    "Niagara Escarpment": "Niagara Escarpment"
+    "St David's Bench": "St. David's Bench"
+  grapes:
+    "Maréchal Foch": "Marechal Foch"

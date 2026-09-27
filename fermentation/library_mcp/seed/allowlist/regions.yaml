@@ -2661,13 +2661,49 @@
 - {name: "Ulupalakua", country: US, parent: "Hawaii", classification: AVA}
 
 # ======================= CANADA / MEXICO =======================
-- {name: "British Columbia", country: CA, synonyms: ["BC"]}
-- {name: "Okanagan Valley", country: CA, parent: "British Columbia", classification: VQA, synonyms: ["Okanagan"]}
-- {name: "Similkameen Valley", country: CA, parent: "British Columbia", classification: VQA, synonyms: ["Similkameen"]}
 - {name: "Ontario", country: CA}
-- {name: "Niagara Peninsula", country: CA, parent: "Ontario", classification: VQA, synonyms: ["Niagara", "Niagara-on-the-Lake", "Niagara Escarpment"]}
-- {name: "Prince Edward County", country: CA, parent: "Ontario", classification: VQA}
-- {name: "Nova Scotia", country: CA, synonyms: ["Annapolis Valley"]}
+- {name: "Niagara Peninsula", country: CA, parent: "Ontario", classification: DVA, synonyms: ["Niagara"]}
+- {name: "Lake Erie North Shore", country: CA, parent: "Ontario", classification: DVA}
+- {name: "Prince Edward County", country: CA, parent: "Ontario", classification: DVA}
+- {name: "Niagara Escarpment", country: CA, parent: "Niagara Peninsula", classification: Regional appellation}
+- {name: "Niagara-on-the-Lake", country: CA, parent: "Niagara Peninsula", classification: Regional appellation}
+- {name: "West Niagara", country: CA, parent: "Niagara Peninsula", classification: Regional appellation}
+- {name: "Short Hills Bench", country: CA, parent: "Niagara Escarpment", classification: "Sub-appellation"}
+- {name: "Twenty Mile Bench", country: CA, parent: "Niagara Escarpment", classification: "Sub-appellation"}
+- {name: "Beamsville Bench", country: CA, parent: "Niagara Escarpment", classification: "Sub-appellation"}
+- {name: "Vinemount Ridge", country: CA, parent: "West Niagara", classification: "Sub-appellation"}
+- {name: "Creek Shores", country: CA, parent: "West Niagara", classification: "Sub-appellation"}
+- {name: "Lincoln Lakeshore", country: CA, parent: "West Niagara", classification: "Sub-appellation"}
+- {name: "Four Mile Creek", country: CA, parent: "Niagara-on-the-Lake", classification: "Sub-appellation"}
+- {name: "Niagara River", country: CA, parent: "Niagara-on-the-Lake", classification: "Sub-appellation"}
+- {name: "St. David's Bench", country: CA, parent: "Niagara-on-the-Lake", classification: "Sub-appellation", synonyms: ["St David's Bench", "Saint David's Bench"]}
+- {name: "Niagara Lakeshore", country: CA, parent: "Niagara-on-the-Lake", classification: "Sub-appellation"}
+- {name: "British Columbia", country: CA, synonyms: ["BC"]}
+- {name: "Okanagan Valley", country: CA, parent: "British Columbia", classification: GI, synonyms: ["Okanagan"]}
+- {name: "Similkameen Valley", country: CA, parent: "British Columbia", classification: GI, synonyms: ["Similkameen"]}
+- {name: "Fraser Valley", country: CA, parent: "British Columbia", classification: GI}
+- {name: "Vancouver Island", country: CA, parent: "British Columbia", classification: GI}
+- {name: "Gulf Islands", country: CA, parent: "British Columbia", classification: GI}
+- {name: "Thompson Valley", country: CA, parent: "British Columbia", classification: GI}
+- {name: "Shuswap", country: CA, parent: "British Columbia", classification: GI}
+- {name: "Lillooet", country: CA, parent: "British Columbia", classification: GI}
+- {name: "Kootenays", country: CA, parent: "British Columbia", classification: GI}
+- {name: "Golden Mile Bench", country: CA, parent: "Okanagan Valley", classification: "Sub-GI"}
+- {name: "Golden Mile Slopes", country: CA, parent: "Okanagan Valley", classification: "Sub-GI"}
+- {name: "Naramata Bench", country: CA, parent: "Okanagan Valley", classification: "Sub-GI"}
+- {name: "Okanagan Falls", country: CA, parent: "Okanagan Valley", classification: "Sub-GI"}
+- {name: "Skaha Bench", country: CA, parent: "Okanagan Valley", classification: "Sub-GI"}
+- {name: "East Kelowna Slopes", country: CA, parent: "Okanagan Valley", classification: "Sub-GI"}
+- {name: "South Kelowna Slopes", country: CA, parent: "Okanagan Valley", classification: "Sub-GI"}
+- {name: "Lake Country", country: CA, parent: "Okanagan Valley", classification: "Sub-GI"}
+- {name: "Summerland Bench", country: CA, parent: "Okanagan Valley", classification: "Sub-GI"}
+- {name: "Summerland Lakefront", country: CA, parent: "Okanagan Valley", classification: "Sub-GI"}
+- {name: "Summerland Valleys", country: CA, parent: "Okanagan Valley", classification: "Sub-GI"}
+- {name: "Cowichan Valley", country: CA, parent: "Vancouver Island", classification: "Sub-GI"}
+- {name: "Nova Scotia", country: CA}
+- {name: "Annapolis Valley", country: CA, parent: "Nova Scotia"}
+- {name: "Québec", country: CA, synonyms: ["Quebec"]}
+- {name: "Vin du Québec", country: CA, parent: "Québec", classification: IGP, synonyms: ["Vin du Quebec"]}
 - {name: "Baja California", country: MX, synonyms: ["Baja"]}
 - {name: "Valle de Guadalupe", country: MX, parent: "Baja California", synonyms: ["Guadalupe Valley"]}
 
@@ -2797,8 +2833,36 @@
 - {name: "Secano Interior", country: CL, grapes: ["País", "Cinsault"]}
 
 # ======================= REST OF THE WORLD =======================
-- {name: "Canelones", country: UY}
-- {name: "Maldonado", country: UY, synonyms: ["Garzón", "Garzon"]}
+- {name: "Litoral Norte", country: UY}
+- {name: "Litoral Sur", country: UY}
+- {name: "Metropolitana", country: UY, synonyms: ["Región Metropolitana"]}
+- {name: "Central", country: UY}
+- {name: "Oceánica", country: UY, synonyms: ["Costa Oceánica", "Región Oceánica"]}
+- {name: "Norte", country: UY, synonyms: ["Región Norte"]}
+- {name: "Centro-Este", country: UY, synonyms: ["Centro Este"]}
+- {name: "Artigas", country: UY, parent: "Litoral Norte"}
+- {name: "Paysandú", country: UY, parent: "Litoral Norte"}
+- {name: "Salto", country: UY, parent: "Litoral Norte"}
+- {name: "Colonia", country: UY, parent: "Litoral Sur"}
+- {name: "Río Negro", country: UY, parent: "Litoral Sur", synonyms: ["Rio Negro"]}
+- {name: "Soriano", country: UY, parent: "Litoral Sur"}
+- {name: "Canelones", country: UY, parent: "Metropolitana"}
+- {name: "Montevideo", country: UY, parent: "Metropolitana"}
+- {name: "San José", country: UY, parent: "Metropolitana", synonyms: ["San Jose"]}
+- {name: "Durazno", country: UY, parent: "Central"}
+- {name: "Florida", country: UY, parent: "Central"}
+- {name: "Lavalleja", country: UY, parent: "Central"}
+- {name: "Maldonado", country: UY, parent: "Oceánica"}
+- {name: "Rocha", country: UY, parent: "Oceánica"}
+- {name: "Rivera", country: UY, parent: "Norte"}
+- {name: "Tacuarembó", country: UY, parent: "Norte", synonyms: ["Tacuarembo"]}
+- {name: "Treinta y Tres", country: UY, parent: "Centro-Este"}
+- {name: "Garzón", country: UY, parent: "Maldonado", synonyms: ["Garzon"]}
+- {name: "Las Violetas", country: UY, parent: "Canelones"}
+- {name: "Progreso", country: UY, parent: "Canelones"}
+- {name: "Juanicó", country: UY, parent: "Canelones", synonyms: ["Juanico"]}
+- {name: "Carmelo", country: UY, parent: "Colonia"}
+- {name: "Atlántida", country: UY, parent: "Canelones", synonyms: ["Atlantida"]}
 - {name: "Serra Gaúcha", country: BR, synonyms: ["Serra Gaucha", "Vale dos Vinhedos"]}
 - {name: "Campanha", country: BR, synonyms: ["Campanha Gaúcha"]}
 - {name: "Ica", country: PE}

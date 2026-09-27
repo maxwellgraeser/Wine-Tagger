@@ -25,7 +25,7 @@
 - {name: "Gamay", color: red, synonyms: ["Gamay Noir"]}
 - {name: "Zinfandel", color: red, synonyms: ["Primitivo", "Zin", "Tribidrag", "Crljenak Kaštelanski", "Kratošija"]}
 - {name: "Petite Sirah", color: red, synonyms: ["Durif"]}
-- {name: "Tannat", color: red}
+- {name: "Tannat", color: red, synonyms: ["Harriague"]}
 - {name: "Marselan", color: red}
 - {name: "Alicante Bouschet", color: red, synonyms: ["Alicante", "Garnacha Tintorera"]}
 - {name: "Muscat of Hamburg", color: red, qid: Q737081, synonyms: ["Black Muscat", "Moscato di Amburgo", "Muscat Hamburg"]}
@@ -591,3 +591,6 @@
 - {name: "Papazkarası", color: red, synonyms: ["Papaskarasi", "Papazkarasi"]}
 - {name: "Karasakız", color: red, synonyms: ["Karasakiz"]}
 - {name: "Obeidi", color: white, synonyms: ["Obeideh"]}
+
+# ---------------- research: uy-ca ----------------
+- {name: "L'Acadie Blanc", color: white, synonyms: ["Acadie Blanc"]}
