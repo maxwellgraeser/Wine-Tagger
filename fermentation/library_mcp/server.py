@@ -32,9 +32,10 @@ import sqlite3
 import unicodedata
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Optional
+from typing import Annotated, Optional
 
 from mcp.server.fastmcp import FastMCP
+from pydantic import Field
 
 DB_PATH = Path(__file__).resolve().parent / "library.db"
 
@@ -447,7 +448,7 @@ def list_regions(country: Optional[str] = None) -> list[str]:
 @mcp.tool()
 def list_grapes(country: Optional[str] = None, region: Optional[str] = None) -> list[str]:
     """Return canonical grape names. If `region` is provided, filter to
-    grapes recorded as grown there (via `region_grapes`). If only
+    grapes recorded as grown there. If only
     `country` is provided, filter to grapes whose origin matches."""
     if region:
         crow = _resolve_country(country) if country else None
@@ -548,12 +549,19 @@ def _add_issue(issues: list[str], code: str) -> None:
 @mcp.tool()
 def submit_tags(
     country: Optional[str],
-    region: list[str],
-    grapes: list[str],
+    region: Annotated[list[str], Field(description=(
+        "Canonical region names, most-specific first; parents are added "
+        "automatically. Do not include the country name."))],
+    grapes: Annotated[list[str], Field(description=(
+        "Canonical grape names. An empty list is accepted (ok: true with a "
+        "no_grapes warning) when no source names the grapes -- never guess."))],
     is_blend: Optional[bool],
     organic: Optional[bool],
     confidence: Optional[int],
-    category: Optional[str] = None,
+    category: Annotated[Optional[str], Field(description=(
+        "Only when the product Category is (unknown): one of Red, White, "
+        "Rose, Sparkling, from the snippets' description of the wine. "
+        "Otherwise null."))] = None,
 ) -> dict:
     """Canonicalise and validate a proposed tag set.
 

@@ -32,119 +32,29 @@ HTTP_TIMEOUT_SECONDS = 120
 
 
 # --- Tool schema advertised to the model ----------------------------------
-# JSON-schema descriptions of the MCP tool surface. Names and argument shapes
-# must match library_mcp/server.py exactly; the MCP server enforces both.
-TOOL_SCHEMAS: list[dict[str, Any]] = [
-    {
+# Built from the server's own `list_tools()` at session start, so the model
+# always sees exactly the surface library_mcp/server.py exposes.
+
+def _strip_titles(schema: Any) -> Any:
+    """Drop pydantic's auto-generated `title` keys -- prompt noise for the model."""
+    if isinstance(schema, dict):
+        return {k: _strip_titles(v) for k, v in schema.items() if k != "title"}
+    if isinstance(schema, list):
+        return [_strip_titles(v) for v in schema]
+    return schema
+
+
+def _to_openai_tool(tool: Any) -> dict[str, Any]:
+    """Convert an `mcp.types.Tool` to the OpenAI function-tool shape llama.cpp expects."""
+    return {
         "type": "function",
         "function": {
-            "name": "lookup_country",
-            "description": "Resolve a country name, ISO code, or abbreviation (USA) to its canonical form. Returns {canonical, iso, known}.",
-            "parameters": {
-                "type": "object",
-                "properties": {"name": {"type": "string"}},
-                "required": ["name"],
-            },
+            "name": tool.name,
+            # Collapse docstring indentation/newlines -- tokens, not meaning.
+            "description": " ".join((tool.description or "").split()),
+            "parameters": _strip_titles(tool.inputSchema),
         },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "lookup_region",
-            "description": "Resolve a wine region or synonym (Piemonte, Napa). Pass country when known: a few names exist in more than one country, and without it the answer may list alternatives. Returns {canonical, country, parents[], classification, is_placeholder, known}. is_placeholder=true means real but non-canonical: it will not pass submit_tags -- use a canonical parent instead.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "name": {"type": "string"},
-                    "country": {"type": ["string", "null"]},
-                },
-                "required": ["name"],
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "lookup_grape",
-            "description": "Resolve a grape or synonym (Garnacha, Shiraz, PN). Returns {canonical, color, origin, synonyms[], is_phrase, is_placeholder, known}. is_phrase=true means the input is filler like 'Bordeaux Blend'; is_placeholder=true means a real but niche grape that will not pass submit_tags.",
-            "parameters": {
-                "type": "object",
-                "properties": {"name": {"type": "string"}},
-                "required": ["name"],
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "list_countries",
-            "description": "Return every canonical country name in the library.",
-            "parameters": {"type": "object", "properties": {}},
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "list_regions",
-            "description": "Return canonical region names, optionally filtered to a canonical country.",
-            "parameters": {
-                "type": "object",
-                "properties": {"country": {"type": ["string", "null"]}},
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "list_grapes",
-            "description": "Return canonical grape names, optionally filtered to a canonical country and/or region.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "country": {"type": ["string", "null"]},
-                    "region": {"type": ["string", "null"]},
-                },
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "submit_tags",
-            "description": (
-                "Commit the final tag set. On success returns {ok: true, "
-                "normalized: {...}} with regions expanded to their parent chain "
-                "and country inferred from regions when omitted; on failure "
-                "returns {ok: false, issues: [...], hints: {...}} -- read hints, "
-                "fix, call again. Unknown or placeholder regions/grapes never pass."
-            ),
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "country": {"type": ["string", "null"]},
-                    "region": {
-                        "type": "array",
-                        "items": {"type": "string"},
-                        "description": "Canonical region names, most-specific first; parents are added automatically. Do not include the country name.",
-                    },
-                    "grapes": {
-                        "type": "array",
-                        "items": {"type": "string"},
-                        "description": "Canonical grape names. An empty list is accepted (ok: true with a no_grapes warning) when no source names the grapes -- never guess.",
-                    },
-                    "is_blend": {"type": ["boolean", "null"]},
-                    "organic": {"type": ["boolean", "null"]},
-                    "confidence": {"type": ["integer", "null"]},
-                    "category": {
-                        "type": ["string", "null"],
-                        "description": "Only when the product Category is (unknown): one of Red, White, Rose, Sparkling, from the snippets' description of the wine. Otherwise null.",
-                    },
-                },
-                "required": ["country", "region", "grapes", "is_blend", "organic", "confidence"],
-            },
-        },
-    },
-]
+    }
 
 
 # --- Sync wrapper around the async MCP client ------------------------------
@@ -166,6 +76,7 @@ class _SyncMCPSession:
         self._session = None
         self._enter_exc: Optional[BaseException] = None
         self._stack = None  # contextlib.AsyncExitStack, populated in _run
+        self.tools: list[dict[str, Any]] = []  # OpenAI-shaped, from list_tools()
 
     def __enter__(self) -> "_SyncMCPSession":
         self._thread = threading.Thread(target=self._run, name="mcp-session", daemon=True)
@@ -210,6 +121,8 @@ class _SyncMCPSession:
                     read, write = await stack.enter_async_context(stdio_client(params))
                     session = await stack.enter_async_context(ClientSession(read, write))
                     await session.initialize()
+                    listed = await session.list_tools()
+                    self.tools = [_to_openai_tool(t) for t in listed.tools]
                     self._session = session
                 except BaseException as exc:  # noqa: BLE001
                     self._enter_exc = exc
@@ -279,7 +192,7 @@ def library_mcp_session():
     """Spawn the library_mcp stdio server for the duration of a run.
 
     Yields a session object with a synchronous `.call_tool(name, args)`
-    method. Lifecycle is ONCE per ferment.py run, not per product.
+    method and `.tools`, the server's tool list in OpenAI function shape. Lifecycle is ONCE per ferment.py run, not per product.
     """
     session = _SyncMCPSession()
     session.__enter__()
@@ -383,7 +296,7 @@ def infer_tags(
     submit_failures = 0
 
     for _ in range(MAX_ITERS):
-        resp = _post_llama(api_url, model, messages, TOOL_SCHEMAS)
+        resp = _post_llama(api_url, model, messages, mcp_session.tools)
         try:
             msg = resp["choices"][0]["message"]
         except (KeyError, IndexError, TypeError):
