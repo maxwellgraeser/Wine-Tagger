@@ -1,0 +1,6 @@
+# de-n: Germany north/east grapes
+
+- {name: "Goldriesling", color: white, synonyms: [], source: "https://en.wikipedia.org/wiki/Goldriesling"}
+- {name: "Elbling", existing: true, synonyms: ["Kleinberger"], source: "https://glossary.wein.plus/elbling"}
+- {name: "Pinot Noir", existing: true, synonyms: ["Blauer Spätburgunder"], source: "https://de.wikipedia.org/wiki/Sp%C3%A4tburgunder"}
+- {name: "Riesling", existing: true, synonyms: ["Weißer Riesling"], source: "https://de.wikipedia.org/wiki/Riesling"}

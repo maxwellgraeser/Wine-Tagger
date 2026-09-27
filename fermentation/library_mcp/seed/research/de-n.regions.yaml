@@ -1,0 +1,90 @@
+# de-n: Germany north/east (Mosel, Rheingau, Nahe, Mittelrhein, Ahr, Saale-Unstrut, Sachsen)
+
+# --- Mosel (existing, synonyms fixed: Saar/Ruwer moved to their own Bereich entries) ---
+- {name: "Mosel", country: DE, classification: Anbaugebiet, synonyms: ["Mosel-Saar-Ruwer", "Moselle"], source: "https://ec.europa.eu/geographical-indications-register"}
+- {name: "Bernkastel", country: DE, parent: "Mosel", classification: Bereich, synonyms: [], source: "https://de.wikipedia.org/wiki/Mosel_(Weinanbaugebiet)"}
+- {name: "Burg Cochem", country: DE, parent: "Mosel", classification: Bereich, synonyms: ["Bereich Burg Cochem", "Terrassenmosel"], source: "https://de.wikipedia.org/wiki/Mosel_(Weinanbaugebiet)"}
+- {name: "Obermosel", country: DE, parent: "Mosel", classification: Bereich, synonyms: [], source: "https://de.wikipedia.org/wiki/Mosel_(Weinanbaugebiet)"}
+- {name: "Moseltor", country: DE, parent: "Mosel", classification: Bereich, synonyms: [], source: "https://de.wikipedia.org/wiki/Mosel_(Weinanbaugebiet)"}
+- {name: "Saar", country: DE, parent: "Mosel", classification: Bereich, synonyms: [], source: "https://de.wikipedia.org/wiki/Mosel_(Weinanbaugebiet)"}
+- {name: "Ruwertal", country: DE, parent: "Mosel", classification: Bereich, synonyms: ["Ruwer"], source: "https://de.wikipedia.org/wiki/Mosel_(Weinanbaugebiet)"}
+- {name: "Piesport", country: DE, parent: "Bernkastel", classification: Gemeinde, synonyms: ["Piesporter"], source: "https://www.bernkastel-kues.de/verwaltung-buergerdienste/gemeinden-der-verbandsgemeinde/piesport/"}
+- {name: "Bernkastel-Kues", country: DE, parent: "Bernkastel", classification: Gemeinde, synonyms: ["Bernkasteler"], source: "https://de.wikipedia.org/wiki/Bernkastel-Kues"}
+- {name: "Wehlen", country: DE, parent: "Bernkastel", classification: Gemeinde, synonyms: ["Wehlener"], source: "https://de.wikipedia.org/wiki/Wehlen_(Bernkastel-Kues)"}
+- {name: "Graach", country: DE, parent: "Bernkastel", classification: Gemeinde, synonyms: ["Graacher", "Graach an der Mosel"], source: "https://de.wikipedia.org/wiki/Graach_an_der_Mosel"}
+- {name: "Ürzig", country: DE, parent: "Bernkastel", classification: Gemeinde, synonyms: ["Ürziger", "Urzig"], source: "https://de.wikipedia.org/wiki/%C3%9Crzig"}
+- {name: "Erden", country: DE, parent: "Bernkastel", classification: Gemeinde, synonyms: ["Erdener"], source: "https://de.wikipedia.org/wiki/Erden_(Mosel)"}
+- {name: "Brauneberg", country: DE, parent: "Bernkastel", classification: Gemeinde, synonyms: ["Brauneberger"], source: "https://de.wikipedia.org/wiki/Brauneberg_(Mosel)"}
+- {name: "Trittenheim", country: DE, parent: "Bernkastel", classification: Gemeinde, synonyms: ["Trittenheimer"], source: "https://de.wikipedia.org/wiki/Trittenheim"}
+- {name: "Zeltingen-Rachtig", country: DE, parent: "Bernkastel", classification: Gemeinde, synonyms: ["Zeltinger", "Zeltingen"], source: "https://de.wikipedia.org/wiki/Zeltingen-Rachtig"}
+- {name: "Lieser", country: DE, parent: "Bernkastel", classification: Gemeinde, synonyms: ["Lieserer"], source: "https://de.wikipedia.org/wiki/Lieser_(Mosel)"}
+- {name: "Traben-Trarbach", country: DE, parent: "Bernkastel", classification: Gemeinde, synonyms: [], source: "https://de.wikipedia.org/wiki/Traben-Trarbach"}
+- {name: "Kanzem", country: DE, parent: "Saar", classification: Gemeinde, synonyms: ["Kanzemer"], source: "https://de.wikipedia.org/wiki/Kanzem"}
+- {name: "Wiltingen", country: DE, parent: "Saar", classification: Gemeinde, synonyms: ["Wiltinger"], source: "https://de.wikipedia.org/wiki/Wiltingen"}
+- {name: "Ockfen", country: DE, parent: "Saar", classification: Gemeinde, synonyms: ["Ockfener"], source: "https://de.wikipedia.org/wiki/Ockfen"}
+- {name: "Serrig", country: DE, parent: "Saar", classification: Gemeinde, synonyms: ["Serriger"], source: "https://de.wikipedia.org/wiki/Serrig"}
+- {name: "Saarburg", country: DE, parent: "Saar", classification: Gemeinde, synonyms: ["Saarburger"], source: "https://de.wikipedia.org/wiki/Saarburg"}
+- {name: "Ayl", country: DE, parent: "Saar", classification: Gemeinde, synonyms: ["Ayler"], source: "https://de.wikipedia.org/wiki/Ayl"}
+- {name: "Kasel", country: DE, parent: "Ruwertal", classification: Gemeinde, synonyms: ["Kaseler"], source: "https://de.wikipedia.org/wiki/Kasel"}
+- {name: "Waldrach", country: DE, parent: "Ruwertal", classification: Gemeinde, synonyms: [], source: "https://de.wikipedia.org/wiki/Waldrach"}
+- {name: "Landwein der Mosel", country: DE, parent: "Mosel", classification: Landwein, synonyms: [], source: "https://www.buzer.de/gesetz/6206/a86414.htm"}
+- {name: "Landwein der Saar", country: DE, parent: "Saar", classification: Landwein, synonyms: [], source: "https://www.buzer.de/gesetz/6206/a86414.htm"}
+- {name: "Landwein der Ruwer", country: DE, parent: "Ruwertal", classification: Landwein, synonyms: [], source: "https://www.buzer.de/gesetz/6206/a86414.htm"}
+
+# --- Rheingau (existing) ---
+- {name: "Rheingau", country: DE, classification: Anbaugebiet, synonyms: [], source: "https://ec.europa.eu/geographical-indications-register"}
+- {name: "Johannisberg", country: DE, parent: "Rheingau", classification: Bereich, synonyms: ["Bereich Johannisberg", "Johannisberger"], source: "https://de.wikipedia.org/wiki/Bereich_Johannisberg"}
+- {name: "Rüdesheim", country: DE, parent: "Johannisberg", classification: Gemeinde, synonyms: ["Rüdesheimer", "Rüdesheim am Rhein"], source: "https://de.wikipedia.org/wiki/R%C3%BCdesheim_am_Rhein"}
+- {name: "Assmannshausen", country: DE, parent: "Johannisberg", classification: Gemeinde, synonyms: ["Assmannshäuser"], source: "https://de.wikipedia.org/wiki/Assmannshausen"}
+- {name: "Hochheim", country: DE, parent: "Johannisberg", classification: Gemeinde, synonyms: ["Hochheimer", "Hochheim am Main"], source: "https://de.wikipedia.org/wiki/Hochheim_am_Main"}
+- {name: "Erbach", country: DE, parent: "Johannisberg", classification: Gemeinde, synonyms: ["Erbacher"], source: "https://de.wikipedia.org/wiki/Erbach_(Eltville_am_Rhein)"}
+- {name: "Hattenheim", country: DE, parent: "Johannisberg", classification: Gemeinde, synonyms: ["Hattenheimer"], source: "https://de.wikipedia.org/wiki/Hattenheim"}
+- {name: "Kiedrich", country: DE, parent: "Johannisberg", classification: Gemeinde, synonyms: ["Kiedricher"], source: "https://de.wikipedia.org/wiki/Kiedrich"}
+- {name: "Rauenthal", country: DE, parent: "Johannisberg", classification: Gemeinde, synonyms: ["Rauenthaler"], source: "https://de.wikipedia.org/wiki/Rauenthal"}
+- {name: "Eltville", country: DE, parent: "Johannisberg", classification: Gemeinde, synonyms: ["Eltviller", "Eltville am Rhein"], source: "https://de.wikipedia.org/wiki/Eltville_am_Rhein"}
+- {name: "Oestrich-Winkel", country: DE, parent: "Johannisberg", classification: Gemeinde, synonyms: ["Oestricher", "Winkeler", "Oestrich", "Winkel"], source: "https://de.wikipedia.org/wiki/Oestrich-Winkel"}
+- {name: "Geisenheim", country: DE, parent: "Johannisberg", classification: Gemeinde, synonyms: ["Geisenheimer"], source: "https://de.wikipedia.org/wiki/Geisenheim"}
+- {name: "Lorch", country: DE, parent: "Johannisberg", classification: Gemeinde, synonyms: ["Lorcher"], source: "https://de.wikipedia.org/wiki/Lorch_(Rheingau)"}
+- {name: "Rheingauer Landwein", country: DE, parent: "Rheingau", classification: Landwein, synonyms: [], source: "https://www.buzer.de/gesetz/6206/a86414.htm"}
+
+# --- Nahe (existing) ---
+- {name: "Nahe", country: DE, classification: Anbaugebiet, synonyms: [], source: "https://ec.europa.eu/geographical-indications-register"}
+- {name: "Nahetal", country: DE, parent: "Nahe", classification: Bereich, synonyms: ["Bereich Nahetal"], source: "https://de.wikipedia.org/wiki/Nahe_(Weinanbaugebiet)"}
+- {name: "Schlossböckelheim", country: DE, parent: "Nahetal", classification: Gemeinde, synonyms: ["Schlossböckelheimer", "Schloss Böckelheim"], source: "https://de.wikipedia.org/wiki/Schlo%C3%9Fb%C3%B6ckelheim"}
+- {name: "Niederhausen", country: DE, parent: "Nahetal", classification: Gemeinde, synonyms: ["Niederhäuser"], source: "https://de.wikipedia.org/wiki/Niederhausen_(Nahe)"}
+- {name: "Monzingen", country: DE, parent: "Nahetal", classification: Gemeinde, synonyms: ["Monzinger"], source: "https://de.wikipedia.org/wiki/Monzingen"}
+- {name: "Bad Kreuznach", country: DE, parent: "Nahetal", classification: Gemeinde, synonyms: ["Kreuznacher"], source: "https://de.wikipedia.org/wiki/Bad_Kreuznach"}
+- {name: "Norheim", country: DE, parent: "Nahetal", classification: Gemeinde, synonyms: ["Norheimer"], source: "https://de.wikipedia.org/wiki/Norheim"}
+- {name: "Traisen", country: DE, parent: "Nahetal", classification: Gemeinde, synonyms: ["Traisener"], source: "https://de.wikipedia.org/wiki/Traisen_(Nahe)"}
+- {name: "Nahegauer Landwein", country: DE, parent: "Nahe", classification: Landwein, synonyms: [], source: "https://www.buzer.de/gesetz/6206/a86414.htm"}
+
+# --- Mittelrhein (existing) ---
+- {name: "Mittelrhein", country: DE, classification: Anbaugebiet, synonyms: ["Middle Rhine"], source: "https://ec.europa.eu/geographical-indications-register"}
+- {name: "Loreley", country: DE, parent: "Mittelrhein", classification: Bereich, synonyms: ["Lorelei"], source: "https://de.wikipedia.org/wiki/Mittelrhein_(Weinanbaugebiet)"}
+- {name: "Siebengebirge", country: DE, parent: "Mittelrhein", classification: Bereich, synonyms: [], source: "https://de.wikipedia.org/wiki/Mittelrhein_(Weinanbaugebiet)"}
+- {name: "Bacharach", country: DE, parent: "Loreley", classification: Gemeinde, synonyms: ["Bacharacher"], source: "https://de.wikipedia.org/wiki/Bacharach"}
+- {name: "Boppard", country: DE, parent: "Loreley", classification: Gemeinde, synonyms: ["Bopparder"], source: "https://de.wikipedia.org/wiki/Boppard"}
+- {name: "Rheinburgen-Landwein", country: DE, parent: "Mittelrhein", classification: Landwein, synonyms: [], source: "https://ec.europa.eu/geographical-indications-register"}
+
+# --- Ahr (existing) ---
+- {name: "Ahr", country: DE, classification: Anbaugebiet, synonyms: [], source: "https://ec.europa.eu/geographical-indications-register"}
+- {name: "Walporzheim/Ahrtal", country: DE, parent: "Ahr", classification: Bereich, synonyms: ["Walporzheim-Ahrtal", "Bereich Walporzheim"], source: "https://de.wikipedia.org/wiki/Bereich_Walporzheim/Ahrtal"}
+- {name: "Mayschoß", country: DE, parent: "Walporzheim/Ahrtal", classification: Gemeinde, synonyms: ["Mayschosser", "Mayschoss"], source: "https://de.wikipedia.org/wiki/Mayschoß"}
+- {name: "Dernau", country: DE, parent: "Walporzheim/Ahrtal", classification: Gemeinde, synonyms: ["Dernauer"], source: "https://de.wikipedia.org/wiki/Dernau"}
+- {name: "Bad Neuenahr-Ahrweiler", country: DE, parent: "Walporzheim/Ahrtal", classification: Gemeinde, synonyms: ["Ahrweiler"], source: "https://de.wikipedia.org/wiki/Bad_Neuenahr-Ahrweiler"}
+- {name: "Ahrtaler Landwein", country: DE, parent: "Ahr", classification: Landwein, synonyms: [], source: "https://ec.europa.eu/geographical-indications-register"}
+
+# --- Saale-Unstrut (existing) ---
+- {name: "Saale-Unstrut", country: DE, classification: Anbaugebiet, synonyms: [], source: "https://ec.europa.eu/geographical-indications-register"}
+- {name: "Schloss Neuenburg", country: DE, parent: "Saale-Unstrut", classification: Bereich, synonyms: ["Bereich Schloss Neuenburg"], source: "https://de.wikipedia.org/wiki/Saale-Unstrut-Region"}
+- {name: "Thüringen", country: DE, parent: "Saale-Unstrut", classification: Bereich, synonyms: ["Bereich Thüringen"], source: "https://de.wikipedia.org/wiki/Saale-Unstrut-Region"}
+- {name: "Mansfelder Seen", country: DE, parent: "Saale-Unstrut", classification: Bereich, synonyms: ["Bereich Mansfelder Seen"], source: "https://de.wikipedia.org/wiki/Saale-Unstrut"}
+- {name: "Freyburg", country: DE, parent: "Schloss Neuenburg", classification: Gemeinde, synonyms: ["Freyburger"], source: "https://de.wikipedia.org/wiki/Freyburg_(Unstrut)"}
+- {name: "Mitteldeutscher Landwein", country: DE, parent: "Saale-Unstrut", classification: Landwein, synonyms: [], source: "https://www.buzer.de/gesetz/6206/a86414.htm"}
+
+# --- Sachsen (existing) ---
+- {name: "Sachsen", country: DE, classification: Anbaugebiet, synonyms: ["Saxony"], source: "https://ec.europa.eu/geographical-indications-register"}
+- {name: "Meißen", country: DE, parent: "Sachsen", classification: Bereich, synonyms: ["Bereich Meißen", "Bereich Meissen", "Meissen", "Meißner"], source: "https://de.wikipedia.org/wiki/Sachsen_(Weinanbaugebiet)"}
+- {name: "Elstertal", country: DE, parent: "Sachsen", classification: Bereich, synonyms: ["Bereich Elstertal"], source: "https://de.wikipedia.org/wiki/Sachsen_(Weinanbaugebiet)"}
+- {name: "Radebeul", country: DE, parent: "Meißen", classification: Gemeinde, synonyms: ["Radebeuler"], source: "https://de.wikipedia.org/wiki/Radebeul"}
+- {name: "Sächsischer Landwein", country: DE, parent: "Sachsen", classification: Landwein, synonyms: [], source: "https://www.buzer.de/gesetz/6206/a86414.htm"}

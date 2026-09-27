@@ -1,0 +1,113 @@
+# Existing Anbaugebiete (kept; Baden's "Kaiserstuhl" synonym removed, see .md)
+- {name: "Pfalz", country: DE, classification: Anbaugebiet, synonyms: ["Palatinate", "Rheinpfalz"], source: "https://www.deutscheweine.de/anbaugebiet/68/pfalz"}
+- {name: "Rheinhessen", country: DE, classification: Anbaugebiet, synonyms: ["Rhenish Hesse", "Rhine Hesse"], source: "https://www.deutscheweine.de/anbaugebiet/69/rheinhessen"}
+- {name: "Baden", country: DE, classification: Anbaugebiet, synonyms: [], source: "https://www.deutscheweine.de/anbaugebiet/65/baden"}
+- {name: "Württemberg", country: DE, classification: Anbaugebiet, synonyms: ["Wurttemberg", "Wuerttemberg"], source: "https://www.deutscheweine.de/anbaugebiet/71/wuerttemberg"}
+- {name: "Franken", country: DE, classification: Anbaugebiet, synonyms: ["Franconia"], source: "https://www.deutscheweine.de/anbaugebiet/66/franken"}
+- {name: "Hessische Bergstraße", country: DE, classification: Anbaugebiet, synonyms: ["Hessische Bergstrasse"], source: "https://www.deutscheweine.de/anbaugebiet/67/hessische-bergstrasse"}
+
+# Pfalz: Bereiche
+- {name: "Mittelhaardt-Deutsche Weinstraße", country: DE, parent: "Pfalz", classification: Bereich, synonyms: ["Mittelhaardt/Deutsche Weinstrasse", "Mittelhaardt"], source: "https://de.wikipedia.org/wiki/Pfalz_(Weinbaugebiet)"}
+- {name: "Südliche Weinstraße", country: DE, parent: "Pfalz", classification: Bereich, synonyms: ["Suedliche Weinstrasse"], source: "https://de.wikipedia.org/wiki/Pfalz_(Weinbaugebiet)"}
+
+# Pfalz: label villages (Gemeinde), children of Mittelhaardt-Deutsche Weinstraße
+- {name: "Forst", country: DE, parent: "Mittelhaardt-Deutsche Weinstraße", classification: Gemeinde, synonyms: ["Forster", "Forst an der Weinstraße"], source: "https://www.pfalz.de/de/pfalz-geniessen/pfaelzer-wein/weinanbaugebiet-pfalz/mittelhaardt"}
+- {name: "Deidesheim", country: DE, parent: "Mittelhaardt-Deutsche Weinstraße", classification: Gemeinde, synonyms: ["Deidesheimer"], source: "https://www.pfalz.de/de/pfalz-geniessen/pfaelzer-wein/weinanbaugebiet-pfalz/mittelhaardt"}
+- {name: "Wachenheim", country: DE, parent: "Mittelhaardt-Deutsche Weinstraße", classification: Gemeinde, synonyms: ["Wachenheimer", "Wachenheim an der Weinstraße"], source: "https://www.pfalz.de/de/pfalz-geniessen/pfaelzer-wein/weinanbaugebiet-pfalz/mittelhaardt"}
+- {name: "Bad Dürkheim", country: DE, parent: "Mittelhaardt-Deutsche Weinstraße", classification: Gemeinde, synonyms: ["Dürkheimer", "Bad Duerkheim"], source: "https://www.pfalz.de/de/pfalz-geniessen/pfaelzer-wein/weinanbaugebiet-pfalz/mittelhaardt"}
+- {name: "Ungstein", country: DE, parent: "Mittelhaardt-Deutsche Weinstraße", classification: Gemeinde, synonyms: ["Ungsteiner"], source: "https://www.pfalz.de/de/pfalz-geniessen/pfaelzer-wein/weinanbaugebiet-pfalz/mittelhaardt"}
+- {name: "Kallstadt", country: DE, parent: "Mittelhaardt-Deutsche Weinstraße", classification: Gemeinde, synonyms: ["Kallstadter"], source: "https://www.pfalz.de/de/pfalz-geniessen/pfaelzer-wein/weinanbaugebiet-pfalz/mittelhaardt"}
+- {name: "Ruppertsberg", country: DE, parent: "Mittelhaardt-Deutsche Weinstraße", classification: Gemeinde, synonyms: ["Ruppertsberger"], source: "https://www.pfalz.de/de/pfalz-geniessen/pfaelzer-wein/weinanbaugebiet-pfalz/mittelhaardt"}
+- {name: "Königsbach", country: DE, parent: "Mittelhaardt-Deutsche Weinstraße", classification: Gemeinde, synonyms: ["Königsbacher", "Koenigsbach"], source: "https://www.pfalz.de/de/pfalz-geniessen/pfaelzer-wein/weinanbaugebiet-pfalz/mittelhaardt"}
+- {name: "Freinsheim", country: DE, parent: "Mittelhaardt-Deutsche Weinstraße", classification: Gemeinde, synonyms: ["Freinsheimer"], source: "https://www.pfalz.de/de/pfalz-geniessen/pfaelzer-wein/weinanbaugebiet-pfalz/mittelhaardt"}
+
+# Pfalz: label villages, children of Südliche Weinstraße
+- {name: "Birkweiler", country: DE, parent: "Südliche Weinstraße", classification: Gemeinde, synonyms: [], source: "https://www.deutsche-weinstrasse.de/de/entdecken/von-bockenheim-bis-neustadt"}
+- {name: "Siebeldingen", country: DE, parent: "Südliche Weinstraße", classification: Gemeinde, synonyms: ["Siebeldinger"], source: "https://www.deutsche-weinstrasse.de/de/entdecken/von-bockenheim-bis-neustadt"}
+- {name: "Schweigen", country: DE, parent: "Südliche Weinstraße", classification: Gemeinde, synonyms: ["Schweigener", "Schweigen-Rechtenbach"], source: "https://www.deutsche-weinstrasse.de/de/entdecken/von-bockenheim-bis-neustadt"}
+- {name: "Frankweiler", country: DE, parent: "Südliche Weinstraße", classification: Gemeinde, synonyms: [], source: "https://www.deutsche-weinstrasse.de/de/entdecken/von-bockenheim-bis-neustadt"}
+- {name: "Leinsweiler", country: DE, parent: "Südliche Weinstraße", classification: Gemeinde, synonyms: [], source: "https://www.deutsche-weinstrasse.de/de/entdecken/von-bockenheim-bis-neustadt"}
+- {name: "Edenkoben", country: DE, parent: "Südliche Weinstraße", classification: Gemeinde, synonyms: ["Edenkobener"], source: "https://www.deutsche-weinstrasse.de/de/entdecken/von-bockenheim-bis-neustadt"}
+- {name: "Maikammer", country: DE, parent: "Südliche Weinstraße", classification: Gemeinde, synonyms: [], source: "https://www.deutsche-weinstrasse.de/de/entdecken/von-bockenheim-bis-neustadt"}
+
+# Rheinhessen: Bereiche
+- {name: "Bingen", country: DE, parent: "Rheinhessen", classification: Bereich, synonyms: ["Binger"], source: "https://de.wikipedia.org/wiki/Rheinhessen_(Weinbaugebiet)"}
+- {name: "Nierstein", country: DE, parent: "Rheinhessen", classification: Bereich, synonyms: ["Niersteiner"], source: "https://de.wikipedia.org/wiki/Rheinhessen_(Weinbaugebiet)"}
+- {name: "Wonnegau", country: DE, parent: "Rheinhessen", classification: Bereich, synonyms: [], source: "https://de.wikipedia.org/wiki/Rheinhessen_(Weinbaugebiet)"}
+
+# Rheinhessen: label villages. Bingen and Nierstein are not separate entries
+# here: the Bereich already carries that exact name (see .md, "Uncertain
+# calls"); their adjectival synonyms are on the Bereich entries above.
+- {name: "Ingelheim", country: DE, parent: "Bingen", classification: Gemeinde, synonyms: ["Ingelheimer", "Ingelheim am Rhein"], source: "https://www.rheinhessen.de/bereich"}
+- {name: "Nackenheim", country: DE, parent: "Nierstein", classification: Gemeinde, synonyms: ["Nackenheimer"], source: "https://www.rheinhessen.de/bereich"}
+- {name: "Oppenheim", country: DE, parent: "Nierstein", classification: Gemeinde, synonyms: ["Oppenheimer"], source: "https://www.rheinhessen.de/bereich"}
+- {name: "Westhofen", country: DE, parent: "Wonnegau", classification: Gemeinde, synonyms: ["Westhofener"], source: "https://www.rheinhessen.de/bereich"}
+- {name: "Flörsheim-Dalsheim", country: DE, parent: "Wonnegau", classification: Gemeinde, synonyms: ["Flörsheim-Dalsheimer", "Floersheim-Dalsheim"], source: "https://www.rheinhessen.de/bereich"}
+- {name: "Bechtheim", country: DE, parent: "Wonnegau", classification: Gemeinde, synonyms: ["Bechtheimer"], source: "https://www.rheinhessen.de/bereich"}
+
+# Baden: Bereiche (9). "Kaiserstuhl" was previously a synonym of Baden;
+# it is its own Bereich, see .md.
+- {name: "Kaiserstuhl", country: DE, parent: "Baden", classification: Bereich, synonyms: [], source: "https://de.wikipedia.org/wiki/Baden_(Weinbaugebiet)"}
+- {name: "Tuniberg", country: DE, parent: "Baden", classification: Bereich, synonyms: [], source: "https://de.wikipedia.org/wiki/Baden_(Weinbaugebiet)"}
+- {name: "Breisgau", country: DE, parent: "Baden", classification: Bereich, synonyms: [], source: "https://de.wikipedia.org/wiki/Baden_(Weinbaugebiet)"}
+- {name: "Markgräflerland", country: DE, parent: "Baden", classification: Bereich, synonyms: ["Markgraeflerland"], source: "https://de.wikipedia.org/wiki/Baden_(Weinbaugebiet)"}
+- {name: "Ortenau", country: DE, parent: "Baden", classification: Bereich, synonyms: [], source: "https://de.wikipedia.org/wiki/Baden_(Weinbaugebiet)"}
+- {name: "Kraichgau", country: DE, parent: "Baden", classification: Bereich, synonyms: [], source: "https://de.wikipedia.org/wiki/Baden_(Weinbaugebiet)"}
+- {name: "Badische Bergstraße", country: DE, parent: "Baden", classification: Bereich, synonyms: ["Badische Bergstrasse"], source: "https://de.wikipedia.org/wiki/Baden_(Weinbaugebiet)"}
+- {name: "Bodensee", country: DE, parent: "Baden", classification: Bereich, synonyms: [], source: "https://de.wikipedia.org/wiki/Baden_(Weinbaugebiet)"}
+- {name: "Tauberfranken", country: DE, parent: "Baden", classification: Bereich, synonyms: ["Badisches Frankenland"], source: "https://de.wikipedia.org/wiki/Baden_(Weinbaugebiet)"}
+
+# Baden: label villages
+- {name: "Ihringen", country: DE, parent: "Kaiserstuhl", classification: Gemeinde, synonyms: ["Ihringer"], source: "https://carrotsandtigers.com/2023/01/23/get-to-know-kaiserstuhl-wine-region-germanys-burgundy-hotspot/"}
+- {name: "Oberrotweil", country: DE, parent: "Kaiserstuhl", classification: Gemeinde, synonyms: ["Oberrotweiler"], source: "https://carrotsandtigers.com/2023/01/23/get-to-know-kaiserstuhl-wine-region-germanys-burgundy-hotspot/"}
+- {name: "Achkarren", country: DE, parent: "Kaiserstuhl", classification: Gemeinde, synonyms: ["Achkarrer"], source: "https://en.wikipedia.org/wiki/Achkarren"}
+- {name: "Bötzingen", country: DE, parent: "Kaiserstuhl", classification: Gemeinde, synonyms: ["Bötzinger", "Boetzingen"], source: "https://en.wikipedia.org/wiki/Kaiserstuhl_(Baden-W%C3%BCrttemberg)"}
+- {name: "Durbach", country: DE, parent: "Ortenau", classification: Gemeinde, synonyms: ["Durbacher"], source: "https://www.durbach.de/weindorf/natur-landschaft/ortenau"}
+
+# Franken: Bereiche (3)
+- {name: "Maindreieck", country: DE, parent: "Franken", classification: Bereich, synonyms: [], source: "https://www.deutscheweine.de/anbaugebiet/66/franken"}
+- {name: "Mainviereck", country: DE, parent: "Franken", classification: Bereich, synonyms: [], source: "https://www.deutscheweine.de/anbaugebiet/66/franken"}
+- {name: "Steigerwald", country: DE, parent: "Franken", classification: Bereich, synonyms: [], source: "https://www.deutscheweine.de/anbaugebiet/66/franken"}
+
+# Franken: label villages
+- {name: "Würzburg", country: DE, parent: "Maindreieck", classification: Gemeinde, synonyms: ["Würzburger", "Wuerzburg"], source: "https://de.wikipedia.org/wiki/Franken_(Weinbaugebiet)"}
+- {name: "Randersacker", country: DE, parent: "Maindreieck", classification: Gemeinde, synonyms: ["Randersackerer"], source: "https://de.wikipedia.org/wiki/Franken_(Weinbaugebiet)"}
+- {name: "Escherndorf", country: DE, parent: "Maindreieck", classification: Gemeinde, synonyms: ["Escherndorfer"], source: "https://de.wikipedia.org/wiki/Franken_(Weinbaugebiet)"}
+- {name: "Sommerhausen", country: DE, parent: "Maindreieck", classification: Gemeinde, synonyms: ["Sommerhäuser"], source: "https://de.wikipedia.org/wiki/Franken_(Weinbaugebiet)"}
+- {name: "Volkach", country: DE, parent: "Maindreieck", classification: Gemeinde, synonyms: ["Volkacher"], source: "https://de.wikipedia.org/wiki/Franken_(Weinbaugebiet)"}
+- {name: "Iphofen", country: DE, parent: "Steigerwald", classification: Gemeinde, synonyms: ["Iphöfer", "Iphoefer"], source: "https://de.wikipedia.org/wiki/Franken_(Weinbaugebiet)"}
+
+# Württemberg: Bereiche (5)
+- {name: "Remstal-Stuttgart", country: DE, parent: "Württemberg", classification: Bereich, synonyms: [], source: "https://www.deutscheweine.de/anbaugebiet/71/wuerttemberg"}
+- {name: "Württembergisch Unterland", country: DE, parent: "Württemberg", classification: Bereich, synonyms: ["Wuerttembergisch Unterland"], source: "https://www.deutscheweine.de/anbaugebiet/71/wuerttemberg"}
+- {name: "Kocher-Jagst-Tauber", country: DE, parent: "Württemberg", classification: Bereich, synonyms: [], source: "https://www.deutscheweine.de/anbaugebiet/71/wuerttemberg"}
+- {name: "Oberer Neckar", country: DE, parent: "Württemberg", classification: Bereich, synonyms: [], source: "https://www.deutscheweine.de/anbaugebiet/71/wuerttemberg"}
+- {name: "Württembergischer Bodensee", country: DE, parent: "Württemberg", classification: Bereich, synonyms: ["Wuerttembergischer Bodensee"], source: "https://www.deutscheweine.de/anbaugebiet/71/wuerttemberg"}
+
+# Württemberg: label villages
+- {name: "Untertürkheim", country: DE, parent: "Remstal-Stuttgart", classification: Gemeinde, synonyms: ["Untertürkheimer", "Untertuerkheim"], source: "https://de.wikipedia.org/wiki/W%C3%BCrttemberg_(Weinbaugebiet)"}
+- {name: "Fellbach", country: DE, parent: "Remstal-Stuttgart", classification: Gemeinde, synonyms: ["Fellbacher"], source: "https://de.wikipedia.org/wiki/W%C3%BCrttemberg_(Weinbaugebiet)"}
+- {name: "Weinsberg", country: DE, parent: "Württembergisch Unterland", classification: Gemeinde, synonyms: ["Weinsberger"], source: "https://de.wikipedia.org/wiki/W%C3%BCrttemberg_(Weinbaugebiet)"}
+- {name: "Besigheim", country: DE, parent: "Württembergisch Unterland", classification: Gemeinde, synonyms: ["Besigheimer"], source: "https://de.wikipedia.org/wiki/W%C3%BCrttemberg_(Weinbaugebiet)"}
+
+# Hessische Bergstraße: Bereiche (2)
+- {name: "Starkenburg", country: DE, parent: "Hessische Bergstraße", classification: Bereich, synonyms: [], source: "https://www.deutscheweine.de/anbaugebiet/67/hessische-bergstrasse"}
+- {name: "Umstadt", country: DE, parent: "Hessische Bergstraße", classification: Bereich, synonyms: [], source: "https://www.deutscheweine.de/anbaugebiet/67/hessische-bergstrasse"}
+
+# Hessische Bergstraße: label villages
+- {name: "Heppenheim", country: DE, parent: "Starkenburg", classification: Gemeinde, synonyms: ["Heppenheimer"], source: "https://www.bergstraesser-wein.de/hessische-bergstrasse/anbaugebiet/weinorte"}
+- {name: "Bensheim", country: DE, parent: "Starkenburg", classification: Gemeinde, synonyms: ["Bensheimer"], source: "https://www.bergstraesser-wein.de/hessische-bergstrasse/anbaugebiet/weinorte"}
+
+# Landwein (PGI) covering my Anbaugebiete. Cross-cutting ones (spanning
+# more than one Anbaugebiet, some outside my scope) are left without a
+# parent; see .md.
+- {name: "Pfälzer Landwein", country: DE, parent: "Pfalz", classification: Landwein, synonyms: ["Pfaelzer Landwein"], source: "https://www.buzer.de/gesetz/6206/a86414.htm"}
+- {name: "Badischer Landwein", country: DE, parent: "Baden", classification: Landwein, synonyms: [], source: "https://www.buzer.de/gesetz/6206/a86414.htm"}
+- {name: "Landwein Main", country: DE, parent: "Franken", classification: Landwein, synonyms: [], source: "https://www.buzer.de/gesetz/6206/a86414.htm"}
+- {name: "Schwäbischer Landwein", country: DE, parent: "Württemberg", classification: Landwein, synonyms: ["Schwaebischer Landwein"], source: "https://www.buzer.de/gesetz/6206/a86414.htm"}
+- {name: "Landwein Neckar", country: DE, parent: "Württemberg", classification: Landwein, synonyms: [], source: "https://www.buzer.de/gesetz/6206/a86414.htm"}
+- {name: "Starkenburger Landwein", country: DE, parent: "Hessische Bergstraße", classification: Landwein, synonyms: [], source: "https://www.buzer.de/gesetz/6206/a86414.htm"}
+- {name: "Rheinischer Landwein", country: DE, classification: Landwein, synonyms: [], source: "https://www.ble.de/SharedDocs/Downloads/DE/Ernaehrung-Lebensmittel/EU-Qualitaetskennzeichen/Antraege/Landweine/Landwein_Rheinischer.pdf"}
+- {name: "Landwein Oberrhein", country: DE, classification: Landwein, synonyms: [], source: "https://www.buzer.de/gesetz/6206/a86414.htm"}
+- {name: "Landwein Rhein-Neckar", country: DE, classification: Landwein, synonyms: [], source: "https://www.buzer.de/gesetz/6206/a86414.htm"}
+- {name: "Taubertäler Landwein", country: DE, classification: Landwein, synonyms: ["Taubertaeler Landwein"], source: "https://www.buzer.de/gesetz/6206/a86414.htm"}

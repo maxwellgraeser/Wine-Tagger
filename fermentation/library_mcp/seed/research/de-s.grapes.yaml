@@ -1,0 +1,8 @@
+# New grapes native to / important in Baden, Württemberg, Pfalz, Rheinhessen
+- {name: "Acolon", color: red, synonyms: [], source: "https://en.wikipedia.org/wiki/Acolon"}
+- {name: "Samtrot", color: red, synonyms: [], source: "https://www.echt-wuerttemberger.de/weine/rebsorten/samtrot"}
+- {name: "Cabernet Dorsa", color: red, synonyms: [], source: "https://www.lwg.bayern.de/weinbau/rebe_weinberg/075419/index.php"}
+- {name: "Rotberger", color: red, synonyms: [], source: "https://en.wikipedia.org/wiki/Rotberger"}
+
+# Existing grapes: missing local-name synonyms
+- {name: "Pinot Meunier", existing: true, synonyms: ["Müllerrebe"], source: "https://www.lwg.bayern.de/weinbau/rebe_weinberg/070516/index.php"}

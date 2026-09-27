@@ -20,8 +20,8 @@
 - {name: "Cinsault", color: red, synonyms: ["Cinsaut"]}
 - {name: "Carignan", color: red, synonyms: ["Carignane", "Cariñena", "Carinena", "Mazuelo", "Mazuela", "Carignano", "Samsó"]}
 - {name: "Counoise", color: red}
-- {name: "Pinot Noir", color: red, synonyms: ["PN", "P.N.", "Pinot Nero", "Spätburgunder", "Spatburgunder", "Blauburgunder"]}
-- {name: "Pinot Meunier", color: red, synonyms: ["Meunier", "Schwarzriesling"]}
+- {name: "Pinot Noir", color: red, synonyms: ["PN", "P.N.", "Pinot Nero", "Spätburgunder", "Spatburgunder", "Blauburgunder", "Blauer Spätburgunder"]}
+- {name: "Pinot Meunier", color: red, synonyms: ["Meunier", "Schwarzriesling", "Müllerrebe"]}
 - {name: "Gamay", color: red, synonyms: ["Gamay Noir"]}
 - {name: "Zinfandel", color: red, synonyms: ["Primitivo", "Zin", "Tribidrag", "Crljenak Kaštelanski", "Kratošija"]}
 - {name: "Petite Sirah", color: red, synonyms: ["Durif"]}
@@ -64,7 +64,7 @@
 - {name: "Colombard", color: white, synonyms: ["French Colombard", "Colombar"]}
 - {name: "Gros Manseng", color: white}
 - {name: "Petit Manseng", color: white}
-- {name: "Riesling", color: white, synonyms: ["Johannisberg Riesling", "White Riesling", "Rheinriesling", "Riesling Renano", "Weisser Riesling", "Rhine Riesling"]}
+- {name: "Riesling", color: white, synonyms: ["Johannisberg Riesling", "White Riesling", "Rheinriesling", "Riesling Renano", "Weisser Riesling", "Rhine Riesling", "Weißer Riesling"]}
 - {name: "Gewürztraminer", color: white, synonyms: ["Gewurztraminer", "Traminer", "Traminer Aromatico"]}
 - {name: "Pinot Gris", color: white, synonyms: ["Pinot Grigio", "Grauburgunder", "Ruländer", "Rulander", "PG", "Grauer Burgunder", "Pinot Beurot", "Tokay d'Alsace", "Tokay Pinot Gris", "Malvoisie"]}
 - {name: "Pinot Blanc", color: white, synonyms: ["Pinot Bianco", "Weissburgunder", "Weißburgunder", "Weisser Burgunder"]}
@@ -263,7 +263,7 @@
 - {name: "Huxelrebe", color: white}
 - {name: "Ortega", color: white}
 - {name: "Rieslaner", color: white}
-- {name: "Elbling", color: white}
+- {name: "Elbling", color: white, synonyms: ["Kleinberger"]}
 - {name: "Rotgipfler", color: white}
 - {name: "Zierfandler", color: white, synonyms: ["Spätrot"]}
 - {name: "Neuburger", color: white}
@@ -510,3 +510,11 @@
 - {name: "Nasco", color: white}
 - {name: "Vernaccia di Oristano", color: white}
 - {name: "Semidano", color: white}
+
+# ---------------- research: de-n ----------------
+- {name: "Goldriesling", color: white}
+
+# ---------------- research: de-s ----------------
+- {name: "Acolon", color: red}
+- {name: "Cabernet Dorsa", color: red}
+- {name: "Rotberger", color: red}

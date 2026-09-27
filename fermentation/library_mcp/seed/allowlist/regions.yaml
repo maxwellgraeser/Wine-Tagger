@@ -1360,19 +1360,160 @@
 - {name: "Açores", country: PT, classification: VR, synonyms: ["Azores", "Pico"]}
 
 # ======================= GERMANY =======================
+- {name: "Mosel", country: DE, classification: Anbaugebiet, synonyms: ["Mosel-Saar-Ruwer", "Moselle"]}
+- {name: "Bernkastel", country: DE, parent: "Mosel", classification: Bereich}
+- {name: "Burg Cochem", country: DE, parent: "Mosel", classification: Bereich, synonyms: ["Bereich Burg Cochem", "Terrassenmosel"]}
+- {name: "Obermosel", country: DE, parent: "Mosel", classification: Bereich}
+- {name: "Moseltor", country: DE, parent: "Mosel", classification: Bereich}
+- {name: "Saar", country: DE, parent: "Mosel", classification: Bereich}
+- {name: "Ruwertal", country: DE, parent: "Mosel", classification: Bereich, synonyms: ["Ruwer"]}
+- {name: "Piesport", country: DE, parent: "Bernkastel", classification: Gemeinde, synonyms: ["Piesporter"]}
+- {name: "Bernkastel-Kues", country: DE, parent: "Bernkastel", classification: Gemeinde, synonyms: ["Bernkasteler"]}
+- {name: "Wehlen", country: DE, parent: "Bernkastel", classification: Gemeinde, synonyms: ["Wehlener"]}
+- {name: "Graach", country: DE, parent: "Bernkastel", classification: Gemeinde, synonyms: ["Graacher", "Graach an der Mosel"]}
+- {name: "Ürzig", country: DE, parent: "Bernkastel", classification: Gemeinde, synonyms: ["Ürziger", "Urzig"]}
+- {name: "Erden", country: DE, parent: "Bernkastel", classification: Gemeinde, synonyms: ["Erdener"]}
+- {name: "Brauneberg", country: DE, parent: "Bernkastel", classification: Gemeinde, synonyms: ["Brauneberger"]}
+- {name: "Trittenheim", country: DE, parent: "Bernkastel", classification: Gemeinde, synonyms: ["Trittenheimer"]}
+- {name: "Zeltingen-Rachtig", country: DE, parent: "Bernkastel", classification: Gemeinde, synonyms: ["Zeltinger", "Zeltingen"]}
+- {name: "Lieser", country: DE, parent: "Bernkastel", classification: Gemeinde, synonyms: ["Lieserer"]}
+- {name: "Traben-Trarbach", country: DE, parent: "Bernkastel", classification: Gemeinde}
+- {name: "Kanzem", country: DE, parent: "Saar", classification: Gemeinde, synonyms: ["Kanzemer"]}
+- {name: "Wiltingen", country: DE, parent: "Saar", classification: Gemeinde, synonyms: ["Wiltinger"]}
+- {name: "Ockfen", country: DE, parent: "Saar", classification: Gemeinde, synonyms: ["Ockfener"]}
+- {name: "Serrig", country: DE, parent: "Saar", classification: Gemeinde, synonyms: ["Serriger"]}
+- {name: "Saarburg", country: DE, parent: "Saar", classification: Gemeinde, synonyms: ["Saarburger"]}
+- {name: "Ayl", country: DE, parent: "Saar", classification: Gemeinde, synonyms: ["Ayler"]}
+- {name: "Kasel", country: DE, parent: "Ruwertal", classification: Gemeinde, synonyms: ["Kaseler"]}
+- {name: "Waldrach", country: DE, parent: "Ruwertal", classification: Gemeinde}
+- {name: "Landwein der Mosel", country: DE, parent: "Mosel", classification: Landwein}
+- {name: "Landwein der Saar", country: DE, parent: "Saar", classification: Landwein}
+- {name: "Landwein der Ruwer", country: DE, parent: "Ruwertal", classification: Landwein}
+- {name: "Rheingau", country: DE, classification: Anbaugebiet}
+- {name: "Johannisberg", country: DE, parent: "Rheingau", classification: Bereich, synonyms: ["Bereich Johannisberg", "Johannisberger"]}
+- {name: "Rüdesheim", country: DE, parent: "Johannisberg", classification: Gemeinde, synonyms: ["Rüdesheimer", "Rüdesheim am Rhein"]}
+- {name: "Assmannshausen", country: DE, parent: "Johannisberg", classification: Gemeinde, synonyms: ["Assmannshäuser"]}
+- {name: "Hochheim", country: DE, parent: "Johannisberg", classification: Gemeinde, synonyms: ["Hochheimer", "Hochheim am Main"]}
+- {name: "Erbach", country: DE, parent: "Johannisberg", classification: Gemeinde, synonyms: ["Erbacher"]}
+- {name: "Hattenheim", country: DE, parent: "Johannisberg", classification: Gemeinde, synonyms: ["Hattenheimer"]}
+- {name: "Kiedrich", country: DE, parent: "Johannisberg", classification: Gemeinde, synonyms: ["Kiedricher"]}
+- {name: "Rauenthal", country: DE, parent: "Johannisberg", classification: Gemeinde, synonyms: ["Rauenthaler"]}
+- {name: "Eltville", country: DE, parent: "Johannisberg", classification: Gemeinde, synonyms: ["Eltviller", "Eltville am Rhein"]}
+- {name: "Oestrich-Winkel", country: DE, parent: "Johannisberg", classification: Gemeinde, synonyms: ["Oestricher", "Winkeler", "Oestrich", "Winkel"]}
+- {name: "Geisenheim", country: DE, parent: "Johannisberg", classification: Gemeinde, synonyms: ["Geisenheimer"]}
+- {name: "Lorch", country: DE, parent: "Johannisberg", classification: Gemeinde, synonyms: ["Lorcher"]}
+- {name: "Rheingauer Landwein", country: DE, parent: "Rheingau", classification: Landwein}
+- {name: "Nahe", country: DE, classification: Anbaugebiet}
+- {name: "Nahetal", country: DE, parent: "Nahe", classification: Bereich, synonyms: ["Bereich Nahetal"]}
+- {name: "Schlossböckelheim", country: DE, parent: "Nahetal", classification: Gemeinde, synonyms: ["Schlossböckelheimer", "Schloss Böckelheim"]}
+- {name: "Niederhausen", country: DE, parent: "Nahetal", classification: Gemeinde, synonyms: ["Niederhäuser"]}
+- {name: "Monzingen", country: DE, parent: "Nahetal", classification: Gemeinde, synonyms: ["Monzinger"]}
+- {name: "Bad Kreuznach", country: DE, parent: "Nahetal", classification: Gemeinde, synonyms: ["Kreuznacher"]}
+- {name: "Norheim", country: DE, parent: "Nahetal", classification: Gemeinde, synonyms: ["Norheimer"]}
+- {name: "Traisen", country: DE, parent: "Nahetal", classification: Gemeinde, synonyms: ["Traisener"]}
+- {name: "Nahegauer Landwein", country: DE, parent: "Nahe", classification: Landwein}
+- {name: "Mittelrhein", country: DE, classification: Anbaugebiet, synonyms: ["Middle Rhine"]}
+- {name: "Loreley", country: DE, parent: "Mittelrhein", classification: Bereich, synonyms: ["Lorelei"]}
+- {name: "Siebengebirge", country: DE, parent: "Mittelrhein", classification: Bereich}
+- {name: "Bacharach", country: DE, parent: "Loreley", classification: Gemeinde, synonyms: ["Bacharacher"]}
+- {name: "Boppard", country: DE, parent: "Loreley", classification: Gemeinde, synonyms: ["Bopparder"]}
+- {name: "Rheinburgen-Landwein", country: DE, parent: "Mittelrhein", classification: Landwein}
 - {name: "Ahr", country: DE, classification: Anbaugebiet}
-- {name: "Baden", country: DE, classification: Anbaugebiet, synonyms: ["Kaiserstuhl"]}
+- {name: "Walporzheim/Ahrtal", country: DE, parent: "Ahr", classification: Bereich, synonyms: ["Walporzheim-Ahrtal", "Bereich Walporzheim"]}
+- {name: "Mayschoß", country: DE, parent: "Walporzheim/Ahrtal", classification: Gemeinde, synonyms: ["Mayschosser", "Mayschoss"]}
+- {name: "Dernau", country: DE, parent: "Walporzheim/Ahrtal", classification: Gemeinde, synonyms: ["Dernauer"]}
+- {name: "Bad Neuenahr-Ahrweiler", country: DE, parent: "Walporzheim/Ahrtal", classification: Gemeinde, synonyms: ["Ahrweiler"]}
+- {name: "Ahrtaler Landwein", country: DE, parent: "Ahr", classification: Landwein}
+- {name: "Saale-Unstrut", country: DE, classification: Anbaugebiet}
+- {name: "Schloss Neuenburg", country: DE, parent: "Saale-Unstrut", classification: Bereich, synonyms: ["Bereich Schloss Neuenburg"]}
+- {name: "Thüringen", country: DE, parent: "Saale-Unstrut", classification: Bereich, synonyms: ["Bereich Thüringen"]}
+- {name: "Mansfelder Seen", country: DE, parent: "Saale-Unstrut", classification: Bereich, synonyms: ["Bereich Mansfelder Seen"]}
+- {name: "Freyburg", country: DE, parent: "Schloss Neuenburg", classification: Gemeinde, synonyms: ["Freyburger"]}
+- {name: "Mitteldeutscher Landwein", country: DE, parent: "Saale-Unstrut", classification: Landwein}
+- {name: "Sachsen", country: DE, classification: Anbaugebiet, synonyms: ["Saxony"]}
+- {name: "Meißen", country: DE, parent: "Sachsen", classification: Bereich, synonyms: ["Bereich Meißen", "Bereich Meissen", "Meissen", "Meißner"]}
+- {name: "Elstertal", country: DE, parent: "Sachsen", classification: Bereich, synonyms: ["Bereich Elstertal"]}
+- {name: "Radebeul", country: DE, parent: "Meißen", classification: Gemeinde, synonyms: ["Radebeuler"]}
+- {name: "Sächsischer Landwein", country: DE, parent: "Sachsen", classification: Landwein}
+- {name: "Pfalz", country: DE, classification: Anbaugebiet, synonyms: ["Palatinate", "Rheinpfalz"]}
+- {name: "Rheinhessen", country: DE, classification: Anbaugebiet, synonyms: ["Rhenish Hesse", "Rhine Hesse"]}
+- {name: "Baden", country: DE, classification: Anbaugebiet}
+- {name: "Württemberg", country: DE, classification: Anbaugebiet, synonyms: ["Wurttemberg", "Wuerttemberg"]}
 - {name: "Franken", country: DE, classification: Anbaugebiet, synonyms: ["Franconia"]}
 - {name: "Hessische Bergstraße", country: DE, classification: Anbaugebiet, synonyms: ["Hessische Bergstrasse"]}
-- {name: "Mittelrhein", country: DE, classification: Anbaugebiet, synonyms: ["Middle Rhine"]}
-- {name: "Mosel", country: DE, classification: Anbaugebiet, synonyms: ["Mosel-Saar-Ruwer", "Moselle", "Saar", "Ruwer"]}
-- {name: "Nahe", country: DE, classification: Anbaugebiet}
-- {name: "Pfalz", country: DE, classification: Anbaugebiet, synonyms: ["Palatinate", "Rheinpfalz"]}
-- {name: "Rheingau", country: DE, classification: Anbaugebiet}
-- {name: "Rheinhessen", country: DE, classification: Anbaugebiet, synonyms: ["Rhenish Hesse", "Rhine Hesse"]}
-- {name: "Saale-Unstrut", country: DE, classification: Anbaugebiet}
-- {name: "Sachsen", country: DE, classification: Anbaugebiet, synonyms: ["Saxony"]}
-- {name: "Württemberg", country: DE, classification: Anbaugebiet, synonyms: ["Wurttemberg", "Wuerttemberg"]}
+- {name: "Mittelhaardt-Deutsche Weinstraße", country: DE, parent: "Pfalz", classification: Bereich, synonyms: ["Mittelhaardt/Deutsche Weinstrasse", "Mittelhaardt"]}
+- {name: "Südliche Weinstraße", country: DE, parent: "Pfalz", classification: Bereich, synonyms: ["Suedliche Weinstrasse"]}
+- {name: "Forst", country: DE, parent: "Mittelhaardt-Deutsche Weinstraße", classification: Gemeinde, synonyms: ["Forster", "Forst an der Weinstraße"]}
+- {name: "Deidesheim", country: DE, parent: "Mittelhaardt-Deutsche Weinstraße", classification: Gemeinde, synonyms: ["Deidesheimer"]}
+- {name: "Wachenheim", country: DE, parent: "Mittelhaardt-Deutsche Weinstraße", classification: Gemeinde, synonyms: ["Wachenheimer", "Wachenheim an der Weinstraße"]}
+- {name: "Bad Dürkheim", country: DE, parent: "Mittelhaardt-Deutsche Weinstraße", classification: Gemeinde, synonyms: ["Dürkheimer", "Bad Duerkheim"]}
+- {name: "Ungstein", country: DE, parent: "Mittelhaardt-Deutsche Weinstraße", classification: Gemeinde, synonyms: ["Ungsteiner"]}
+- {name: "Kallstadt", country: DE, parent: "Mittelhaardt-Deutsche Weinstraße", classification: Gemeinde, synonyms: ["Kallstadter"]}
+- {name: "Ruppertsberg", country: DE, parent: "Mittelhaardt-Deutsche Weinstraße", classification: Gemeinde, synonyms: ["Ruppertsberger"]}
+- {name: "Königsbach", country: DE, parent: "Mittelhaardt-Deutsche Weinstraße", classification: Gemeinde, synonyms: ["Königsbacher", "Koenigsbach"]}
+- {name: "Freinsheim", country: DE, parent: "Mittelhaardt-Deutsche Weinstraße", classification: Gemeinde, synonyms: ["Freinsheimer"]}
+- {name: "Birkweiler", country: DE, parent: "Südliche Weinstraße", classification: Gemeinde}
+- {name: "Siebeldingen", country: DE, parent: "Südliche Weinstraße", classification: Gemeinde, synonyms: ["Siebeldinger"]}
+- {name: "Schweigen", country: DE, parent: "Südliche Weinstraße", classification: Gemeinde, synonyms: ["Schweigener", "Schweigen-Rechtenbach"]}
+- {name: "Frankweiler", country: DE, parent: "Südliche Weinstraße", classification: Gemeinde}
+- {name: "Leinsweiler", country: DE, parent: "Südliche Weinstraße", classification: Gemeinde}
+- {name: "Edenkoben", country: DE, parent: "Südliche Weinstraße", classification: Gemeinde, synonyms: ["Edenkobener"]}
+- {name: "Maikammer", country: DE, parent: "Südliche Weinstraße", classification: Gemeinde}
+- {name: "Bingen", country: DE, parent: "Rheinhessen", classification: Bereich, synonyms: ["Binger"]}
+- {name: "Nierstein", country: DE, parent: "Rheinhessen", classification: Bereich, synonyms: ["Niersteiner"]}
+- {name: "Wonnegau", country: DE, parent: "Rheinhessen", classification: Bereich}
+- {name: "Ingelheim", country: DE, parent: "Bingen", classification: Gemeinde, synonyms: ["Ingelheimer", "Ingelheim am Rhein"]}
+- {name: "Nackenheim", country: DE, parent: "Nierstein", classification: Gemeinde, synonyms: ["Nackenheimer"]}
+- {name: "Oppenheim", country: DE, parent: "Nierstein", classification: Gemeinde, synonyms: ["Oppenheimer"]}
+- {name: "Westhofen", country: DE, parent: "Wonnegau", classification: Gemeinde, synonyms: ["Westhofener"]}
+- {name: "Flörsheim-Dalsheim", country: DE, parent: "Wonnegau", classification: Gemeinde, synonyms: ["Flörsheim-Dalsheimer", "Floersheim-Dalsheim"]}
+- {name: "Bechtheim", country: DE, parent: "Wonnegau", classification: Gemeinde, synonyms: ["Bechtheimer"]}
+- {name: "Kaiserstuhl", country: DE, parent: "Baden", classification: Bereich}
+- {name: "Tuniberg", country: DE, parent: "Baden", classification: Bereich}
+- {name: "Breisgau", country: DE, parent: "Baden", classification: Bereich}
+- {name: "Markgräflerland", country: DE, parent: "Baden", classification: Bereich, synonyms: ["Markgraeflerland"]}
+- {name: "Ortenau", country: DE, parent: "Baden", classification: Bereich}
+- {name: "Kraichgau", country: DE, parent: "Baden", classification: Bereich}
+- {name: "Badische Bergstraße", country: DE, parent: "Baden", classification: Bereich, synonyms: ["Badische Bergstrasse"]}
+- {name: "Bodensee", country: DE, parent: "Baden", classification: Bereich}
+- {name: "Tauberfranken", country: DE, parent: "Baden", classification: Bereich, synonyms: ["Badisches Frankenland"]}
+- {name: "Ihringen", country: DE, parent: "Kaiserstuhl", classification: Gemeinde, synonyms: ["Ihringer"]}
+- {name: "Oberrotweil", country: DE, parent: "Kaiserstuhl", classification: Gemeinde, synonyms: ["Oberrotweiler"]}
+- {name: "Achkarren", country: DE, parent: "Kaiserstuhl", classification: Gemeinde, synonyms: ["Achkarrer"]}
+- {name: "Bötzingen", country: DE, parent: "Kaiserstuhl", classification: Gemeinde, synonyms: ["Bötzinger", "Boetzingen"]}
+- {name: "Durbach", country: DE, parent: "Ortenau", classification: Gemeinde, synonyms: ["Durbacher"]}
+- {name: "Maindreieck", country: DE, parent: "Franken", classification: Bereich}
+- {name: "Mainviereck", country: DE, parent: "Franken", classification: Bereich}
+- {name: "Steigerwald", country: DE, parent: "Franken", classification: Bereich}
+- {name: "Würzburg", country: DE, parent: "Maindreieck", classification: Gemeinde, synonyms: ["Würzburger", "Wuerzburg"]}
+- {name: "Randersacker", country: DE, parent: "Maindreieck", classification: Gemeinde, synonyms: ["Randersackerer"]}
+- {name: "Escherndorf", country: DE, parent: "Maindreieck", classification: Gemeinde, synonyms: ["Escherndorfer"]}
+- {name: "Sommerhausen", country: DE, parent: "Maindreieck", classification: Gemeinde, synonyms: ["Sommerhäuser"]}
+- {name: "Volkach", country: DE, parent: "Maindreieck", classification: Gemeinde, synonyms: ["Volkacher"]}
+- {name: "Iphofen", country: DE, parent: "Steigerwald", classification: Gemeinde, synonyms: ["Iphöfer", "Iphoefer"]}
+- {name: "Remstal-Stuttgart", country: DE, parent: "Württemberg", classification: Bereich}
+- {name: "Württembergisch Unterland", country: DE, parent: "Württemberg", classification: Bereich, synonyms: ["Wuerttembergisch Unterland"]}
+- {name: "Kocher-Jagst-Tauber", country: DE, parent: "Württemberg", classification: Bereich}
+- {name: "Oberer Neckar", country: DE, parent: "Württemberg", classification: Bereich}
+- {name: "Württembergischer Bodensee", country: DE, parent: "Württemberg", classification: Bereich, synonyms: ["Wuerttembergischer Bodensee"]}
+- {name: "Untertürkheim", country: DE, parent: "Remstal-Stuttgart", classification: Gemeinde, synonyms: ["Untertürkheimer", "Untertuerkheim"]}
+- {name: "Fellbach", country: DE, parent: "Remstal-Stuttgart", classification: Gemeinde, synonyms: ["Fellbacher"]}
+- {name: "Weinsberg", country: DE, parent: "Württembergisch Unterland", classification: Gemeinde, synonyms: ["Weinsberger"]}
+- {name: "Besigheim", country: DE, parent: "Württembergisch Unterland", classification: Gemeinde, synonyms: ["Besigheimer"]}
+- {name: "Starkenburg", country: DE, parent: "Hessische Bergstraße", classification: Bereich}
+- {name: "Umstadt", country: DE, parent: "Hessische Bergstraße", classification: Bereich}
+- {name: "Heppenheim", country: DE, parent: "Starkenburg", classification: Gemeinde, synonyms: ["Heppenheimer"]}
+- {name: "Bensheim", country: DE, parent: "Starkenburg", classification: Gemeinde, synonyms: ["Bensheimer"]}
+- {name: "Pfälzer Landwein", country: DE, parent: "Pfalz", classification: Landwein, synonyms: ["Pfaelzer Landwein"]}
+- {name: "Badischer Landwein", country: DE, parent: "Baden", classification: Landwein}
+- {name: "Landwein Main", country: DE, parent: "Franken", classification: Landwein}
+- {name: "Schwäbischer Landwein", country: DE, parent: "Württemberg", classification: Landwein, synonyms: ["Schwaebischer Landwein"]}
+- {name: "Landwein Neckar", country: DE, parent: "Württemberg", classification: Landwein}
+- {name: "Starkenburger Landwein", country: DE, parent: "Hessische Bergstraße", classification: Landwein}
+- {name: "Rheinischer Landwein", country: DE, classification: Landwein}
+- {name: "Landwein Oberrhein", country: DE, classification: Landwein}
+- {name: "Landwein Rhein-Neckar", country: DE, classification: Landwein}
+- {name: "Taubertäler Landwein", country: DE, classification: Landwein, synonyms: ["Taubertaeler Landwein"]}
 
 # ======================= AUSTRIA =======================
 - {name: "Niederösterreich", country: AT, synonyms: ["Lower Austria", "Niederosterreich"]}
