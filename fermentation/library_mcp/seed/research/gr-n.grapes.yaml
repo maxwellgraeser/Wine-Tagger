@@ -1,0 +1,11 @@
+# gr-n: Greece, north, centre and Ionian — new/updated grapes
+- {name: "Krasato", color: red, synonyms: ["Krassato"], source: "https://winesofgreece.org/articles/krassato/"}
+- {name: "Stavroto", color: red, source: "https://winesofgreece.org/articles/stavroto/"}
+- {name: "Mavroudi", color: red, source: "https://www.greeceandgrapes.com/en/variety/mavroudi"}
+- {name: "Vlachiko", color: red, synonyms: ["Vlahiko"], source: "https://www.greeceandgrapes.com/en/variety/vlachiko"}
+- {name: "Bekari", color: red, source: "https://gargantuanwine.com/2015/10/vlahiko/"}
+- {name: "Tsaoussi", color: white, synonyms: ["Tsaousi"], source: "https://www.wine-searcher.com/grape-662-tsaoussi"}
+- {name: "Vertzami", color: red, source: "https://www.winetourismgreece.com/greek-wine-regions/ionian-islands/"}
+- {name: "Goustolidi", color: white, source: "https://thegreekwineexperience.com/index.php/kefalonia-and-its-grapes/"}
+- {name: "Batiki", color: white, source: "https://www.wine-searcher.com/grape-1170-batiki"}
+- {name: "Mavro Messenikola", color: red, source: "https://winesofgreece.org/pdo/pdo-messenikola/"}

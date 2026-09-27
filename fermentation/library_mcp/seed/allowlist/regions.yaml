@@ -1652,21 +1652,138 @@
 - {name: "Wales", country: GB}
 
 # ======================= GREECE / CYPRUS =======================
-- {name: "Peloponnese", country: GR, synonyms: ["Peloponnesos", "Peloponnisos"]}
-- {name: "Nemea", country: GR, parent: "Peloponnese", classification: PDO}
-- {name: "Mantinia", country: GR, parent: "Peloponnese", classification: PDO, synonyms: ["Mantineia"]}
-- {name: "Patras", country: GR, parent: "Peloponnese", classification: PDO, synonyms: ["Patra"]}
 - {name: "Macedonia", country: GR, synonyms: ["Greek Macedonia", "Makedonia", "Macedonia (Greece)"]}
-- {name: "Naoussa", country: GR, parent: "Macedonia", classification: PDO, synonyms: ["Naousa"]}
-- {name: "Amyndeon", country: GR, parent: "Macedonia", classification: PDO, synonyms: ["Amynteo", "Amyntaio", "Amyndeo"]}
-- {name: "Drama", country: GR, parent: "Macedonia", classification: PGI}
-- {name: "Goumenissa", country: GR, parent: "Macedonia", classification: PDO}
-- {name: "Santorini", country: GR, classification: PDO, synonyms: ["Thira", "Santorini PDO"]}
-- {name: "Crete", country: GR, synonyms: ["Kriti"]}
-- {name: "Samos", country: GR, classification: PDO}
-- {name: "Cephalonia", country: GR, synonyms: ["Kefalonia", "Robola of Cephalonia"]}
+- {name: "Thrace", country: GR, synonyms: ["Thraki", "Greek Thrace"]}
+- {name: "Epirus", country: GR, synonyms: ["Ipiros", "Epeiros"]}
+- {name: "Thessaly", country: GR, synonyms: ["Thessalia"]}
+- {name: "Central Greece", country: GR, synonyms: ["Sterea Ellada", "Sterea Hellas"]}
 - {name: "Attica", country: GR, synonyms: ["Attiki"]}
-- {name: "Rapsani", country: GR, classification: PDO}
+- {name: "Ionian Islands", country: GR, synonyms: ["Ionia Nisia"]}
+- {name: "Naoussa", country: GR, parent: "Macedonia", classification: PDO, synonyms: ["Naousa"], grapes: ["Xinomavro"]}
+- {name: "Amyndeon", country: GR, parent: "Macedonia", classification: PDO, synonyms: ["Amynteo", "Amyntaio", "Amyndeo"], grapes: ["Xinomavro"]}
+- {name: "Goumenissa", country: GR, parent: "Macedonia", classification: PDO, grapes: ["Xinomavro", "Negoska"]}
+- {name: "Slopes of Meliton", country: GR, parent: "Macedonia", classification: PDO, synonyms: ["Cotes de Meliton", "Côtes de Meliton", "Plagies Melitona"], grapes: ["Limnio", "Cabernet Sauvignon", "Cabernet Franc", "Athiri", "Roditis", "Assyrtiko"]}
+- {name: "Drama", country: GR, parent: "Macedonia", classification: PGI}
+- {name: "Kavala", country: GR, parent: "Macedonia", classification: PGI}
+- {name: "Thasos", country: GR, parent: "Macedonia", classification: PGI}
+- {name: "Pangeon", country: GR, parent: "Macedonia", classification: PGI, synonyms: ["Pangeo"]}
+- {name: "Agora", country: GR, parent: "Macedonia", classification: PGI}
+- {name: "Serres", country: GR, parent: "Macedonia", classification: PGI}
+- {name: "Slopes of Paiko", country: GR, parent: "Macedonia", classification: PGI}
+- {name: "Slopes of Vertiskos", country: GR, parent: "Macedonia", classification: PGI}
+- {name: "Nea Mesimvria", country: GR, parent: "Macedonia", classification: PGI}
+- {name: "Thessaloniki", country: GR, parent: "Macedonia", classification: PGI}
+- {name: "Epanomi", country: GR, parent: "Macedonia", classification: PGI}
+- {name: "Halkidiki", country: GR, parent: "Macedonia", classification: PGI, synonyms: ["Chalkidiki"]}
+- {name: "Sithonia", country: GR, parent: "Macedonia", classification: PGI}
+- {name: "Mount Athos", country: GR, parent: "Macedonia", classification: PGI, synonyms: ["Agio Oros", "Aghion Oros"]}
+- {name: "Pella", country: GR, parent: "Macedonia", classification: PGI}
+- {name: "Florina", country: GR, parent: "Macedonia", classification: PGI}
+- {name: "Kastoria", country: GR, parent: "Macedonia", classification: PGI}
+- {name: "Imathia", country: GR, parent: "Macedonia", classification: PGI}
+- {name: "Pieria", country: GR, parent: "Macedonia", classification: PGI}
+- {name: "Kozani", country: GR, parent: "Macedonia", classification: PGI}
+- {name: "Grevena", country: GR, parent: "Macedonia", classification: PGI}
+- {name: "Siatista", country: GR, parent: "Macedonia", classification: PGI}
+- {name: "Velvento", country: GR, parent: "Macedonia", classification: PGI}
+- {name: "Evros", country: GR, parent: "Thrace", classification: PGI}
+- {name: "Ismaros", country: GR, parent: "Thrace", classification: PGI}
+- {name: "Avdira", country: GR, parent: "Thrace", classification: PGI}
+- {name: "Zitsa", country: GR, parent: "Epirus", classification: PDO, grapes: ["Debina"]}
+- {name: "Ioannina", country: GR, parent: "Epirus", classification: PGI}
+- {name: "Metsovo", country: GR, parent: "Epirus", classification: PGI}
+- {name: "Rapsani", country: GR, parent: "Thessaly", classification: PDO, grapes: ["Xinomavro", "Krasato"]}
+- {name: "Messenikola", country: GR, parent: "Thessaly", classification: PDO, synonyms: ["Mesenikola"], grapes: ["Carignan", "Syrah"]}
+- {name: "Anchialos", country: GR, parent: "Thessaly", classification: PDO, grapes: ["Roditis", "Savatiano"]}
+- {name: "Krania", country: GR, parent: "Thessaly", classification: PGI}
+- {name: "Elassona", country: GR, parent: "Thessaly", classification: PGI}
+- {name: "Tyrnavos", country: GR, parent: "Thessaly", classification: PGI}
+- {name: "Meteora", country: GR, parent: "Thessaly", classification: PGI}
+- {name: "Krannonas", country: GR, parent: "Thessaly", classification: PGI}
+- {name: "Karditsa", country: GR, parent: "Thessaly", classification: PGI}
+- {name: "Magnisia", country: GR, parent: "Thessaly", classification: PGI}
+- {name: "Evia", country: GR, parent: "Central Greece", classification: PGI, synonyms: ["Evvia", "Euboea"]}
+- {name: "Lilantio Pedio", country: GR, parent: "Central Greece", classification: PGI}
+- {name: "Karystos", country: GR, parent: "Central Greece", classification: PGI}
+- {name: "Ritsona", country: GR, parent: "Central Greece", classification: PGI}
+- {name: "Thiva", country: GR, parent: "Central Greece", classification: PGI, synonyms: ["Thebes"]}
+- {name: "Fthiotida", country: GR, parent: "Central Greece", classification: PGI}
+- {name: "Atalanti Valley", country: GR, parent: "Central Greece", classification: PGI, synonyms: ["Valley of Atalanti"]}
+- {name: "Opountia Locris", country: GR, parent: "Central Greece", classification: PGI, synonyms: ["Opountia Lokridos", "Opountia Lokrida"]}
+- {name: "Martino", country: GR, parent: "Central Greece", classification: PGI}
+- {name: "Parnassos", country: GR, parent: "Central Greece", classification: PGI}
+- {name: "Slopes of Knimida", country: GR, parent: "Central Greece", classification: PGI}
+- {name: "Anavyssos", country: GR, parent: "Attica", classification: PGI}
+- {name: "Gerania", country: GR, parent: "Attica", classification: PGI}
+- {name: "Ilion", country: GR, parent: "Attica", classification: PGI}
+- {name: "Markopoulo", country: GR, parent: "Attica", classification: PGI}
+- {name: "Pallini", country: GR, parent: "Attica", classification: PGI}
+- {name: "Slopes of Parnitha", country: GR, parent: "Attica", classification: PGI}
+- {name: "Spata", country: GR, parent: "Attica", classification: PGI}
+- {name: "Slopes of Kithaironas", country: GR, parent: "Attica", classification: PGI, synonyms: ["Slopes of Kitherona"]}
+- {name: "Slopes of Pendeliko", country: GR, parent: "Attica", classification: PGI}
+- {name: "Cephalonia", country: GR, parent: "Ionian Islands", synonyms: ["Kefalonia"]}
+- {name: "Robola of Cephalonia", country: GR, parent: "Cephalonia", classification: PDO, synonyms: ["Robola of Kefalonia"], grapes: ["Robola"]}
+- {name: "Mavrodaphne of Cephalonia", country: GR, parent: "Cephalonia", classification: PDO, synonyms: ["Mavrodaphne of Kefalonia"], grapes: ["Mavrodaphne"]}
+- {name: "Muscat of Cephalonia", country: GR, parent: "Cephalonia", classification: PDO, synonyms: ["Muscat of Kefalonia"], grapes: ["Muscat Blanc à Petits Grains"]}
+- {name: "Corfu", country: GR, parent: "Ionian Islands", classification: PGI, synonyms: ["Kerkyra"]}
+- {name: "Halikouna", country: GR, parent: "Ionian Islands", classification: PGI}
+- {name: "Lefkada", country: GR, parent: "Ionian Islands", classification: PGI}
+- {name: "Slopes of Ainos", country: GR, parent: "Ionian Islands", classification: PGI}
+- {name: "Metaxata", country: GR, parent: "Ionian Islands", classification: PGI}
+- {name: "Mantzavinata", country: GR, parent: "Ionian Islands", classification: PGI}
+- {name: "Zakynthos", country: GR, parent: "Ionian Islands", classification: PGI, synonyms: ["Zante"]}
+- {name: "Peloponnese", country: GR, synonyms: ["Peloponnesos", "Peloponnisos"]}
+- {name: "Nemea", country: GR, parent: "Peloponnese", classification: PDO, grapes: ["Agiorgitiko"]}
+- {name: "Mantinia", country: GR, parent: "Peloponnese", classification: PDO, synonyms: ["Mantineia"], grapes: ["Moschofilero"]}
+- {name: "Patras", country: GR, parent: "Peloponnese", classification: PDO, synonyms: ["Patra"], grapes: ["Roditis"]}
+- {name: "Mavrodaphne of Patras", country: GR, parent: "Peloponnese", classification: PDO, synonyms: ["Mavrodafni of Patras"], grapes: ["Mavrodaphne"]}
+- {name: "Muscat of Patras", country: GR, parent: "Peloponnese", classification: PDO, grapes: ["Muscat Blanc à Petits Grains"]}
+- {name: "Muscat of Rio Patras", country: GR, parent: "Peloponnese", classification: PDO, synonyms: ["Muscat of Rion Patras"], grapes: ["Muscat Blanc à Petits Grains"]}
+- {name: "Monemvasia-Malvasia", country: GR, parent: "Peloponnese", classification: PDO, synonyms: ["Monemvassia-Malvasia"], grapes: ["Monemvasia", "Assyrtiko"]}
+- {name: "Argolida", country: GR, parent: "Peloponnese", classification: PGI, synonyms: ["Argolis"]}
+- {name: "Arkadia", country: GR, parent: "Peloponnese", classification: PGI, synonyms: ["Arcadia"]}
+- {name: "Achaia", country: GR, parent: "Peloponnese", classification: PGI, synonyms: ["Achaea"]}
+- {name: "Ilia", country: GR, parent: "Peloponnese", classification: PGI, synonyms: ["Elis"]}
+- {name: "Korinthos", country: GR, parent: "Peloponnese", classification: PGI, synonyms: ["Corinth", "Corinthia", "Korinthia"]}
+- {name: "Lakonia", country: GR, parent: "Peloponnese", classification: PGI, synonyms: ["Laconia"]}
+- {name: "Messinia", country: GR, parent: "Peloponnese", classification: PGI}
+- {name: "Crete", country: GR, synonyms: ["Kriti"]}
+- {name: "Archanes", country: GR, parent: "Crete", classification: PDO, grapes: ["Kotsifali", "Mandilaria"]}
+- {name: "Dafnes", country: GR, parent: "Crete", classification: PDO, grapes: ["Liatiko"]}
+- {name: "Peza", country: GR, parent: "Crete", classification: PDO, grapes: ["Kotsifali", "Mandilaria", "Vilana"]}
+- {name: "Sitia", country: GR, parent: "Crete", classification: PDO, grapes: ["Liatiko", "Mandilaria", "Vilana", "Thrapsathiri"]}
+- {name: "Chandakas-Candia", country: GR, parent: "Crete", classification: PDO, synonyms: ["Handakas-Candia"], grapes: ["Vilana", "Mandilaria", "Kotsifali"]}
+- {name: "Malvasia Chandakas-Candia", country: GR, parent: "Crete", classification: PDO, synonyms: ["Malvasia Handakas-Candia"], grapes: ["Assyrtiko", "Athiri", "Vidiano", "Thrapsathiri", "Liatiko"]}
+- {name: "Malvasia Sitia", country: GR, parent: "Crete", classification: PDO, synonyms: ["Malvassia Sitia"], grapes: ["Assyrtiko", "Thrapsathiri", "Athiri", "Liatiko"]}
+- {name: "Heraklion", country: GR, parent: "Crete", classification: PGI, synonyms: ["Iraklio", "Heraklio"]}
+- {name: "Lasithi", country: GR, parent: "Crete", classification: PGI}
+- {name: "Chania", country: GR, parent: "Crete", classification: PGI, synonyms: ["Hania"]}
+- {name: "Rethymno", country: GR, parent: "Crete", classification: PGI, synonyms: ["Rethimno"]}
+- {name: "Aegean Sea", country: GR, classification: PGI, synonyms: ["Aegean Islands"]}
+- {name: "Cyclades", country: GR, parent: "Aegean Sea", classification: PGI, synonyms: ["Kyklades"]}
+- {name: "Dodecanese", country: GR, parent: "Aegean Sea", classification: PGI, synonyms: ["Dodekanese"]}
+- {name: "Lesvos", country: GR, parent: "Aegean Sea", classification: PGI, synonyms: ["Lesbos"]}
+- {name: "Chios", country: GR, parent: "Aegean Sea", classification: PGI}
+- {name: "Ikaria", country: GR, parent: "Aegean Sea", classification: PGI, synonyms: ["Icaria"]}
+- {name: "Santorini", country: GR, parent: "Cyclades", classification: PDO, synonyms: ["Thira"], grapes: ["Assyrtiko", "Athiri", "Aidani"]}
+- {name: "Paros", country: GR, parent: "Cyclades", classification: PDO, grapes: ["Monemvasia", "Mandilaria"]}
+- {name: "Malvasia Paros", country: GR, parent: "Cyclades", classification: PDO, grapes: ["Monemvasia"]}
+- {name: "Rhodes", country: GR, parent: "Dodecanese", classification: PDO, synonyms: ["Rodos"], grapes: ["Athiri", "Mandilaria"]}
+- {name: "Muscat of Rhodes", country: GR, parent: "Dodecanese", classification: PDO, grapes: ["Muscat Blanc à Petits Grains"]}
+- {name: "Samos", country: GR, parent: "Aegean Sea", classification: PDO, grapes: ["Muscat Blanc à Petits Grains"]}
+- {name: "Lemnos", country: GR, parent: "Aegean Sea", classification: PDO, synonyms: ["Limnos"], grapes: ["Muscat of Alexandria", "Limnio"]}
+- {name: "Muscat of Lemnos", country: GR, parent: "Aegean Sea", classification: PDO, synonyms: ["Muscat of Limnos"], grapes: ["Muscat of Alexandria"]}
+- {name: "Slopes of Aigialia", country: GR, parent: "Achaia", classification: PGI, synonyms: ["Slopes of Egialia", "Plagies Aigialeias"]}
+- {name: "Pisatis", country: GR, parent: "Ilia", classification: PGI}
+- {name: "Letrinoi", country: GR, parent: "Ilia", classification: PGI, synonyms: ["Letrini", "Letrina"]}
+- {name: "Trifilia", country: GR, parent: "Messinia", classification: PGI}
+- {name: "Pylia", country: GR, parent: "Messinia", classification: PGI}
+- {name: "Tegea", country: GR, parent: "Arkadia", classification: PGI}
+- {name: "Klimenti", country: GR, parent: "Korinthos", classification: PGI}
+- {name: "Kissamos", country: GR, parent: "Chania", classification: PGI}
+- {name: "Kos", country: GR, parent: "Dodecanese", classification: PGI}
+- {name: "Thapsana", country: GR, parent: "Cyclades", classification: PGI}
 - {name: "Commandaria", country: CY, classification: PDO, synonyms: ["Koumandaria"]}
 
 # ======================= CENTRAL & EASTERN EUROPE =======================

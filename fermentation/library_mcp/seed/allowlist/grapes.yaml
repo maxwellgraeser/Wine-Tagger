@@ -70,7 +70,7 @@
 - {name: "Pinot Blanc", color: white, synonyms: ["Pinot Bianco", "Weissburgunder", "Weißburgunder", "Weisser Burgunder", "Weißer Burgunder"]}
 - {name: "Auxerrois Blanc", color: white, synonyms: ["Auxerrois", "Pinot Auxerrois"]}
 - {name: "Silvaner", color: white, synonyms: ["Sylvaner", "Grüner Silvaner"]}
-- {name: "Muscat Blanc à Petits Grains", color: white, synonyms: ["Muscat", "Moscato", "Moscato Bianco", "Muscat Canelli", "Muscat Blanc", "Moscatel Galego", "Gelber Muskateller", "Muskateller", "Tamjanika", "Muscat de Frontignan", "Moscato d'Asti (grape)", "Muscadel", "Muskadel", "Red Muscadel", "White Muscadel", "Moscatel de Grano Menudo", "Moscadello"]}
+- {name: "Muscat Blanc à Petits Grains", color: white, synonyms: ["Muscat", "Moscato", "Moscato Bianco", "Muscat Canelli", "Muscat Blanc", "Moscatel Galego", "Gelber Muskateller", "Muskateller", "Tamjanika", "Muscat de Frontignan", "Moscato d'Asti (grape)", "Muscadel", "Muskadel", "Red Muscadel", "White Muscadel", "Moscatel de Grano Menudo", "Moscadello", "Moschato Aspro"]}
 - {name: "Muscat of Alexandria", color: white, synonyms: ["Moscatel", "Zibibbo", "Moscatel de Alejandría", "Muscat Gordo Blanco", "Gordo", "Hanepoot", "Moscatel de Setúbal (grape)", "Muscat d'Alexandrie"]}
 - {name: "Muscat Ottonel", color: white}
 - {name: "Aligoté", color: white, synonyms: ["Aligote"]}
@@ -290,7 +290,7 @@
 - {name: "Xinomavro", color: red, synonyms: ["Xynomavro"]}
 - {name: "Mavrodaphne", color: red, synonyms: ["Mavrodafni"]}
 - {name: "Limniona", color: red}
-- {name: "Mandilaria", color: red}
+- {name: "Mandilaria", color: red, synonyms: ["Amorgiano"]}
 - {name: "Kotsifali", color: red}
 - {name: "Liatiko", color: red}
 - {name: "Mavrotragano", color: red}
@@ -536,3 +536,15 @@
 - {name: "Moreto", color: red}
 - {name: "Moscatel Roxo", color: rose, synonyms: ["Muscat Rouge à Petits Grains", "Muscat Rose à Petits Grains"]}
 - {name: "Terrantez", color: white}
+
+# ---------------- research: gr-n ----------------
+- {name: "Krasato", color: red, synonyms: ["Krassato"]}
+- {name: "Mavroudi", color: red}
+- {name: "Vlachiko", color: red, synonyms: ["Vlahiko"]}
+- {name: "Bekari", color: red}
+- {name: "Vertzami", color: red}
+- {name: "Batiki", color: white}
+
+# ---------------- research: gr-s ----------------
+- {name: "Thrapsathiri", color: white, synonyms: ["Thrapsathiri Aspri"]}
+- {name: "Monemvasia", color: white, synonyms: ["Monemvassia", "Monemvasitiko"]}

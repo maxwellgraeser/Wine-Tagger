@@ -1,0 +1,64 @@
+# gr-s: Greece, south and Aegean (Peloponnese, Crete, Cyclades, Dodecanese, North Aegean)
+
+# --- Peloponnese ---
+- {name: "Peloponnese", country: GR, synonyms: ["Peloponnesos", "Peloponnisos"], source: "https://en.wikipedia.org/wiki/Peloponnese"}
+- {name: "Nemea", country: GR, parent: "Peloponnese", classification: PDO, grapes: ["Agiorgitiko"], source: "https://winesofgreece.org/pdo/pdo-nemea/"}
+- {name: "Mantinia", country: GR, parent: "Peloponnese", classification: PDO, synonyms: ["Mantineia"], grapes: ["Moschofilero"], source: "https://winesofgreece.org/pdo/pdo-mantinia/"}
+- {name: "Patras", country: GR, parent: "Peloponnese", classification: PDO, synonyms: ["Patra"], grapes: ["Roditis"], source: "https://winesofgreece.org/pdo/pdo-patras/"}
+- {name: "Mavrodaphne of Patras", country: GR, parent: "Peloponnese", classification: PDO, synonyms: ["Mavrodafni of Patras"], grapes: ["Mavrodaphne"], source: "https://winesofgreece.org/articles/production-of-mavrodaphne-of-patras/"}
+- {name: "Muscat of Patras", country: GR, parent: "Peloponnese", classification: PDO, grapes: ["Muscat Blanc à Petits Grains"], source: "https://winesofgreece.org/pdo/pdo-muscat-of-patras/"}
+- {name: "Muscat of Rio Patras", country: GR, parent: "Peloponnese", classification: PDO, synonyms: ["Muscat of Rion Patras"], grapes: ["Muscat Blanc à Petits Grains"], source: "https://winesofgreece.org/pdo/pdo-muscat-of-rio-patras/"}
+- {name: "Monemvasia-Malvasia", country: GR, parent: "Peloponnese", classification: PDO, synonyms: ["Monemvassia-Malvasia"], grapes: ["Monemvasia", "Assyrtiko", "Kydonitsa"], source: "https://winesofgreece.org/pdo/pdo-monemvassia-malvasia/"}
+- {name: "Argolida", country: GR, parent: "Peloponnese", classification: PGI, synonyms: ["Argolis"], source: "https://winesofgreece.org/articles/pgi-wines-of-greece/"}
+- {name: "Arkadia", country: GR, parent: "Peloponnese", classification: PGI, synonyms: ["Arcadia"], source: "https://winesofgreece.org/articles/pgi-wines-of-greece/"}
+- {name: "Achaia", country: GR, parent: "Peloponnese", classification: PGI, synonyms: ["Achaea"], source: "https://winesofgreece.org/articles/pgi-wines-of-greece/"}
+- {name: "Ilia", country: GR, parent: "Peloponnese", classification: PGI, synonyms: ["Elis"], source: "https://winesofgreece.org/articles/pgi-wines-of-greece/"}
+- {name: "Korinthos", country: GR, parent: "Peloponnese", classification: PGI, synonyms: ["Corinth", "Corinthia", "Korinthia"], source: "https://winesofgreece.org/articles/pgi-wines-of-greece/"}
+- {name: "Lakonia", country: GR, parent: "Peloponnese", classification: PGI, synonyms: ["Laconia"], source: "https://winesofgreece.org/articles/pgi-wines-of-greece/"}
+- {name: "Messinia", country: GR, parent: "Peloponnese", classification: PGI, source: "https://winesofgreece.org/articles/pgi-wines-of-greece/"}
+
+# --- Crete ---
+- {name: "Crete", country: GR, synonyms: ["Kriti"], source: "https://en.wikipedia.org/wiki/Crete"}
+- {name: "Archanes", country: GR, parent: "Crete", classification: PDO, grapes: ["Kotsifali", "Mandilaria"], source: "https://winesofgreece.org/pdo/pdo-archanes/"}
+- {name: "Dafnes", country: GR, parent: "Crete", classification: PDO, grapes: ["Liatiko"], source: "https://winesofgreece.org/pdo/pdo-dafnes/"}
+- {name: "Peza", country: GR, parent: "Crete", classification: PDO, grapes: ["Kotsifali", "Mandilaria", "Vilana"], source: "https://winesofgreece.org/pdo/pdo-peza/"}
+- {name: "Sitia", country: GR, parent: "Crete", classification: PDO, grapes: ["Liatiko", "Mandilaria", "Vilana", "Thrapsathiri"], source: "https://winesofgreece.org/pdo/pdo-sitia/"}
+- {name: "Chandakas-Candia", country: GR, parent: "Crete", classification: PDO, synonyms: ["Handakas-Candia"], grapes: ["Vilana", "Mandilaria", "Kotsifali"], source: "https://winesofgreece.org/pdo/pdo-handakas-candia/"}
+- {name: "Malvasia Chandakas-Candia", country: GR, parent: "Crete", classification: PDO, synonyms: ["Malvasia Handakas-Candia"], grapes: ["Assyrtiko", "Athiri", "Vidiano", "Thrapsathiri", "Liatiko"], source: "https://winesofgreece.org/pdo/pdo-malvasia-handakas-candia/"}
+- {name: "Malvasia Sitia", country: GR, parent: "Crete", classification: PDO, synonyms: ["Malvassia Sitia"], grapes: ["Assyrtiko", "Thrapsathiri", "Athiri", "Liatiko"], source: "https://amazinggreekwines.com/glossary/greek-wine-regions/pdo-malvassia-sitia/"}
+- {name: "Heraklion", country: GR, parent: "Crete", classification: PGI, synonyms: ["Iraklio", "Heraklio"], source: "https://winesofgreece.org/articles/pgi-wines-of-greece/"}
+- {name: "Lasithi", country: GR, parent: "Crete", classification: PGI, source: "https://winesofgreece.org/articles/pgi-wines-of-greece/"}
+- {name: "Chania", country: GR, parent: "Crete", classification: PGI, synonyms: ["Hania"], source: "https://winesofgreece.org/articles/pgi-wines-of-greece/"}
+- {name: "Rethymno", country: GR, parent: "Crete", classification: PGI, synonyms: ["Rethimno"], source: "https://winesofgreece.org/articles/pgi-wines-of-greece/"}
+
+# --- Aegean (Cyclades, Dodecanese, North Aegean) ---
+- {name: "Aegean Sea", country: GR, classification: PGI, synonyms: ["Aegean Islands"], source: "https://winesofgreece.org/pgi/pgi-aegean-sea/"}
+- {name: "Cyclades", country: GR, parent: "Aegean Sea", classification: PGI, synonyms: ["Kyklades"], source: "https://winesofgreece.org/pgi/cyclades/"}
+- {name: "Dodecanese", country: GR, parent: "Aegean Sea", classification: PGI, synonyms: ["Dodekanese"], source: "https://winesofgreece.org/articles/pgi-wines-of-greece/"}
+- {name: "Lesvos", country: GR, parent: "Aegean Sea", classification: PGI, synonyms: ["Lesbos"], source: "https://winesofgreece.org/articles/pgi-wines-of-greece/"}
+- {name: "Chios", country: GR, parent: "Aegean Sea", classification: PGI, source: "https://winesofgreece.org/articles/pgi-wines-of-greece/"}
+- {name: "Ikaria", country: GR, parent: "Aegean Sea", classification: PGI, synonyms: ["Icaria"], source: "https://winesofgreece.org/pgi/pgi-ikaria/"}
+- {name: "Santorini", country: GR, parent: "Cyclades", classification: PDO, synonyms: ["Thira"], grapes: ["Assyrtiko", "Athiri", "Aidani"], source: "https://winesofgreece.org/pdo/pdo-santorini/"}
+- {name: "Paros", country: GR, parent: "Cyclades", classification: PDO, grapes: ["Monemvasia", "Mandilaria"], source: "https://winesofgreece.org/pdo/pdo-paros/"}
+- {name: "Malvasia Paros", country: GR, parent: "Cyclades", classification: PDO, grapes: ["Monemvasia"], source: "https://en.wikipedia.org/wiki/Malvasia"}
+- {name: "Rhodes", country: GR, parent: "Dodecanese", classification: PDO, synonyms: ["Rodos"], grapes: ["Athiri", "Mandilaria"], source: "https://winesofgreece.org/pdo/pdo-rhodes/"}
+- {name: "Muscat of Rhodes", country: GR, parent: "Dodecanese", classification: PDO, grapes: ["Muscat Blanc à Petits Grains"], source: "https://winesofgreece.org/pdo/pdo-muscat-of-rhodes/"}
+- {name: "Samos", country: GR, parent: "Aegean Sea", classification: PDO, grapes: ["Muscat Blanc à Petits Grains"], source: "https://winesofgreece.org/pdo/pdo-samos/"}
+- {name: "Lemnos", country: GR, parent: "Aegean Sea", classification: PDO, synonyms: ["Limnos"], grapes: ["Muscat of Alexandria", "Limnio"], source: "https://winesofgreece.org/pdo/pdo-lemnos/"}
+- {name: "Muscat of Lemnos", country: GR, parent: "Aegean Sea", classification: PDO, synonyms: ["Muscat of Limnos"], grapes: ["Muscat of Alexandria"], source: "https://winesofgreece.org/pdo/pop-muscat-of-lemnos/"}
+
+# --- Peloponnese: PGI area wines (sub-district tier) ---
+- {name: "Slopes of Aigialia", country: GR, parent: "Achaia", classification: PGI, synonyms: ["Slopes of Egialia", "Plagies Aigialeias"], source: "https://winesofgreece.org/pgi/slopes-of-egialia/"}
+- {name: "Pisatis", country: GR, parent: "Ilia", classification: PGI, source: "https://winesofgreece.org/pgi/pisatis/"}
+- {name: "Letrinoi", country: GR, parent: "Ilia", classification: PGI, synonyms: ["Letrini", "Letrina"], source: "https://winesofgreece.org/pgi/letrina/"}
+- {name: "Trifilia", country: GR, parent: "Messinia", classification: PGI, source: "https://winesofgreece.org/pgi/trifilia/"}
+- {name: "Pylia", country: GR, parent: "Messinia", classification: PGI, source: "https://winesofgreece.org/pgi/pylia/"}
+- {name: "Tegea", country: GR, parent: "Arkadia", classification: PGI, source: "https://winesofgreece.org/pgi/tegea/"}
+- {name: "Klimenti", country: GR, parent: "Korinthos", classification: PGI, source: "https://winesofgreece.org/pgi/klimenti/"}
+
+# --- Crete: PGI area wines ---
+- {name: "Kissamos", country: GR, parent: "Chania", classification: PGI, source: "https://winesofgreece.org/pgi/kissamos/"}
+
+# --- Aegean: PGI area wines ---
+- {name: "Kos", country: GR, parent: "Dodecanese", classification: PGI, source: "https://winesofgreece.org/pgi/kos/"}
+- {name: "Thapsana", country: GR, parent: "Cyclades", classification: PGI, source: "https://winesofgreece.org/pgi/thapsana/"}

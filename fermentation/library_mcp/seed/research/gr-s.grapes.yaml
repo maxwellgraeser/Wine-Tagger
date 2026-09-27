@@ -1,0 +1,15 @@
+# gr-s: Greece, south and Aegean — new grapes and local synonyms
+
+# New grapes not in grapes.yaml
+- {name: "Thrapsathiri", color: white, synonyms: ["Thrapsathiri Aspri"], source: "https://en.wikipedia.org/wiki/Thrapsathiri"}
+- {name: "Dafni", color: white, source: "https://en.wikipedia.org/wiki/Dafni_(grape)"}
+- {name: "Plyto", color: white, source: "https://en.wikipedia.org/wiki/Plyto"}
+- {name: "Kydonitsa", color: white, source: "https://thegrapereset.com/monemvasia-winery-tsimbidi"}
+- {name: "Monemvasia", color: white, synonyms: ["Monemvassia", "Monemvasitiko"], source: "https://glossary.wein.plus/monemvasia-grape-variety"}
+- {name: "Fokiano", color: red, synonyms: ["Fokianos"], source: "https://winesofgreece.org/pgi/pgi-ikaria/"}
+- {name: "Begleri", color: white, source: "https://winesofgreece.org/pgi/pgi-ikaria/"}
+- {name: "Mavrothiriko", color: red, source: "https://winesofgreece.org/pdo/pdo-rhodes/"}
+
+# Existing grapes: local names/synonyms not yet listed
+- {name: "Mandilaria", existing: true, synonyms: ["Amorgiano"], source: "https://winesofgreece.org/pdo/pdo-rhodes/"}
+- {name: "Muscat Blanc à Petits Grains", existing: true, synonyms: ["Moschato Aspro"], source: "https://winesofgreece.org/pdo/pdo-samos/"}

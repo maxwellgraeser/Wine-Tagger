@@ -1,0 +1,103 @@
+# gr-n: Greece, north, centre and Ionian
+# Top-level macro regions (no parent) matching existing library convention for Macedonia/Attica.
+- {name: "Macedonia", country: GR, synonyms: ["Greek Macedonia", "Makedonia", "Macedonia (Greece)"]}
+- {name: "Thrace", country: GR, synonyms: ["Thraki", "Greek Thrace"], source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Epirus", country: GR, synonyms: ["Ipiros", "Epeiros"], source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Thessaly", country: GR, synonyms: ["Thessalia"], source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Central Greece", country: GR, synonyms: ["Sterea Ellada", "Sterea Hellas"], source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Attica", country: GR, synonyms: ["Attiki"]}
+- {name: "Ionian Islands", country: GR, synonyms: ["Ionia Nisia"], source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+
+# Macedonia: PDOs
+- {name: "Naoussa", country: GR, parent: "Macedonia", classification: PDO, synonyms: ["Naousa"], grapes: ["Xinomavro"], source: "https://winesofgreece.org/pdo/pdo-naoussa/"}
+- {name: "Amyndeon", country: GR, parent: "Macedonia", classification: PDO, synonyms: ["Amynteo", "Amyntaio", "Amyndeo"], grapes: ["Xinomavro"], source: "https://winesofgreece.org/pdo/pdo-amynteo/"}
+- {name: "Goumenissa", country: GR, parent: "Macedonia", classification: PDO, grapes: ["Xinomavro", "Negoska"], source: "https://winesofgreece.org/pdo/pdo-goumenissa/"}
+- {name: "Slopes of Meliton", country: GR, parent: "Macedonia", classification: PDO, synonyms: ["Cotes de Meliton", "Côtes de Meliton", "Plagies Melitona"], grapes: ["Limnio", "Cabernet Sauvignon", "Cabernet Franc", "Athiri", "Roditis", "Assyrtiko"], source: "https://winesofgreece.org/pdo/pdo-slopes-of-meliton/"}
+
+# Macedonia: PGIs (regional + local, all flat under Macedonia)
+- {name: "Drama", country: GR, parent: "Macedonia", classification: PGI}
+- {name: "Kavala", country: GR, parent: "Macedonia", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Thasos", country: GR, parent: "Macedonia", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Pangeon", country: GR, parent: "Macedonia", classification: PGI, synonyms: ["Pangeo"], source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Agora", country: GR, parent: "Macedonia", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Serres", country: GR, parent: "Macedonia", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Slopes of Paiko", country: GR, parent: "Macedonia", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Slopes of Vertiskos", country: GR, parent: "Macedonia", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Nea Mesimvria", country: GR, parent: "Macedonia", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Thessaloniki", country: GR, parent: "Macedonia", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Epanomi", country: GR, parent: "Macedonia", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Halkidiki", country: GR, parent: "Macedonia", classification: PGI, synonyms: ["Chalkidiki"], source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Sithonia", country: GR, parent: "Macedonia", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Mount Athos", country: GR, parent: "Macedonia", classification: PGI, synonyms: ["Agio Oros", "Aghion Oros"], source: "https://winesofgreece.org/pgi/mount-athos/"}
+- {name: "Pella", country: GR, parent: "Macedonia", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Florina", country: GR, parent: "Macedonia", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Kastoria", country: GR, parent: "Macedonia", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Imathia", country: GR, parent: "Macedonia", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Pieria", country: GR, parent: "Macedonia", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Kozani", country: GR, parent: "Macedonia", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Grevena", country: GR, parent: "Macedonia", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Siatista", country: GR, parent: "Macedonia", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Velvento", country: GR, parent: "Macedonia", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+
+# Thrace: PGIs
+- {name: "Evros", country: GR, parent: "Thrace", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Ismaros", country: GR, parent: "Thrace", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Avdira", country: GR, parent: "Thrace", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+
+# Epirus: PDO and PGIs
+- {name: "Zitsa", country: GR, parent: "Epirus", classification: PDO, grapes: ["Debina"], source: "https://winesofgreece.org/pdo/pdo-zitsa/"}
+- {name: "Ioannina", country: GR, parent: "Epirus", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Metsovo", country: GR, parent: "Epirus", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+
+# Thessaly: PDOs
+- {name: "Rapsani", country: GR, parent: "Thessaly", classification: PDO, grapes: ["Xinomavro", "Krasato", "Stavroto"], source: "https://winesofgreece.org/pdo/pdo-rapsani/"}
+- {name: "Messenikola", country: GR, parent: "Thessaly", classification: PDO, synonyms: ["Mesenikola"], grapes: ["Mavro Messenikola", "Carignan", "Syrah"], source: "https://winesofgreece.org/pdo/pdo-messenikola/"}
+- {name: "Anchialos", country: GR, parent: "Thessaly", classification: PDO, grapes: ["Roditis", "Savatiano"], source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+
+# Thessaly: PGIs
+- {name: "Krania", country: GR, parent: "Thessaly", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Elassona", country: GR, parent: "Thessaly", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Tyrnavos", country: GR, parent: "Thessaly", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Meteora", country: GR, parent: "Thessaly", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Krannonas", country: GR, parent: "Thessaly", classification: PGI, source: "https://winesofgreece.org/articles/pgi-wines-of-greece/"}
+- {name: "Karditsa", country: GR, parent: "Thessaly", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Magnisia", country: GR, parent: "Thessaly", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+
+# Central Greece (Sterea Ellada): PGIs
+- {name: "Evia", country: GR, parent: "Central Greece", classification: PGI, synonyms: ["Evvia", "Euboea"], source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Lilantio Pedio", country: GR, parent: "Central Greece", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Karystos", country: GR, parent: "Central Greece", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Ritsona", country: GR, parent: "Central Greece", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Thiva", country: GR, parent: "Central Greece", classification: PGI, synonyms: ["Thebes"], source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Fthiotida", country: GR, parent: "Central Greece", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Atalanti Valley", country: GR, parent: "Central Greece", classification: PGI, synonyms: ["Valley of Atalanti"], source: "https://winesofgreece.org/pgi/valley-of-atalanti/"}
+- {name: "Opountia Locris", country: GR, parent: "Central Greece", classification: PGI, synonyms: ["Opountia Lokridos", "Opountia Lokrida"], source: "https://winesofgreece.org/pgi/valley-of-atalanti/"}
+- {name: "Martino", country: GR, parent: "Central Greece", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Parnassos", country: GR, parent: "Central Greece", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Slopes of Knimida", country: GR, parent: "Central Greece", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+
+# Attica: PGIs
+- {name: "Anavyssos", country: GR, parent: "Attica", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Gerania", country: GR, parent: "Attica", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Ilion", country: GR, parent: "Attica", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Markopoulo", country: GR, parent: "Attica", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Pallini", country: GR, parent: "Attica", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Slopes of Parnitha", country: GR, parent: "Attica", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Spata", country: GR, parent: "Attica", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Slopes of Kithaironas", country: GR, parent: "Attica", classification: PGI, synonyms: ["Slopes of Kitherona"], source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Slopes of Pendeliko", country: GR, parent: "Attica", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+
+# Ionian Islands: Cephalonia and its PDOs
+- {name: "Cephalonia", country: GR, parent: "Ionian Islands", synonyms: ["Kefalonia"]}
+- {name: "Robola of Cephalonia", country: GR, parent: "Cephalonia", classification: PDO, synonyms: ["Robola of Kefalonia"], grapes: ["Robola"], source: "https://winesofgreece.org/pdo/pdo-robola-of-cephalonia/"}
+- {name: "Mavrodaphne of Cephalonia", country: GR, parent: "Cephalonia", classification: PDO, synonyms: ["Mavrodaphne of Kefalonia"], grapes: ["Mavrodaphne"], source: "https://winesofgreece.org/pdo/pdo-mavrodaphne-of-cephalonia/"}
+- {name: "Muscat of Cephalonia", country: GR, parent: "Cephalonia", classification: PDO, synonyms: ["Muscat of Kefalonia"], grapes: ["Muscat Blanc à Petits Grains"], source: "https://winesofgreece.org/pdo/pdo-muscat-of-cephalonia/"}
+
+# Ionian Islands: other local PGIs
+- {name: "Corfu", country: GR, parent: "Ionian Islands", classification: PGI, synonyms: ["Kerkyra"], source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Halikouna", country: GR, parent: "Ionian Islands", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Lefkada", country: GR, parent: "Ionian Islands", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Slopes of Ainos", country: GR, parent: "Ionian Islands", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Metaxata", country: GR, parent: "Ionian Islands", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Mantzavinata", country: GR, parent: "Ionian Islands", classification: PGI, source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
+- {name: "Zakynthos", country: GR, parent: "Ionian Islands", classification: PGI, synonyms: ["Zante"], source: "https://winesofgreece.org/regions-wineries/appellations-and-classifications/"}
