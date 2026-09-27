@@ -1804,18 +1804,56 @@
 - {name: "Thracian Valley", country: BG, synonyms: ["Thracian Lowlands", "Thrace (Bulgaria)"]}
 - {name: "Danubian Plain", country: BG}
 - {name: "Struma Valley", country: BG, synonyms: ["Melnik (region)"]}
-- {name: "Istria", country: HR, synonyms: ["Istra"]}
-- {name: "Dalmatia", country: HR, synonyms: ["Dalmacija"]}
-- {name: "Pelješac", country: HR, parent: "Dalmatia", synonyms: ["Peljesac", "Dingač"]}
-- {name: "Hvar", country: HR, parent: "Dalmatia"}
-- {name: "Slavonia", country: HR, synonyms: ["Slavonija"]}
-- {name: "Primorska", country: SI, synonyms: ["Primorje", "Slovenian Littoral"]}
-- {name: "Goriška Brda", country: SI, parent: "Primorska", synonyms: ["Brda", "Goriska Brda"]}
-- {name: "Vipava Valley", country: SI, parent: "Primorska", synonyms: ["Vipavska dolina", "Vipava"]}
-- {name: "Kras", country: SI, parent: "Primorska", synonyms: ["Karst"]}
-- {name: "Podravje", country: SI, synonyms: ["Drava Valley", "Štajerska", "Stajerska"]}
+- {name: "Slavonia and Croatian Danube", country: HR, classification: Region, synonyms: ["Slavonija i Hrvatsko Podunavlje"]}
+- {name: "Istria and Kvarner", country: HR, classification: Region, synonyms: ["Hrvatska Istra i Kvarner"]}
+- {name: "Dalmatia", country: HR, classification: Region, synonyms: ["Dalmacija"]}
+- {name: "Croatian Uplands", country: HR, classification: Region, synonyms: ["Središnja i bregovita Hrvatska", "Središnja bregovita Hrvatska"]}
+- {name: "Croatian Danube", country: HR, parent: "Slavonia and Croatian Danube", classification: Subregion, synonyms: ["Hrvatsko Podunavlje"]}
+- {name: "Slavonia", country: HR, parent: "Slavonia and Croatian Danube", classification: Subregion, synonyms: ["Slavonija"]}
+- {name: "Ilok", country: HR, parent: "Croatian Danube", classification: PDO}
+- {name: "Kutjevo", country: HR, parent: "Slavonia", classification: PDO}
+- {name: "Istria", country: HR, parent: "Istria and Kvarner", classification: PDO, synonyms: ["Istra", "Hrvatska Istra", "Croatian Istria"], grapes: ["Malvasia Istriana", "Refosco"]}
+- {name: "Kvarner and Croatian Littoral", country: HR, parent: "Istria and Kvarner", classification: Subregion, synonyms: ["Kvarner i Hrvatsko primorje", "Hrvatsko primorje"]}
+- {name: "North Dalmatia", country: HR, parent: "Dalmatia", classification: Subregion, synonyms: ["Sjeverna Dalmacija"]}
+- {name: "Dalmatian Hinterland", country: HR, parent: "Dalmatia", classification: Subregion, synonyms: ["Dalmatinska zagora"]}
+- {name: "Central and South Dalmatia", country: HR, parent: "Dalmatia", classification: Subregion, synonyms: ["Srednja i Južna Dalmacija"]}
+- {name: "Primošten", country: HR, parent: "North Dalmatia", classification: PDO, grapes: ["Babić"]}
+- {name: "Pelješac", country: HR, parent: "Central and South Dalmatia", classification: PDO, synonyms: ["Peljesac"], grapes: ["Plavac Mali"]}
+- {name: "Dingač", country: HR, parent: "Pelješac", classification: PDO, grapes: ["Plavac Mali"]}
+- {name: "Postup", country: HR, parent: "Pelješac", classification: PDO, grapes: ["Plavac Mali"]}
+- {name: "Komarna", country: HR, parent: "Central and South Dalmatia", classification: PDO, grapes: ["Plavac Mali"]}
+- {name: "Hvar", country: HR, parent: "Central and South Dalmatia", classification: PDO}
+- {name: "Brač", country: HR, parent: "Central and South Dalmatia", classification: PDO, synonyms: ["Brac"]}
+- {name: "Korčula", country: HR, parent: "Central and South Dalmatia", classification: PDO, synonyms: ["Korcula"]}
+- {name: "Moslavina", country: HR, parent: "Croatian Uplands", classification: Subregion}
+- {name: "Prigorje-Bilogora", country: HR, parent: "Croatian Uplands", classification: Subregion, synonyms: ["Prigorje – Bilogora"]}
+- {name: "Zagorje-Međimurje", country: HR, parent: "Croatian Uplands", classification: Subregion, synonyms: ["Zagorje – Međimurje"]}
+- {name: "Pokuplje", country: HR, parent: "Croatian Uplands", classification: Subregion}
+- {name: "Plešivica", country: HR, parent: "Croatian Uplands", classification: PDO}
+- {name: "Primorska", country: SI, classification: PGI, synonyms: ["Slovenian Littoral"]}
+- {name: "Podravje", country: SI, classification: PGI, synonyms: ["Drava Valley"]}
+- {name: "Posavje", country: SI, classification: PGI, synonyms: ["Lower Sava Valley"]}
+- {name: "Goriška Brda", country: SI, parent: "Primorska", classification: PDO, synonyms: ["Brda", "Goriska Brda"], grapes: ["Ribolla Gialla"]}
+- {name: "Vipava Valley", country: SI, parent: "Primorska", classification: PDO, synonyms: ["Vipavska dolina", "Vipava"]}
+- {name: "Kras", country: SI, parent: "Primorska", classification: PDO, synonyms: ["Karst"], grapes: ["Refosco"]}
+- {name: "Slovenska Istra", country: SI, parent: "Primorska", classification: PDO, synonyms: ["Slovenian Istria"]}
+- {name: "Štajerska Slovenija", country: SI, parent: "Podravje", classification: PDO, synonyms: ["Štajerska", "Stajerska", "Slovenian Styria"]}
+- {name: "Prekmurje", country: SI, parent: "Podravje", classification: PDO}
+- {name: "Bizeljsko-Sremič", country: SI, parent: "Posavje", classification: PDO, synonyms: ["Sremič-Bizeljsko", "Bizeljsko-Brežice"]}
+- {name: "Dolenjska", country: SI, parent: "Posavje", classification: PDO, synonyms: ["Lower Carniola"]}
+- {name: "Bela krajina", country: SI, parent: "Posavje", classification: PDO, synonyms: ["White Carniola"]}
 - {name: "Fruška Gora", country: RS, synonyms: ["Fruska Gora"]}
-- {name: "Tikveš", country: MK, synonyms: ["Tikves"]}
+- {name: "Vardar River Valley", country: MK, synonyms: ["Povardarie", "Povardarje"]}
+- {name: "Pčinja-Osogovo", country: MK, synonyms: ["Pchinja-Osogovo"]}
+- {name: "Pelagonia-Polog", country: MK, synonyms: ["Pelagonija-Polog"]}
+- {name: "Tikveš", country: MK, parent: "Vardar River Valley", synonyms: ["Tikves"]}
+- {name: "Skopje", country: MK, parent: "Vardar River Valley"}
+- {name: "Veles", country: MK, parent: "Vardar River Valley"}
+- {name: "Gevgelija-Valandovo", country: MK, parent: "Vardar River Valley"}
+- {name: "Ovče Pole", country: MK, parent: "Vardar River Valley", synonyms: ["Ovce Pole"]}
+- {name: "Ohrid", country: MK, parent: "Pelagonia-Polog"}
+- {name: "Prilep", country: MK, parent: "Pelagonia-Polog"}
+- {name: "Bitola", country: MK, parent: "Pelagonia-Polog"}
 - {name: "Codru", country: MD}
 - {name: "Valul lui Traian", country: MD}
 - {name: "Ștefan Vodă", country: MD, synonyms: ["Stefan Voda"]}
@@ -2625,3 +2663,11 @@
 - {name: "Hokkaido", country: JP}
 - {name: "Nashik", country: IN, synonyms: ["Nasik"]}
 - {name: "Meknès", country: MA, synonyms: ["Meknes", "Guerrouane"]}
+
+# ======================= BA (research) =======================
+- {name: "Herzegovina", country: BA}
+- {name: "Mostar", country: BA, parent: "Herzegovina"}
+- {name: "Čitluk", country: BA, parent: "Herzegovina", synonyms: ["Citluk"]}
+- {name: "Trebinje", country: BA, parent: "Herzegovina"}
+- {name: "Ljubuški", country: BA, parent: "Herzegovina", synonyms: ["Ljubuski"]}
+- {name: "Međugorje", country: BA, parent: "Herzegovina", synonyms: ["Medjugorje"]}

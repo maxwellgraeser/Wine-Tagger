@@ -267,6 +267,11 @@ grapes:
     label: Bobal
     note: ok
     qid: Q888380
+  Bogdanuša:
+    description: grape variety
+    label: Bogdanuša
+    note: ok
+    qid: Q847023
   Bombino Bianco:
     description: Italian grape variety
     label: Bombino Bianco
@@ -982,6 +987,11 @@ grapes:
     label: Kotsifali
     note: ok
     qid: Q1785444
+  Kraljevina:
+    description: a grape variety and wine of that grape
+    label: Kraljevina
+    note: ok
+    qid: Q123744922
   Krasato:
     description: grape variety
     label: Krassato
@@ -1100,7 +1110,7 @@ grapes:
   Malvasia Bianca Lunga:
     description: Italian grape variety
     label: Maraština
-    note: inexact label match -- review
+    note: ok
     qid: Q1887929
   Malvasia Fina:
     description: grape variety
@@ -1962,6 +1972,11 @@ grapes:
     label: Spergola
     note: ok
     qid: Q109376988
+  Stanušina:
+    description: variety of grape
+    label: Stanušina Crna
+    note: inexact label match -- review
+    qid: Q7600299
   Sumoll:
     description: grape variety
     label: Sumoll
@@ -2282,6 +2297,11 @@ grapes:
     label: Vranec
     note: ok
     qid: Q678124
+  Vugava:
+    description: white grape variety
+    label: Vugava
+    note: ok
+    qid: Q17053382
   Weldra:
     description: variety of grape
     label: Weldra
@@ -2337,11 +2357,21 @@ grapes:
     label: öküzgözü
     note: ok
     qid: Q296696
+  Žametovka:
+    description: variety of grape
+    label: Žametovka
+    note: ok
+    qid: Q393367
   Žilavka:
     description: Grape variety
     label: Žilavka
     note: ok
     qid: Q3445835
+  Žlahtina:
+    description: grape variety
+    label: Žlahtina
+    note: ok
+    qid: Q394231
 regions:
   3 Riberas (ES): null
   Abadía Retuerta (ES):
@@ -2986,6 +3016,7 @@ regions:
     label: Bekaa Valley
     note: non-wine class -- review
     qid: Q21576015
+  Bela krajina (SI): null
   Bell Mountain (US):
     description: viticultural area in Gillespie County, Texas
     label: Bell Mountain AVA
@@ -3101,11 +3132,13 @@ regions:
   Binissalem (ES): null
   Birkweiler (DE): null
   Biscoitos (PT): null
+  Bitola (MK): null
   Bivongi (IT):
     description: Italian controlled designation of origin wine from Calabria
     label: Bivongi DOC
     note: ok
     qid: Q139916958
+  Bizeljsko-Sremič (SI): null
   Bizkaiko Txakolina (ES):
     description: 'is a Spanish Denominación de Origen Protegida (DOP) (Basque: Jatorri Deitura Babestua)
       for wines, located in the province of Bizkaia, Basque Country, Spain'
@@ -3269,6 +3302,7 @@ regions:
     qid: Q390626
   Brand (FR): null
   Brauneberg (DE): null
+  Brač (HR): null
   Breede River Valley (ZA): null
   Breedekloof (ZA):
     description: wine district in South Africa
@@ -3756,6 +3790,7 @@ regions:
     label: Central Western Australia
     note: ok
     qid: Q73357880
+  Central and South Dalmatia (HR): null
   Centre-Loire (FR): null
   Cephalonia (GR): null
   Cerasuolo d'Abruzzo (IT):
@@ -4629,6 +4664,8 @@ regions:
     label: Criots-Bâtard-Montrachet
     note: ok
     qid: Q1140103
+  Croatian Danube (HR): null
+  Croatian Uplands (HR): null
   Cromwell (NZ): null
   Crozes-Hermitage (FR): null
   Cruet (FR):
@@ -4866,6 +4903,7 @@ regions:
     label: Dalmatia
     note: non-wine class -- review
     qid: Q528042
+  Dalmatian Hinterland (HR): null
   Danubian Plain (BG): null
   Darling (ZA): null
   Daunia (IT):
@@ -4914,6 +4952,11 @@ regions:
     label: Diamond Mountain District AVA
     note: ok
     qid: Q1110765
+  Dingač (HR):
+    description: wine growing region
+    label: Dingač
+    note: ok
+    qid: Q1226362
   Dodecanese (GR): null
   Dogliani (IT):
     description: Italian controlled and guaranteed designation of origin wine from Piedmont
@@ -4950,6 +4993,7 @@ regions:
     label: Dolcetto di Ovada superiore DOCG
     note: ok
     qid: Q3712607
+  Dolenjska (SI): null
   Dominio de Valdepusa (ES): null
   Donnas (IT): null
   Donnici (IT):
@@ -5506,6 +5550,7 @@ regions:
   Gerania (GR): null
   Gers (FR): null
   Getariako Txakolina (ES): null
+  Gevgelija-Valandovo (MK): null
   Gevrey-Chambertin (FR): null
   Ghemme (IT):
     description: Italian controlled and guaranteed designation of origin wine from Piedmont
@@ -5747,6 +5792,11 @@ regions:
     note: ok
     qid: Q1610495
   Hermitage (FR): null
+  Herzegovina (BA):
+    description: historical region of Bosnia and Herzegovina
+    label: Herzegovina
+    note: non-wine class -- review
+    qid: Q189863
   Hessische Bergstraße (DE):
     description: wine-producing region
     label: Hessische Bergstraße
@@ -5831,6 +5881,7 @@ regions:
     label: Illinois
     note: non-wine class -- review
     qid: Q1204
+  Ilok (HR): null
   Imathia (GR): null
   Imereti (GE):
     description: historical province in Georgia
@@ -5898,6 +5949,7 @@ regions:
     label: Istria
     note: non-wine class -- review
     qid: Q5053165
+  Istria and Kvarner (HR): null
   Itata Valley (CL): null
   Jahant (US):
     description: American Viticultural Area in San Joaquin County, California
@@ -6013,8 +6065,10 @@ regions:
     qid: Q1493028
   Kocher-Jagst-Tauber (DE): null
   Koekenaap (ZA): null
+  Komarna (HR): null
   Koo Plateau (ZA): null
   Korinthos (GR): null
+  Korčula (HR): null
   Kos (GR): null
   Kozani (GR): null
   Kraichgau (DE): null
@@ -6024,6 +6078,8 @@ regions:
   Krems (AT): null
   Kremstal (AT): null
   Kumeu (NZ): null
+  Kutjevo (HR): null
+  Kvarner and Croatian Littoral (HR): null
   KwaZulu-Natal (ZA): null
   Kweekvallei (ZA): null
   Königsbach (DE): null
@@ -6347,6 +6403,7 @@ regions:
     label: Liébana
     note: ok
     qid: Q6660796
+  Ljubuški (BA): null
   Loazzolo (IT):
     description: Italian controlled designation of origin wine from Piedmont
     label: Loazzolo DOC
@@ -6801,6 +6858,7 @@ regions:
     label: Meursault wine
     note: ok
     qid: Q7889954
+  Međugorje (BA): null
   Michigan (US):
     description: state of the United States of America
     label: Michigan
@@ -7098,6 +7156,8 @@ regions:
   Moselle (FR): null
   Moselle Luxembourgeoise (LU): null
   Moseltor (DE): null
+  Moslavina (HR): null
+  Mostar (BA): null
   Moulin-à-Vent (FR):
     description: French wine
     label: Moulin-à-Vent AOC
@@ -7396,6 +7456,7 @@ regions:
     label: North Coast AVA
     note: ok
     qid: Q2000573
+  North Dalmatia (HR): null
   North East Victoria (AU):
     description: Australian geographical indication (zone)
     label: North East Victoria
@@ -7509,6 +7570,7 @@ regions:
     label: Ohio River Valley AVA
     note: ok
     qid: Q1260347
+  Ohrid (MK): null
   Oiry (FR):
     description: commune in Marne, France
     label: Oiry
@@ -7605,6 +7667,11 @@ regions:
     note: ok
     qid: Q2041950
   Overberg (ZA): null
+  Ovče Pole (MK):
+    description: plain in North Macedonia
+    label: Ovče Pole
+    note: non-wine class -- review
+    qid: Q2740712
   Ozark Highlands (US):
     description: American Viticultural Area located in southern Missouri
     label: Ozark Highlands AVA
@@ -7750,6 +7817,7 @@ regions:
     label: Peel wine region
     note: ok
     qid: Q73337975
+  Pelagonia-Polog (MK): null
   Pelješac (HR): null
   Pella (GR): null
   Pellaro (IT):
@@ -7896,8 +7964,10 @@ regions:
     note: ok
     qid: Q139899845
   Plettenberg Bay (ZA): null
+  Plešivica (HR): null
   Podravje (SI): null
   Pokolbin (AU): null
+  Pokuplje (HR): null
   Polish Hill River (AU): null
   Polkadraai Hills (ZA): null
   Pollino (IT):
@@ -7937,6 +8007,12 @@ regions:
   Portezuelo (CL): null
   Portimão (PT): null
   Porto (PT): null
+  Posavje (SI): null
+  Postup (HR):
+    description: brand of wine
+    label: Postup
+    note: ok
+    qid: Q17098157
   Potter Valley (US):
     description: California wine region in Mendocino County
     label: Potter Valley AVA
@@ -7973,8 +8049,11 @@ regions:
     note: ok
     qid: Q378265
   Praelatenberg (FR): null
+  Prekmurje (SI): null
   Premières Côtes de Bordeaux (FR): null
   Prieska (ZA): null
+  Prigorje-Bilogora (HR): null
+  Prilep (MK): null
   Primitivo di Manduria (IT):
     description: Italian controlled designation of origin wine from Apulia
     label: Primitivo di Manduria DOC
@@ -7990,6 +8069,7 @@ regions:
     label: Primorska wine region
     note: ok
     qid: Q19937667
+  Primošten (HR): null
   Prince Albert (ZA): null
   Prince Albert Valley (ZA): null
   Prince Edward County (CA): null
@@ -8061,6 +8141,7 @@ regions:
     note: ok
     qid: Q461047
   Périgord (FR): null
+  Pčinja-Osogovo (MK): null
   Quarts de Chaume (FR): null
   Quebrada de Humahuaca (AR): null
   Queensland (AU): null
@@ -9078,12 +9159,14 @@ regions:
     label: Sizzano DOC
     note: ok
     qid: Q1407208
+  Skopje (MK): null
   Slanghoek (ZA): null
   Slavonia (HR):
     description: historical region of Croatia
     label: Slavonia
     note: non-wine class -- review
     qid: Q681964
+  Slavonia and Croatian Danube (HR): null
   Slopes of Aigialia (GR): null
   Slopes of Ainos (GR): null
   Slopes of Kithaironas (GR): null
@@ -9098,6 +9181,7 @@ regions:
     label: Sloughhouse AVA
     note: ok
     qid: Q2294439
+  Slovenska Istra (SI): null
   Snake River Valley (US):
     description: viticultural area in Idaho and Oregon, USA
     label: Snake River Valley AVA
@@ -9700,6 +9784,7 @@ regions:
     label: Trebbiano d'Abruzzo DOC
     note: ok
     qid: Q502082
+  Trebinje (BA): null
   Trentino (IT):
     description: Italian controlled designation of origin wine from Trentino
     label: Trentino DOC
@@ -10046,10 +10131,12 @@ regions:
     label: Van Duzer Corridor AVA
     note: ok
     qid: Q60774354
+  Vardar River Valley (MK): null
   Vastese (IT): null
   Vaucluse (FR): null
   Vaud (CH): null
   Vayots Dzor (AM): null
+  Veles (MK): null
   Velletri (IT):
     description: Italian controlled designation of origin wine from Lazio
     label: Velletri DOC
@@ -10522,6 +10609,7 @@ regions:
     label: Zagarolo DOC
     note: ok
     qid: Q4023640
+  Zagorje-Međimurje (HR): null
   Zakynthos (GR): null
   Zandrivier (ZA): null
   Zapallar (CL):
@@ -10549,6 +10637,8 @@ regions:
   Île de Beauté (FR): null
   Óbidos (PT): null
   Ürzig (DE): null
+  Čitluk (BA): null
+  Štajerska Slovenija (SI): null
   Ștefan Vodă (MD):
     description: commune in Călărași County, Romania
     label: Ștefan Vodă

@@ -576,3 +576,39 @@ AU:
     "Mataro": "Mourvèdre"
     "Shiraz": "Syrah"
     "Brown Muscat": "Muscat Blanc à Petits Grains"
+
+HR:
+  regions:
+    "Hrvatska Istra": "Istria"
+    "Peljesac": "Pelješac"
+    "Dingac": "Dingač"
+    "Korcula": "Korčula"
+  grapes:
+    "Posip": "Pošip"
+    "Babic": "Babić"
+    "Grasevina": "Welschriesling"
+    "Rukatac": "Malvasia Bianca Lunga"
+
+SI:
+  regions:
+    "Sremič-Bizeljsko": "Bizeljsko-Sremič"
+    "Vipavska dolina": "Vipava Valley"
+    "Slovenian Istria": "Slovenska Istra"
+    "Karst": "Kras"
+    "Štajerska": "Štajerska Slovenija"
+  grapes:
+    "Modra Frankinja": "Blaufränkisch"
+    "Sipon": "Furmint"
+
+BA:
+  regions:
+    "Medjugorje": "Međugorje"
+    "Citluk": "Čitluk"
+  grapes:
+    "Zilavka": "Žilavka"
+
+MK:
+  regions:
+    "Tikves": "Tikveš"
+  grapes:
+    "Temjanika": "Muscat Blanc à Petits Grains"

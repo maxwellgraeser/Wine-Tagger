@@ -1,0 +1,18 @@
+# Balkans research: new grapes and local-name synonyms for existing grapes.
+
+# Existing grapes: local names not yet listed
+- {name: "Furmint", existing: true, synonyms: ["Moslavac"], source: "https://en.wikipedia.org/wiki/Furmint"}
+- {name: "Muscat Blanc à Petits Grains", existing: true, synonyms: ["Temjanika"], source: "https://en.wikipedia.org/wiki/Tamjanika"}
+- {name: "Malvasia Bianca Lunga", existing: true, synonyms: ["Maraština", "Rukatac"], source: "https://en.wikipedia.org/wiki/Mara%C5%A1tina"}
+
+# New grapes native to the scope
+- {name: "Kraljevina", color: white, source: "https://total-croatia-news.com/wine/grapes/the-indigenous-grapes-of-croatia-kraljevina/"}
+- {name: "Grk", color: white, source: "https://en.wikipedia.org/wiki/Grk_Bijeli"}
+- {name: "Debit", color: white, source: "https://en.wikipedia.org/wiki/Debit_(grape)"}
+- {name: "Žlahtina", color: white, synonyms: ["Zlahtina"], source: "https://en.wikipedia.org/wiki/%C5%BDlahtina"}
+- {name: "Škrlet", color: white, synonyms: ["Skrlet", "Ovnek"], source: "https://total-croatia-news.com/wine/grapes/the-indigenous-grapes-of-croatia-skrlet/"}
+- {name: "Bogdanuša", color: white, synonyms: ["Bogdanusa"], source: "https://en.wikipedia.org/wiki/Bogdanu%C5%A1a"}
+- {name: "Vugava", color: white, synonyms: ["Bugava"], source: "https://en.wikipedia.org/wiki/Vugava"}
+- {name: "Žametovka", color: red, synonyms: ["Zametovka", "Modra Kavčina", "Žametna Črnina"], source: "https://en.wikipedia.org/wiki/%C5%BDametovka"}
+- {name: "Stanušina", color: red, synonyms: ["Stanusina"], source: "https://en.wikipedia.org/wiki/Stanu%C5%A1ina_Crna"}
+- {name: "Smederevka", color: white, source: "https://en.wikipedia.org/wiki/Smederevka"}

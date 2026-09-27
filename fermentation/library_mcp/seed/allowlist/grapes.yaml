@@ -70,7 +70,7 @@
 - {name: "Pinot Blanc", color: white, synonyms: ["Pinot Bianco", "Weissburgunder", "Weißburgunder", "Weisser Burgunder", "Weißer Burgunder"]}
 - {name: "Auxerrois Blanc", color: white, synonyms: ["Auxerrois", "Pinot Auxerrois"]}
 - {name: "Silvaner", color: white, synonyms: ["Sylvaner", "Grüner Silvaner"]}
-- {name: "Muscat Blanc à Petits Grains", color: white, synonyms: ["Muscat", "Moscato", "Moscato Bianco", "Muscat Canelli", "Muscat Blanc", "Moscatel Galego", "Gelber Muskateller", "Muskateller", "Tamjanika", "Muscat de Frontignan", "Moscato d'Asti (grape)", "Muscadel", "Muskadel", "Red Muscadel", "White Muscadel", "Moscatel de Grano Menudo", "Moscadello", "Moschato Aspro", "Brown Muscat"]}
+- {name: "Muscat Blanc à Petits Grains", color: white, synonyms: ["Muscat", "Moscato", "Moscato Bianco", "Muscat Canelli", "Muscat Blanc", "Moscatel Galego", "Gelber Muskateller", "Muskateller", "Tamjanika", "Muscat de Frontignan", "Moscato d'Asti (grape)", "Muscadel", "Muskadel", "Red Muscadel", "White Muscadel", "Moscatel de Grano Menudo", "Moscadello", "Moschato Aspro", "Brown Muscat", "Temjanika"]}
 - {name: "Muscat of Alexandria", color: white, synonyms: ["Moscatel", "Zibibbo", "Moscatel de Alejandría", "Muscat Gordo Blanco", "Gordo", "Hanepoot", "Moscatel de Setúbal (grape)", "Muscat d'Alexandrie"]}
 - {name: "Muscat Ottonel", color: white}
 - {name: "Aligoté", color: white, synonyms: ["Aligote"]}
@@ -300,7 +300,7 @@
 - {name: "Maratheftiko", color: red}
 
 # ---------------- Central & Eastern Europe, Caucasus, Turkey ----------------
-- {name: "Furmint", color: white, synonyms: ["Šipon", "Sipon", "Mosler"]}
+- {name: "Furmint", color: white, synonyms: ["Šipon", "Sipon", "Mosler", "Moslavac"]}
 - {name: "Hárslevelű", color: white, synonyms: ["Harslevelu"]}
 - {name: "Kadarka", color: red, synonyms: ["Gamza"]}
 - {name: "Juhfark", color: white}
@@ -328,7 +328,7 @@
 - {name: "Prokupac", color: red}
 - {name: "Mavrud", color: red}
 - {name: "Rubin", color: red}
-- {name: "Dimyat", color: white, synonyms: ["Dimiat"]}
+- {name: "Dimyat", color: white, synonyms: ["Dimiat", "Smederevka"]}
 - {name: "Red Misket", color: white, synonyms: ["Misket", "Misket Cherven"]}
 - {name: "Pamid", color: red}
 - {name: "Öküzgözü", color: red, synonyms: ["Okuzgozu"]}
@@ -486,7 +486,7 @@
 # ---------------- research: it-c1 ----------------
 - {name: "Foglia Tonda", color: red}
 - {name: "Pugnitello", color: red}
-- {name: "Malvasia Bianca Lunga", color: white}
+- {name: "Malvasia Bianca Lunga", color: white, synonyms: ["Maraština", "Rukatac"]}
 
 # ---------------- research: it-c2 ----------------
 - {name: "Trebbiano Abruzzese", color: white}
@@ -553,3 +553,11 @@
 
 # ---------------- research: ar ----------------
 - {name: "Pedro Giménez", color: white, synonyms: ["Pedro Jiménez"]}
+
+# ---------------- research: balkans ----------------
+- {name: "Kraljevina", color: white}
+- {name: "Žlahtina", color: white, synonyms: ["Zlahtina"]}
+- {name: "Bogdanuša", color: white, synonyms: ["Bogdanusa"]}
+- {name: "Vugava", color: white, synonyms: ["Bugava"]}
+- {name: "Žametovka", color: red, synonyms: ["Zametovka", "Modra Kavčina", "Žametna Črnina"]}
+- {name: "Stanušina", color: red, synonyms: ["Stanusina"]}

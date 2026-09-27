@@ -1,0 +1,74 @@
+# Balkans research: Croatia (HR), Slovenia (SI), Bosnia and Herzegovina (BA), North Macedonia (MK)
+# Source for HR hierarchy: Pravilnik o vinogradarstvu (NN 81/2022), Art. 4 and Annex I.
+
+# --- Croatia (HR): four winegrowing regions ---
+- {name: "Slavonia and Croatian Danube", country: HR, synonyms: ["Slavonija i Hrvatsko Podunavlje"], classification: Region, source: "https://faolex.fao.org/docs/pdf/cro234935.pdf"}
+- {name: "Istria and Kvarner", country: HR, synonyms: ["Hrvatska Istra i Kvarner"], classification: Region, source: "https://faolex.fao.org/docs/pdf/cro234935.pdf"}
+- {name: "Dalmatia", country: HR, synonyms: ["Dalmacija"], classification: Region, source: "https://faolex.fao.org/docs/pdf/cro234935.pdf"}
+- {name: "Croatian Uplands", country: HR, synonyms: ["Središnja i bregovita Hrvatska", "Središnja bregovita Hrvatska"], classification: Region, source: "https://faolex.fao.org/docs/pdf/cro234935.pdf"}
+
+# Subregions of Slavonia and Croatian Danube
+- {name: "Croatian Danube", country: HR, parent: "Slavonia and Croatian Danube", synonyms: ["Hrvatsko Podunavlje"], classification: Subregion, source: "https://faolex.fao.org/docs/pdf/cro234935.pdf"}
+- {name: "Slavonia", country: HR, parent: "Slavonia and Croatian Danube", synonyms: ["Slavonija"], classification: Subregion, source: "https://faolex.fao.org/docs/pdf/cro234935.pdf"}
+- {name: "Ilok", country: HR, parent: "Croatian Danube", classification: PDO, source: "https://faolex.fao.org/docs/pdf/cro234935.pdf"}
+- {name: "Kutjevo", country: HR, parent: "Slavonia", classification: PDO, source: "https://faolex.fao.org/docs/pdf/cro234935.pdf"}
+
+# Subregions of Istria and Kvarner
+- {name: "Istria", country: HR, parent: "Istria and Kvarner", synonyms: ["Istra", "Hrvatska Istra", "Croatian Istria"], classification: PDO, grapes: ["Malvasia Istriana", "Refosco"], source: "https://faolex.fao.org/docs/pdf/cro234935.pdf"}
+- {name: "Kvarner and Croatian Littoral", country: HR, parent: "Istria and Kvarner", synonyms: ["Kvarner i Hrvatsko primorje", "Hrvatsko primorje"], classification: Subregion, source: "https://faolex.fao.org/docs/pdf/cro234935.pdf"}
+
+# Subregions of Dalmatia
+- {name: "North Dalmatia", country: HR, parent: "Dalmatia", synonyms: ["Sjeverna Dalmacija"], classification: Subregion, source: "https://faolex.fao.org/docs/pdf/cro234935.pdf"}
+- {name: "Dalmatian Hinterland", country: HR, parent: "Dalmatia", synonyms: ["Dalmatinska zagora"], classification: Subregion, source: "https://faolex.fao.org/docs/pdf/cro234935.pdf"}
+- {name: "Central and South Dalmatia", country: HR, parent: "Dalmatia", synonyms: ["Srednja i Južna Dalmacija"], classification: Subregion, source: "https://faolex.fao.org/docs/pdf/cro234935.pdf"}
+- {name: "Primošten", country: HR, parent: "North Dalmatia", classification: PDO, grapes: ["Babić"], source: "https://faolex.fao.org/docs/pdf/cro234935.pdf"}
+- {name: "Pelješac", country: HR, parent: "Central and South Dalmatia", synonyms: ["Peljesac"], classification: PDO, grapes: ["Plavac Mali"], source: "https://faolex.fao.org/docs/pdf/cro234935.pdf", was: "Pelješac (was parent Dalmatia, synonyms included Dingač)"}
+- {name: "Dingač", country: HR, parent: "Pelješac", classification: PDO, grapes: ["Plavac Mali"], source: "https://en.wikipedia.org/wiki/Dinga%C4%8D_(wine)"}
+- {name: "Postup", country: HR, parent: "Pelješac", classification: PDO, grapes: ["Plavac Mali"], source: "https://en.wikipedia.org/wiki/Postup"}
+- {name: "Komarna", country: HR, parent: "Central and South Dalmatia", classification: PDO, grapes: ["Plavac Mali"], source: "https://faolex.fao.org/docs/pdf/cro234935.pdf"}
+- {name: "Hvar", country: HR, parent: "Central and South Dalmatia", classification: PDO, source: "https://faolex.fao.org/docs/pdf/cro234935.pdf"}
+- {name: "Brač", country: HR, parent: "Central and South Dalmatia", synonyms: ["Brac"], classification: PDO, source: "https://faolex.fao.org/docs/pdf/cro234935.pdf"}
+- {name: "Korčula", country: HR, parent: "Central and South Dalmatia", synonyms: ["Korcula"], classification: PDO, source: "https://faolex.fao.org/docs/pdf/cro234935.pdf"}
+
+# Subregions of Croatian Uplands
+- {name: "Moslavina", country: HR, parent: "Croatian Uplands", classification: Subregion, source: "https://faolex.fao.org/docs/pdf/cro234935.pdf"}
+- {name: "Prigorje-Bilogora", country: HR, parent: "Croatian Uplands", synonyms: ["Prigorje – Bilogora"], classification: Subregion, source: "https://faolex.fao.org/docs/pdf/cro234935.pdf"}
+- {name: "Zagorje-Međimurje", country: HR, parent: "Croatian Uplands", synonyms: ["Zagorje – Međimurje"], classification: Subregion, source: "https://faolex.fao.org/docs/pdf/cro234935.pdf"}
+- {name: "Pokuplje", country: HR, parent: "Croatian Uplands", classification: Subregion, source: "https://faolex.fao.org/docs/pdf/cro234935.pdf"}
+- {name: "Plešivica", country: HR, parent: "Croatian Uplands", classification: PDO, source: "https://faolex.fao.org/docs/pdf/cro234935.pdf"}
+
+# --- Slovenia (SI): three winegrowing regions, nine districts ---
+- {name: "Primorska", country: SI, synonyms: ["Slovenian Littoral"], classification: PGI, source: "https://www.ttb.gov/system/files/images/pdfs/slovenia.pdf"}
+- {name: "Podravje", country: SI, synonyms: ["Drava Valley"], classification: PGI, source: "https://www.ttb.gov/system/files/images/pdfs/slovenia.pdf", was: "Podravje (dropped synonyms Štajerska/Stajerska, now the separate district Štajerska Slovenija below)"}
+- {name: "Posavje", country: SI, synonyms: ["Lower Sava Valley"], classification: PGI, source: "https://www.ttb.gov/system/files/images/pdfs/slovenia.pdf"}
+
+- {name: "Goriška Brda", country: SI, parent: "Primorska", synonyms: ["Brda", "Goriska Brda"], classification: PDO, grapes: ["Ribolla Gialla"], source: "https://www.ttb.gov/system/files/images/pdfs/slovenia.pdf"}
+- {name: "Vipava Valley", country: SI, parent: "Primorska", synonyms: ["Vipavska dolina", "Vipava"], classification: PDO, source: "https://www.ttb.gov/system/files/images/pdfs/slovenia.pdf"}
+- {name: "Kras", country: SI, parent: "Primorska", synonyms: ["Karst"], classification: PDO, grapes: ["Refosco"], source: "https://www.ttb.gov/system/files/images/pdfs/slovenia.pdf"}
+- {name: "Slovenska Istra", country: SI, parent: "Primorska", synonyms: ["Slovenian Istria"], classification: PDO, source: "https://www.ttb.gov/system/files/images/pdfs/slovenia.pdf"}
+- {name: "Štajerska Slovenija", country: SI, parent: "Podravje", synonyms: ["Štajerska", "Stajerska", "Slovenian Styria"], classification: PDO, source: "https://www.ttb.gov/system/files/images/pdfs/slovenia.pdf", was: "new entry, split out of Podravje's synonym list"}
+- {name: "Prekmurje", country: SI, parent: "Podravje", classification: PDO, source: "https://www.ttb.gov/system/files/images/pdfs/slovenia.pdf"}
+- {name: "Bizeljsko-Sremič", country: SI, parent: "Posavje", synonyms: ["Sremič-Bizeljsko", "Bizeljsko-Brežice"], classification: PDO, source: "https://www.ttb.gov/system/files/images/pdfs/slovenia.pdf"}
+- {name: "Dolenjska", country: SI, parent: "Posavje", synonyms: ["Lower Carniola"], classification: PDO, source: "https://www.ttb.gov/system/files/images/pdfs/slovenia.pdf"}
+- {name: "Bela krajina", country: SI, parent: "Posavje", synonyms: ["White Carniola"], classification: PDO, source: "https://www.ttb.gov/system/files/images/pdfs/slovenia.pdf"}
+
+# --- Bosnia and Herzegovina (BA): no EU/national wine-law register; label areas from trade sources ---
+- {name: "Herzegovina", country: BA, source: "https://www.decanter.com/wine/herzegovina-a-wine-lovers-guide-527465/"}
+- {name: "Mostar", country: BA, parent: "Herzegovina", source: "https://wine.ba/wine-routes"}
+- {name: "Čitluk", country: BA, parent: "Herzegovina", synonyms: ["Citluk"], source: "https://wine.ba/wine-routes"}
+- {name: "Trebinje", country: BA, parent: "Herzegovina", source: "https://wine.ba/wine-routes"}
+- {name: "Ljubuški", country: BA, parent: "Herzegovina", synonyms: ["Ljubuski"], source: "https://wine.ba/wine-routes"}
+- {name: "Međugorje", country: BA, parent: "Herzegovina", synonyms: ["Medjugorje"], source: "https://wine.ba/wine-routes"}
+
+# --- North Macedonia (MK): no EU register; three regions and their label districts ---
+- {name: "Vardar River Valley", country: MK, synonyms: ["Povardarie", "Povardarje"], source: "https://www.jancisrobinson.com/articles/north-macedonia-new-wine-story"}
+- {name: "Pčinja-Osogovo", country: MK, synonyms: ["Pchinja-Osogovo"], source: "https://wineguide.wein.plus/wine-regions/north-macedonia"}
+- {name: "Pelagonia-Polog", country: MK, synonyms: ["Pelagonija-Polog"], source: "https://wineguide.wein.plus/wine-regions/north-macedonia"}
+- {name: "Tikveš", country: MK, parent: "Vardar River Valley", synonyms: ["Tikves"], source: "https://wineguide.wein.plus/wine-regions/north-macedonia"}
+- {name: "Skopje", country: MK, parent: "Vardar River Valley", source: "https://wineguide.wein.plus/wine-regions/north-macedonia"}
+- {name: "Veles", country: MK, parent: "Vardar River Valley", source: "https://www.vinorandum.com/district/veles"}
+- {name: "Gevgelija-Valandovo", country: MK, parent: "Vardar River Valley", source: "https://macedonia-timeless.com/eng/things_to_do/senses/taste/wine_andhistoryofwine/macedonian_winegrowingregions"}
+- {name: "Ovče Pole", country: MK, parent: "Vardar River Valley", synonyms: ["Ovce Pole"], source: "https://macedonia-timeless.com/eng/things_to_do/senses/taste/wine_andhistoryofwine/macedonian_winegrowingregions"}
+- {name: "Ohrid", country: MK, parent: "Pelagonia-Polog", source: "https://macedonia-timeless.com/eng/things_to_do/senses/taste/wine_andhistoryofwine/macedonian_winegrowingregions"}
+- {name: "Prilep", country: MK, parent: "Pelagonia-Polog", source: "https://macedonia-timeless.com/eng/things_to_do/senses/taste/wine_andhistoryofwine/macedonian_winegrowingregions"}
+- {name: "Bitola", country: MK, parent: "Pelagonia-Polog", source: "https://macedonia-timeless.com/eng/things_to_do/senses/taste/wine_andhistoryofwine/macedonian_winegrowingregions"}
