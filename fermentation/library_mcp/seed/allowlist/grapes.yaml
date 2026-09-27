@@ -75,7 +75,7 @@
 - {name: "Muscat Ottonel", color: white}
 - {name: "Aligoté", color: white, synonyms: ["Aligote"]}
 - {name: "Savagnin", color: white, synonyms: ["Savagnin Blanc", "Naturé", "Heida", "Païen", "Paien"]}
-- {name: "Chasselas", color: white, synonyms: ["Fendant", "Gutedel"]}
+- {name: "Chasselas", color: white, synonyms: ["Fendant", "Gutedel", "Perlan"]}
 - {name: "Jacquère", color: white, synonyms: ["Jacquere"]}
 - {name: "Altesse", color: white, synonyms: ["Roussette"]}
 - {name: "Folle Blanche", color: white, synonyms: ["Gros Plant"]}
@@ -142,7 +142,7 @@
 - {name: "Pallagrello Nero", color: red}
 - {name: "Aleatico", color: red}
 - {name: "Sciacarello", color: red, synonyms: ["Sciaccarellu"]}
-- {name: "Cornalin", color: red}
+- {name: "Cornalin", color: red, synonyms: ["Rouge du Pays"]}
 - {name: "Petit Rouge", color: red}
 - {name: "Fumin", color: red}
 - {name: "Rossese", color: red}
@@ -270,7 +270,7 @@
 - {name: "Roter Veltliner", color: white}
 - {name: "Gamaret", color: red}
 - {name: "Garanoir", color: red}
-- {name: "Humagne Rouge", color: red}
+- {name: "Humagne Rouge", color: red, synonyms: ["Cornalin d'Aoste"]}
 - {name: "Petite Arvine", color: white, synonyms: ["Arvine"]}
 - {name: "Räuschling", color: white}
 
@@ -571,3 +571,12 @@
 - {name: "Budai Zöld", color: white, synonyms: ["Budai Zold"]}
 - {name: "Bíborkadarka", color: red, synonyms: ["Biborkadarka"]}
 - {name: "Turán", color: red, synonyms: ["Turan"]}
+
+# ---------------- research: ch ----------------
+- {name: "Amigne", color: white}
+- {name: "Rèze", color: white, synonyms: ["Reze"]}
+- {name: "Lafnetscha", color: white}
+- {name: "Himbertscha", color: white}
+- {name: "Completer", color: white}
+- {name: "Diolinoir", color: red}
+- {name: "Divico", color: red}

@@ -1,0 +1,14 @@
+# New Swiss grapes not in grapes.yaml under any name
+- {name: "Amigne", color: white, synonyms: [], source: "https://en.wikipedia.org/wiki/Amigne"}
+- {name: "Rèze", color: white, synonyms: ["Reze"], source: "https://www.museeduvin-valais.ch/en/blog/grape-varieties/reze/"}
+- {name: "Lafnetscha", color: white, synonyms: [], source: "https://www.museeduvin-valais.ch/en/history-of-wine/history-of-grape-varieties/155-lafnetscha-himbertscha"}
+- {name: "Himbertscha", color: white, synonyms: [], source: "https://www.museeduvin-valais.ch/en/history-of-wine/history-of-grape-varieties/155-lafnetscha-himbertscha"}
+- {name: "Completer", color: white, synonyms: [], source: "https://en.wikipedia.org/wiki/Completer"}
+- {name: "Diolinoir", color: red, synonyms: [], source: "https://en.wikipedia.org/wiki/Diolinoir"}
+- {name: "Mara", color: red, synonyms: [], source: "https://www.wine-searcher.com/grape-2284-mara"}
+- {name: "Divico", color: red, synonyms: [], source: "https://www.wine-searcher.com/grape-2232-divico"}
+
+# Existing grapes: new local synonyms only
+- {name: "Chasselas", existing: true, synonyms: ["Perlan"], source: "https://www.swisswine.com/en/swiss-wine-regions/geneva-wine-region"}
+- {name: "Cornalin", existing: true, synonyms: ["Rouge du Pays"], source: "https://en.wikipedia.org/wiki/Rouge_du_Pays"}
+- {name: "Humagne Rouge", existing: true, synonyms: ["Cornalin d'Aoste"], source: "https://en.wikipedia.org/wiki/Cornalin_d%27Aoste"}

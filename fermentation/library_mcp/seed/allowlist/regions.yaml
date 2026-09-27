@@ -1640,11 +1640,67 @@
 - {name: "Ligist", country: AT, parent: "Weststeiermark", classification: Gemeinde}
 
 # ======================= SWITZERLAND / LUXEMBOURG / UK =======================
-- {name: "Valais", country: CH, synonyms: ["Wallis"]}
-- {name: "Vaud", country: CH, synonyms: ["Lavaux", "La Côte"]}
-- {name: "Geneva", country: CH, synonyms: ["Genève", "Geneve"]}
-- {name: "Ticino", country: CH, synonyms: ["Tessin"]}
-- {name: "Neuchâtel", country: CH, synonyms: ["Neuchatel"]}
+- {name: "Valais", country: CH, classification: AOC, synonyms: ["Wallis"]}
+- {name: "Vaud", country: CH, classification: AOC, synonyms: ["Waadt"]}
+- {name: "Geneva", country: CH, classification: AOC, synonyms: ["Genève", "Geneve"]}
+- {name: "Ticino", country: CH, classification: DOC, synonyms: ["Tessin"]}
+- {name: "Neuchâtel", country: CH, parent: "Three Lakes", classification: AOC, synonyms: ["Neuchatel"]}
+- {name: "Three Lakes", country: CH, synonyms: ["Drei-Seen-Land", "Trois Lacs", "Pays des Trois-Lacs"]}
+- {name: "German-speaking Switzerland", country: CH, synonyms: ["Deutschschweiz", "Suisse alémanique"]}
+- {name: "Bielersee", country: CH, parent: "Three Lakes", classification: AOC, synonyms: ["Lac de Bienne", "Lake Biel"]}
+- {name: "Vully", country: CH, parent: "Three Lakes", classification: AOC}
+- {name: "Zürich", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: ["Zurich"]}
+- {name: "Schaffhausen", country: CH, parent: "German-speaking Switzerland", classification: AOC}
+- {name: "Graubünden", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: ["Grisons", "Graubunden"]}
+- {name: "Aargau", country: CH, parent: "German-speaking Switzerland", classification: AOC}
+- {name: "Thurgau", country: CH, parent: "German-speaking Switzerland", classification: AOC}
+- {name: "St. Gallen", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: ["St Gallen", "Sankt Gallen"]}
+- {name: "Basel-Landschaft", country: CH, parent: "German-speaking Switzerland", classification: AOC}
+- {name: "Basel-Stadt", country: CH, parent: "German-speaking Switzerland", classification: AOC}
+- {name: "Bern", country: CH, parent: "German-speaking Switzerland", classification: AOC}
+- {name: "Thunersee", country: CH, parent: "Bern", classification: AOC, synonyms: ["Lac de Thoune", "Lake Thun"]}
+- {name: "Luzern", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: ["Lucerne"]}
+- {name: "Solothurn", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: ["Soleure"]}
+- {name: "Schwyz", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: ["Schwytz"]}
+- {name: "Glarus", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: ["Glaris"]}
+- {name: "Zug", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: ["Zoug"]}
+- {name: "Nidwalden", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: ["Nidwald"]}
+- {name: "Obwalden", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: ["Obwald"]}
+- {name: "Uri", country: CH, parent: "German-speaking Switzerland", classification: AOC}
+- {name: "Chablais", country: CH, parent: "Vaud", classification: AOC}
+- {name: "Lavaux", country: CH, parent: "Vaud", classification: AOC}
+- {name: "La Côte", country: CH, parent: "Vaud", classification: AOC}
+- {name: "Côtes de l'Orbe", country: CH, parent: "Vaud", classification: AOC, synonyms: ["Cotes de l'Orbe"]}
+- {name: "Bonvillars", country: CH, parent: "Vaud", classification: AOC}
+- {name: "Dézaley", country: CH, parent: "Lavaux", classification: Grand Cru, synonyms: ["Dezaley"], grapes: ["Chasselas"]}
+- {name: "Calamin", country: CH, parent: "Lavaux", classification: Grand Cru, grapes: ["Chasselas"]}
+- {name: "Épesses", country: CH, parent: "Lavaux", synonyms: ["Epesses"]}
+- {name: "Villette", country: CH, parent: "Lavaux"}
+- {name: "Saint-Saphorin", country: CH, parent: "Lavaux", synonyms: ["St-Saphorin"]}
+- {name: "Chardonne", country: CH, parent: "Lavaux"}
+- {name: "Lutry", country: CH, parent: "Lavaux"}
+- {name: "Yvorne", country: CH, parent: "Chablais"}
+- {name: "Aigle", country: CH, parent: "Chablais"}
+- {name: "Ollon", country: CH, parent: "Chablais"}
+- {name: "Bex", country: CH, parent: "Chablais"}
+- {name: "Villeneuve", country: CH, parent: "Chablais"}
+- {name: "Fully", country: CH, parent: "Valais", classification: Gemeinde}
+- {name: "Chamoson", country: CH, parent: "Valais", classification: Gemeinde}
+- {name: "Vétroz", country: CH, parent: "Valais", classification: Gemeinde, synonyms: ["Vetroz"]}
+- {name: "Salgesch", country: CH, parent: "Valais", classification: Gemeinde, synonyms: ["Salquenen"]}
+- {name: "Sion", country: CH, parent: "Valais", classification: Gemeinde}
+- {name: "Leytron", country: CH, parent: "Valais", classification: Gemeinde}
+- {name: "Conthey", country: CH, parent: "Valais", classification: Gemeinde}
+- {name: "Visperterminen", country: CH, parent: "Valais", classification: Gemeinde}
+- {name: "Saillon", country: CH, parent: "Valais", classification: Gemeinde}
+- {name: "Saint-Léonard", country: CH, parent: "Valais", classification: Gemeinde, synonyms: ["St-Léonard"]}
+- {name: "Savièse", country: CH, parent: "Valais", classification: Gemeinde, synonyms: ["Saviese"]}
+- {name: "Sierre", country: CH, parent: "Valais", classification: Gemeinde, synonyms: ["Siders"]}
+- {name: "Mandement", country: CH, parent: "Geneva"}
+- {name: "Entre Arve et Rhône", country: CH, parent: "Geneva"}
+- {name: "Entre Arve et Lac", country: CH, parent: "Geneva"}
+- {name: "Sopraceneri", country: CH, parent: "Ticino"}
+- {name: "Sottoceneri", country: CH, parent: "Ticino"}
 - {name: "Moselle Luxembourgeoise", country: LU, synonyms: ["Luxembourg Moselle"]}
 - {name: "England", country: GB, synonyms: ["English wine"]}
 - {name: "Sussex", country: GB, parent: "England"}

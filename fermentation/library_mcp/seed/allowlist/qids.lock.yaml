@@ -97,6 +97,11 @@ grapes:
     label: Altesse
     note: ok
     qid: Q439808
+  Amigne:
+    description: varietal
+    label: Amigne
+    note: ok
+    qid: Q454908
   Ansonica:
     description: Italian grape variety
     label: Ansonica
@@ -522,6 +527,11 @@ grapes:
     label: Colorino
     note: ok
     qid: Q1111611
+  Completer:
+    description: Italian grape variety
+    label: Completer
+    note: ok
+    qid: Q1121569
   Concord:
     description: grape variety
     label: Concord
@@ -612,6 +622,16 @@ grapes:
     label: Smederevka
     note: ok
     qid: Q12759005
+  Diolinoir:
+    description: Italian grape variety
+    label: Diolinoir
+    note: ok
+    qid: Q684103
+  Divico:
+    description: grape variety
+    label: Divico
+    note: ok
+    qid: Q16629395
   Dolcetto:
     description: Italian grape variety
     label: Dolcetto
@@ -907,6 +927,11 @@ grapes:
     label: Grüner Veltliner
     note: ok
     qid: Q180175
+  Himbertscha:
+    description: grape variety
+    label: Himbertscha
+    note: ok
+    qid: Q1619039
   Hondarrabi Beltza:
     description: variety of grape
     label: Hondarribi Beltza
@@ -920,7 +945,7 @@ grapes:
   Humagne Rouge:
     description: varietal
     label: Cornalin d'Aoste
-    note: inexact label match -- review
+    note: ok
     qid: Q1584243
   Huxelrebe:
     description: variety of grape
@@ -1042,6 +1067,11 @@ grapes:
     label: Lacrima
     note: ok
     qid: Q3825265
+  Lafnetscha:
+    description: grape variety
+    label: Lafnetscha
+    note: ok
+    qid: Q1620667
   Lagrein:
     description: Italian grape variety
     label: Lagrein
@@ -1892,6 +1922,11 @@ grapes:
     label: Räuschling
     note: ok
     qid: Q2178637
+  Rèze:
+    description: variety of grape
+    label: Rèze
+    note: ok
+    qid: Q1528878
   Sacy:
     description: variety of grape
     label: Sacy
@@ -2414,6 +2449,7 @@ grapes:
     qid: Q394231
 regions:
   3 Riberas (ES): null
+  Aargau (CH): null
   Abadía Retuerta (ES):
     description: Spanish wine
     label: Abadia Retuerta
@@ -2482,6 +2518,11 @@ regions:
   Agterkliphoogte (ZA): null
   Ahr (DE): null
   Ahrtaler Landwein (DE): null
+  Aigle (CH):
+    description: town and municipality in the canton of Vaud in Switzerland
+    label: Aigle
+    note: non-wine class -- review
+    qid: Q43195
   Ajaccio (FR):
     description: French wine
     label: Ajaccio AOC
@@ -3033,6 +3074,8 @@ regions:
     label: Barsac
     note: ok
     qid: Q465286
+  Basel-Landschaft (CH): null
+  Basel-Stadt (CH): null
   Basilicata (IT):
     description: region of Italy
     label: Basilicata
@@ -3114,6 +3157,7 @@ regions:
     note: ok
     qid: Q595034
   Bergland Österreich (AT): null
+  Bern (CH): null
   Bernkastel (DE): null
   Bernkastel-Kues (DE): null
   Besigheim (DE): null
@@ -3133,6 +3177,11 @@ regions:
     label: Beverly, Washington AVA
     note: ok
     qid: Q134563553
+  Bex (CH):
+    description: municipality in the canton of Vaud in Switzerland
+    label: Bex
+    note: non-wine class -- review
+    qid: Q52261
   Bianchello del Metauro (IT):
     description: Italian controlled designation of origin wine from Marche
     label: Bianchello del Metauro DOC
@@ -3158,6 +3207,7 @@ regions:
     label: Bianco di Pitigliano DOC
     note: ok
     qid: Q3639454
+  Bielersee (CH): null
   Bienvenues-Bâtard-Montrachet (FR):
     description: French wine
     label: Bienvenues-Bâtard-Montrachet
@@ -3254,6 +3304,7 @@ regions:
     note: ok
     qid: Q892806
   Bonnievale (ZA): null
+  Bonvillars (CH): null
   Boppard (DE): null
   Borba (PT): null
   Bordeaux (FR):
@@ -3492,6 +3543,7 @@ regions:
     label: Calabria
     note: non-wine class -- review
     qid: Q1458
+  Calamin (CH): null
   Calatayud (ES): null
   Calchaquí Valley (AR): null
   California (US):
@@ -3880,6 +3932,7 @@ regions:
     label: Cesanese di Olevano Romano DOC
     note: ok
     qid: Q1056600
+  Chablais (CH): null
   Chablis (FR):
     description: French white wine
     label: Chablis wine
@@ -3916,6 +3969,7 @@ regions:
     label: Chambolle-Musigny wine
     note: ok
     qid: Q2948108
+  Chamoson (CH): null
   Champagne (FR):
     description: sparkling wine from Champagne, France
     label: champagne
@@ -3937,6 +3991,11 @@ regions:
     label: Chapelle-Chambertin
     note: ok
     qid: Q2956528
+  Chardonne (CH):
+    description: municipality in the canton of Vaud in Switzerland
+    label: Chardonne
+    note: non-wine class -- review
+    qid: Q52698
   Charlemagne (FR): null
   Charmes-Chambertin (FR): null
   Chassagne-Montrachet (FR):
@@ -4517,6 +4576,7 @@ regions:
     label: Contessa Entellina DOC
     note: ok
     qid: Q2995602
+  Conthey (CH): null
   Contra Costa (US):
     description: ''
     label: Contra Costa AVA
@@ -4889,6 +4949,7 @@ regions:
     label: Côtes de Toul
     note: ok
     qid: Q3010732
+  Côtes de l'Orbe (CH): null
   Côtes du Forez (FR):
     description: wine-producing region
     label: Côtes du Forez
@@ -5101,6 +5162,11 @@ regions:
   Durbanville (ZA): null
   Duriense (PT): null
   Dão (PT): null
+  Dézaley (CH):
+    description: geographic region
+    label: Dézaley
+    note: ok
+    qid: Q1270756
   Dürnstein (AT): null
   Eagle Foothills (US):
     description: appelation that designates wine in Gem and Ada Counties, Idaho
@@ -5229,6 +5295,8 @@ regions:
     note: non-wine class -- review
     qid: Q79282
   Entraygues-Le Fel (FR): null
+  Entre Arve et Lac (CH): null
+  Entre Arve et Rhône (CH): null
   Entre Ríos (AR): null
   Entre-Deux-Mers (FR):
     description: French wine growing region
@@ -5507,6 +5575,7 @@ regions:
     qid: Q139899824
   Fruška Gora (RS): null
   Fthiotida (GR): null
+  Fully (CH): null
   Furstentum (FR): null
   Gabiano (IT):
     description: Italian controlled designation of origin wine from Piedmont
@@ -5614,6 +5683,11 @@ regions:
     note: non-wine class -- review
     qid: Q1428
   Gerania (GR): null
+  German-speaking Switzerland (CH):
+    description: area of Switzerland with a predominantly German or Swiss German speaking population
+    label: German-speaking Switzerland
+    note: non-wine class -- review
+    qid: Q689055
   Gers (FR): null
   Getariako Txakolina (ES): null
   Gevgelija-Valandovo (MK): null
@@ -5644,6 +5718,7 @@ regions:
   Gisborne (NZ): null
   Givry (FR): null
   Gladstone (NZ): null
+  Glarus (CH): null
   Glenrowan (AU): null
   Gloeckelberg (FR): null
   Gobelsburg (AT): null
@@ -5703,6 +5778,7 @@ regions:
     qid: Q1542916
   Granite Belt (AU): null
   Granja-Amareleja (PT): null
+  Graubünden (CH): null
   Graves (FR):
     description: French wine
     label: Graves
@@ -6162,6 +6238,11 @@ regions:
   L'Étoile (FR): null
   La Clape (FR): null
   La Consulta (AR): null
+  La Côte (CH):
+    description: vineyard of Switzerland
+    label: La Côte
+    note: ok
+    qid: Q666244
   La Gomera (ES):
     description: La Gomera is a Spanish Denominación de Origen Protegida (DOP) for wines that covers the
       entire island of La Gomera (Canary Islands, Spain)
@@ -6352,6 +6433,7 @@ regions:
     label: Laurelwood District AVA
     note: ok
     qid: Q107071961
+  Lavaux (CH): null
   Lazio (IT):
     description: region of Italy
     label: Lazio
@@ -6411,6 +6493,7 @@ regions:
     note: ok
     qid: Q106946507
   Leyda Valley (CL): null
+  Leytron (CH): null
   León (ES): null
   Lieser (DE): null
   Ligist (AT): null
@@ -6599,7 +6682,13 @@ regions:
     label: Lussac-Saint-Émilion
     note: ok
     qid: Q1383154
+  Lutry (CH):
+    description: municipality in the canton of Vaud, Switzerland
+    label: Lutry
+    note: non-wine class -- review
+    qid: Q69697
   Lutzville Valley (ZA): null
+  Luzern (CH): null
   Lyndoch (AU): null
   Macedon Ranges (AU):
     description: wine region in Victoria, Australia
@@ -6688,6 +6777,11 @@ regions:
     note: ok
     qid: Q6747630
   Mandelberg (FR): null
+  Mandement (CH):
+    description: region of canton of Geneva, Switzerland
+    label: Mandement
+    note: non-wine class -- review
+    qid: Q3285486
   Mandrolisai (IT):
     description: Italian controlled designation of origin wine from Sardinia
     label: Mandrolisai DOC
@@ -7501,6 +7595,7 @@ regions:
     note: ok
     qid: Q1984507
   Niagara Peninsula (CA): null
+  Nidwalden (CH): null
   Niederhausen (DE): null
   Niederösterreich (AT): null
   Nierstein (DE): null
@@ -7628,6 +7723,7 @@ regions:
   Oberer Neckar (DE): null
   Obermosel (DE): null
   Oberrotweil (DE): null
+  Obwalden (CH): null
   Ockfen (DE): null
   Oestrich-Winkel (DE): null
   Offida (IT):
@@ -7678,6 +7774,11 @@ regions:
     qid: Q7084546
   Oliena (IT): null
   Olifants River (ZA): null
+  Ollon (CH):
+    description: municipality in the canton of Vaud in Switzerland
+    label: Ollon
+    note: non-wine class -- review
+    qid: Q70115
   Ollwiller (FR): null
   Oltrepò Pavese (IT):
     description: Italian controlled designation of origin wine from Lombardy
@@ -8723,6 +8824,7 @@ regions:
     label: Sagrada Familia
     note: non-wine class -- review
     qid: Q56133
+  Saillon (CH): null
   Saint-Amour (FR): null
   Saint-Aubin (FR): null
   Saint-Bris (FR):
@@ -8757,6 +8859,7 @@ regions:
     label: Saint-Julien AOC
     note: ok
     qid: Q382471
+  Saint-Léonard (CH): null
   Saint-Mont (FR): null
   Saint-Nicolas-de-Bourgueil (FR):
     description: French wine
@@ -8774,6 +8877,11 @@ regions:
     note: ok
     qid: Q3463557
   Saint-Romain (FR): null
+  Saint-Saphorin (CH):
+    description: municipality in the canton of Vaud in Switzerland
+    label: Saint-Saphorin
+    note: non-wine class -- review
+    qid: Q70535
   Saint-Sardos (FR): null
   Saint-Véran (FR):
     description: human settlement in France
@@ -8809,6 +8917,7 @@ regions:
     label: Salento IGT
     note: ok
     qid: Q139899833
+  Salgesch (CH): null
   Salice Salentino (IT):
     description: Italian controlled designation of origin wine from Apulia
     label: Salice Salentino DOC
@@ -9077,6 +9186,7 @@ regions:
     label: Savigny-lès-Beaune wine
     note: ok
     qid: Q3474550
+  Savièse (CH): null
   Savoie (FR):
     description: French department in the Auvergne-Rhône-Alpes region of the French Alps
     label: Savoie
@@ -9093,6 +9203,7 @@ regions:
     label: Scavigna DOC
     note: ok
     qid: Q139916966
+  Schaffhausen (CH): null
   Scherpenheuvel (ZA): null
   Schioppettino di Prepotto (IT): null
   Schloss Neuenburg (DE): null
@@ -9100,6 +9211,7 @@ regions:
   Schlossböckelheim (DE): null
   Schoenenbourg (FR): null
   Schweigen (DE): null
+  Schwyz (CH): null
   Schwäbischer Landwein (DE): null
   Schönberg (AT): null
   Sciacca (IT):
@@ -9222,6 +9334,7 @@ regions:
     label: Sierras de Málaga
     note: ok
     qid: Q4353834
+  Sierre (CH): null
   Silgueiros (PT): null
   Sillaro (IT):
     description: Italian typical geographical indication wine from Emilia-Romagna
@@ -9236,6 +9349,7 @@ regions:
   Similkameen Valley (CA): null
   Simonsberg-Paarl (ZA): null
   Simonsberg-Stellenbosch (ZA): null
+  Sion (CH): null
   Siracusa (IT):
     description: Italian controlled designation of origin wine from Sicily
     label: Siracusa DOC
@@ -9306,6 +9420,7 @@ regions:
     label: Solano County Green Valley AVA
     note: ok
     qid: Q2298239
+  Solothurn (CH): null
   Somló (HU):
     description: wine region
     label: Somló
@@ -9344,11 +9459,21 @@ regions:
     label: Sonoma Valley AVA
     note: ok
     qid: Q826340
+  Sopraceneri (CH):
+    description: geographic region
+    label: Sopraceneri
+    note: non-wine class -- review
+    qid: Q75651
   Sopron (HU):
     description: one of the seven larger wine regions of Hungary
     label: Sopron wine region
     note: ok
     qid: Q1290341
+  Sottoceneri (CH):
+    description: geographic region
+    label: Sottoceneri
+    note: non-wine class -- review
+    qid: Q75653
   Sousa (PT): null
   South Australia (AU): null
   South Burnett (AU): null
@@ -9439,6 +9564,7 @@ regions:
   St Francis Bay (ZA): null
   St Helena Bay (ZA): null
   St. Anna (AT): null
+  St. Gallen (CH): null
   St. Helena (US):
     description: California wine region in Napa Valley
     label: St. Helena AVA
@@ -9773,6 +9899,9 @@ regions:
     note: non-wine class -- review
     qid: Q41741
   Thracian Valley (BG): null
+  Three Lakes (CH): null
+  Thunersee (CH): null
+  Thurgau (CH): null
   Thüringen (DE): null
   Ticino (CH):
     description: wine region of Switzerland
@@ -10007,6 +10136,7 @@ regions:
     qid: Q7898802
   Urbezo (ES): null
   Urgell (ES): null
+  Uri (CH): null
   Urueña (ES): null
   Utiel-Requena (ES):
     description: Spanish Denominación de Origen Protegida (DOP) for wines located in the province of Valencia
@@ -10377,6 +10507,8 @@ regions:
     label: Villaviciosa de Córdoba
     note: ok
     qid: Q7930976
+  Villeneuve (CH): null
+  Villette (CH): null
   Villány (HU): null
   Vin Santo del Chianti (IT):
     description: Italian controlled designation of origin wine from Tuscany
@@ -10462,6 +10594,7 @@ regions:
     label: Viré-Clessé
     note: ok
     qid: Q3560958
+  Visperterminen (CH): null
   Vista Flores (AR): null
   Vistalba (AR): null
   Vittoria (IT):
@@ -10496,6 +10629,8 @@ regions:
     qid: Q13420363
   Vredendal (ZA): null
   Vulkanland Steiermark (AT): null
+  Vully (CH): null
+  Vétroz (CH): null
   Vézelay (FR): null
   Wachau (AT): null
   Wachenheim (DE): null
@@ -10703,6 +10838,11 @@ regions:
     label: Yunnan
     note: non-wine class -- review
     qid: Q43194
+  Yvorne (CH):
+    description: municipality in Switzerland
+    label: Yvorne
+    note: non-wine class -- review
+    qid: Q70240
   Zagarolo (IT):
     description: Italian controlled designation of origin wine from Lazio
     label: Zagarolo DOC
@@ -10723,7 +10863,9 @@ regions:
   Zitsa (GR): null
   Zonda (AR): null
   Zotzenberg (FR): null
+  Zug (CH): null
   Zöbing (AT): null
+  Zürich (CH): null
   delle Venezie (IT):
     description: Italian interregional controlled designation of origin wine
     label: Delle Venezie DOC
@@ -10734,6 +10876,11 @@ regions:
     label: Échezeaux
     note: ok
     qid: Q273390
+  Épesses (CH):
+    description: village and former municipality in Bourg-en-Lavaux in the canton of Vaud, Switzerland
+    label: Epesses
+    note: non-wine class -- review
+    qid: Q668869
   Évora (PT): null
   Île de Beauté (FR): null
   Óbidos (PT): null

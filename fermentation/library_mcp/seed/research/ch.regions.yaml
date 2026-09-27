@@ -1,0 +1,75 @@
+# Six wine regions (parents), existing entries kept, classification AOC added
+# where the region is itself the cantonal AOC.
+- {name: "Valais", country: CH, classification: AOC, synonyms: ["Wallis"], source: "https://fr.wikipedia.org/wiki/Liste_des_vins_AOC_en_Suisse"}
+- {name: "Vaud", country: CH, classification: AOC, synonyms: ["Waadt"], source: "https://www.swisswinevaud.ch/terroirs-aoc-vaudois"}
+- {name: "Geneva", country: CH, classification: AOC, synonyms: ["Genève", "Geneve"], source: "https://www.swisswine.com/en/swiss-wine-regions/geneva-wine-region"}
+- {name: "Ticino", country: CH, classification: DOC, synonyms: ["Tessin"], source: "https://www.swisswine.com/en/swiss-wine-regions/ticino-wine-region"}
+- {name: "Neuchâtel", country: CH, parent: "Three Lakes", classification: AOC, synonyms: ["Neuchatel"], source: "https://fr.wikipedia.org/wiki/Liste_des_vins_AOC_en_Suisse"}
+- {name: "Three Lakes", country: CH, synonyms: ["Drei-Seen-Land", "Trois Lacs", "Pays des Trois-Lacs"], source: "https://fr.wikipedia.org/wiki/Liste_des_vins_AOC_en_Suisse"}
+- {name: "German-speaking Switzerland", country: CH, synonyms: ["Deutschschweiz", "Suisse alémanique"], source: "https://www.swisswine.com/en/swiss-wine-regions/german-speaking-switzerland-wine-region"}
+
+# Three Lakes cantonal AOCs
+- {name: "Bielersee", country: CH, parent: "Three Lakes", classification: AOC, synonyms: ["Lac de Bienne", "Lake Biel"], source: "https://fr.wikipedia.org/wiki/Liste_des_vins_AOC_en_Suisse"}
+- {name: "Vully", country: CH, parent: "Three Lakes", classification: AOC, synonyms: [], source: "https://fr.wikipedia.org/wiki/Liste_des_vins_AOC_en_Suisse"}
+
+# German-speaking Switzerland cantonal AOCs (each canton has one)
+- {name: "Zürich", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: ["Zurich"], source: "https://fr.wikipedia.org/wiki/Liste_des_vins_AOC_en_Suisse"}
+- {name: "Schaffhausen", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: [], source: "https://fr.wikipedia.org/wiki/Liste_des_vins_AOC_en_Suisse"}
+- {name: "Graubünden", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: ["Grisons", "Graubunden"], source: "https://fr.wikipedia.org/wiki/Liste_des_vins_AOC_en_Suisse"}
+- {name: "Aargau", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: [], source: "https://fr.wikipedia.org/wiki/Liste_des_vins_AOC_en_Suisse"}
+- {name: "Thurgau", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: [], source: "https://fr.wikipedia.org/wiki/Liste_des_vins_AOC_en_Suisse"}
+- {name: "St. Gallen", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: ["St Gallen", "Sankt Gallen"], source: "https://fr.wikipedia.org/wiki/Liste_des_vins_AOC_en_Suisse"}
+- {name: "Basel-Landschaft", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: [], source: "https://fr.wikipedia.org/wiki/Liste_des_vins_AOC_en_Suisse"}
+- {name: "Basel-Stadt", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: [], source: "https://fr.wikipedia.org/wiki/Liste_des_vins_AOC_en_Suisse"}
+- {name: "Bern", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: [], source: "https://fr.wikipedia.org/wiki/Liste_des_vins_AOC_en_Suisse"}
+- {name: "Thunersee", country: CH, parent: "Bern", classification: AOC, synonyms: ["Lac de Thoune", "Lake Thun"], source: "https://fr.wikipedia.org/wiki/Liste_des_vins_AOC_en_Suisse"}
+- {name: "Luzern", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: ["Lucerne"], source: "https://fr.wikipedia.org/wiki/Liste_des_vins_AOC_en_Suisse"}
+- {name: "Solothurn", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: ["Soleure"], source: "https://fr.wikipedia.org/wiki/Liste_des_vins_AOC_en_Suisse"}
+- {name: "Schwyz", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: ["Schwytz"], source: "https://fr.wikipedia.org/wiki/Liste_des_vins_AOC_en_Suisse"}
+- {name: "Glarus", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: ["Glaris"], source: "https://fr.wikipedia.org/wiki/Liste_des_vins_AOC_en_Suisse"}
+- {name: "Zug", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: ["Zoug"], source: "https://fr.wikipedia.org/wiki/Liste_des_vins_AOC_en_Suisse"}
+- {name: "Nidwalden", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: ["Nidwald"], source: "https://fr.wikipedia.org/wiki/Liste_des_vins_AOC_en_Suisse"}
+- {name: "Obwalden", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: ["Obwald"], source: "https://fr.wikipedia.org/wiki/Liste_des_vins_AOC_en_Suisse"}
+- {name: "Uri", country: CH, parent: "German-speaking Switzerland", classification: AOC, synonyms: [], source: "https://fr.wikipedia.org/wiki/Liste_des_vins_AOC_en_Suisse"}
+
+# Vaud appellations
+- {name: "Chablais", country: CH, parent: "Vaud", classification: AOC, synonyms: [], source: "https://www.swisswinevaud.ch/terroirs-aoc-vaudois"}
+- {name: "Lavaux", country: CH, parent: "Vaud", classification: AOC, synonyms: [], source: "https://www.swisswinevaud.ch/terroirs-aoc-vaudois"}
+- {name: "La Côte", country: CH, parent: "Vaud", classification: AOC, synonyms: [], source: "https://www.swisswinevaud.ch/terroirs-aoc-vaudois"}
+- {name: "Côtes de l'Orbe", country: CH, parent: "Vaud", classification: AOC, synonyms: ["Cotes de l'Orbe"], source: "https://www.swisswinevaud.ch/terroirs-aoc-vaudois"}
+- {name: "Bonvillars", country: CH, parent: "Vaud", classification: AOC, synonyms: [], source: "https://www.swisswinevaud.ch/terroirs-aoc-vaudois"}
+- {name: "Dézaley", country: CH, parent: "Lavaux", classification: "Grand Cru", synonyms: ["Dezaley"], grapes: ["Chasselas"], source: "https://www.swisswinevaud.ch/terroirs-aoc-vaudois"}
+- {name: "Calamin", country: CH, parent: "Lavaux", classification: "Grand Cru", synonyms: [], grapes: ["Chasselas"], source: "https://www.swisswinevaud.ch/terroirs-aoc-vaudois"}
+- {name: "Épesses", country: CH, parent: "Lavaux", synonyms: ["Epesses"], source: "https://www.swisswinevaud.ch/terroirs-aoc-vaudois"}
+- {name: "Villette", country: CH, parent: "Lavaux", synonyms: [], source: "https://www.ovv.ch/en/wine-culture-and-terroir/eight-aoc-six-regions"}
+- {name: "Saint-Saphorin", country: CH, parent: "Lavaux", synonyms: ["St-Saphorin"], source: "https://www.swisswinevaud.ch/terroirs-aoc-vaudois"}
+- {name: "Chardonne", country: CH, parent: "Lavaux", synonyms: [], source: "https://www.swisswinevaud.ch/terroirs-aoc-vaudois"}
+- {name: "Lutry", country: CH, parent: "Lavaux", synonyms: [], source: "https://www.swisswinevaud.ch/terroirs-aoc-vaudois"}
+- {name: "Yvorne", country: CH, parent: "Chablais", synonyms: [], source: "https://www.swisswinevaud.ch/terroirs-aoc-vaudois"}
+- {name: "Aigle", country: CH, parent: "Chablais", synonyms: [], source: "https://www.swisswinevaud.ch/terroirs-aoc-vaudois"}
+- {name: "Ollon", country: CH, parent: "Chablais", synonyms: [], source: "https://www.swisswinevaud.ch/terroirs-aoc-vaudois"}
+- {name: "Bex", country: CH, parent: "Chablais", synonyms: [], source: "https://www.swisswinevaud.ch/terroirs-aoc-vaudois"}
+- {name: "Villeneuve", country: CH, parent: "Chablais", synonyms: [], source: "https://www.swisswinevaud.ch/terroirs-aoc-vaudois"}
+
+# Valais Grand Cru communes (classification Gemeinde per scope)
+- {name: "Fully", country: CH, parent: "Valais", classification: Gemeinde, synonyms: [], source: "https://www.wine-searcher.com/regions-valais"}
+- {name: "Chamoson", country: CH, parent: "Valais", classification: Gemeinde, synonyms: [], source: "https://www.wine-searcher.com/regions-chamoson"}
+- {name: "Vétroz", country: CH, parent: "Valais", classification: Gemeinde, synonyms: ["Vetroz"], source: "https://www.wine-searcher.com/regions-valais"}
+- {name: "Salgesch", country: CH, parent: "Valais", classification: Gemeinde, synonyms: ["Salquenen"], source: "https://www.wine-searcher.com/regions-valais"}
+- {name: "Sion", country: CH, parent: "Valais", classification: Gemeinde, synonyms: [], source: "https://www.wine-searcher.com/regions-valais"}
+- {name: "Leytron", country: CH, parent: "Valais", classification: Gemeinde, synonyms: [], source: "https://www.wine-searcher.com/regions-valais"}
+- {name: "Conthey", country: CH, parent: "Valais", classification: Gemeinde, synonyms: [], source: "https://www.wine-searcher.com/regions-valais"}
+- {name: "Visperterminen", country: CH, parent: "Valais", classification: Gemeinde, synonyms: [], source: "https://www.wine-searcher.com/regions-valais"}
+- {name: "Saillon", country: CH, parent: "Valais", classification: Gemeinde, synonyms: [], source: "https://www.wine-searcher.com/regions-valais"}
+- {name: "Saint-Léonard", country: CH, parent: "Valais", classification: Gemeinde, synonyms: ["St-Léonard"], source: "https://www.wine-searcher.com/regions-valais"}
+- {name: "Savièse", country: CH, parent: "Valais", classification: Gemeinde, synonyms: ["Saviese"], source: "https://www.wine-searcher.com/regions-valais"}
+- {name: "Sierre", country: CH, parent: "Valais", classification: Gemeinde, synonyms: ["Siders"], source: "https://www.wine-searcher.com/regions-valais"}
+
+# Geneva zones (recognised production areas within Genève AOC, informal)
+- {name: "Mandement", country: CH, parent: "Geneva", synonyms: [], source: "https://www.swisswine.com/en/swiss-wine-regions/geneva-wine-region"}
+- {name: "Entre Arve et Rhône", country: CH, parent: "Geneva", synonyms: [], source: "https://www.swisswine.com/en/swiss-wine-regions/geneva-wine-region"}
+- {name: "Entre Arve et Lac", country: CH, parent: "Geneva", synonyms: [], source: "https://www.swisswine.com/en/swiss-wine-regions/geneva-wine-region"}
+
+# Ticino informal sub-zones (no separate AOC/DOC, overlay descriptors -- no children)
+- {name: "Sopraceneri", country: CH, parent: "Ticino", synonyms: [], source: "https://www.swisswine.com/en/swiss-wine-regions/ticino-wine-region"}
+- {name: "Sottoceneri", country: CH, parent: "Ticino", synonyms: [], source: "https://www.swisswine.com/en/swiss-wine-regions/ticino-wine-region"}
