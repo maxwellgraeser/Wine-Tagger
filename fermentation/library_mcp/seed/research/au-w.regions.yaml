@@ -1,0 +1,71 @@
+# South Australia: state, zones, regions, subregions
+- {name: "South Australia", country: AU, classification: State, synonyms: ["SA"], source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications/south-australia"}
+- {name: "Adelaide", country: AU, parent: "South Australia", classification: Zone, synonyms: ["Adelaide Super Zone"], source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Barossa", country: AU, parent: "South Australia", classification: Zone, source: "https://en.wikipedia.org/wiki/Barossa_zone_(wine)"}
+- {name: "Fleurieu", country: AU, parent: "South Australia", classification: Zone, source: "https://en.wikipedia.org/wiki/Fleurieu_zone"}
+- {name: "Limestone Coast", country: AU, parent: "South Australia", classification: Zone, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Lower Murray", country: AU, parent: "South Australia", classification: Zone, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Mount Lofty Ranges", country: AU, parent: "South Australia", classification: Zone, source: "https://en.wikipedia.org/wiki/Mount_Lofty_Ranges_zone_(wine)"}
+- {name: "The Peninsulas", country: AU, parent: "South Australia", classification: Zone, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Far North", country: AU, parent: "South Australia", classification: Zone, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Barossa Valley", country: AU, parent: "Barossa", classification: GI, source: "https://en.wikipedia.org/wiki/Barossa_Valley"}
+- {name: "Ebenezer", country: AU, parent: "Barossa Valley", synonyms: [], source: "https://en.wikipedia.org/wiki/Barossa_Valley"}
+- {name: "Marananga", country: AU, parent: "Barossa Valley", synonyms: [], source: "https://en.wikipedia.org/wiki/Barossa_Valley"}
+- {name: "Lyndoch", country: AU, parent: "Barossa Valley", synonyms: [], source: "https://en.wikipedia.org/wiki/Barossa_Valley"}
+- {name: "Eden Valley", country: AU, parent: "Barossa", classification: GI, source: "https://en.wikipedia.org/wiki/Eden_Valley,_South_Australia"}
+- {name: "High Eden", country: AU, parent: "Eden Valley", classification: Subregion, source: "https://en.wikipedia.org/wiki/Eden_Valley,_South_Australia"}
+- {name: "Clare Valley", country: AU, parent: "Mount Lofty Ranges", classification: GI, source: "https://en.wikipedia.org/wiki/Clare_Valley"}
+- {name: "Polish Hill River", country: AU, parent: "Clare Valley", synonyms: [], source: "https://en.wikipedia.org/wiki/Clare_Valley"}
+- {name: "Watervale", country: AU, parent: "Clare Valley", synonyms: [], source: "https://en.wikipedia.org/wiki/Clare_Valley"}
+- {name: "McLaren Vale", country: AU, parent: "Fleurieu", classification: GI, source: "https://en.wikipedia.org/wiki/McLaren_Vale"}
+- {name: "Blewitt Springs", country: AU, parent: "McLaren Vale", synonyms: [], source: "https://en.wikipedia.org/wiki/McLaren_Vale"}
+- {name: "Adelaide Hills", country: AU, parent: "Mount Lofty Ranges", classification: GI, source: "https://en.wikipedia.org/wiki/Adelaide_Hills_wine_region"}
+- {name: "Lenswood", country: AU, parent: "Adelaide Hills", classification: Subregion, source: "https://en.wikipedia.org/wiki/Adelaide_Hills_wine_region"}
+- {name: "Piccadilly Valley", country: AU, parent: "Adelaide Hills", classification: Subregion, source: "https://en.wikipedia.org/wiki/Adelaide_Hills_wine_region"}
+- {name: "Langhorne Creek", country: AU, parent: "Fleurieu", classification: GI, source: "https://en.wikipedia.org/wiki/Langhorne_Creek_wine_region"}
+- {name: "Currency Creek", country: AU, parent: "Fleurieu", classification: GI, source: "https://en.wikipedia.org/wiki/Currency_Creek_wine_region"}
+- {name: "Kangaroo Island", country: AU, parent: "Fleurieu", classification: GI, source: "https://en.wikipedia.org/wiki/Kangaroo_Island_wine_region"}
+- {name: "Southern Fleurieu", country: AU, parent: "Fleurieu", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Coonawarra", country: AU, parent: "Limestone Coast", classification: GI, source: "https://en.wikipedia.org/wiki/Coonawarra_wine_region"}
+- {name: "Padthaway", country: AU, parent: "Limestone Coast", classification: GI, source: "https://en.wikipedia.org/wiki/Padthaway_wine_region"}
+- {name: "Wrattonbully", country: AU, parent: "Limestone Coast", classification: GI, source: "https://en.wikipedia.org/wiki/Wrattonbully_wine_region"}
+- {name: "Mount Benson", country: AU, parent: "Limestone Coast", classification: GI, source: "https://en.wikipedia.org/wiki/Mount_Benson_wine_region"}
+- {name: "Robe", country: AU, parent: "Limestone Coast", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Mount Gambier", country: AU, parent: "Limestone Coast", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Riverland", country: AU, parent: "Lower Murray", classification: GI, source: "https://en.wikipedia.org/wiki/Riverland_wine_region"}
+- {name: "Adelaide Plains", country: AU, parent: "Mount Lofty Ranges", classification: GI, source: "https://en.wikipedia.org/wiki/Adelaide_Plains_wine_region"}
+- {name: "Southern Flinders Ranges", country: AU, parent: "Far North", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Southern Eyre Peninsula", country: AU, parent: "The Peninsulas", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+
+# Western Australia: state, zones, regions, subregions
+- {name: "Western Australia", country: AU, classification: State, synonyms: ["WA"], source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications/western-australia"}
+- {name: "Greater Perth", country: AU, parent: "Western Australia", classification: Zone, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "South West Australia", country: AU, parent: "Western Australia", classification: Zone, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Central Western Australia", country: AU, parent: "Western Australia", classification: Zone, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Eastern Plains, Inland and North of Western Australia", country: AU, parent: "Western Australia", classification: Zone, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "West Australian South East Coastal", country: AU, parent: "Western Australia", classification: Zone, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Margaret River", country: AU, parent: "South West Australia", classification: GI, source: "https://en.wikipedia.org/wiki/Margaret_River_wine_region"}
+- {name: "Great Southern", country: AU, parent: "South West Australia", classification: GI, source: "https://en.wikipedia.org/wiki/Great_Southern_(wine_region)"}
+- {name: "Albany", country: AU, parent: "Great Southern", classification: Subregion, source: "https://en.wikipedia.org/wiki/Great_Southern_(wine_region)"}
+- {name: "Denmark", country: AU, parent: "Great Southern", classification: Subregion, source: "https://en.wikipedia.org/wiki/Great_Southern_(wine_region)"}
+- {name: "Frankland River", country: AU, parent: "Great Southern", classification: Subregion, source: "https://en.wikipedia.org/wiki/Great_Southern_(wine_region)"}
+- {name: "Mount Barker", country: AU, parent: "Great Southern", classification: Subregion, source: "https://en.wikipedia.org/wiki/Great_Southern_(wine_region)"}
+- {name: "Porongurup", country: AU, parent: "Great Southern", classification: Subregion, source: "https://en.wikipedia.org/wiki/Great_Southern_(wine_region)"}
+- {name: "Pemberton", country: AU, parent: "South West Australia", classification: GI, source: "https://en.wikipedia.org/wiki/Pemberton_wine_region"}
+- {name: "Manjimup", country: AU, parent: "South West Australia", classification: GI, source: "https://en.wikipedia.org/wiki/Manjimup_wine_region"}
+- {name: "Geographe", country: AU, parent: "South West Australia", classification: GI, source: "https://en.wikipedia.org/wiki/Geographe_wine_region"}
+- {name: "Blackwood Valley", country: AU, parent: "South West Australia", classification: GI, source: "https://en.wikipedia.org/wiki/Blackwood_Valley_wine_region"}
+- {name: "Peel", country: AU, parent: "Greater Perth", classification: GI, source: "https://en.wikipedia.org/wiki/Peel_wine_region"}
+- {name: "Perth Hills", country: AU, parent: "Greater Perth", classification: GI, source: "https://en.wikipedia.org/wiki/Perth_Hills_wine_region"}
+- {name: "Swan District", country: AU, parent: "Greater Perth", classification: GI, source: "https://en.wikipedia.org/wiki/Swan_District_wine_region"}
+- {name: "Swan Valley", country: AU, parent: "Swan District", classification: Subregion, source: "https://en.wikipedia.org/wiki/Swan_Valley_(wine_region)"}
+
+# Tasmania: single state-level GI, no official zones/regions/subregions.
+# Informal subregions used on labels are added without a classification.
+- {name: "Tasmania", country: AU, classification: State, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications/tasmania"}
+- {name: "Tamar Valley", country: AU, parent: "Tasmania", synonyms: [], source: "https://en.wikipedia.org/wiki/Tasmania_(wine)"}
+- {name: "Coal River Valley", country: AU, parent: "Tasmania", synonyms: ["Coal River"], source: "https://en.wikipedia.org/wiki/Tasmania_(wine)"}
+- {name: "Huon Valley", country: AU, parent: "Tasmania", synonyms: [], source: "https://en.wikipedia.org/wiki/Tasmania_(wine)"}
+- {name: "Derwent Valley", country: AU, parent: "Tasmania", synonyms: [], source: "https://en.wikipedia.org/wiki/Tasmania_(wine)"}
+- {name: "Pipers River", country: AU, parent: "Tasmania", synonyms: [], source: "https://en.wikipedia.org/wiki/Tasmania_(wine)"}
+- {name: "East Coast", country: AU, parent: "Tasmania", synonyms: ["East Coast Tasmania"], source: "https://en.wikipedia.org/wiki/Tasmania_(wine)"}

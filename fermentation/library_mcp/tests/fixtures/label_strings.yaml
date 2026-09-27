@@ -563,3 +563,16 @@ AR:
     "Pedro Gimenez": "Pedro Giménez"
     "Bonarda Argentina": "Bonarda"
     "Douce Noir": "Bonarda"
+
+AU:
+  regions:
+    "Mount Barker (WA)": "Mount Barker"
+    "Coal River": "Coal River Valley"
+    "Lower Hunter": "Hunter"
+    "Canberra": "Canberra District"
+    "Upper Hunter": "Upper Hunter Valley"
+    "SE Australia": "South Eastern Australia"
+  grapes:
+    "Mataro": "Mourvèdre"
+    "Shiraz": "Syrah"
+    "Brown Muscat": "Muscat Blanc à Petits Grains"

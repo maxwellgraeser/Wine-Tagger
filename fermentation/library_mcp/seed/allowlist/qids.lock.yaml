@@ -2377,11 +2377,17 @@ regions:
     label: Adelaida District AVA
     note: ok
     qid: Q18350205
+  Adelaide (AU): null
   Adelaide Hills (AU):
     description: wine region in South Australia
     label: Adelaide Hills wine region
     note: ok
     qid: Q19460105
+  Adelaide Plains (AU):
+    description: wine region in South Australia
+    label: Adelaide Plains wine region
+    note: ok
+    qid: Q19460106
   Aegean (TR): null
   Aegean Sea (GR): null
   Agenais (FR): null
@@ -2416,6 +2422,7 @@ regions:
     label: Alba DOC
     note: ok
     qid: Q16163285
+  Albany (AU): null
   Albugnano (IT):
     description: Italian controlled designation of origin wine from Piedmont
     label: Albugnano DOC
@@ -2500,6 +2507,11 @@ regions:
     note: ok
     qid: Q118808357
   Alpilles (FR): null
+  Alpine Valleys (AU):
+    description: region in North East Victoria, Australia
+    label: Alpine Valleys
+    note: ok
+    qid: Q4735530
   Alsace (FR):
     description: wine from the Alsace region in France
     label: Alsace wine
@@ -2927,6 +2939,7 @@ regions:
     label: Barolo DOCG
     note: ok
     qid: Q808584
+  Barossa (AU): null
   Barossa Valley (AU):
     description: valley and wine-producing region in South Australia
     label: Barossa Valley
@@ -2989,6 +3002,7 @@ regions:
     label: Benaco Bresciano IGT
     note: ok
     qid: Q139891222
+  Bendigo (AU): null
   Bendigo (NZ): null
   Beneventano (IT):
     description: Italian typical geographical indication wine from Campania
@@ -3077,6 +3091,7 @@ regions:
     label: Biferno DOC
     note: ok
     qid: Q2902058
+  Big Rivers (AU): null
   Big Valley District-Lake County (US):
     description: viticultural area in California
     label: Big Valley District-Lake County AVA
@@ -3097,6 +3112,11 @@ regions:
     label: Bizkaiko Txakolina
     note: ok
     qid: Q4919429
+  Blackwood Valley (AU):
+    description: wine region in South West Australia
+    label: Blackwood Valley
+    note: ok
+    qid: Q16254915
   Blagny (FR):
     description: French wine
     label: Blagny AOC
@@ -3114,6 +3134,7 @@ regions:
     note: ok
     qid: Q2655967
   Blaye Côtes de Bordeaux (FR): null
+  Blewitt Springs (AU): null
   Blouvlei (ZA): null
   Boca (IT):
     description: Italian controlled designation of origin wine from Piedmont
@@ -3276,6 +3297,11 @@ regions:
     label: British Columbia
     note: non-wine class -- review
     qid: Q1973
+  Broke Fordwich (AU):
+    description: Australian wine subregion
+    label: Broke Fordwich
+    note: ok
+    qid: Q24521686
   Brouilly (FR):
     description: French wine
     label: Brouilly
@@ -3713,12 +3739,23 @@ regions:
     label: Central Otago wine region
     note: ok
     qid: Q5061573
+  Central Ranges (AU):
+    description: wine zone and Australian Geographical Indication
+    label: Central Ranges
+    note: ok
+    qid: Q25184387
   Central Valley (CL): null
   Central Valley (US):
     description: valley in central California, USA
     label: Central Valley
     note: non-wine class -- review
     qid: Q27026
+  Central Victoria (AU): null
+  Central Western Australia (AU):
+    description: wine growing zone in Western Australia
+    label: Central Western Australia
+    note: ok
+    qid: Q73357880
   Centre-Loire (FR): null
   Cephalonia (GR): null
   Cerasuolo d'Abruzzo (IT):
@@ -4043,6 +4080,11 @@ regions:
     label: Clos des Lambrays
     note: ok
     qid: Q596588
+  Coal River Valley (AU):
+    description: valley in Tasmania, Australia
+    label: Coal River Valley
+    note: non-wine class -- review
+    qid: Q5137776
   Coastal Region (ZA): null
   Codru (MD): null
   Coelemu (CL):
@@ -4557,6 +4599,11 @@ regions:
     label: Covelo AVA
     note: ok
     qid: Q735126
+  Cowra (AU):
+    description: wine region in New South Wales, Australia
+    label: Cowra wine region
+    note: ok
+    qid: Q24521767
   Cramant (FR):
     description: commune in Marne, France
     label: Cramant
@@ -4648,6 +4695,11 @@ regions:
     note: ok
     qid: Q5165777
   Curicó Valley (CL): null
+  Currency Creek (AU):
+    description: wine region of South Australia
+    label: Currency Creek wine region
+    note: ok
+    qid: Q19872676
   Curtefranca (IT):
     description: Italian controlled designation of origin wine from Lombardy
     label: Curtefranca DOC
@@ -4838,7 +4890,13 @@ regions:
     label: Delia Nivolelli DOC
     note: ok
     qid: Q368172
+  Denmark (AU): null
   Dernau (DE): null
+  Derwent Valley (AU):
+    description: valley in Tasmania, Australia
+    label: Derwent Valley
+    note: non-wine class -- review
+    qid: Q21913852
   Desierto de Almería (ES):
     description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
     label: Desierto de Almería
@@ -4949,6 +5007,7 @@ regions:
     label: Eagle Peak Mendocino County AVA
     note: ok
     qid: Q19461467
+  East Coast (AU): null
   East Mendoza (AR): null
   Eastern Cape (ZA): null
   Eastern Connecticut Highlands (US):
@@ -4956,6 +5015,8 @@ regions:
     label: Eastern Connecticut Highlands AVA
     note: ok
     qid: Q106959125
+  Eastern Plains, Inland and North of Western Australia (AU): null
+  Ebenezer (AU): null
   Eden Valley (AU):
     description: wine region in South Australia, Australia
     label: Eden Valley wine region
@@ -5153,6 +5214,7 @@ regions:
     note: ok
     qid: Q1394022
   Famatina (AR): null
+  Far North (AU): null
   Fara (IT):
     description: Italian controlled designation of origin wine from Piedmont
     label: Fara DOC
@@ -5211,6 +5273,7 @@ regions:
     label: Fleurie AOC
     note: ok
     qid: Q1428207
+  Fleurieu (AU): null
   Florimont (FR):
     description: French white wine from Alsace
     label: Florimont
@@ -5258,6 +5321,7 @@ regions:
   Francs Côtes de Bordeaux (FR): null
   Frangy (FR): null
   Franken (DE): null
+  Frankland River (AU): null
   Frankstein (FR): null
   Frankweiler (DE): null
   Franschhoek (ZA): null
@@ -5429,6 +5493,11 @@ regions:
     label: Geneva
     note: non-wine class -- review
     qid: Q71
+  Geographe (AU):
+    description: wine region in Western Australia
+    label: Geographe
+    note: ok
+    qid: Q73365546
   Georgia (US):
     description: state of the United States of America
     label: Georgia
@@ -5455,6 +5524,7 @@ regions:
     label: Gioia del Colle DOC
     note: ok
     qid: Q3765075
+  Gippsland (AU): null
   Girò di Cagliari (IT):
     description: Italian grape variety
     label: Girò di Cagliari DOC
@@ -5463,6 +5533,7 @@ regions:
   Gisborne (NZ): null
   Givry (FR): null
   Gladstone (NZ): null
+  Glenrowan (AU): null
   Gloeckelberg (FR): null
   Gobelsburg (AT): null
   Goedemoed (ZA): null
@@ -5484,6 +5555,7 @@ regions:
   Goudini (ZA): null
   Goudmyn (ZA): null
   Goulaine (FR): null
+  Goulburn Valley (AU): null
   Goumenissa (GR): null
   Graach (DE): null
   Graciosa (PT): null
@@ -5518,6 +5590,7 @@ regions:
     label: Grands Échezeaux
     note: ok
     qid: Q1542916
+  Granite Belt (AU): null
   Granja-Amareleja (PT): null
   Graves (FR):
     description: French wine
@@ -5540,6 +5613,8 @@ regions:
     label: Great Southern
     note: ok
     qid: Q14935800
+  Great Western (AU): null
+  Greater Perth (AU): null
   Greco di Bianco (IT):
     description: Italian controlled designation of origin wine from Calabria
     label: Greco di Bianco DOC
@@ -5598,6 +5673,11 @@ regions:
     label: Guijoso
     note: ok
     qid: Q11682259
+  Gundagai (AU):
+    description: wine region in Gundagai, NSW, Australia
+    label: Gundagai wine region
+    note: ok
+    qid: Q24521763
   Gutturnio (IT):
     description: Italian controlled designation of origin wine from Emilia-Romagna
     label: Gutturnio DOC
@@ -5617,6 +5697,7 @@ regions:
     note: ok
     qid: Q5652573
   Hartswater (ZA): null
+  Hastings River (AU): null
   Hatschbourg (FR): null
   Hattenheim (DE):
     description: municipal district of Eltville am Rhein, Germany
@@ -5656,6 +5737,7 @@ regions:
     note: ok
     qid: Q31919666
   Hengst (FR): null
+  Henty (AU): null
   Heppenheim (DE): null
   Heraklion (GR): null
   Herbertsdale (ZA): null
@@ -5671,11 +5753,17 @@ regions:
     note: ok
     qid: Q323855
   Hex River Valley (ZA): null
+  High Eden (AU): null
   High Valley (US):
     description: wine region in Lake County, California
     label: High Valley AVA
     note: ok
     qid: Q1455026
+  Hilltops (AU):
+    description: wine region in New South Wales, Australia
+    label: Hilltops wine region
+    note: ok
+    qid: Q24521733
   Hochheim (DE): null
   Hokkaido (JP):
     description: prefecture of Japan
@@ -5700,11 +5788,17 @@ regions:
     label: Hudson River Region AVA
     note: ok
     qid: Q1561756
+  Hunter (AU): null
   Hunter Valley (AU):
     description: wine region in Australia
     label: Hunter Valley wine
     note: ok
     qid: Q5944605
+  Huon Valley (AU):
+    description: valley in Tasmania, Australia
+    label: Huon Valley
+    note: non-wine class -- review
+    qid: Q19874516
   Hvar (HR): null
   Hérault (FR): null
   I Terreni di Sanseverino (IT):
@@ -5862,6 +5956,7 @@ regions:
     label: Kanawha River Valley AVA
     note: ok
     qid: Q6360817
+  Kangaroo Island (AU): null
   Kanzem (DE): null
   Kanzlerberg (FR): null
   Karditsa (GR): null
@@ -6153,6 +6248,7 @@ regions:
   Leipoldtville-Sandveld (ZA): null
   Leithaberg (AT): null
   Lemnos (GR): null
+  Lenswood (AU): null
   Leona Valley (US):
     description: California wine region in Los Angeles County
     label: Leona Valley AVA
@@ -6356,6 +6452,7 @@ regions:
     label: Lower Long Tom AVA
     note: ok
     qid: Q116030282
+  Lower Murray (AU): null
   Luberon (FR): null
   Lugana (IT):
     description: Italian controlled designation of origin wine from Lombardy
@@ -6370,6 +6467,7 @@ regions:
     note: ok
     qid: Q1383154
   Lutzville Valley (ZA): null
+  Lyndoch (AU): null
   Macedon Ranges (AU):
     description: wine region in Victoria, Australia
     label: Macedon Ranges wine region
@@ -6462,6 +6560,11 @@ regions:
     label: Mandrolisai DOC
     note: ok
     qid: Q139919559
+  Manjimup (AU):
+    description: wine region in Western Australia
+    label: Manjimup
+    note: ok
+    qid: Q73366535
   Mansfelder Seen (DE): null
   Mantinia (GR): null
   Manton Valley (US):
@@ -6471,6 +6574,7 @@ regions:
     qid: Q134376419
   Mantzavinata (GR): null
   Manzanilla-Sanlúcar de Barrameda (ES): null
+  Marananga (AU): null
   Maranges (FR):
     description: French wine
     label: Maranges
@@ -7005,11 +7109,23 @@ regions:
     note: ok
     qid: Q3325895
   Mount Athos (GR): null
+  Mount Barker (AU): null
+  Mount Benson (AU):
+    description: wine region in South Australia
+    label: Mount Benson
+    note: ok
+    qid: Q11786209
+  Mount Gambier (AU):
+    description: wine-producing region in South Australia, Australia
+    label: Mount Gambier wine region
+    note: ok
+    qid: Q19875806
   Mount Lebanon (LB):
     description: town in Bienville Parish, Louisiana
     label: Mount Lebanon
     note: non-wine class -- review
     qid: Q2087150
+  Mount Lofty Ranges (AU): null
   Mount Pisgah, Polk County, Oregon (US):
     description: American Viticultural Area in Oregon
     label: Mount Pisgah, Polk County, Oregon AVA
@@ -7046,6 +7162,11 @@ regions:
     label: Murgia IGT
     note: ok
     qid: Q139899831
+  Murray Darling (AU):
+    description: wine region and Australian Geographical Indication
+    label: Murray Darling
+    note: ok
+    qid: Q25182598
   Muscadet (FR):
     description: French white wine
     label: Muscadet
@@ -7121,6 +7242,11 @@ regions:
     note: ok
     qid: Q6957146
   Nackenheim (DE): null
+  Nagambie Lakes (AU):
+    description: wine region in central Victoria, Australia
+    label: Nagambie Lakes wine region
+    note: ok
+    qid: Q99317948
   Nagano (JP): null
   Nahe (DE):
     description: German wine region
@@ -7203,6 +7329,11 @@ regions:
     note: non-wine class -- review
     qid: Q44239
   Neusiedlersee (AT): null
+  New England Australia (AU):
+    description: wine region in New South Wales
+    label: New England Australia
+    note: ok
+    qid: Q73257959
   New Jersey (US):
     description: state of the United States of America
     label: New Jersey
@@ -7265,6 +7396,11 @@ regions:
     label: North Coast AVA
     note: ok
     qid: Q2000573
+  North East Victoria (AU):
+    description: Australian geographical indication (zone)
+    label: North East Victoria
+    note: ok
+    qid: Q28183583
   North Fork of Long Island (US):
     description: wine growing region in New York
     label: North Fork of Long Island AVA
@@ -7276,6 +7412,11 @@ regions:
     note: ok
     qid: Q1337328
   North West (ZA): null
+  North West Victoria (AU):
+    description: wine growing zone in Victoria, Australia
+    label: North West Victoria
+    note: ok
+    qid: Q73217326
   North Yuba (US):
     description: California wine region in Yuba County
     label: North Yuba AVA
@@ -7288,6 +7429,12 @@ regions:
     note: ok
     qid: Q751581
   Northern Rhône (FR): null
+  Northern Rivers (AU): null
+  Northern Slopes (AU):
+    description: wine zone in New South Wales
+    label: Northern Slopes
+    note: ok
+    qid: Q73227871
   Northern Sonoma (US):
     description: American wine region
     label: Northern Sonoma AVA
@@ -7598,6 +7745,11 @@ regions:
     qid: Q1648760
   Pays d'Oc (FR): null
   Pedernal Valley (AR): null
+  Peel (AU):
+    description: wine region in Western Australia
+    label: Peel wine region
+    note: ok
+    qid: Q73337975
   Pelješac (HR): null
   Pella (GR): null
   Pellaro (IT):
@@ -7610,6 +7762,7 @@ regions:
     label: Peloponnese
     note: non-wine class -- review
     qid: Q78967
+  Pemberton (AU): null
   Penedès (ES):
     description: is a Spanish Denominación de Origen Protegida (DOP) (Denominació d'Origen Protegida in
       Catalan) for wines in Catalonia, (Spain)
@@ -7648,6 +7801,16 @@ regions:
     label: Pernand-Vergelesses wine
     note: ok
     qid: Q3375509
+  Perricoota (AU):
+    description: wine region in New South Wales
+    label: Perricoota
+    note: ok
+    qid: Q24521742
+  Perth Hills (AU):
+    description: wine region in Western Australia
+    label: Perth Hills wine region
+    note: ok
+    qid: Q73341431
   Pessac-Léognan (FR):
     description: wine growing area in France
     label: Pessac-Léognan
@@ -7681,6 +7844,7 @@ regions:
     note: ok
     qid: Q109377223
   Pic Saint-Loup (FR): null
+  Piccadilly Valley (AU): null
   Pico (PT): null
   Picpoul de Pinet (FR):
     description: French wine
@@ -7709,6 +7873,7 @@ regions:
     label: Pinot Nero dell'Oltrepò Pavese DOC
     note: ok
     qid: Q14034173
+  Pipers River (AU): null
   Pirque (CL):
     description: commune of Chile
     label: Pirque
@@ -7732,6 +7897,8 @@ regions:
     qid: Q139899845
   Plettenberg Bay (ZA): null
   Podravje (SI): null
+  Pokolbin (AU): null
+  Polish Hill River (AU): null
   Polkadraai Hills (ZA): null
   Pollino (IT):
     description: Italian controlled designation of origin wine from Calabria
@@ -7763,7 +7930,9 @@ regions:
     label: Pornassio
     note: ok
     qid: Q140131032
+  Porongurup (AU): null
   Porseleinberg (ZA): null
+  Port Phillip (AU): null
   Portalegre (PT): null
   Portezuelo (CL): null
   Portimão (PT): null
@@ -7881,6 +8050,11 @@ regions:
     note: ok
     qid: Q3410751
   Pylia (GR): null
+  Pyrenees (AU):
+    description: wine region in Victoria, Australia
+    label: Pyrenees
+    note: ok
+    qid: Q3411307
   Pécharmant (FR):
     description: ''
     label: Pécharmant
@@ -7889,6 +8063,7 @@ regions:
   Périgord (FR): null
   Quarts de Chaume (FR): null
   Quebrada de Humahuaca (AR): null
+  Queensland (AU): null
   Quillón (CL):
     description: commune of Chile
     label: Quillón
@@ -8143,6 +8318,11 @@ regions:
     label: Riviera del Garda Classico DOC
     note: ok
     qid: Q118819258
+  Robe (AU):
+    description: wine region adjoining the town of Robe, South Australia
+    label: Robe wine region
+    note: ok
+    qid: Q19877927
   Robertson (ZA): null
   Robola of Cephalonia (GR): null
   Roccamonfina (IT):
@@ -8816,6 +8996,11 @@ regions:
     label: Shenandoah Valley AVA
     note: ok
     qid: Q2278039
+  Shoalhaven Coast (AU):
+    description: wine region in New South Wales
+    label: Shoalhaven Coast wine region
+    note: ok
+    qid: Q24090217
   Shomron (IL): null
   Siatista (GR): null
   Sibiola (IT):
@@ -8993,12 +9178,19 @@ regions:
     qid: Q1290341
   Sousa (PT): null
   South Australia (AU): null
+  South Burnett (AU): null
+  South Coast (AU): null
   South Coast (US):
     description: California wine region
     label: South Coast AVA
     note: ok
     qid: Q2304380
   South Eastern Australia (AU): null
+  South West Australia (AU):
+    description: wine growing zone in Western Australia
+    label: South West Australia
+    note: ok
+    qid: Q73363456
   South West France (FR):
     description: French wine region
     label: South West France
@@ -9014,6 +9206,19 @@ regions:
     label: Southern Chile
     note: ok
     qid: Q6104318
+  Southern Eyre Peninsula (AU): null
+  Southern Fleurieu (AU):
+    description: wine region of South Australia
+    label: Southern Fleurieu wine region
+    note: ok
+    qid: Q19879273
+  Southern Flinders Ranges (AU):
+    description: wine region in South Australia
+    label: Southern Flinders Ranges
+    note: ok
+    qid: Q7569916
+  Southern Highlands (AU): null
+  Southern New South Wales (AU): null
   Southern Oregon (US):
     description: American Viticultural Area
     label: Southern Oregon AVA
@@ -9092,6 +9297,7 @@ regions:
   Still Bay East (ZA): null
   Stormsvlei (ZA): null
   Straden (AT): null
+  Strathbogie Ranges (AU): null
   Straß im Straßertal (AT): null
   Strevi (IT):
     description: Italian controlled designation of origin wine from Piedmont
@@ -9104,6 +9310,11 @@ regions:
     label: Suisun Valley AVA
     note: ok
     qid: Q1707546
+  Sunbury (AU):
+    description: wine region in Victoria, Australia
+    label: Sunbury wine region
+    note: ok
+    qid: Q73208858
   Sunday's Glen (ZA): null
   Sussex (GB):
     description: historic county of England, United Kingdom
@@ -9121,6 +9332,16 @@ regions:
     label: Swan Creek AVA
     note: ok
     qid: Q7653432
+  Swan District (AU):
+    description: wine region in Western Australia
+    label: Swan District
+    note: ok
+    qid: Q73357530
+  Swan Hill (AU):
+    description: ''
+    label: Swan Hill wine region
+    note: ok
+    qid: Q24521756
   Swan Valley (AU):
     description: region in north eastern Perth, Western Australia.
     label: Swan Valley
@@ -9148,6 +9369,11 @@ regions:
     label: Talagante
     note: non-wine class -- review
     qid: Q188038
+  Tamar Valley (AU):
+    description: valley in Tasmania, Australia
+    label: Tamar Valley
+    note: non-wine class -- review
+    qid: Q7680758
   Tarantino (IT):
     description: Italian typical geographical indication wine from Apulia
     label: Tarantino IGT
@@ -9353,6 +9579,7 @@ regions:
     label: The Hamptons, Long Island AVA
     note: ok
     qid: Q788845
+  The Peninsulas (AU): null
   The Rocks District of Milton-Freewater (US): null
   Theewater (ZA): null
   Thermenregion (AT): null
@@ -9516,6 +9743,11 @@ regions:
   Tucumán (AR): null
   Tulbagh (ZA): null
   Tulum Valley (AR): null
+  Tumbarumba (AU):
+    description: ''
+    label: Tumbarumba wine region
+    note: ok
+    qid: Q9362650
   Tuniberg (DE): null
   Tunuyán (AR): null
   Tupungato (AR): null
@@ -9561,6 +9793,11 @@ regions:
     label: Upper Cumberland AVA
     note: ok
     qid: Q130553460
+  Upper Goulburn (AU):
+    description: wine region of Victoria, Australia
+    label: Upper Goulburn
+    note: ok
+    qid: Q101212516
   Upper Hemel-en-Aarde Valley (ZA): null
   Upper Hiwassee Highlands (US):
     description: American Viticultural Area in North Carolina and Georgia
@@ -9572,6 +9809,7 @@ regions:
     label: Upper Hudson AVA
     note: ok
     qid: Q48739548
+  Upper Hunter Valley (AU): null
   Upper Lake Valley (US):
     description: American Viticultural Area in Lake County, California
     label: Upper Lake Valley AVA
@@ -10115,12 +10353,18 @@ regions:
     label: Washington
     note: non-wine class -- review
     qid: Q1223
+  Watervale (AU): null
   Wehlen (DE): null
   Weinland Österreich (AT): null
   Weinsberg (DE): null
   Weinviertel (AT): null
   Weißenkirchen (AT): null
   Wellington (ZA): null
+  West Australian South East Coastal (AU):
+    description: wine growing zone in Western Australia
+    label: West Australian South East Coastal
+    note: ok
+    qid: Q73367402
   West Elks (US):
     description: Colorado wine region in Delta County
     label: West Elks AVA
@@ -10143,6 +10387,16 @@ regions:
     label: Western Connecticut Highlands AVA
     note: ok
     qid: Q7987754
+  Western Plains (AU):
+    description: wine growing zone in New South Wales, Australia
+    label: Western Plains
+    note: ok
+    qid: Q73334818
+  Western Victoria (AU):
+    description: Australian geographical indication (zone)
+    label: Western Victoria
+    note: ok
+    qid: Q24090012
   Westhofen (DE): null
   Weststeiermark (AT): null
   White Bluffs (US):
@@ -10197,6 +10451,11 @@ regions:
     qid: Q8027221
   Wonnegau (DE): null
   Worcester (ZA): null
+  Wrattonbully (AU):
+    description: wine region in South Australia
+    label: Wrattonbully
+    note: ok
+    qid: Q8037630
   Wösendorf (AT): null
   Württemberg (DE): null
   Württembergisch Unterland (DE): null

@@ -1989,38 +1989,129 @@
 - {name: "Rietrivier FS", country: ZA, parent: "Free State", classification: Ward}
 
 # ======================= AUSTRALIA =======================
-- {name: "South Australia", country: AU, classification: Zone, synonyms: ["SA"]}
-- {name: "Barossa Valley", country: AU, parent: "South Australia", classification: GI, synonyms: ["Barossa"]}
-- {name: "Eden Valley", country: AU, parent: "South Australia", classification: GI}
-- {name: "Clare Valley", country: AU, parent: "South Australia", classification: GI}
-- {name: "McLaren Vale", country: AU, parent: "South Australia", classification: GI}
-- {name: "Adelaide Hills", country: AU, parent: "South Australia", classification: GI}
-- {name: "Langhorne Creek", country: AU, parent: "South Australia", classification: GI}
+- {name: "South Australia", country: AU, classification: State, synonyms: ["SA"]}
+- {name: "Adelaide", country: AU, parent: "South Australia", classification: Zone, synonyms: ["Adelaide Super Zone"]}
+- {name: "Barossa", country: AU, parent: "South Australia", classification: Zone}
+- {name: "Fleurieu", country: AU, parent: "South Australia", classification: Zone}
 - {name: "Limestone Coast", country: AU, parent: "South Australia", classification: Zone}
+- {name: "Lower Murray", country: AU, parent: "South Australia", classification: Zone}
+- {name: "Mount Lofty Ranges", country: AU, parent: "South Australia", classification: Zone}
+- {name: "The Peninsulas", country: AU, parent: "South Australia", classification: Zone}
+- {name: "Far North", country: AU, parent: "South Australia", classification: Zone}
+- {name: "Barossa Valley", country: AU, parent: "Barossa", classification: GI}
+- {name: "Ebenezer", country: AU, parent: "Barossa Valley"}
+- {name: "Marananga", country: AU, parent: "Barossa Valley"}
+- {name: "Lyndoch", country: AU, parent: "Barossa Valley"}
+- {name: "Eden Valley", country: AU, parent: "Barossa", classification: GI}
+- {name: "High Eden", country: AU, parent: "Eden Valley", classification: Subregion}
+- {name: "Clare Valley", country: AU, parent: "Mount Lofty Ranges", classification: GI}
+- {name: "Polish Hill River", country: AU, parent: "Clare Valley"}
+- {name: "Watervale", country: AU, parent: "Clare Valley"}
+- {name: "McLaren Vale", country: AU, parent: "Fleurieu", classification: GI}
+- {name: "Blewitt Springs", country: AU, parent: "McLaren Vale"}
+- {name: "Adelaide Hills", country: AU, parent: "Mount Lofty Ranges", classification: GI}
+- {name: "Lenswood", country: AU, parent: "Adelaide Hills", classification: Subregion}
+- {name: "Piccadilly Valley", country: AU, parent: "Adelaide Hills", classification: Subregion}
+- {name: "Langhorne Creek", country: AU, parent: "Fleurieu", classification: GI}
+- {name: "Currency Creek", country: AU, parent: "Fleurieu", classification: GI}
+- {name: "Kangaroo Island", country: AU, parent: "Fleurieu", classification: GI}
+- {name: "Southern Fleurieu", country: AU, parent: "Fleurieu", classification: GI}
 - {name: "Coonawarra", country: AU, parent: "Limestone Coast", classification: GI}
 - {name: "Padthaway", country: AU, parent: "Limestone Coast", classification: GI}
-- {name: "Riverland", country: AU, parent: "South Australia", classification: GI}
-- {name: "Victoria", country: AU, classification: Zone, synonyms: ["Victoria (Australia)"]}
-- {name: "Yarra Valley", country: AU, parent: "Victoria", classification: GI}
-- {name: "Mornington Peninsula", country: AU, parent: "Victoria", classification: GI}
-- {name: "Heathcote", country: AU, parent: "Victoria", classification: GI}
-- {name: "Geelong", country: AU, parent: "Victoria", classification: GI}
-- {name: "Rutherglen", country: AU, parent: "Victoria", classification: GI}
-- {name: "King Valley", country: AU, parent: "Victoria", classification: GI}
-- {name: "Grampians", country: AU, parent: "Victoria", classification: GI}
-- {name: "Beechworth", country: AU, parent: "Victoria", classification: GI}
-- {name: "Macedon Ranges", country: AU, parent: "Victoria", classification: GI}
-- {name: "New South Wales", country: AU, classification: Zone, synonyms: ["NSW"]}
-- {name: "Hunter Valley", country: AU, parent: "New South Wales", classification: GI, synonyms: ["Hunter"]}
-- {name: "Orange", country: AU, parent: "New South Wales", classification: GI}
-- {name: "Mudgee", country: AU, parent: "New South Wales", classification: GI}
-- {name: "Riverina", country: AU, parent: "New South Wales", classification: GI}
-- {name: "Canberra District", country: AU, parent: "New South Wales", classification: GI, synonyms: ["Canberra"]}
-- {name: "Western Australia", country: AU, classification: Zone}
-- {name: "Margaret River", country: AU, parent: "Western Australia", classification: GI}
-- {name: "Great Southern", country: AU, parent: "Western Australia", classification: GI, synonyms: ["Frankland River", "Mount Barker"]}
-- {name: "Swan Valley", country: AU, parent: "Western Australia", classification: GI, synonyms: ["Swan District"]}
-- {name: "Tasmania", country: AU, classification: GI}
+- {name: "Wrattonbully", country: AU, parent: "Limestone Coast", classification: GI}
+- {name: "Mount Benson", country: AU, parent: "Limestone Coast", classification: GI}
+- {name: "Robe", country: AU, parent: "Limestone Coast", classification: GI}
+- {name: "Mount Gambier", country: AU, parent: "Limestone Coast", classification: GI}
+- {name: "Riverland", country: AU, parent: "Lower Murray", classification: GI}
+- {name: "Adelaide Plains", country: AU, parent: "Mount Lofty Ranges", classification: GI}
+- {name: "Southern Flinders Ranges", country: AU, parent: "Far North", classification: GI}
+- {name: "Southern Eyre Peninsula", country: AU, parent: "The Peninsulas", classification: GI}
+- {name: "Western Australia", country: AU, classification: State, synonyms: ["WA"]}
+- {name: "Greater Perth", country: AU, parent: "Western Australia", classification: Zone}
+- {name: "South West Australia", country: AU, parent: "Western Australia", classification: Zone}
+- {name: "Central Western Australia", country: AU, parent: "Western Australia", classification: Zone}
+- {name: "Eastern Plains, Inland and North of Western Australia", country: AU, parent: "Western Australia", classification: Zone}
+- {name: "West Australian South East Coastal", country: AU, parent: "Western Australia", classification: Zone}
+- {name: "Margaret River", country: AU, parent: "South West Australia", classification: GI}
+- {name: "Great Southern", country: AU, parent: "South West Australia", classification: GI}
+- {name: "Albany", country: AU, parent: "Great Southern", classification: Subregion}
+- {name: "Denmark", country: AU, parent: "Great Southern", classification: Subregion}
+- {name: "Frankland River", country: AU, parent: "Great Southern", classification: Subregion}
+- {name: "Mount Barker", country: AU, parent: "Great Southern", classification: Subregion}
+- {name: "Porongurup", country: AU, parent: "Great Southern", classification: Subregion}
+- {name: "Pemberton", country: AU, parent: "South West Australia", classification: GI}
+- {name: "Manjimup", country: AU, parent: "South West Australia", classification: GI}
+- {name: "Geographe", country: AU, parent: "South West Australia", classification: GI}
+- {name: "Blackwood Valley", country: AU, parent: "South West Australia", classification: GI}
+- {name: "Peel", country: AU, parent: "Greater Perth", classification: GI}
+- {name: "Perth Hills", country: AU, parent: "Greater Perth", classification: GI}
+- {name: "Swan District", country: AU, parent: "Greater Perth", classification: GI}
+- {name: "Swan Valley", country: AU, parent: "Swan District", classification: Subregion}
+- {name: "Tasmania", country: AU, classification: State}
+- {name: "Tamar Valley", country: AU, parent: "Tasmania"}
+- {name: "Coal River Valley", country: AU, parent: "Tasmania", synonyms: ["Coal River"]}
+- {name: "Huon Valley", country: AU, parent: "Tasmania"}
+- {name: "Derwent Valley", country: AU, parent: "Tasmania"}
+- {name: "Pipers River", country: AU, parent: "Tasmania"}
+- {name: "East Coast", country: AU, parent: "Tasmania", synonyms: ["East Coast Tasmania"]}
+- {name: "Victoria", country: AU, classification: State}
+- {name: "Central Victoria", country: AU, parent: "Victoria", classification: Zone}
+- {name: "Bendigo", country: AU, parent: "Central Victoria", classification: GI}
+- {name: "Goulburn Valley", country: AU, parent: "Central Victoria", classification: GI}
+- {name: "Nagambie Lakes", country: AU, parent: "Goulburn Valley", classification: Subregion}
+- {name: "Heathcote", country: AU, parent: "Central Victoria", classification: GI}
+- {name: "Strathbogie Ranges", country: AU, parent: "Central Victoria", classification: GI}
+- {name: "Upper Goulburn", country: AU, parent: "Central Victoria", classification: GI}
+- {name: "Gippsland", country: AU, parent: "Victoria", classification: Zone}
+- {name: "North East Victoria", country: AU, parent: "Victoria", classification: Zone}
+- {name: "Alpine Valleys", country: AU, parent: "North East Victoria", classification: GI}
+- {name: "Beechworth", country: AU, parent: "North East Victoria", classification: GI}
+- {name: "Glenrowan", country: AU, parent: "North East Victoria", classification: GI}
+- {name: "King Valley", country: AU, parent: "North East Victoria", classification: GI}
+- {name: "Rutherglen", country: AU, parent: "North East Victoria", classification: GI}
+- {name: "North West Victoria", country: AU, parent: "Victoria", classification: Zone}
+- {name: "Murray Darling", country: AU, parent: "North West Victoria", classification: GI}
+- {name: "Swan Hill", country: AU, parent: "North West Victoria", classification: GI}
+- {name: "Port Phillip", country: AU, parent: "Victoria", classification: Zone}
+- {name: "Geelong", country: AU, parent: "Port Phillip", classification: GI}
+- {name: "Macedon Ranges", country: AU, parent: "Port Phillip", classification: GI}
+- {name: "Mornington Peninsula", country: AU, parent: "Port Phillip", classification: GI}
+- {name: "Sunbury", country: AU, parent: "Port Phillip", classification: GI}
+- {name: "Yarra Valley", country: AU, parent: "Port Phillip", classification: GI}
+- {name: "Western Victoria", country: AU, parent: "Victoria", classification: Zone}
+- {name: "Grampians", country: AU, parent: "Western Victoria", classification: GI}
+- {name: "Great Western", country: AU, parent: "Grampians", classification: Subregion}
+- {name: "Henty", country: AU, parent: "Western Victoria", classification: GI}
+- {name: "Pyrenees", country: AU, parent: "Western Victoria", classification: GI}
+- {name: "New South Wales", country: AU, classification: State, synonyms: ["NSW"]}
+- {name: "Big Rivers", country: AU, parent: "New South Wales", classification: Zone}
+- {name: "Perricoota", country: AU, parent: "Big Rivers", classification: GI}
+- {name: "Riverina", country: AU, parent: "Big Rivers", classification: GI}
+- {name: "Central Ranges", country: AU, parent: "New South Wales", classification: Zone}
+- {name: "Cowra", country: AU, parent: "Central Ranges", classification: GI}
+- {name: "Mudgee", country: AU, parent: "Central Ranges", classification: GI}
+- {name: "Orange", country: AU, parent: "Central Ranges", classification: GI}
+- {name: "Hunter Valley", country: AU, parent: "New South Wales", classification: Zone}
+- {name: "Hunter", country: AU, parent: "Hunter Valley", classification: GI, synonyms: ["Lower Hunter"]}
+- {name: "Broke Fordwich", country: AU, parent: "Hunter", classification: Subregion}
+- {name: "Pokolbin", country: AU, parent: "Hunter", classification: Subregion}
+- {name: "Upper Hunter Valley", country: AU, parent: "Hunter", classification: Subregion, synonyms: ["Upper Hunter"]}
+- {name: "Northern Rivers", country: AU, parent: "New South Wales", classification: Zone}
+- {name: "Hastings River", country: AU, parent: "Northern Rivers", classification: GI}
+- {name: "Northern Slopes", country: AU, parent: "New South Wales", classification: Zone}
+- {name: "New England Australia", country: AU, parent: "Northern Slopes", classification: GI}
+- {name: "South Coast", country: AU, parent: "New South Wales", classification: Zone}
+- {name: "Shoalhaven Coast", country: AU, parent: "South Coast", classification: GI}
+- {name: "Southern Highlands", country: AU, parent: "South Coast", classification: GI}
+- {name: "Southern New South Wales", country: AU, parent: "New South Wales", classification: Zone}
+- {name: "Canberra District", country: AU, parent: "Southern New South Wales", classification: GI, synonyms: ["Canberra"]}
+- {name: "Gundagai", country: AU, parent: "Southern New South Wales", classification: GI}
+- {name: "Hilltops", country: AU, parent: "Southern New South Wales", classification: GI}
+- {name: "Tumbarumba", country: AU, parent: "Southern New South Wales", classification: GI}
+- {name: "Western Plains", country: AU, parent: "New South Wales", classification: Zone}
+- {name: "Queensland", country: AU, classification: State}
+- {name: "Granite Belt", country: AU, parent: "Queensland", classification: GI}
+- {name: "South Burnett", country: AU, parent: "Queensland", classification: GI}
 - {name: "South Eastern Australia", country: AU, classification: GI, synonyms: ["South-Eastern Australia", "SE Australia", "Southeastern Australia"]}
 
 # ======================= NEW ZEALAND =======================

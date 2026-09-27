@@ -1,0 +1,66 @@
+# Victoria: state, zones, regions, subregions
+- {name: "Victoria", country: AU, classification: State, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications/victoria"}
+- {name: "Central Victoria", country: AU, parent: "Victoria", classification: Zone, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Bendigo", country: AU, parent: "Central Victoria", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Goulburn Valley", country: AU, parent: "Central Victoria", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Nagambie Lakes", country: AU, parent: "Goulburn Valley", classification: Subregion, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Heathcote", country: AU, parent: "Central Victoria", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Strathbogie Ranges", country: AU, parent: "Central Victoria", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Upper Goulburn", country: AU, parent: "Central Victoria", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Gippsland", country: AU, parent: "Victoria", classification: Zone, source: "https://www.wineaustralia.com/labelling/geographical-indicators/labelling-gi-gippsland"}
+- {name: "North East Victoria", country: AU, parent: "Victoria", classification: Zone, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Alpine Valleys", country: AU, parent: "North East Victoria", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Beechworth", country: AU, parent: "North East Victoria", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Glenrowan", country: AU, parent: "North East Victoria", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "King Valley", country: AU, parent: "North East Victoria", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Rutherglen", country: AU, parent: "North East Victoria", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "North West Victoria", country: AU, parent: "Victoria", classification: Zone, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Murray Darling", country: AU, parent: "North West Victoria", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Swan Hill", country: AU, parent: "North West Victoria", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Port Phillip", country: AU, parent: "Victoria", classification: Zone, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Geelong", country: AU, parent: "Port Phillip", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Macedon Ranges", country: AU, parent: "Port Phillip", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Mornington Peninsula", country: AU, parent: "Port Phillip", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Sunbury", country: AU, parent: "Port Phillip", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Yarra Valley", country: AU, parent: "Port Phillip", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Western Victoria", country: AU, parent: "Victoria", classification: Zone, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications/western-victoria"}
+- {name: "Grampians", country: AU, parent: "Western Victoria", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Great Western", country: AU, parent: "Grampians", classification: Subregion, source: "https://en.wikipedia.org/wiki/Western_Victoria_(wine_region)"}
+- {name: "Henty", country: AU, parent: "Western Victoria", classification: GI, source: "https://en.wikipedia.org/wiki/Henty_wine_region"}
+- {name: "Pyrenees", country: AU, parent: "Western Victoria", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+
+# New South Wales: state, zones, regions, subregions
+- {name: "New South Wales", country: AU, classification: State, synonyms: ["NSW"], source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications/new-south-wales"}
+- {name: "Big Rivers", country: AU, parent: "New South Wales", classification: Zone, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Perricoota", country: AU, parent: "Big Rivers", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Riverina", country: AU, parent: "Big Rivers", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Central Ranges", country: AU, parent: "New South Wales", classification: Zone, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Cowra", country: AU, parent: "Central Ranges", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Mudgee", country: AU, parent: "Central Ranges", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Orange", country: AU, parent: "Central Ranges", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Hunter Valley", country: AU, parent: "New South Wales", classification: Zone, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications/hunter-valley"}
+- {name: "Hunter", country: AU, was: "Hunter Valley", parent: "Hunter Valley", classification: GI, synonyms: ["Lower Hunter"], source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications/hunter"}
+- {name: "Broke Fordwich", country: AU, parent: "Hunter", classification: Subregion, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Pokolbin", country: AU, parent: "Hunter", classification: Subregion, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Upper Hunter Valley", country: AU, parent: "Hunter", classification: Subregion, synonyms: ["Upper Hunter"], source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications/upper-hunter-valley"}
+- {name: "Northern Rivers", country: AU, parent: "New South Wales", classification: Zone, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Hastings River", country: AU, parent: "Northern Rivers", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Northern Slopes", country: AU, parent: "New South Wales", classification: Zone, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "New England Australia", country: AU, parent: "Northern Slopes", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "South Coast", country: AU, parent: "New South Wales", classification: Zone, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Shoalhaven Coast", country: AU, parent: "South Coast", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Southern Highlands", country: AU, parent: "South Coast", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Southern New South Wales", country: AU, parent: "New South Wales", classification: Zone, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Canberra District", country: AU, parent: "Southern New South Wales", classification: GI, synonyms: ["Canberra"], source: "https://en.wikipedia.org/wiki/Canberra_District"}
+- {name: "Gundagai", country: AU, parent: "Southern New South Wales", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Hilltops", country: AU, parent: "Southern New South Wales", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Tumbarumba", country: AU, parent: "Southern New South Wales", classification: GI, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+- {name: "Western Plains", country: AU, parent: "New South Wales", classification: Zone, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
+
+# Queensland: state, regions (no zone tier)
+- {name: "Queensland", country: AU, classification: State, source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications/queensland"}
+- {name: "Granite Belt", country: AU, parent: "Queensland", classification: GI, source: "https://www.wineaustralia.com/market-insights/regions-and-varieties/queensland-wines/granite-belt"}
+- {name: "South Burnett", country: AU, parent: "Queensland", classification: GI, source: "https://www.wineaustralia.com/market-insights/regions-and-varieties/queensland-wines/south-burnett"}
+
+# Multi-state overlay
+- {name: "South Eastern Australia", country: AU, classification: GI, synonyms: ["South-Eastern Australia", "SE Australia", "Southeastern Australia"], source: "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"}
