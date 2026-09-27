@@ -1,0 +1,22 @@
+# Georgia — new grapes (checked against grapes.yaml via context --grape; none found)
+- {name: "Mujuretuli", color: red, synonyms: [], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Chkhaveri", color: rose, synonyms: [], source: "https://en.wikipedia.org/wiki/Georgian_wine"}
+- {name: "Otskhanuri Sapere", color: red, synonyms: [], source: "https://en.wikipedia.org/wiki/Georgian_wine"}
+- {name: "Tsitska", color: white, synonyms: [], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Krakhuna", color: white, synonyms: [], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Usakhelouri", color: red, synonyms: [], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Goruli Mtsvane", color: white, synonyms: [], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Chinuri", color: white, synonyms: [], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Shavkapito", color: red, synonyms: [], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Takveri", color: red, synonyms: [], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Asuretuli Shavi", color: red, synonyms: [], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+# Turkey — new grapes (checked against grapes.yaml via context --grape; none found)
+- {name: "Emir", color: white, synonyms: [], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Sultaniye", color: white, synonyms: ["Sultana"], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Çalkarası", color: red, synonyms: ["Calkarasi"], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Papazkarası", color: red, synonyms: ["Papaskarasi", "Papazkarasi"], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Karasakız", color: red, synonyms: ["Karasakiz"], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Muscat Blanc à Petits Grains", existing: true, synonyms: ["Bornova Misketi"], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+# Lebanon — new grapes
+- {name: "Obeidi", color: white, synonyms: ["Obeideh"], source: "https://en.wikipedia.org/wiki/Lebanese_wine"}
+- {name: "Merwah", color: white, synonyms: [], source: "https://en.wikipedia.org/wiki/Lebanese_wine"}

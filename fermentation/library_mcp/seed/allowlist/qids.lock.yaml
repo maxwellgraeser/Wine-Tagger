@@ -492,6 +492,11 @@ grapes:
     label: Chenin blanc
     note: ok
     qid: Q1070101
+  Chinuri:
+    description: variety of grape
+    label: Chinuri
+    note: ok
+    qid: Q31355050
   Ciliegiolo:
     description: Italian grape variety
     label: Ciliegiolo
@@ -852,6 +857,11 @@ grapes:
     label: Goldriesling
     note: ok
     qid: Q883596
+  Goruli Mtsvane:
+    description: grape variety
+    label: Goruli Mtsvane
+    note: ok
+    qid: Q20572365
   Graciano:
     description: Italian grape variety
     label: Graciano
@@ -1007,6 +1017,11 @@ grapes:
     label: Kallmet
     note: ok
     qid: Q141285582
+  Karasakız:
+    description: Italian grape variety
+    label: Karasakız
+    note: ok
+    qid: Q104776584
   Kerner:
     description: Italian grape variety
     label: Kerner
@@ -1407,6 +1422,11 @@ grapes:
     label: Mtsvane
     note: ok
     qid: Q1957003
+  Mujuretuli:
+    description: variety of grape
+    label: Mujuretuli
+    note: ok
+    qid: Q6933361
   Muscadelle:
     description: white wine grape variety
     label: Muscadelle
@@ -1547,6 +1567,11 @@ grapes:
     label: Négrette
     note: ok
     qid: Q464575
+  Obeidi:
+    description: grape variety
+    label: Obeidi
+    note: ok
+    qid: Q62482938
   Ojaleshi:
     description: grape variety
     label: Ojaleshi
@@ -1592,6 +1617,11 @@ grapes:
     label: Pamid
     note: ok
     qid: Q1099124
+  Papazkarası:
+    description: variety of grape
+    label: Papazkarası
+    note: ok
+    qid: Q7132545
   Pardina:
     description: grape variety
     label: Pardina
@@ -2027,6 +2057,11 @@ grapes:
     label: Seyval Blanc
     note: ok
     qid: Q458232
+  Shavkapito:
+    description: Italian grape variety
+    label: shavkapito
+    note: ok
+    qid: Q123989463
   Silvaner:
     description: Italian grape variety
     label: Silvaner
@@ -2042,6 +2077,11 @@ grapes:
     label: Stanušina Crna
     note: inexact label match -- review
     qid: Q7600299
+  Sultaniye:
+    description: type of grape
+    label: sultana
+    note: ok
+    qid: Q1898118
   Sumoll:
     description: grape variety
     label: Sumoll
@@ -2427,6 +2467,11 @@ grapes:
     label: Zéta
     note: ok
     qid: Q8076053
+  Çalkarası:
+    description: variety of grape
+    label: Çalkarası
+    note: ok
+    qid: Q8077453
   Öküzgözü:
     description: a grape variety and a Turkish wine produced from this grape
     label: öküzgözü
@@ -2455,6 +2500,11 @@ regions:
     label: Abadia Retuerta
     note: ok
     qid: Q4663219
+  Abkhazia (GE):
+    description: historical-geographic region in the South Caucasus, now a disputed territory
+    label: Abkhazia
+    note: non-wine class -- review
+    qid: Q23334
   Abona (ES):
     description: Spanish wine area
     label: Abona
@@ -2494,6 +2544,7 @@ regions:
     label: Adelaide Plains wine region
     note: ok
     qid: Q19460106
+  Adjara (GE): null
   Aegean (TR): null
   Aegean Sea (GR): null
   Agenais (FR): null
@@ -2528,6 +2579,12 @@ regions:
     label: Ajaccio AOC
     note: ok
     qid: Q411861
+  Akhasheni (GE):
+    description: ''
+    label: Akhasheni
+    note: ok
+    qid: Q5763543
+  Akhmeta (GE): null
   Alba (IT):
     description: Italian controlled designation of origin wine from Piedmont
     label: Alba DOC
@@ -2870,8 +2927,10 @@ regions:
     label: Asti DOCG
     note: ok
     qid: Q522420
+  Asuretuli Shala (GE): null
   Atacama (CL): null
   Atalanti Valley (GR): null
+  Atenuri (GE): null
   Atina (IT):
     description: Italian controlled designation of origin wine from Lazio
     label: Atina DOC
@@ -2937,6 +2996,7 @@ regions:
   Açores (PT): null
   Añelo (AR): null
   Aÿ (FR): null
+  Baalbek (LB): null
   Bacharach (DE): null
   Bad Dürkheim (DE): null
   Bad Kreuznach (DE): null
@@ -3247,6 +3307,7 @@ regions:
     label: Bizkaiko Txakolina
     note: ok
     qid: Q4919429
+  Black Sea (TR): null
   Blackwood Valley (AU):
     description: wine region in South West Australia
     label: Blackwood Valley
@@ -3291,6 +3352,7 @@ regions:
     label: Bolgheri Sassicaia DOC
     note: ok
     qid: Q1422405
+  Bolnisi (GE): null
   Bonarda dell'Oltrepò Pavese (IT):
     description: Italian controlled designation of origin wine from Lombardy
     label: Bonarda dell'Oltrepò Pavese DOC
@@ -3395,6 +3457,11 @@ regions:
     note: non-wine class -- review
     qid: Q1064043
   Bovlei (ZA): null
+  Bozcaada (TR):
+    description: district capital of the island
+    label: Bozcaada
+    note: non-wine class -- review
+    qid: Q49277292
   Brachetto d'Acqui (IT):
     description: Italian controlled and guaranteed designation of origin wine from Piedmont
     label: Brachetto d'Acqui DOCG
@@ -3857,6 +3924,11 @@ regions:
     label: Cellatica DOC
     note: ok
     qid: Q467344
+  Central Anatolia (TR):
+    description: ''
+    label: Central Anatolia
+    note: non-wine class -- review
+    qid: Q117197489
   Central Coast (US):
     description: winemaking region
     label: Central Coast AVA
@@ -5047,6 +5119,11 @@ regions:
     label: Delia Nivolelli DOC
     note: ok
     qid: Q368172
+  Denizli (TR):
+    description: city in Turkey
+    label: Denizli
+    note: non-wine class -- review
+    qid: Q170967
   Denmark (AU): null
   Dernau (DE): null
   Derwent Valley (AU):
@@ -5076,6 +5153,11 @@ regions:
     label: Dingač
     note: ok
     qid: Q1226362
+  Diyarbakır (TR):
+    description: city in Southeastern Anatolia, Turkey
+    label: Diyarbakır
+    note: non-wine class -- review
+    qid: Q83387
   Dodecanese (GR): null
   Dogliani (IT):
     description: Italian controlled and guaranteed designation of origin wine from Piedmont
@@ -5180,6 +5262,7 @@ regions:
     qid: Q19461467
   East Coast (AU): null
   East Mendoza (AR): null
+  Eastern Anatolia (TR): null
   Eastern Cape (ZA): null
   Eastern Connecticut Highlands (US):
     description: American Viticultural Area in Connecticut
@@ -5242,6 +5325,11 @@ regions:
     qid: Q85758841
   Elandskloof (ZA): null
   Elassona (GR): null
+  Elazığ (TR):
+    description: central district and city in Elazığ Province, Turkey
+    label: Elazığ
+    note: non-wine class -- review
+    qid: Q174060
   Elba (IT):
     description: wine made from grapes grown on the island of Elba
     label: Elba DOC
@@ -5662,6 +5750,11 @@ regions:
     label: Geisenheim
     note: ok
     qid: Q558516
+  Gelibolu (TR):
+    description: district and town in Çanakkale Province, Turkey
+    label: Gelibolu
+    note: non-wine class -- review
+    qid: Q216907
   Genazzano (IT):
     description: Italian controlled designation of origin wine from Lazio
     label: Genazzano DOC
@@ -5865,6 +5958,16 @@ regions:
     label: Gundagai wine region
     note: ok
     qid: Q24521763
+  Guria (GE):
+    description: ''
+    label: Guria
+    note: non-wine class -- review
+    qid: Q16367739
+  Gurjaani (GE):
+    description: Georgian wine
+    label: Gurjaani
+    note: ok
+    qid: Q65290112
   Gutturnio (IT):
     description: Italian controlled designation of origin wine from Emilia-Romagna
     label: Gutturnio DOC
@@ -6098,6 +6201,11 @@ regions:
     qid: Q5053165
   Istria and Kvarner (HR): null
   Itata Valley (CL): null
+  Izmir (TR):
+    description: city in İzmir Province, Turkey
+    label: İzmir
+    note: non-wine class -- review
+    qid: Q35997
   Jahant (US):
     description: American Viticultural Area in San Joaquin County, California
     label: Jahant AVA
@@ -6110,6 +6218,7 @@ regions:
     qid: Q1683850
   Jerez (ES): null
   Jerzu (IT): null
+  Jezzine (LB): null
   Joching (AT): null
   Johannisberg (DE):
     description: municipal district of Geisenheim in Rheingau-Taunus-Kreis, Germany
@@ -6148,6 +6257,7 @@ regions:
     label: Kakheti
     note: non-wine class -- review
     qid: Q16371011
+  Kalecik (TR): null
   Kallstadt (DE): null
   Kamptal (AT): null
   Kanawha River Valley (US):
@@ -6158,6 +6268,7 @@ regions:
   Kangaroo Island (AU): null
   Kanzem (DE): null
   Kanzlerberg (FR): null
+  Kardenakhi (GE): null
   Karditsa (GR): null
   Karoo-Hoogland (ZA): null
   Kartli (GE):
@@ -6188,6 +6299,12 @@ regions:
     note: non-wine class -- review
     qid: Q1603
   Kessler (FR): null
+  Khashmi Saperavi (GE): null
+  Khvanchkara (GE):
+    description: Georgian wine
+    label: Khvanchkara
+    note: ok
+    qid: Q1090166
   Kiedrich (DE): null
   Kindzmarauli (GE):
     description: Georgian wine variety
@@ -6197,6 +6314,7 @@ regions:
   King Valley (AU): null
   Kirchberg de Barr (FR): null
   Kirchberg de Ribeauvillé (FR): null
+  Kisi Magrani (GE): null
   Kissamos (GR): null
   Kitterlé (FR): null
   Kitzeck-Sausal (AT): null
@@ -6217,6 +6335,7 @@ regions:
   Korinthos (GR): null
   Korčula (HR): null
   Kos (GR): null
+  Kotekhi (GE): null
   Kozani (GR): null
   Kraichgau (DE): null
   Krania (GR): null
@@ -6231,10 +6350,20 @@ regions:
     note: ok
     qid: Q1122026
   Kutjevo (HR): null
+  Kvareli (GE):
+    description: wine
+    label: Kvareli
+    note: ok
+    qid: Q65290851
   Kvarner and Croatian Littoral (HR): null
   KwaZulu-Natal (ZA): null
   Kweekvallei (ZA): null
   Königsbach (DE): null
+  Kırklareli (TR):
+    description: central district and city in Kırklareli Province, Turkey
+    label: Kırklareli
+    note: non-wine class -- review
+    qid: Q206903
   L'Étoile (FR): null
   La Clape (FR): null
   La Consulta (AR): null
@@ -6729,6 +6858,11 @@ regions:
     label: Maipú
     note: non-wine class -- review
     qid: Q16918
+  Malatya (TR):
+    description: metropolitan municipality in Eastern Anatolia, Turkey
+    label: Malatya
+    note: non-wine class -- review
+    qid: Q165995
   Maldonado (UY): null
   Malepère (FR):
     description: French wine region
@@ -6770,6 +6904,7 @@ regions:
     qid: Q454914
   Mambourg (FR): null
   Mamertino di Milazzo (IT): null
+  Manavi (GE): null
   Manchuela (ES):
     description: is a Spanish Denominación de Origen Protegida (DOP) for wines located in the historical
       Manchuela comarca, in the east of the provinces of Albacete and Cuenca (Castile-La Mancha, Spain)
@@ -6787,6 +6922,11 @@ regions:
     label: Mandrolisai DOC
     note: ok
     qid: Q139919559
+  Manisa (TR):
+    description: city in Turkey
+    label: Manisa
+    note: non-wine class -- review
+    qid: Q147089
   Manjimup (AU):
     description: wine region in Western Australia
     label: Manjimup
@@ -6864,6 +7004,7 @@ regions:
     label: Marlborough wine region
     note: ok
     qid: Q85783963
+  Marmara (TR): null
   Marmilla (IT):
     description: Italian typical geographical indication wine from Sardinia
     label: Marmilla IGT
@@ -6956,6 +7097,7 @@ regions:
     label: McMinnville AVA
     note: ok
     qid: Q925840
+  Mediterranean (TR): null
   Meißen (DE): null
   Meknès (MA):
     description: city in Morocco
@@ -7018,6 +7160,11 @@ regions:
     label: Mesilla Valley AVA
     note: ok
     qid: Q6821327
+  Meskheti (GE):
+    description: geographic region
+    label: Meskheti
+    note: non-wine class -- review
+    qid: Q1195815
   Messenikola (GR): null
   Messinia (GR): null
   Metaxata (GR): null
@@ -7474,6 +7621,7 @@ regions:
     note: ok
     qid: Q3170850
   Mór (HU): null
+  Mürefte (TR): null
   Naches Heights (US):
     description: viticultural area in Yakima County, Washington, USA
     label: Naches Heights AVA
@@ -7504,6 +7652,11 @@ regions:
     label: Napa Valley AVA
     note: ok
     qid: Q1151105
+  Napareuli (GE):
+    description: wine from Georgia (Caucasus)
+    label: Napareuli
+    note: ok
+    qid: Q134587482
   Napier (ZA): null
   Nardò (IT):
     description: type of the Nardò Italian controlled designation of origin
@@ -7757,6 +7910,7 @@ regions:
     label: Oiry
     note: non-wine class -- review
     qid: Q950485
+  Okami (GE): null
   Okanagan Valley (CA):
     description: wine-producing area in British Columbia, Canada
     label: Okanagan Valley
@@ -7767,6 +7921,7 @@ regions:
     label: Oklahoma
     note: non-wine class -- review
     qid: Q1649
+  Okureshis Usakhelouri (GE): null
   Old Mission Peninsula (US):
     description: American Viticultural Area in Michigan
     label: Old Mission Peninsula AVA
@@ -8928,12 +9083,18 @@ regions:
     label: Salina IGT
     note: ok
     qid: Q139899861
+  Salkhino Ojaleshi (GE): null
   Salta (AR): null
   Sambuca di Sicilia (IT):
     description: Italian controlled designation of origin wine from Sicily
     label: Sambuca di Sicilia DOC
     note: ok
     qid: Q3946446
+  Samegrelo (GE):
+    description: historic province in the western part of Georgia
+    label: Samegrelo
+    note: non-wine class -- review
+    qid: Q19084
   Samos (GR): null
   San Antonio Valley (CL): null
   San Antonio Valley (US):
@@ -9626,6 +9787,7 @@ regions:
     label: Suvereto DOCG
     note: ok
     qid: Q131587712
+  Sviri (GE): null
   Swan Creek (US):
     description: American wine region
     label: Swan Creek AVA
@@ -9713,6 +9875,16 @@ regions:
     note: ok
     qid: Q133891330
   Tejo (PT): null
+  Tekirdağ (TR):
+    description: electoral district
+    label: Tekirdağ
+    note: non-wine class -- review
+    qid: Q1966785
+  Teliani (GE):
+    description: Georgian wine
+    label: Teliani
+    note: ok
+    qid: Q1371502
   Temecula Valley (US):
     description: American Viticultural Area
     label: Temecula Valley AVA
@@ -9903,6 +10075,7 @@ regions:
   Thunersee (CH): null
   Thurgau (CH): null
   Thüringen (DE): null
+  Tibaani (GE): null
   Ticino (CH):
     description: wine region of Switzerland
     label: Ticino Wine Region
@@ -9939,6 +10112,11 @@ regions:
     label: Tokaj wine region
     note: ok
     qid: Q828125
+  Tokat (TR):
+    description: central district and city in Tokat Province, Turkey
+    label: Tokat
+    note: non-wine class -- review
+    qid: Q183651
   Tolcsva (HU): null
   Tolna (HU):
     description: ''
@@ -10042,6 +10220,7 @@ regions:
     note: ok
     qid: Q137271572
   Trás-os-Montes (PT): null
+  Tsarapi (GE): null
   Tsinandali (GE):
     description: white wine from Georgia
     label: Tsinandali wine
@@ -10074,6 +10253,11 @@ regions:
     note: non-wine class -- review
     qid: Q1273
   Tutuvén Valley (CL): null
+  Tvishi (GE):
+    description: Georgian wine
+    label: Tvishi
+    note: ok
+    qid: Q25205317
   Tyrnavos (GR): null
   Tállya (HU): null
   Távora-Varosa (PT): null
@@ -10137,6 +10321,11 @@ regions:
   Urbezo (ES): null
   Urgell (ES): null
   Uri (CH): null
+  Urla (TR):
+    description: town and district in İzmir Province, Turkey
+    label: Urla
+    note: non-wine class -- review
+    qid: Q996670
   Urueña (ES): null
   Utiel-Requena (ES):
     description: Spanish Denominación de Origen Protegida (DOP) for wines located in the province of Valencia
@@ -10365,6 +10554,11 @@ regions:
   Vaucluse (FR): null
   Vaud (CH): null
   Vayots Dzor (AM): null
+  Vazisubani (GE):
+    description: Georgian wine
+    label: Vazisubani
+    note: ok
+    qid: Q25205273
   Veles (MK): null
   Velletri (IT):
     description: Italian controlled designation of origin wine from Lazio
@@ -10686,6 +10880,7 @@ regions:
     label: West Australian South East Coastal
     note: ok
     qid: Q73367402
+  West Bekaa (LB): null
   West Elks (US):
     description: Colorado wine region in Delta County
     label: West Elks AVA
@@ -10849,6 +11044,11 @@ regions:
     note: ok
     qid: Q4023640
   Zagorje-Međimurje (HR): null
+  Zahlé (LB):
+    description: capital and largest city of Beqaa Governorate, Lebanon
+    label: Zahlé
+    note: non-wine class -- review
+    qid: Q26569
   Zakynthos (GR): null
   Zala (HU): null
   Zandrivier (ZA): null
@@ -10857,6 +11057,7 @@ regions:
     label: Zapallar
     note: non-wine class -- review
     qid: Q23660193
+  Zegaani (GE): null
   Zeltingen-Rachtig (DE): null
   Zemplén (HU): null
   Zinnkoepflé (FR): null
@@ -10871,6 +11072,7 @@ regions:
     label: Delle Venezie DOC
     note: ok
     qid: Q118819069
+  Çeşme (TR): null
   Échezeaux (FR):
     description: winery
     label: Échezeaux
@@ -10886,6 +11088,11 @@ regions:
   Óbidos (PT): null
   Ürzig (DE): null
   Čitluk (BA): null
+  Şarköy (TR):
+    description: district and town in Tekirdağ, Turkey
+    label: Şarköy
+    note: non-wine class -- review
+    qid: Q388544
   Štajerska Slovenija (SI): null
   Ștefan Vodă (MD):
     description: commune in Călărași County, Romania

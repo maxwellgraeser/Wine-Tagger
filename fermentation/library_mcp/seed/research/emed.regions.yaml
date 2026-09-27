@@ -1,0 +1,82 @@
+# Georgia (GE) — top-level regions
+- {name: "Kakheti", country: GE, synonyms: ["Kakhetia"], source: "https://en.wikipedia.org/wiki/Georgian_wine"}
+- {name: "Kartli", country: GE, source: "https://en.wikipedia.org/wiki/Georgian_wine"}
+- {name: "Imereti", country: GE, source: "https://en.wikipedia.org/wiki/Georgian_wine"}
+- {name: "Racha", country: GE, synonyms: ["Racha-Lechkhumi and Kvemo Svaneti", "Racha-Lechkhumi"], source: "https://en.wikipedia.org/wiki/Georgian_wine"}
+- {name: "Guria", country: GE, source: "https://en.wikipedia.org/wiki/Georgian_wine"}
+- {name: "Samegrelo", country: GE, synonyms: ["Samegrelo-Zemo Svaneti"], source: "https://en.wikipedia.org/wiki/Georgian_wine"}
+- {name: "Adjara", country: GE, synonyms: ["Ajara"], source: "https://en.wikipedia.org/wiki/Georgian_wine"}
+- {name: "Meskheti", country: GE, synonyms: ["Samtskhe-Javakheti"], source: "https://en.wikipedia.org/wiki/Georgian_wine"}
+- {name: "Abkhazia", country: GE, source: "https://en.wikipedia.org/wiki/Georgian_wine"}
+# Georgia — Kakheti PDO appellations (National Wine Agency register)
+- {name: "Akhasheni", country: GE, parent: "Kakheti", classification: PDO, synonyms: [], grapes: ["Saperavi"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Akhmeta", country: GE, parent: "Kakheti", classification: PDO, synonyms: [], grapes: ["Mtsvane"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Gurjaani", country: GE, parent: "Kakheti", classification: PDO, synonyms: [], grapes: ["Rkatsiteli", "Mtsvane"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Kardenakhi", country: GE, parent: "Kakheti", classification: PDO, synonyms: [], grapes: ["Rkatsiteli", "Khikhvi", "Mtsvane"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Khashmi Saperavi", country: GE, parent: "Kakheti", classification: PDO, synonyms: [], grapes: ["Saperavi"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Kindzmarauli", country: GE, parent: "Kakheti", classification: PDO, synonyms: [], grapes: ["Saperavi"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Kisi Magrani", country: GE, parent: "Kakheti", classification: PDO, synonyms: [], grapes: ["Kisi"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Kotekhi", country: GE, parent: "Kakheti", classification: PDO, synonyms: [], grapes: ["Rkatsiteli", "Saperavi"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Kvareli", country: GE, parent: "Kakheti", classification: PDO, synonyms: [], grapes: ["Saperavi"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Manavi", country: GE, parent: "Kakheti", classification: PDO, synonyms: [], grapes: ["Mtsvane"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Mukuzani", country: GE, parent: "Kakheti", classification: PDO, synonyms: [], grapes: ["Saperavi"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Napareuli", country: GE, parent: "Kakheti", classification: PDO, synonyms: [], grapes: ["Rkatsiteli", "Saperavi"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Teliani", country: GE, parent: "Kakheti", classification: PDO, synonyms: [], grapes: ["Cabernet Sauvignon"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Tibaani", country: GE, parent: "Kakheti", classification: PDO, synonyms: [], grapes: ["Rkatsiteli"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Tsarapi", country: GE, parent: "Kakheti", classification: PDO, synonyms: [], grapes: ["Rkatsiteli"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Tsinandali", country: GE, parent: "Kakheti", classification: PDO, synonyms: [], grapes: ["Rkatsiteli", "Mtsvane"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Vazisubani", country: GE, parent: "Kakheti", classification: PDO, synonyms: [], grapes: ["Rkatsiteli", "Mtsvane"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Zegaani", country: GE, parent: "Kakheti", classification: PDO, synonyms: [], grapes: ["Saperavi"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+# Georgia — Racha-Lechkhumi and Kvemo Svaneti PDO appellations
+- {name: "Khvanchkara", country: GE, parent: "Racha", classification: PDO, synonyms: [], grapes: ["Aleksandrouli", "Mujuretuli"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Tvishi", country: GE, parent: "Racha", classification: PDO, synonyms: [], grapes: ["Tsolikouri"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Okureshis Usakhelouri", country: GE, parent: "Racha", classification: PDO, synonyms: ["Okureshi"], grapes: ["Usakhelouri"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+# Georgia — Kartli PDO appellations
+- {name: "Atenuri", country: GE, parent: "Kartli", classification: PDO, synonyms: ["Ateni"], grapes: ["Chinuri", "Goruli Mtsvane"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Bolnisi", country: GE, parent: "Kartli", classification: PDO, synonyms: [], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Okami", country: GE, parent: "Kartli", classification: PDO, synonyms: [], grapes: ["Shavkapito", "Chinuri", "Goruli Mtsvane"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Asuretuli Shala", country: GE, parent: "Kartli", classification: PDO, synonyms: [], grapes: ["Asuretuli Shavi", "Takveri", "Shavkapito"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+# Georgia — Imereti and Samegrelo PDO appellations
+- {name: "Sviri", country: GE, parent: "Imereti", classification: PDO, synonyms: [], grapes: ["Tsolikouri", "Tsitska", "Krakhuna"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Salkhino Ojaleshi", country: GE, parent: "Samegrelo", classification: PDO, synonyms: ["Salkhino"], grapes: ["Ojaleshi"], source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+# Turkey (TR) — top-level regions labels use. No legal GI covers a broad
+# appellation area in Turkey (TÜRKPATENT register only has isolated
+# product-specific GIs, e.g. Bozcaada Çavuş grape, Avşa Adakarası wine);
+# all TR entries below are informal (no classification).
+- {name: "Thrace", country: TR, synonyms: ["Turkish Thrace"], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Marmara", country: TR, synonyms: [], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Aegean", country: TR, synonyms: ["Aegean Turkey"], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Central Anatolia", country: TR, synonyms: [], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Eastern Anatolia", country: TR, synonyms: [], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Mediterranean", country: TR, synonyms: ["Turkish Mediterranean", "Mediterranean Turkey"], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Black Sea", country: TR, synonyms: ["Black Sea Turkey"], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+# Turkey — Thrace/Marmara sub-areas on export labels
+- {name: "Şarköy", country: TR, parent: "Thrace", synonyms: ["Sarkoy"], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Mürefte", country: TR, parent: "Thrace", synonyms: ["Murefte"], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Gelibolu", country: TR, parent: "Thrace", synonyms: ["Gallipoli"], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Kırklareli", country: TR, parent: "Thrace", synonyms: ["Kirklareli"], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Tekirdağ", country: TR, parent: "Thrace", synonyms: ["Tekirdag"], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Bozcaada", country: TR, parent: "Marmara", synonyms: ["Tenedos"], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+# Turkey — Aegean sub-areas
+- {name: "Denizli", country: TR, parent: "Aegean", synonyms: [], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Manisa", country: TR, parent: "Aegean", synonyms: [], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Izmir", country: TR, parent: "Aegean", synonyms: [], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Urla", country: TR, parent: "Izmir", synonyms: [], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Çeşme", country: TR, parent: "Izmir", synonyms: ["Cesme"], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+# Turkey — Central Anatolia sub-areas
+- {name: "Cappadocia", country: TR, parent: "Central Anatolia", synonyms: ["Kapadokya"], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Kalecik", country: TR, parent: "Central Anatolia", synonyms: [], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+# Turkey — Eastern Anatolia sub-areas
+- {name: "Elazığ", country: TR, parent: "Eastern Anatolia", synonyms: ["Elazig"], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Diyarbakır", country: TR, parent: "Eastern Anatolia", synonyms: ["Diyarbakir"], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Malatya", country: TR, parent: "Eastern Anatolia", synonyms: [], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+# Turkey — Black Sea sub-areas
+- {name: "Tokat", country: TR, parent: "Black Sea", synonyms: [], source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+# Lebanon (LB) — no formal appellation register; areas as the trade uses them.
+- {name: "Bekaa Valley", country: LB, synonyms: ["Bekaa", "Beqaa Valley", "Beqaa", "Béqaa"], source: "https://en.wikipedia.org/wiki/Lebanese_wine"}
+- {name: "West Bekaa", country: LB, parent: "Bekaa Valley", synonyms: [], source: "https://en.wikipedia.org/wiki/Lebanese_wine"}
+- {name: "Zahlé", country: LB, parent: "Bekaa Valley", synonyms: ["Zahle"], source: "https://en.wikipedia.org/wiki/Lebanese_wine"}
+- {name: "Baalbek", country: LB, parent: "Bekaa Valley", synonyms: [], source: "https://en.wikipedia.org/wiki/Lebanese_wine"}
+- {name: "Mount Lebanon", country: LB, synonyms: [], source: "https://en.wikipedia.org/wiki/Lebanese_wine"}
+- {name: "Batroun", country: LB, synonyms: [], source: "https://en.wikipedia.org/wiki/Lebanese_wine"}
+- {name: "Jezzine", country: LB, synonyms: [], source: "https://en.wikipedia.org/wiki/Lebanese_wine"}

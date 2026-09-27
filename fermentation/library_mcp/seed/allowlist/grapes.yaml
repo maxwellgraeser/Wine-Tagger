@@ -70,7 +70,7 @@
 - {name: "Pinot Blanc", color: white, synonyms: ["Pinot Bianco", "Weissburgunder", "Weißburgunder", "Weisser Burgunder", "Weißer Burgunder"]}
 - {name: "Auxerrois Blanc", color: white, synonyms: ["Auxerrois", "Pinot Auxerrois"]}
 - {name: "Silvaner", color: white, synonyms: ["Sylvaner", "Grüner Silvaner"]}
-- {name: "Muscat Blanc à Petits Grains", color: white, synonyms: ["Muscat", "Moscato", "Moscato Bianco", "Muscat Canelli", "Muscat Blanc", "Moscatel Galego", "Gelber Muskateller", "Muskateller", "Tamjanika", "Muscat de Frontignan", "Moscato d'Asti (grape)", "Muscadel", "Muskadel", "Red Muscadel", "White Muscadel", "Moscatel de Grano Menudo", "Moscadello", "Moschato Aspro", "Brown Muscat", "Temjanika", "Sárgamuskotály"]}
+- {name: "Muscat Blanc à Petits Grains", color: white, synonyms: ["Muscat", "Moscato", "Moscato Bianco", "Muscat Canelli", "Muscat Blanc", "Moscatel Galego", "Gelber Muskateller", "Muskateller", "Tamjanika", "Muscat de Frontignan", "Moscato d'Asti (grape)", "Muscadel", "Muskadel", "Red Muscadel", "White Muscadel", "Moscatel de Grano Menudo", "Moscadello", "Moschato Aspro", "Brown Muscat", "Temjanika", "Sárgamuskotály", "Bornova Misketi"]}
 - {name: "Muscat of Alexandria", color: white, synonyms: ["Moscatel", "Zibibbo", "Moscatel de Alejandría", "Muscat Gordo Blanco", "Gordo", "Hanepoot", "Moscatel de Setúbal (grape)", "Muscat d'Alexandrie"]}
 - {name: "Muscat Ottonel", color: white}
 - {name: "Aligoté", color: white, synonyms: ["Aligote"]}
@@ -580,3 +580,14 @@
 - {name: "Completer", color: white}
 - {name: "Diolinoir", color: red}
 - {name: "Divico", color: red}
+
+# ---------------- research: emed ----------------
+- {name: "Mujuretuli", color: red}
+- {name: "Goruli Mtsvane", color: white}
+- {name: "Chinuri", color: white}
+- {name: "Shavkapito", color: red}
+- {name: "Sultaniye", color: white, synonyms: ["Sultana"]}
+- {name: "Çalkarası", color: red, synonyms: ["Calkarasi"]}
+- {name: "Papazkarası", color: red, synonyms: ["Papaskarasi", "Papazkarasi"]}
+- {name: "Karasakız", color: red, synonyms: ["Karasakiz"]}
+- {name: "Obeidi", color: white, synonyms: ["Obeideh"]}

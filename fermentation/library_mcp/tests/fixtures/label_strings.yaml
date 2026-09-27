@@ -668,3 +668,30 @@ CH:
     "Rouge du Pays": "Cornalin"
     "Cornalin d'Aoste": "Humagne Rouge"
     "Arvine": "Petite Arvine"
+
+GE:
+  regions:
+    "Kakhetia": "Kakheti"
+    "Racha-Lechkhumi": "Racha"
+  grapes:
+    "Mtsvane Kakhuri": "Mtsvane"
+
+TR:
+  regions:
+    "Turkish Thrace": "Thrace"
+    "Kapadokya": "Cappadocia"
+    "Tenedos": "Bozcaada"
+    "Elazig": "Elazığ"
+  grapes:
+    "Okuzgozu": "Öküzgözü"
+    "Bogazkere": "Boğazkere"
+    "Kalecik Karasi": "Kalecik Karası"
+    "Papazkarasi": "Papazkarası"
+    "Bornova Misketi": "Muscat Blanc à Petits Grains"
+
+LB:
+  regions:
+    "Beqaa Valley": "Bekaa Valley"
+    "Zahle": "Zahlé"
+  grapes:
+    "Obeideh": "Obeidi"

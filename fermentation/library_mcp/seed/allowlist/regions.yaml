@@ -1953,19 +1953,73 @@
 
 # ======================= CAUCASUS / TURKEY / LEVANT =======================
 - {name: "Kakheti", country: GE, synonyms: ["Kakhetia"]}
-- {name: "Tsinandali", country: GE, parent: "Kakheti"}
-- {name: "Kindzmarauli", country: GE, parent: "Kakheti"}
-- {name: "Mukuzani", country: GE, parent: "Kakheti"}
 - {name: "Kartli", country: GE}
 - {name: "Imereti", country: GE}
-- {name: "Racha", country: GE, synonyms: ["Racha-Lechkhumi", "Khvanchkara"]}
+- {name: "Racha", country: GE, synonyms: ["Racha-Lechkhumi and Kvemo Svaneti", "Racha-Lechkhumi"]}
+- {name: "Guria", country: GE}
+- {name: "Samegrelo", country: GE, synonyms: ["Samegrelo-Zemo Svaneti"]}
+- {name: "Adjara", country: GE, synonyms: ["Ajara"]}
+- {name: "Meskheti", country: GE, synonyms: ["Samtskhe-Javakheti"]}
+- {name: "Abkhazia", country: GE}
+- {name: "Akhasheni", country: GE, parent: "Kakheti", classification: PDO, grapes: ["Saperavi"]}
+- {name: "Akhmeta", country: GE, parent: "Kakheti", classification: PDO, grapes: ["Mtsvane"]}
+- {name: "Gurjaani", country: GE, parent: "Kakheti", classification: PDO, grapes: ["Rkatsiteli", "Mtsvane"]}
+- {name: "Kardenakhi", country: GE, parent: "Kakheti", classification: PDO, grapes: ["Rkatsiteli", "Khikhvi", "Mtsvane"]}
+- {name: "Khashmi Saperavi", country: GE, parent: "Kakheti", classification: PDO, grapes: ["Saperavi"]}
+- {name: "Kindzmarauli", country: GE, parent: "Kakheti", classification: PDO, grapes: ["Saperavi"]}
+- {name: "Kisi Magrani", country: GE, parent: "Kakheti", classification: PDO, grapes: ["Kisi"]}
+- {name: "Kotekhi", country: GE, parent: "Kakheti", classification: PDO, grapes: ["Rkatsiteli", "Saperavi"]}
+- {name: "Kvareli", country: GE, parent: "Kakheti", classification: PDO, grapes: ["Saperavi"]}
+- {name: "Manavi", country: GE, parent: "Kakheti", classification: PDO, grapes: ["Mtsvane"]}
+- {name: "Mukuzani", country: GE, parent: "Kakheti", classification: PDO, grapes: ["Saperavi"]}
+- {name: "Napareuli", country: GE, parent: "Kakheti", classification: PDO, grapes: ["Rkatsiteli", "Saperavi"]}
+- {name: "Teliani", country: GE, parent: "Kakheti", classification: PDO, grapes: ["Cabernet Sauvignon"]}
+- {name: "Tibaani", country: GE, parent: "Kakheti", classification: PDO, grapes: ["Rkatsiteli"]}
+- {name: "Tsarapi", country: GE, parent: "Kakheti", classification: PDO, grapes: ["Rkatsiteli"]}
+- {name: "Tsinandali", country: GE, parent: "Kakheti", classification: PDO, grapes: ["Rkatsiteli", "Mtsvane"]}
+- {name: "Vazisubani", country: GE, parent: "Kakheti", classification: PDO, grapes: ["Rkatsiteli", "Mtsvane"]}
+- {name: "Zegaani", country: GE, parent: "Kakheti", classification: PDO, grapes: ["Saperavi"]}
+- {name: "Khvanchkara", country: GE, parent: "Racha", classification: PDO, grapes: ["Aleksandrouli", "Mujuretuli"]}
+- {name: "Tvishi", country: GE, parent: "Racha", classification: PDO, grapes: ["Tsolikouri"]}
+- {name: "Okureshis Usakhelouri", country: GE, parent: "Racha", classification: PDO, synonyms: ["Okureshi"]}
+- {name: "Atenuri", country: GE, parent: "Kartli", classification: PDO, synonyms: ["Ateni"], grapes: ["Chinuri", "Goruli Mtsvane"]}
+- {name: "Bolnisi", country: GE, parent: "Kartli", classification: PDO}
+- {name: "Okami", country: GE, parent: "Kartli", classification: PDO, grapes: ["Shavkapito", "Chinuri", "Goruli Mtsvane"]}
+- {name: "Asuretuli Shala", country: GE, parent: "Kartli", classification: PDO, grapes: ["Shavkapito"]}
+- {name: "Sviri", country: GE, parent: "Imereti", classification: PDO, grapes: ["Tsolikouri"]}
+- {name: "Salkhino Ojaleshi", country: GE, parent: "Samegrelo", classification: PDO, synonyms: ["Salkhino"], grapes: ["Ojaleshi"]}
 - {name: "Vayots Dzor", country: AM, synonyms: ["Areni (region)"]}
-- {name: "Thrace", country: TR, synonyms: ["Turkish Thrace", "Marmara"]}
+- {name: "Thrace", country: TR, synonyms: ["Turkish Thrace"]}
+- {name: "Marmara", country: TR}
 - {name: "Aegean", country: TR, synonyms: ["Aegean Turkey"]}
-- {name: "Cappadocia", country: TR, synonyms: ["Kapadokya"]}
+- {name: "Central Anatolia", country: TR}
+- {name: "Eastern Anatolia", country: TR}
+- {name: "Mediterranean", country: TR, synonyms: ["Turkish Mediterranean", "Mediterranean Turkey"]}
+- {name: "Black Sea", country: TR, synonyms: ["Black Sea Turkey"]}
+- {name: "Şarköy", country: TR, parent: "Thrace", synonyms: ["Sarkoy"]}
+- {name: "Mürefte", country: TR, parent: "Thrace", synonyms: ["Murefte"]}
+- {name: "Gelibolu", country: TR, parent: "Thrace", synonyms: ["Gallipoli"]}
+- {name: "Kırklareli", country: TR, parent: "Thrace", synonyms: ["Kirklareli"]}
+- {name: "Tekirdağ", country: TR, parent: "Thrace", synonyms: ["Tekirdag"]}
+- {name: "Bozcaada", country: TR, parent: "Marmara", synonyms: ["Tenedos"]}
+- {name: "Denizli", country: TR, parent: "Aegean"}
+- {name: "Manisa", country: TR, parent: "Aegean"}
+- {name: "Izmir", country: TR, parent: "Aegean"}
+- {name: "Urla", country: TR, parent: "Izmir"}
+- {name: "Çeşme", country: TR, parent: "Izmir", synonyms: ["Cesme"]}
+- {name: "Cappadocia", country: TR, parent: "Central Anatolia", synonyms: ["Kapadokya"]}
+- {name: "Kalecik", country: TR, parent: "Central Anatolia"}
+- {name: "Elazığ", country: TR, parent: "Eastern Anatolia", synonyms: ["Elazig"]}
+- {name: "Diyarbakır", country: TR, parent: "Eastern Anatolia", synonyms: ["Diyarbakir"]}
+- {name: "Malatya", country: TR, parent: "Eastern Anatolia"}
+- {name: "Tokat", country: TR, parent: "Black Sea"}
 - {name: "Bekaa Valley", country: LB, synonyms: ["Bekaa", "Beqaa Valley", "Beqaa", "Béqaa"]}
+- {name: "West Bekaa", country: LB, parent: "Bekaa Valley"}
+- {name: "Zahlé", country: LB, parent: "Bekaa Valley", synonyms: ["Zahle"]}
+- {name: "Baalbek", country: LB, parent: "Bekaa Valley"}
 - {name: "Mount Lebanon", country: LB}
 - {name: "Batroun", country: LB}
+- {name: "Jezzine", country: LB}
 - {name: "Galilee", country: IL, synonyms: ["Galil", "Upper Galilee"]}
 - {name: "Golan Heights", country: IL, synonyms: ["Golan"]}
 - {name: "Judean Hills", country: IL, synonyms: ["Judea", "Judean Foothills"]}
