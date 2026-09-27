@@ -560,115 +560,589 @@
 - {name: "Corrèze", country: FR, parent: "South West France", classification: AOC, synonyms: ["Correze"], grapes: ["Merlot", "Cabernet Franc", "Cabernet Sauvignon", "Chardonnay", "Sauvignon Blanc"]}
 
 # ======================= ITALY =======================
-- {name: "Piedmont", country: IT, synonyms: ["Piemonte", "Piemonte DOC"]}
-- {name: "Langhe", country: IT, parent: "Piedmont", classification: DOC, synonyms: ["Langhe DOC", "Langhe Nebbiolo"]}
-- {name: "Barolo", country: IT, parent: "Langhe", classification: DOCG, synonyms: ["Barolo DOCG"]}
-- {name: "Barbaresco", country: IT, parent: "Langhe", classification: DOCG, synonyms: ["Barbaresco DOCG"]}
-- {name: "Roero", country: IT, parent: "Piedmont", classification: DOCG, synonyms: ["Roero Arneis"]}
-- {name: "Barbera d'Asti", country: IT, parent: "Piedmont", classification: DOCG, synonyms: ["Barbera d'Asti DOCG", "Nizza"]}
-- {name: "Barbera d'Alba", country: IT, parent: "Langhe", classification: DOC}
-- {name: "Dolcetto d'Alba", country: IT, parent: "Langhe", classification: DOC}
-- {name: "Dogliani", country: IT, parent: "Langhe", classification: DOCG, synonyms: ["Dolcetto di Dogliani"]}
-- {name: "Nebbiolo d'Alba", country: IT, parent: "Langhe", classification: DOC}
-- {name: "Asti", country: IT, parent: "Piedmont", classification: DOCG, synonyms: ["Asti Spumante", "Moscato d'Asti"]}
-- {name: "Gavi", country: IT, parent: "Piedmont", classification: DOCG, synonyms: ["Cortese di Gavi", "Gavi di Gavi", "Gavi DOCG"]}
-- {name: "Gattinara", country: IT, parent: "Piedmont", classification: DOCG}
-- {name: "Ghemme", country: IT, parent: "Piedmont", classification: DOCG}
+- {name: "Valle d'Aosta", country: IT, classification: DOC, synonyms: ["Aosta Valley", "Vallée d'Aoste"]}
+- {name: "Donnas", country: IT, parent: "Valle d'Aosta", classification: DOC, synonyms: ["Donnaz"], grapes: ["Nebbiolo"]}
+- {name: "Arnad-Montjovet", country: IT, parent: "Valle d'Aosta", classification: DOC, grapes: ["Nebbiolo"]}
+- {name: "Torrette", country: IT, parent: "Valle d'Aosta", classification: DOC, grapes: ["Petit Rouge"]}
+- {name: "Enfer d'Arvier", country: IT, parent: "Valle d'Aosta", classification: DOC, grapes: ["Petit Rouge"]}
+- {name: "Chambave", country: IT, parent: "Valle d'Aosta", classification: DOC, grapes: ["Petit Rouge", "Muscat Blanc à Petits Grains"]}
+- {name: "Nus", country: IT, parent: "Valle d'Aosta", classification: DOC, grapes: ["Petit Rouge", "Vien de Nus", "Pinot Gris"]}
+- {name: "Blanc de Morgex et de la Salle", country: IT, parent: "Valle d'Aosta", classification: DOC, grapes: ["Prié Blanc"]}
+- {name: "Liguria", country: IT}
+- {name: "Cinque Terre", country: IT, parent: "Liguria", classification: DOC, synonyms: ["Cinque Terre Sciacchetrà"], grapes: ["Bosco", "Albarola", "Vermentino"]}
+- {name: "Riviera Ligure di Ponente", country: IT, parent: "Liguria", classification: DOC}
+- {name: "Colli di Luni", country: IT, parent: "Liguria", classification: DOC, grapes: ["Vermentino", "Sangiovese"]}
+- {name: "Colline di Levanto", country: IT, parent: "Liguria", classification: DOC}
+- {name: "Golfo del Tigullio-Portofino", country: IT, parent: "Liguria", classification: DOC, synonyms: ["Golfo del Tigullio", "Portofino"]}
+- {name: "Pornassio", country: IT, parent: "Liguria", classification: DOC, synonyms: ["Ormeasco di Pornassio"], grapes: ["Dolcetto"]}
+- {name: "Rossese di Dolceacqua", country: IT, parent: "Liguria", classification: DOC, synonyms: ["Dolceacqua"], grapes: ["Rossese"]}
+- {name: "Val Polcevera", country: IT, parent: "Liguria", classification: DOC}
+- {name: "Colline del Genovesato", country: IT, parent: "Liguria", classification: IGT}
+- {name: "Colline Savonesi", country: IT, parent: "Liguria", classification: IGT}
+- {name: "Liguria di Levante", country: IT, parent: "Liguria", classification: IGT, synonyms: ["Golfo dei Poeti", "Golfo dei Poeti La Spezia"]}
+- {name: "Terrazze dell'Imperiese", country: IT, parent: "Liguria", classification: IGT}
+- {name: "Piedmont", country: IT, synonyms: ["Piemonte"]}
+- {name: "Langhe", country: IT, parent: "Piedmont", classification: DOC, synonyms: ["Langhe Nebbiolo"]}
+- {name: "Alba", country: IT, parent: "Langhe", classification: DOC, grapes: ["Nebbiolo"]}
+- {name: "Barolo", country: IT, parent: "Langhe", classification: DOCG, grapes: ["Nebbiolo"]}
+- {name: "Barbaresco", country: IT, parent: "Langhe", classification: DOCG, grapes: ["Nebbiolo"]}
+- {name: "Roero", country: IT, parent: "Piedmont", classification: DOCG, synonyms: ["Roero Arneis"], grapes: ["Nebbiolo", "Arneis"]}
+- {name: "Barbera d'Asti", country: IT, parent: "Piedmont", classification: DOCG, grapes: ["Barbera"]}
+- {name: "Nizza", country: IT, parent: "Barbera d'Asti", classification: DOCG, grapes: ["Barbera"]}
+- {name: "Barbera d'Alba", country: IT, parent: "Langhe", classification: DOC, grapes: ["Barbera"]}
+- {name: "Barbera del Monferrato", country: IT, parent: "Monferrato", classification: DOC, grapes: ["Barbera"]}
+- {name: "Barbera del Monferrato Superiore", country: IT, parent: "Barbera del Monferrato", classification: DOCG, grapes: ["Barbera"]}
+- {name: "Dolcetto d'Alba", country: IT, parent: "Langhe", classification: DOC, grapes: ["Dolcetto"]}
+- {name: "Dolcetto d'Acqui", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Dolcetto"]}
+- {name: "Dolcetto d'Asti", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Dolcetto"]}
+- {name: "Dolcetto di Ovada", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Dolcetto"]}
+- {name: "Dolcetto di Ovada Superiore", country: IT, parent: "Dolcetto di Ovada", classification: DOCG, synonyms: ["Ovada"], grapes: ["Dolcetto"]}
+- {name: "Dogliani", country: IT, parent: "Piedmont", classification: DOCG, synonyms: ["Dolcetto di Dogliani"], grapes: ["Dolcetto"]}
+- {name: "Dolcetto di Diano d'Alba", country: IT, parent: "Langhe", classification: DOCG, synonyms: ["Diano d'Alba"], grapes: ["Dolcetto"]}
+- {name: "Nebbiolo d'Alba", country: IT, parent: "Langhe", classification: DOC, grapes: ["Nebbiolo"]}
+- {name: "Asti", country: IT, parent: "Piedmont", classification: DOCG, synonyms: ["Asti Spumante", "Moscato d'Asti"], grapes: ["Moscato Bianco"]}
+- {name: "Canelli", country: IT, parent: "Asti", classification: DOCG, synonyms: ["Moscato di Canelli"], grapes: ["Moscato Bianco"]}
+- {name: "Loazzolo", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Moscato Bianco"]}
+- {name: "Strevi", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Moscato Bianco"]}
+- {name: "Calosso", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Gamba Rossa"]}
+- {name: "Gavi", country: IT, parent: "Piedmont", classification: DOCG, synonyms: ["Cortese di Gavi", "Gavi di Gavi"], grapes: ["Cortese"]}
+- {name: "Cortese dell'Alto Monferrato", country: IT, parent: "Monferrato", classification: DOC, grapes: ["Cortese"]}
+- {name: "Gattinara", country: IT, parent: "Piedmont", classification: DOCG, grapes: ["Nebbiolo"]}
+- {name: "Ghemme", country: IT, parent: "Piedmont", classification: DOCG, grapes: ["Nebbiolo"]}
+- {name: "Boca", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Nebbiolo"]}
+- {name: "Bramaterra", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Nebbiolo"]}
+- {name: "Fara", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Nebbiolo"]}
+- {name: "Lessona", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Nebbiolo"]}
+- {name: "Sizzano", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Nebbiolo"]}
+- {name: "Colline Novaresi", country: IT, parent: "Piedmont", classification: DOC}
+- {name: "Coste della Sesia", country: IT, parent: "Piedmont", classification: DOC}
+- {name: "Carema", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Nebbiolo"]}
+- {name: "Canavese", country: IT, parent: "Piedmont", classification: DOC}
+- {name: "Erbaluce di Caluso", country: IT, parent: "Piedmont", classification: DOCG, synonyms: ["Caluso"], grapes: ["Erbaluce"]}
+- {name: "Alta Langa", country: IT, parent: "Piedmont", classification: DOCG, grapes: ["Chardonnay", "Pinot Nero"]}
+- {name: "Brachetto d'Acqui", country: IT, parent: "Piedmont", classification: DOCG, synonyms: ["Acqui"], grapes: ["Brachetto"]}
+- {name: "Ruché di Castagnole Monferrato", country: IT, parent: "Piedmont", classification: DOCG, synonyms: ["Ruché", "Ruchè"], grapes: ["Ruchè"]}
+- {name: "Terre Alfieri", country: IT, parent: "Piedmont", classification: DOCG, grapes: ["Nebbiolo", "Arneis"]}
 - {name: "Monferrato", country: IT, parent: "Piedmont", classification: DOC}
 - {name: "Colli Tortonesi", country: IT, parent: "Piedmont", classification: DOC}
+- {name: "Gabiano", country: IT, parent: "Monferrato", classification: DOC, grapes: ["Barbera"]}
+- {name: "Rubino di Cantavenna", country: IT, parent: "Monferrato", classification: DOC, grapes: ["Barbera"]}
+- {name: "Grignolino del Monferrato Casalese", country: IT, parent: "Monferrato", classification: DOC, grapes: ["Grignolino"]}
+- {name: "Grignolino d'Asti", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Grignolino"]}
+- {name: "Malvasia di Casorzo", country: IT, parent: "Monferrato", classification: DOC, synonyms: ["Casorzo"], grapes: ["Malvasia di Casorzo"]}
+- {name: "Malvasia di Castelnuovo Don Bosco", country: IT, parent: "Piedmont", classification: DOC}
+- {name: "Freisa d'Asti", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Freisa"]}
+- {name: "Freisa di Chieri", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Freisa"]}
+- {name: "Albugnano", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Nebbiolo"]}
+- {name: "Cisterna d'Asti", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Croatina"]}
+- {name: "Collina Torinese", country: IT, parent: "Piedmont", classification: DOC}
+- {name: "Pinerolese", country: IT, parent: "Piedmont", classification: DOC}
+- {name: "Valsusa", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Avanà", "Becuet", "Neretta Cuneese"]}
+- {name: "Valli Ossolane", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Nebbiolo"]}
+- {name: "Colline Saluzzesi", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Pelaverga"]}
+- {name: "Verduno Pelaverga", country: IT, parent: "Langhe", classification: DOC, synonyms: ["Verduno"], grapes: ["Pelaverga"]}
 - {name: "Lombardy", country: IT, synonyms: ["Lombardia"]}
-- {name: "Franciacorta", country: IT, parent: "Lombardy", classification: DOCG}
+- {name: "Valtellina", country: IT, parent: "Lombardy"}
+- {name: "Valtellina Superiore", country: IT, parent: "Valtellina", classification: DOCG, grapes: ["Nebbiolo"]}
+- {name: "Grumello", country: IT, parent: "Valtellina Superiore", classification: DOCG, grapes: ["Nebbiolo"]}
+- {name: "Inferno", country: IT, parent: "Valtellina Superiore", classification: DOCG, grapes: ["Nebbiolo"]}
+- {name: "Maroggia", country: IT, parent: "Valtellina Superiore", classification: DOCG, grapes: ["Nebbiolo"]}
+- {name: "Sassella", country: IT, parent: "Valtellina Superiore", classification: DOCG, grapes: ["Nebbiolo"]}
+- {name: "Valgella", country: IT, parent: "Valtellina Superiore", classification: DOCG, grapes: ["Nebbiolo"]}
+- {name: "Sforzato di Valtellina", country: IT, parent: "Valtellina", classification: DOCG, synonyms: ["Sfursat di Valtellina", "Sfursat"], grapes: ["Nebbiolo"]}
+- {name: "Valtellina Rosso", country: IT, parent: "Valtellina", classification: DOC, synonyms: ["Rosso di Valtellina"], grapes: ["Nebbiolo"]}
+- {name: "Franciacorta", country: IT, parent: "Lombardy", classification: DOCG, grapes: ["Chardonnay", "Pinot Nero", "Pinot Bianco"]}
+- {name: "Curtefranca", country: IT, parent: "Franciacorta", classification: DOC}
+- {name: "Scanzo", country: IT, parent: "Lombardy", classification: DOCG, synonyms: ["Moscato di Scanzo"], grapes: ["Moscato di Scanzo"]}
 - {name: "Oltrepò Pavese", country: IT, parent: "Lombardy", classification: DOC, synonyms: ["Oltrepo Pavese"]}
-- {name: "Valtellina", country: IT, parent: "Lombardy", classification: DOCG, synonyms: ["Valtellina Superiore", "Sforzato di Valtellina"]}
-- {name: "Lugana", country: IT, parent: "Lombardy", classification: DOC}
+- {name: "Oltrepò Pavese Metodo Classico", country: IT, parent: "Oltrepò Pavese", classification: DOCG, grapes: ["Pinot Nero"]}
+- {name: "Bonarda dell'Oltrepò Pavese", country: IT, parent: "Oltrepò Pavese", classification: DOC, grapes: ["Croatina"]}
+- {name: "Buttafuoco dell'Oltrepò Pavese", country: IT, parent: "Oltrepò Pavese", classification: DOC, synonyms: ["Buttafuoco"], grapes: ["Barbera", "Croatina"]}
+- {name: "Sangue di Giuda dell'Oltrepò Pavese", country: IT, parent: "Oltrepò Pavese", classification: DOC, synonyms: ["Sangue di Giuda"], grapes: ["Barbera", "Croatina", "Uva Rara"]}
+- {name: "Pinot Nero dell'Oltrepò Pavese", country: IT, parent: "Oltrepò Pavese", classification: DOC, grapes: ["Pinot Nero"]}
+- {name: "Oltrepò Pavese Pinot Grigio", country: IT, parent: "Oltrepò Pavese", classification: DOC, grapes: ["Pinot Grigio"]}
+- {name: "Casteggio", country: IT, parent: "Oltrepò Pavese", classification: DOC, grapes: ["Barbera"]}
+- {name: "Botticino", country: IT, parent: "Lombardy", classification: DOC}
+- {name: "Capriano del Colle", country: IT, parent: "Lombardy", classification: DOC}
+- {name: "Cellatica", country: IT, parent: "Lombardy", classification: DOC}
+- {name: "San Colombano al Lambro", country: IT, parent: "Lombardy", classification: DOC, synonyms: ["San Colombano"], grapes: ["Croatina"]}
+- {name: "Valcalepio", country: IT, parent: "Lombardy", classification: DOC}
+- {name: "Terre del Colleoni", country: IT, parent: "Lombardy", classification: DOC, synonyms: ["Colleoni"]}
+- {name: "Valtenesi", country: IT, parent: "Lombardy", classification: DOC}
+- {name: "Riviera del Garda Classico", country: IT, parent: "Valtenesi", classification: DOC}
+- {name: "Garda Bresciano", country: IT, parent: "Lombardy", classification: DOC, synonyms: ["Riviera del Garda Bresciano"]}
+- {name: "Garda Colli Mantovani", country: IT, parent: "Lombardy", classification: DOC}
+- {name: "Lambrusco Mantovano", country: IT, parent: "Lombardy", classification: DOC, grapes: ["Lambrusco"]}
+- {name: "Garda", country: IT, parent: "Lombardy", classification: DOC}
+- {name: "Lugana", country: IT, parent: "Lombardy", classification: DOC, grapes: ["Turbiana"]}
+- {name: "San Martino della Battaglia", country: IT, parent: "Lombardy", classification: DOC}
+- {name: "Alpi Retiche", country: IT, parent: "Lombardy", classification: IGT}
+- {name: "Alto Mincio", country: IT, parent: "Lombardy", classification: IGT}
+- {name: "Benaco Bresciano", country: IT, parent: "Lombardy", classification: IGT}
+- {name: "Bergamasca", country: IT, parent: "Lombardy", classification: IGT}
+- {name: "Collina del Milanese", country: IT, parent: "Lombardy", classification: IGT}
+- {name: "Montenetto di Brescia", country: IT, parent: "Lombardy", classification: IGT}
+- {name: "Provincia di Mantova", country: IT, parent: "Lombardy", classification: IGT}
+- {name: "Provincia di Pavia", country: IT, parent: "Lombardy", classification: IGT}
+- {name: "Quistello", country: IT, parent: "Lombardy", classification: IGT}
+- {name: "Ronchi di Brescia", country: IT, parent: "Lombardy", classification: IGT}
+- {name: "Ronchi Varesini", country: IT, parent: "Lombardy", classification: IGT}
+- {name: "Sabbioneta", country: IT, parent: "Lombardy", classification: IGT}
+- {name: "Sebino", country: IT, parent: "Lombardy", classification: IGT}
+- {name: "Terrazze Retiche di Sondrio", country: IT, parent: "Lombardy", classification: IGT}
+- {name: "Terre Lariane", country: IT, parent: "Lombardy", classification: IGT}
+- {name: "Valcamonica", country: IT, parent: "Lombardy", classification: IGT}
 - {name: "Veneto", country: IT, synonyms: ["Veneto IGT"]}
-- {name: "Valpolicella", country: IT, parent: "Veneto", classification: DOC, synonyms: ["Valpolicella DOC", "Valpolicella Classico"]}
-- {name: "Amarone della Valpolicella", country: IT, parent: "Valpolicella", classification: DOCG, synonyms: ["Amarone", "Amarone DOCG"]}
-- {name: "Valpolicella Ripasso", country: IT, parent: "Valpolicella", classification: DOC, synonyms: ["Ripasso", "Ripasso della Valpolicella"]}
-- {name: "Soave", country: IT, parent: "Veneto", classification: DOC, synonyms: ["Soave Classico", "Soave DOC"]}
-- {name: "Bardolino", country: IT, parent: "Veneto", classification: DOC}
-- {name: "Prosecco", country: IT, parent: "Veneto", classification: DOC, synonyms: ["Prosecco DOC", "Prosecco Treviso"]}
-- {name: "Conegliano Valdobbiadene", country: IT, parent: "Prosecco", classification: DOCG, synonyms: ["Valdobbiadene", "Conegliano", "Prosecco Superiore", "Conegliano Valdobbiadene Prosecco Superiore", "Valdobbiadene Prosecco Superiore"]}
-- {name: "Custoza", country: IT, parent: "Veneto", classification: DOC, synonyms: ["Bianco di Custoza"]}
-- {name: "delle Venezie", country: IT, classification: DOC, synonyms: ["Delle Venezie DOC", "delle Venezie IGT", "Venezie", "Tre Venezie", "Triveneto"]}
+- {name: "Valpolicella", country: IT, parent: "Veneto", classification: DOC, grapes: ["Corvina", "Corvinone", "Rondinella"]}
+- {name: "Valpolicella Classico", country: IT, parent: "Valpolicella", classification: DOC, grapes: ["Corvina", "Corvinone", "Rondinella"]}
+- {name: "Valpantena", country: IT, parent: "Valpolicella", classification: DOC, grapes: ["Corvina", "Corvinone", "Rondinella"]}
+- {name: "Amarone della Valpolicella", country: IT, parent: "Valpolicella", classification: DOCG, synonyms: ["Amarone"], grapes: ["Corvina", "Corvinone", "Rondinella"]}
+- {name: "Valpolicella Ripasso", country: IT, parent: "Valpolicella", classification: DOC, synonyms: ["Ripasso", "Ripasso della Valpolicella"], grapes: ["Corvina", "Corvinone", "Rondinella"]}
+- {name: "Recioto della Valpolicella", country: IT, parent: "Valpolicella", classification: DOCG, grapes: ["Corvina", "Corvinone", "Rondinella"]}
+- {name: "Soave", country: IT, parent: "Veneto", classification: DOC, grapes: ["Garganega"]}
+- {name: "Soave Classico", country: IT, parent: "Soave", classification: DOC, grapes: ["Garganega"]}
+- {name: "Soave Superiore", country: IT, parent: "Soave", classification: DOCG, grapes: ["Garganega"]}
+- {name: "Recioto di Soave", country: IT, parent: "Soave", classification: DOCG, grapes: ["Garganega"]}
+- {name: "Bardolino", country: IT, parent: "Veneto", classification: DOC, grapes: ["Corvina", "Rondinella"]}
+- {name: "Bardolino Superiore", country: IT, parent: "Bardolino", classification: DOCG, grapes: ["Corvina", "Rondinella"]}
+- {name: "Custoza", country: IT, parent: "Veneto", classification: DOC, synonyms: ["Bianco di Custoza"], grapes: ["Garganega", "Trebbiano"]}
+- {name: "Gambellara", country: IT, parent: "Veneto", classification: DOC, grapes: ["Garganega"]}
+- {name: "Recioto di Gambellara", country: IT, parent: "Gambellara", classification: DOCG, grapes: ["Garganega"]}
+- {name: "Prosecco", country: IT, parent: "Veneto", classification: DOC, synonyms: ["Prosecco Treviso"], grapes: ["Glera"]}
+- {name: "Conegliano Valdobbiadene", country: IT, parent: "Prosecco", classification: DOCG, synonyms: ["Valdobbiadene", "Conegliano", "Prosecco di Valdobbiadene", "Prosecco Superiore", "Conegliano Valdobbiadene Prosecco Superiore", "Valdobbiadene Prosecco Superiore"], grapes: ["Glera"]}
+- {name: "Cartizze", country: IT, parent: "Conegliano Valdobbiadene", classification: DOCG, synonyms: ["Valdobbiadene Superiore di Cartizze"], grapes: ["Glera"]}
+- {name: "Asolo Prosecco", country: IT, parent: "Prosecco", classification: DOCG, synonyms: ["Colli Asolani Prosecco", "Colli Asolani"], grapes: ["Glera"]}
+- {name: "delle Venezie", country: IT, classification: DOC, synonyms: ["Venezie", "Tre Venezie", "Triveneto"], grapes: ["Pinot Grigio"]}
+- {name: "Bagnoli di Sopra", country: IT, parent: "Veneto", classification: DOC, synonyms: ["Bagnoli"]}
+- {name: "Bagnoli Friularo", country: IT, parent: "Bagnoli di Sopra", classification: DOCG, synonyms: ["Friularo di Bagnoli"], grapes: ["Raboso"]}
+- {name: "Colli Euganei", country: IT, parent: "Veneto", classification: DOC}
+- {name: "Colli Euganei Fior d'Arancio", country: IT, parent: "Colli Euganei", classification: DOCG, synonyms: ["Fior d'Arancio"], grapes: ["Moscato Giallo"]}
+- {name: "Piave", country: IT, parent: "Veneto", classification: DOC}
+- {name: "Piave Malanotte", country: IT, parent: "Piave", classification: DOCG, synonyms: ["Malanotte del Piave", "Malanotte"], grapes: ["Raboso"]}
+- {name: "Montello e Colli Asolani", country: IT, parent: "Veneto", classification: DOC}
+- {name: "Montello Rosso", country: IT, parent: "Montello e Colli Asolani", classification: DOCG, synonyms: ["Rosso del Montello"], grapes: ["Cabernet Sauvignon", "Merlot"]}
+- {name: "Colli di Conegliano", country: IT, parent: "Veneto", classification: DOCG}
+- {name: "Lison Pramaggiore", country: IT, parent: "Veneto", classification: DOC, synonyms: ["Lison-Pramaggiore"], grapes: ["Friulano"]}
+- {name: "Lison", country: IT, parent: "Lison Pramaggiore", classification: DOCG, grapes: ["Friulano"]}
+- {name: "Arcole", country: IT, parent: "Veneto", classification: DOC}
+- {name: "Breganze", country: IT, parent: "Veneto", classification: DOC, grapes: ["Vespaiola"]}
+- {name: "Colli Berici", country: IT, parent: "Veneto", classification: DOC}
+- {name: "Corti Benedettine del Padovano", country: IT, parent: "Veneto", classification: DOC}
+- {name: "Lessini Durello", country: IT, parent: "Veneto", classification: DOC, grapes: ["Durella"]}
+- {name: "Monti Lessini", country: IT, parent: "Veneto", classification: DOC}
+- {name: "Merlara", country: IT, parent: "Veneto", classification: DOC}
+- {name: "Riviera del Brenta", country: IT, parent: "Veneto", classification: DOC}
+- {name: "Venezia", country: IT, parent: "Veneto", classification: DOC}
+- {name: "Vicenza", country: IT, parent: "Veneto", classification: DOC}
+- {name: "Vigneti della Serenissima", country: IT, parent: "Veneto", classification: DOC, synonyms: ["Serenissima"]}
+- {name: "Alto Livenza", country: IT, parent: "Veneto", classification: IGT}
+- {name: "Colli Trevigiani", country: IT, parent: "Veneto", classification: IGT}
+- {name: "Conselvano", country: IT, parent: "Veneto", classification: IGT}
+- {name: "Marca Trevigiana", country: IT, parent: "Veneto", classification: IGT}
+- {name: "Trevenezie", country: IT, parent: "Veneto", classification: IGT, synonyms: ["Delle Tre Venezie"]}
+- {name: "Veneto Orientale", country: IT, parent: "Veneto", classification: IGT}
+- {name: "Verona", country: IT, parent: "Veneto", classification: IGT, synonyms: ["Provincia di Verona", "Veronese"]}
 - {name: "Trentino-Alto Adige", country: IT, synonyms: ["Trentino Alto Adige", "Trentino-Südtirol", "Trentino-South Tyrol"]}
-- {name: "Alto Adige", country: IT, parent: "Trentino-Alto Adige", classification: DOC, synonyms: ["Südtirol", "Sudtirol", "South Tyrol", "Alto Adige DOC", "Südtirol DOC"]}
-- {name: "Trentino", country: IT, parent: "Trentino-Alto Adige", classification: DOC, synonyms: ["Trentino DOC"]}
-- {name: "Trento", country: IT, parent: "Trentino", classification: DOC, synonyms: ["Trento DOC", "Trentodoc"]}
-- {name: "Friuli-Venezia Giulia", country: IT, synonyms: ["Friuli", "Friuli Venezia Giulia", "Friuli DOC"]}
+- {name: "Alto Adige", country: IT, parent: "Trentino-Alto Adige", classification: DOC, synonyms: ["Südtirol", "Sudtirol", "South Tyrol"]}
+- {name: "Santa Maddalena", country: IT, parent: "Alto Adige", classification: DOC, synonyms: ["St. Magdalener"], grapes: ["Schiava"]}
+- {name: "Alto Adige Meranese di Collina", country: IT, parent: "Alto Adige", classification: DOC, synonyms: ["Meranese", "Meraner Hügel", "Meraner"], grapes: ["Schiava"]}
+- {name: "Alto Adige Terlano", country: IT, parent: "Alto Adige", classification: DOC, synonyms: ["Terlano", "Terlaner"]}
+- {name: "Alto Adige Valle Isarco", country: IT, parent: "Alto Adige", classification: DOC, synonyms: ["Valle Isarco", "Eisacktal", "Eisacktaler"]}
+- {name: "Alto Adige Val Venosta", country: IT, parent: "Alto Adige", classification: DOC, synonyms: ["Val Venosta", "Vinschgau"]}
+- {name: "Alto Adige Colli di Bolzano", country: IT, parent: "Alto Adige", classification: DOC, synonyms: ["Colli di Bolzano", "Bozner Leiten"]}
+- {name: "Lago di Caldaro", country: IT, parent: "Trentino-Alto Adige", classification: DOC, synonyms: ["Caldaro", "Kalterersee", "Kalterer"], grapes: ["Schiava"]}
+- {name: "Trentino", country: IT, parent: "Trentino-Alto Adige", classification: DOC}
+- {name: "Trento", country: IT, parent: "Trentino", classification: DOC, synonyms: ["Trentodoc"], grapes: ["Chardonnay", "Pinot Nero", "Pinot Bianco", "Pinot Meunier"]}
+- {name: "Teroldego Rotaliano", country: IT, parent: "Trentino-Alto Adige", classification: DOC, grapes: ["Teroldego"]}
+- {name: "Casteller", country: IT, parent: "Trentino-Alto Adige", classification: DOC}
+- {name: "Valdadige", country: IT, parent: "Trentino-Alto Adige", classification: DOC, synonyms: ["Etschtaler"]}
+- {name: "Valdadige Terradeiforti", country: IT, parent: "Trentino-Alto Adige", classification: DOC, synonyms: ["Terradeiforti", "Valdadige Terra dei Forti"]}
+- {name: "Mitterberg", country: IT, parent: "Trentino-Alto Adige", classification: IGT}
+- {name: "Vigneti delle Dolomiti", country: IT, parent: "Trentino-Alto Adige", classification: IGT, synonyms: ["Weinberg Dolomiten"]}
+- {name: "Vallagarina", country: IT, parent: "Trentino-Alto Adige", classification: IGT}
+- {name: "Friuli-Venezia Giulia", country: IT, synonyms: ["Friuli", "Friuli Venezia Giulia"]}
 - {name: "Collio", country: IT, parent: "Friuli-Venezia Giulia", classification: DOC, synonyms: ["Collio Goriziano"]}
 - {name: "Colli Orientali del Friuli", country: IT, parent: "Friuli-Venezia Giulia", classification: DOC, synonyms: ["Friuli Colli Orientali", "Colli Orientali"]}
+- {name: "Colli Orientali del Friuli Picolit", country: IT, parent: "Colli Orientali del Friuli", classification: DOCG, grapes: ["Picolit"]}
+- {name: "Ramandolo", country: IT, parent: "Colli Orientali del Friuli", classification: DOCG, grapes: ["Verduzzo"]}
+- {name: "Rosazzo", country: IT, parent: "Colli Orientali del Friuli", classification: DOCG, grapes: ["Friulano"]}
+- {name: "Cialla", country: IT, parent: "Colli Orientali del Friuli", classification: DOC}
+- {name: "Schioppettino di Prepotto", country: IT, parent: "Colli Orientali del Friuli", classification: DOC, grapes: ["Schioppettino"]}
 - {name: "Friuli Grave", country: IT, parent: "Friuli-Venezia Giulia", classification: DOC, synonyms: ["Grave del Friuli"]}
-- {name: "Friuli Isonzo", country: IT, parent: "Friuli-Venezia Giulia", classification: DOC, synonyms: ["Isonzo"]}
-- {name: "Emilia-Romagna", country: IT, synonyms: ["Emilia Romagna", "Emilia", "Romagna"]}
+- {name: "Friuli Isonzo", country: IT, parent: "Friuli-Venezia Giulia", classification: DOC, synonyms: ["Isonzo", "Isonzo del Friuli"]}
+- {name: "Carso", country: IT, parent: "Friuli-Venezia Giulia", classification: DOC, synonyms: ["Carso-Kras"], grapes: ["Terrano"]}
+- {name: "Friuli Annia", country: IT, parent: "Friuli-Venezia Giulia", classification: DOC}
+- {name: "Friuli Aquileia", country: IT, parent: "Friuli-Venezia Giulia", classification: DOC}
+- {name: "Friuli Latisana", country: IT, parent: "Friuli-Venezia Giulia", classification: DOC}
+- {name: "Venezia Giulia", country: IT, parent: "Friuli-Venezia Giulia", classification: IGT}
+- {name: "Emilia-Romagna", country: IT, synonyms: ["Emilia Romagna"]}
+- {name: "Romagna", country: IT, parent: "Emilia-Romagna", classification: DOC}
+- {name: "Romagna Albana", country: IT, parent: "Romagna", classification: DOCG, synonyms: ["Albana di Romagna"], grapes: ["Albana"]}
+- {name: "Colli Romagna Centrale", country: IT, parent: "Emilia-Romagna", classification: DOC, grapes: ["Sangiovese"]}
+- {name: "Emilia", country: IT, parent: "Emilia-Romagna", classification: IGT, synonyms: ["dell'Emilia"]}
 - {name: "Colli Piacentini", country: IT, parent: "Emilia-Romagna", classification: DOC}
-- {name: "Liguria", country: IT}
-- {name: "Cinque Terre", country: IT, parent: "Liguria", classification: DOC}
-- {name: "Riviera Ligure di Ponente", country: IT, parent: "Liguria", classification: DOC}
-- {name: "Valle d'Aosta", country: IT, synonyms: ["Aosta Valley", "Vallée d'Aoste", "Valle d'Aosta DOC"]}
-- {name: "Tuscany", country: IT, synonyms: ["Toscana", "Toscana IGT", "IGT Toscana", "Tuscan"]}
-- {name: "Chianti", country: IT, parent: "Tuscany", classification: DOCG, synonyms: ["Chianti DOCG"]}
-- {name: "Chianti Classico", country: IT, parent: "Chianti", classification: DOCG, synonyms: ["Chianti Classico DOCG", "Chianti Classico Riserva", "Gran Selezione"]}
-- {name: "Chianti Rufina", country: IT, parent: "Chianti", classification: DOCG, synonyms: ["Rufina"]}
-- {name: "Chianti Colli Senesi", country: IT, parent: "Chianti", classification: DOCG, synonyms: ["Colli Senesi"]}
+- {name: "Monterosso Val d'Arda", country: IT, parent: "Colli Piacentini", classification: DOC}
+- {name: "Trebbianino Val Trebbia", country: IT, parent: "Colli Piacentini", classification: DOC}
+- {name: "Val Nure", country: IT, parent: "Colli Piacentini", classification: DOC}
+- {name: "Vigoleno", country: IT, parent: "Colli Piacentini", classification: DOC}
+- {name: "Ortrugo dei Colli Piacentini", country: IT, parent: "Colli Piacentini", classification: DOC, synonyms: ["Ortrugo"], grapes: ["Ortrugo"]}
+- {name: "Gutturnio", country: IT, parent: "Emilia-Romagna", classification: DOC, grapes: ["Barbera", "Croatina"]}
+- {name: "Colli Bolognesi", country: IT, parent: "Emilia-Romagna", classification: DOC}
+- {name: "Colli Bolognesi Pignoletto", country: IT, parent: "Colli Bolognesi", classification: DOCG, synonyms: ["Colli Bolognesi Classico Pignoletto"], grapes: ["Pignoletto"]}
+- {name: "Colli d'Imola", country: IT, parent: "Emilia-Romagna", classification: DOC}
+- {name: "Colli di Faenza", country: IT, parent: "Emilia-Romagna", classification: DOC}
+- {name: "Colli di Parma", country: IT, parent: "Emilia-Romagna", classification: DOC}
+- {name: "Colli di Rimini", country: IT, parent: "Emilia-Romagna", classification: DOC}
+- {name: "Colli di Scandiano e di Canossa", country: IT, parent: "Emilia-Romagna", classification: DOC}
+- {name: "Bosco Eliceo", country: IT, parent: "Emilia-Romagna", classification: DOC, grapes: ["Fortana"]}
+- {name: "Lambrusco di Sorbara", country: IT, parent: "Emilia-Romagna", classification: DOC, grapes: ["Lambrusco di Sorbara"]}
+- {name: "Lambrusco Grasparossa di Castelvetro", country: IT, parent: "Emilia-Romagna", classification: DOC, grapes: ["Lambrusco Grasparossa"]}
+- {name: "Lambrusco Salamino di Santa Croce", country: IT, parent: "Emilia-Romagna", classification: DOC, grapes: ["Lambrusco Salamino"]}
+- {name: "Modena", country: IT, parent: "Emilia-Romagna", classification: DOC, synonyms: ["di Modena"], grapes: ["Lambrusco"]}
+- {name: "Reggiano", country: IT, parent: "Emilia-Romagna", classification: DOC, grapes: ["Lambrusco"]}
+- {name: "Reno", country: IT, parent: "Emilia-Romagna", classification: DOC}
+- {name: "Bianco di Castelfranco Emilia", country: IT, parent: "Emilia-Romagna", classification: IGT}
+- {name: "Forlì", country: IT, parent: "Emilia-Romagna", classification: IGT, synonyms: ["Forli"]}
+- {name: "Fortana del Taro", country: IT, parent: "Emilia-Romagna", classification: IGT, grapes: ["Fortana"]}
+- {name: "Ravenna", country: IT, parent: "Emilia-Romagna", classification: IGT}
+- {name: "Rubicone", country: IT, parent: "Emilia-Romagna", classification: IGT}
+- {name: "Sillaro", country: IT, parent: "Emilia-Romagna", classification: IGT, synonyms: ["Bianco del Sillaro"]}
+- {name: "Terre di Veleja", country: IT, parent: "Emilia-Romagna", classification: IGT}
+- {name: "Val Tidone", country: IT, parent: "Emilia-Romagna", classification: IGT}
+- {name: "Tuscany", country: IT, synonyms: ["Toscana", "Tuscan"]}
+- {name: "Costa Toscana", country: IT, parent: "Tuscany", classification: IGT}
+- {name: "Chianti", country: IT, parent: "Tuscany", classification: DOCG, grapes: ["Sangiovese"]}
+- {name: "Chianti Classico", country: IT, parent: "Tuscany", classification: DOCG, synonyms: ["Chianti Classico Riserva", "Gran Selezione"], grapes: ["Sangiovese"]}
+- {name: "Chianti Rufina", country: IT, parent: "Chianti", classification: DOCG, synonyms: ["Rufina"], grapes: ["Sangiovese"]}
+- {name: "Chianti Colli Senesi", country: IT, parent: "Chianti", classification: DOCG, synonyms: ["Colli Senesi"], grapes: ["Sangiovese"]}
+- {name: "Chianti Colli Fiorentini", country: IT, parent: "Chianti", classification: DOCG, synonyms: ["Colli Fiorentini"], grapes: ["Sangiovese"]}
+- {name: "Chianti Colli Aretini", country: IT, parent: "Chianti", classification: DOCG, synonyms: ["Colli Aretini"], grapes: ["Sangiovese"]}
+- {name: "Chianti Colline Pisane", country: IT, parent: "Chianti", classification: DOCG, synonyms: ["Colline Pisane"], grapes: ["Sangiovese"]}
+- {name: "Chianti Montalbano", country: IT, parent: "Chianti", classification: DOCG, synonyms: ["Montalbano"], grapes: ["Sangiovese"]}
+- {name: "Chianti Montespertoli", country: IT, parent: "Chianti", classification: DOCG, synonyms: ["Montespertoli"], grapes: ["Sangiovese"]}
+- {name: "Vin Santo del Chianti", country: IT, parent: "Chianti", classification: DOC, synonyms: ["Vinsanto del Chianti"], grapes: ["Trebbiano Toscano", "Malvasia Bianca Lunga"]}
+- {name: "Vin Santo del Chianti Classico", country: IT, parent: "Chianti Classico", classification: DOC, synonyms: ["Vinsanto del Chianti Classico"], grapes: ["Trebbiano Toscano", "Malvasia Bianca Lunga"]}
 - {name: "Montalcino", country: IT, parent: "Tuscany"}
-- {name: "Brunello di Montalcino", country: IT, parent: "Montalcino", classification: DOCG, synonyms: ["Brunello", "Brunello di Montalcino DOCG"]}
-- {name: "Rosso di Montalcino", country: IT, parent: "Montalcino", classification: DOC}
-- {name: "Vino Nobile di Montepulciano", country: IT, parent: "Tuscany", classification: DOCG, synonyms: ["Vino Nobile", "Nobile di Montepulciano"]}
-- {name: "Rosso di Montepulciano", country: IT, parent: "Tuscany", classification: DOC}
-- {name: "Bolgheri", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Bolgheri DOC", "Bolgheri Sassicaia", "Bolgheri Superiore"]}
-- {name: "Maremma", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Maremma Toscana", "Maremma Toscana DOC"]}
-- {name: "Morellino di Scansano", country: IT, parent: "Maremma", classification: DOCG, synonyms: ["Scansano"]}
-- {name: "Carmignano", country: IT, parent: "Tuscany", classification: DOCG}
-- {name: "Vernaccia di San Gimignano", country: IT, parent: "Tuscany", classification: DOCG, synonyms: ["San Gimignano"]}
-- {name: "Montecucco", country: IT, parent: "Tuscany", classification: DOC}
-- {name: "Cortona", country: IT, parent: "Tuscany", classification: DOC}
-- {name: "Umbria", country: IT, synonyms: ["Umbria IGT"]}
-- {name: "Orvieto", country: IT, parent: "Umbria", classification: DOC, synonyms: ["Orvieto Classico"]}
-- {name: "Montefalco", country: IT, parent: "Umbria", classification: DOCG, synonyms: ["Sagrantino di Montefalco", "Montefalco Sagrantino", "Montefalco Rosso"]}
-- {name: "Marche", country: IT, synonyms: ["Marches", "Le Marche", "Marche IGT"]}
-- {name: "Verdicchio dei Castelli di Jesi", country: IT, parent: "Marche", classification: DOC, synonyms: ["Castelli di Jesi", "Jesi"]}
-- {name: "Verdicchio di Matelica", country: IT, parent: "Marche", classification: DOC, synonyms: ["Matelica"]}
-- {name: "Rosso Conero", country: IT, parent: "Marche", classification: DOC, synonyms: ["Conero"]}
-- {name: "Rosso Piceno", country: IT, parent: "Marche", classification: DOC, synonyms: ["Piceno"]}
-- {name: "Offida", country: IT, parent: "Marche", classification: DOCG}
-- {name: "Lazio", country: IT, synonyms: ["Latium", "Lazio IGT"]}
-- {name: "Frascati", country: IT, parent: "Lazio", classification: DOC}
-- {name: "Abruzzo", country: IT, synonyms: ["Abruzzi"]}
-- {name: "Montepulciano d'Abruzzo", country: IT, parent: "Abruzzo", classification: DOC, synonyms: ["Montepulciano d'Abruzzo DOC", "Colline Teramane"]}
-- {name: "Trebbiano d'Abruzzo", country: IT, parent: "Abruzzo", classification: DOC}
-- {name: "Cerasuolo d'Abruzzo", country: IT, parent: "Abruzzo", classification: DOC}
+- {name: "Brunello di Montalcino", country: IT, parent: "Montalcino", classification: DOCG, synonyms: ["Brunello"], grapes: ["Sangiovese"]}
+- {name: "Rosso di Montalcino", country: IT, parent: "Montalcino", classification: DOC, grapes: ["Sangiovese"]}
+- {name: "Moscadello di Montalcino", country: IT, parent: "Montalcino", classification: DOC, grapes: ["Muscat Blanc à Petits Grains"]}
+- {name: "Sant'Antimo", country: IT, parent: "Montalcino", classification: DOC, synonyms: ["Sant Antimo", "Sant' Antimo"], grapes: ["Cabernet Sauvignon", "Merlot", "Chardonnay", "Sauvignon Blanc", "Pinot Grigio", "Pinot Noir"]}
+- {name: "Vino Nobile di Montepulciano", country: IT, parent: "Tuscany", classification: DOCG, synonyms: ["Vino Nobile", "Nobile di Montepulciano"], grapes: ["Sangiovese"]}
+- {name: "Rosso di Montepulciano", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese"]}
+- {name: "Vin Santo di Montepulciano", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Vinsanto di Montepulciano"], grapes: ["Trebbiano Toscano", "Malvasia Bianca Lunga", "Sangiovese"]}
+- {name: "Bolgheri", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Bolgheri Superiore"], grapes: ["Cabernet Sauvignon", "Merlot", "Sangiovese", "Vermentino"]}
+- {name: "Bolgheri Sassicaia", country: IT, parent: "Bolgheri", classification: DOC, grapes: ["Cabernet Sauvignon"]}
+- {name: "Maremma Toscana", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Maremma"]}
+- {name: "Morellino di Scansano", country: IT, parent: "Maremma Toscana", classification: DOCG, synonyms: ["Scansano"], grapes: ["Sangiovese"]}
+- {name: "Capalbio", country: IT, parent: "Tuscany", classification: DOC}
+- {name: "Ansonica Costa dell'Argentario", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Ansonica Costa dell Argentario"], grapes: ["Ansonica"]}
+- {name: "Monteregio di Massa Marittima", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Massa Marittima"], grapes: ["Sangiovese"]}
+- {name: "Parrina", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese", "Trebbiano Toscano", "Ansonica"]}
+- {name: "Sovana", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese"]}
+- {name: "Montecucco", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese"]}
+- {name: "Montecucco Sangiovese", country: IT, parent: "Montecucco", classification: DOCG, grapes: ["Sangiovese"]}
+- {name: "Bianco di Pitigliano", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Trebbiano Toscano", "Greco", "Malvasia Bianca Lunga"]}
+- {name: "Grance Senesi", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese"]}
+- {name: "Carmignano", country: IT, parent: "Tuscany", classification: DOCG, grapes: ["Sangiovese", "Cabernet Sauvignon"]}
+- {name: "Barco Reale di Carmignano", country: IT, parent: "Carmignano", classification: DOC, synonyms: ["Barco Reale"], grapes: ["Sangiovese", "Cabernet Sauvignon"]}
+- {name: "Vin Santo di Carmignano", country: IT, parent: "Carmignano", classification: DOC, synonyms: ["Vin Santo del Carmignano", "Vinsanto di Carmignano"], grapes: ["Trebbiano Toscano", "Malvasia Bianca Lunga"]}
+- {name: "Pomino", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese", "Cabernet Sauvignon", "Merlot", "Chardonnay", "Pinot Blanc", "Pinot Gris"]}
+- {name: "Vernaccia di San Gimignano", country: IT, parent: "Tuscany", classification: DOCG, grapes: ["Vernaccia"]}
+- {name: "San Gimignano", country: IT, parent: "Tuscany", classification: DOC}
+- {name: "Elba", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese", "Trebbiano Toscano", "Vermentino", "Ansonica"]}
+- {name: "Elba Aleatico Passito", country: IT, parent: "Elba", classification: DOCG, synonyms: ["Aleatico dell'Elba", "Aleatico dell'Elba Passito"], grapes: ["Aleatico"]}
+- {name: "Val di Cornia", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese"]}
+- {name: "Val di Cornia Rosso", country: IT, parent: "Val di Cornia", classification: DOCG, synonyms: ["Rosso della Val di Cornia"], grapes: ["Sangiovese", "Cabernet Sauvignon", "Merlot"]}
+- {name: "Suvereto", country: IT, parent: "Val di Cornia", classification: DOCG, grapes: ["Cabernet Sauvignon", "Merlot", "Sangiovese"]}
+- {name: "Colli dell'Etruria Centrale", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Colli dell Etruria Centrale"], grapes: ["Sangiovese", "Trebbiano Toscano"]}
+- {name: "San Torpè", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Bianco Pisano di San Torpè", "San Torpe", "Bianco Pisano di San Torpe"], grapes: ["Trebbiano Toscano"]}
+- {name: "Terre di Pisa", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese"]}
+- {name: "Terre di Casole", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese"]}
+- {name: "Val d'Arbia", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Val d Arbia"], grapes: ["Trebbiano Toscano", "Malvasia Bianca Lunga"]}
+- {name: "Valdarno di Sopra", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Val d'Arno di Sopra", "Val d Arno di Sopra"], grapes: ["Sangiovese", "Merlot"]}
+- {name: "Valdichiana Toscana", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Bianco Vergine della Valdichiana", "Valdichiana"], grapes: ["Sangiovese", "Trebbiano Toscano", "Grechetto"]}
+- {name: "Valdinievole", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Bianco della Valdinievole"], grapes: ["Trebbiano Toscano"]}
+- {name: "Bianco dell'Empolese", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Bianco dell Empolese"], grapes: ["Trebbiano Toscano"]}
+- {name: "Candia dei Colli Apuani", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Vermentino", "Malvasia Bianca Lunga"]}
+- {name: "Colline Lucchesi", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese", "Trebbiano Toscano"]}
+- {name: "Montecarlo", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Trebbiano Toscano", "Sangiovese"]}
+- {name: "Orcia", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese", "Trebbiano Toscano"]}
+- {name: "Terratico di Bibbona", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese", "Cabernet Sauvignon", "Merlot"]}
+- {name: "Cortona", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Syrah", "Sangiovese"]}
+- {name: "Montescudaio", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese", "Trebbiano Toscano"]}
 - {name: "Molise", country: IT}
-- {name: "Campania", country: IT, synonyms: ["Campania IGT"]}
+- {name: "Biferno", country: IT, parent: "Molise", classification: DOC, grapes: ["Montepulciano", "Trebbiano", "Aglianico"]}
+- {name: "Pentro d'Isernia", country: IT, parent: "Molise", classification: DOC, synonyms: ["Pentro"], grapes: ["Montepulciano", "Trebbiano", "Sangiovese"]}
+- {name: "Tintilia del Molise", country: IT, parent: "Molise", classification: DOC, grapes: ["Tintilia"]}
+- {name: "Terre degli Osci", country: IT, parent: "Molise", classification: IGT, synonyms: ["Osco"]}
+- {name: "Rotae", country: IT, parent: "Molise", classification: IGT}
+- {name: "Abruzzo", country: IT, synonyms: ["Abruzzi"]}
+- {name: "Montepulciano d'Abruzzo", country: IT, parent: "Abruzzo", classification: DOC, grapes: ["Montepulciano"]}
+- {name: "Colline Teramane", country: IT, parent: "Montepulciano d'Abruzzo", classification: DOCG, synonyms: ["Montepulciano d'Abruzzo Colline Teramane", "Colline Teramane Montepulciano d'Abruzzo"], grapes: ["Montepulciano"]}
+- {name: "Casauria", country: IT, parent: "Montepulciano d'Abruzzo", classification: DOCG, synonyms: ["Montepulciano d'Abruzzo Casauria", "Terre di Casauria"], grapes: ["Montepulciano"]}
+- {name: "Trebbiano d'Abruzzo", country: IT, parent: "Abruzzo", classification: DOC, grapes: ["Trebbiano Abruzzese", "Trebbiano"]}
+- {name: "Cerasuolo d'Abruzzo", country: IT, parent: "Abruzzo", classification: DOC, grapes: ["Montepulciano"]}
+- {name: "Controguerra", country: IT, parent: "Abruzzo", classification: DOC, grapes: ["Montepulciano", "Trebbiano"]}
+- {name: "Ortona", country: IT, parent: "Abruzzo", classification: DOC, grapes: ["Montepulciano", "Trebbiano"]}
+- {name: "Villamagna", country: IT, parent: "Abruzzo", classification: DOC, grapes: ["Montepulciano"]}
+- {name: "Terre Tollesi", country: IT, parent: "Abruzzo", classification: DOCG, synonyms: ["Tullum"]}
+- {name: "Terre di Chieti", country: IT, parent: "Abruzzo", classification: IGT}
+- {name: "Alto Tirino", country: IT, parent: "Abruzzo", classification: IGT}
+- {name: "Colli del Sangro", country: IT, parent: "Abruzzo", classification: IGT}
+- {name: "Colline Frentane", country: IT, parent: "Abruzzo", classification: IGT}
+- {name: "Colline Pescaresi", country: IT, parent: "Abruzzo", classification: IGT}
+- {name: "Colline Teatine", country: IT, parent: "Abruzzo", classification: IGT}
+- {name: "Vastese", country: IT, parent: "Abruzzo", classification: IGT, synonyms: ["Histonium"]}
+- {name: "Valle Peligna", country: IT, parent: "Abruzzo", classification: IGT}
+- {name: "Umbria", country: IT, synonyms: ["Umbria IGT"]}
+- {name: "Orvieto", country: IT, parent: "Umbria", classification: DOC, synonyms: ["Orvieto Classico"], grapes: ["Trebbiano", "Grechetto"]}
+- {name: "Rosso Orvietano", country: IT, parent: "Umbria", classification: DOC, synonyms: ["Orvietano Rosso"], grapes: ["Sangiovese", "Montepulciano", "Canaiolo"]}
+- {name: "Montefalco", country: IT, parent: "Umbria", classification: DOC, synonyms: ["Montefalco Rosso"]}
+- {name: "Montefalco Sagrantino", country: IT, parent: "Montefalco", classification: DOCG, synonyms: ["Sagrantino di Montefalco"], grapes: ["Sagrantino"]}
+- {name: "Torgiano", country: IT, parent: "Umbria", classification: DOC, grapes: ["Sangiovese", "Trebbiano"]}
+- {name: "Torgiano Rosso Riserva", country: IT, parent: "Torgiano", classification: DOCG, synonyms: ["Torgiano Riserva"], grapes: ["Sangiovese", "Canaiolo"]}
+- {name: "Amelia", country: IT, parent: "Umbria", classification: DOC, synonyms: ["Colli Amerini"], grapes: ["Grechetto", "Sangiovese"]}
+- {name: "Assisi", country: IT, parent: "Umbria", classification: DOC, grapes: ["Sangiovese", "Grechetto"]}
+- {name: "Colli Altotiberini", country: IT, parent: "Umbria", classification: DOC, grapes: ["Sangiovese"]}
+- {name: "Colli del Trasimeno", country: IT, parent: "Umbria", classification: DOC, synonyms: ["Trasimeno"], grapes: ["Sangiovese", "Grechetto"]}
+- {name: "Colli Martani", country: IT, parent: "Umbria", classification: DOC, grapes: ["Grechetto", "Sangiovese"]}
+- {name: "Colli Perugini", country: IT, parent: "Umbria", classification: DOC, grapes: ["Sangiovese", "Trebbiano"]}
+- {name: "Lago di Corbara", country: IT, parent: "Umbria", classification: DOC, grapes: ["Sangiovese"]}
+- {name: "Spoleto", country: IT, parent: "Umbria", classification: DOC, grapes: ["Trebbiano Spoletino", "Sangiovese"]}
+- {name: "Todi", country: IT, parent: "Umbria", classification: DOC, grapes: ["Grechetto", "Sangiovese"]}
+- {name: "Allerona", country: IT, parent: "Umbria", classification: IGT}
+- {name: "Bettona", country: IT, parent: "Umbria", classification: IGT}
+- {name: "Cannara", country: IT, parent: "Umbria", classification: IGT}
+- {name: "Narni", country: IT, parent: "Umbria", classification: IGT}
+- {name: "Spello", country: IT, parent: "Umbria", classification: IGT}
+- {name: "Marche", country: IT, synonyms: ["Marches", "Le Marche", "Marche IGT"]}
+- {name: "Verdicchio dei Castelli di Jesi", country: IT, parent: "Marche", classification: DOC, synonyms: ["Castelli di Jesi", "Jesi"], grapes: ["Verdicchio"]}
+- {name: "Verdicchio dei Castelli di Jesi Riserva", country: IT, parent: "Verdicchio dei Castelli di Jesi", classification: DOCG, synonyms: ["Castelli di Jesi Verdicchio Riserva"], grapes: ["Verdicchio"]}
+- {name: "Verdicchio di Matelica", country: IT, parent: "Marche", classification: DOC, synonyms: ["Matelica"], grapes: ["Verdicchio"]}
+- {name: "Verdicchio di Matelica Riserva", country: IT, parent: "Verdicchio di Matelica", classification: DOCG, grapes: ["Verdicchio"]}
+- {name: "Rosso Conero", country: IT, parent: "Marche", classification: DOC, grapes: ["Montepulciano"]}
+- {name: "Conero", country: IT, parent: "Rosso Conero", classification: DOCG, synonyms: ["Cònero", "Conero Riserva"], grapes: ["Montepulciano"]}
+- {name: "Rosso Piceno", country: IT, parent: "Marche", classification: DOC, synonyms: ["Piceno"], grapes: ["Montepulciano", "Sangiovese"]}
+- {name: "Offida", country: IT, parent: "Marche", classification: DOCG, grapes: ["Pecorino", "Passerina", "Montepulciano"]}
+- {name: "Terre di Offida", country: IT, parent: "Marche", classification: DOC}
+- {name: "Serrapetrona", country: IT, parent: "Marche", classification: DOC, grapes: ["Sangiovese", "Montepulciano"]}
+- {name: "Vernaccia di Serrapetrona", country: IT, parent: "Serrapetrona", classification: DOCG, grapes: ["Vernaccia Nera"]}
+- {name: "Lacrima di Morro d'Alba", country: IT, parent: "Marche", classification: DOC, grapes: ["Lacrima"]}
+- {name: "Bianchello del Metauro", country: IT, parent: "Marche", classification: DOC, grapes: ["Bianchello"]}
+- {name: "Colli Maceratesi", country: IT, parent: "Marche", classification: DOC, grapes: ["Maceratino"]}
+- {name: "Colli Pesaresi", country: IT, parent: "Marche", classification: DOC, grapes: ["Sangiovese", "Trebbiano"]}
+- {name: "Esino", country: IT, parent: "Marche", classification: DOC, grapes: ["Verdicchio", "Sangiovese"]}
+- {name: "Falerio", country: IT, parent: "Marche", classification: DOC, synonyms: ["Falerio dei Colli Ascolani"], grapes: ["Trebbiano", "Passerina", "Pecorino"]}
+- {name: "I Terreni di Sanseverino", country: IT, parent: "Marche", classification: DOC}
+- {name: "Pergola", country: IT, parent: "Marche", classification: DOC, grapes: ["Aleatico"]}
+- {name: "San Ginesio", country: IT, parent: "Marche", classification: DOC, grapes: ["Sangiovese"]}
+- {name: "Lazio", country: IT, synonyms: ["Latium", "Lazio IGT"]}
+- {name: "Frascati", country: IT, parent: "Lazio", classification: DOC, grapes: ["Malvasia Bianca", "Trebbiano"]}
+- {name: "Frascati Superiore", country: IT, parent: "Frascati", classification: DOCG, grapes: ["Malvasia Bianca", "Trebbiano"]}
+- {name: "Cannellino di Frascati", country: IT, parent: "Frascati", classification: DOCG, grapes: ["Malvasia Bianca", "Trebbiano"]}
+- {name: "Cesanese del Piglio", country: IT, parent: "Lazio", classification: DOCG, synonyms: ["Piglio"], grapes: ["Cesanese"]}
+- {name: "Cesanese di Affile", country: IT, parent: "Lazio", classification: DOC, grapes: ["Cesanese"]}
+- {name: "Cesanese di Olevano Romano", country: IT, parent: "Lazio", classification: DOC, synonyms: ["Olevano Romano"], grapes: ["Cesanese"]}
+- {name: "Est! Est!! Est!!! di Montefiascone", country: IT, parent: "Lazio", classification: DOC, grapes: ["Trebbiano", "Malvasia Bianca"]}
+- {name: "Aleatico di Gradoli", country: IT, parent: "Lazio", classification: DOC, grapes: ["Aleatico"]}
+- {name: "Aprilia", country: IT, parent: "Lazio", classification: DOC}
+- {name: "Atina", country: IT, parent: "Lazio", classification: DOC, grapes: ["Cabernet Sauvignon", "Cabernet Franc"]}
+- {name: "Bianco Capena", country: IT, parent: "Lazio", classification: DOC, grapes: ["Malvasia Bianca", "Trebbiano"]}
+- {name: "Castelli Romani", country: IT, parent: "Lazio", classification: DOC}
+- {name: "Cerveteri", country: IT, parent: "Lazio", classification: DOC}
+- {name: "Circeo", country: IT, parent: "Lazio", classification: DOC}
+- {name: "Colli Albani", country: IT, parent: "Lazio", classification: DOC, grapes: ["Malvasia Bianca", "Trebbiano"]}
+- {name: "Colli della Sabina", country: IT, parent: "Lazio", classification: DOC}
+- {name: "Colli Etruschi Viterbesi", country: IT, parent: "Lazio", classification: DOC}
+- {name: "Colli Lanuvini", country: IT, parent: "Lazio", classification: DOC, grapes: ["Malvasia Bianca", "Trebbiano"]}
+- {name: "Cori", country: IT, parent: "Lazio", classification: DOC, grapes: ["Nero Buono", "Montepulciano"]}
+- {name: "Genazzano", country: IT, parent: "Lazio", classification: DOC}
+- {name: "Marino", country: IT, parent: "Lazio", classification: DOC, grapes: ["Malvasia Bianca", "Trebbiano"]}
+- {name: "Montecompatri Colonna", country: IT, parent: "Lazio", classification: DOC}
+- {name: "Nettuno", country: IT, parent: "Lazio", classification: DOC}
+- {name: "Roma", country: IT, parent: "Lazio", classification: DOC}
+- {name: "Tarquinia", country: IT, parent: "Lazio", classification: DOC}
+- {name: "Terracina", country: IT, parent: "Lazio", classification: DOC, synonyms: ["Moscato di Terracina"], grapes: ["Moscato"]}
+- {name: "Velletri", country: IT, parent: "Lazio", classification: DOC}
+- {name: "Vignanello", country: IT, parent: "Lazio", classification: DOC}
+- {name: "Zagarolo", country: IT, parent: "Lazio", classification: DOC}
+- {name: "Anagni", country: IT, parent: "Lazio", classification: IGT}
+- {name: "Civitella d'Agliano", country: IT, parent: "Lazio", classification: IGT}
+- {name: "Colli Cimini", country: IT, parent: "Lazio", classification: IGT}
+- {name: "Costa Etrusco Romana", country: IT, parent: "Lazio", classification: IGT}
+- {name: "Frusinate", country: IT, parent: "Lazio", classification: IGT, synonyms: ["del Frusinate"]}
+- {name: "Campania", country: IT, synonyms: ["Campania IGT", "Campania IGP"]}
 - {name: "Irpinia", country: IT, parent: "Campania", classification: DOC}
-- {name: "Taurasi", country: IT, parent: "Irpinia", classification: DOCG}
-- {name: "Fiano di Avellino", country: IT, parent: "Irpinia", classification: DOCG, synonyms: ["Avellino"]}
-- {name: "Greco di Tufo", country: IT, parent: "Irpinia", classification: DOCG, synonyms: ["Tufo"]}
-- {name: "Sannio", country: IT, parent: "Campania", classification: DOC, synonyms: ["Aglianico del Taburno", "Taburno"]}
+- {name: "Taurasi", country: IT, parent: "Irpinia", classification: DOCG, grapes: ["Aglianico"]}
+- {name: "Fiano di Avellino", country: IT, parent: "Irpinia", classification: DOCG, synonyms: ["Avellino"], grapes: ["Fiano"]}
+- {name: "Greco di Tufo", country: IT, parent: "Irpinia", classification: DOCG, synonyms: ["Tufo"], grapes: ["Greco"]}
+- {name: "Sannio", country: IT, parent: "Campania", classification: DOC}
+- {name: "Aglianico del Taburno", country: IT, parent: "Sannio", classification: DOCG, synonyms: ["Taburno"], grapes: ["Aglianico"]}
+- {name: "Falanghina del Sannio", country: IT, parent: "Sannio", classification: DOC, grapes: ["Falanghina"]}
 - {name: "Falerno del Massico", country: IT, parent: "Campania", classification: DOC}
 - {name: "Campi Flegrei", country: IT, parent: "Campania", classification: DOC}
+- {name: "Costa d'Amalfi", country: IT, parent: "Campania", classification: DOC, synonyms: ["Costa d'Amalfi DOC", "Amalfi Coast"]}
+- {name: "Vesuvio", country: IT, parent: "Campania", classification: DOC, synonyms: ["Lacryma Christi", "Lacryma Christi del Vesuvio", "Lachryma Christi"]}
+- {name: "Aversa", country: IT, parent: "Campania", classification: DOC, synonyms: ["Asprinio di Aversa"], grapes: ["Asprinio"]}
+- {name: "Capri", country: IT, parent: "Campania", classification: DOC}
+- {name: "Casavecchia di Pontelatone", country: IT, parent: "Campania", classification: DOC, synonyms: ["Pontelatone"], grapes: ["Casavecchia"]}
+- {name: "Castel San Lorenzo", country: IT, parent: "Campania", classification: DOC}
+- {name: "Cilento", country: IT, parent: "Campania", classification: DOC}
+- {name: "Galluccio", country: IT, parent: "Campania", classification: DOC}
+- {name: "Ischia", country: IT, parent: "Campania", classification: DOC}
+- {name: "Penisola Sorrentina", country: IT, parent: "Campania", classification: DOC, synonyms: ["Sorrento Peninsula"]}
+- {name: "Beneventano", country: IT, parent: "Campania", classification: IGT, synonyms: ["Beneventano IGT", "Beneventano IGP"]}
+- {name: "Catalanesca del Monte Somma", country: IT, parent: "Campania", classification: IGT, grapes: ["Catalanesca"]}
+- {name: "Colli di Salerno", country: IT, parent: "Campania", classification: IGT}
+- {name: "Dugenta", country: IT, parent: "Campania", classification: IGT}
+- {name: "Epomeo", country: IT, parent: "Campania", classification: IGT}
+- {name: "Paestum", country: IT, parent: "Campania", classification: IGT}
+- {name: "Pompeiano", country: IT, parent: "Campania", classification: IGT}
+- {name: "Roccamonfina", country: IT, parent: "Campania", classification: IGT}
+- {name: "Terre del Volturno", country: IT, parent: "Campania", classification: IGT}
 - {name: "Puglia", country: IT, synonyms: ["Apulia", "Puglia IGT", "Puglia IGP"]}
-- {name: "Salento", country: IT, parent: "Puglia", classification: IGT, synonyms: ["Salento IGT", "Salento IGP"]}
-- {name: "Salice Salentino", country: IT, parent: "Salento", classification: DOC, synonyms: ["Salice Salentino DOC"]}
-- {name: "Primitivo di Manduria", country: IT, parent: "Salento", classification: DOC, synonyms: ["Manduria"]}
-- {name: "Brindisi", country: IT, parent: "Salento", classification: DOC}
 - {name: "Castel del Monte", country: IT, parent: "Puglia", classification: DOC}
+- {name: "Castel del Monte Bombino Nero", country: IT, parent: "Castel del Monte", classification: DOCG, grapes: ["Bombino Nero"]}
+- {name: "Castel del Monte Nero di Troia Riserva", country: IT, parent: "Castel del Monte", classification: DOCG, grapes: ["Nero di Troia"]}
+- {name: "Castel del Monte Rosso Riserva", country: IT, parent: "Castel del Monte", classification: DOCG, grapes: ["Nero di Troia"]}
 - {name: "Gioia del Colle", country: IT, parent: "Puglia", classification: DOC}
-- {name: "Basilicata", country: IT, synonyms: ["Basilicata IGT"]}
-- {name: "Aglianico del Vulture", country: IT, parent: "Basilicata", classification: DOC, synonyms: ["Vulture", "Aglianico del Vulture Superiore"]}
+- {name: "Salento", country: IT, parent: "Puglia", classification: IGT, synonyms: ["Salento IGT", "Salento IGP"]}
+- {name: "Salice Salentino", country: IT, parent: "Salento", classification: DOC}
+- {name: "Primitivo di Manduria", country: IT, parent: "Salento", classification: DOC, synonyms: ["Manduria"], grapes: ["Primitivo"]}
+- {name: "Primitivo di Manduria Dolce Naturale", country: IT, parent: "Primitivo di Manduria", classification: DOCG, grapes: ["Primitivo"]}
+- {name: "Brindisi", country: IT, parent: "Salento", classification: DOC}
+- {name: "Copertino", country: IT, parent: "Salento", classification: DOC}
+- {name: "Squinzano", country: IT, parent: "Salento", classification: DOC}
+- {name: "Alezio", country: IT, parent: "Salento", classification: DOC}
+- {name: "Galatina", country: IT, parent: "Salento", classification: DOC}
+- {name: "Leverano", country: IT, parent: "Salento", classification: DOC}
+- {name: "Lizzano", country: IT, parent: "Salento", classification: DOC}
+- {name: "Matino", country: IT, parent: "Salento", classification: DOC}
+- {name: "Nardò", country: IT, parent: "Salento", classification: DOC, synonyms: ["Nardo"]}
+- {name: "Negroamaro di Terra d'Otranto", country: IT, parent: "Salento", classification: DOC, grapes: ["Negroamaro"]}
+- {name: "Terra d'Otranto", country: IT, parent: "Salento", classification: DOC}
+- {name: "Aleatico di Puglia", country: IT, parent: "Puglia", classification: DOC, grapes: ["Aleatico"]}
+- {name: "Barletta", country: IT, parent: "Puglia", classification: DOC}
+- {name: "Cacc'e Mmitte di Lucera", country: IT, parent: "Puglia", classification: DOC, synonyms: ["Cacc'e Mmitte", "Cacce Mmitte di Lucera"]}
+- {name: "Colline Joniche Tarantine", country: IT, parent: "Puglia", classification: DOC}
+- {name: "Gravina", country: IT, parent: "Puglia", classification: DOC}
+- {name: "Locorotondo", country: IT, parent: "Puglia", classification: DOC}
+- {name: "Martina Franca", country: IT, parent: "Puglia", classification: DOC, synonyms: ["Martina"]}
+- {name: "Moscato di Trani", country: IT, parent: "Puglia", classification: DOC}
+- {name: "Orta Nova", country: IT, parent: "Puglia", classification: DOC}
+- {name: "Ostuni", country: IT, parent: "Puglia", classification: DOC}
+- {name: "Rosso di Cerignola", country: IT, parent: "Puglia", classification: DOC}
+- {name: "San Severo", country: IT, parent: "Puglia", classification: DOC}
+- {name: "Tavoliere delle Puglie", country: IT, parent: "Puglia", classification: DOC}
+- {name: "Daunia", country: IT, parent: "Puglia", classification: IGT, synonyms: ["Daunia IGT"]}
+- {name: "Murgia", country: IT, parent: "Puglia", classification: IGT, synonyms: ["Murgia IGT"]}
+- {name: "Tarantino", country: IT, parent: "Puglia", classification: IGT, synonyms: ["Tarantino IGT"]}
+- {name: "Valle d'Itria", country: IT, parent: "Puglia", classification: IGT, synonyms: ["Valle d'Itria IGT"]}
+- {name: "Basilicata", country: IT, synonyms: ["Basilicata IGT", "Basilicata IGP"]}
+- {name: "Aglianico del Vulture", country: IT, parent: "Basilicata", classification: DOC, synonyms: ["Vulture"], grapes: ["Aglianico"]}
+- {name: "Aglianico del Vulture Superiore", country: IT, parent: "Aglianico del Vulture", classification: DOCG, grapes: ["Aglianico"]}
+- {name: "Grottino di Roccanova", country: IT, parent: "Basilicata", classification: DOC}
+- {name: "Matera", country: IT, parent: "Basilicata", classification: DOC}
+- {name: "Terre dell'Alta Val d'Agri", country: IT, parent: "Basilicata", classification: DOC, synonyms: ["Alta Val d'Agri"]}
 - {name: "Calabria", country: IT, synonyms: ["Calabria IGT"]}
-- {name: "Cirò", country: IT, parent: "Calabria", classification: DOC, synonyms: ["Ciro", "Cirò DOC", "Ciro DOC", "Cirò Classico"]}
+- {name: "Cirò", country: IT, parent: "Calabria", classification: DOC, synonyms: ["Ciro", "Cirò DOC", "Ciro DOC"], grapes: ["Gaglioppo"]}
+- {name: "Cirò Classico", country: IT, parent: "Cirò", classification: DOCG, synonyms: ["Ciro Classico", "Cirò Classico DOCG"], grapes: ["Gaglioppo"]}
+- {name: "Bivongi", country: IT, parent: "Calabria", classification: DOC, synonyms: ["Bivongi DOC"], grapes: ["Gaglioppo", "Greco Nero"]}
+- {name: "Terre di Cosenza", country: IT, parent: "Calabria", classification: DOC, synonyms: ["Terre di Cosenza DOC"], grapes: ["Magliocco", "Gaglioppo", "Greco Bianco"]}
+- {name: "Donnici", country: IT, parent: "Terre di Cosenza", classification: DOC}
+- {name: "Pollino", country: IT, parent: "Terre di Cosenza", classification: DOC}
+- {name: "San Vito di Luzzi", country: IT, parent: "Terre di Cosenza", classification: DOC}
+- {name: "Verbicaro", country: IT, parent: "Terre di Cosenza", classification: DOC}
+- {name: "Esaro", country: IT, parent: "Terre di Cosenza", classification: DOC}
+- {name: "Condoleo", country: IT, parent: "Terre di Cosenza", classification: DOC}
+- {name: "Colline del Crati", country: IT, parent: "Terre di Cosenza", classification: DOC}
+- {name: "Greco di Bianco", country: IT, parent: "Calabria", classification: DOC, synonyms: ["Greco di Bianco DOC"], grapes: ["Greco Bianco"]}
+- {name: "Lamezia", country: IT, parent: "Calabria", classification: DOC, synonyms: ["Lamezia DOC"], grapes: ["Gaglioppo", "Greco Bianco"]}
+- {name: "Melissa", country: IT, parent: "Calabria", classification: DOC, synonyms: ["Melissa DOC"], grapes: ["Gaglioppo", "Greco Bianco"]}
+- {name: "Savuto", country: IT, parent: "Calabria", classification: DOC, synonyms: ["Savuto DOC"], grapes: ["Gaglioppo", "Mantonico"]}
+- {name: "Scavigna", country: IT, parent: "Calabria", classification: DOC, synonyms: ["Scavigna DOC"], grapes: ["Gaglioppo", "Nerello Cappuccio"]}
+- {name: "Sant'Anna di Isola Capo Rizzuto", country: IT, parent: "Calabria", classification: DOC, synonyms: ["S. Anna di Isola Capo Rizzuto", "Sant'Anna Isola Capo Rizzuto"], grapes: ["Gaglioppo"]}
+- {name: "Arghillà", country: IT, parent: "Calabria", classification: IGT}
+- {name: "Costa Viola", country: IT, parent: "Calabria", classification: IGT}
+- {name: "Lipuda", country: IT, parent: "Calabria", classification: IGT}
+- {name: "Locride", country: IT, parent: "Calabria", classification: IGT}
+- {name: "Palizzi", country: IT, parent: "Calabria", classification: IGT}
+- {name: "Pellaro", country: IT, parent: "Calabria", classification: IGT}
+- {name: "Scilla", country: IT, parent: "Calabria", classification: IGT}
+- {name: "Val di Neto", country: IT, parent: "Calabria", classification: IGT}
+- {name: "Valdamato", country: IT, parent: "Calabria", classification: IGT}
+- {name: "Valle del Crati", country: IT, parent: "Calabria", classification: IGT}
 - {name: "Sicily", country: IT, synonyms: ["Sicilia", "Sicilia DOC", "Terre Siciliane", "Terre Siciliane IGT", "Terre Siciliane IGP", "Sicilia IGT"]}
-- {name: "Etna", country: IT, parent: "Sicily", classification: DOC, synonyms: ["Etna DOC", "Mount Etna", "Etna Rosso", "Etna Bianco"]}
-- {name: "Marsala", country: IT, parent: "Sicily", classification: DOC}
-- {name: "Cerasuolo di Vittoria", country: IT, parent: "Sicily", classification: DOCG, synonyms: ["Vittoria"]}
-- {name: "Pantelleria", country: IT, parent: "Sicily", classification: DOC, synonyms: ["Passito di Pantelleria", "Moscato di Pantelleria"]}
-- {name: "Menfi", country: IT, parent: "Sicily", classification: DOC}
+- {name: "Etna", country: IT, parent: "Sicily", classification: DOC, synonyms: ["Etna DOC", "Mount Etna", "Etna Rosso", "Etna Bianco"], grapes: ["Nerello Mascalese", "Nerello Cappuccio"]}
+- {name: "Marsala", country: IT, parent: "Sicily", classification: DOC, grapes: ["Grillo", "Catarratto", "Ansonica", "Nero d'Avola", "Perricone"]}
+- {name: "Cerasuolo di Vittoria", country: IT, parent: "Sicily", classification: DOCG, synonyms: ["Cerasuolo di Vittoria DOCG", "Cerasuolo di Vittoria Classico"], grapes: ["Nero d'Avola", "Frappato"]}
+- {name: "Vittoria", country: IT, parent: "Sicily", classification: DOC, synonyms: ["Vittoria DOC"], grapes: ["Nero d'Avola", "Frappato"]}
+- {name: "Pantelleria", country: IT, parent: "Sicily", classification: DOC, synonyms: ["Passito di Pantelleria", "Moscato di Pantelleria"], grapes: ["Muscat of Alexandria"]}
+- {name: "Malvasia delle Lipari", country: IT, parent: "Sicily", classification: DOC, synonyms: ["Malvasia di Lipari"], grapes: ["Malvasía Aromática"]}
+- {name: "Menfi", country: IT, parent: "Sicily", classification: DOC, grapes: ["Nero d'Avola", "Ansonica"]}
+- {name: "Feudo dei Fiori", country: IT, parent: "Menfi", classification: DOC}
+- {name: "Bonera", country: IT, parent: "Menfi", classification: DOC}
+- {name: "Noto", country: IT, parent: "Sicily", classification: DOC, grapes: ["Nero d'Avola"]}
+- {name: "Faro", country: IT, parent: "Sicily", classification: DOC, grapes: ["Nerello Mascalese", "Nerello Cappuccio"]}
+- {name: "Alcamo", country: IT, parent: "Sicily", classification: DOC, synonyms: ["Alcamo DOC", "Alcamo Classico"], grapes: ["Catarratto"]}
+- {name: "Contea di Sclafani", country: IT, parent: "Sicily", classification: DOC, synonyms: ["Valledolmo-Contea di Sclafani"]}
+- {name: "Contessa Entellina", country: IT, parent: "Sicily", classification: DOC}
+- {name: "Delia Nivolelli", country: IT, parent: "Sicily", classification: DOC}
+- {name: "Eloro", country: IT, parent: "Sicily", classification: DOC, grapes: ["Nero d'Avola", "Frappato"]}
+- {name: "Pachino", country: IT, parent: "Eloro", classification: DOC, synonyms: ["Eloro Pachino"], grapes: ["Nero d'Avola"]}
+- {name: "Erice", country: IT, parent: "Sicily", classification: DOC}
+- {name: "Mamertino di Milazzo", country: IT, parent: "Sicily", classification: DOC, synonyms: ["Mamertino"], grapes: ["Nero d'Avola"]}
+- {name: "Monreale", country: IT, parent: "Sicily", classification: DOC, grapes: ["Catarratto", "Perricone"]}
+- {name: "Riesi", country: IT, parent: "Sicily", classification: DOC, grapes: ["Nero d'Avola"]}
+- {name: "Salaparuta", country: IT, parent: "Sicily", classification: DOC}
+- {name: "Sambuca di Sicilia", country: IT, parent: "Sicily", classification: DOC}
+- {name: "Santa Margherita di Belice", country: IT, parent: "Sicily", classification: DOC}
+- {name: "Sciacca", country: IT, parent: "Sicily", classification: DOC, grapes: ["Ansonica", "Nero d'Avola"]}
+- {name: "Rayana", country: IT, parent: "Sciacca", classification: DOC, grapes: ["Catarratto", "Ansonica"]}
+- {name: "Siracusa", country: IT, parent: "Sicily", classification: DOC, synonyms: ["Moscato di Siracusa"], grapes: ["Muscat of Alexandria"]}
+- {name: "Avola", country: IT, parent: "Sicily", classification: IGT}
+- {name: "Camarro", country: IT, parent: "Sicily", classification: IGT}
+- {name: "Fontanarossa di Cerda", country: IT, parent: "Sicily", classification: IGT}
+- {name: "Salemi", country: IT, parent: "Sicily", classification: IGT}
+- {name: "Salina", country: IT, parent: "Sicily", classification: IGT}
+- {name: "Valle Belice", country: IT, parent: "Sicily", classification: IGT}
 - {name: "Sardinia", country: IT, synonyms: ["Sardegna", "Isola dei Nuraghi", "Isola dei Nuraghi IGT"]}
-- {name: "Vermentino di Gallura", country: IT, parent: "Sardinia", classification: DOCG, synonyms: ["Gallura"]}
-- {name: "Vermentino di Sardegna", country: IT, parent: "Sardinia", classification: DOC}
-- {name: "Cannonau di Sardegna", country: IT, parent: "Sardinia", classification: DOC}
-- {name: "Carignano del Sulcis", country: IT, parent: "Sardinia", classification: DOC, synonyms: ["Sulcis"]}
+- {name: "Vermentino di Gallura", country: IT, parent: "Sardinia", classification: DOCG, synonyms: ["Gallura"], grapes: ["Vermentino"]}
+- {name: "Vermentino di Sardegna", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Vermentino"]}
+- {name: "Cannonau di Sardegna", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Grenache"]}
+- {name: "Oliena", country: IT, parent: "Cannonau di Sardegna", classification: DOC, synonyms: ["Nepente di Oliena"], grapes: ["Grenache"]}
+- {name: "Capo Ferrato", country: IT, parent: "Cannonau di Sardegna", classification: DOC, grapes: ["Grenache"]}
+- {name: "Jerzu", country: IT, parent: "Cannonau di Sardegna", classification: DOC, grapes: ["Grenache"]}
+- {name: "Carignano del Sulcis", country: IT, parent: "Sardinia", classification: DOC, synonyms: ["Sulcis"], grapes: ["Carignan"]}
+- {name: "Monica di Sardegna", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Monica"]}
+- {name: "Alghero", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Torbato", "Graciano"]}
+- {name: "Arborea", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Sangiovese", "Trebbiano"]}
+- {name: "Cagliari", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Malvasía Aromática", "Monica", "Vermentino"]}
+- {name: "Campidano di Terralba", country: IT, parent: "Sardinia", classification: DOC, synonyms: ["Terralba"], grapes: ["Bovale"]}
+- {name: "Girò di Cagliari", country: IT, parent: "Sardinia", classification: DOC}
+- {name: "Malvasia di Bosa", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Malvasía Aromática"]}
+- {name: "Mandrolisai", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Bovale", "Grenache", "Monica"]}
+- {name: "Moscato di Sardegna", country: IT, parent: "Sardinia", classification: DOC, synonyms: ["Moscato di Sardegna Tempio Pausania", "Moscato di Sardegna Gallura"], grapes: ["Muscat of Alexandria"]}
+- {name: "Moscato di Sorso-Sennori", country: IT, parent: "Sardinia", classification: DOC, synonyms: ["Moscato di Sorso", "Moscato di Sennori"], grapes: ["Muscat of Alexandria"]}
+- {name: "Nasco di Cagliari", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Nasco"]}
+- {name: "Nuragus di Cagliari", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Nuragus"]}
+- {name: "Sardegna Semidano", country: IT, parent: "Sardinia", classification: DOC, synonyms: ["Semidano di Sardegna"], grapes: ["Semidano"]}
+- {name: "Mogoro", country: IT, parent: "Sardegna Semidano", classification: DOC, grapes: ["Semidano"]}
+- {name: "Vernaccia di Oristano", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Vernaccia di Oristano"]}
+- {name: "Barbagia", country: IT, parent: "Sardinia", classification: IGT}
+- {name: "Colli del Limbara", country: IT, parent: "Sardinia", classification: IGT}
+- {name: "Marmilla", country: IT, parent: "Sardinia", classification: IGT}
+- {name: "Nurra", country: IT, parent: "Sardinia", classification: IGT}
+- {name: "Ogliastra", country: IT, parent: "Sardinia", classification: IGT}
+- {name: "Parteolla", country: IT, parent: "Sardinia", classification: IGT}
+- {name: "Planargia", country: IT, parent: "Sardinia", classification: IGT}
+- {name: "Provincia di Nuoro", country: IT, parent: "Sardinia", classification: IGT}
+- {name: "Romangia", country: IT, parent: "Sardinia", classification: IGT}
+- {name: "Sibiola", country: IT, parent: "Sardinia", classification: IGT}
+- {name: "Tharros", country: IT, parent: "Sardinia", classification: IGT}
+- {name: "Trexenta", country: IT, parent: "Sardinia", classification: IGT}
+- {name: "Valle del Tirso", country: IT, parent: "Sardinia", classification: IGT}
+- {name: "Valli di Porto Pino", country: IT, parent: "Sardinia", classification: IGT}
 
 # ======================= SPAIN =======================
 - {name: "Cava", country: ES, classification: DO, synonyms: ["Cava DO"], grapes: ["Macabeo", "Xarel·lo", "Parellada", "Chardonnay", "Garnacha", "Monastrell", "Pinot Noir", "Trepat"]}

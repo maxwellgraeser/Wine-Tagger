@@ -1,0 +1,80 @@
+# it-s1: Campania, Puglia, Basilicata
+
+# --- Campania ---
+- {name: "Campania", country: IT, synonyms: ["Campania IGT", "Campania IGP"], source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Irpinia", country: IT, parent: "Campania", classification: DOC, source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Taurasi", country: IT, parent: "Irpinia", classification: DOCG, grapes: ["Aglianico"], source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Fiano di Avellino", country: IT, parent: "Irpinia", classification: DOCG, synonyms: ["Avellino"], grapes: ["Fiano"], source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Greco di Tufo", country: IT, parent: "Irpinia", classification: DOCG, synonyms: ["Tufo"], grapes: ["Greco"], source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Sannio", country: IT, parent: "Campania", classification: DOC, source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Aglianico del Taburno", country: IT, parent: "Sannio", classification: DOCG, synonyms: ["Taburno"], grapes: ["Aglianico"], source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Falanghina del Sannio", country: IT, parent: "Sannio", classification: DOC, grapes: ["Falanghina"], source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Falerno del Massico", country: IT, parent: "Campania", classification: DOC, source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Campi Flegrei", country: IT, parent: "Campania", classification: DOC, source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Costa d'Amalfi", country: IT, parent: "Campania", classification: DOC, synonyms: ["Costa d'Amalfi DOC", "Amalfi Coast"], source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Vesuvio", country: IT, parent: "Campania", classification: DOC, synonyms: ["Lacryma Christi", "Lacryma Christi del Vesuvio", "Lachryma Christi"], source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Aversa", country: IT, parent: "Campania", classification: DOC, synonyms: ["Asprinio di Aversa"], grapes: ["Asprinio"], source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Capri", country: IT, parent: "Campania", classification: DOC, source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Casavecchia di Pontelatone", country: IT, parent: "Campania", classification: DOC, synonyms: ["Pontelatone"], grapes: ["Casavecchia"], source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Castel San Lorenzo", country: IT, parent: "Campania", classification: DOC, source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Cilento", country: IT, parent: "Campania", classification: DOC, source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Galluccio", country: IT, parent: "Campania", classification: DOC, source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Ischia", country: IT, parent: "Campania", classification: DOC, source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Penisola Sorrentina", country: IT, parent: "Campania", classification: DOC, synonyms: ["Sorrento Peninsula"], source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Beneventano", country: IT, parent: "Campania", classification: IGT, synonyms: ["Beneventano IGT", "Beneventano IGP"], source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Catalanesca del Monte Somma", country: IT, parent: "Campania", classification: IGT, grapes: ["Catalanesca"], source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Colli di Salerno", country: IT, parent: "Campania", classification: IGT, source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Dugenta", country: IT, parent: "Campania", classification: IGT, source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Epomeo", country: IT, parent: "Campania", classification: IGT, source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Paestum", country: IT, parent: "Campania", classification: IGT, source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Pompeiano", country: IT, parent: "Campania", classification: IGT, source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Roccamonfina", country: IT, parent: "Campania", classification: IGT, source: "https://www.disciplinare.it/vini-campania.html"}
+- {name: "Terre del Volturno", country: IT, parent: "Campania", classification: IGT, source: "https://www.disciplinare.it/vini-campania.html"}
+
+# --- Puglia ---
+- {name: "Puglia", country: IT, synonyms: ["Apulia", "Puglia IGT", "Puglia IGP"], source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Castel del Monte", country: IT, parent: "Puglia", classification: DOC, source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Castel del Monte Bombino Nero", country: IT, parent: "Castel del Monte", classification: DOCG, grapes: ["Bombino Nero"], source: "https://italianwinecentral.com/denomination/castel-del-monte-doc/"}
+- {name: "Castel del Monte Nero di Troia Riserva", country: IT, parent: "Castel del Monte", classification: DOCG, grapes: ["Nero di Troia"], source: "https://italianwinecentral.com/denomination/castel-del-monte-nero-di-troia-riserva-docg/"}
+- {name: "Castel del Monte Rosso Riserva", country: IT, parent: "Castel del Monte", classification: DOCG, grapes: ["Nero di Troia"], source: "https://italianwinecentral.com/denomination/castel-del-monte-doc/"}
+- {name: "Gioia del Colle", country: IT, parent: "Puglia", classification: DOC, source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Salento", country: IT, parent: "Puglia", classification: IGT, synonyms: ["Salento IGT", "Salento IGP"], source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Salice Salentino", country: IT, parent: "Salento", classification: DOC, source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Primitivo di Manduria", country: IT, parent: "Salento", classification: DOC, synonyms: ["Manduria"], grapes: ["Primitivo"], source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Primitivo di Manduria Dolce Naturale", country: IT, parent: "Primitivo di Manduria", classification: DOCG, grapes: ["Primitivo"], source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Brindisi", country: IT, parent: "Salento", classification: DOC, source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Copertino", country: IT, parent: "Salento", classification: DOC, source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Squinzano", country: IT, parent: "Salento", classification: DOC, source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Alezio", country: IT, parent: "Salento", classification: DOC, source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Galatina", country: IT, parent: "Salento", classification: DOC, source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Leverano", country: IT, parent: "Salento", classification: DOC, source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Lizzano", country: IT, parent: "Salento", classification: DOC, source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Matino", country: IT, parent: "Salento", classification: DOC, source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Nardò", country: IT, parent: "Salento", classification: DOC, synonyms: ["Nardo"], source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Negroamaro di Terra d'Otranto", country: IT, parent: "Salento", classification: DOC, grapes: ["Negroamaro"], source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Terra d'Otranto", country: IT, parent: "Salento", classification: DOC, source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Aleatico di Puglia", country: IT, parent: "Puglia", classification: DOC, grapes: ["Aleatico"], source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Barletta", country: IT, parent: "Puglia", classification: DOC, source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Cacc'e Mmitte di Lucera", country: IT, parent: "Puglia", classification: DOC, synonyms: ["Cacc'e Mmitte", "Cacce Mmitte di Lucera"], source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Colline Joniche Tarantine", country: IT, parent: "Puglia", classification: DOC, source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Gravina", country: IT, parent: "Puglia", classification: DOC, source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Locorotondo", country: IT, parent: "Puglia", classification: DOC, source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Martina Franca", country: IT, parent: "Puglia", classification: DOC, synonyms: ["Martina"], source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Moscato di Trani", country: IT, parent: "Puglia", classification: DOC, source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Orta Nova", country: IT, parent: "Puglia", classification: DOC, source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Ostuni", country: IT, parent: "Puglia", classification: DOC, source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Rosso di Cerignola", country: IT, parent: "Puglia", classification: DOC, source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "San Severo", country: IT, parent: "Puglia", classification: DOC, source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Tavoliere delle Puglie", country: IT, parent: "Puglia", classification: DOC, source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Daunia", country: IT, parent: "Puglia", classification: IGT, synonyms: ["Daunia IGT"], source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Murgia", country: IT, parent: "Puglia", classification: IGT, synonyms: ["Murgia IGT"], source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Tarantino", country: IT, parent: "Puglia", classification: IGT, synonyms: ["Tarantino IGT"], source: "https://www.disciplinare.it/vini-puglia.html"}
+- {name: "Valle d'Itria", country: IT, parent: "Puglia", classification: IGT, synonyms: ["Valle d'Itria IGT"], source: "https://www.disciplinare.it/vini-puglia.html"}
+
+# --- Basilicata ---
+- {name: "Basilicata", country: IT, synonyms: ["Basilicata IGT", "Basilicata IGP"], source: "https://www.disciplinare.it/vini-basilicata.html"}
+- {name: "Aglianico del Vulture", country: IT, parent: "Basilicata", classification: DOC, synonyms: ["Vulture"], grapes: ["Aglianico"], source: "https://www.disciplinare.it/vini-basilicata.html"}
+- {name: "Aglianico del Vulture Superiore", country: IT, parent: "Aglianico del Vulture", classification: DOCG, grapes: ["Aglianico"], source: "https://www.disciplinare.it/vini-basilicata.html"}
+- {name: "Grottino di Roccanova", country: IT, parent: "Basilicata", classification: DOC, source: "https://www.disciplinare.it/vini-basilicata.html"}
+- {name: "Matera", country: IT, parent: "Basilicata", classification: DOC, source: "https://www.disciplinare.it/vini-basilicata.html"}
+- {name: "Terre dell'Alta Val d'Agri", country: IT, parent: "Basilicata", classification: DOC, synonyms: ["Alta Val d'Agri"], source: "https://www.disciplinare.it/vini-basilicata.html"}

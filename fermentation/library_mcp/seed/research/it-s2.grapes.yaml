@@ -1,0 +1,12 @@
+# it-s2: Calabria, Sicily, Sardinia
+- {name: "Magliocco Canino", color: red, synonyms: [], source: "https://en.wikipedia.org/wiki/Magliocco_Canino"}
+- {name: "Magliocco Dolce", color: red, synonyms: ["Arvino", "Guarnaccia Nera"], source: "https://en.wikipedia.org/wiki/Magliocco_Dolce"}
+- {name: "Mantonico", color: white, synonyms: ["Mantonico Bianco"], source: "https://en.wikipedia.org/wiki/Mantonico_bianco"}
+- {name: "Greco Nero", color: red, synonyms: [], source: "https://it.wikipedia.org/wiki/Greco_nero"}
+- {name: "Nasco", color: white, synonyms: [], source: "https://www.quattrocalici.it/vitigni/nasco/"}
+- {name: "Vernaccia di Oristano", color: white, synonyms: [], source: "https://it.wikipedia.org/wiki/Vernaccia_di_Oristano"}
+- {name: "Girò", color: red, synonyms: [], source: "https://www.quattrocalici.it/vitigni/giro/"}
+- {name: "Semidano", color: white, synonyms: [], source: "https://www.viviilvino.it/denominazioni/sardegna-semidano-doc/"}
+- {name: "Cagnulari", color: red, synonyms: [], source: "https://www.quattrocalici.it/vitigni/cagnulari/"}
+- {name: "Malvasía Aromática", existing: true, synonyms: ["Malvasia di Lipari", "Malvasia di Sardegna"], source: "https://it.wikipedia.org/wiki/Malvasia_delle_Lipari"}
+- {name: "Perricone", existing: true, synonyms: ["Pignatello"], source: "https://it.wikipedia.org/wiki/Perricone"}

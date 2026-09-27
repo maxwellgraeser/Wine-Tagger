@@ -1,0 +1,302 @@
+# ================= NORTHERN ITALY (it-n) — research =================
+# Scope: Piedmont, Valle d'Aosta, Liguria, Lombardy, Trentino-Alto Adige,
+# Veneto, Friuli-Venezia Giulia, Emilia-Romagna, plus delle Venezie and
+# Prosecco DOC. Sources cited inline; see it-n.md for full source list,
+# counts, changes to existing entries, and homonyms.
+
+# ---------------- VALLE D'AOSTA ----------------
+# Valle d'Aosta has a single DOC covering the whole region, with 7 named
+# sottozone. Source: MASAF 2011 register + quattrocalici.it/regione/valle-d-aosta/denominazioni/
+# + https://en.wikipedia.org/wiki/Valle_d%27Aosta_DOC (grape composition).
+- {name: "Valle d'Aosta", country: IT, classification: DOC, synonyms: ["Aosta Valley", "Vallée d'Aoste"], source: "https://www.quattrocalici.it/regione/valle-d-aosta/denominazioni/"}
+- {name: "Donnas", country: IT, parent: "Valle d'Aosta", classification: DOC, synonyms: ["Donnaz"], grapes: ["Nebbiolo"], source: "https://en.wikipedia.org/wiki/Valle_d%27Aosta_DOC"}
+- {name: "Arnad-Montjovet", country: IT, parent: "Valle d'Aosta", classification: DOC, grapes: ["Nebbiolo"], source: "https://en.wikipedia.org/wiki/Valle_d%27Aosta_DOC"}
+- {name: "Torrette", country: IT, parent: "Valle d'Aosta", classification: DOC, grapes: ["Petit Rouge"], source: "https://en.wikipedia.org/wiki/Valle_d%27Aosta_DOC"}
+- {name: "Enfer d'Arvier", country: IT, parent: "Valle d'Aosta", classification: DOC, grapes: ["Petit Rouge"], source: "https://en.wikipedia.org/wiki/Valle_d%27Aosta_DOC"}
+- {name: "Chambave", country: IT, parent: "Valle d'Aosta", classification: DOC, grapes: ["Petit Rouge", "Muscat Blanc à Petits Grains"], source: "https://en.wikipedia.org/wiki/Valle_d%27Aosta_DOC"}
+- {name: "Nus", country: IT, parent: "Valle d'Aosta", classification: DOC, grapes: ["Petit Rouge", "Vien de Nus", "Pinot Gris"], source: "https://en.wikipedia.org/wiki/Valle_d%27Aosta_DOC"}
+- {name: "Blanc de Morgex et de la Salle", country: IT, parent: "Valle d'Aosta", classification: DOC, grapes: ["Prié Blanc"], source: "https://en.wikipedia.org/wiki/Valle_d%27Aosta_DOC"}
+
+# ---------------- LIGURIA ----------------
+# No DOCG. Source: quattrocalici.it/regione/liguria/denominazioni/ (8 DOC, 4 IGT).
+- {name: "Liguria", country: IT}
+- {name: "Cinque Terre", country: IT, parent: "Liguria", classification: DOC, synonyms: ["Cinque Terre Sciacchetrà"], grapes: ["Bosco", "Albarola", "Vermentino"], source: "https://www.quattrocalici.it/regione/liguria/denominazioni/"}
+- {name: "Riviera Ligure di Ponente", country: IT, parent: "Liguria", classification: DOC, source: "https://www.quattrocalici.it/regione/liguria/denominazioni/"}
+- {name: "Colli di Luni", country: IT, parent: "Liguria", classification: DOC, grapes: ["Vermentino", "Sangiovese"], source: "https://www.quattrocalici.it/regione/liguria/denominazioni/"}
+- {name: "Colline di Levanto", country: IT, parent: "Liguria", classification: DOC, source: "https://www.quattrocalici.it/regione/liguria/denominazioni/"}
+- {name: "Golfo del Tigullio-Portofino", country: IT, parent: "Liguria", classification: DOC, synonyms: ["Golfo del Tigullio", "Portofino"], source: "https://www.quattrocalici.it/denominazioni/golfo-del-tigullio-portofino-o-portofino-doc/"}
+- {name: "Pornassio", country: IT, parent: "Liguria", classification: DOC, synonyms: ["Ormeasco di Pornassio"], grapes: ["Dolcetto"], source: "https://www.quattrocalici.it/regione/liguria/denominazioni/"}
+- {name: "Rossese di Dolceacqua", country: IT, parent: "Liguria", classification: DOC, synonyms: ["Dolceacqua"], grapes: ["Rossese"], source: "https://www.quattrocalici.it/regione/liguria/denominazioni/"}
+- {name: "Val Polcevera", country: IT, parent: "Liguria", classification: DOC, source: "https://www.quattrocalici.it/regione/liguria/denominazioni/"}
+- {name: "Colline del Genovesato", country: IT, parent: "Liguria", classification: IGT, source: "https://www.quattrocalici.it/regione/liguria/denominazioni/"}
+- {name: "Colline Savonesi", country: IT, parent: "Liguria", classification: IGT, source: "https://www.quattrocalici.it/regione/liguria/denominazioni/"}
+- {name: "Liguria di Levante", country: IT, parent: "Liguria", classification: IGT, was: "Golfo dei Poeti La Spezia", synonyms: ["Golfo dei Poeti", "Golfo dei Poeti La Spezia"], source: "https://it.wikipedia.org/wiki/Golfo_della_Spezia"}
+- {name: "Terrazze dell'Imperiese", country: IT, parent: "Liguria", classification: IGT, source: "https://www.quattrocalici.it/regione/liguria/denominazioni/"}
+
+# ---------------- PIEDMONT ----------------
+# 19 DOCG, 41 DOC, 0 IGT (Piedmont converted its former IGT tier into the
+# catch-all "Piemonte" DOC in 2011). Source: quattrocalici.it/regione/piemonte/denominazioni/
+# cross-checked against MASAF 2011 (structure/sottozone) and the Piedmont
+# regional government DOCG/DOC page. Existing library entries carried over
+# with grapes added and classification-suffix synonyms dropped (the lookup
+# code strips DOCG/DOC before matching).
+- {name: "Piedmont", country: IT, synonyms: ["Piemonte"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Langhe", country: IT, parent: "Piedmont", classification: DOC, synonyms: ["Langhe Nebbiolo"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Alba", country: IT, parent: "Langhe", classification: DOC, grapes: ["Nebbiolo"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Barolo", country: IT, parent: "Langhe", classification: DOCG, grapes: ["Nebbiolo"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Barbaresco", country: IT, parent: "Langhe", classification: DOCG, grapes: ["Nebbiolo"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Roero", country: IT, parent: "Piedmont", classification: DOCG, synonyms: ["Roero Arneis"], grapes: ["Nebbiolo", "Arneis"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Barbera d'Asti", country: IT, parent: "Piedmont", classification: DOCG, grapes: ["Barbera"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Nizza", country: IT, parent: "Barbera d'Asti", classification: DOCG, grapes: ["Barbera"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Barbera d'Alba", country: IT, parent: "Langhe", classification: DOC, grapes: ["Barbera"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Barbera del Monferrato", country: IT, parent: "Monferrato", classification: DOC, grapes: ["Barbera"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Barbera del Monferrato Superiore", country: IT, parent: "Barbera del Monferrato", classification: DOCG, grapes: ["Barbera"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Dolcetto d'Alba", country: IT, parent: "Langhe", classification: DOC, grapes: ["Dolcetto"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Dolcetto d'Acqui", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Dolcetto"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Dolcetto d'Asti", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Dolcetto"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Dolcetto di Ovada", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Dolcetto"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Dolcetto di Ovada Superiore", country: IT, parent: "Dolcetto di Ovada", classification: DOCG, synonyms: ["Ovada"], grapes: ["Dolcetto"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Dogliani", country: IT, parent: "Piedmont", classification: DOCG, synonyms: ["Dolcetto di Dogliani"], grapes: ["Dolcetto"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Dolcetto di Diano d'Alba", country: IT, parent: "Langhe", classification: DOCG, synonyms: ["Diano d'Alba"], grapes: ["Dolcetto"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Nebbiolo d'Alba", country: IT, parent: "Langhe", classification: DOC, grapes: ["Nebbiolo"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Asti", country: IT, parent: "Piedmont", classification: DOCG, synonyms: ["Asti Spumante", "Moscato d'Asti"], grapes: ["Moscato Bianco"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Canelli", country: IT, parent: "Asti", classification: DOCG, synonyms: ["Moscato di Canelli"], grapes: ["Moscato Bianco"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Loazzolo", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Moscato Bianco"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Strevi", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Moscato Bianco"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Calosso", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Gamba Rossa"], source: "https://www.disciplinare.it/calosso-doc.html"}
+- {name: "Gavi", country: IT, parent: "Piedmont", classification: DOCG, synonyms: ["Cortese di Gavi", "Gavi di Gavi"], grapes: ["Cortese"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Cortese dell'Alto Monferrato", country: IT, parent: "Monferrato", classification: DOC, grapes: ["Cortese"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Gattinara", country: IT, parent: "Piedmont", classification: DOCG, grapes: ["Nebbiolo"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Ghemme", country: IT, parent: "Piedmont", classification: DOCG, grapes: ["Nebbiolo"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Boca", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Nebbiolo"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Bramaterra", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Nebbiolo"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Fara", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Nebbiolo"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Lessona", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Nebbiolo"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Sizzano", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Nebbiolo"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Colline Novaresi", country: IT, parent: "Piedmont", classification: DOC, source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Coste della Sesia", country: IT, parent: "Piedmont", classification: DOC, source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Carema", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Nebbiolo"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Canavese", country: IT, parent: "Piedmont", classification: DOC, source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Erbaluce di Caluso", country: IT, parent: "Piedmont", classification: DOCG, synonyms: ["Caluso"], grapes: ["Erbaluce"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Alta Langa", country: IT, parent: "Piedmont", classification: DOCG, grapes: ["Chardonnay", "Pinot Nero"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Brachetto d'Acqui", country: IT, parent: "Piedmont", classification: DOCG, synonyms: ["Acqui"], grapes: ["Brachetto"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Ruché di Castagnole Monferrato", country: IT, parent: "Piedmont", classification: DOCG, synonyms: ["Ruché", "Ruchè"], grapes: ["Ruchè"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Terre Alfieri", country: IT, parent: "Piedmont", classification: DOCG, grapes: ["Nebbiolo", "Arneis"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Monferrato", country: IT, parent: "Piedmont", classification: DOC, source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Colli Tortonesi", country: IT, parent: "Piedmont", classification: DOC, source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Gabiano", country: IT, parent: "Monferrato", classification: DOC, grapes: ["Barbera"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Rubino di Cantavenna", country: IT, parent: "Monferrato", classification: DOC, grapes: ["Barbera"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Grignolino del Monferrato Casalese", country: IT, parent: "Monferrato", classification: DOC, grapes: ["Grignolino"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Grignolino d'Asti", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Grignolino"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Malvasia di Casorzo", country: IT, parent: "Monferrato", classification: DOC, synonyms: ["Casorzo"], grapes: ["Malvasia di Casorzo"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Malvasia di Castelnuovo Don Bosco", country: IT, parent: "Piedmont", classification: DOC, source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Freisa d'Asti", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Freisa"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Freisa di Chieri", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Freisa"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Albugnano", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Nebbiolo"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Cisterna d'Asti", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Croatina"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Collina Torinese", country: IT, parent: "Piedmont", classification: DOC, source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Pinerolese", country: IT, parent: "Piedmont", classification: DOC, source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Valsusa", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Avanà", "Becuet", "Neretta Cuneese"], source: "https://www.disciplinare.it/valsusa-doc.html"}
+- {name: "Valli Ossolane", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Nebbiolo"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Colline Saluzzesi", country: IT, parent: "Piedmont", classification: DOC, grapes: ["Pelaverga"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Verduno Pelaverga", country: IT, parent: "Langhe", classification: DOC, synonyms: ["Verduno"], grapes: ["Pelaverga"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+
+# ---------------- LOMBARDY ----------------
+# 5 DOCG, 22 DOC, 16 IGT. Source: quattrocalici.it/regione/lombardia/denominazioni/.
+# "Valtellina" in the existing library folded three legally separate tiers
+# (Valtellina Superiore DOCG, Sforzato di Valtellina DOCG, Valtellina Rosso
+# DOC) into one DOCG entry with the other two as synonyms; split here into
+# an unclassified umbrella (matching the existing "Montalcino" pattern) plus
+# three real entries, since a sub-appellation must be a child, not a synonym.
+- {name: "Lombardy", country: IT, synonyms: ["Lombardia"], source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Valtellina", country: IT, parent: "Lombardy", source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Valtellina Superiore", country: IT, parent: "Valtellina", classification: DOCG, grapes: ["Nebbiolo"], source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Grumello", country: IT, parent: "Valtellina Superiore", classification: DOCG, grapes: ["Nebbiolo"], source: "https://www.masaf.gov.it/flex/files/8/8/c/D.c98d43be48c9b307022a/Vini_DOCG_DOC_IGT_suddivisi_per_regione.pdf"}
+- {name: "Inferno", country: IT, parent: "Valtellina Superiore", classification: DOCG, grapes: ["Nebbiolo"], source: "https://www.masaf.gov.it/flex/files/8/8/c/D.c98d43be48c9b307022a/Vini_DOCG_DOC_IGT_suddivisi_per_regione.pdf"}
+- {name: "Maroggia", country: IT, parent: "Valtellina Superiore", classification: DOCG, grapes: ["Nebbiolo"], source: "https://www.masaf.gov.it/flex/files/8/8/c/D.c98d43be48c9b307022a/Vini_DOCG_DOC_IGT_suddivisi_per_regione.pdf"}
+- {name: "Sassella", country: IT, parent: "Valtellina Superiore", classification: DOCG, grapes: ["Nebbiolo"], source: "https://www.masaf.gov.it/flex/files/8/8/c/D.c98d43be48c9b307022a/Vini_DOCG_DOC_IGT_suddivisi_per_regione.pdf"}
+- {name: "Valgella", country: IT, parent: "Valtellina Superiore", classification: DOCG, grapes: ["Nebbiolo"], source: "https://www.masaf.gov.it/flex/files/8/8/c/D.c98d43be48c9b307022a/Vini_DOCG_DOC_IGT_suddivisi_per_regione.pdf"}
+- {name: "Sforzato di Valtellina", country: IT, parent: "Valtellina", classification: DOCG, synonyms: ["Sfursat di Valtellina"], grapes: ["Nebbiolo"], source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Valtellina Rosso", country: IT, parent: "Valtellina", classification: DOC, synonyms: ["Rosso di Valtellina"], grapes: ["Nebbiolo"], source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Franciacorta", country: IT, parent: "Lombardy", classification: DOCG, grapes: ["Chardonnay", "Pinot Nero", "Pinot Bianco"], source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Curtefranca", country: IT, parent: "Franciacorta", classification: DOC, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Scanzo", country: IT, parent: "Lombardy", classification: DOCG, synonyms: ["Moscato di Scanzo"], grapes: ["Moscato di Scanzo"], source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Oltrepò Pavese", country: IT, parent: "Lombardy", classification: DOC, synonyms: ["Oltrepo Pavese"], source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Oltrepò Pavese Metodo Classico", country: IT, parent: "Oltrepò Pavese", classification: DOCG, grapes: ["Pinot Nero"], source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Bonarda dell'Oltrepò Pavese", country: IT, parent: "Oltrepò Pavese", classification: DOC, grapes: ["Croatina"], source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Buttafuoco dell'Oltrepò Pavese", country: IT, parent: "Oltrepò Pavese", classification: DOC, synonyms: ["Buttafuoco"], grapes: ["Barbera", "Croatina"], source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Sangue di Giuda dell'Oltrepò Pavese", country: IT, parent: "Oltrepò Pavese", classification: DOC, synonyms: ["Sangue di Giuda"], grapes: ["Barbera", "Croatina", "Uva Rara"], source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Pinot Nero dell'Oltrepò Pavese", country: IT, parent: "Oltrepò Pavese", classification: DOC, grapes: ["Pinot Nero"], source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Oltrepò Pavese Pinot Grigio", country: IT, parent: "Oltrepò Pavese", classification: DOC, grapes: ["Pinot Grigio"], source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Casteggio", country: IT, parent: "Oltrepò Pavese", classification: DOC, grapes: ["Barbera"], source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Botticino", country: IT, parent: "Lombardy", classification: DOC, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Capriano del Colle", country: IT, parent: "Lombardy", classification: DOC, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Cellatica", country: IT, parent: "Lombardy", classification: DOC, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "San Colombano al Lambro", country: IT, parent: "Lombardy", classification: DOC, synonyms: ["San Colombano"], grapes: ["Croatina"], source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Valcalepio", country: IT, parent: "Lombardy", classification: DOC, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Terre del Colleoni", country: IT, parent: "Lombardy", classification: DOC, synonyms: ["Colleoni"], source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Valtenesi", country: IT, parent: "Lombardy", classification: DOC, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Riviera del Garda Classico", country: IT, parent: "Valtenesi", classification: DOC, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Garda Bresciano", country: IT, parent: "Lombardy", classification: DOC, synonyms: ["Riviera del Garda Bresciano"], source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Garda Colli Mantovani", country: IT, parent: "Lombardy", classification: DOC, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Lambrusco Mantovano", country: IT, parent: "Lombardy", classification: DOC, grapes: ["Lambrusco"], source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Garda", country: IT, parent: "Lombardy", classification: DOC, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Lugana", country: IT, parent: "Lombardy", classification: DOC, grapes: ["Turbiana"], source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "San Martino della Battaglia", country: IT, parent: "Lombardy", classification: DOC, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Alpi Retiche", country: IT, parent: "Lombardy", classification: IGT, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Alto Mincio", country: IT, parent: "Lombardy", classification: IGT, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Benaco Bresciano", country: IT, parent: "Lombardy", classification: IGT, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Bergamasca", country: IT, parent: "Lombardy", classification: IGT, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Collina del Milanese", country: IT, parent: "Lombardy", classification: IGT, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Montenetto di Brescia", country: IT, parent: "Lombardy", classification: IGT, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Provincia di Mantova", country: IT, parent: "Lombardy", classification: IGT, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Provincia di Pavia", country: IT, parent: "Lombardy", classification: IGT, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Quistello", country: IT, parent: "Lombardy", classification: IGT, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Ronchi di Brescia", country: IT, parent: "Lombardy", classification: IGT, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Ronchi Varesini", country: IT, parent: "Lombardy", classification: IGT, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Sabbioneta", country: IT, parent: "Lombardy", classification: IGT, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Sebino", country: IT, parent: "Lombardy", classification: IGT, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Terrazze Retiche di Sondrio", country: IT, parent: "Lombardy", classification: IGT, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Terre Lariane", country: IT, parent: "Lombardy", classification: IGT, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+- {name: "Valcamonica", country: IT, parent: "Lombardy", classification: IGT, source: "https://www.quattrocalici.it/regione/lombardia/denominazioni/"}
+
+# ---------------- VENETO ----------------
+# 14 DOCG, 29 DOC, 9 IGT. Source: quattrocalici.it/regione/veneto/denominazioni/.
+# Several existing entries folded a real sub-appellation into the parent's
+# synonym list (Soave/Valpolicella "Classico", Barbera-d'Asti-style pattern);
+# split those into child entries here, same fix as za's Simonsberg case.
+- {name: "Veneto", country: IT, synonyms: ["Veneto IGT"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Valpolicella", country: IT, parent: "Veneto", classification: DOC, grapes: ["Corvina", "Corvinone", "Rondinella"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Valpolicella Classico", country: IT, parent: "Valpolicella", classification: DOC, grapes: ["Corvina", "Corvinone", "Rondinella"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Valpantena", country: IT, parent: "Valpolicella", classification: DOC, grapes: ["Corvina", "Corvinone", "Rondinella"], source: "https://www.masaf.gov.it/flex/files/8/8/c/D.c98d43be48c9b307022a/Vini_DOCG_DOC_IGT_suddivisi_per_regione.pdf"}
+- {name: "Amarone della Valpolicella", country: IT, parent: "Valpolicella", classification: DOCG, synonyms: ["Amarone"], grapes: ["Corvina", "Corvinone", "Rondinella"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Valpolicella Ripasso", country: IT, parent: "Valpolicella", classification: DOC, synonyms: ["Ripasso", "Ripasso della Valpolicella"], grapes: ["Corvina", "Corvinone", "Rondinella"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Recioto della Valpolicella", country: IT, parent: "Valpolicella", classification: DOCG, grapes: ["Corvina", "Corvinone", "Rondinella"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Soave", country: IT, parent: "Veneto", classification: DOC, grapes: ["Garganega"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Soave Classico", country: IT, parent: "Soave", classification: DOC, grapes: ["Garganega"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Soave Superiore", country: IT, parent: "Soave", classification: DOCG, grapes: ["Garganega"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Recioto di Soave", country: IT, parent: "Soave", classification: DOCG, grapes: ["Garganega"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Bardolino", country: IT, parent: "Veneto", classification: DOC, grapes: ["Corvina", "Rondinella"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Bardolino Superiore", country: IT, parent: "Bardolino", classification: DOCG, grapes: ["Corvina", "Rondinella"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Custoza", country: IT, parent: "Veneto", classification: DOC, synonyms: ["Bianco di Custoza"], grapes: ["Garganega", "Trebbiano"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Gambellara", country: IT, parent: "Veneto", classification: DOC, grapes: ["Garganega"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Recioto di Gambellara", country: IT, parent: "Gambellara", classification: DOCG, grapes: ["Garganega"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Prosecco", country: IT, parent: "Veneto", classification: DOC, synonyms: ["Prosecco Treviso"], grapes: ["Glera"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Conegliano Valdobbiadene", country: IT, parent: "Prosecco", classification: DOCG, synonyms: ["Valdobbiadene", "Conegliano", "Prosecco Superiore", "Conegliano Valdobbiadene Prosecco Superiore", "Valdobbiadene Prosecco Superiore"], grapes: ["Glera"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Cartizze", country: IT, parent: "Conegliano Valdobbiadene", classification: DOCG, synonyms: ["Valdobbiadene Superiore di Cartizze"], grapes: ["Glera"], source: "https://www.masaf.gov.it/flex/files/8/8/c/D.c98d43be48c9b307022a/Vini_DOCG_DOC_IGT_suddivisi_per_regione.pdf"}
+- {name: "Asolo Prosecco", country: IT, parent: "Prosecco", classification: DOCG, synonyms: ["Colli Asolani Prosecco", "Colli Asolani"], grapes: ["Glera"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "delle Venezie", country: IT, classification: DOC, synonyms: ["Venezie", "Tre Venezie", "Triveneto"], grapes: ["Pinot Grigio"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Bagnoli di Sopra", country: IT, parent: "Veneto", classification: DOC, synonyms: ["Bagnoli"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Bagnoli Friularo", country: IT, parent: "Bagnoli di Sopra", classification: DOCG, synonyms: ["Friularo di Bagnoli"], grapes: ["Raboso"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Colli Euganei", country: IT, parent: "Veneto", classification: DOC, source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Colli Euganei Fior d'Arancio", country: IT, parent: "Colli Euganei", classification: DOCG, synonyms: ["Fior d'Arancio"], grapes: ["Moscato Giallo"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Piave", country: IT, parent: "Veneto", classification: DOC, source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Piave Malanotte", country: IT, parent: "Piave", classification: DOCG, synonyms: ["Malanotte del Piave", "Malanotte"], grapes: ["Raboso"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Montello e Colli Asolani", country: IT, parent: "Veneto", classification: DOC, source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Montello Rosso", country: IT, parent: "Montello e Colli Asolani", classification: DOCG, synonyms: ["Rosso del Montello"], grapes: ["Cabernet Sauvignon", "Merlot"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Colli di Conegliano", country: IT, parent: "Veneto", classification: DOCG, source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Lison Pramaggiore", country: IT, parent: "Veneto", classification: DOC, synonyms: ["Lison-Pramaggiore"], grapes: ["Friulano"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Lison", country: IT, parent: "Lison Pramaggiore", classification: DOCG, grapes: ["Friulano"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Arcole", country: IT, parent: "Veneto", classification: DOC, source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Breganze", country: IT, parent: "Veneto", classification: DOC, grapes: ["Vespaiola"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Colli Berici", country: IT, parent: "Veneto", classification: DOC, source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Corti Benedettine del Padovano", country: IT, parent: "Veneto", classification: DOC, source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Lessini Durello", country: IT, parent: "Veneto", classification: DOC, grapes: ["Durella"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Monti Lessini", country: IT, parent: "Veneto", classification: DOC, source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Merlara", country: IT, parent: "Veneto", classification: DOC, source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Riviera del Brenta", country: IT, parent: "Veneto", classification: DOC, source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Venezia", country: IT, parent: "Veneto", classification: DOC, source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Vicenza", country: IT, parent: "Veneto", classification: DOC, source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Vigneti della Serenissima", country: IT, parent: "Veneto", classification: DOC, synonyms: ["Serenissima"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Alto Livenza", country: IT, parent: "Veneto", classification: IGT, source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Colli Trevigiani", country: IT, parent: "Veneto", classification: IGT, source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Conselvano", country: IT, parent: "Veneto", classification: IGT, source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Marca Trevigiana", country: IT, parent: "Veneto", classification: IGT, source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Trevenezie", country: IT, parent: "Veneto", classification: IGT, synonyms: ["Delle Tre Venezie"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Veneto Orientale", country: IT, parent: "Veneto", classification: IGT, source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Verona", country: IT, parent: "Veneto", classification: IGT, synonyms: ["Provincia di Verona", "Veronese"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+
+# ---------------- TRENTINO-ALTO ADIGE ----------------
+# 0 DOCG, 9 DOC, 4 IGT (Trento is a DOC, not a DOCG, despite being a
+# prestige sparkling-wine name). Source: quattrocalici.it/regione/trentino-alto-adige/denominazioni/.
+# Valdadige and Valdadige Terradeiforti also reach into Veneto (Verona);
+# assigned here since Trentino-Alto Adige is the larger, historic part.
+- {name: "Trentino-Alto Adige", country: IT, synonyms: ["Trentino Alto Adige", "Trentino-Südtirol", "Trentino-South Tyrol"], source: "https://www.quattrocalici.it/regione/trentino-alto-adige/denominazioni/"}
+- {name: "Alto Adige", country: IT, parent: "Trentino-Alto Adige", classification: DOC, synonyms: ["Südtirol", "Sudtirol", "South Tyrol"], source: "https://www.quattrocalici.it/regione/trentino-alto-adige/denominazioni/"}
+- {name: "Santa Maddalena", country: IT, parent: "Alto Adige", classification: DOC, synonyms: ["St. Magdalener"], grapes: ["Schiava"], source: "https://www.masaf.gov.it/flex/files/8/8/c/D.c98d43be48c9b307022a/Vini_DOCG_DOC_IGT_suddivisi_per_regione.pdf"}
+- {name: "Alto Adige Meranese di Collina", country: IT, parent: "Alto Adige", classification: DOC, synonyms: ["Meranese", "Meraner Hügel", "Meraner"], grapes: ["Schiava"], source: "https://www.masaf.gov.it/flex/files/8/8/c/D.c98d43be48c9b307022a/Vini_DOCG_DOC_IGT_suddivisi_per_regione.pdf"}
+- {name: "Alto Adige Terlano", country: IT, parent: "Alto Adige", classification: DOC, synonyms: ["Terlano", "Terlaner"], source: "https://www.masaf.gov.it/flex/files/8/8/c/D.c98d43be48c9b307022a/Vini_DOCG_DOC_IGT_suddivisi_per_regione.pdf"}
+- {name: "Alto Adige Valle Isarco", country: IT, parent: "Alto Adige", classification: DOC, synonyms: ["Valle Isarco", "Eisacktal", "Eisacktaler"], source: "https://www.masaf.gov.it/flex/files/8/8/c/D.c98d43be48c9b307022a/Vini_DOCG_DOC_IGT_suddivisi_per_regione.pdf"}
+- {name: "Alto Adige Val Venosta", country: IT, parent: "Alto Adige", classification: DOC, synonyms: ["Val Venosta", "Vinschgau"], source: "https://www.masaf.gov.it/flex/files/8/8/c/D.c98d43be48c9b307022a/Vini_DOCG_DOC_IGT_suddivisi_per_regione.pdf"}
+- {name: "Alto Adige Colli di Bolzano", country: IT, parent: "Alto Adige", classification: DOC, synonyms: ["Colli di Bolzano", "Bozner Leiten"], source: "https://www.masaf.gov.it/flex/files/8/8/c/D.c98d43be48c9b307022a/Vini_DOCG_DOC_IGT_suddivisi_per_regione.pdf"}
+- {name: "Lago di Caldaro", country: IT, parent: "Trentino-Alto Adige", classification: DOC, synonyms: ["Caldaro", "Kalterersee", "Kalterer"], grapes: ["Schiava"], source: "https://www.quattrocalici.it/regione/trentino-alto-adige/denominazioni/"}
+- {name: "Trentino", country: IT, parent: "Trentino-Alto Adige", classification: DOC, source: "https://www.quattrocalici.it/regione/trentino-alto-adige/denominazioni/"}
+- {name: "Trento", country: IT, parent: "Trentino", classification: DOC, synonyms: ["Trentodoc"], grapes: ["Chardonnay", "Pinot Nero", "Pinot Bianco", "Pinot Meunier"], source: "https://www.quattrocalici.it/regione/trentino-alto-adige/denominazioni/"}
+- {name: "Teroldego Rotaliano", country: IT, parent: "Trentino-Alto Adige", classification: DOC, grapes: ["Teroldego"], source: "https://www.quattrocalici.it/regione/trentino-alto-adige/denominazioni/"}
+- {name: "Casteller", country: IT, parent: "Trentino-Alto Adige", classification: DOC, source: "https://www.quattrocalici.it/regione/trentino-alto-adige/denominazioni/"}
+- {name: "Valdadige", country: IT, parent: "Trentino-Alto Adige", classification: DOC, synonyms: ["Etschtaler"], source: "https://www.quattrocalici.it/regione/trentino-alto-adige/denominazioni/"}
+- {name: "Valdadige Terradeiforti", country: IT, parent: "Trentino-Alto Adige", classification: DOC, synonyms: ["Terradeiforti", "Valdadige Terra dei Forti"], source: "https://www.quattrocalici.it/regione/trentino-alto-adige/denominazioni/"}
+- {name: "Mitterberg", country: IT, parent: "Trentino-Alto Adige", classification: IGT, source: "https://www.masaf.gov.it/flex/files/8/8/c/D.c98d43be48c9b307022a/Vini_DOCG_DOC_IGT_suddivisi_per_regione.pdf"}
+- {name: "Vigneti delle Dolomiti", country: IT, parent: "Trentino-Alto Adige", classification: IGT, synonyms: ["Weinberg Dolomiten"], source: "https://www.quattrocalici.it/regione/trentino-alto-adige/denominazioni/"}
+- {name: "Vallagarina", country: IT, parent: "Trentino-Alto Adige", classification: IGT, source: "https://www.quattrocalici.it/regione/trentino-alto-adige/denominazioni/"}
+
+# ---------------- FRIULI-VENEZIA GIULIA ----------------
+# 4 DOCG, 12 DOC, 3 IGT. Lison DOCG (parent Lison Pramaggiore), delle
+# Venezie DOC/IGT, Prosecco DOC and Alto Livenza IGT also reach into FVG
+# but are filed under Veneto above (see it-n.md for the straddle notes).
+# Source: quattrocalici.it/regione/friuli-venezia-giulia/denominazioni/.
+- {name: "Friuli-Venezia Giulia", country: IT, synonyms: ["Friuli", "Friuli Venezia Giulia"], source: "https://www.quattrocalici.it/regione/friuli-venezia-giulia/denominazioni/"}
+- {name: "Collio", country: IT, parent: "Friuli-Venezia Giulia", classification: DOC, synonyms: ["Collio Goriziano"], source: "https://www.quattrocalici.it/regione/friuli-venezia-giulia/denominazioni/"}
+- {name: "Colli Orientali del Friuli", country: IT, parent: "Friuli-Venezia Giulia", classification: DOC, synonyms: ["Friuli Colli Orientali", "Colli Orientali"], source: "https://www.quattrocalici.it/regione/friuli-venezia-giulia/denominazioni/"}
+- {name: "Colli Orientali del Friuli Picolit", country: IT, parent: "Colli Orientali del Friuli", classification: DOCG, grapes: ["Picolit"], source: "https://www.quattrocalici.it/regione/friuli-venezia-giulia/denominazioni/"}
+- {name: "Ramandolo", country: IT, parent: "Colli Orientali del Friuli", classification: DOCG, grapes: ["Verduzzo"], source: "https://www.quattrocalici.it/regione/friuli-venezia-giulia/denominazioni/"}
+- {name: "Rosazzo", country: IT, parent: "Colli Orientali del Friuli", classification: DOCG, grapes: ["Friulano"], source: "https://www.quattrocalici.it/regione/friuli-venezia-giulia/denominazioni/"}
+- {name: "Cialla", country: IT, parent: "Colli Orientali del Friuli", classification: DOC, source: "https://www.masaf.gov.it/flex/files/8/8/c/D.c98d43be48c9b307022a/Vini_DOCG_DOC_IGT_suddivisi_per_regione.pdf"}
+- {name: "Schioppettino di Prepotto", country: IT, parent: "Colli Orientali del Friuli", classification: DOC, grapes: ["Schioppettino"], source: "https://www.masaf.gov.it/flex/files/8/8/c/D.c98d43be48c9b307022a/Vini_DOCG_DOC_IGT_suddivisi_per_regione.pdf"}
+- {name: "Friuli Grave", country: IT, parent: "Friuli-Venezia Giulia", classification: DOC, synonyms: ["Grave del Friuli"], source: "https://www.quattrocalici.it/regione/friuli-venezia-giulia/denominazioni/"}
+- {name: "Friuli Isonzo", country: IT, parent: "Friuli-Venezia Giulia", classification: DOC, synonyms: ["Isonzo", "Isonzo del Friuli"], source: "https://www.quattrocalici.it/regione/friuli-venezia-giulia/denominazioni/"}
+- {name: "Carso", country: IT, parent: "Friuli-Venezia Giulia", classification: DOC, synonyms: ["Carso-Kras"], grapes: ["Terrano"], source: "https://www.quattrocalici.it/regione/friuli-venezia-giulia/denominazioni/"}
+- {name: "Friuli Annia", country: IT, parent: "Friuli-Venezia Giulia", classification: DOC, source: "https://www.quattrocalici.it/regione/friuli-venezia-giulia/denominazioni/"}
+- {name: "Friuli Aquileia", country: IT, parent: "Friuli-Venezia Giulia", classification: DOC, source: "https://www.quattrocalici.it/regione/friuli-venezia-giulia/denominazioni/"}
+- {name: "Friuli Latisana", country: IT, parent: "Friuli-Venezia Giulia", classification: DOC, source: "https://www.quattrocalici.it/regione/friuli-venezia-giulia/denominazioni/"}
+- {name: "Venezia Giulia", country: IT, parent: "Friuli-Venezia Giulia", classification: IGT, source: "https://www.quattrocalici.it/regione/friuli-venezia-giulia/denominazioni/"}
+
+# ---------------- EMILIA-ROMAGNA ----------------
+# 2 DOCG, 18 DOC, 9 IGT. Source: quattrocalici.it/regione/emilia-romagna/denominazioni/.
+# The existing macro-region entry folded two real, separate appellations
+# ("Romagna" the DOC and "Emilia" the IGT) into its own synonym list; split
+# out below, same fold-in bug as elsewhere in this file.
+- {name: "Emilia-Romagna", country: IT, synonyms: ["Emilia Romagna"], source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Romagna", country: IT, parent: "Emilia-Romagna", classification: DOC, source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Romagna Albana", country: IT, parent: "Romagna", classification: DOCG, synonyms: ["Albana di Romagna"], grapes: ["Albana"], source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Colli Romagna Centrale", country: IT, parent: "Emilia-Romagna", classification: DOC, grapes: ["Sangiovese"], source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Emilia", country: IT, parent: "Emilia-Romagna", classification: IGT, synonyms: ["dell'Emilia"], source: "https://www.masaf.gov.it/flex/files/8/8/c/D.c98d43be48c9b307022a/Vini_DOCG_DOC_IGT_suddivisi_per_regione.pdf"}
+- {name: "Colli Piacentini", country: IT, parent: "Emilia-Romagna", classification: DOC, source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Monterosso Val d'Arda", country: IT, parent: "Colli Piacentini", classification: DOC, source: "https://www.masaf.gov.it/flex/files/8/8/c/D.c98d43be48c9b307022a/Vini_DOCG_DOC_IGT_suddivisi_per_regione.pdf"}
+- {name: "Trebbianino Val Trebbia", country: IT, parent: "Colli Piacentini", classification: DOC, source: "https://www.masaf.gov.it/flex/files/8/8/c/D.c98d43be48c9b307022a/Vini_DOCG_DOC_IGT_suddivisi_per_regione.pdf"}
+- {name: "Val Nure", country: IT, parent: "Colli Piacentini", classification: DOC, source: "https://www.masaf.gov.it/flex/files/8/8/c/D.c98d43be48c9b307022a/Vini_DOCG_DOC_IGT_suddivisi_per_regione.pdf"}
+- {name: "Vigoleno", country: IT, parent: "Colli Piacentini", classification: DOC, source: "https://www.masaf.gov.it/flex/files/8/8/c/D.c98d43be48c9b307022a/Vini_DOCG_DOC_IGT_suddivisi_per_regione.pdf"}
+- {name: "Ortrugo dei Colli Piacentini", country: IT, parent: "Colli Piacentini", classification: DOC, synonyms: ["Ortrugo"], grapes: ["Ortrugo"], source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Gutturnio", country: IT, parent: "Emilia-Romagna", classification: DOC, grapes: ["Barbera", "Croatina"], source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Colli Bolognesi", country: IT, parent: "Emilia-Romagna", classification: DOC, source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Colli Bolognesi Pignoletto", country: IT, parent: "Colli Bolognesi", classification: DOCG, synonyms: ["Colli Bolognesi Classico Pignoletto"], grapes: ["Pignoletto"], source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Colli d'Imola", country: IT, parent: "Emilia-Romagna", classification: DOC, source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Colli di Faenza", country: IT, parent: "Emilia-Romagna", classification: DOC, source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Colli di Parma", country: IT, parent: "Emilia-Romagna", classification: DOC, source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Colli di Rimini", country: IT, parent: "Emilia-Romagna", classification: DOC, source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Colli di Scandiano e di Canossa", country: IT, parent: "Emilia-Romagna", classification: DOC, source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Bosco Eliceo", country: IT, parent: "Emilia-Romagna", classification: DOC, grapes: ["Fortana"], source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Lambrusco di Sorbara", country: IT, parent: "Emilia-Romagna", classification: DOC, grapes: ["Lambrusco di Sorbara"], source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Lambrusco Grasparossa di Castelvetro", country: IT, parent: "Emilia-Romagna", classification: DOC, grapes: ["Lambrusco Grasparossa"], source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Lambrusco Salamino di Santa Croce", country: IT, parent: "Emilia-Romagna", classification: DOC, grapes: ["Lambrusco Salamino"], source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Modena", country: IT, parent: "Emilia-Romagna", classification: DOC, synonyms: ["di Modena"], grapes: ["Lambrusco"], source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Reggiano", country: IT, parent: "Emilia-Romagna", classification: DOC, grapes: ["Lambrusco"], source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Reno", country: IT, parent: "Emilia-Romagna", classification: DOC, source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Bianco di Castelfranco Emilia", country: IT, parent: "Emilia-Romagna", classification: IGT, source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Forlì", country: IT, parent: "Emilia-Romagna", classification: IGT, synonyms: ["Forli"], source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Fortana del Taro", country: IT, parent: "Emilia-Romagna", classification: IGT, grapes: ["Fortana"], source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Ravenna", country: IT, parent: "Emilia-Romagna", classification: IGT, source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Rubicone", country: IT, parent: "Emilia-Romagna", classification: IGT, source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Sillaro", country: IT, parent: "Emilia-Romagna", classification: IGT, synonyms: ["Bianco del Sillaro"], source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Terre di Veleja", country: IT, parent: "Emilia-Romagna", classification: IGT, source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Val Tidone", country: IT, parent: "Emilia-Romagna", classification: IGT, source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}

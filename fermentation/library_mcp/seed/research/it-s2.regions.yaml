@@ -1,0 +1,103 @@
+# it-s2: Calabria, Sicily, Sardinia
+# --- Calabria ---
+- {name: "Calabria", country: IT, synonyms: ["Calabria IGT"], source: "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625"}
+- {name: "Cirò", country: IT, parent: "Calabria", classification: DOC, synonyms: ["Ciro", "Cirò DOC", "Ciro DOC"], grapes: ["Gaglioppo"], source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2062"}
+- {name: "Cirò Classico", country: IT, parent: "Cirò", classification: DOCG, synonyms: ["Ciro Classico", "Cirò Classico DOCG"], grapes: ["Gaglioppo"], source: "https://www.disciplinare.it/ciro-classico-docg-proposta-disciplinare-di-produzione-2023.html"}
+- {name: "Bivongi", country: IT, parent: "Calabria", classification: DOC, synonyms: ["Bivongi DOC"], grapes: ["Gaglioppo", "Greco Nero"], source: "https://www.agraria.org/vini/bivongi-doc.htm"}
+- {name: "Terre di Cosenza", country: IT, parent: "Calabria", classification: DOC, synonyms: ["Terre di Cosenza DOC"], grapes: ["Magliocco Dolce", "Gaglioppo", "Greco Bianco"], source: "https://www.disciplinare.it/terre-di-cosenza-doc.html"}
+- {name: "Donnici", country: IT, parent: "Terre di Cosenza", classification: DOC, synonyms: [], source: "https://www.quattrocalici.it/denominazioni/terre-di-cosenza-doc/"}
+- {name: "Pollino", country: IT, parent: "Terre di Cosenza", classification: DOC, synonyms: [], source: "https://www.quattrocalici.it/denominazioni/terre-di-cosenza-doc/"}
+- {name: "San Vito di Luzzi", country: IT, parent: "Terre di Cosenza", classification: DOC, synonyms: [], source: "https://www.quattrocalici.it/denominazioni/terre-di-cosenza-doc/"}
+- {name: "Verbicaro", country: IT, parent: "Terre di Cosenza", classification: DOC, synonyms: [], source: "https://www.quattrocalici.it/denominazioni/terre-di-cosenza-doc/"}
+- {name: "Esaro", country: IT, parent: "Terre di Cosenza", classification: DOC, synonyms: [], source: "https://www.quattrocalici.it/denominazioni/terre-di-cosenza-doc/"}
+- {name: "Condoleo", country: IT, parent: "Terre di Cosenza", classification: DOC, synonyms: [], source: "https://www.quattrocalici.it/denominazioni/terre-di-cosenza-doc/"}
+- {name: "Colline del Crati", country: IT, parent: "Terre di Cosenza", classification: DOC, synonyms: [], source: "https://www.quattrocalici.it/denominazioni/terre-di-cosenza-doc/"}
+- {name: "Greco di Bianco", country: IT, parent: "Calabria", classification: DOC, synonyms: ["Greco di Bianco DOC"], grapes: ["Greco Bianco"], source: "https://www.disciplinare.it/greco-di-bianco-doc.html"}
+- {name: "Lamezia", country: IT, parent: "Calabria", classification: DOC, synonyms: ["Lamezia DOC"], grapes: ["Gaglioppo", "Greco Bianco"], source: "https://www.disciplinare.it/lamezia-doc.html"}
+- {name: "Melissa", country: IT, parent: "Calabria", classification: DOC, synonyms: ["Melissa DOC"], grapes: ["Gaglioppo", "Greco Bianco"], source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2187"}
+- {name: "Savuto", country: IT, parent: "Calabria", classification: DOC, synonyms: ["Savuto DOC"], grapes: ["Gaglioppo", "Mantonico"], source: "https://www.disciplinare.it/savuto-doc.html"}
+- {name: "Scavigna", country: IT, parent: "Calabria", classification: DOC, synonyms: ["Scavigna DOC"], grapes: ["Gaglioppo", "Nerello Cappuccio"], source: "https://www.disciplinare.it/scavigna-doc.html"}
+- {name: "Sant'Anna di Isola Capo Rizzuto", country: IT, parent: "Calabria", classification: DOC, synonyms: ["S. Anna di Isola Capo Rizzuto", "Sant'Anna Isola Capo Rizzuto"], grapes: ["Gaglioppo"], source: "https://www.agraria.org/vini/capo-rizzuto-doc.htm"}
+- {name: "Arghillà", country: IT, parent: "Calabria", classification: IGT, synonyms: [], source: "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625"}
+- {name: "Costa Viola", country: IT, parent: "Calabria", classification: IGT, synonyms: [], source: "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625"}
+- {name: "Lipuda", country: IT, parent: "Calabria", classification: IGT, synonyms: [], source: "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625"}
+- {name: "Locride", country: IT, parent: "Calabria", classification: IGT, synonyms: [], source: "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625"}
+- {name: "Palizzi", country: IT, parent: "Calabria", classification: IGT, synonyms: [], source: "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625"}
+- {name: "Pellaro", country: IT, parent: "Calabria", classification: IGT, synonyms: [], source: "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625"}
+- {name: "Scilla", country: IT, parent: "Calabria", classification: IGT, synonyms: [], source: "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625"}
+- {name: "Val di Neto", country: IT, parent: "Calabria", classification: IGT, synonyms: [], source: "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625"}
+- {name: "Valdamato", country: IT, parent: "Calabria", classification: IGT, synonyms: [], source: "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625"}
+- {name: "Valle del Crati", country: IT, parent: "Calabria", classification: IGT, synonyms: [], source: "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625"}
+# --- Sicily ---
+- {name: "Sicily", country: IT, synonyms: ["Sicilia", "Sicilia DOC", "Terre Siciliane", "Terre Siciliane IGT", "Terre Siciliane IGP", "Sicilia IGT"], source: "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625"}
+- {name: "Etna", country: IT, parent: "Sicily", classification: DOC, synonyms: ["Etna DOC", "Mount Etna", "Etna Rosso", "Etna Bianco"], grapes: ["Nerello Mascalese", "Nerello Cappuccio"], source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2120"}
+- {name: "Marsala", country: IT, parent: "Sicily", classification: DOC, grapes: ["Grillo", "Catarratto", "Ansonica", "Nero d'Avola", "Perricone"], source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2183"}
+- {name: "Cerasuolo di Vittoria", country: IT, parent: "Sicily", classification: DOCG, synonyms: ["Cerasuolo di Vittoria DOCG", "Cerasuolo di Vittoria Classico"], grapes: ["Nero d'Avola", "Frappato"], source: "https://www.cerasuolovittoria.it/il-disciplinare/?lang=en"}
+- {name: "Vittoria", country: IT, parent: "Sicily", classification: DOC, synonyms: ["Vittoria DOC"], grapes: ["Nero d'Avola", "Frappato"], source: "https://www.disciplinare.it/vittoria-doc.html"}
+- {name: "Pantelleria", country: IT, parent: "Sicily", classification: DOC, synonyms: ["Passito di Pantelleria", "Moscato di Pantelleria"], grapes: ["Muscat of Alexandria"], source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2216"}
+- {name: "Malvasia delle Lipari", country: IT, parent: "Sicily", classification: DOC, synonyms: ["Malvasia di Lipari"], grapes: ["Malvasía Aromática"], source: "https://www.disciplinare.it/malvasia-delle-lipari-doc.html"}
+- {name: "Menfi", country: IT, parent: "Sicily", classification: DOC, grapes: ["Nero d'Avola", "Ansonica"], source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2188"}
+- {name: "Feudo dei Fiori", country: IT, parent: "Menfi", classification: DOC, synonyms: [], source: "https://www.quattrocalici.it/denominazioni/menfi-doc/"}
+- {name: "Bonera", country: IT, parent: "Menfi", classification: DOC, synonyms: [], source: "https://www.quattrocalici.it/denominazioni/menfi-doc/"}
+- {name: "Noto", country: IT, parent: "Sicily", classification: DOC, grapes: ["Nero d'Avola"], source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2194"}
+- {name: "Faro", country: IT, parent: "Sicily", classification: DOC, grapes: ["Nerello Mascalese", "Nerello Cappuccio"], source: "https://www.disciplinare.it/faro-doc.html"}
+- {name: "Alcamo", country: IT, parent: "Sicily", classification: DOC, synonyms: ["Alcamo DOC", "Alcamo Classico"], grapes: ["Catarratto"], source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2007"}
+- {name: "Contea di Sclafani", country: IT, parent: "Sicily", classification: DOC, synonyms: ["Valledolmo-Contea di Sclafani"], source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2059"}
+- {name: "Contessa Entellina", country: IT, parent: "Sicily", classification: DOC, source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2060"}
+- {name: "Delia Nivolelli", country: IT, parent: "Sicily", classification: DOC, source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2065"}
+- {name: "Eloro", country: IT, parent: "Sicily", classification: DOC, grapes: ["Nero d'Avola", "Frappato"], source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2119"}
+- {name: "Pachino", country: IT, parent: "Eloro", classification: DOC, grapes: ["Nero d'Avola"], source: "https://www.assovini.it/italia/sicilia/item/2331-eloro-doc-sottozona-pachino"}
+- {name: "Erice", country: IT, parent: "Sicily", classification: DOC, source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2121"}
+- {name: "Mamertino di Milazzo", country: IT, parent: "Sicily", classification: DOC, synonyms: ["Mamertino"], grapes: ["Nero d'Avola"], source: "https://www.agraria.org/vini/mamertino-di-milazzo-doc.htm"}
+- {name: "Monreale", country: IT, parent: "Sicily", classification: DOC, grapes: ["Catarratto", "Perricone"], source: "https://www.irvos.it/wp-content/uploads/2021/02/DOC-MONREALE-2025.pdf"}
+- {name: "Riesi", country: IT, parent: "Sicily", classification: DOC, grapes: ["Nero d'Avola"], source: "https://www.disciplinare.it/riesi-doc.html"}
+- {name: "Salaparuta", country: IT, parent: "Sicily", classification: DOC, source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2265"}
+- {name: "Sambuca di Sicilia", country: IT, parent: "Sicily", classification: DOC, source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2266"}
+- {name: "Santa Margherita di Belice", country: IT, parent: "Sicily", classification: DOC, source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2267"}
+- {name: "Sciacca", country: IT, parent: "Sicily", classification: DOC, grapes: ["Ansonica", "Nero d'Avola"], source: "https://www.quattrocalici.it/denominazioni/sciacca-doc/"}
+- {name: "Rayana", country: IT, parent: "Sciacca", classification: DOC, grapes: ["Catarratto", "Ansonica"], source: "https://www.assovini.it/italia/sicilia/item/2363-sciacca-doc-sottozona-rayana"}
+- {name: "Siracusa", country: IT, parent: "Sicily", classification: DOC, synonyms: ["Moscato di Siracusa"], grapes: ["Muscat of Alexandria"], source: "https://www.disciplinare.it/siracusa-doc.html"}
+- {name: "Avola", country: IT, parent: "Sicily", classification: IGT, source: "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625"}
+- {name: "Camarro", country: IT, parent: "Sicily", classification: IGT, source: "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625"}
+- {name: "Fontanarossa di Cerda", country: IT, parent: "Sicily", classification: IGT, source: "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625"}
+- {name: "Salemi", country: IT, parent: "Sicily", classification: IGT, source: "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625"}
+- {name: "Salina", country: IT, parent: "Sicily", classification: IGT, source: "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625"}
+- {name: "Valle Belice", country: IT, parent: "Sicily", classification: IGT, source: "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625"}
+# --- Sardinia ---
+- {name: "Sardinia", country: IT, synonyms: ["Sardegna", "Isola dei Nuraghi", "Isola dei Nuraghi IGT"], source: "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625"}
+- {name: "Vermentino di Gallura", country: IT, parent: "Sardinia", classification: DOCG, synonyms: ["Gallura"], grapes: ["Vermentino"], source: "https://www.sardegnaagricoltura.it/argomenti/prodottitipici/vini/docg.html"}
+- {name: "Vermentino di Sardegna", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Vermentino"], source: "https://www.sardegnaagricoltura.it/argomenti/prodottitipici/vini/doc.html"}
+- {name: "Cannonau di Sardegna", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Grenache"], source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2049"}
+- {name: "Oliena", country: IT, parent: "Cannonau di Sardegna", classification: DOC, synonyms: ["Nepente di Oliena"], grapes: ["Grenache"], source: "https://www.sardegnaagricoltura.it/documenti/14_43_20130321091725.pdf"}
+- {name: "Capo Ferrato", country: IT, parent: "Cannonau di Sardegna", classification: DOC, grapes: ["Grenache"], source: "https://www.sardegnaagricoltura.it/documenti/14_43_20130321091725.pdf"}
+- {name: "Jerzu", country: IT, parent: "Cannonau di Sardegna", classification: DOC, grapes: ["Grenache"], source: "https://www.sardegnaagricoltura.it/documenti/14_43_20130321091725.pdf"}
+- {name: "Carignano del Sulcis", country: IT, parent: "Sardinia", classification: DOC, synonyms: ["Sulcis"], grapes: ["Carignan"], source: "https://www.sardegnaagricoltura.it/argomenti/prodottitipici/vini/doc.html"}
+- {name: "Monica di Sardegna", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Monica"], source: "https://www.sardegnaagricoltura.it/argomenti/prodottitipici/vini/doc.html"}
+- {name: "Alghero", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Torbato", "Cagnulari"], source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2009"}
+- {name: "Arborea", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Sangiovese", "Trebbiano"], source: "https://nu.camcom.it/.galleries/doc-modulistica/DOC-Arborea.pdf"}
+- {name: "Cagliari", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Malvasía Aromática", "Monica", "Vermentino"], source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2043"}
+- {name: "Campidano di Terralba", country: IT, parent: "Sardinia", classification: DOC, synonyms: ["Terralba"], grapes: ["Bovale"], source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2046"}
+- {name: "Girò di Cagliari", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Girò"], source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2146"}
+- {name: "Malvasia di Bosa", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Malvasía Aromática"], source: "https://www.sardegnaagricoltura.it/argomenti/prodottitipici/vini/doc.html"}
+- {name: "Mandrolisai", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Bovale", "Grenache", "Monica"], source: "http://www.sardegnaagricoltura.it/documenti/14_43_20130322114336.pdf"}
+- {name: "Moscato di Sardegna", country: IT, parent: "Sardinia", classification: DOC, synonyms: ["Moscato di Sardegna Tempio Pausania", "Moscato di Sardegna Gallura"], grapes: ["Muscat of Alexandria"], source: "https://www.sardegnaagricoltura.it/argomenti/prodottitipici/vini/doc.html"}
+- {name: "Moscato di Sorso-Sennori", country: IT, parent: "Sardinia", classification: DOC, synonyms: ["Moscato di Sorso", "Moscato di Sennori"], grapes: ["Muscat of Alexandria"], source: "https://www.sardegnaagricoltura.it/argomenti/prodottitipici/vini/doc.html"}
+- {name: "Nasco di Cagliari", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Nasco"], source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2149"}
+- {name: "Nuragus di Cagliari", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Nuragus"], source: "https://www.sardegnaagricoltura.it/argomenti/prodottitipici/vini/doc.html"}
+- {name: "Sardegna Semidano", country: IT, parent: "Sardinia", classification: DOC, synonyms: ["Semidano di Sardegna"], grapes: ["Semidano"], source: "https://www.disciplinare.it/sardegna-semidano-doc.html"}
+- {name: "Mogoro", country: IT, parent: "Sardegna Semidano", classification: DOC, grapes: ["Semidano"], source: "https://www.quattrocalici.it/tipologie-vino/sardegna-semidano-doc-sottozona-mogoro/"}
+- {name: "Vernaccia di Oristano", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Vernaccia di Oristano"], source: "http://catalogoviti.politicheagricole.it/scheda.php?codice=260"}
+- {name: "Barbagia", country: IT, parent: "Sardinia", classification: IGT, source: "https://www.sardegnaagricoltura.it/argomenti/prodottitipici/vini/igt.html"}
+- {name: "Colli del Limbara", country: IT, parent: "Sardinia", classification: IGT, source: "https://www.sardegnaagricoltura.it/argomenti/prodottitipici/vini/igt.html"}
+- {name: "Marmilla", country: IT, parent: "Sardinia", classification: IGT, source: "https://www.sardegnaagricoltura.it/argomenti/prodottitipici/vini/igt.html"}
+- {name: "Nurra", country: IT, parent: "Sardinia", classification: IGT, source: "https://www.sardegnaagricoltura.it/argomenti/prodottitipici/vini/igt.html"}
+- {name: "Ogliastra", country: IT, parent: "Sardinia", classification: IGT, source: "https://www.sardegnaagricoltura.it/argomenti/prodottitipici/vini/igt.html"}
+- {name: "Parteolla", country: IT, parent: "Sardinia", classification: IGT, source: "https://www.sardegnaagricoltura.it/argomenti/prodottitipici/vini/igt.html"}
+- {name: "Planargia", country: IT, parent: "Sardinia", classification: IGT, source: "https://www.sardegnaagricoltura.it/argomenti/prodottitipici/vini/igt.html"}
+- {name: "Provincia di Nuoro", country: IT, parent: "Sardinia", classification: IGT, source: "https://www.sardegnaagricoltura.it/argomenti/prodottitipici/vini/igt.html"}
+- {name: "Romangia", country: IT, parent: "Sardinia", classification: IGT, source: "https://www.sardegnaagricoltura.it/argomenti/prodottitipici/vini/igt.html"}
+- {name: "Sibiola", country: IT, parent: "Sardinia", classification: IGT, source: "https://www.sardegnaagricoltura.it/argomenti/prodottitipici/vini/igt.html"}
+- {name: "Tharros", country: IT, parent: "Sardinia", classification: IGT, source: "https://www.sardegnaagricoltura.it/argomenti/prodottitipici/vini/igt.html"}
+- {name: "Trexenta", country: IT, parent: "Sardinia", classification: IGT, source: "https://www.sardegnaagricoltura.it/argomenti/prodottitipici/vini/igt.html"}
+- {name: "Valle del Tirso", country: IT, parent: "Sardinia", classification: IGT, source: "https://www.sardegnaagricoltura.it/argomenti/prodottitipici/vini/igt.html"}
+- {name: "Valli di Porto Pino", country: IT, parent: "Sardinia", classification: IGT, source: "https://www.sardegnaagricoltura.it/argomenti/prodottitipici/vini/igt.html"}

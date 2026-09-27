@@ -1,0 +1,15 @@
+# it-s1: Campania, Puglia, Basilicata
+
+# --- Campania natives not in grapes.yaml ---
+- {name: "Asprinio", color: white, synonyms: ["Asprinio Bianco", "Asprino"], source: "https://en.wikipedia.org/wiki/Asprinio_bianco"}
+- {name: "Sciascinoso", color: red, source: "https://en.wikipedia.org/wiki/Sciascinoso"}
+- {name: "Catalanesca", color: white, source: "https://www.paulcaputo.wine/grape/catalanesca"}
+
+# --- Puglia natives not in grapes.yaml ---
+- {name: "Malvasia Nera di Brindisi", color: red, source: "https://www.vivc.de/index.php?r=passport/view&id=7273"}
+- {name: "Malvasia Nera di Lecce", color: red, source: "https://glossary.wein.plus/malvasia-nera-di-brindisi"}
+
+# --- Existing grapes needing local names/synonyms already present; no additions needed for
+# Piedirosso, Coda di Volpe, Pallagrello Bianco/Nero, Casavecchia, Biancolella, Forastera,
+# Nero di Troia/Uva di Troia, Bombino Bianco, Bombino Nero, Susumaniello, Verdeca -
+# checked via context --grape, all already carry the needed synonyms.

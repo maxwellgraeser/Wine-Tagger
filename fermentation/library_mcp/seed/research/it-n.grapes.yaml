@@ -1,0 +1,36 @@
+# ================= NORTHERN ITALY (it-n) — research =================
+
+# ---- New grapes: Valle d'Aosta ----
+- {name: "Vien de Nus", color: red, synonyms: [], source: "https://en.wikipedia.org/wiki/Valle_d%27Aosta_DOC"}
+
+# ---- New grapes: Liguria ----
+- {name: "Bianchetta Genovese", color: white, synonyms: [], source: "https://www.quattrocalici.it/denominazioni/golfo-del-tigullio-portofino-o-portofino-doc/"}
+- {name: "Scimiscià", color: white, synonyms: ["Cimixà"], source: "https://www.quattrocalici.it/tipologie-vino/golfo-del-tigullio-portofino-o-portofino-doc-ciliegiolo/"}
+
+# ---- New grapes: Piedmont ----
+- {name: "Gamba Rossa", color: red, synonyms: ["Imperatrice dalla Gamba Rossa"], source: "https://www.disciplinare.it/calosso-doc.html"}
+- {name: "Avanà", color: red, synonyms: [], source: "https://www.cuocicuoci.com/prodotti/quattro-passi-tra-i-vini-della-valle-di-susa-avana-becquet-baratuciat-valsusa/"}
+- {name: "Becuet", color: red, synonyms: ["Becquet"], source: "https://www.disciplinare.it/valsusa-doc.html"}
+- {name: "Neretta Cuneese", color: red, synonyms: [], source: "https://www.disciplinare.it/valsusa-doc.html"}
+- {name: "Malvasia di Casorzo", color: red, synonyms: ["Malvasia Nera di Casorzo"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+
+# ---- New grapes: Lombardy ----
+- {name: "Uva Rara", color: red, synonyms: ["Bonarda Novarese"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Moscato di Scanzo", color: red, synonyms: [], source: "https://www.quattrocalici.it/denominazioni/scanzo-o-moscato-di-scanzo-docg/"}
+
+# ---- New grapes: Veneto ----
+- {name: "Vespaiola", color: white, synonyms: ["Vespaiolo"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+
+# ---- New grapes: Emilia-Romagna ----
+- {name: "Albana", color: white, synonyms: [], source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Ortrugo", color: white, synonyms: [], source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Pignoletto", color: white, synonyms: ["Grechetto Gentile"], source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Fortana", color: red, synonyms: [], source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Malbo Gentile", color: red, synonyms: [], source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+- {name: "Spergola", color: white, synonyms: [], source: "https://www.quattrocalici.it/regione/emilia-romagna/denominazioni/"}
+
+# ---- Existing grapes: local names not yet listed ----
+- {name: "Pinot Gris", existing: true, synonyms: ["Malvoisie"], source: "https://en.wikipedia.org/wiki/Valle_d%27Aosta_DOC"}
+- {name: "Nebbiolo", existing: true, synonyms: ["Prunent"], source: "https://www.quattrocalici.it/regione/piemonte/denominazioni/"}
+- {name: "Raboso", existing: true, synonyms: ["Friularo"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}
+- {name: "Moscato Giallo", existing: true, synonyms: ["Fior d'Arancio"], source: "https://www.quattrocalici.it/regione/veneto/denominazioni/"}

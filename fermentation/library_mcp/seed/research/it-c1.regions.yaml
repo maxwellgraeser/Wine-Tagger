@@ -1,0 +1,63 @@
+# it-c1: Tuscany. Existing library entries for Tuscany are included unchanged
+# unless noted with `was:` (see it-c1.md for reasons).
+- {name: "Tuscany", country: IT, synonyms: ["Toscana", "Tuscan"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Costa Toscana", country: IT, parent: "Tuscany", classification: IGT, synonyms: [], source: "https://www.disciplinare.it/costa-toscana-igt.html"}
+- {name: "Chianti", country: IT, parent: "Tuscany", classification: DOCG, synonyms: [], grapes: ["Sangiovese"], source: "https://www.agraria.org/vini/disciplinarechianti.htm"}
+- {name: "Chianti Classico", country: IT, parent: "Tuscany", classification: DOCG, synonyms: ["Chianti Classico Riserva", "Gran Selezione"], grapes: ["Sangiovese"], source: "https://www.chianticlassico.com/en/"}
+- {name: "Chianti Rufina", country: IT, parent: "Chianti", classification: DOCG, synonyms: ["Rufina"], grapes: ["Sangiovese"], source: "https://www.chiantirufina.com/en/the-consortium/specification/"}
+- {name: "Chianti Colli Senesi", country: IT, parent: "Chianti", classification: DOCG, synonyms: ["Colli Senesi"], grapes: ["Sangiovese"], source: "https://www.wineshop.it/it/blog/che-cose-il-chianti-colli-senesi.html"}
+- {name: "Chianti Colli Fiorentini", country: IT, parent: "Chianti", classification: DOCG, synonyms: ["Colli Fiorentini"], grapes: ["Sangiovese"], source: "https://www.assovini.it/italia/toscana/item/2323-chianti-docg-sottozona-colli-fiorentini"}
+- {name: "Chianti Colli Aretini", country: IT, parent: "Chianti", classification: DOCG, synonyms: ["Colli Aretini"], grapes: ["Sangiovese"], source: "https://www.agraria.org/vini/disciplinarechianti.htm"}
+- {name: "Chianti Colline Pisane", country: IT, parent: "Chianti", classification: DOCG, synonyms: ["Colline Pisane"], grapes: ["Sangiovese"], source: "https://www.agraria.org/vini/disciplinarechianti.htm"}
+- {name: "Chianti Montalbano", country: IT, parent: "Chianti", classification: DOCG, synonyms: ["Montalbano"], grapes: ["Sangiovese"], source: "https://www.agraria.org/vini/disciplinarechianti.htm"}
+- {name: "Chianti Montespertoli", country: IT, parent: "Chianti", classification: DOCG, synonyms: ["Montespertoli"], grapes: ["Sangiovese"], source: "https://www.agraria.org/vini/disciplinarechianti.htm"}
+- {name: "Vin Santo del Chianti", country: IT, parent: "Chianti", classification: DOC, synonyms: ["Vinsanto del Chianti"], grapes: ["Trebbiano Toscano", "Malvasia Bianca Lunga"], source: "https://www.disciplinare.it/vin-santo-del-chianti-doc.html"}
+- {name: "Vin Santo del Chianti Classico", country: IT, parent: "Chianti Classico", classification: DOC, synonyms: ["Vinsanto del Chianti Classico"], grapes: ["Trebbiano Toscano", "Malvasia Bianca Lunga"], source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2331"}
+- {name: "Montalcino", country: IT, parent: "Tuscany", source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Brunello di Montalcino", country: IT, parent: "Montalcino", classification: DOCG, synonyms: ["Brunello"], grapes: ["Sangiovese"], source: "https://www.agraria.org/vini/disciplinarechianti.htm"}
+- {name: "Rosso di Montalcino", country: IT, parent: "Montalcino", classification: DOC, grapes: ["Sangiovese"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Moscadello di Montalcino", country: IT, parent: "Montalcino", classification: DOC, grapes: ["Muscat Blanc à Petits Grains"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Sant'Antimo", country: IT, parent: "Montalcino", classification: DOC, synonyms: ["Sant Antimo", "Sant' Antimo"], grapes: ["Cabernet Sauvignon", "Merlot", "Chardonnay", "Sauvignon Blanc", "Pinot Grigio", "Pinot Noir"], source: "https://italianwinecentral.com/denomination/santantimo-doc/"}
+- {name: "Vino Nobile di Montepulciano", country: IT, parent: "Tuscany", classification: DOCG, synonyms: ["Vino Nobile", "Nobile di Montepulciano"], grapes: ["Sangiovese"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Rosso di Montepulciano", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Vin Santo di Montepulciano", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Vinsanto di Montepulciano"], grapes: ["Trebbiano Toscano", "Malvasia Bianca Lunga", "Sangiovese"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Bolgheri", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Bolgheri Superiore"], grapes: ["Cabernet Sauvignon", "Merlot", "Sangiovese", "Vermentino"], source: "https://www.bolgheridoc.com/en/wines/"}
+- {name: "Bolgheri Sassicaia", country: IT, parent: "Bolgheri", classification: DOC, synonyms: [], grapes: ["Cabernet Sauvignon"], source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2034"}
+- {name: "Maremma Toscana", country: IT, was: "Maremma", parent: "Tuscany", classification: DOC, synonyms: ["Maremma"], source: "https://en.wikipedia.org/wiki/Maremma_Toscana"}
+- {name: "Morellino di Scansano", country: IT, parent: "Maremma Toscana", classification: DOCG, synonyms: ["Scansano"], grapes: ["Sangiovese"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Capalbio", country: IT, parent: "Tuscany", classification: DOC, source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Ansonica Costa dell'Argentario", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Ansonica Costa dell Argentario"], grapes: ["Ansonica"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Monteregio di Massa Marittima", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Massa Marittima"], grapes: ["Sangiovese"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Parrina", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese", "Trebbiano Toscano", "Ansonica"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Sovana", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Montecucco", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Montecucco Sangiovese", country: IT, parent: "Montecucco", classification: DOCG, grapes: ["Sangiovese"], source: "https://www.disciplinare.it/montecucco-sangiovese-docg-disciplinare-2024.html"}
+- {name: "Bianco di Pitigliano", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Trebbiano Toscano", "Greco", "Malvasia Bianca Lunga"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Grance Senesi", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Carmignano", country: IT, parent: "Tuscany", classification: DOCG, grapes: ["Sangiovese", "Cabernet Sauvignon"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Barco Reale di Carmignano", country: IT, parent: "Carmignano", classification: DOC, synonyms: ["Barco Reale"], grapes: ["Sangiovese", "Cabernet Sauvignon"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Vin Santo di Carmignano", country: IT, parent: "Carmignano", classification: DOC, synonyms: ["Vin Santo del Carmignano", "Vinsanto di Carmignano"], grapes: ["Trebbiano Toscano", "Malvasia Bianca Lunga"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Pomino", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese", "Cabernet Sauvignon", "Merlot", "Chardonnay", "Pinot Blanc", "Pinot Gris"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Vernaccia di San Gimignano", country: IT, parent: "Tuscany", classification: DOCG, grapes: ["Vernaccia di San Gimignano"], source: "https://vernaccia.it/la-vernaccia-di-san-gimignano/disciplinare-vernaccia-san-gimignano/"}
+- {name: "San Gimignano", country: IT, parent: "Tuscany", classification: DOC, synonyms: [], source: "https://vernaccia.it/il-san-gimignano-doc/disciplinare/"}
+- {name: "Elba", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese", "Trebbiano Toscano", "Vermentino", "Ansonica"], source: "https://en.wikipedia.org/wiki/Elba_DOC"}
+- {name: "Elba Aleatico Passito", country: IT, parent: "Elba", classification: DOCG, synonyms: ["Aleatico dell'Elba", "Aleatico dell'Elba Passito"], grapes: ["Aleatico"], source: "https://en.wikipedia.org/wiki/Elba_DOC"}
+- {name: "Val di Cornia", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese"], source: "https://www.disciplinare.it/val-di-cornia-doc.html"}
+- {name: "Val di Cornia Rosso", country: IT, parent: "Val di Cornia", classification: DOCG, synonyms: ["Rosso della Val di Cornia"], grapes: ["Sangiovese", "Cabernet Sauvignon", "Merlot"], source: "https://www.disciplinare.it/val-di-cornia-rosso-o-rosso-della-val-di-cornia-docg.html"}
+- {name: "Suvereto", country: IT, parent: "Val di Cornia", classification: DOCG, grapes: ["Cabernet Sauvignon", "Merlot", "Sangiovese"], source: "https://winefriend.org/italy/tuscany/tuscan-maremma/val-di-cornia/"}
+- {name: "Colli dell'Etruria Centrale", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Colli dell Etruria Centrale"], grapes: ["Sangiovese", "Trebbiano Toscano"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "San Torpè", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Bianco Pisano di San Torpè", "San Torpe", "Bianco Pisano di San Torpe"], grapes: ["Trebbiano Toscano"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Terre di Pisa", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese"], source: "https://italianwinecentral.com/denomination/terre-di-pisa-doc/"}
+- {name: "Terre di Casole", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Val d'Arbia", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Val d Arbia"], grapes: ["Trebbiano Toscano", "Malvasia Bianca Lunga"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Valdarno di Sopra", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Val d'Arno di Sopra", "Val d Arno di Sopra"], grapes: ["Sangiovese", "Merlot"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Valdichiana Toscana", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Bianco Vergine della Valdichiana", "Valdichiana"], grapes: ["Sangiovese", "Trebbiano Toscano", "Grechetto"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Valdinievole", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Bianco della Valdinievole"], grapes: ["Trebbiano Toscano"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Bianco dell'Empolese", country: IT, parent: "Tuscany", classification: DOC, synonyms: ["Bianco dell Empolese"], grapes: ["Trebbiano Toscano"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Candia dei Colli Apuani", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Vermentino", "Malvasia Bianca Lunga"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Colline Lucchesi", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese", "Trebbiano Toscano"], source: "http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=2098"}
+- {name: "Montecarlo", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Trebbiano Toscano", "Sangiovese"], source: "https://en.wikipedia.org/wiki/Montecarlo_DOC"}
+- {name: "Orcia", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese", "Trebbiano Toscano"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Terratico di Bibbona", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese", "Cabernet Sauvignon", "Merlot"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Cortona", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Syrah", "Sangiovese"], source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Montescudaio", country: IT, parent: "Tuscany", classification: DOC, grapes: ["Sangiovese", "Trebbiano Toscano"], source: "https://www.disciplinare.it/vini-toscana.html"}

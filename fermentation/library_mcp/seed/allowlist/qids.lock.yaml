@@ -22,6 +22,11 @@ grapes:
     label: Airén
     note: ok
     qid: Q409459
+  Albana:
+    description: Italian grape variety
+    label: Albana
+    note: ok
+    qid: Q2434324
   Albariño:
     description: white wine grape
     label: Albariño
@@ -127,6 +132,11 @@ grapes:
     label: Aspiran Noir
     note: ok
     qid: Q737409
+  Asprinio:
+    description: Italian grape variety
+    label: Asprinio bianco
+    note: ok
+    qid: Q2655520
   Assyrtiko:
     description: varietal
     label: Assyrtiko
@@ -142,6 +152,11 @@ grapes:
     label: Auxerrois Blanc
     note: ok
     qid: Q789677
+  Avanà:
+    description: Italian grape variety
+    label: Avana
+    note: ok
+    qid: Q790116
   Avesso:
     description: varietal
     label: Avesso
@@ -182,6 +197,26 @@ grapes:
     label: Baroque
     note: ok
     qid: Q808726
+  Becuet:
+    description: Italian grape variety
+    label: Becuet
+    note: ok
+    qid: Q139941621
+  Bellone:
+    description: Italian grape variety
+    label: Bellone
+    note: ok
+    qid: Q816029
+  Bianchello:
+    description: Italian grape variety
+    label: Bianchello
+    note: ok
+    qid: Q855370
+  Bianchetta Genovese:
+    description: Italian grape variety
+    label: Bianchetta Genovese
+    note: ok
+    qid: Q855372
   Biancolella:
     description: Italian grape variety
     label: Biancolella
@@ -332,6 +367,11 @@ grapes:
     label: Castelão
     note: ok
     qid: Q478166
+  Catalanesca:
+    description: Italian grape variety
+    label: Catalanesca
+    note: ok
+    qid: Q139942154
   Catarratto:
     description: white Italian wine grape planted primarily in Sicily
     label: Catarratto
@@ -607,6 +647,11 @@ grapes:
     label: Fiano
     note: ok
     qid: Q1410399
+  Foglia Tonda:
+    description: Italian grape variety
+    label: Foglia Tonda
+    note: ok
+    qid: Q139941523
   Fogoneu:
     description: grape variety
     label: fogoneu
@@ -627,6 +672,11 @@ grapes:
     label: Forcallat tinta
     note: ok
     qid: Q5863749
+  Fortana:
+    description: Italian grape variety
+    label: Fortana
+    note: ok
+    qid: Q494876
   Frappato:
     description: Italian grape variety
     label: Frappato
@@ -677,6 +727,11 @@ grapes:
     label: Gamay
     note: ok
     qid: Q12982
+  Gamba Rossa:
+    description: Italian grape variety
+    label: Gamba Rossa
+    note: ok
+    qid: Q111737387
   Garanoir:
     description: Italian grape variety
     label: Garanoir
@@ -732,6 +787,11 @@ grapes:
     label: Greco Bianco
     note: ok
     qid: Q139941990
+  Greco Nero:
+    description: Italian grape variety
+    label: Greco Nero
+    note: ok
+    qid: Q20181577
   Grenache:
     description: Italian grape variety
     label: Grenache
@@ -887,6 +947,11 @@ grapes:
     label: La Crescent
     note: ok
     qid: Q1798741
+  Lacrima:
+    description: ancient Italian wine grape variety
+    label: Lacrima
+    note: ok
+    qid: Q3825265
   Lagrein:
     description: Italian grape variety
     label: Lagrein
@@ -942,11 +1007,21 @@ grapes:
     label: Macabeo
     note: ok
     qid: Q1756570
+  Maceratino:
+    description: Italian grape variety
+    label: Maceratino
+    note: ok
+    qid: Q1786222
   Magliocco:
     description: Italian grape variety
     label: Magliocco Dolce
-    note: inexact label match -- review
+    note: ok
     qid: Q17116350
+  Magliocco Canino:
+    description: Italian grape variety
+    label: Magliocco Canino
+    note: ok
+    qid: Q539349
   Malagousia:
     description: variety of grape
     label: Malagousia
@@ -957,6 +1032,11 @@ grapes:
     label: Malbec
     note: ok
     qid: Q1414045
+  Malbo Gentile:
+    description: Italian grape variety
+    label: Malbo Gentile
+    note: ok
+    qid: Q1886935
   Malvar:
     description: grape cultivar
     label: Malvar
@@ -967,6 +1047,11 @@ grapes:
     label: Malvasia bianca
     note: ok
     qid: Q109376941
+  Malvasia Bianca Lunga:
+    description: Italian grape variety
+    label: Maraština
+    note: inexact label match -- review
+    qid: Q1887929
   Malvasia Fina:
     description: grape variety
     label: Malvasia Fina
@@ -980,13 +1065,18 @@ grapes:
   Malvasia Nera:
     description: Italian grape variety
     label: Malvasia Nera di Brindisi
-    note: inexact label match -- review
+    note: ok
     qid: Q1887934
   Malvasia di Candia Aromatica:
     description: Italian grape variety
     label: Malvasia di Candia Aromatica
     note: ok
     qid: Q1449907
+  Malvasia di Casorzo:
+    description: Italian grape variety
+    label: Malvasia di Casorzo
+    note: ok
+    qid: Q1469915
   Malvasía Rosada:
     description: grape variety
     label: Malvasia Di Sardegna Rosada
@@ -1017,6 +1107,11 @@ grapes:
     label: Manto negro
     note: ok
     qid: Q5991966
+  Mantonico:
+    description: Italian grape variety
+    label: Mantonico bianco
+    note: ok
+    qid: Q1891327
   Manzoni Bianco:
     description: grape variety
     label: Manzoni Bianco
@@ -1147,6 +1242,11 @@ grapes:
     label: Moscato Giallo
     note: ok
     qid: Q1948888
+  Moscato di Scanzo:
+    description: Italian grape variety
+    label: Moscato di Scanzo
+    note: ok
+    qid: Q56325693
   Moschofilero:
     description: variety of grape
     label: Moschofilero
@@ -1212,6 +1312,11 @@ grapes:
     label: Nascetta
     note: ok
     qid: Q20051117
+  Nasco:
+    description: Italian grape variety
+    label: Nasco
+    note: ok
+    qid: Q265504
   Nebbiolo:
     description: Italian grape variety
     label: Nebbiolo
@@ -1242,6 +1347,16 @@ grapes:
     label: Nerello Mascalese
     note: ok
     qid: Q1977939
+  Neretta Cuneese:
+    description: Italian grape variety
+    label: Neretta cuneese
+    note: ok
+    qid: Q97371424
+  Nero Buono:
+    description: Italian grape variety
+    label: Nero Buono
+    note: ok
+    qid: Q139942002
   Nero d'Avola:
     description: Italian grape variety
     label: Nero d'Avola
@@ -1302,6 +1417,11 @@ grapes:
     label: Ortega
     note: ok
     qid: Q1418343
+  Ortrugo:
+    description: Italian grape variety
+    label: Ortrugo
+    note: ok
+    qid: Q2032093
   Oseleta:
     description: Italian grape variety
     label: Oseleta
@@ -1417,6 +1537,11 @@ grapes:
     label: Campi Flegrei Piedirosso
     note: inexact label match -- review
     qid: Q86674964
+  Pignoletto:
+    description: Italian grape variety
+    label: Pignoletto
+    note: ok
+    qid: Q3388319
   Pignolo:
     description: Italian grape variety
     label: Pignolo
@@ -1502,6 +1627,11 @@ grapes:
     label: Prunelard
     note: ok
     qid: Q1500705
+  Pugnitello:
+    description: Italian grape variety
+    label: Pugnitello
+    note: ok
+    qid: Q139941619
   Rabigato:
     description: Portuguese white wine grape variety
     label: Rabigato
@@ -1697,11 +1827,26 @@ grapes:
     label: Sciacarello
     note: ok
     qid: Q1527364
+  Sciascinoso:
+    description: Italian grape variety
+    label: Sciascinoso
+    note: ok
+    qid: Q1761836
+  Scimiscià:
+    description: Italian grape variety
+    label: Scimiscia'
+    note: inexact label match -- review
+    qid: Q139941624
   Scuppernong:
     description: variety of muscadine (Vitis rotundifolia) grape
     label: Scuppernong
     note: ok
     qid: Q2261774
+  Semidano:
+    description: Italian grape variety
+    label: Semidano
+    note: ok
+    qid: Q1315004
   Sercial:
     description: grape variety
     label: Sercial
@@ -1717,6 +1862,11 @@ grapes:
     label: Silvaner
     note: ok
     qid: Q1133517
+  Spergola:
+    description: Italian grape variety
+    label: Spergola
+    note: ok
+    qid: Q109376988
   Sumoll:
     description: grape variety
     label: Sumoll
@@ -1837,6 +1987,16 @@ grapes:
     label: Trebbiano
     note: ok
     qid: Q967934
+  Trebbiano Abruzzese:
+    description: Italian grape variety
+    label: Trebbiano Abruzzese
+    note: ok
+    qid: Q139941594
+  Trebbiano Spoletino:
+    description: Italian grape variety
+    label: Trebbiano Spoletino
+    note: ok
+    qid: Q1683711
   Treixadura:
     description: variety of grape
     label: Treixadura
@@ -1872,6 +2032,11 @@ grapes:
     label: Tămâioasă Românească
     note: ok
     qid: Q259976
+  Uva Rara:
+    description: Italian grape variety
+    label: Uva Rara
+    note: ok
+    qid: Q2503813
   Vaccarèse:
     description: varietal
     label: Brun Argenté
@@ -1922,6 +2087,21 @@ grapes:
     label: Vernaccia
     note: ok
     qid: Q1361955
+  Vernaccia Nera:
+    description: Italian grape variety
+    label: Vernaccia Nera
+    note: ok
+    qid: Q54811260
+  Vernaccia di Oristano:
+    description: Italian grape variety
+    label: Vernaccia di Oristano
+    note: ok
+    qid: Q111840719
+  Vespaiola:
+    description: Italian grape variety
+    label: Vespaiola
+    note: ok
+    qid: Q494084
   Vespolina:
     description: Italian grape variety
     label: Vespolina
@@ -1937,6 +2117,11 @@ grapes:
     label: Vidiano
     note: ok
     qid: Q60754481
+  Vien de Nus:
+    description: Italian grape variety
+    label: Vien de Nus
+    note: ok
+    qid: Q260392
   Vignoles:
     description: grape variety
     label: Vignoles
@@ -2067,11 +2252,21 @@ regions:
     qid: Q19460105
   Aegean (TR): null
   Agenais (FR): null
+  Aglianico del Taburno (IT):
+    description: type of the Aglianico del Taburno Italian DOCG
+    label: Aglianico del Taburno DOCG
+    note: ok
+    qid: Q16487611
   Aglianico del Vulture (IT):
     description: Italian controlled designation of origin wine from Basilicata
     label: Aglianico del Vulture DOC
     note: ok
     qid: Q338771
+  Aglianico del Vulture Superiore (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Basilicata
+    label: Aglianico del Vulture Superiore DOCG
+    note: ok
+    qid: Q3606595
   Agter-Paarl (ZA): null
   Agterkliphoogte (ZA): null
   Ahr (DE): null
@@ -2080,6 +2275,31 @@ regions:
     label: Ajaccio AOC
     note: ok
     qid: Q411861
+  Alba (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Alba DOC
+    note: ok
+    qid: Q16163285
+  Albugnano (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Albugnano DOC
+    note: ok
+    qid: Q2831965
+  Alcamo (IT):
+    description: Italian controlled designation of origin wine from Sicily
+    label: Alcamo DOC
+    note: ok
+    qid: Q1285128
+  Aleatico di Gradoli (IT):
+    description: Italian controlled designation of origin wine from Lazio
+    label: Aleatico di Gradoli DOC
+    note: ok
+    qid: Q289219
+  Aleatico di Puglia (IT):
+    description: Italian controlled designation of origin wine from Apulia
+    label: Aleatico di Puglia DOC
+    note: ok
+    qid: Q2640595
   Alella (ES):
     description: Spanish wine
     label: Alella
@@ -2097,7 +2317,17 @@ regions:
     label: Alexandria Lakes AVA
     note: ok
     qid: Q4720978
+  Alezio (IT):
+    description: type of the Alezio Italian controlled designation of origin
+    label: Alezio DOC
+    note: ok
+    qid: Q3610895
   Algarve (PT): null
+  Alghero (IT):
+    description: Italian typical geographical indication wine from Sardinia
+    label: Alghero IGT
+    note: ok
+    qid: Q942837
   Alicante (ES):
     description: denomination of wine
     label: Alicante
@@ -2108,6 +2338,11 @@ regions:
     label: Alisos Canyon AVA
     note: ok
     qid: Q107313688
+  Allerona (IT):
+    description: Italian typical geographical indication wine from Umbria
+    label: Allerona IGT
+    note: ok
+    qid: Q139899466
   Allobrogie (FR): null
   Almansa (ES):
     description: Spanish wine
@@ -2119,6 +2354,11 @@ regions:
     label: Aloxe-Corton wine
     note: ok
     qid: Q453673
+  Alpi Retiche (IT):
+    description: Italian typical geographical indication wine from Trentino-Alto Adige
+    label: Alpi Retiche IGT
+    note: ok
+    qid: Q118808357
   Alpilles (FR): null
   Alsace (FR):
     description: wine from the Alsace region in France
@@ -2130,6 +2370,11 @@ regions:
     label: Alsace Grand Cru AOC
     note: ok
     qid: Q1596430
+  Alta Langa (IT):
+    description: type of the Alta Langa Italian controlled designation of origin
+    label: Alta Langa DOCG
+    note: ok
+    qid: Q433586
   Alta Mesa (US):
     description: American Viticultural Area in Sacramento County, California
     label: Alta Mesa AVA
@@ -2156,6 +2401,38 @@ regions:
     label: Alto Adige DOC
     note: ok
     qid: Q20009612
+  Alto Adige Colli di Bolzano (IT):
+    description: type of the Alto Adige Italian controlled designation of origin
+    label: Alto Adige Colli di Bolzano DOC
+    note: ok
+    qid: Q139899951
+  Alto Adige Meranese di Collina (IT):
+    description: type of the Alto Adige Italian controlled designation of origin
+    label: Alto Adige Meranese di Collina DOC
+    note: ok
+    qid: Q139899952
+  Alto Adige Terlano (IT):
+    description: Italian controlled designation of origin wine from Trentino-Alto Adige
+    label: Alto Adige Terlano DOC
+    note: ok
+    qid: Q139899954
+  Alto Adige Val Venosta (IT): null
+  Alto Adige Valle Isarco (IT):
+    description: type of the Alto Adige Italian controlled designation of origin
+    label: Alto Adige Valle Isarco DOC
+    note: ok
+    qid: Q139899955
+  Alto Livenza (IT):
+    description: Italian typical geographical indication wine from Veneto
+    label: Alto Livenza IGT
+    note: ok
+    qid: Q139899470
+  Alto Mincio (IT):
+    description: Italian typical geographical indication wine from Lombardy
+    label: Alto Mincio IGT
+    note: ok
+    qid: Q139891221
+  Alto Tirino (IT): null
   Altus (US):
     description: wine-growing region near Altus, Arkansas
     label: Altus AVA
@@ -2177,7 +2454,17 @@ regions:
     label: Ambonnay
     note: non-wine class -- review
     qid: Q1018399
+  Amelia (IT):
+    description: Italian controlled designation of origin wine from Umbria
+    label: Amelia DOC
+    note: ok
+    qid: Q136766832
   Amyndeon (GR): null
+  Anagni (IT):
+    description: Italian typical geographical indication wine from Lazio
+    label: Anagni IGT
+    note: ok
+    qid: Q139899819
   Ancient Lakes of Columbia Valley (US): null
   Andalusia (ES):
     description: autonomous community of Spain
@@ -2199,6 +2486,11 @@ regions:
   Anjou Gamay (FR): null
   Anjou Mousseux (FR): null
   Anjou-Villages (FR): null
+  Ansonica Costa dell'Argentario (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Ansonica Costa dell'Argentario DOC
+    note: ok
+    qid: Q3618365
   Antelope Valley of the California High Desert (US):
     description: American Viticultural Area in California
     label: Antelope Valley of the California High Desert AVA
@@ -2219,6 +2511,11 @@ regions:
     label: Apremont
     note: ok
     qid: Q2858960
+  Aprilia (IT):
+    description: Italian controlled designation of origin wine from Lazio
+    label: Aprilia DOC
+    note: ok
+    qid: Q139906443
   Arabako Txakolina (ES): null
   Aragón (ES):
     description: commune in Aude, France
@@ -2236,8 +2533,19 @@ regions:
     note: ok
     qid: Q630166
   Arbois Pupillin (FR): null
+  Arborea (IT): null
+  Arcole (IT):
+    description: Italian controlled designation of origin wine from Veneto
+    label: Arcole DOC
+    note: ok
+    qid: Q3621818
   Ardèche (FR): null
   Arganda (ES): null
+  Arghillà (IT):
+    description: Italian typical geographical indication wine from Calabria
+    label: Arghillà IGT
+    note: ok
+    qid: Q139899448
   Arizona (US):
     description: state of the United States of America
     label: Arizona
@@ -2254,6 +2562,7 @@ regions:
     note: ok
     qid: Q672893
   Arlanza (ES): null
+  Arnad-Montjovet (IT): null
   Arribes (ES):
     description: Spanish Denominación de Origen Protegida (DOP) for wines
     label: Arribes
@@ -2271,11 +2580,26 @@ regions:
     qid: Q263615
   Artesa de Segre (ES): null
   Ashton (ZA): null
+  Asolo Prosecco (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Veneto
+    label: Asolo Prosecco DOCG
+    note: ok
+    qid: Q3683084
+  Assisi (IT):
+    description: Italian controlled designation of origin wine from Umbria
+    label: Assisi DOC
+    note: ok
+    qid: Q3625647
   Asti (IT):
     description: Italian controlled and guaranteed designation of origin wine from Piedmont
     label: Asti DOCG
     note: ok
     qid: Q522420
+  Atina (IT):
+    description: Italian controlled designation of origin wine from Lazio
+    label: Atina DOC
+    note: ok
+    qid: Q16529607
   Atlantique (FR): null
   Atlas Peak (US):
     description: California wine region
@@ -2307,11 +2631,21 @@ regions:
     label: Auxey-Duresses wine
     note: ok
     qid: Q2873188
+  Aversa (IT):
+    description: Italian controlled designation of origin wine from Campania
+    label: Aversa DOC
+    note: ok
+    qid: Q131573880
   Avize (FR):
     description: commune in Marne, France
     label: Avize
     note: non-wine class -- review
     qid: Q791195
+  Avola (IT):
+    description: Italian typical geographical indication wine from Sicily
+    label: Avola IGT
+    note: ok
+    qid: Q139899857
   Aylés (ES): null
   Ayze (FR): null
   Açores (PT): null
@@ -2322,6 +2656,12 @@ regions:
     note: ok
     qid: Q788297
   Baden (DE): null
+  Bagnoli Friularo (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Veneto
+    label: Bagnoli Friularo DOCG
+    note: ok
+    qid: Q3632920
+  Bagnoli di Sopra (IT): null
   Bailén (ES): null
   Bairrada (PT): null
   Baja California (MX):
@@ -2354,6 +2694,11 @@ regions:
   Banghoek (ZA): null
   Banyuls (FR): null
   Banyuls Grand Cru (FR): null
+  Barbagia (IT):
+    description: Italian typical geographical indication wine from Sardinia
+    label: Barbagia IGT
+    note: ok
+    qid: Q139899837
   Barbanza e Iria (ES):
     description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
     label: Barbanza e Iria
@@ -2374,11 +2719,36 @@ regions:
     label: Barbera d'Asti DOCG
     note: ok
     qid: Q391703
+  Barbera del Monferrato (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Barbera del Monferrato DOC
+    note: ok
+    qid: Q430761
+  Barbera del Monferrato Superiore (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Piedmont
+    label: Barbera del Monferrato superiore DOCG
+    note: ok
+    qid: Q2884172
+  Barco Reale di Carmignano (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Barco Reale di Carmignano DOC
+    note: ok
+    qid: Q3634897
   Bardolino (IT):
     description: Italian controlled designation of origin wine from Veneto
     label: Bardolino DOC
     note: ok
     qid: Q808039
+  Bardolino Superiore (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Veneto
+    label: Bardolino superiore DOCG
+    note: ok
+    qid: Q2884366
+  Barletta (IT):
+    description: Italian controlled designation of origin wine from Apulia
+    label: Barletta DOC
+    note: ok
+    qid: Q139916514
   Barolo (IT):
     description: Italian controlled and guaranteed designation of origin wine from Piedmont
     label: Barolo DOCG
@@ -2437,6 +2807,16 @@ regions:
     label: Ben Lomond Mountain AVA
     note: ok
     qid: Q816548
+  Benaco Bresciano (IT):
+    description: Italian typical geographical indication wine from Lombardy
+    label: Benaco Bresciano IGT
+    note: ok
+    qid: Q139891222
+  Beneventano (IT):
+    description: Italian typical geographical indication wine from Campania
+    label: Beneventano IGT
+    note: ok
+    qid: Q139899800
   Benmore Valley (US):
     description: wine growing region in Lake County, California
     label: Benmore Valley AVA
@@ -2447,6 +2827,11 @@ regions:
     label: Bennett Valley AVA
     note: ok
     qid: Q817854
+  Bergamasca (IT):
+    description: Italian typical geographical indication wine from Lombardy
+    label: Bergamasca IGT
+    note: ok
+    qid: Q139891223
   Bergerac (FR):
     description: French wine subregion of South West France
     label: Bergerac wine
@@ -2457,11 +2842,41 @@ regions:
     label: Betanzos
     note: ok
     qid: Q3392360
+  Bettona (IT):
+    description: Italian typical geographical indication wine from Umbria
+    label: Bettona IGT
+    note: ok
+    qid: Q139899467
   Beverly, Washington (US):
     description: American Viticultural Area in Washington
     label: Beverly, Washington AVA
     note: ok
     qid: Q134563553
+  Bianchello del Metauro (IT):
+    description: Italian controlled designation of origin wine from Marche
+    label: Bianchello del Metauro DOC
+    note: ok
+    qid: Q3639419
+  Bianco Capena (IT):
+    description: Italian controlled designation of origin wine from Lazio
+    label: Bianco Capena DOC
+    note: ok
+    qid: Q2900837
+  Bianco dell'Empolese (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Bianco dell'Empolese DOC
+    note: ok
+    qid: Q3639448
+  Bianco di Castelfranco Emilia (IT):
+    description: Italian controlled designation of origin wine from Emilia-Romagna
+    label: Bianco di Castelfranco Emilia IGT
+    note: ok
+    qid: Q3639453
+  Bianco di Pitigliano (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Bianco di Pitigliano DOC
+    note: ok
+    qid: Q3639454
   Bienvenues-Bâtard-Montrachet (FR):
     description: French wine
     label: Bienvenues-Bâtard-Montrachet
@@ -2473,12 +2888,22 @@ regions:
     label: Bierzo
     note: ok
     qid: Q624640
+  Biferno (IT):
+    description: Italian controlled designation of origin wine from Molise
+    label: Biferno DOC
+    note: ok
+    qid: Q2902058
   Big Valley District-Lake County (US):
     description: viticultural area in California
     label: Big Valley District-Lake County AVA
     note: ok
     qid: Q96373547
   Binissalem (ES): null
+  Bivongi (IT):
+    description: Italian controlled designation of origin wine from Calabria
+    label: Bivongi DOC
+    note: ok
+    qid: Q139916958
   Bizkaiko Txakolina (ES):
     description: 'is a Spanish Denominación de Origen Protegida (DOP) (Basque: Jatorri Deitura Babestua)
       for wines, located in the province of Bizkaia, Basque Country, Spain'
@@ -2490,6 +2915,7 @@ regions:
     label: Blagny AOC
     note: ok
     qid: Q2905690
+  Blanc de Morgex et de la Salle (IT): null
   Blanquette de Limoux (FR):
     description: French wine
     label: Blanquette de Limoux
@@ -2502,6 +2928,11 @@ regions:
     qid: Q2655967
   Blaye Côtes de Bordeaux (FR): null
   Blouvlei (ZA): null
+  Boca (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Boca DOC
+    note: ok
+    qid: Q888933
   Boesmansrivier (ZA): null
   Bolandin (ES): null
   Bolgheri (IT):
@@ -2509,6 +2940,17 @@ regions:
     label: Bolgheri DOC
     note: ok
     qid: Q2065669
+  Bolgheri Sassicaia (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Bolgheri Sassicaia DOC
+    note: ok
+    qid: Q1422405
+  Bonarda dell'Oltrepò Pavese (IT):
+    description: Italian controlled designation of origin wine from Lombardy
+    label: Bonarda dell'Oltrepò Pavese DOC
+    note: ok
+    qid: Q2750961
+  Bonera (IT): null
   Bonnes-Mares (FR): null
   Bonnezeaux (FR):
     description: wine-producing region
@@ -2529,8 +2971,18 @@ regions:
     label: Borden Ranch AVA
     note: ok
     qid: Q893402
+  Bosco Eliceo (IT):
+    description: Italian controlled designation of origin wine from Emilia-Romagna
+    label: Bosco Eliceo DOC
+    note: ok
+    qid: Q894397
   Bot River (ZA): null
   Bottelary (ZA): null
+  Botticino (IT):
+    description: Italian controlled designation of origin wine from Lombardy
+    label: Botticino DOC
+    note: ok
+    qid: Q3643095
   Bourgogne Aligoté (FR):
     description: Appellation d'origine contrôlée
     label: Bourgogne Aligoté AOC
@@ -2594,6 +3046,16 @@ regions:
     note: non-wine class -- review
     qid: Q1064043
   Bovlei (ZA): null
+  Brachetto d'Acqui (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Piedmont
+    label: Brachetto d'Acqui DOCG
+    note: ok
+    qid: Q390630
+  Bramaterra (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Bramaterra DOC
+    note: ok
+    qid: Q390626
   Brand (FR): null
   Breede River Valley (ZA): null
   Breedekloof (ZA):
@@ -2601,6 +3063,11 @@ regions:
     label: Breedekloof
     note: ok
     qid: Q15873513
+  Breganze (IT):
+    description: Italian controlled designation of origin wine from Veneto
+    label: Breganze DOC
+    note: ok
+    qid: Q48804963
   Brem (FR): null
   Brindisi (IT):
     description: Italian controlled designation of origin wine from Apulia
@@ -2652,6 +3119,11 @@ regions:
     label: Burgundy wine region
     note: ok
     qid: Q1016093
+  Buttafuoco dell'Oltrepò Pavese (IT):
+    description: Italian controlled designation of origin wine from Lombardy
+    label: Buttafuoco dell'Oltrepò Pavese DOC
+    note: ok
+    qid: Q3881975
   Buzet (FR): null
   Bâtard-Montrachet (FR):
     description: winery
@@ -2666,6 +3138,11 @@ regions:
   Bío-Bío Valley (CL): null
   Cabardès (FR): null
   Cabernet d'Anjou (FR): null
+  Cacc'e Mmitte di Lucera (IT):
+    description: type of the Cacc'e mmitte di Lucera Italian controlled designation of origin
+    label: Cacc'e mmitte di Lucera DOC
+    note: ok
+    qid: Q3649244
   Cachapoal Valley (CL):
     description: Chilean wine region and protected designation of origin
     label: Cachapoal Valley
@@ -2682,6 +3159,7 @@ regions:
     label: Cafayate
     note: non-wine class -- review
     qid: Q1025501
+  Cagliari (IT): null
   Cahors (FR): null
   Cairanne (FR):
     description: Wine region
@@ -2712,7 +3190,17 @@ regions:
     note: ok
     qid: Q5021434
   Calitzdorp (ZA): null
+  Calosso (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Calosso DOC
+    note: ok
+    qid: Q16534779
   Calzadilla (ES): null
+  Camarro (IT):
+    description: Italian typical geographical indication wine from Sicily
+    label: Camarro IGT
+    note: ok
+    qid: Q139899858
   Campanha (BR):
     description: town (município) in the Brazilian state of Minas Gerais
     label: Campanha
@@ -2728,6 +3216,11 @@ regions:
     label: Campi Flegrei DOC
     note: ok
     qid: Q3651973
+  Campidano di Terralba (IT):
+    description: type of the Campidano di Terralba Italian controlled designation of origin
+    label: Campidano di Terralba DOC
+    note: ok
+    qid: Q2935504
   Campo de Borja (ES): null
   Campo de Calatrava (ES): null
   Campo de Cartagena (ES):
@@ -2745,16 +3238,31 @@ regions:
     label: Canary Islands
     note: non-wine class -- review
     qid: Q5813
+  Canavese (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Canavese DOC
+    note: ok
+    qid: Q15207448
   Canberra District (AU):
     description: wine producing region in Australia
     label: Canberra District wine region
     note: ok
     qid: Q5031253
+  Candia dei Colli Apuani (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Candia dei Colli Apuani DOC
+    note: ok
+    qid: Q1032955
   Candy Mountain (US):
     description: viticultural area in Washington, USA
     label: Candy Mountain AVA
     note: ok
     qid: Q125470292
+  Canelli (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Piedmont
+    label: Canelli DOCG
+    note: ok
+    qid: Q3866010
   Canelones (UY): null
   Cangas (ES):
     description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
@@ -2762,6 +3270,16 @@ regions:
     note: ok
     qid: Q8261964
   Cango Valley (ZA): null
+  Cannara (IT):
+    description: Italian typical geographical indication wine from Umbria
+    label: Cannara IGT
+    note: ok
+    qid: Q139899468
+  Cannellino di Frascati (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Lazio
+    label: Cannellino di Frascati DOCG
+    note: ok
+    qid: Q3655405
   Cannonau di Sardegna (IT):
     description: Italian controlled designation of origin wine from Sardinia
     label: Cannonau di Sardegna DOC
@@ -2774,6 +3292,11 @@ regions:
     note: non-wine class -- review
     qid: Q3946
   Canterbury (NZ): null
+  Capalbio (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Capalbio DOC
+    note: ok
+    qid: Q130746521
   Capay Valley (US):
     description: American Viticultural Area in Yolo County, California
     label: Capay Valley AVA
@@ -2793,11 +3316,27 @@ regions:
   Cape South Coast (ZA): null
   Cape Town (ZA): null
   Cape West Coast (ZA): null
+  Capo Ferrato (IT): null
   Cappadocia (TR):
     description: historical region of Anatolia in Turkey
     label: Cappadocia
     note: non-wine class -- review
     qid: Q217265
+  Capri (IT):
+    description: Italian controlled designation of origin wine from Campania
+    label: Capri DOC
+    note: ok
+    qid: Q86674960
+  Capriano del Colle (IT):
+    description: Italian controlled designation of origin wine from Lombardy
+    label: Capriano del Colle DOC
+    note: ok
+    qid: Q15639721
+  Carema (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Carema DOC
+    note: ok
+    qid: Q390622
   Carignano del Sulcis (IT):
     description: Italian controlled designation of origin wine from Sardinia
     label: Carignano del Sulcis DOC
@@ -2819,22 +3358,73 @@ regions:
     note: ok
     qid: Q912059
   Carnuntum (AT): null
+  Carso (IT):
+    description: Italian controlled designation of origin wine from Friuli-Venezia Giulia
+    label: Carso DOC
+    note: ok
+    qid: Q387806
+  Cartizze (IT): null
   Casa del Blanco (ES):
     description: Spanish winery
     label: Casa del Blanco
     note: ok
     qid: Q5755401
   Casablanca Valley (CL): null
+  Casauria (IT):
+    description: ''
+    label: Casauria DOCG
+    note: ok
+    qid: Q140643115
+  Casavecchia di Pontelatone (IT):
+    description: Italian controlled designation of origin wine from Campania
+    label: Casavecchia di Pontelatone DOC
+    note: ok
+    qid: Q118818946
   Cassis (FR):
     description: French wine
     label: Cassis AOC
     note: ok
     qid: Q2941302
+  Casteggio (IT):
+    description: Italian controlled designation of origin wine from Lombardy
+    label: Casteggio DOC
+    note: ok
+    qid: Q14034259
+  Castel San Lorenzo (IT):
+    description: Italian controlled designation of origin wine from Campania
+    label: Castel San Lorenzo DOC
+    note: ok
+    qid: Q3662196
   Castel del Monte (IT):
     description: Italian controlled designation of origin wine from Apulia
     label: Castel del Monte DOC
     note: ok
     qid: Q2941364
+  Castel del Monte Bombino Nero (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Apulia
+    label: Castel del Monte Bombino Nero DOCG
+    note: ok
+    qid: Q3662173
+  Castel del Monte Nero di Troia Riserva (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Apulia
+    label: Castel del Monte Nero di Troia Riserva DOCG
+    note: ok
+    qid: Q3662178
+  Castel del Monte Rosso Riserva (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Apulia
+    label: Castel del Monte Rosso Riserva DOCG
+    note: ok
+    qid: Q3662189
+  Casteller (IT):
+    description: Italian controlled designation of origin wine from Trentino
+    label: Casteller DOC
+    note: ok
+    qid: Q3662262
+  Castelli Romani (IT):
+    description: Italian controlled designation of origin wine from Lazio
+    label: Castelli Romani DOC
+    note: ok
+    qid: Q3662273
   Castelló (ES): null
   Castilla y León (ES):
     description: Spanish geographical indication for Vino de la Tierra wines located in the autonomous
@@ -2844,6 +3434,11 @@ regions:
     qid: Q5049887
   Castilla-La Mancha (ES): null
   Castillon Côtes de Bordeaux (FR): null
+  Catalanesca del Monte Somma (IT):
+    description: Italian typical geographical indication wine from Campania
+    label: Catalanesca del Monte Somma IGT
+    note: ok
+    qid: Q139899802
   Catalonia (ES):
     description: nationality and autonomous community of Spain
     label: Catalonia
@@ -2872,6 +3467,11 @@ regions:
     note: ok
     qid: Q104521643
   Cederberg (ZA): null
+  Cellatica (IT):
+    description: Italian controlled designation of origin wine from Lombardy
+    label: Cellatica DOC
+    note: ok
+    qid: Q467344
   Central Coast (US):
     description: winemaking region
     label: Central Coast AVA
@@ -2909,6 +3509,26 @@ regions:
     qid: Q1054633
   Ceres (ZA): null
   Ceres Plateau (ZA): null
+  Cerveteri (IT):
+    description: Italian controlled designation of origin wine from Lazio
+    label: Cerveteri DOC
+    note: ok
+    qid: Q3665243
+  Cesanese del Piglio (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Lazio
+    label: Cesanese del Piglio DOCG
+    note: ok
+    qid: Q1056603
+  Cesanese di Affile (IT):
+    description: Italian controlled designation of origin wine from Lazio
+    label: Cesanese di Affile DOC
+    note: ok
+    qid: Q738082
+  Cesanese di Olevano Romano (IT):
+    description: Italian controlled designation of origin wine from Lazio
+    label: Cesanese di Olevano Romano DOC
+    note: ok
+    qid: Q1056600
   Chablis (FR):
     description: French white wine
     label: Chablis wine
@@ -2929,6 +3549,7 @@ regions:
     label: Chalone AVA
     note: ok
     qid: Q1060179
+  Chambave (IT): null
   Chambertin (FR):
     description: vineyard
     label: Chambertin
@@ -2999,11 +3620,36 @@ regions:
     label: Chianti Classico DOCG
     note: ok
     qid: Q2713152
+  Chianti Colli Aretini (IT):
+    description: type of the Chianti Italian controlled and guaranteed designation of origin
+    label: Chianti Colli Aretini DOCG
+    note: ok
+    qid: Q3667437
+  Chianti Colli Fiorentini (IT):
+    description: type of the Chianti Italian controlled and guaranteed designation of origin
+    label: Chianti Colli Fiorentini DOCG
+    note: ok
+    qid: Q3667438
   Chianti Colli Senesi (IT):
     description: type of the Chianti Italian controlled and guaranteed designation of origin
     label: Chianti Colli Senesi DOCG
     note: ok
     qid: Q3667441
+  Chianti Colline Pisane (IT):
+    description: type of the Chianti Italian controlled and guaranteed designation of origin
+    label: Chianti Colline Pisane DOCG
+    note: ok
+    qid: Q3667442
+  Chianti Montalbano (IT):
+    description: type of the Chianti Italian controlled and guaranteed designation of origin
+    label: Chianti Montalbano DOCG
+    note: ok
+    qid: Q3667443
+  Chianti Montespertoli (IT):
+    description: type of the Chianti Italian controlled and guaranteed designation of origin
+    label: Chianti Montespertoli DOCG
+    note: ok
+    qid: Q3667444
   Chianti Rufina (IT):
     description: type of the Chianti Italian controlled and guaranteed designation of origin
     label: Chianti Rufina DOCG
@@ -3061,24 +3707,46 @@ regions:
     label: Chenas
     note: ok
     qid: Q1090927
+  Cialla (IT): null
   Cienega Valley (US):
     description: American Viticultural Area in California
     label: Cienega Valley AVA
     note: ok
     qid: Q1091786
   Cigales (ES): null
+  Cilento (IT):
+    description: Italian controlled designation of origin wine from Campania
+    label: Cilento DOC
+    note: ok
+    qid: Q3676631
   Cinque Terre (IT):
     description: Italian controlled designation of origin wine from Liguria
     label: Cinque Terre DOC
     note: ok
     qid: Q3677282
+  Circeo (IT):
+    description: Italian controlled designation of origin wine from Lazio
+    label: Circeo DOC
+    note: ok
+    qid: Q3677474
   Cirò (IT):
     description: Italian controlled designation of origin wine from Calabria
     label: Cirò DOC
     note: ok
     qid: Q139916959
+  Cirò Classico (IT): null
+  Cisterna d'Asti (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Cisterna d'Asti DOC
+    note: ok
+    qid: Q3678236
   Citrusdal Mountain (ZA): null
   Citrusdal Valley (ZA): null
+  Civitella d'Agliano (IT):
+    description: Italian typical geographical indication wine from Lazio
+    label: Civitella d'Agliano IGT
+    note: ok
+    qid: Q139899820
   Clairette de Die (FR): null
   Clairette du Languedoc (FR):
     description: French wine
@@ -3144,21 +3812,237 @@ regions:
     label: Cole Ranch AVA
     note: ok
     qid: Q828795
+  Colli Albani (IT):
+    description: Italian controlled designation of origin wine from Lazio
+    label: Colli Albani DOC
+    note: ok
+    qid: Q3683073
+  Colli Altotiberini (IT):
+    description: Italian controlled designation of origin wine from Umbria
+    label: Colli Altotiberini DOC
+    note: ok
+    qid: Q634269
+  Colli Berici (IT):
+    description: Italian controlled designation of origin wine from Veneto
+    label: Colli Berici DOC
+    note: ok
+    qid: Q38709668
+  Colli Bolognesi (IT):
+    description: Italian controlled designation of origin wine from Emilia-Romagna
+    label: Colli Bolognesi DOC
+    note: ok
+    qid: Q97369645
+  Colli Bolognesi Pignoletto (IT):
+    description: type of the Colli Bolognesi Italian controlled designation of origin
+    label: Colli Bolognesi Pignoletto DOCG
+    note: ok
+    qid: Q2983074
+  Colli Cimini (IT):
+    description: Italian typical geographical indication wine from Lazio
+    label: Colli Cimini IGT
+    note: ok
+    qid: Q139899821
+  Colli Etruschi Viterbesi (IT):
+    description: Italian controlled designation of origin wine from Lazio
+    label: Colli Etruschi Viterbesi DOC
+    note: ok
+    qid: Q2983115
+  Colli Euganei (IT):
+    description: Italian controlled designation of origin wine from Veneto
+    label: Colli Euganei DOC
+    note: ok
+    qid: Q2983131
+  Colli Euganei Fior d'Arancio (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Veneto
+    label: Colli Euganei Fior d'Arancio DOCG
+    note: ok
+    qid: Q2983148
+  Colli Lanuvini (IT):
+    description: Italian controlled designation of origin wine from Lazio
+    label: Colli Lanuvini DOC
+    note: ok
+    qid: Q3683099
+  Colli Maceratesi (IT):
+    description: Italian controlled designation of origin wine from Marche
+    label: Colli Maceratesi DOC
+    note: ok
+    qid: Q3683101
+  Colli Martani (IT):
+    description: Italian controlled designation of origin wine from Umbria
+    label: Colli Martani DOC
+    note: ok
+    qid: Q139906328
   Colli Orientali del Friuli (IT):
     description: wine-producing area in Friuli-Venezia Giulia, Italy
     label: Colli Orientali del Friuli
     note: ok
     qid: Q140131108
+  Colli Orientali del Friuli Picolit (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Friuli-Venezia Giulia
+    label: Colli Orientali del Friuli Picolit DOCG
+    note: ok
+    qid: Q2983205
+  Colli Perugini (IT):
+    description: Italian controlled designation of origin wine from Umbria
+    label: Colli Perugini DOC
+    note: ok
+    qid: Q31836638
+  Colli Pesaresi (IT):
+    description: Italian controlled designation of origin wine from Marche
+    label: Colli Pesaresi DOC
+    note: ok
+    qid: Q139906263
   Colli Piacentini (IT):
     description: Italian controlled designation of origin wine from Emilia-Romagna
     label: Colli Piacentini DOC
     note: ok
     qid: Q2983284
+  Colli Romagna Centrale (IT):
+    description: Italian controlled designation of origin wine from Emilia-Romagna
+    label: Colli Romagna Centrale DOC
+    note: ok
+    qid: Q26260858
   Colli Tortonesi (IT):
     description: Italian controlled designation of origin wine from Piedmont
     label: Colli tortonesi DOC
     note: ok
     qid: Q1109383
+  Colli Trevigiani (IT):
+    description: Italian typical geographical indication wine from Veneto
+    label: Colli Trevigiani IGT
+    note: ok
+    qid: Q139899874
+  Colli d'Imola (IT):
+    description: Italian controlled designation of origin wine from Emilia-Romagna
+    label: Colli d'Imola DOC
+    note: ok
+    qid: Q118818983
+  Colli del Limbara (IT):
+    description: Italian typical geographical indication wine from Sardinia
+    label: Colli del Limbara IGT
+    note: ok
+    qid: Q139899838
+  Colli del Sangro (IT):
+    description: Italian typical geographical indication wine from Abruzzo
+    label: Colli del Sangro IGT
+    note: ok
+    qid: Q139899440
+  Colli del Trasimeno (IT):
+    description: Italian controlled designation of origin wine from Umbria
+    label: Colli del Trasimeno DOC
+    note: ok
+    qid: Q139906325
+  Colli dell'Etruria Centrale (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Colli dell'Etruria Centrale DOC
+    note: ok
+    qid: Q3683192
+  Colli della Sabina (IT):
+    description: Italian controlled designation of origin wine from Lazio
+    label: Colli della Sabina DOC
+    note: ok
+    qid: Q3683193
+  Colli di Conegliano (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Veneto
+    label: Colli di Conegliano DOCG
+    note: ok
+    qid: Q1109394
+  Colli di Faenza (IT):
+    description: Italian controlled designation of origin wine from Emilia-Romagna
+    label: Colli di Faenza DOC
+    note: ok
+    qid: Q2983321
+  Colli di Luni (IT):
+    description: Italian controlled designation of origin wine from Liguria and Tuscany
+    label: Colli di Luni DOC
+    note: ok
+    qid: Q131390236
+  Colli di Parma (IT):
+    description: Italian controlled designation of origin wine from Emilia-Romagna
+    label: Colli di Parma DOC
+    note: ok
+    qid: Q3683212
+  Colli di Rimini (IT):
+    description: Italian controlled designation of origin wine from Emilia-Romagna
+    label: Colli di Rimini DOC
+    note: ok
+    qid: Q26877588
+  Colli di Salerno (IT):
+    description: Italian typical geographical indication wine from Campania
+    label: Colli di Salerno IGT
+    note: ok
+    qid: Q139899803
+  Colli di Scandiano e di Canossa (IT):
+    description: Italian controlled designation of origin wine from Emilia-Romagna
+    label: Colli di Scandiano e di Canossa DOC
+    note: ok
+    qid: Q2983331
+  Collina Torinese (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Collina Torinese DOC
+    note: ok
+    qid: Q1109612
+  Collina del Milanese (IT):
+    description: Italian typical geographical indication wine from Lombardy
+    label: Collina del Milanese IGT
+    note: ok
+    qid: Q139891224
+  Colline Frentane (IT):
+    description: Italian typical geographical indication wine from Abruzzo
+    label: Colline Frentane IGT
+    note: ok
+    qid: Q139899441
+  Colline Joniche Tarantine (IT):
+    description: Italian controlled designation of origin wine from Apulia
+    label: Colline Joniche Tarantine DOC
+    note: ok
+    qid: Q139916516
+  Colline Lucchesi (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Colline Lucchesi DOC
+    note: ok
+    qid: Q1109645
+  Colline Novaresi (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Colline novaresi DOC
+    note: ok
+    qid: Q1109662
+  Colline Pescaresi (IT):
+    description: Italian typical geographical indication wine from Abruzzo
+    label: Colline Pescaresi IGT
+    note: ok
+    qid: Q139899442
+  Colline Saluzzesi (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Colline Saluzzesi DOC
+    note: ok
+    qid: Q1109665
+  Colline Savonesi (IT):
+    description: Italian typical geographical indication wine from Liguria
+    label: Colline Savonesi IGT
+    note: ok
+    qid: Q139883104
+  Colline Teatine (IT):
+    description: Italian typical geographical indication wine from Abruzzo
+    label: Colline Teatine IGT
+    note: ok
+    qid: Q139899443
+  Colline Teramane (IT):
+    description: wine-producing area in Abruzzo, Italy
+    label: Colline Teramane
+    note: ok
+    qid: Q140131341
+  Colline del Crati (IT): null
+  Colline del Genovesato (IT):
+    description: Italian typical geographical indication wine from Liguria
+    label: Colline del Genovesato IGT
+    note: ok
+    qid: Q139883100
+  Colline di Levanto (IT):
+    description: Italian controlled designation of origin wine from Liguria
+    label: Colline di Levanto DOC
+    note: ok
+    qid: Q3683272
   Collines Rhodaniennes (FR): null
   Collio (IT):
     description: wine-producing area in Friuli-Venezia Giulia, Italy
@@ -3215,6 +4099,7 @@ regions:
     note: ok
     qid: Q1124398
   Condado do Tea (ES): null
+  Condoleo (IT): null
   Condrieu (FR):
     description: French wine-growing region
     label: Condrieu AOC
@@ -3225,17 +4110,42 @@ regions:
     label: Conegliano Valdobbiadene
     note: ok
     qid: Q140131089
+  Conero (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Marche
+    label: Conero DOCG
+    note: ok
+    qid: Q3442853
   Connecticut (US):
     description: state of the United States of America
     label: Connecticut
     note: non-wine class -- review
     qid: Q779
+  Conselvano (IT):
+    description: Italian typical geographical indication wine from Veneto
+    label: Conselvano IGT
+    note: ok
+    qid: Q139899471
   Constantia (ZA): null
+  Contea di Sclafani (IT):
+    description: Italian controlled designation of origin wine from Sicily
+    label: Contea di Sclafani DOC
+    note: ok
+    qid: Q2995472
+  Contessa Entellina (IT):
+    description: Italian controlled designation of origin wine from Sicily
+    label: Contessa Entellina DOC
+    note: ok
+    qid: Q2995602
   Contra Costa (US):
     description: ''
     label: Contra Costa AVA
     note: ok
     qid: Q131447844
+  Controguerra (IT):
+    description: wine-producing area in Abruzzo, Italy
+    label: Controguerra
+    note: ok
+    qid: Q140131348
   Coombsville (US):
     description: American Viticultural Area in California
     label: Coombsville AVA
@@ -3246,12 +4156,18 @@ regions:
     label: Coonawarra
     note: ok
     qid: Q1129760
+  Copertino (IT): null
   Coquimbo (CL):
     description: ''
     label: Coquimbo
     note: non-wine class -- review
     qid: Q23660214
   Corbières (FR): null
+  Cori (IT):
+    description: Italian controlled designation of origin wine from Lazio
+    label: Cori DOC
+    note: ok
+    qid: Q1132736
   Cornas (FR):
     description: French wine Appellation d'Origine Contrôlée (AOC) in the northern Rhône wine region of
       France south of Lyon
@@ -3264,6 +4180,16 @@ regions:
     label: Corsica
     note: non-wine class -- review
     qid: Q14112
+  Cortese dell'Alto Monferrato (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Cortese dell'Alto Monferrato DOC
+    note: ok
+    qid: Q390619
+  Corti Benedettine del Padovano (IT):
+    description: Italian controlled designation of origin wine from Veneto
+    label: Corti benedettine del Padovano DOC
+    note: ok
+    qid: Q25385277
   Corton (FR):
     description: type of Burgundy wine
     label: Corton
@@ -3279,11 +4205,36 @@ regions:
     label: Cortona DOC
     note: ok
     qid: Q3694867
+  Costa Etrusco Romana (IT):
+    description: Italian typical geographical indication wine from Lazio
+    label: Costa Etrusco Romana IGT
+    note: ok
+    qid: Q139899823
+  Costa Toscana (IT):
+    description: Italian typical geographical indication wine from Tuscany
+    label: Costa Toscana IGT
+    note: ok
+    qid: Q139899866
+  Costa Viola (IT):
+    description: Italian typical geographical indication wine from Calabria
+    label: Costa Viola IGT
+    note: ok
+    qid: Q139899450
+  Costa d'Amalfi (IT):
+    description: Italian controlled designation of origin wine from Campania
+    label: Costa d'Amalfi DOC
+    note: ok
+    qid: Q3695310
   Costa de Cantabria (ES):
     description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
     label: Costa de Cantabria
     note: ok
     qid: Q5174958
+  Coste della Sesia (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Coste della Sesia DOC
+    note: ok
+    qid: Q3695686
   Costers del Segre (ES):
     description: Spanish wine
     label: Costers del Segre
@@ -3438,6 +4389,11 @@ regions:
     note: ok
     qid: Q5165777
   Curicó Valley (CL): null
+  Curtefranca (IT):
+    description: Italian controlled designation of origin wine from Lombardy
+    label: Curtefranca DOC
+    note: ok
+    qid: Q3699674
   Custoza (IT):
     description: wine-producing area in Veneto, Italy
     label: Custoza
@@ -3597,6 +4553,11 @@ regions:
     qid: Q528042
   Danubian Plain (BG): null
   Darling (ZA): null
+  Daunia (IT):
+    description: Italian typical geographical indication wine from Apulia
+    label: Daunia IGT
+    note: ok
+    qid: Q139899830
   Dealu Mare (RO):
     description: wine region in Romania
     label: Dealu Mare wine region
@@ -3608,6 +4569,11 @@ regions:
     label: Dehesa del Carrizal
     note: ok
     qid: Q5252235
+  Delia Nivolelli (IT):
+    description: Italian controlled designation of origin wine from Sicily
+    label: Delia Nivolelli DOC
+    note: ok
+    qid: Q368172
   Desierto de Almería (ES):
     description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
     label: Desierto de Almería
@@ -3629,12 +4595,43 @@ regions:
     label: Dogliani DOCG
     note: ok
     qid: Q453756
+  Dolcetto d'Acqui (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Dolcetto d'Acqui DOC
+    note: ok
+    qid: Q257142
   Dolcetto d'Alba (IT):
     description: Italian controlled designation of origin wine from Piedmont
     label: Dolcetto d'Alba DOC
     note: ok
     qid: Q1235386
+  Dolcetto d'Asti (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Dolcetto d'Asti DOC
+    note: ok
+    qid: Q1235388
+  Dolcetto di Diano d'Alba (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Piedmont
+    label: Dolcetto di Diano d'Alba DOCG
+    note: ok
+    qid: Q1235385
+  Dolcetto di Ovada (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Dolcetto di Ovada DOC
+    note: ok
+    qid: Q1235397
+  Dolcetto di Ovada Superiore (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Piedmont
+    label: Dolcetto di Ovada superiore DOCG
+    note: ok
+    qid: Q3712607
   Dominio de Valdepusa (ES): null
+  Donnas (IT): null
+  Donnici (IT):
+    description: Italian controlled designation of origin wine from Calabria
+    label: Donnici DOC
+    note: ok
+    qid: Q139900276
   Dos Rios (US):
     description: California wine region in Mendocino County
     label: Dos Rios AVA
@@ -3654,6 +4651,11 @@ regions:
     note: non-wine class -- review
     qid: Q754726
   Duché d'Uzès (FR): null
+  Dugenta (IT):
+    description: Italian typical geographical indication wine from Campania
+    label: Dugenta IGT
+    note: ok
+    qid: Q139899462
   Dundee Hills (US):
     description: American Viticultural Area in Oregon
     label: Dundee Hills AVA
@@ -3732,14 +4734,34 @@ regions:
     note: ok
     qid: Q85758841
   Elandskloof (ZA): null
+  Elba (IT):
+    description: wine made from grapes grown on the island of Elba
+    label: Elba DOC
+    note: ok
+    qid: Q3721167
+  Elba Aleatico Passito (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Tuscany
+    label: Elba Aleatico Passito DOCG
+    note: ok
+    qid: Q139906127
   Elgin (ZA): null
   Elim (ZA): null
   Elkton Oregon (US): null
+  Eloro (IT):
+    description: Italian controlled designation of origin wine from Sicily
+    label: Eloro DOC
+    note: ok
+    qid: Q3723635
   Elqui Valley (CL):
     description: wine region in northern Chile
     label: Elqui Valley
     note: ok
     qid: Q17010472
+  Emilia (IT):
+    description: Italian typical geographical indication wine from Emilia-Romagna
+    label: Emilia IGT
+    note: ok
+    qid: Q139899808
   Emilia-Romagna (IT):
     description: region of Italy
     label: Emilia-Romagna
@@ -3750,6 +4772,7 @@ regions:
     label: Empordà
     note: ok
     qid: Q3053356
+  Enfer d'Arvier (IT): null
   Engelberg (FR):
     description: French white wine
     label: Engelberg
@@ -3772,11 +4795,37 @@ regions:
     label: Eola-Amity Hills AVA
     note: ok
     qid: Q1346283
+  Epomeo (IT):
+    description: Italian typical geographical indication wine from Campania
+    label: Epomeo IGT
+    note: ok
+    qid: Q139899463
+  Erbaluce di Caluso (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Piedmont
+    label: Erbaluce di Caluso DOCG
+    note: ok
+    qid: Q693841
+  Erice (IT):
+    description: Italian controlled designation of origin wine from Sicily
+    label: Erice DOC
+    note: ok
+    qid: Q3731569
+  Esaro (IT): null
   Escondido Valley (US):
     description: wine area in Texas, United States
     label: Escondido Valley AVA
     note: ok
     qid: Q1367302
+  Esino (IT):
+    description: Italian controlled designation of origin wine from Marche
+    label: Esino DOC
+    note: ok
+    qid: Q139906264
+  Est! Est!! Est!!! di Montefiascone (IT):
+    description: Italian controlled designation of origin wine from Lazio
+    label: Est! Est!! Est!!! di Montefiascone DOC
+    note: ok
+    qid: Q1368986
   Estaing (FR): null
   Etna (IT):
     description: Italian controlled designation of origin wine from Sicily
@@ -3793,11 +4842,31 @@ regions:
     label: Fair Play AVA
     note: ok
     qid: Q1393017
+  Falanghina del Sannio (IT):
+    description: Italian controlled designation of origin wine from Campania
+    label: Falanghina del Sannio DOC
+    note: ok
+    qid: Q3948482
+  Falerio (IT):
+    description: Italian controlled designation of origin wine from Marche
+    label: Falerio DOC
+    note: ok
+    qid: Q1394013
   Falerno del Massico (IT):
     description: Italian controlled designation of origin wine from Campania
     label: Falerno del Massico DOC
     note: ok
     qid: Q1394022
+  Fara (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Fara DOC
+    note: ok
+    qid: Q1396077
+  Faro (IT):
+    description: type of the Faro Italian controlled designation of origin
+    label: Faro DOC
+    note: ok
+    qid: Q3066975
   Faugères (FR):
     description: appellation d'origine contrôlée
     label: Faugères AOC
@@ -3808,6 +4877,7 @@ regions:
     label: Fennville AVA
     note: ok
     qid: Q1404805
+  Feudo dei Fiori (IT): null
   Fiano di Avellino (IT):
     description: Italian controlled and guaranteed designation of origin wine from Campania
     label: Fiano di Avellino DOCG
@@ -3849,6 +4919,16 @@ regions:
     label: Florimont
     note: ok
     qid: Q3074296
+  Fontanarossa di Cerda (IT):
+    description: Italian typical geographical indication wine from Sicily
+    label: Fontanarossa di Cerda IGT
+    note: ok
+    qid: Q139899859
+  Forlì (IT):
+    description: Italian typical geographical indication wine from Emilia-Romagna
+    label: Forlì IGT
+    note: ok
+    qid: Q139899809
   Formentera (ES):
     description: Vino de la Terra
     label: Formentera
@@ -3859,6 +4939,11 @@ regions:
     label: Fort Ross-Seaview AVA
     note: ok
     qid: Q133816353
+  Fortana del Taro (IT):
+    description: Italian typical geographical indication wine from Emilia-Romagna
+    label: Fortana del Taro IGT
+    note: ok
+    qid: Q139899810
   Fountaingrove District (US):
     description: American Viticultural Area in Sonoma County, California
     label: Fountaingrove District AVA
@@ -3880,12 +4965,37 @@ regions:
     label: Frascati DOC
     note: ok
     qid: Q457946
+  Frascati Superiore (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Lazio
+    label: Frascati superiore DOCG
+    note: ok
+    qid: Q3752311
   Fredericksburg in the Texas Hill Country (US):
     description: American Viticultural Area located in central Texas
     label: Fredericksburg in the Texas Hill Country AVA
     note: ok
     qid: Q113309
   Free State (ZA): null
+  Freisa d'Asti (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Freisa d'Asti DOC
+    note: ok
+    qid: Q440627
+  Freisa di Chieri (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Freisa di Chieri DOC
+    note: ok
+    qid: Q1454639
+  Friuli Annia (IT):
+    description: Italian controlled designation of origin wine from Friuli-Venezia Giulia
+    label: Friuli Annia DOC
+    note: ok
+    qid: Q16557744
+  Friuli Aquileia (IT):
+    description: Italian controlled designation of origin wine from Friuli-Venezia Giulia
+    label: Friuli Aquileia DOC
+    note: ok
+    qid: Q3087964
   Friuli Grave (IT):
     description: Italian controlled designation of origin wine from Friuli-Venezia Giulia
     label: Friuli Grave DOC
@@ -3896,6 +5006,11 @@ regions:
     label: Friuli Isonzo DOC
     note: ok
     qid: Q443118
+  Friuli Latisana (IT):
+    description: Italian controlled designation of origin wine from Friuli-Venezia Giulia
+    label: Friuli Latisana DOC
+    note: ok
+    qid: Q3088135
   Friuli-Venezia Giulia (IT): null
   Froehn (FR): null
   Fronsac (FR):
@@ -3908,8 +5023,18 @@ regions:
     label: Fronton AOC
     note: ok
     qid: Q1150996
+  Frusinate (IT):
+    description: Italian typical geographical indication wine from Lazio
+    label: Frusinate IGT
+    note: ok
+    qid: Q139899824
   Fruška Gora (RS): null
   Furstentum (FR): null
+  Gabiano (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Gabiano DOC
+    note: ok
+    qid: Q785125
   Gabilan Mountains (US):
     description: appelation that designates wine in Monterey County, CA
     label: Gabilan Mountains AVA
@@ -3921,6 +5046,11 @@ regions:
     note: ok
     qid: Q392242
   Gaillac Premières Côtes (FR): null
+  Galatina (IT):
+    description: Italian controlled designation of origin wine from Apulia
+    label: Galatina DOC
+    note: ok
+    qid: Q139916517
   Galicia (ES):
     description: autonomous community of Spain
     label: Galicia
@@ -3931,11 +5061,36 @@ regions:
     label: Galilee
     note: non-wine class -- review
     qid: Q83241
+  Galluccio (IT):
+    description: Italian controlled designation of origin wine from Campania
+    label: Galluccio DOC
+    note: ok
+    qid: Q3094845
+  Gambellara (IT):
+    description: Italian controlled designation of origin wine from Veneto
+    label: Gambellara DOC
+    note: ok
+    qid: Q3757914
   Gard (FR):
     description: French wine
     label: Gard
     note: ok
     qid: Q3095358
+  Garda (IT):
+    description: Italian interregional controlled designation of origin wine
+    label: Garda DOC
+    note: ok
+    qid: Q2410748
+  Garda Bresciano (IT):
+    description: wine-producing area in Lombardy, Italy
+    label: Garda Bresciano
+    note: ok
+    qid: Q140131042
+  Garda Colli Mantovani (IT):
+    description: Italian controlled designation of origin wine from Lombardy
+    label: Garda Colli Mantovani DOC
+    note: ok
+    qid: Q133857127
   Garrigues (ES): null
   Gattinara (IT):
     description: Italian controlled and guaranteed designation of origin wine from Piedmont
@@ -3953,6 +5108,11 @@ regions:
     note: ok
     qid: Q73214000
   Geisberg (FR): null
+  Genazzano (IT):
+    description: Italian controlled designation of origin wine from Lazio
+    label: Genazzano DOC
+    note: ok
+    qid: Q130734308
   Geneva (CH):
     description: capital of the canton of Geneva, Switzerland
     label: Geneva
@@ -3982,12 +5142,22 @@ regions:
     label: Gioia del Colle DOC
     note: ok
     qid: Q3765075
+  Girò di Cagliari (IT):
+    description: Italian grape variety
+    label: Girò di Cagliari DOC
+    note: ok
+    qid: Q735114
   Gisborne (NZ): null
   Givry (FR): null
   Gloeckelberg (FR): null
   Goedemoed (ZA): null
   Golan Heights (IL): null
   Goldert (FR): null
+  Golfo del Tigullio-Portofino (IT):
+    description: Italian controlled designation of origin wine from Liguria
+    label: Golfo del Tigullio-Portofino DOC
+    note: ok
+    qid: Q139883097
   Goose Gap (US):
     description: viticultural area in Washington, USA
     label: Goose Gap AVA
@@ -4011,6 +5181,11 @@ regions:
     note: ok
     qid: Q5593979
   Granada (ES): null
+  Grance Senesi (IT):
+    description: type of the Grance Senesi Italian controlled designation of origin
+    label: Grance Senesi DOC
+    note: ok
+    qid: Q28000951
   Grand River Valley (US):
     description: American Viticultural Area in Ohio
     label: Grand River Valley AVA
@@ -4037,11 +5212,21 @@ regions:
     label: Graves de Vayres
     note: ok
     qid: Q1456194
+  Gravina (IT):
+    description: Italian controlled designation of origin wine from Apulia
+    label: Gravina DOC
+    note: ok
+    qid: Q3775928
   Great Southern (AU):
     description: wine region in Western Australia
     label: Great Southern
     note: ok
     qid: Q14935800
+  Greco di Bianco (IT):
+    description: Italian controlled designation of origin wine from Calabria
+    label: Greco di Bianco DOC
+    note: ok
+    qid: Q139916961
   Greco di Tufo (IT):
     description: Italian controlled and guaranteed designation of origin wine from Campania
     label: Greco di Tufo DOCG
@@ -4054,6 +5239,16 @@ regions:
     qid: Q1544659
   Greyton (ZA): null
   Grignan-les-Adhémar (FR): null
+  Grignolino d'Asti (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Grignolino d'Asti DOC
+    note: ok
+    qid: Q440632
+  Grignolino del Monferrato Casalese (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Grignolino del Monferrato Casalese DOC
+    note: ok
+    qid: Q440637
   Griotte-Chambertin (FR):
     description: French wine
     label: Griotte-Chambertin
@@ -4065,6 +5260,12 @@ regions:
   Groenfontein (ZA): null
   Grootdrink (ZA): null
   Gros Plant du Pays Nantais (FR): null
+  Grottino di Roccanova (IT):
+    description: Italian controlled designation of origin wine from Basilicata
+    label: Grottino di Roccanova DOC
+    note: ok
+    qid: Q139916504
+  Grumello (IT): null
   Grès de Montpellier (FR): null
   Guenoc Valley (US):
     description: American Viticultural Area
@@ -4076,6 +5277,11 @@ regions:
     label: Guijoso
     note: ok
     qid: Q11682259
+  Gutturnio (IT):
+    description: Italian controlled designation of origin wine from Emilia-Romagna
+    label: Gutturnio DOC
+    note: ok
+    qid: Q3683134
   Hames Valley (US):
     description: viticultural area in Monterey County, California
     label: Hames Valley AVA
@@ -4168,6 +5374,11 @@ regions:
     qid: Q5944605
   Hvar (HR): null
   Hérault (FR): null
+  I Terreni di Sanseverino (IT):
+    description: Italian controlled designation of origin wine from Marche
+    label: I Terreni di Sanseverino DOC
+    note: ok
+    qid: Q3790474
   Ibiza (ES):
     description: Spanish geographical indication for wines in the Balearic Islands
     label: Ibiza
@@ -4204,6 +5415,7 @@ regions:
     label: Indiana Uplands AVA
     note: ok
     qid: Q104871823
+  Inferno (IT): null
   Inwood Valley (US):
     description: appelation that designates wine in Shasta County, California
     label: Inwood Valley AVA
@@ -4229,6 +5441,11 @@ regions:
     label: Irpinia DOC
     note: ok
     qid: Q31842077
+  Ischia (IT):
+    description: Italian controlled designation of origin wine from Campania
+    label: Ischia DOC
+    note: ok
+    qid: Q3802407
   Isle St. George (US):
     description: Ohio wine region
     label: Isle St. George AVA
@@ -4251,6 +5468,7 @@ regions:
     note: ok
     qid: Q1683850
   Jerez (ES): null
+  Jerzu (IT): null
   Jongieux (FR): null
   Jonkershoek Valley (ZA): null
   Judean Hills (IL): null
@@ -4371,6 +5589,11 @@ regions:
     label: La Tâche AOC
     note: ok
     qid: Q923449
+  Lacrima di Morro d'Alba (IT):
+    description: Italian controlled designation of origin wine from Marche
+    label: Lacrima di Morro d'Alba DOC
+    note: ok
+    qid: Q1799803
   Ladeira de Monterrei (ES): null
   Laderas del Genil (ES):
     description: Wine region in Spain
@@ -4382,6 +5605,16 @@ regions:
     label: Ladoix wine
     note: ok
     qid: Q3215969
+  Lago di Caldaro (IT):
+    description: Italian interregional controlled designation of origin wine (Trentino-Alto Adige, Veneto)
+    label: Lago di Caldaro DOC
+    note: ok
+    qid: Q3650539
+  Lago di Corbara (IT):
+    description: Italian controlled designation of origin wine from Umbria
+    label: Lago di Corbara DOC
+    note: ok
+    qid: Q1800420
   Lake Chelan (US):
     description: Washington wine region in Chelan County
     label: Lake Chelan AVA
@@ -4413,6 +5646,31 @@ regions:
     note: ok
     qid: Q669737
   Lamberts Bay (ZA): null
+  Lambrusco Grasparossa di Castelvetro (IT):
+    description: Italian controlled designation of origin wine from Emilia-Romagna
+    label: Lambrusco Grasparossa di Castelvetro DOC
+    note: ok
+    qid: Q3826413
+  Lambrusco Mantovano (IT):
+    description: Italian controlled designation of origin wine from Lombardy
+    label: Lambrusco Mantovano DOC
+    note: ok
+    qid: Q3826414
+  Lambrusco Salamino di Santa Croce (IT):
+    description: Italian controlled designation of origin wine from Emilia-Romagna
+    label: Lambrusco Salamino di Santa Croce DOC
+    note: ok
+    qid: Q3826418
+  Lambrusco di Sorbara (IT):
+    description: Italian controlled designation of origin wine from Emilia-Romagna
+    label: Lambrusco di Sorbara DOC
+    note: ok
+    qid: Q136770069
+  Lamezia (IT):
+    description: Italian controlled designation of origin wine from Calabria
+    label: Lamezia DOC
+    note: ok
+    qid: Q139916962
   Lamorinda (US):
     description: ''
     label: Lamorinda AVA
@@ -4504,6 +5762,21 @@ regions:
     note: ok
     qid: Q6525017
   Les Baux-de-Provence (FR): null
+  Lessini Durello (IT):
+    description: Italian controlled designation of origin wine from Veneto
+    label: Lessini Durello DOC
+    note: ok
+    qid: Q1820946
+  Lessona (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Lessona DOC
+    note: ok
+    qid: Q3236769
+  Leverano (IT):
+    description: Italian controlled designation of origin wine from Apulia
+    label: Leverano DOC
+    note: ok
+    qid: Q139962541
   Lewis-Clark Valley (US):
     description: American Viticultural Area in Washington and Oregon
     label: Lewis-Clark Valley AVA
@@ -4516,6 +5789,11 @@ regions:
     label: Liguria
     note: non-wine class -- review
     qid: Q1256
+  Liguria di Levante (IT):
+    description: Italian typical geographical indication wine from Liguria
+    label: Liguria di Levante IGT
+    note: ok
+    qid: Q139883107
   Limarí Valley (CL): null
   Lime Kiln Valley (US):
     description: wine growing region of California
@@ -4532,12 +5810,23 @@ regions:
     note: ok
     qid: Q6553771
   Lions River (ZA): null
+  Lipuda (IT):
+    description: Italian typical geographical indication wine from Calabria
+    label: Lipuda IGT
+    note: ok
+    qid: Q139899451
   Lirac (FR):
     description: Southern Rhône wine appelation
     label: Lirac AOC
     note: ok
     qid: Q3242328
   Lisboa (PT): null
+  Lison (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Veneto
+    label: Lison DOCG
+    note: ok
+    qid: Q16572904
+  Lison Pramaggiore (IT): null
   Listrac-Médoc (FR):
     description: French wine
     label: Listrac-médoc AOC
@@ -4548,11 +5837,31 @@ regions:
     label: Livermore Valley AVA
     note: ok
     qid: Q1866441
+  Lizzano (IT):
+    description: type of the Lizzano Italian controlled designation of origin
+    label: Lizzano DOC
+    note: ok
+    qid: Q3835673
   Liébana (ES):
     description: wine region in Spain
     label: Liébana
     note: ok
     qid: Q6660796
+  Loazzolo (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Loazzolo DOC
+    note: ok
+    qid: Q3257598
+  Locorotondo (IT):
+    description: Italian controlled designation of origin wine from Apulia
+    label: Locorotondo DOC
+    note: ok
+    qid: Q10728966
+  Locride (IT):
+    description: Italian typical geographical indication wine from Calabria
+    label: Locride IGT
+    note: ok
+    qid: Q139899452
   Lodi (US):
     description: Wine grape-growing region in California
     label: Lodi AVA
@@ -4693,7 +6002,24 @@ regions:
   Malleco Valley (CL): null
   Mallorca (ES): null
   Malmesbury (ZA): null
+  Malvasia delle Lipari (IT):
+    description: Italian controlled designation of origin wine from Sicily
+    label: Malvasia delle Lipari DOC
+    note: ok
+    qid: Q1741273
+  Malvasia di Bosa (IT):
+    description: Italian controlled designation of origin wine from Sardinia
+    label: Malvasia di Bosa DOC
+    note: ok
+    qid: Q139919574
+  Malvasia di Casorzo (IT): null
+  Malvasia di Castelnuovo Don Bosco (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Malvasia di Castelnuovo Don Bosco DOC
+    note: ok
+    qid: Q454914
   Mambourg (FR): null
+  Mamertino di Milazzo (IT): null
   Manchuela (ES):
     description: is a Spanish Denominación de Origen Protegida (DOP) for wines located in the historical
       Manchuela comarca, in the east of the provinces of Albacete and Cuenca (Castile-La Mancha, Spain)
@@ -4701,6 +6027,11 @@ regions:
     note: ok
     qid: Q6747630
   Mandelberg (FR): null
+  Mandrolisai (IT):
+    description: Italian controlled designation of origin wine from Sardinia
+    label: Mandrolisai DOC
+    note: ok
+    qid: Q139919559
   Mantinia (GR): null
   Manton Valley (US):
     description: appelation that designates wine in Shasta County, California
@@ -4713,6 +6044,11 @@ regions:
     label: Maranges
     note: ok
     qid: Q3287444
+  Marca Trevigiana (IT):
+    description: Italian typical geographical indication wine from Veneto
+    label: Marca Trevigiana IGT
+    note: ok
+    qid: Q139899473
   Marche (IT):
     description: region in Italy
     label: Marche
@@ -4724,11 +6060,11 @@ regions:
     note: ok
     qid: Q1435070
   Marckrain (FR): null
-  Maremma (IT):
-    description: wine-producing area in Tuscany, Italy
-    label: Maremma
+  Maremma Toscana (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Maremma toscana DOC
     note: ok
-    qid: Q140131177
+    qid: Q15833829
   Marestel (FR): null
   Mareuil (FR): null
   Margaret River (AU):
@@ -4743,11 +6079,22 @@ regions:
     qid: Q532734
   Marignan (FR): null
   Marin (FR): null
+  Marino (IT):
+    description: Italian controlled designation of origin wine from Lazio
+    label: Marino DOC
+    note: ok
+    qid: Q3848166
   Marlborough (NZ):
     description: New Zealand's largest wine region
     label: Marlborough wine region
     note: ok
     qid: Q85783963
+  Marmilla (IT):
+    description: Italian typical geographical indication wine from Sardinia
+    label: Marmilla IGT
+    note: ok
+    qid: Q139899840
+  Maroggia (IT): null
   Marsala (IT):
     description: Italian controlled designation of origin wine from Sicily
     label: Marsala DOC
@@ -4763,6 +6110,11 @@ regions:
     label: Martha's Vineyard AVA
     note: ok
     qid: Q1903116
+  Martina Franca (IT):
+    description: type of the Martina Franca Italian controlled designation of origin
+    label: Martina Franca DOC
+    note: ok
+    qid: Q1667522
   Martinborough (NZ): null
   Maryland (US):
     description: state of the United States of America
@@ -4775,6 +6127,16 @@ regions:
     note: non-wine class -- review
     qid: Q771
   Matanegra (ES): null
+  Matera (IT):
+    description: type of the Matera Italian controlled designation of origin
+    label: Matera DOC
+    note: ok
+    qid: Q3851746
+  Matino (IT):
+    description: Italian controlled designation of origin wine from Apulia
+    label: Matino DOC
+    note: ok
+    qid: Q139916521
   Maule Valley (CL):
     description: sub-region of the Viticultural Region of Chile's Central Valley
     label: Maule Valley
@@ -4817,6 +6179,11 @@ regions:
     label: Meknes
     note: non-wine class -- review
     qid: Q178663
+  Melissa (IT):
+    description: Italian controlled designation of origin wine from Calabria
+    label: Melissa DOC
+    note: ok
+    qid: Q139916963
   Mendocino (US):
     description: American Viticultural Area in California
     label: Mendocino AVA
@@ -4853,6 +6220,11 @@ regions:
     label: Mercurey wine
     note: ok
     qid: Q2749134
+  Merlara (IT):
+    description: Italian controlled designation of origin wine from Veneto
+    label: Merlara DOC
+    note: ok
+    qid: Q118819679
   Merritt Island (US):
     description: Island and viticultural area in California
     label: Merritt Island AVA
@@ -4918,7 +6290,18 @@ regions:
     label: Mittelrhein
     note: ok
     qid: Q464929
+  Mitterberg (IT):
+    description: Italian typical geographical indication wine from Trentino-Alto Adige
+    label: Mitterberg IGT
+    note: ok
+    qid: Q139899869
+  Modena (IT):
+    description: Italian controlled designation of origin wine from Emilia-Romagna
+    label: Modena DOC
+    note: ok
+    qid: Q139907059
   Moenchberg (FR): null
+  Mogoro (IT): null
   Mokelumne River (US):
     description: American Viticultural Area in San Joaquin County, California
     label: Mokelumne River AVA
@@ -4945,7 +6328,17 @@ regions:
     label: Monferrato DOC
     note: ok
     qid: Q3860791
+  Monica di Sardegna (IT):
+    description: type of the Monica di Sardegna Italian controlled designation of origin
+    label: Monica di Sardegna DOC
+    note: ok
+    qid: Q3320744
   Monnières-Saint-Fiacre (FR): null
+  Monreale (IT):
+    description: Italian controlled designation of origin wine from Sicily
+    label: Monreale DOC
+    note: ok
+    qid: Q3860957
   Montagne de Reims (FR):
     description: French wine region
     label: Montagne de Reims
@@ -4964,21 +6357,61 @@ regions:
     label: Montalcino
     note: ok
     qid: Q140131171
+  Montecarlo (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Montecarlo DOC
+    note: ok
+    qid: Q3862207
+  Montecompatri Colonna (IT):
+    description: Italian controlled designation of origin wine from Lazio
+    label: Montecompatri Colonna DOC
+    note: ok
+    qid: Q3862225
   Montecucco (IT):
     description: Italian controlled designation of origin wine from Tuscany
     label: Montecucco DOC
     note: ok
     qid: Q1946008
+  Montecucco Sangiovese (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Tuscany
+    label: Montecucco Sangiovese DOCG
+    note: ok
+    qid: Q3862229
   Montefalco (IT):
     description: wine-producing area in Umbria, Italy
     label: Montefalco
     note: ok
     qid: Q140131267
+  Montefalco Sagrantino (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Umbria
+    label: Montefalco Sagrantino DOCG
+    note: ok
+    qid: Q255071
+  Montello Rosso (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Veneto
+    label: Montello Rosso DOCG
+    note: ok
+    qid: Q25384900
+  Montello e Colli Asolani (IT):
+    description: Italian controlled designation of origin wine from Veneto
+    label: Montello e Colli Asolani DOC
+    note: ok
+    qid: Q3862263
+  Montenetto di Brescia (IT):
+    description: Italian typical geographical indication wine from Lombardy
+    label: Montenetto di Brescia IGT
+    note: ok
+    qid: Q139891225
   Montepulciano d'Abruzzo (IT):
     description: Italian controlled designation of origin wine from Abruzzo
     label: Montepulciano d'Abruzzo DOC
     note: ok
     qid: Q1946117
+  Monteregio di Massa Marittima (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Monteregio di Massa Marittima DOC
+    note: ok
+    qid: Q1946096
   Monterey (US):
     description: viticultural area in Monterey County, California
     label: Monterey AVA
@@ -4990,18 +6423,29 @@ regions:
     note: non-wine class -- review
     qid: Q108072
   Monterminod (FR): null
+  Monterosso Val d'Arda (IT): null
   Monterrei (ES):
     description: Spanish Denominación de Origen Protegida (DOP) (Denominación de Orixe Protexida in Galician)
       for wines
     label: Monterrei
     note: ok
     qid: Q539958
+  Montescudaio (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Montescudaio DOC
+    note: ok
+    qid: Q130634423
   Monthoux (FR): null
   Monthélie (FR):
     description: wine from Burgundy
     label: Monthélie wine
     note: ok
     qid: Q3322760
+  Monti Lessini (IT):
+    description: Italian controlled designation of origin wine from Veneto
+    label: Monti Lessini DOC
+    note: ok
+    qid: Q17636650
   Monticello (US):
     description: American Viticultural Area in Virginia
     label: Monticello AVA
@@ -5061,6 +6505,26 @@ regions:
     label: Mornington Peninsula
     note: ok
     qid: Q6913026
+  Moscadello di Montalcino (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Moscadello di Montalcino DOC
+    note: ok
+    qid: Q3866002
+  Moscato di Sardegna (IT):
+    description: type of the Moscato di Sardegna Italian controlled designation of origin
+    label: Moscato di Sardegna DOC
+    note: ok
+    qid: Q1948895
+  Moscato di Sorso-Sennori (IT):
+    description: type of the Moscato di Sorso-Sennori Italian controlled designation of origin
+    label: Moscato di Sorso-Sennori DOC
+    note: ok
+    qid: Q1340136
+  Moscato di Trani (IT):
+    description: type of the Moscato di Trani Italian controlled designation of origin
+    label: Moscato di Trani DOC
+    note: ok
+    qid: Q3866027
   Mosel (DE): null
   Moselle (FR): null
   Moselle Luxembourgeoise (LU): null
@@ -5108,6 +6572,11 @@ regions:
     note: non-wine class -- review
     qid: Q195459
   Murfatlar (RO): null
+  Murgia (IT):
+    description: Italian typical geographical indication wine from Apulia
+    label: Murgia IGT
+    note: ok
+    qid: Q139899831
   Muscadet (FR):
     description: French white wine
     label: Muscadet
@@ -5189,6 +6658,21 @@ regions:
     note: ok
     qid: Q1151105
   Napier (ZA): null
+  Nardò (IT):
+    description: type of the Nardò Italian controlled designation of origin
+    label: Nardò DOC
+    note: ok
+    qid: Q3870424
+  Narni (IT):
+    description: Italian typical geographical indication wine from Umbria
+    label: Narni IGT
+    note: ok
+    qid: Q139899469
+  Nasco di Cagliari (IT):
+    description: type of the Nasco di Cagliari Italian controlled designation of origin
+    label: Nasco di Cagliari DOC
+    note: ok
+    qid: Q1540598
   Nashik (IN): null
   Nashoba Valley (US):
     description: American Viticultural Area in Massachusetts
@@ -5212,8 +6696,18 @@ regions:
     note: ok
     qid: Q1973211
   Negev (IL): null
+  Negroamaro di Terra d'Otranto (IT):
+    description: Italian controlled designation of origin wine from Apulia
+    label: Negroamaro di Terra d'Otranto DOC
+    note: ok
+    qid: Q139916524
   Nelson (NZ): null
   Nemea (GR): null
+  Nettuno (IT):
+    description: Italian wine region
+    label: Nettuno DOC
+    note: ok
+    qid: Q125121215
   Neuchâtel (CH):
     description: capital of the canton of Neuchâtel, Switzerland
     label: Neuchâtel
@@ -5259,6 +6753,11 @@ regions:
     label: Ningxia
     note: non-wine class -- review
     qid: Q57448
+  Nizza (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Piedmont
+    label: Nizza DOCG
+    note: ok
+    qid: Q21509805
   Norte de Almería (ES):
     description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
     label: Norte de Almería
@@ -5302,6 +6801,11 @@ regions:
     label: Northern Sonoma AVA
     note: ok
     qid: Q1454419
+  Noto (IT):
+    description: Italian controlled designation of origin wine from Sicily
+    label: Noto DOC
+    note: ok
+    qid: Q3878800
   Nova Scotia (CA):
     description: province of Canada
     label: Nova Scotia
@@ -5312,6 +6816,17 @@ regions:
     label: Nuits-Saint-Georges wine
     note: ok
     qid: Q3346179
+  Nuragus di Cagliari (IT):
+    description: Italian controlled designation of origin wine from Sardinia
+    label: Nuragus di Cagliari DOC
+    note: ok
+    qid: Q2005295
+  Nurra (IT):
+    description: Italian typical geographical indication wine from Sardinia
+    label: Nurra IGT
+    note: ok
+    qid: Q139899841
+  Nus (IT): null
   Nuy (ZA): null
   O Rosal (ES): null
   Oak Knoll District of Napa Valley (US):
@@ -5334,6 +6849,11 @@ regions:
     label: Oger
     note: non-wine class -- review
     qid: Q1228972
+  Ogliastra (IT):
+    description: Italian typical geographical indication wine from Sardinia
+    label: Ogliastra IGT
+    note: ok
+    qid: Q139899843
   Ohio (US):
     description: state of the United States of America
     label: Ohio
@@ -5364,6 +6884,7 @@ regions:
     label: Old Mission Peninsula AVA
     note: ok
     qid: Q7084546
+  Oliena (IT): null
   Olifants River (ZA): null
   Ollwiller (FR): null
   Oltrepò Pavese (IT):
@@ -5371,6 +6892,16 @@ regions:
     label: Oltrepò Pavese DOC
     note: ok
     qid: Q3351573
+  Oltrepò Pavese Metodo Classico (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Lombardy
+    label: Oltrepò Pavese metodo classico DOCG
+    note: ok
+    qid: Q16583919
+  Oltrepò Pavese Pinot Grigio (IT):
+    description: type of the Oltrepò Pavese Italian controlled designation of origin
+    label: Oltrepò Pavese Pinot Grigio DOC
+    note: ok
+    qid: Q3881979
   Ontario (CA):
     description: province of Canada
     label: Ontario
@@ -5381,17 +6912,42 @@ regions:
     label: Orange wine region
     note: ok
     qid: Q24521769
+  Orcia (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Orcia DOC
+    note: ok
+    qid: Q139906124
   Oregon (US):
     description: state of the United States of America
     label: Oregon
     note: non-wine class -- review
     qid: Q824
+  Orta Nova (IT):
+    description: Italian controlled designation of origin wine from Apulia
+    label: Orta Nova DOC
+    note: ok
+    qid: Q139916525
+  Ortona (IT):
+    description: Italian controlled designation of origin wine from Abruzzo
+    label: Ortona DOC
+    note: ok
+    qid: Q139907599
+  Ortrugo dei Colli Piacentini (IT):
+    description: Italian controlled designation of origin wine from Emilia-Romagna
+    label: Ortrugo dei Colli Piacentini DOC
+    note: ok
+    qid: Q3683148
   Orvieto (IT):
     description: Italian controlled designation of origin wine from Umbria
     label: Orvieto DOC
     note: ok
     qid: Q1404965
   Osterberg (FR): null
+  Ostuni (IT):
+    description: Italian controlled designation of origin wine from Apulia
+    label: Ostuni DOC
+    note: ok
+    qid: Q3886982
   Outeniqua (ZA): null
   Outer Coastal Plain (US):
     description: wine region in New Jersey recognized as an American Viticultural Area
@@ -5418,11 +6974,17 @@ regions:
     note: ok
     qid: Q2045379
   Pacherenc du Vic-Bilh (FR): null
+  Pachino (IT): null
   Padthaway (AU):
     description: wine-growing region in South Australia
     label: Padthaway wine region
     note: ok
     qid: Q19573545
+  Paestum (IT):
+    description: Italian typical geographical indication wine from Campania
+    label: Paestum IGT
+    note: ok
+    qid: Q139899464
   Pago Florentino (ES):
     description: wine region of Spain
     label: Pago Florentino
@@ -5444,6 +7006,11 @@ regions:
     label: Palette AOC
     note: ok
     qid: Q471013
+  Palizzi (IT):
+    description: Italian typical geographical indication wine from Calabria
+    label: Palizzi IGT
+    note: ok
+    qid: Q139899453
   Pallars Jussà (ES): null
   Palmela (PT): null
   Palos Verdes Peninsula (US):
@@ -5457,6 +7024,16 @@ regions:
     note: ok
     qid: Q3893429
   Papegaaiberg (ZA): null
+  Parrina (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Parrina DOC
+    note: ok
+    qid: Q1632778
+  Parteolla (IT):
+    description: Italian typical geographical indication wine from Sardinia
+    label: Parteolla IGT
+    note: ok
+    qid: Q139899844
   Paso Robles (US):
     description: wine region
     label: Paso Robles AVA
@@ -5501,6 +7078,11 @@ regions:
     qid: Q133579113
   Pays d'Oc (FR): null
   Pelješac (HR): null
+  Pellaro (IT):
+    description: Italian typical geographical indication wine from Calabria
+    label: Pellaro IGT
+    note: ok
+    qid: Q139899796
   Peloponnese (GR):
     description: large peninsula and geographic region in southern Greece
     label: Peloponnese
@@ -5512,12 +7094,27 @@ regions:
     label: Penedès
     note: ok
     qid: Q2841161
+  Penisola Sorrentina (IT):
+    description: wine-producing area in Campania, Italy
+    label: Penisola Sorrentina
+    note: ok
+    qid: Q140131381
   Pennsylvania (US):
     description: state of the United States of America
     label: Pennsylvania
     note: non-wine class -- review
     qid: Q1400
+  Pentro d'Isernia (IT):
+    description: Italian controlled designation of origin wine from Molise
+    label: Pentro d'Isernia DOC
+    note: ok
+    qid: Q15141391
   Península de Setúbal (PT): null
+  Pergola (IT):
+    description: Italian controlled designation of origin wine from Marche
+    label: Pergola DOC
+    note: ok
+    qid: Q118819227
   Pernand-Vergelesses (FR):
     description: Wine
     label: Pernand-Vergelesses wine
@@ -5538,6 +7135,16 @@ regions:
   Pfersigberg (FR): null
   Pfingstberg (FR): null
   Philadelphia (ZA): null
+  Piave (IT):
+    description: Italian controlled designation of origin wine from Veneto
+    label: Piave DOC
+    note: ok
+    qid: Q3902111
+  Piave Malanotte (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Veneto
+    label: Piave Malanotte DOCG
+    note: ok
+    qid: Q109377223
   Pic Saint-Loup (FR): null
   Picpoul de Pinet (FR):
     description: French wine
@@ -5553,6 +7160,16 @@ regions:
   Pierrevert (FR): null
   Piket-Bo-Berg (ZA): null
   Pine Mountain-Cloverdale Peak (US): null
+  Pinerolese (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Pinerolese DOC
+    note: ok
+    qid: Q3388675
+  Pinot Nero dell'Oltrepò Pavese (IT):
+    description: Italian controlled designation of origin wine from Lombardy
+    label: Pinot Nero dell'Oltrepò Pavese DOC
+    note: ok
+    qid: Q14034173
   Pissotte (FR): null
   Pla de Bages (ES): null
   Pla i Llevant (ES):
@@ -5561,19 +7178,44 @@ regions:
     label: Plà i Llevant
     note: ok
     qid: Q7205907
+  Planargia (IT):
+    description: Italian typical geographical indication wine from Sardinia
+    label: Planargia IGT
+    note: ok
+    qid: Q139899845
   Plettenberg Bay (ZA): null
   Podravje (SI): null
   Polkadraai Hills (ZA): null
+  Pollino (IT):
+    description: Italian controlled designation of origin wine from Calabria
+    label: Pollino DOC
+    note: ok
+    qid: Q139900280
   Pomerol (FR):
     description: Bordeaux wine appellation
     label: Pomerol AOC
     note: ok
     qid: Q1421562
+  Pomino (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Pomino DOC
+    note: ok
+    qid: Q134776747
   Pommard (FR):
     description: Burgundy wine
     label: Pommard wine
     note: ok
     qid: Q13210563
+  Pompeiano (IT):
+    description: Italian typical geographical indication wine from Campania
+    label: Pompeiano IGT
+    note: ok
+    qid: Q139899804
+  Pornassio (IT):
+    description: wine-producing area in Liguria, Italy
+    label: Pornassio
+    note: ok
+    qid: Q140131032
   Porseleinberg (ZA): null
   Porto (PT): null
   Potter Valley (US):
@@ -5619,6 +7261,11 @@ regions:
     label: Primitivo di Manduria DOC
     note: ok
     qid: Q3921814
+  Primitivo di Manduria Dolce Naturale (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Apulia
+    label: Primitivo di Manduria Dolce Naturale DOCG
+    note: ok
+    qid: Q3921815
   Primorska (SI):
     description: wine region in Slovenia
     label: Primorska wine region
@@ -5642,6 +7289,21 @@ regions:
     label: Provence
     note: non-wine class -- review
     qid: Q70450
+  Provincia di Mantova (IT):
+    description: Italian typical geographical indication wine from Lombardy
+    label: Provincia di Mantova IGT
+    note: ok
+    qid: Q139891226
+  Provincia di Nuoro (IT):
+    description: Italian typical geographical indication wine from Sardinia
+    label: Provincia di Nuoro IGT
+    note: ok
+    qid: Q139899846
+  Provincia di Pavia (IT):
+    description: Italian typical geographical indication wine from Lombardy
+    label: Provincia di Pavia IGT
+    note: ok
+    qid: Q139891227
   Puget Sound (US):
     description: viticultural area in Washington, USA
     label: Puget Sound AVA
@@ -5676,12 +7338,22 @@ regions:
     note: ok
     qid: Q2123199
   Quiroga-Bibei (ES): null
+  Quistello (IT):
+    description: Italian typical geographical indication wine from Lombardy
+    label: Quistello IGT
+    note: ok
+    qid: Q139891228
   Racha (GE):
     description: geographic region
     label: Racha
     note: non-wine class -- review
     qid: Q1463301
   Raimat (ES): null
+  Ramandolo (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Friuli-Venezia Giulia
+    label: Ramandolo DOCG
+    note: ok
+    qid: Q910343
   Ramona Valley (US):
     description: California wine region in San Diego County
     label: Ramona Valley AVA
@@ -5700,6 +7372,27 @@ regions:
     label: Rattlesnake Hills AVA
     note: ok
     qid: Q1569501
+  Ravenna (IT):
+    description: Italian typical geographical indication wine from Emilia-Romagna
+    label: Ravenna IGT
+    note: ok
+    qid: Q139899811
+  Rayana (IT): null
+  Recioto della Valpolicella (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Veneto
+    label: Recioto della Valpolicella DOCG
+    note: ok
+    qid: Q11226255
+  Recioto di Gambellara (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Veneto
+    label: Recioto di Gambellara DOCG
+    note: ok
+    qid: Q1606991
+  Recioto di Soave (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Veneto
+    label: Recioto di Soave DOCG
+    note: ok
+    qid: Q15039733
   Red Hill Douglas County, Oregon (US):
     description: located in the Umpqua Valley AVA of Oregon
     label: Red Hill Douglas County, Oregon AVA
@@ -5720,6 +7413,16 @@ regions:
     label: Redwood Valley AVA
     note: ok
     qid: Q1624781
+  Reggiano (IT):
+    description: Italian controlled designation of origin wine from Emilia-Romagna
+    label: Reggiano DOC
+    note: ok
+    qid: Q3826423
+  Reno (IT):
+    description: Italian controlled designation of origin wine from Emilia-Romagna
+    label: Reno DOC
+    note: ok
+    qid: Q3862542
   Reuilly (FR):
     description: French wine
     label: Reuilly AOC
@@ -5797,6 +7500,11 @@ regions:
     qid: Q1421321
   Riebeekberg (ZA): null
   Riebeeksrivier (ZA): null
+  Riesi (IT):
+    description: Italian controlled designation of origin wine from Sicily
+    label: Riesi DOC
+    note: ok
+    qid: Q3935272
   Rietrivier FS (ZA): null
   Rioja (ES):
     description: Spanish wine region
@@ -5836,7 +7544,22 @@ regions:
     label: Riviera Ligure di Ponente DOC
     note: ok
     qid: Q134580741
+  Riviera del Brenta (IT):
+    description: Italian controlled designation of origin wine from Veneto
+    label: Riviera del Brenta DOC
+    note: ok
+    qid: Q118819256
+  Riviera del Garda Classico (IT):
+    description: Italian interregional controlled designation of origin wine
+    label: Riviera del Garda Classico DOC
+    note: ok
+    qid: Q118819258
   Robertson (ZA): null
+  Roccamonfina (IT):
+    description: Italian typical geographical indication wine from Campania
+    label: Roccamonfina IGT
+    note: ok
+    qid: Q139899805
   Rockpile (US):
     description: wine region in California
     label: Rockpile AVA
@@ -5862,6 +7585,26 @@ regions:
     label: Rogue Valley AVA
     note: ok
     qid: Q266538
+  Roma (IT):
+    description: Italian controlled designation of origin wine from Lazio
+    label: Roma DOC
+    note: ok
+    qid: Q139906447
+  Romagna (IT):
+    description: Italian controlled designation of origin wine from Emilia-Romagna
+    label: Romagna DOC
+    note: ok
+    qid: Q139907052
+  Romagna Albana (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Emilia-Romagna
+    label: Romagna Albana DOCG
+    note: ok
+    qid: Q16598082
+  Romangia (IT):
+    description: Italian typical geographical indication wine from Sardinia
+    label: Romangia IGT
+    note: ok
+    qid: Q139899847
   Romanée-Conti (FR):
     description: Wine estate in Burgundy, France
     label: Romanée-Conti
@@ -5872,24 +7615,54 @@ regions:
     label: Romanée-Saint-Vivant
     note: ok
     qid: Q2165002
+  Ronchi Varesini (IT):
+    description: Italian typical geographical indication wine from Lombardy
+    label: Ronchi Varesini IGT
+    note: ok
+    qid: Q139891230
+  Ronchi di Brescia (IT):
+    description: Italian typical geographical indication wine from Lombardy
+    label: Ronchi di Brescia IGT
+    note: ok
+    qid: Q139891229
   Rooikrans (ZA): null
   Rosacker (FR): null
   Rosalejo (ES): null
+  Rosazzo (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Friuli-Venezia Giulia
+    label: Rosazzo DOCG
+    note: ok
+    qid: Q16598687
   Rosette (FR):
     description: French wine
     label: Rosette AOC
     note: ok
     qid: Q2167339
+  Rossese di Dolceacqua (IT):
+    description: Italian controlled designation of origin wine from Liguria
+    label: Rossese di Dolceacqua DOC
+    note: ok
+    qid: Q390634
   Rosso Conero (IT):
     description: Italian controlled designation of origin wine from Marche
     label: Rosso Conero DOC
     note: ok
     qid: Q1699127
+  Rosso Orvietano (IT):
+    description: Italian controlled designation of origin wine from Umbria
+    label: Rosso Orvietano DOC
+    note: ok
+    qid: Q3941663
   Rosso Piceno (IT):
     description: Italian controlled designation of origin wine from Marche
     label: Rosso Piceno DOC
     note: ok
     qid: Q1684519
+  Rosso di Cerignola (IT):
+    description: type of the Rosso di Cerignola Italian controlled designation of origin
+    label: Rosso di Cerignola DOC
+    note: ok
+    qid: Q2167804
   Rosso di Montalcino (IT):
     description: Italian controlled designation of origin wine from Tuscany
     label: Rosso di Montalcino DOC
@@ -5911,6 +7684,11 @@ regions:
     label: Rosé des Riceys AOC
     note: ok
     qid: Q2167983
+  Rotae (IT):
+    description: Italian typical geographical indication wine from Calabria
+    label: Rotae IGT
+    note: ok
+    qid: Q118819746
   Roussette de Savoie (FR):
     description: French wine
     label: Roussette de Savoie
@@ -5919,11 +7697,26 @@ regions:
   Roussette du Bugey (FR): null
   Roussillon (FR): null
   Royal Slope (US): null
+  Rubicone (IT):
+    description: Italian typical geographical indication wine from Emilia-Romagna
+    label: Rubicone IGT
+    note: ok
+    qid: Q139899812
+  Rubino di Cantavenna (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Rubino di Cantavenna DOC
+    note: ok
+    qid: Q784469
   Ruchottes-Chambertin (FR):
     description: French wine
     label: Ruchottes-Chambertin
     note: ok
     qid: Q3446619
+  Ruché di Castagnole Monferrato (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Piedmont
+    label: Ruché di Castagnole Monferrato DOCG
+    note: ok
+    qid: Q610387
   Rueda (ES):
     description: Spanish Denominación de Origen Protegida (DOP) for wines located in the Community of
       Castile and León
@@ -5963,6 +7756,11 @@ regions:
     label: Saale-Unstrut
     note: ok
     qid: Q683582
+  Sabbioneta (IT):
+    description: Italian typical geographical indication wine from Lombardy
+    label: Sabbioneta IGT
+    note: ok
+    qid: Q139891231
   Sachsen (DE): null
   Saddle Rock-Malibu (US):
     description: appelation that designates wine in Los Angeles County, California
@@ -6041,6 +7839,16 @@ regions:
     label: Salado Creek AVA
     note: ok
     qid: Q1393909
+  Salaparuta (IT):
+    description: Italian controlled designation of origin wine from Sicily
+    label: Salaparuta DOC
+    note: ok
+    qid: Q3945338
+  Salemi (IT):
+    description: Italian typical geographical indication wine from Sicily
+    label: Salemi IGT
+    note: ok
+    qid: Q139899860
   Salento (IT):
     description: Italian typical geographical indication wine from Apulia
     label: Salento IGT
@@ -6051,7 +7859,17 @@ regions:
     label: Salice Salentino DOC
     note: ok
     qid: Q11262139
+  Salina (IT):
+    description: Italian typical geographical indication wine from Sicily
+    label: Salina IGT
+    note: ok
+    qid: Q139899861
   Salta (AR): null
+  Sambuca di Sicilia (IT):
+    description: Italian controlled designation of origin wine from Sicily
+    label: Sambuca di Sicilia DOC
+    note: ok
+    qid: Q3946446
   Samos (GR): null
   San Antonio Valley (CL): null
   San Antonio Valley (US):
@@ -6074,11 +7892,26 @@ regions:
     label: San Bernabe AVA
     note: ok
     qid: Q2219290
+  San Colombano al Lambro (IT):
+    description: Italian controlled designation of origin wine from Lombardy
+    label: San Colombano al Lambro DOC
+    note: ok
+    qid: Q2219387
   San Francisco Bay (US):
     description: wine-growing region in the US state of California
     label: San Francisco Bay AVA
     note: ok
     qid: Q2219535
+  San Gimignano (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: San Gimignano DOC
+    note: ok
+    qid: Q3947197
+  San Ginesio (IT):
+    description: Italian controlled designation of origin wine from Marche
+    label: San Ginesio DOC
+    note: ok
+    qid: Q118819287
   San Juan (AR):
     description: capital of San Juan Province, Argentina
     label: San Juan
@@ -6109,6 +7942,11 @@ regions:
     label: San Luis Rey AVA
     note: ok
     qid: Q131860871
+  San Martino della Battaglia (IT):
+    description: Italian controlled designation of origin wine from Lombardy
+    label: San Martino della Battaglia DOC
+    note: ok
+    qid: Q3947650
   San Martín de Valdeiglesias (ES):
     description: municipality of Spain
     label: San Martín de Valdeiglesias
@@ -6129,6 +7967,21 @@ regions:
     label: San Rafael
     note: non-wine class -- review
     qid: Q631915
+  San Severo (IT):
+    description: Italian controlled designation of origin wine from Apulia
+    label: San Severo DOC
+    note: ok
+    qid: Q3947962
+  San Torpè (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: San Torpè DOC
+    note: ok
+    qid: Q3639439
+  San Vito di Luzzi (IT):
+    description: Italian controlled designation of origin wine from Calabria
+    label: San Vito di Luzzi DOC
+    note: ok
+    qid: Q139900287
   San Ysidro District (US):
     description: Californian wine region in Santa Clara County
     label: San Ysidro District AVA
@@ -6139,11 +7992,26 @@ regions:
     label: Sancerre
     note: ok
     qid: Q282221
+  Sangue di Giuda dell'Oltrepò Pavese (IT):
+    description: Italian controlled designation of origin wine from Lombardy
+    label: Sangue di Giuda dell'Oltrepò Pavese DOC
+    note: ok
+    qid: Q3881982
   Sannio (IT):
     description: Italian controlled designation of origin wine from Campania
     label: Sannio DOC
     note: ok
     qid: Q3948467
+  Sant'Anna di Isola Capo Rizzuto (IT):
+    description: Italian controlled designation of origin wine from Calabria
+    label: Sant'Anna di Isola Capo Rizzuto DOC
+    note: ok
+    qid: Q139916964
+  Sant'Antimo (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Sant'Antimo DOC
+    note: ok
+    qid: Q3948748
   Santa Barbara County (US):
     description: county in southern California, United States
     label: Santa Barbara County
@@ -6164,11 +8032,17 @@ regions:
     label: Santa Lucia Highlands AVA
     note: ok
     qid: Q2222992
+  Santa Maddalena (IT): null
   Santa Margarita Ranch (US):
     description: appelation that designates wine in San Luis Obispo County, CA
     label: Santa Margarita Ranch AVA
     note: ok
     qid: Q133091074
+  Santa Margherita di Belice (IT):
+    description: Italian controlled designation of origin wine from Sicily
+    label: Santa Margherita di Belice DOC
+    note: ok
+    qid: Q3949088
   Santa Maria Valley (US):
     description: American wine region located in California
     label: Santa Maria Valley AVA
@@ -6189,11 +8063,21 @@ regions:
     label: Santorini
     note: ok
     qid: Q2223717
+  Sardegna Semidano (IT):
+    description: type of the Sardegna Semidano Italian controlled designation of origin
+    label: Sardegna Semidano DOC
+    note: ok
+    qid: Q2224762
   Sardinia (IT):
     description: island and autonomous region of Italy
     label: Sardinia
     note: non-wine class -- review
     qid: Q1462
+  Sassella (IT):
+    description: human settlement in Province of Sondrio, Lombardy, Italy
+    label: Sassella
+    note: ok
+    qid: Q18494734
   Saumur (FR):
     description: French wine region in the Loire Valley
     label: Saumur
@@ -6232,9 +8116,36 @@ regions:
     label: Savoie
     note: non-wine class -- review
     qid: Q12745
+  Savuto (IT):
+    description: Italian controlled designation of origin wine from Calabria
+    label: Savuto DOC
+    note: ok
+    qid: Q139916965
+  Scanzo (IT): null
+  Scavigna (IT):
+    description: Italian controlled designation of origin wine from Calabria
+    label: Scavigna DOC
+    note: ok
+    qid: Q139916966
   Scherpenheuvel (ZA): null
+  Schioppettino di Prepotto (IT): null
   Schlossberg (FR): null
   Schoenenbourg (FR): null
+  Sciacca (IT):
+    description: Italian controlled designation of origin wine from Sicily
+    label: Sciacca DOC
+    note: ok
+    qid: Q3952265
+  Scilla (IT):
+    description: Italian typical geographical indication wine from Calabria
+    label: Scilla IGT
+    note: ok
+    qid: Q139899797
+  Sebino (IT):
+    description: Italian typical geographical indication wine from Lombardy
+    label: Sebino IGT
+    note: ok
+    qid: Q139891232
   Segrià (ES): null
   Seiad Valley (US):
     description: American Viticultural Area
@@ -6252,7 +8163,17 @@ regions:
     label: Serra de Tramuntana-Costa Nord
     note: ok
     qid: Q2894847
+  Serrapetrona (IT):
+    description: Italian controlled designation of origin wine from Marche
+    label: Serrapetrona DOC
+    note: ok
+    qid: Q138660802
   Seyssel (FR): null
+  Sforzato di Valtellina (IT):
+    description: type of the Sforzato di Valtellina Italian DOCG
+    label: Sforzato di Valtellina DOCG
+    note: ok
+    qid: Q4008338
   Shandong (CN):
     description: province in East China
     label: Shandong
@@ -6269,6 +8190,11 @@ regions:
     note: ok
     qid: Q2278039
   Shomron (IL): null
+  Sibiola (IT):
+    description: Italian typical geographical indication wine from Sardinia
+    label: Sibiola IGT
+    note: ok
+    qid: Q139899850
   Sicily (IT):
     description: island in the Mediterranean, region of Italy
     label: Sicily
@@ -6307,6 +8233,11 @@ regions:
     label: Sierras de Málaga
     note: ok
     qid: Q4353834
+  Sillaro (IT):
+    description: Italian typical geographical indication wine from Emilia-Romagna
+    label: Sillaro IGT
+    note: ok
+    qid: Q139899813
   Sillery (FR):
     description: neighborhood in Quebec City, Quebec, Canada, former town
     label: Sillery
@@ -6315,6 +8246,16 @@ regions:
   Similkameen Valley (CA): null
   Simonsberg-Paarl (ZA): null
   Simonsberg-Stellenbosch (ZA): null
+  Siracusa (IT):
+    description: Italian controlled designation of origin wine from Sicily
+    label: Siracusa DOC
+    note: ok
+    qid: Q3961993
+  Sizzano (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Sizzano DOC
+    note: ok
+    qid: Q1407208
   Slanghoek (ZA): null
   Slavonia (HR):
     description: historical region of Croatia
@@ -6341,6 +8282,16 @@ regions:
     label: Soave DOC
     note: ok
     qid: Q1933708
+  Soave Classico (IT):
+    description: type of the Soave Italian controlled designation of origin
+    label: Soave classico DOC
+    note: ok
+    qid: Q3963192
+  Soave Superiore (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Veneto
+    label: Soave superiore DOCG
+    note: ok
+    qid: Q3963194
   Solano County (US):
     description: county in California, United States
     label: Solano County
@@ -6422,7 +8373,22 @@ regions:
     qid: Q7570232
   Southern Rhône (FR): null
   Soutomaior (ES): null
+  Sovana (IT):
+    description: type of the Sovana Italian controlled designation of origin
+    label: Sovana DOC
+    note: ok
+    qid: Q135116622
+  Spello (IT):
+    description: Italian typical geographical indication wine from Umbria
+    label: Spello IGT
+    note: ok
+    qid: Q139899872
   Spiegel (FR): null
+  Spoleto (IT):
+    description: Italian controlled designation of origin wine from Umbria
+    label: Spoleto DOC
+    note: ok
+    qid: Q118819316
   Sporen (FR): null
   Spring Mountain District (US):
     description: American Viticultural Area in California, United States
@@ -6436,6 +8402,11 @@ regions:
     label: Squaw Valley-Miramonte AVA
     note: ok
     qid: Q107203465
+  Squinzano (IT):
+    description: Italian controlled designation of origin wine from Apulia
+    label: Squinzano DOC
+    note: ok
+    qid: Q3967471
   St Francis Bay (ZA): null
   St Helena Bay (ZA): null
   St. Helena (US):
@@ -6462,6 +8433,11 @@ regions:
   Stettyn (ZA): null
   Still Bay East (ZA): null
   Stormsvlei (ZA): null
+  Strevi (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Strevi DOC
+    note: ok
+    qid: Q3976030
   Struma Valley (BG): null
   Suisun Valley (US):
     description: American Viticultural Area in California
@@ -6475,6 +8451,11 @@ regions:
     note: non-wine class -- review
     qid: Q23346
   Sutherland-Karoo (ZA): null
+  Suvereto (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Tuscany
+    label: Suvereto DOCG
+    note: ok
+    qid: Q131587712
   Swan Creek (US):
     description: American wine region
     label: Swan Creek AVA
@@ -6499,6 +8480,16 @@ regions:
     label: Tacoronte-Acentejo
     note: ok
     qid: Q1719149
+  Tarantino (IT):
+    description: Italian typical geographical indication wine from Apulia
+    label: Tarantino IGT
+    note: ok
+    qid: Q139899834
+  Tarquinia (IT):
+    description: Italian controlled designation of origin wine from Lazio
+    label: Tarquinia DOC
+    note: ok
+    qid: Q139906444
   Tarragona (ES): null
   Tasmania (AU): null
   Taurasi (IT):
@@ -6511,6 +8502,11 @@ regions:
     label: Tavel AOC
     note: ok
     qid: Q3516286
+  Tavoliere delle Puglie (IT):
+    description: type of the Tavoliere delle Puglie Italian controlled designation of origin
+    label: Tavoliere delle Puglie DOC
+    note: ok
+    qid: Q26882998
   Tehachapi Mountains (US):
     description: American Viticultural Area in California
     label: Tehachapi Mountains AVA
@@ -6537,17 +8533,104 @@ regions:
     label: Tennessee
     note: non-wine class -- review
     qid: Q1509
+  Teroldego Rotaliano (IT):
+    description: Italian controlled designation of origin wine from Trentino
+    label: Teroldego Rotaliano DOC
+    note: ok
+    qid: Q14778716
   Terra Alta (ES):
     description: Spanish wine
     label: Terra Alta
     note: ok
     qid: Q849852
+  Terra d'Otranto (IT):
+    description: Italian typical geographical indication wine from Apulia
+    label: Terra d'Otranto IGT
+    note: ok
+    qid: Q26898065
+  Terracina (IT): null
   Terras do Navia (ES): null
   Terrasses du Larzac (FR):
     description: French wine
     label: Terrasses du Larzac
     note: ok
     qid: Q3518588
+  Terratico di Bibbona (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Terratico di Bibbona DOC
+    note: ok
+    qid: Q28000962
+  Terrazze Retiche di Sondrio (IT):
+    description: Italian typical geographical indication wine from Lombardy
+    label: Terrazze Retiche di Sondrio IGT
+    note: ok
+    qid: Q139891234
+  Terrazze dell'Imperiese (IT):
+    description: Italian typical geographical indication wine from Liguria
+    label: Terrazze dell'Imperiese IGT
+    note: ok
+    qid: Q139883111
+  Terre Alfieri (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Piedmont
+    label: Terre Alfieri DOCG
+    note: ok
+    qid: Q16613187
+  Terre Lariane (IT):
+    description: Italian typical geographical indication wine from Lombardy
+    label: Terre Lariane IGT
+    note: ok
+    qid: Q139891235
+  Terre Tollesi (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Abruzzo
+    label: Terre Tollesi DOCG
+    note: ok
+    qid: Q139907601
+  Terre degli Osci (IT): null
+  Terre del Colleoni (IT):
+    description: Italian controlled designation of origin wine from Lombardy
+    label: Terre del Colleoni DOC
+    note: ok
+    qid: Q25384179
+  Terre del Volturno (IT):
+    description: Italian typical geographical indication wine from Campania
+    label: Terre del Volturno IGT
+    note: ok
+    qid: Q139899806
+  Terre dell'Alta Val d'Agri (IT):
+    description: Italian controlled designation of origin wine from Basilicata
+    label: Terre dell'Alta Val d'Agri DOC
+    note: ok
+    qid: Q139916506
+  Terre di Casole (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Terre di Casole DOC
+    note: ok
+    qid: Q28000967
+  Terre di Chieti (IT):
+    description: Italian typical geographical indication wine from Abruzzo
+    label: Terre di Chieti IGT
+    note: ok
+    qid: Q139899446
+  Terre di Cosenza (IT):
+    description: Italian controlled designation of origin wine from Calabria
+    label: Terre di Cosenza DOC
+    note: ok
+    qid: Q139916967
+  Terre di Offida (IT):
+    description: Italian controlled designation of origin wine from Marche
+    label: Terre di Offida DOC
+    note: ok
+    qid: Q31836491
+  Terre di Pisa (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Terre di Pisa DOC
+    note: ok
+    qid: Q28000970
+  Terre di Veleja (IT):
+    description: Italian typical geographical indication wine from Emilia-Romagna
+    label: Terre di Veleja IGT
+    note: ok
+    qid: Q139899814
   Texas (US):
     description: state of the United States of America
     label: Texas
@@ -6573,6 +8656,11 @@ regions:
     label: Texoma AVA
     note: ok
     qid: Q17108846
+  Tharros (IT):
+    description: Italian typical geographical indication wine from Sardinia
+    label: Tharros IGT
+    note: ok
+    qid: Q139899853
   Tharsys (ES): null
   The Burn of Columbia Valley (US):
     description: viticultural area in Washington, USA
@@ -6609,16 +8697,36 @@ regions:
     note: ok
     qid: Q544423
   Tikveš (MK): null
+  Tintilia del Molise (IT):
+    description: Italian controlled designation of origin wine from Molise
+    label: Tintilia del Molise DOC
+    note: ok
+    qid: Q3991623
   Tip of the Mitt (US):
     description: American Viticultural Area in Michigan
     label: Tip of the Mitt AVA
     note: ok
     qid: Q30595493
+  Todi (IT):
+    description: Italian controlled designation of origin wine from Umbria
+    label: Todi DOC
+    note: ok
+    qid: Q139906329
   Tokaj (HU):
     description: wine-producing region
     label: Tokaj wine region
     note: ok
     qid: Q828125
+  Torgiano (IT):
+    description: Italian controlled designation of origin wine from Umbria
+    label: Torgiano DOC
+    note: ok
+    qid: Q139906327
+  Torgiano Rosso Riserva (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Umbria
+    label: Torgiano rosso riserva DOCG
+    note: ok
+    qid: Q684451
   Toro (ES):
     description: Spanish Denominación de Origen Protegida (DOP) for wines in the northwest of Castile
       and Léon
@@ -6630,6 +8738,7 @@ regions:
     label: Torreperogil
     note: ok
     qid: Q7827056
+  Torrette (IT): null
   Touraine (FR):
     description: appellation d'Origine Contrôlée (AOC)
     label: Touraine AOC
@@ -6658,6 +8767,7 @@ regions:
   Tradouw (ZA): null
   Tradouw Highlands (ZA): null
   Traisental (AT): null
+  Trebbianino Val Trebbia (IT): null
   Trebbiano d'Abruzzo (IT):
     description: Italian controlled designation of origin wine from Abruzzo
     label: Trebbiano d'Abruzzo DOC
@@ -6670,6 +8780,16 @@ regions:
     qid: Q3965106
   Trentino-Alto Adige (IT): null
   Trento (IT): null
+  Trevenezie (IT):
+    description: Italian typical geographical indication wine from Veneto
+    label: Trevenezie IGT
+    note: ok
+    qid: Q139899883
+  Trexenta (IT):
+    description: Italian typical geographical indication wine from Sardinia
+    label: Trexenta IGT
+    note: ok
+    qid: Q139899854
   Trinity Lakes (US):
     description: California wine region in Trinity County
     label: Trinity Lakes AVA
@@ -6764,8 +8884,39 @@ regions:
     label: Vacqueyras AOC
     note: ok
     qid: Q7888536
+  Val Nure (IT): null
+  Val Polcevera (IT):
+    description: Italian controlled designation of origin wine from Liguria
+    label: Val Polcevera DOC
+    note: ok
+    qid: Q4007386
+  Val Tidone (IT):
+    description: Italian typical geographical indication wine from Emilia-Romagna
+    label: Val Tidone IGT
+    note: ok
+    qid: Q139899815
+  Val d'Arbia (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Val d'Arbia DOC
+    note: ok
+    qid: Q4007443
   Val de Loire (FR): null
   Val de Monterrei (ES): null
+  Val di Cornia (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Val di Cornia DOC
+    note: ok
+    qid: Q139906125
+  Val di Cornia Rosso (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Tuscany
+    label: Val di Cornia Rosso DOCG
+    note: ok
+    qid: Q139906128
+  Val di Neto (IT):
+    description: Italian typical geographical indication wine from Calabria
+    label: Val di Neto IGT
+    note: ok
+    qid: Q139899799
   Val do Miño-Ourense (ES): null
   Val do Salnés (ES): null
   Valais (CH):
@@ -6773,6 +8924,36 @@ regions:
     label: Valais
     note: non-wine class -- review
     qid: Q140285751
+  Valcalepio (IT):
+    description: Italian controlled designation of origin wine from Lombardy
+    label: Valcalepio DOC
+    note: ok
+    qid: Q131322148
+  Valcamonica (IT):
+    description: Italian typical geographical indication wine from Lombardy
+    label: Valcamonica IGT
+    note: ok
+    qid: Q139891236
+  Valdadige (IT):
+    description: Italian interregional controlled designation of origin wine (Trentino-Alto Adige, Veneto)
+    label: Valdadige DOC
+    note: ok
+    qid: Q4007549
+  Valdadige Terradeiforti (IT):
+    description: Italian controlled designation of origin wine from Trentino-Alto Adige
+    label: Valdadige Terradeiforti DOC
+    note: ok
+    qid: Q25385459
+  Valdamato (IT):
+    description: Italian typical geographical indication wine from Calabria
+    label: Valdamato IGT
+    note: ok
+    qid: Q139899798
+  Valdarno di Sopra (IT):
+    description: wine-producing area in Tuscany, Italy
+    label: Valdarno di Sopra
+    note: ok
+    qid: Q140131228
   Valdejalón (ES): null
   Valdeorras (ES):
     description: Spanish wine
@@ -6785,6 +8966,16 @@ regions:
     label: Valdepeñas
     note: ok
     qid: Q4570695
+  Valdichiana Toscana (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Valdichiana Toscana DOC
+    note: ok
+    qid: Q28001036
+  Valdinievole (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Valdinievole DOC
+    note: ok
+    qid: Q3639451
   Valencia (ES): null
   Valencian Community (ES):
     description: autonomous community of Spain
@@ -6796,11 +8987,28 @@ regions:
     label: Valençay AOC
     note: ok
     qid: Q3553671
+  Valgella (IT): null
+  Vallagarina (IT):
+    description: Italian typical geographical indication wine from Trentino-Alto Adige
+    label: Vallagarina IGT
+    note: ok
+    qid: Q139899870
+  Valle Belice (IT):
+    description: Italian typical geographical indication wine from Sicily
+    label: Valle Belice IGT
+    note: ok
+    qid: Q139899863
+  Valle Peligna (IT): null
   Valle d'Aosta (IT):
     description: wine-producing area in Aosta Valley, Italy
     label: Valle d'Aosta
     note: ok
     qid: Q140130978
+  Valle d'Itria (IT):
+    description: Italian typical geographical indication wine from Apulia
+    label: Valle d'Itria IGT
+    note: ok
+    qid: Q139899836
   Valle de Guadalupe (MX): null
   Valle de Güímar (ES): null
   Valle de la Orotava (ES):
@@ -6809,6 +9017,12 @@ regions:
     note: ok
     qid: Q2509282
   Valle del Cinca (ES): null
+  Valle del Crati (IT): null
+  Valle del Tirso (IT):
+    description: Italian typical geographical indication wine from Sardinia
+    label: Valle del Tirso IGT
+    note: ok
+    qid: Q139899855
   Vallegarcía (ES):
     description: winery in Castilla–La Mancha, Spain
     label: Vallegarcía
@@ -6820,27 +9034,59 @@ regions:
     label: Valles de Sadacia
     note: ok
     qid: Q7911955
+  Valli Ossolane (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Valli Ossolane DOC
+    note: ok
+    qid: Q20183179
+  Valli di Porto Pino (IT):
+    description: Italian typical geographical indication wine from Sardinia
+    label: Valli di Porto Pino IGT
+    note: ok
+    qid: Q139899856
   Valls de Riu Corb (ES): null
   Vallée de la Marne (FR):
     description: French wine region
     label: Vallée de la Marne
     note: ok
     qid: Q3554035
+  Valpantena (IT): null
   Valpolicella (IT):
     description: Italian controlled designation of origin wine from Veneto
     label: Valpolicella DOC
     note: ok
     qid: Q15069746
+  Valpolicella Classico (IT):
+    description: type of the Valpolicella Italian controlled designation of origin
+    label: Valpolicella classico DOC
+    note: ok
+    qid: Q4008326
   Valpolicella Ripasso (IT):
     description: type of the Valpolicella Italian controlled designation of origin
     label: Valpolicella Ripasso DOC
     note: ok
     qid: Q1973962
+  Valsusa (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Valsusa DOC
+    note: ok
+    qid: Q3554156
   Valtellina (IT):
     description: wine-producing area in Lombardy, Italy
     label: Valtellina
     note: ok
     qid: Q140131037
+  Valtellina Rosso (IT):
+    description: Italian controlled designation of origin wine from Trentino-Alto Adige
+    label: Valtellina Rosso DOC
+    note: ok
+    qid: Q25384226
+  Valtellina Superiore (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Lombardy
+    label: Valtellina superiore DOCG
+    note: ok
+    qid: Q4008343
+  Valtenesi (IT): null
   Valtiendas (ES): null
   Valul lui Traian (MD): null
   Van Duzer Corridor (US):
@@ -6848,20 +9094,46 @@ regions:
     label: Van Duzer Corridor AVA
     note: ok
     qid: Q60774354
+  Vastese (IT): null
   Vaucluse (FR): null
   Vaud (CH): null
   Vayots Dzor (AM): null
+  Velletri (IT):
+    description: Italian controlled designation of origin wine from Lazio
+    label: Velletri DOC
+    note: ok
+    qid: Q4009388
   Veneto (IT):
     description: region in Italy
     label: Veneto
     note: non-wine class -- review
     qid: Q1243
+  Veneto Orientale (IT):
+    description: Italian typical geographical indication wine from Veneto
+    label: Veneto Orientale IGT
+    note: ok
+    qid: Q139899475
+  Venezia (IT):
+    description: Italian controlled designation of origin wine from Veneto
+    label: Venezia DOC
+    note: ok
+    qid: Q139907065
+  Venezia Giulia (IT):
+    description: Italian typical geographical indication wine from Friuli-Venezia Giulia
+    label: Venezia Giulia IGT
+    note: ok
+    qid: Q139899818
   Ventoux (FR): null
   Vera de Estenas (ES):
     description: Winery in Spain
     label: Vera de Estenas
     note: ok
     qid: Q85812962
+  Verbicaro (IT):
+    description: Italian controlled designation of origin wine from Calabria
+    label: Verbicaro DOC
+    note: ok
+    qid: Q139900291
   Verde Valley (US):
     description: American Viticultural Area in Arizona
     label: Verde Valley AVA
@@ -6872,11 +9144,22 @@ regions:
     label: Verdicchio dei Castelli di Jesi DOC
     note: ok
     qid: Q16620766
+  Verdicchio dei Castelli di Jesi Riserva (IT): null
   Verdicchio di Matelica (IT):
     description: Italian controlled designation of origin wine from Marche
     label: Verdicchio di Matelica DOC
     note: ok
     qid: Q1648874
+  Verdicchio di Matelica Riserva (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Marche
+    label: Verdicchio di Matelica Riserva DOCG
+    note: ok
+    qid: Q4009922
+  Verduno Pelaverga (IT):
+    description: Italian controlled designation of origin wine from Piedmont
+    label: Verduno Pelaverga DOC
+    note: ok
+    qid: Q3555827
   Vermentino di Gallura (IT):
     description: Italian controlled designation of origin and guarantee wine from Sardinia
     label: Vermentino di Gallura DOCG
@@ -6887,11 +9170,26 @@ regions:
     label: Vermentino di Sardegna DOC
     note: ok
     qid: Q2517014
+  Vernaccia di Oristano (IT):
+    description: type of the Vernaccia di Oristano Italian controlled designation of origin
+    label: Vernaccia di Oristano DOC
+    note: ok
+    qid: Q631966
   Vernaccia di San Gimignano (IT):
     description: Italian controlled and guaranteed designation of origin wine from Tuscany
     label: Vernaccia di San Gimignano DOCG
     note: ok
     qid: Q1401752
+  Vernaccia di Serrapetrona (IT):
+    description: Italian controlled and guaranteed designation of origin wine from Marche
+    label: Vernaccia di Serrapetrona DOCG
+    note: ok
+    qid: Q4010099
+  Verona (IT):
+    description: Italian typical geographical indication wine from Veneto
+    label: Verona IGT
+    note: ok
+    qid: Q139899476
   Verzenay (FR):
     description: commune in Marne, France
     label: Verzenay
@@ -6902,13 +9200,64 @@ regions:
     label: Verzy
     note: non-wine class -- review
     qid: Q839779
+  Vesuvio (IT):
+    description: Italian controlled designation of origin wine from Campania
+    label: Vesuvio DOC
+    note: ok
+    qid: Q4010448
+  Vicenza (IT):
+    description: Italian controlled designation of origin wine from Veneto
+    label: Vicenza DOC
+    note: ok
+    qid: Q137708523
   Victoria (AU): null
+  Vignanello (IT):
+    description: Italian controlled designation of origin wine from Lazio
+    label: Vignanello DOC
+    note: ok
+    qid: Q139906446
+  Vigneti della Serenissima (IT):
+    description: Italian interregional controlled designation of origin wine
+    label: Vigneti della Serenissima DOC
+    note: ok
+    qid: Q25385581
+  Vigneti delle Dolomiti (IT):
+    description: Italian typical geographical indication wine from Trentino-Alto Adige
+    label: Vigneti delle Dolomiti IGT
+    note: ok
+    qid: Q118823566
+  Vigoleno (IT): null
+  Villamagna (IT):
+    description: Italian controlled designation of origin wine from Abruzzo
+    label: Villamagna DOC
+    note: ok
+    qid: Q131323571
   Villaviciosa de Córdoba (ES):
     description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
     label: Villaviciosa de Córdoba
     note: ok
     qid: Q7930976
   Villány (HU): null
+  Vin Santo del Chianti (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Vin Santo del Chianti DOC
+    note: ok
+    qid: Q4013006
+  Vin Santo del Chianti Classico (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Vin Santo del Chianti Classico DOC
+    note: ok
+    qid: Q4013008
+  Vin Santo di Carmignano (IT):
+    description: Italian controlled designation of origin wine from Tuscany
+    label: Vin Santo di Carmignano DOC
+    note: ok
+    qid: Q4013009
+  Vin Santo di Montepulciano (IT):
+    description: type of the Vin Santo di Montepulciano Italian controlled designation of origin
+    label: Vin Santo di Montepulciano DOC
+    note: ok
+    qid: Q4013003
   Vin de Corse (FR):
     description: French wine
     label: Vin de Corse
@@ -6973,6 +9322,11 @@ regions:
     label: Viré-Clessé
     note: ok
     qid: Q3560958
+  Vittoria (IT):
+    description: Italian controlled designation of origin wine from Sicily
+    label: Vittoria DOC
+    note: ok
+    qid: Q4015196
   Vix (FR): null
   Vlottenburg (ZA): null
   Volnay (FR):
@@ -7162,6 +9516,11 @@ regions:
     label: Yunnan
     note: non-wine class -- review
     qid: Q43194
+  Zagarolo (IT):
+    description: Italian controlled designation of origin wine from Lazio
+    label: Zagarolo DOC
+    note: ok
+    qid: Q4023640
   Zandrivier (ZA): null
   Zinnkoepflé (FR): null
   Zotzenberg (FR): null

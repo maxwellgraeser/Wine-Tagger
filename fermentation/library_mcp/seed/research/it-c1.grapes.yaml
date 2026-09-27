@@ -1,0 +1,11 @@
+# it-c1: Tuscany. Sangiovese local names (Brunello, Prugnolo Gentile,
+# Morellino, Sangioveto) and Nielluccio are already present on the existing
+# grapes.yaml Sangiovese entry, so nothing to add there. Canaiolo, Colorino,
+# Ciliegiolo, Mammolo and Aleatico already exist plain, no local-name
+# synonyms found. Ansonica already carries Inzolia/Insolia. Trebbiano
+# Toscano already a Trebbiano synonym.
+- {name: "Foglia Tonda", color: red, source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Pugnitello", color: red, source: "https://www.disciplinare.it/vini-toscana.html"}
+- {name: "Vernaccia di San Gimignano", color: white, source: "https://vernaccia.it/la-vernaccia-di-san-gimignano/disciplinare-vernaccia-san-gimignano/"}
+- {name: "Malvasia Bianca Lunga", color: white, source: "https://www.disciplinare.it/vin-santo-del-chianti-doc.html"}
+- {name: "Muscat Blanc à Petits Grains", existing: true, synonyms: ["Moscadello"], source: "https://www.disciplinare.it/vini-toscana.html"}

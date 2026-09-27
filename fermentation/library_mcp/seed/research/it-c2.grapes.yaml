@@ -1,0 +1,10 @@
+# it-c2: Umbria, Marche, Lazio, Abruzzo, Molise
+- {name: "Trebbiano Abruzzese", color: white, synonyms: [], source: "https://en.wikipedia.org/wiki/Abruzzo_wine_region"}
+- {name: "Trebbiano Spoletino", color: white, synonyms: [], source: "https://theitalianwinegirl.com/trebbiano-spoletino-the-white-side-of-umbria/"}
+- {name: "Lacrima", color: red, synonyms: [], source: "https://en.wikipedia.org/wiki/Lacrima_(grape)"}
+- {name: "Bellone", color: white, synonyms: [], source: "https://www.cincinnato.it/en/the-most-emblematic-grape-cincinnato-nero-buono-bellone/"}
+- {name: "Nero Buono", color: red, synonyms: ["Nero Buono di Cori"], source: "https://savortheharvest.com/a-lazio-winning-wine-grape-nero-buono/"}
+- {name: "Maceratino", color: white, synonyms: ["Ribona"], source: "https://en.wikipedia.org/wiki/Maceratino"}
+- {name: "Bianchello", color: white, synonyms: ["Biancame"], source: "https://en.wikipedia.org/wiki/Biancame"}
+- {name: "Vernaccia Nera", color: red, synonyms: [], source: "https://theitalianwinegirl.com/ribona-and-vernaccia-di-serrapetrona-marche-hidden-gems/"}
+- {name: "Grechetto", existing: true, synonyms: ["Grechetto di Orvieto"], source: "https://en.wikipedia.org/wiki/Grechetto"}

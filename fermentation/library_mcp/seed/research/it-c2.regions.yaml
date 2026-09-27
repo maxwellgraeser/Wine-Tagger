@@ -1,0 +1,111 @@
+# it-c2: Umbria, Marche, Lazio, Abruzzo, Molise
+# Molise
+- {name: "Molise", country: IT, source: "https://www.federdoc.com/en/production-areas/molise/"}
+- {name: "Biferno", country: IT, parent: "Molise", classification: DOC, grapes: ["Montepulciano", "Trebbiano", "Aglianico"], source: "https://www.federdoc.com/en/production-areas/molise/"}
+- {name: "Pentro d'Isernia", country: IT, parent: "Molise", classification: DOC, synonyms: ["Pentro"], grapes: ["Montepulciano", "Trebbiano", "Sangiovese"], source: "https://www.federdoc.com/en/production-areas/molise/"}
+- {name: "Tintilia del Molise", country: IT, parent: "Molise", classification: DOC, grapes: ["Tintilia"], source: "https://www.federdoc.com/en/production-areas/molise/"}
+- {name: "Terre degli Osci", country: IT, parent: "Molise", classification: IGT, synonyms: ["Osco"], source: "https://www.quattrocalici.it/denominazioni/osco-o-terra-degli-osci-igt/"}
+- {name: "Rotae", country: IT, parent: "Molise", classification: IGT, source: "https://en.wikipedia.org/wiki/Molise_wine_region"}
+
+# Abruzzo
+- {name: "Abruzzo", country: IT, synonyms: ["Abruzzi"], source: "https://www.federdoc.com/en/production-areas/abruzzo/"}
+- {name: "Montepulciano d'Abruzzo", country: IT, parent: "Abruzzo", classification: DOC, grapes: ["Montepulciano"], source: "https://www.federdoc.com/en/production-areas/abruzzo/"}
+- {name: "Colline Teramane", country: IT, parent: "Montepulciano d'Abruzzo", classification: DOCG, synonyms: ["Montepulciano d'Abruzzo Colline Teramane"], grapes: ["Montepulciano"], source: "https://www.federdoc.com/en/production-areas/abruzzo/"}
+- {name: "Casauria", country: IT, parent: "Montepulciano d'Abruzzo", classification: DOCG, synonyms: ["Montepulciano d'Abruzzo Casauria", "Terre di Casauria"], grapes: ["Montepulciano"], source: "https://www.federdoc.com/en/production-areas/abruzzo/"}
+- {name: "Trebbiano d'Abruzzo", country: IT, parent: "Abruzzo", classification: DOC, grapes: ["Trebbiano Abruzzese", "Trebbiano"], source: "https://en.wikipedia.org/wiki/Abruzzo_wine_region"}
+- {name: "Cerasuolo d'Abruzzo", country: IT, parent: "Abruzzo", classification: DOC, grapes: ["Montepulciano"], source: "https://www.federdoc.com/en/production-areas/abruzzo/"}
+- {name: "Controguerra", country: IT, parent: "Abruzzo", classification: DOC, grapes: ["Montepulciano", "Trebbiano"], source: "https://en.wikipedia.org/wiki/Abruzzo_wine_region"}
+- {name: "Ortona", country: IT, parent: "Abruzzo", classification: DOC, grapes: ["Montepulciano", "Trebbiano"], source: "https://en.wikipedia.org/wiki/Abruzzo_wine_region"}
+- {name: "Villamagna", country: IT, parent: "Abruzzo", classification: DOC, grapes: ["Montepulciano"], source: "https://en.wikipedia.org/wiki/Abruzzo_wine_region"}
+- {name: "Terre Tollesi", country: IT, parent: "Abruzzo", classification: DOCG, synonyms: ["Tullum"], source: "https://www.federdoc.com/en/production-areas/abruzzo/"}
+- {name: "Terre di Chieti", country: IT, parent: "Abruzzo", classification: IGT, source: "https://en.wikipedia.org/wiki/Abruzzo_wine_region"}
+- {name: "Alto Tirino", country: IT, parent: "Abruzzo", classification: IGT, source: "https://en.wikipedia.org/wiki/Abruzzo_wine_region"}
+- {name: "Colli del Sangro", country: IT, parent: "Abruzzo", classification: IGT, source: "https://en.wikipedia.org/wiki/Abruzzo_wine_region"}
+- {name: "Colline Frentane", country: IT, parent: "Abruzzo", classification: IGT, source: "https://en.wikipedia.org/wiki/Abruzzo_wine_region"}
+- {name: "Colline Pescaresi", country: IT, parent: "Abruzzo", classification: IGT, source: "https://en.wikipedia.org/wiki/Abruzzo_wine_region"}
+- {name: "Colline Teatine", country: IT, parent: "Abruzzo", classification: IGT, source: "https://en.wikipedia.org/wiki/Abruzzo_wine_region"}
+- {name: "Vastese", country: IT, parent: "Abruzzo", classification: IGT, synonyms: ["Histonium"], source: "https://en.wikipedia.org/wiki/Abruzzo_wine_region"}
+- {name: "Valle Peligna", country: IT, parent: "Abruzzo", classification: IGT, source: "https://en.wikipedia.org/wiki/Abruzzo_wine_region"}
+
+# Umbria
+- {name: "Umbria", country: IT, synonyms: ["Umbria IGT"], source: "https://www.federdoc.com/en/production-areas/umbria/"}
+- {name: "Orvieto", country: IT, parent: "Umbria", classification: DOC, synonyms: ["Orvieto Classico"], grapes: ["Trebbiano", "Grechetto"], source: "https://en.wikipedia.org/wiki/Orvieto_DOC"}
+- {name: "Rosso Orvietano", country: IT, parent: "Umbria", classification: DOC, synonyms: ["Orvietano Rosso"], grapes: ["Sangiovese", "Montepulciano", "Canaiolo"], source: "https://www.federdoc.com/en/production-areas/umbria/"}
+- {name: "Montefalco", country: IT, parent: "Umbria", classification: DOC, synonyms: ["Montefalco Rosso"], source: "https://en.wikipedia.org/wiki/Montefalco_DOC"}
+- {name: "Montefalco Sagrantino", country: IT, parent: "Montefalco", classification: DOCG, synonyms: ["Sagrantino di Montefalco"], grapes: ["Sagrantino"], source: "https://en.wikipedia.org/wiki/Montefalco_DOC"}
+- {name: "Torgiano", country: IT, parent: "Umbria", classification: DOC, grapes: ["Sangiovese", "Trebbiano"], source: "https://www.federdoc.com/en/production-areas/umbria/"}
+- {name: "Torgiano Rosso Riserva", country: IT, parent: "Torgiano", classification: DOCG, synonyms: ["Torgiano Riserva"], grapes: ["Sangiovese", "Canaiolo"], source: "https://www.federdoc.com/en/production-areas/umbria/"}
+- {name: "Amelia", country: IT, parent: "Umbria", classification: DOC, synonyms: ["Colli Amerini"], grapes: ["Grechetto", "Sangiovese"], source: "https://en.wikipedia.org/wiki/Umbria_wine_region"}
+- {name: "Assisi", country: IT, parent: "Umbria", classification: DOC, grapes: ["Sangiovese", "Grechetto"], source: "https://www.federdoc.com/en/production-areas/umbria/"}
+- {name: "Colli Altotiberini", country: IT, parent: "Umbria", classification: DOC, grapes: ["Sangiovese"], source: "https://www.federdoc.com/en/production-areas/umbria/"}
+- {name: "Colli del Trasimeno", country: IT, parent: "Umbria", classification: DOC, synonyms: ["Trasimeno"], grapes: ["Sangiovese", "Grechetto"], source: "https://www.federdoc.com/en/production-areas/umbria/"}
+- {name: "Colli Martani", country: IT, parent: "Umbria", classification: DOC, grapes: ["Grechetto", "Sangiovese"], source: "https://www.federdoc.com/en/production-areas/umbria/"}
+- {name: "Colli Perugini", country: IT, parent: "Umbria", classification: DOC, grapes: ["Sangiovese", "Trebbiano"], source: "https://www.federdoc.com/en/production-areas/umbria/"}
+- {name: "Lago di Corbara", country: IT, parent: "Umbria", classification: DOC, grapes: ["Sangiovese"], source: "https://www.federdoc.com/en/production-areas/umbria/"}
+- {name: "Spoleto", country: IT, parent: "Umbria", classification: DOC, grapes: ["Trebbiano Spoletino", "Sangiovese"], source: "https://en.wikipedia.org/wiki/Umbria_wine_region"}
+- {name: "Todi", country: IT, parent: "Umbria", classification: DOC, grapes: ["Grechetto", "Sangiovese"], source: "https://www.federdoc.com/en/production-areas/umbria/"}
+- {name: "Allerona", country: IT, parent: "Umbria", classification: IGT, source: "https://www.agraria.org/vini/umbria-igt.htm"}
+- {name: "Bettona", country: IT, parent: "Umbria", classification: IGT, source: "https://www.agraria.org/vini/umbria-igt.htm"}
+- {name: "Cannara", country: IT, parent: "Umbria", classification: IGT, source: "https://www.agraria.org/vini/umbria-igt.htm"}
+- {name: "Narni", country: IT, parent: "Umbria", classification: IGT, source: "https://www.agraria.org/vini/umbria-igt.htm"}
+- {name: "Spello", country: IT, parent: "Umbria", classification: IGT, source: "https://www.agraria.org/vini/umbria-igt.htm"}
+
+# Marche
+- {name: "Marche", country: IT, synonyms: ["Marches", "Le Marche", "Marche IGT"], source: "https://www.federdoc.com/en/production-areas/marche/"}
+- {name: "Verdicchio dei Castelli di Jesi", country: IT, parent: "Marche", classification: DOC, synonyms: ["Castelli di Jesi", "Jesi"], grapes: ["Verdicchio"], source: "https://www.federdoc.com/en/production-areas/marche/"}
+- {name: "Verdicchio dei Castelli di Jesi Riserva", country: IT, parent: "Verdicchio dei Castelli di Jesi", classification: DOCG, synonyms: ["Castelli di Jesi Verdicchio Riserva"], grapes: ["Verdicchio"], source: "https://www.federdoc.com/en/production-areas/marche/"}
+- {name: "Verdicchio di Matelica", country: IT, parent: "Marche", classification: DOC, synonyms: ["Matelica"], grapes: ["Verdicchio"], source: "https://www.federdoc.com/en/production-areas/marche/"}
+- {name: "Verdicchio di Matelica Riserva", country: IT, parent: "Verdicchio di Matelica", classification: DOCG, grapes: ["Verdicchio"], source: "https://www.federdoc.com/en/production-areas/marche/"}
+- {name: "Rosso Conero", country: IT, parent: "Marche", classification: DOC, grapes: ["Montepulciano"], source: "https://www.federdoc.com/en/production-areas/marche/"}
+- {name: "Conero", country: IT, parent: "Rosso Conero", classification: DOCG, synonyms: ["Cònero", "Conero Riserva"], grapes: ["Montepulciano"], source: "https://www.federdoc.com/en/production-areas/marche/"}
+- {name: "Rosso Piceno", country: IT, parent: "Marche", classification: DOC, synonyms: ["Piceno"], grapes: ["Montepulciano", "Sangiovese"], source: "https://www.federdoc.com/en/production-areas/marche/"}
+- {name: "Offida", country: IT, parent: "Marche", classification: DOCG, grapes: ["Pecorino", "Passerina", "Montepulciano"], source: "https://www.federdoc.com/en/production-areas/marche/"}
+- {name: "Terre di Offida", country: IT, parent: "Marche", classification: DOC, source: "https://www.federdoc.com/en/production-areas/marche/"}
+- {name: "Serrapetrona", country: IT, parent: "Marche", classification: DOC, grapes: ["Sangiovese", "Montepulciano"], source: "https://www.federdoc.com/en/production-areas/marche/"}
+- {name: "Vernaccia di Serrapetrona", country: IT, parent: "Serrapetrona", classification: DOCG, grapes: ["Vernaccia Nera"], source: "https://www.federdoc.com/en/production-areas/marche/"}
+- {name: "Lacrima di Morro d'Alba", country: IT, parent: "Marche", classification: DOC, grapes: ["Lacrima"], source: "https://www.federdoc.com/en/production-areas/marche/"}
+- {name: "Bianchello del Metauro", country: IT, parent: "Marche", classification: DOC, grapes: ["Bianchello"], source: "https://www.federdoc.com/en/production-areas/marche/"}
+- {name: "Colli Maceratesi", country: IT, parent: "Marche", classification: DOC, grapes: ["Maceratino"], source: "https://www.federdoc.com/en/production-areas/marche/"}
+- {name: "Colli Pesaresi", country: IT, parent: "Marche", classification: DOC, grapes: ["Sangiovese", "Trebbiano"], source: "https://www.federdoc.com/en/production-areas/marche/"}
+- {name: "Esino", country: IT, parent: "Marche", classification: DOC, grapes: ["Verdicchio", "Sangiovese"], source: "https://www.federdoc.com/en/production-areas/marche/"}
+- {name: "Falerio", country: IT, parent: "Marche", classification: DOC, synonyms: ["Falerio dei Colli Ascolani"], grapes: ["Trebbiano", "Passerina", "Pecorino"], source: "https://www.federdoc.com/en/production-areas/marche/"}
+- {name: "I Terreni di Sanseverino", country: IT, parent: "Marche", classification: DOC, source: "https://www.federdoc.com/en/production-areas/marche/"}
+- {name: "Pergola", country: IT, parent: "Marche", classification: DOC, grapes: ["Aleatico"], source: "https://www.federdoc.com/en/production-areas/marche/"}
+- {name: "San Ginesio", country: IT, parent: "Marche", classification: DOC, grapes: ["Sangiovese"], source: "https://www.federdoc.com/en/production-areas/marche/"}
+
+# Lazio
+- {name: "Lazio", country: IT, synonyms: ["Latium", "Lazio IGT"], source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Frascati", country: IT, parent: "Lazio", classification: DOC, grapes: ["Malvasia Bianca", "Trebbiano"], source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Frascati Superiore", country: IT, parent: "Frascati", classification: DOCG, grapes: ["Malvasia Bianca", "Trebbiano"], source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Cannellino di Frascati", country: IT, parent: "Frascati", classification: DOCG, grapes: ["Malvasia Bianca", "Trebbiano"], source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Cesanese del Piglio", country: IT, parent: "Lazio", classification: DOCG, synonyms: ["Piglio"], grapes: ["Cesanese"], source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Cesanese di Affile", country: IT, parent: "Lazio", classification: DOC, grapes: ["Cesanese"], source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Cesanese di Olevano Romano", country: IT, parent: "Lazio", classification: DOC, synonyms: ["Olevano Romano"], grapes: ["Cesanese"], source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Est! Est!! Est!!! di Montefiascone", country: IT, parent: "Lazio", classification: DOC, grapes: ["Trebbiano", "Malvasia Bianca"], source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Aleatico di Gradoli", country: IT, parent: "Lazio", classification: DOC, grapes: ["Aleatico"], source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Aprilia", country: IT, parent: "Lazio", classification: DOC, source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Atina", country: IT, parent: "Lazio", classification: DOC, grapes: ["Cabernet Sauvignon", "Cabernet Franc"], source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Bianco Capena", country: IT, parent: "Lazio", classification: DOC, grapes: ["Malvasia Bianca", "Trebbiano"], source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Castelli Romani", country: IT, parent: "Lazio", classification: DOC, source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Cerveteri", country: IT, parent: "Lazio", classification: DOC, source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Circeo", country: IT, parent: "Lazio", classification: DOC, source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Colli Albani", country: IT, parent: "Lazio", classification: DOC, grapes: ["Malvasia Bianca", "Trebbiano"], source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Colli della Sabina", country: IT, parent: "Lazio", classification: DOC, source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Colli Etruschi Viterbesi", country: IT, parent: "Lazio", classification: DOC, source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Colli Lanuvini", country: IT, parent: "Lazio", classification: DOC, grapes: ["Malvasia Bianca", "Trebbiano"], source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Cori", country: IT, parent: "Lazio", classification: DOC, grapes: ["Nero Buono", "Montepulciano"], source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Genazzano", country: IT, parent: "Lazio", classification: DOC, source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Marino", country: IT, parent: "Lazio", classification: DOC, grapes: ["Malvasia Bianca", "Trebbiano"], source: "https://en.wikipedia.org/wiki/Marino_DOC"}
+- {name: "Montecompatri Colonna", country: IT, parent: "Lazio", classification: DOC, source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Nettuno", country: IT, parent: "Lazio", classification: DOC, source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Roma", country: IT, parent: "Lazio", classification: DOC, source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Tarquinia", country: IT, parent: "Lazio", classification: DOC, source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Terracina", country: IT, parent: "Lazio", classification: DOC, synonyms: ["Moscato di Terracina"], grapes: ["Moscato"], source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Velletri", country: IT, parent: "Lazio", classification: DOC, source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Vignanello", country: IT, parent: "Lazio", classification: DOC, source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Zagarolo", country: IT, parent: "Lazio", classification: DOC, source: "https://www.federdoc.com/en/production-areas/lazio/"}
+- {name: "Anagni", country: IT, parent: "Lazio", classification: IGT, source: "https://www.assovini.it/italia/lazio/item/2042-colli-cimini-igt"}
+- {name: "Civitella d'Agliano", country: IT, parent: "Lazio", classification: IGT, source: "https://www.agraria.org/vini/civitella-d-agliano-igt.htm"}
+- {name: "Colli Cimini", country: IT, parent: "Lazio", classification: IGT, source: "https://www.assovini.it/italia/lazio/item/2042-colli-cimini-igt"}
+- {name: "Costa Etrusco Romana", country: IT, parent: "Lazio", classification: IGT, source: "https://en.wikipedia.org/wiki/Indicazione_geografica_tipica"}
+- {name: "Frusinate", country: IT, parent: "Lazio", classification: IGT, synonyms: ["del Frusinate"], source: "https://www.assovini.it/italia/lazio/item/2044-frusinate-o-del-frusinate-igt"}

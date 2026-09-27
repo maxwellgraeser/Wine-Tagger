@@ -66,11 +66,11 @@
 - {name: "Petit Manseng", color: white}
 - {name: "Riesling", color: white, synonyms: ["Johannisberg Riesling", "White Riesling", "Rheinriesling", "Riesling Renano", "Weisser Riesling", "Rhine Riesling"]}
 - {name: "Gewürztraminer", color: white, synonyms: ["Gewurztraminer", "Traminer", "Traminer Aromatico"]}
-- {name: "Pinot Gris", color: white, synonyms: ["Pinot Grigio", "Grauburgunder", "Ruländer", "Rulander", "PG", "Grauer Burgunder", "Pinot Beurot", "Tokay d'Alsace", "Tokay Pinot Gris"]}
+- {name: "Pinot Gris", color: white, synonyms: ["Pinot Grigio", "Grauburgunder", "Ruländer", "Rulander", "PG", "Grauer Burgunder", "Pinot Beurot", "Tokay d'Alsace", "Tokay Pinot Gris", "Malvoisie"]}
 - {name: "Pinot Blanc", color: white, synonyms: ["Pinot Bianco", "Weissburgunder", "Weißburgunder", "Weisser Burgunder"]}
 - {name: "Auxerrois Blanc", color: white, synonyms: ["Auxerrois", "Pinot Auxerrois"]}
 - {name: "Silvaner", color: white, synonyms: ["Sylvaner", "Grüner Silvaner"]}
-- {name: "Muscat Blanc à Petits Grains", color: white, synonyms: ["Muscat", "Moscato", "Moscato Bianco", "Muscat Canelli", "Muscat Blanc", "Moscatel Galego", "Gelber Muskateller", "Muskateller", "Tamjanika", "Muscat de Frontignan", "Moscato d'Asti (grape)", "Muscadel", "Muskadel", "Red Muscadel", "White Muscadel", "Moscatel de Grano Menudo"]}
+- {name: "Muscat Blanc à Petits Grains", color: white, synonyms: ["Muscat", "Moscato", "Moscato Bianco", "Muscat Canelli", "Muscat Blanc", "Moscatel Galego", "Gelber Muskateller", "Muskateller", "Tamjanika", "Muscat de Frontignan", "Moscato d'Asti (grape)", "Muscadel", "Muskadel", "Red Muscadel", "White Muscadel", "Moscatel de Grano Menudo", "Moscadello"]}
 - {name: "Muscat of Alexandria", color: white, synonyms: ["Moscatel", "Zibibbo", "Moscatel de Alejandría", "Muscat Gordo Blanco", "Gordo", "Hanepoot", "Moscatel de Setúbal (grape)", "Muscat d'Alexandrie"]}
 - {name: "Muscat Ottonel", color: white}
 - {name: "Aligoté", color: white, synonyms: ["Aligote"]}
@@ -91,7 +91,7 @@
 
 # ---------------- Italy: reds ----------------
 - {name: "Sangiovese", color: red, synonyms: ["Brunello (grape)", "Prugnolo Gentile", "Morellino", "Sangioveto", "Nielluccio"]}
-- {name: "Nebbiolo", color: red, synonyms: ["Spanna", "Chiavennasca", "Picotener", "Picotendro"]}
+- {name: "Nebbiolo", color: red, synonyms: ["Spanna", "Chiavennasca", "Picotener", "Picotendro", "Prunent"]}
 - {name: "Barbera", color: red}
 - {name: "Dolcetto", color: red, synonyms: ["Ormeasco"]}
 - {name: "Montepulciano", color: red}
@@ -101,7 +101,7 @@
 - {name: "Nerello Mascalese", color: red}
 - {name: "Nerello Cappuccio", color: red}
 - {name: "Frappato", color: red}
-- {name: "Perricone", color: red}
+- {name: "Perricone", color: red, synonyms: ["Pignatello"]}
 - {name: "Corvina", color: red, synonyms: ["Corvina Veronese"]}
 - {name: "Corvinone", color: red}
 - {name: "Rondinella", color: red}
@@ -112,7 +112,7 @@
 - {name: "Teroldego", color: red}
 - {name: "Marzemino", color: red}
 - {name: "Refosco", color: red, synonyms: ["Refosco dal Peduncolo Rosso", "Teran", "Refošk", "Refosk", "Terrano"]}
-- {name: "Raboso", color: red, synonyms: ["Raboso Piave"]}
+- {name: "Raboso", color: red, synonyms: ["Raboso Piave", "Friularo"]}
 - {name: "Schioppettino", color: red}
 - {name: "Pignolo", color: red}
 - {name: "Lambrusco", color: red, synonyms: ["Lambrusco Grasparossa", "Lambrusco Salamino", "Lambrusco di Sorbara", "Lambrusco Maestri"]}
@@ -126,7 +126,7 @@
 - {name: "Monica", color: red}
 - {name: "Bovale", color: red, synonyms: ["Bovale Sardo"]}
 - {name: "Gaglioppo", color: red}
-- {name: "Magliocco", color: red}
+- {name: "Magliocco", color: red, synonyms: ["Magliocco Dolce", "Arvino", "Guarnaccia Nera"]}
 - {name: "Nero di Troia", color: red, synonyms: ["Uva di Troia"]}
 - {name: "Susumaniello", color: red}
 - {name: "Bombino Nero", color: red}
@@ -165,7 +165,7 @@
 - {name: "Müller-Thurgau", color: white, synonyms: ["Muller-Thurgau", "Rivaner", "Müller Thurgau"]}
 - {name: "Nosiola", color: white}
 - {name: "Manzoni Bianco", color: white, synonyms: ["Incrocio Manzoni"]}
-- {name: "Vernaccia", color: white, synonyms: ["Vernaccia di San Gimignano (grape)"]}
+- {name: "Vernaccia", color: white, synonyms: ["Vernaccia di San Gimignano (grape)", "Vernaccia di San Gimignano"]}
 - {name: "Ansonica", color: white, synonyms: ["Inzolia", "Insolia"]}
 - {name: "Grillo", color: white}
 - {name: "Catarratto", color: white, synonyms: ["Catarratto Bianco"]}
@@ -188,11 +188,11 @@
 - {name: "Bosco", color: white}
 - {name: "Albarola", color: white}
 - {name: "Durella", color: white}
-- {name: "Grechetto", color: white}
+- {name: "Grechetto", color: white, synonyms: ["Grechetto di Orvieto"]}
 - {name: "Malvasia Bianca", color: white, synonyms: ["Malvasia", "Malvasia Bianca di Candia", "Malvasia del Lazio"]}
 - {name: "Malvasia di Candia Aromatica", color: white}
-- {name: "Malvasia Nera", color: red}
-- {name: "Moscato Giallo", color: white, synonyms: ["Goldmuskateller"]}
+- {name: "Malvasia Nera", color: red, synonyms: ["Malvasia Nera di Brindisi", "Malvasia Nera di Lecce"]}
+- {name: "Moscato Giallo", color: white, synonyms: ["Goldmuskateller", "Fior d'Arancio"]}
 - {name: "Welschriesling", color: white, synonyms: ["Riesling Italico", "Graševina", "Grasevina", "Olaszrizling", "Laški Rizling", "Laski Rizling"]}
 - {name: "Cococciola", color: white}
 - {name: "Prié Blanc", color: white, synonyms: ["Prié", "Blanc de Morgex"]}
@@ -201,7 +201,7 @@
 - {name: "Tempranillo", color: red, synonyms: ["Tinto Fino", "Tinta Fina", "Tinta de Toro", "Tinta del País", "Tinta del Pais", "Tinta Roriz", "Aragonez", "Aragonês", "Aragones", "Cencibel", "Ull de Llebre", "Tinto de Madrid", "Tinto"]}
 - {name: "Bobal", color: red}
 - {name: "Mencía", color: red, synonyms: ["Mencia", "Jaen"]}
-- {name: "Graciano", color: red, synonyms: ["Morrastel", "Tintilla de Rota"]}
+- {name: "Graciano", color: red, synonyms: ["Morrastel", "Tintilla de Rota", "Cagnulari"]}
 - {name: "Prieto Picudo", color: red}
 - {name: "Listán Negro", color: red, synonyms: ["Listan Negro"]}
 - {name: "Palomino", color: white, synonyms: ["Palomino Fino", "Listán Blanco", "Listan Blanco", "Fransdruif", "White French"]}
@@ -444,7 +444,7 @@
 # ---------------- research: es-s1 ----------------
 - {name: "Negramoll", color: red, synonyms: ["Tinta Negra"]}
 - {name: "Vijariego Blanco", color: white, synonyms: ["Vigiriega", "Vigiriego", "Bujariego"]}
-- {name: "Malvasía Aromática", color: white, qid: Q1887941}
+- {name: "Malvasía Aromática", color: white, synonyms: ["Malvasia di Lipari", "Malvasia di Sardegna"], qid: Q1887941}
 - {name: "Malvasía Rosada", color: rose}
 - {name: "Marmajuelo", color: white, synonyms: ["Bermejuela"]}
 - {name: "Forastera Blanca", color: white, qid: Q16972358}
@@ -463,3 +463,50 @@
 - {name: "Forcallat Tinta", color: red, synonyms: ["Forcallà"]}
 - {name: "Malvar", color: white}
 - {name: "Verdil", color: white}
+
+# ---------------- research: it-n ----------------
+- {name: "Vien de Nus", color: red}
+- {name: "Bianchetta Genovese", color: white}
+- {name: "Scimiscià", color: white, synonyms: ["Cimixà"]}
+- {name: "Gamba Rossa", color: red, synonyms: ["Imperatrice dalla Gamba Rossa"]}
+- {name: "Avanà", color: red}
+- {name: "Becuet", color: red, synonyms: ["Becquet"]}
+- {name: "Neretta Cuneese", color: red}
+- {name: "Malvasia di Casorzo", color: red, synonyms: ["Malvasia Nera di Casorzo"]}
+- {name: "Uva Rara", color: red, synonyms: ["Bonarda Novarese"]}
+- {name: "Moscato di Scanzo", color: red}
+- {name: "Vespaiola", color: white, synonyms: ["Vespaiolo"]}
+- {name: "Albana", color: white}
+- {name: "Ortrugo", color: white}
+- {name: "Pignoletto", color: white, synonyms: ["Grechetto Gentile"]}
+- {name: "Fortana", color: red}
+- {name: "Malbo Gentile", color: red}
+- {name: "Spergola", color: white}
+
+# ---------------- research: it-c1 ----------------
+- {name: "Foglia Tonda", color: red}
+- {name: "Pugnitello", color: red}
+- {name: "Malvasia Bianca Lunga", color: white}
+
+# ---------------- research: it-c2 ----------------
+- {name: "Trebbiano Abruzzese", color: white}
+- {name: "Trebbiano Spoletino", color: white}
+- {name: "Lacrima", color: red}
+- {name: "Bellone", color: white}
+- {name: "Nero Buono", color: red, synonyms: ["Nero Buono di Cori"]}
+- {name: "Maceratino", color: white, synonyms: ["Ribona"]}
+- {name: "Bianchello", color: white, synonyms: ["Biancame"]}
+- {name: "Vernaccia Nera", color: red}
+
+# ---------------- research: it-s1 ----------------
+- {name: "Asprinio", color: white, synonyms: ["Asprinio Bianco", "Asprino"]}
+- {name: "Sciascinoso", color: red}
+- {name: "Catalanesca", color: white}
+
+# ---------------- research: it-s2 ----------------
+- {name: "Magliocco Canino", color: red}
+- {name: "Mantonico", color: white, synonyms: ["Mantonico Bianco"]}
+- {name: "Greco Nero", color: red}
+- {name: "Nasco", color: white}
+- {name: "Vernaccia di Oristano", color: white}
+- {name: "Semidano", color: white}
