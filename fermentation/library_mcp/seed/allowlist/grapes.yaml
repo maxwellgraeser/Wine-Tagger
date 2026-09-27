@@ -46,8 +46,8 @@
 - {name: "Prunelard", color: red}
 
 # ---------------- International / French whites ----------------
-- {name: "Chardonnay", color: white, synonyms: ["Chard"]}
-- {name: "Sauvignon Blanc", color: white, synonyms: ["Sauv Blanc", "SB", "Blanc Fumé", "Fumé Blanc", "Fume Blanc", "Sauvignon"]}
+- {name: "Chardonnay", color: white, synonyms: ["Chard", "Morillon"]}
+- {name: "Sauvignon Blanc", color: white, synonyms: ["Sauv Blanc", "SB", "Blanc Fumé", "Fumé Blanc", "Fume Blanc", "Sauvignon", "Muskat-Sylvaner"]}
 - {name: "Sémillon", color: white, synonyms: ["Semillon", "Groendruif"]}
 - {name: "Muscadelle", color: white}
 - {name: "Chenin Blanc", color: white, synonyms: ["Chenin", "Steen", "Pineau de la Loire"]}
@@ -67,7 +67,7 @@
 - {name: "Riesling", color: white, synonyms: ["Johannisberg Riesling", "White Riesling", "Rheinriesling", "Riesling Renano", "Weisser Riesling", "Rhine Riesling", "Weißer Riesling"]}
 - {name: "Gewürztraminer", color: white, synonyms: ["Gewurztraminer", "Traminer", "Traminer Aromatico"]}
 - {name: "Pinot Gris", color: white, synonyms: ["Pinot Grigio", "Grauburgunder", "Ruländer", "Rulander", "PG", "Grauer Burgunder", "Pinot Beurot", "Tokay d'Alsace", "Tokay Pinot Gris", "Malvoisie"]}
-- {name: "Pinot Blanc", color: white, synonyms: ["Pinot Bianco", "Weissburgunder", "Weißburgunder", "Weisser Burgunder"]}
+- {name: "Pinot Blanc", color: white, synonyms: ["Pinot Bianco", "Weissburgunder", "Weißburgunder", "Weisser Burgunder", "Weißer Burgunder"]}
 - {name: "Auxerrois Blanc", color: white, synonyms: ["Auxerrois", "Pinot Auxerrois"]}
 - {name: "Silvaner", color: white, synonyms: ["Sylvaner", "Grüner Silvaner"]}
 - {name: "Muscat Blanc à Petits Grains", color: white, synonyms: ["Muscat", "Moscato", "Moscato Bianco", "Muscat Canelli", "Muscat Blanc", "Moscatel Galego", "Gelber Muskateller", "Muskateller", "Tamjanika", "Muscat de Frontignan", "Moscato d'Asti (grape)", "Muscadel", "Muskadel", "Red Muscadel", "White Muscadel", "Moscatel de Grano Menudo", "Moscadello"]}
@@ -518,3 +518,7 @@
 - {name: "Acolon", color: red}
 - {name: "Cabernet Dorsa", color: red}
 - {name: "Rotberger", color: red}
+
+# ---------------- research: at ----------------
+- {name: "Blauer Wildbacher", color: red, synonyms: ["Wildbacher"]}
+- {name: "Frühroter Veltliner", color: gris}

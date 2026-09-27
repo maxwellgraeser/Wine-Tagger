@@ -1,0 +1,34 @@
+# NZ regions research (all 20 registered wine GIs + label subregions)
+- {name: "Northland", country: NZ, classification: GI, synonyms: [], source: "https://www.iponz.govt.nz/get-ip/geographical-indications/register/northland/"}
+- {name: "Auckland", country: NZ, classification: GI, synonyms: [], source: "https://www.iponz.govt.nz/get-ip/geographical-indications/register/auckland/"}
+- {name: "Matakana", country: NZ, parent: "Auckland", classification: GI, synonyms: [], source: "https://www.iponz.govt.nz/get-ip/geographical-indications/register/matakana/"}
+- {name: "Kumeu", country: NZ, parent: "Auckland", classification: GI, synonyms: [], source: "https://www.iponz.govt.nz/get-ip/geographical-indications/register/kumeu/"}
+- {name: "Waiheke Island", country: NZ, parent: "Auckland", classification: GI, synonyms: ["Waiheke"], source: "https://www.iponz.govt.nz/get-ip/geographical-indications/register/waiheke-island/"}
+- {name: "Gisborne", country: NZ, classification: GI, synonyms: [], source: "https://www.iponz.govt.nz/get-ip/geographical-indications/register/gisborne/"}
+- {name: "Hawke's Bay", country: NZ, classification: GI, synonyms: ["Hawkes Bay", "Hawke’s Bay"], source: "https://www.iponz.govt.nz/get-ip/geographical-indications/register/hawkes-bay/"}
+- {name: "Central Hawke's Bay", country: NZ, parent: "Hawke's Bay", classification: GI, synonyms: ["Central Hawkes Bay"], source: "https://www.iponz.govt.nz/get-ip/geographical-indications/register/central-hawkes-bay/"}
+- {name: "Gimblett Gravels", country: NZ, parent: "Hawke's Bay", synonyms: [], source: "https://winefolly.com/deep-dive/guide-to-hawkes-bay/"}
+- {name: "Bridge Pa Triangle", country: NZ, parent: "Hawke's Bay", synonyms: [], source: "https://www.wine-searcher.com/regions-bridge+pa+triangle"}
+- {name: "Wairarapa", country: NZ, classification: GI, synonyms: [], source: "https://www.iponz.govt.nz/get-ip/geographical-indications/register/wairarapa/"}
+- {name: "Martinborough", country: NZ, parent: "Wairarapa", classification: GI, synonyms: [], source: "https://www.iponz.govt.nz/get-ip/geographical-indications/register/martinborough/"}
+- {name: "Gladstone", country: NZ, parent: "Wairarapa", classification: GI, synonyms: [], source: "https://www.iponz.govt.nz/get-ip/geographical-indications/register/gladstone/"}
+- {name: "Nelson", country: NZ, classification: GI, synonyms: [], source: "https://www.iponz.govt.nz/get-ip/geographical-indications/register/nelson/"}
+- {name: "Moutere Hills", country: NZ, parent: "Nelson", synonyms: ["Moutere"], source: "https://winefolly.com/deep-dive/guide-to-nelson-wine-region/"}
+- {name: "Waimea Plains", country: NZ, parent: "Nelson", synonyms: ["Waimea"], source: "https://winefolly.com/deep-dive/guide-to-nelson-wine-region/"}
+- {name: "Marlborough", country: NZ, classification: GI, synonyms: [], source: "https://www.iponz.govt.nz/get-ip/geographical-indications/register/marlborough/"}
+- {name: "Wairau Valley", country: NZ, parent: "Marlborough", synonyms: [], source: "https://www.wine-searcher.com/regions-marlborough"}
+- {name: "Southern Valleys", country: NZ, parent: "Marlborough", synonyms: [], source: "https://www.wine-searcher.com/regions-marlborough"}
+- {name: "Awatere Valley", country: NZ, parent: "Marlborough", synonyms: [], source: "https://www.wine-searcher.com/regions-marlborough"}
+- {name: "Canterbury", country: NZ, classification: GI, synonyms: [], source: "https://www.iponz.govt.nz/get-ip/geographical-indications/register/canterbury/"}
+- {name: "North Canterbury", country: NZ, parent: "Canterbury", classification: GI, synonyms: [], source: "https://www.iponz.govt.nz/get-ip/geographical-indications/register/north-canterbury/"}
+- {name: "Waipara Valley", country: NZ, parent: "North Canterbury", classification: GI, synonyms: ["Waipara"], was: "Waipara", source: "https://www.iponz.govt.nz/get-ip/geographical-indications/register/waipara-valley/"}
+- {name: "Waitaki Valley", country: NZ, classification: GI, synonyms: ["Waitaki Valley North Otago"], source: "https://www.iponz.govt.nz/get-ip/geographical-indications/register/waitaki-valley-north-otago/"}
+- {name: "Central Otago", country: NZ, classification: GI, synonyms: [], source: "https://www.iponz.govt.nz/get-ip/geographical-indications/register/central-otago/"}
+- {name: "Bannockburn", country: NZ, parent: "Central Otago", classification: GI, synonyms: [], source: "https://www.iponz.govt.nz/get-ip/geographical-indications/register/bannockburn/"}
+- {name: "Gibbston", country: NZ, parent: "Central Otago", synonyms: [], source: "https://www.centralotagowine.co/place-subregions"}
+- {name: "Bendigo", country: NZ, parent: "Central Otago", synonyms: [], source: "https://www.centralotagowine.co/place-subregions"}
+- {name: "Cromwell", country: NZ, parent: "Central Otago", synonyms: ["Cromwell Basin"], source: "https://www.centralotagowine.co/place-subregions"}
+- {name: "Lowburn", country: NZ, parent: "Central Otago", synonyms: [], source: "https://www.centralotagowine.co/place-subregions"}
+- {name: "Pisa", country: NZ, parent: "Central Otago", synonyms: [], source: "https://www.centralotagowine.co/place-subregions"}
+- {name: "Alexandra", country: NZ, parent: "Central Otago", synonyms: [], source: "https://www.centralotagowine.co/place-subregions"}
+- {name: "Wanaka", country: NZ, parent: "Central Otago", synonyms: ["Wānaka"], source: "https://www.centralotagowine.co/place-subregions"}

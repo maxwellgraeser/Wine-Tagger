@@ -1517,24 +1517,61 @@
 
 # ======================= AUSTRIA =======================
 - {name: "Niederösterreich", country: AT, synonyms: ["Lower Austria", "Niederosterreich"]}
-- {name: "Wachau", country: AT, parent: "Niederösterreich", classification: DAC}
-- {name: "Kamptal", country: AT, parent: "Niederösterreich", classification: DAC}
-- {name: "Kremstal", country: AT, parent: "Niederösterreich", classification: DAC}
-- {name: "Traisental", country: AT, parent: "Niederösterreich", classification: DAC}
-- {name: "Wagram", country: AT, parent: "Niederösterreich", classification: DAC}
-- {name: "Weinviertel", country: AT, parent: "Niederösterreich", classification: DAC}
-- {name: "Carnuntum", country: AT, parent: "Niederösterreich", classification: DAC}
-- {name: "Thermenregion", country: AT, parent: "Niederösterreich", classification: DAC}
+- {name: "Wachau", country: AT, parent: "Niederösterreich", classification: DAC, grapes: ["Grüner Veltliner", "Riesling"]}
+- {name: "Kamptal", country: AT, parent: "Niederösterreich", classification: DAC, grapes: ["Grüner Veltliner", "Riesling"]}
+- {name: "Kremstal", country: AT, parent: "Niederösterreich", classification: DAC, grapes: ["Grüner Veltliner", "Riesling"]}
+- {name: "Traisental", country: AT, parent: "Niederösterreich", classification: DAC, grapes: ["Grüner Veltliner", "Riesling"]}
+- {name: "Wagram", country: AT, parent: "Niederösterreich", classification: DAC, grapes: ["Grüner Veltliner", "Roter Veltliner", "Riesling"]}
+- {name: "Weinviertel", country: AT, parent: "Niederösterreich", classification: DAC, grapes: ["Grüner Veltliner"]}
+- {name: "Carnuntum", country: AT, parent: "Niederösterreich", classification: DAC, grapes: ["Zweigelt", "Blaufränkisch", "Chardonnay", "Pinot Blanc", "Grüner Veltliner"]}
+- {name: "Thermenregion", country: AT, parent: "Niederösterreich", classification: DAC, grapes: ["Zierfandler", "Rotgipfler"]}
 - {name: "Burgenland", country: AT}
-- {name: "Neusiedlersee", country: AT, parent: "Burgenland", classification: DAC, synonyms: ["Neusiedler See"]}
-- {name: "Leithaberg", country: AT, parent: "Burgenland", classification: DAC}
-- {name: "Mittelburgenland", country: AT, parent: "Burgenland", classification: DAC}
-- {name: "Eisenberg", country: AT, parent: "Burgenland", classification: DAC, synonyms: ["Südburgenland"]}
+- {name: "Neusiedlersee", country: AT, parent: "Burgenland", classification: DAC, synonyms: ["Neusiedler See"], grapes: ["Zweigelt"]}
+- {name: "Leithaberg", country: AT, parent: "Burgenland", classification: DAC, grapes: ["Grüner Veltliner", "Pinot Blanc", "Chardonnay", "Neuburger", "Blaufränkisch"]}
+- {name: "Mittelburgenland", country: AT, parent: "Burgenland", classification: DAC, grapes: ["Blaufränkisch"]}
+- {name: "Eisenberg", country: AT, parent: "Burgenland", classification: DAC, synonyms: ["Südburgenland"], grapes: ["Blaufränkisch"]}
+- {name: "Rosalia", country: AT, parent: "Burgenland", classification: DAC, grapes: ["Blaufränkisch", "Zweigelt"]}
+- {name: "Ruster Ausbruch", country: AT, parent: "Burgenland", classification: DAC, grapes: ["Furmint", "Welschriesling"]}
 - {name: "Steiermark", country: AT, synonyms: ["Styria"]}
-- {name: "Südsteiermark", country: AT, parent: "Steiermark", classification: DAC, synonyms: ["South Styria", "Sudsteiermark"]}
-- {name: "Vulkanland Steiermark", country: AT, parent: "Steiermark", classification: DAC, synonyms: ["Vulkanland"]}
-- {name: "Weststeiermark", country: AT, parent: "Steiermark", classification: DAC, synonyms: ["West Styria"]}
-- {name: "Wien", country: AT, classification: DAC, synonyms: ["Vienna", "Wiener Gemischter Satz"]}
+- {name: "Südsteiermark", country: AT, parent: "Steiermark", classification: DAC, synonyms: ["South Styria", "Sudsteiermark"], grapes: ["Sauvignon Blanc", "Welschriesling", "Pinot Blanc", "Chardonnay", "Gewürztraminer", "Pinot Gris"]}
+- {name: "Vulkanland Steiermark", country: AT, parent: "Steiermark", classification: DAC, synonyms: ["Vulkanland"], grapes: ["Sauvignon Blanc", "Welschriesling", "Pinot Blanc", "Chardonnay", "Gewürztraminer", "Pinot Gris"]}
+- {name: "Weststeiermark", country: AT, parent: "Steiermark", classification: DAC, synonyms: ["West Styria"], grapes: ["Blauer Wildbacher", "Sauvignon Blanc"]}
+- {name: "Wien", country: AT, synonyms: ["Vienna"]}
+- {name: "Wiener Gemischter Satz", country: AT, parent: "Wien", classification: DAC}
+- {name: "Weinland Österreich", country: AT, classification: Landwein, synonyms: ["Weinland"]}
+- {name: "Steirerland", country: AT, classification: Landwein}
+- {name: "Bergland Österreich", country: AT, classification: Landwein, synonyms: ["Bergland"]}
+- {name: "Spitz", country: AT, parent: "Wachau", classification: Gemeinde, synonyms: ["Spitz an der Donau"]}
+- {name: "Wösendorf", country: AT, parent: "Wachau", classification: Gemeinde}
+- {name: "Weißenkirchen", country: AT, parent: "Wachau", classification: Gemeinde, synonyms: ["Weißenkirchen in der Wachau", "Weissenkirchen"]}
+- {name: "Joching", country: AT, parent: "Wachau", classification: Gemeinde}
+- {name: "Dürnstein", country: AT, parent: "Wachau", classification: Gemeinde, synonyms: ["Duernstein"]}
+- {name: "Loiben", country: AT, parent: "Wachau", classification: Gemeinde}
+- {name: "Rossatz", country: AT, parent: "Wachau", classification: Gemeinde}
+- {name: "Mautern", country: AT, parent: "Wachau", classification: Gemeinde, synonyms: ["Mautern an der Donau"]}
+- {name: "Langenlois", country: AT, parent: "Kamptal", classification: Gemeinde}
+- {name: "Gobelsburg", country: AT, parent: "Kamptal", classification: Gemeinde}
+- {name: "Zöbing", country: AT, parent: "Kamptal", classification: Gemeinde, synonyms: ["Zobing"]}
+- {name: "Straß im Straßertal", country: AT, parent: "Kamptal", classification: Gemeinde, synonyms: ["Straß im Straßertale"]}
+- {name: "Schönberg", country: AT, parent: "Kamptal", classification: Gemeinde, synonyms: ["Schoenberg"]}
+- {name: "Hadersdorf", country: AT, parent: "Kamptal", classification: Gemeinde}
+- {name: "Krems", country: AT, parent: "Kremstal", classification: Gemeinde, synonyms: ["Krems an der Donau"]}
+- {name: "Stein", country: AT, parent: "Kremstal", classification: Gemeinde, synonyms: ["Stein an der Donau"]}
+- {name: "Senftenberg", country: AT, parent: "Kremstal", classification: Gemeinde}
+- {name: "Rohrendorf", country: AT, parent: "Kremstal", classification: Gemeinde}
+- {name: "Gedersdorf", country: AT, parent: "Kremstal", classification: Gemeinde}
+- {name: "Gamlitz", country: AT, parent: "Südsteiermark", classification: Gemeinde}
+- {name: "Kitzeck-Sausal", country: AT, parent: "Südsteiermark", classification: Gemeinde}
+- {name: "Leutschach", country: AT, parent: "Südsteiermark", classification: Gemeinde, synonyms: ["Leutschach an der Weinstraße"]}
+- {name: "Ehrenhausen", country: AT, parent: "Südsteiermark", classification: Gemeinde, synonyms: ["Ehrenhausen an der Weinstraße"]}
+- {name: "Eichberg", country: AT, parent: "Südsteiermark", classification: Gemeinde}
+- {name: "Klöch", country: AT, parent: "Vulkanland Steiermark", classification: Gemeinde, synonyms: ["Kloech"]}
+- {name: "St. Anna", country: AT, parent: "Vulkanland Steiermark", classification: Gemeinde, synonyms: ["St. Anna am Aigen"]}
+- {name: "Straden", country: AT, parent: "Vulkanland Steiermark", classification: Gemeinde}
+- {name: "Riegersburg", country: AT, parent: "Vulkanland Steiermark", classification: Gemeinde}
+- {name: "Stainz", country: AT, parent: "Weststeiermark", classification: Gemeinde}
+- {name: "Deutschlandsberg", country: AT, parent: "Weststeiermark", classification: Gemeinde}
+- {name: "Ligist", country: AT, parent: "Weststeiermark", classification: Gemeinde}
 
 # ======================= SWITZERLAND / LUXEMBOURG / UK =======================
 - {name: "Valais", country: CH, synonyms: ["Wallis"]}
@@ -1804,18 +1841,39 @@
 - {name: "South Eastern Australia", country: AU, classification: GI, synonyms: ["South-Eastern Australia", "SE Australia", "Southeastern Australia"]}
 
 # ======================= NEW ZEALAND =======================
-- {name: "Marlborough", country: NZ, classification: GI}
-- {name: "Central Otago", country: NZ, classification: GI}
+- {name: "Northland", country: NZ, classification: GI}
+- {name: "Auckland", country: NZ, classification: GI}
+- {name: "Matakana", country: NZ, parent: "Auckland", classification: GI}
+- {name: "Kumeu", country: NZ, parent: "Auckland", classification: GI}
+- {name: "Waiheke Island", country: NZ, parent: "Auckland", classification: GI, synonyms: ["Waiheke"]}
+- {name: "Gisborne", country: NZ, classification: GI}
 - {name: "Hawke's Bay", country: NZ, classification: GI, synonyms: ["Hawkes Bay", "Hawke’s Bay"]}
+- {name: "Central Hawke's Bay", country: NZ, parent: "Hawke's Bay", classification: GI, synonyms: ["Central Hawkes Bay"]}
 - {name: "Gimblett Gravels", country: NZ, parent: "Hawke's Bay"}
+- {name: "Bridge Pa Triangle", country: NZ, parent: "Hawke's Bay"}
 - {name: "Wairarapa", country: NZ, classification: GI}
 - {name: "Martinborough", country: NZ, parent: "Wairarapa", classification: GI}
+- {name: "Gladstone", country: NZ, parent: "Wairarapa", classification: GI}
 - {name: "Nelson", country: NZ, classification: GI}
-- {name: "Canterbury", country: NZ, classification: GI, synonyms: ["North Canterbury"]}
-- {name: "Waipara", country: NZ, parent: "Canterbury", classification: GI, synonyms: ["Waipara Valley"]}
-- {name: "Gisborne", country: NZ, classification: GI}
-- {name: "Auckland", country: NZ, classification: GI}
-- {name: "Waiheke Island", country: NZ, parent: "Auckland", classification: GI, synonyms: ["Waiheke"]}
+- {name: "Moutere Hills", country: NZ, parent: "Nelson", synonyms: ["Moutere"]}
+- {name: "Waimea Plains", country: NZ, parent: "Nelson", synonyms: ["Waimea"]}
+- {name: "Marlborough", country: NZ, classification: GI}
+- {name: "Wairau Valley", country: NZ, parent: "Marlborough"}
+- {name: "Southern Valleys", country: NZ, parent: "Marlborough"}
+- {name: "Awatere Valley", country: NZ, parent: "Marlborough"}
+- {name: "Canterbury", country: NZ, classification: GI}
+- {name: "North Canterbury", country: NZ, parent: "Canterbury", classification: GI}
+- {name: "Waipara Valley", country: NZ, parent: "North Canterbury", classification: GI, synonyms: ["Waipara"]}
+- {name: "Waitaki Valley", country: NZ, classification: GI, synonyms: ["Waitaki Valley North Otago"]}
+- {name: "Central Otago", country: NZ, classification: GI}
+- {name: "Bannockburn", country: NZ, parent: "Central Otago", classification: GI}
+- {name: "Gibbston", country: NZ, parent: "Central Otago"}
+- {name: "Bendigo", country: NZ, parent: "Central Otago"}
+- {name: "Cromwell", country: NZ, parent: "Central Otago", synonyms: ["Cromwell Basin"]}
+- {name: "Lowburn", country: NZ, parent: "Central Otago"}
+- {name: "Pisa", country: NZ, parent: "Central Otago"}
+- {name: "Alexandra", country: NZ, parent: "Central Otago"}
+- {name: "Wanaka", country: NZ, parent: "Central Otago", synonyms: ["Wānaka"]}
 
 # ======================= UNITED STATES =======================
 - {name: "California", country: US, synonyms: ["CA", "Calif."]}

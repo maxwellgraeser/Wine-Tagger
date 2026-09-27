@@ -436,3 +436,28 @@ DE:
     "Müllerrebe": "Pinot Meunier"
     "Ruländer": "Pinot Gris"
     "Lemberger": "Blaufränkisch"
+AT:
+  regions:
+    "Lower Austria": "Niederösterreich"
+    "Styria": "Steiermark"
+    "Vienna": "Wien"
+    "Wiener Gemischter Satz DAC": "Wiener Gemischter Satz"
+    "Neusiedler See": "Neusiedlersee"
+    "Weissenkirchen": "Weißenkirchen"
+    "Spitz an der Donau": "Spitz"
+    "Krems an der Donau": "Krems"
+    "Vulkanland": "Vulkanland Steiermark"
+    "Kamptal DAC": "Kamptal"
+  grapes:
+    "Morillon": "Chardonnay"
+    "Muskat-Sylvaner": "Sauvignon Blanc"
+    "Wildbacher": "Blauer Wildbacher"
+NZ:
+  regions:
+    "Waipara": "Waipara Valley"
+    "Waiheke": "Waiheke Island"
+    "Hawkes Bay": "Hawke's Bay"
+    "North Canterbury": "North Canterbury"
+    "Cromwell Basin": "Cromwell"
+    "Gibbston": "Gibbston"
+    "Awatere Valley": "Awatere Valley"

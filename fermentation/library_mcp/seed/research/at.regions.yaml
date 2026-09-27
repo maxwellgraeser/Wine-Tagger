@@ -1,0 +1,71 @@
+# AT: existing library entries (kept, grapes added where the DAC regulation names them)
+- {name: "Niederösterreich", country: AT, synonyms: ["Lower Austria", "Niederosterreich"], source: "https://www.austrianwine.com/our-wine/winegrowing-regions/niederoesterreich-lower-austria"}
+- {name: "Wachau", country: AT, parent: "Niederösterreich", classification: DAC, grapes: ["Grüner Veltliner", "Riesling"], source: "https://www.oesterreichwein.at/unser-wein/weinbaugebiete/niederoesterreich/wachau"}
+- {name: "Kamptal", country: AT, parent: "Niederösterreich", classification: DAC, grapes: ["Grüner Veltliner", "Riesling"], source: "https://www.oesterreichwein.at/unser-wein/weinbaugebiete/niederoesterreich/kamptal"}
+- {name: "Kremstal", country: AT, parent: "Niederösterreich", classification: DAC, grapes: ["Grüner Veltliner", "Riesling"], source: "https://www.oesterreichwein.at/unser-wein/weinbaugebiete/niederoesterreich/kremstal"}
+- {name: "Traisental", country: AT, parent: "Niederösterreich", classification: DAC, grapes: ["Grüner Veltliner", "Riesling"], source: "https://www.austrianwine.com/our-wine/winegrowing-regions/niederoesterreich-lower-austria/traisental"}
+- {name: "Wagram", country: AT, parent: "Niederösterreich", classification: DAC, grapes: ["Grüner Veltliner", "Roter Veltliner", "Riesling"], source: "https://www.austrianwine.com/our-wine/winegrowing-regions/niederoesterreich-lower-austria/wagram"}
+- {name: "Weinviertel", country: AT, parent: "Niederösterreich", classification: DAC, grapes: ["Grüner Veltliner"], source: "https://en.wikipedia.org/wiki/Weinviertel_DAC"}
+- {name: "Carnuntum", country: AT, parent: "Niederösterreich", classification: DAC, grapes: ["Zweigelt", "Blaufränkisch", "Chardonnay", "Pinot Blanc", "Grüner Veltliner"], source: "https://www.oesterreichwein.at/unser-wein/weinbaugebiete/niederoesterreich/carnuntum"}
+- {name: "Thermenregion", country: AT, parent: "Niederösterreich", classification: DAC, grapes: ["Zierfandler", "Rotgipfler"], source: "https://www.austrianwine.com/our-wine/winegrowing-regions/niederoesterreich-lower-austria/thermenregion"}
+- {name: "Burgenland", country: AT, source: "https://www.austrianwine.com/our-wine/winegrowing-regions/burgenland"}
+- {name: "Neusiedlersee", country: AT, parent: "Burgenland", classification: DAC, synonyms: ["Neusiedler See"], grapes: ["Zweigelt"], source: "https://www.austrianwine.com/our-wine/winegrowing-regions/burgenland/neusiedlersee"}
+- {name: "Leithaberg", country: AT, parent: "Burgenland", classification: DAC, grapes: ["Grüner Veltliner", "Pinot Blanc", "Chardonnay", "Neuburger", "Blaufränkisch"], source: "https://www.austrianwine.com/our-wine/winegrowing-regions/burgenland/leithaberg"}
+- {name: "Mittelburgenland", country: AT, parent: "Burgenland", classification: DAC, grapes: ["Blaufränkisch"], source: "https://www.austrianwine.com/our-wine/winegrowing-regions/burgenland/mittelburgenland"}
+- {name: "Eisenberg", country: AT, parent: "Burgenland", classification: DAC, synonyms: ["Südburgenland"], grapes: ["Blaufränkisch"], source: "https://www.austrianwine.com/our-wine/winegrowing-regions/burgenland/eisenberg"}
+- {name: "Rosalia", country: AT, parent: "Burgenland", classification: DAC, grapes: ["Blaufränkisch", "Zweigelt"], source: "https://burgenland.orf.at/stories/3004156/"}
+- {name: "Ruster Ausbruch", country: AT, parent: "Burgenland", classification: DAC, grapes: ["Furmint", "Welschriesling"], source: "https://www.oesterreichwein.at/unser-wein/strategie-des-herkunftsmarketings/gebietstypischer-qualitaetswein-dac"}
+- {name: "Steiermark", country: AT, synonyms: ["Styria"], source: "https://www.austrianwine.com/our-wine/winegrowing-regions/steiermark-styria"}
+- {name: "Südsteiermark", country: AT, parent: "Steiermark", classification: DAC, synonyms: ["South Styria", "Sudsteiermark"], grapes: ["Sauvignon Blanc", "Welschriesling", "Pinot Blanc", "Chardonnay", "Gewürztraminer", "Pinot Gris"], source: "https://steiermark.wine/en/original/winegrowing-regions/suedsteiermark/"}
+- {name: "Vulkanland Steiermark", country: AT, parent: "Steiermark", classification: DAC, synonyms: ["Vulkanland"], grapes: ["Sauvignon Blanc", "Welschriesling", "Pinot Blanc", "Chardonnay", "Gewürztraminer", "Pinot Gris"], source: "https://steiermark.wine/en/original/winegrowing-regions/vulkanland-steiermark/"}
+- {name: "Weststeiermark", country: AT, parent: "Steiermark", classification: DAC, synonyms: ["West Styria"], grapes: ["Blauer Wildbacher", "Sauvignon Blanc"], source: "https://steiermark.wine/en/original/winegrowing-regions/weststeiermark/"}
+- {name: "Wien", country: AT, synonyms: ["Vienna"], source: "https://www.stadtlandwirtschaft.wien/stadtlandwirtschaft/WienerGemischterSatzDAC"}
+- {name: "Wiener Gemischter Satz", country: AT, parent: "Wien", classification: DAC, synonyms: [], source: "https://www.stadtlandwirtschaft.wien/stadtlandwirtschaft/WienerGemischterSatzDAC"}
+
+# New: Landwein PGI zones (overlay designations spanning multiple Bundesländer/DACs; no children)
+- {name: "Weinland Österreich", country: AT, classification: Landwein, synonyms: ["Weinland"], source: "https://www.austrianwine.com/our-wine/wine-law/categories-of-wine-according-to-origin/wine-with-protected-geographical-indication"}
+- {name: "Steirerland", country: AT, classification: Landwein, source: "https://www.austrianwine.com/our-wine/wine-law/categories-of-wine-according-to-origin/wine-with-protected-geographical-indication"}
+- {name: "Bergland Österreich", country: AT, classification: Landwein, synonyms: ["Bergland"], source: "https://www.austrianwine.com/our-wine/wine-law/categories-of-wine-according-to-origin/wine-with-protected-geographical-indication"}
+
+# New: Wachau Ortswein villages
+- {name: "Spitz", country: AT, parent: "Wachau", classification: Gemeinde, synonyms: ["Spitz an der Donau"], source: "https://www.vinea-wachau.at/en/the-wine-region/wachau-dac"}
+- {name: "Wösendorf", country: AT, parent: "Wachau", classification: Gemeinde, source: "https://www.vinea-wachau.at/en/the-wine-region/wachau-dac"}
+- {name: "Weißenkirchen", country: AT, parent: "Wachau", classification: Gemeinde, synonyms: ["Weißenkirchen in der Wachau", "Weissenkirchen"], source: "https://www.vinea-wachau.at/en/the-wine-region/wachau-dac"}
+- {name: "Joching", country: AT, parent: "Wachau", classification: Gemeinde, source: "https://www.vinea-wachau.at/en/the-wine-region/wachau-dac"}
+- {name: "Dürnstein", country: AT, parent: "Wachau", classification: Gemeinde, synonyms: ["Duernstein"], source: "https://www.vinea-wachau.at/en/the-wine-region/wachau-dac"}
+- {name: "Loiben", country: AT, parent: "Wachau", classification: Gemeinde, source: "https://www.vinea-wachau.at/en/the-wine-region/wachau-dac"}
+- {name: "Rossatz", country: AT, parent: "Wachau", classification: Gemeinde, source: "https://www.vinea-wachau.at/en/the-wine-region/wachau-dac"}
+- {name: "Mautern", country: AT, parent: "Wachau", classification: Gemeinde, synonyms: ["Mautern an der Donau"], source: "https://www.vinea-wachau.at/en/the-wine-region/wachau-dac"}
+
+# New: Kamptal Ortswein villages
+- {name: "Langenlois", country: AT, parent: "Kamptal", classification: Gemeinde, source: "https://www.weinkultur-kamptal.at/die-besten-ortsweine-im-kamptal/"}
+- {name: "Gobelsburg", country: AT, parent: "Kamptal", classification: Gemeinde, source: "https://www.weinkultur-kamptal.at/die-besten-ortsweine-im-kamptal/"}
+- {name: "Zöbing", country: AT, parent: "Kamptal", classification: Gemeinde, synonyms: ["Zobing"], source: "https://www.weinkultur-kamptal.at/die-besten-ortsweine-im-kamptal/"}
+- {name: "Straß im Straßertal", country: AT, parent: "Kamptal", classification: Gemeinde, synonyms: ["Straß im Straßertale"], source: "https://www.weinkultur-kamptal.at/die-besten-ortsweine-im-kamptal/"}
+- {name: "Schönberg", country: AT, parent: "Kamptal", classification: Gemeinde, synonyms: ["Schoenberg"], source: "https://www.weinkultur-kamptal.at/die-besten-ortsweine-im-kamptal/"}
+- {name: "Hadersdorf", country: AT, parent: "Kamptal", classification: Gemeinde, source: "https://www.weinkultur-kamptal.at/die-besten-ortsweine-im-kamptal/"}
+
+# New: Kremstal Ortswein villages
+- {name: "Krems", country: AT, parent: "Kremstal", classification: Gemeinde, synonyms: ["Krems an der Donau"], source: "https://www.weingutstadtkrems.at/ortsweine"}
+- {name: "Stein", country: AT, parent: "Kremstal", classification: Gemeinde, synonyms: ["Stein an der Donau"], source: "https://www.weingutstadtkrems.at/ortsweine"}
+- {name: "Senftenberg", country: AT, parent: "Kremstal", classification: Gemeinde, source: "https://www.weingutstadtkrems.at/ortsweine"}
+- {name: "Rohrendorf", country: AT, parent: "Kremstal", classification: Gemeinde, source: "https://www.oesterreichwein.at/unser-wein/weinbaugebiete/niederoesterreich/kremstal"}
+- {name: "Gedersdorf", country: AT, parent: "Kremstal", classification: Gemeinde, source: "https://www.oesterreichwein.at/unser-wein/weinbaugebiete/niederoesterreich/kremstal"}
+
+# New: Südsteiermark Ortswein villages
+- {name: "Gamlitz", country: AT, parent: "Südsteiermark", classification: Gemeinde, source: "https://steiermark.wine/wein/ortsweine/"}
+- {name: "Kitzeck-Sausal", country: AT, parent: "Südsteiermark", classification: Gemeinde, source: "https://steiermark.wine/wein/ortsweine/"}
+- {name: "Leutschach", country: AT, parent: "Südsteiermark", classification: Gemeinde, synonyms: ["Leutschach an der Weinstraße"], source: "https://steiermark.wine/wein/ortsweine/"}
+- {name: "Ehrenhausen", country: AT, parent: "Südsteiermark", classification: Gemeinde, synonyms: ["Ehrenhausen an der Weinstraße"], source: "https://steiermark.wine/wein/ortsweine/"}
+- {name: "Eichberg", country: AT, parent: "Südsteiermark", classification: Gemeinde, source: "https://steiermark.wine/wein/ortsweine/"}
+
+# New: Vulkanland Steiermark Ortswein villages
+- {name: "Klöch", country: AT, parent: "Vulkanland Steiermark", classification: Gemeinde, synonyms: ["Kloech"], source: "https://steiermark.wine/wein/ortsweine/"}
+- {name: "St. Anna", country: AT, parent: "Vulkanland Steiermark", classification: Gemeinde, synonyms: ["St. Anna am Aigen"], source: "https://steiermark.wine/wein/ortsweine/"}
+- {name: "Straden", country: AT, parent: "Vulkanland Steiermark", classification: Gemeinde, source: "https://steiermark.wine/wein/ortsweine/"}
+- {name: "Riegersburg", country: AT, parent: "Vulkanland Steiermark", classification: Gemeinde, source: "https://steiermark.wine/wein/ortsweine/"}
+
+# New: Weststeiermark Ortswein villages
+- {name: "Stainz", country: AT, parent: "Weststeiermark", classification: Gemeinde, source: "https://steiermark.wine/en/original/winegrowing-regions/weststeiermark/"}
+- {name: "Deutschlandsberg", country: AT, parent: "Weststeiermark", classification: Gemeinde, source: "https://steiermark.wine/en/original/winegrowing-regions/weststeiermark/"}
+- {name: "Ligist", country: AT, parent: "Weststeiermark", classification: Gemeinde, source: "https://steiermark.wine/en/original/winegrowing-regions/weststeiermark/"}

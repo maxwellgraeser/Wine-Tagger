@@ -1,0 +1,5 @@
+- {name: "Blauer Wildbacher", color: red, synonyms: ["Wildbacher"], source: "https://en.wikipedia.org/wiki/Wildbacher"}
+- {name: "Frühroter Veltliner", color: gris, synonyms: [], source: "https://en.wikipedia.org/wiki/Fr%C3%BChroter_Veltliner"}
+- {name: "Sauvignon Blanc", existing: true, synonyms: ["Muskat-Sylvaner"], source: "https://www.austrianwine.com/our-wine/grape-varieties/white-wine/sauvignon-blanc"}
+- {name: "Chardonnay", existing: true, synonyms: ["Morillon"], source: "https://www.austrianwine.com/our-wine/grape-varieties/white-wine/morillon-chardonnay"}
+- {name: "Pinot Blanc", existing: true, synonyms: ["Weißer Burgunder"], source: "https://www.austrianwine.com/our-wine/grape-varieties/white-wine/pinot-blanc"}
