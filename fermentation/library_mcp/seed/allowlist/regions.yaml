@@ -1787,14 +1787,51 @@
 - {name: "Commandaria", country: CY, classification: PDO, synonyms: ["Koumandaria"]}
 
 # ======================= CENTRAL & EASTERN EUROPE =======================
-- {name: "Tokaj", country: HU, synonyms: ["Tokaji", "Tokaj-Hegyalja", "Tokay"]}
-- {name: "Eger", country: HU, synonyms: ["Egri", "Egri Bikavér"]}
-- {name: "Villány", country: HU, synonyms: ["Villany"]}
-- {name: "Szekszárd", country: HU, synonyms: ["Szekszard"]}
-- {name: "Balaton", country: HU, synonyms: ["Lake Balaton", "Balatonfüred-Csopak"]}
-- {name: "Badacsony", country: HU, parent: "Balaton"}
-- {name: "Somló", country: HU, synonyms: ["Somlo"]}
-- {name: "Sopron", country: HU}
+- {name: "Tokaj", country: HU, classification: PDO, synonyms: ["Tokaji", "Tokaj-Hegyalja", "Tokay"], grapes: ["Furmint", "Hárslevelű", "Muscat Blanc à Petits Grains", "Zéta", "Kövérszőlő", "Kabar"]}
+- {name: "Felső-Magyarország", country: HU, synonyms: ["Upper Hungary", "Upper Hungary Wine Region"]}
+- {name: "Felső-Pannon", country: HU, synonyms: ["Upper Pannon", "Upper Pannon Wine Region"]}
+- {name: "Balaton", country: HU, synonyms: ["Lake Balaton"]}
+- {name: "Duna", country: HU, synonyms: ["Danube", "Danube Wine Region"]}
+- {name: "Pannon", country: HU}
+- {name: "Eger", country: HU, parent: "Felső-Magyarország", classification: PDO, synonyms: ["Egri", "Egri Bikavér"]}
+- {name: "Debrői Hárslevelű", country: HU, parent: "Eger", classification: PDO, grapes: ["Hárslevelű"]}
+- {name: "Mátra", country: HU, parent: "Felső-Magyarország", classification: PDO, synonyms: ["Mátrai"]}
+- {name: "Bükk", country: HU, parent: "Felső-Magyarország", classification: PDO, synonyms: ["Bükki"]}
+- {name: "Sopron", country: HU, parent: "Felső-Pannon", classification: PDO, synonyms: ["Soproni"]}
+- {name: "Etyek-Buda", country: HU, parent: "Felső-Pannon", classification: PDO, synonyms: ["Etyek-Budai", "Etyek"]}
+- {name: "Mór", country: HU, parent: "Felső-Pannon", classification: PDO, synonyms: ["Móri"]}
+- {name: "Neszmély", country: HU, parent: "Felső-Pannon", classification: PDO, synonyms: ["Neszmélyi"]}
+- {name: "Pannonhalma", country: HU, parent: "Felső-Pannon", classification: PDO, synonyms: ["Pannonhalmi"]}
+- {name: "Badacsony", country: HU, parent: "Balaton", classification: PDO, synonyms: ["Badacsonyi"], grapes: ["Kéknyelű", "Welschriesling"]}
+- {name: "Balatonfüred-Csopak", country: HU, parent: "Balaton", classification: PDO, synonyms: ["Balatonfüred-Csopaki"]}
+- {name: "Csopak", country: HU, parent: "Balatonfüred-Csopak", classification: PDO, synonyms: ["Csopaki"], grapes: ["Welschriesling", "Furmint"]}
+- {name: "Balaton-felvidék", country: HU, parent: "Balaton", classification: PDO, synonyms: ["Balaton-felvidéki", "Balaton Uplands"]}
+- {name: "Somló", country: HU, parent: "Balaton", classification: PDO, synonyms: ["Somlo", "Somlói", "Nagy-Somló"], grapes: ["Juhfark", "Furmint", "Welschriesling"]}
+- {name: "Zala", country: HU, parent: "Balaton", classification: PDO, synonyms: ["Zalai"]}
+- {name: "Balatonboglár", country: HU, parent: "Balaton", classification: PDO, synonyms: ["Balatonboglári"]}
+- {name: "Kunság", country: HU, parent: "Duna", classification: PDO, synonyms: ["Kunsági"]}
+- {name: "Csongrád", country: HU, parent: "Duna", classification: PDO, synonyms: ["Csongrádi"]}
+- {name: "Hajós-Baja", country: HU, parent: "Duna", classification: PDO, synonyms: ["Hajós-Bajai"]}
+- {name: "Villány", country: HU, parent: "Pannon", classification: PDO, synonyms: ["Villany", "Villányi"], grapes: ["Cabernet Franc", "Blaufränkisch", "Portugieser"]}
+- {name: "Szekszárd", country: HU, parent: "Pannon", classification: PDO, synonyms: ["Szekszard", "Szekszárdi"]}
+- {name: "Pécs", country: HU, parent: "Pannon", classification: PDO, synonyms: ["Pécsi"]}
+- {name: "Tolna", country: HU, parent: "Pannon", classification: PDO, synonyms: ["Tolnai"]}
+- {name: "Duna-Tisza közi", country: HU, classification: PGI, synonyms: ["Duna-Tisza-közi"]}
+- {name: "Dunántúli", country: HU, classification: PGI, synonyms: ["Transdanubian"]}
+- {name: "Felső-Magyarországi", country: HU, classification: PGI}
+- {name: "Balatonmelléki", country: HU, classification: PGI}
+- {name: "Zemplén", country: HU, classification: PGI, synonyms: ["Zempléni"]}
+- {name: "Mád", country: HU, parent: "Tokaj", classification: Gemeinde, synonyms: ["Mad"]}
+- {name: "Tarcal", country: HU, parent: "Tokaj", classification: Gemeinde}
+- {name: "Tállya", country: HU, parent: "Tokaj", classification: Gemeinde, synonyms: ["Tallya"]}
+- {name: "Tolcsva", country: HU, parent: "Tokaj", classification: Gemeinde}
+- {name: "Sárospatak", country: HU, parent: "Tokaj", classification: Gemeinde, synonyms: ["Sarospatak"]}
+- {name: "Erdőbénye", country: HU, parent: "Tokaj", classification: Gemeinde, synonyms: ["Erdobenye"]}
+- {name: "Mezőzombor", country: HU, parent: "Tokaj", classification: Gemeinde, synonyms: ["Mezozombor"]}
+- {name: "Bodrogkeresztúr", country: HU, parent: "Tokaj", classification: Gemeinde, synonyms: ["Bodrogkeresztur"]}
+- {name: "Sátoraljaújhely", country: HU, parent: "Tokaj", classification: Gemeinde, synonyms: ["Satoraljaujhely"]}
+- {name: "Bodrogkisfalud", country: HU, parent: "Tokaj", classification: Gemeinde}
+- {name: "Rátka", country: HU, parent: "Tokaj", classification: Gemeinde, synonyms: ["Ratka"]}
 - {name: "Moravia", country: CZ, synonyms: ["Morava"]}
 - {name: "Dealu Mare", country: RO}
 - {name: "Murfatlar", country: RO}

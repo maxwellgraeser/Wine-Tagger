@@ -1,0 +1,15 @@
+# New Hungarian grapes not in grapes.yaml under any name/synonym
+- {name: "Zéta", color: white, synonyms: ["Oremus"], source: "https://en.wikipedia.org/wiki/Z%C3%A9ta_(grape)"}
+- {name: "Kövérszőlő", color: white, synonyms: ["Koverszolo"], source: "https://en.wikipedia.org/wiki/K%C3%B6v%C3%A9rsz%C5%91l%C5%91"}
+- {name: "Kabar", color: white, synonyms: [], source: "https://en.wikipedia.org/wiki/Kabar_(grape)"}
+- {name: "Kövidinka", color: white, synonyms: ["Kovidinka"], source: "https://en.wikipedia.org/wiki/K%C3%B6vidinka"}
+- {name: "Ezerjó", color: white, synonyms: ["Ezerjo"], source: "https://en.wikipedia.org/wiki/Ezerj%C3%B3"}
+- {name: "Budai Zöld", color: white, synonyms: ["Budai Zold"], source: "https://en.wikipedia.org/wiki/Budai_z%C3%B6ld"}
+- {name: "Bíborkadarka", color: red, synonyms: ["Biborkadarka"], source: "https://en.wikipedia.org/wiki/Kadarka"}
+- {name: "Turán", color: red, synonyms: ["Turan"], source: "https://en.wikipedia.org/wiki/Tur%C3%A1n_(grape)"}
+
+# Existing grapes with a Hungarian local name not yet listed as a synonym
+- {name: "Fetească Regală", existing: true, synonyms: ["Királyleányka", "Kiralyleanyka"], source: "https://en.wikipedia.org/wiki/Feteasc%C4%83_Regal%C4%83"}
+- {name: "Muscat Blanc à Petits Grains", existing: true, synonyms: ["Sárgamuskotály"], source: "https://en.wikipedia.org/wiki/Muscat_blanc_%C3%A0_Petits_Grains"}
+- {name: "Pinot Gris", existing: true, synonyms: ["Szürkebarát"], source: "https://en.wikipedia.org/wiki/Pinot_gris"}
+- {name: "Gewürztraminer", existing: true, synonyms: ["Tramini"], source: "https://en.wikipedia.org/wiki/Gew%C3%BCrztraminer"}

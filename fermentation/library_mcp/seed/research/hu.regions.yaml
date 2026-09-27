@@ -1,0 +1,60 @@
+# Borrégiók (6) — informal groupings, no classification (matches existing HU convention)
+- {name: "Tokaj", country: HU, classification: PDO, synonyms: ["Tokaji", "Tokaj-Hegyalja", "Tokay"], grapes: ["Furmint", "Hárslevelű", "Muscat Blanc à Petits Grains", "Zéta", "Kövérszőlő", "Kabar"], source: "https://boraszat.kormany.hu/tokaj"}
+- {name: "Felső-Magyarország", country: HU, synonyms: ["Upper Hungary", "Upper Hungary Wine Region"], source: "https://bor.hu/en/"}
+- {name: "Felső-Pannon", country: HU, synonyms: ["Upper Pannon", "Upper Pannon Wine Region"], source: "https://bor.hu/en/"}
+- {name: "Balaton", country: HU, synonyms: ["Lake Balaton"], source: "https://bor.hu/en/"}
+- {name: "Duna", country: HU, synonyms: ["Danube", "Danube Wine Region"], source: "https://bor.hu/en/"}
+- {name: "Pannon", country: HU, source: "https://bor.hu/en/"}
+
+# Felső-Magyarország districts
+- {name: "Eger", country: HU, parent: "Felső-Magyarország", classification: PDO, synonyms: ["Egri", "Egri Bikavér"], source: "https://boraszat.kormany.hu/eger"}
+- {name: "Debrői Hárslevelű", country: HU, parent: "Eger", classification: PDO, synonyms: [], grapes: ["Hárslevelű"], source: "https://boraszat.kormany.hu/debroi-harslevelu"}
+- {name: "Mátra", country: HU, parent: "Felső-Magyarország", classification: PDO, synonyms: ["Mátrai"], source: "https://bor.hu/en/"}
+- {name: "Bükk", country: HU, parent: "Felső-Magyarország", classification: PDO, synonyms: ["Bükki"], source: "https://bor.hu/en/"}
+
+# Felső-Pannon districts
+- {name: "Sopron", country: HU, parent: "Felső-Pannon", classification: PDO, synonyms: ["Soproni"], source: "https://boraszat.kormany.hu/sopron"}
+- {name: "Etyek-Buda", country: HU, parent: "Felső-Pannon", classification: PDO, synonyms: ["Etyek-Budai", "Etyek"], source: "https://bor.hu/en/etyek-budai-wine-district/"}
+- {name: "Mór", country: HU, parent: "Felső-Pannon", classification: PDO, synonyms: ["Móri"], source: "https://bor.hu/en/"}
+- {name: "Neszmély", country: HU, parent: "Felső-Pannon", classification: PDO, synonyms: ["Neszmélyi"], source: "https://bor.hu/en/"}
+- {name: "Pannonhalma", country: HU, parent: "Felső-Pannon", classification: PDO, synonyms: ["Pannonhalmi"], source: "https://bor.hu/en/"}
+
+# Balaton districts
+- {name: "Badacsony", country: HU, parent: "Balaton", classification: PDO, synonyms: ["Badacsonyi"], grapes: ["Kéknyelű", "Welschriesling"], source: "https://boraszat.kormany.hu/badacsony"}
+- {name: "Balatonfüred-Csopak", country: HU, parent: "Balaton", classification: PDO, synonyms: ["Balatonfüred-Csopaki"], source: "https://boraszat.kormany.hu/balatonfured-csopak"}
+- {name: "Csopak", country: HU, parent: "Balatonfüred-Csopak", classification: PDO, synonyms: ["Csopaki"], grapes: ["Welschriesling", "Furmint"], source: "https://boraszat.kormany.hu/csopak"}
+- {name: "Balaton-felvidék", country: HU, parent: "Balaton", classification: PDO, synonyms: ["Balaton-felvidéki", "Balaton Uplands"], source: "https://bor.hu/en/"}
+- {name: "Somló", country: HU, parent: "Balaton", classification: PDO, synonyms: ["Somlo", "Somlói", "Nagy-Somló"], grapes: ["Juhfark", "Furmint", "Welschriesling"], source: "https://boraszat.kormany.hu/somlo"}
+- {name: "Zala", country: HU, parent: "Balaton", classification: PDO, synonyms: ["Zalai"], source: "https://bor.hu/en/"}
+- {name: "Balatonboglár", country: HU, parent: "Balaton", classification: PDO, synonyms: ["Balatonboglári"], source: "https://bor.hu/en/"}
+
+# Duna districts
+- {name: "Kunság", country: HU, parent: "Duna", classification: PDO, synonyms: ["Kunsági"], source: "https://bor.hu/en/"}
+- {name: "Csongrád", country: HU, parent: "Duna", classification: PDO, synonyms: ["Csongrádi"], source: "https://bor.hu/en/"}
+- {name: "Hajós-Baja", country: HU, parent: "Duna", classification: PDO, synonyms: ["Hajós-Bajai"], source: "https://bor.hu/en/"}
+
+# Pannon districts
+- {name: "Villány", country: HU, parent: "Pannon", classification: PDO, synonyms: ["Villany", "Villányi"], grapes: ["Cabernet Franc", "Blaufränkisch", "Portugieser"], source: "https://boraszat.kormany.hu/villany"}
+- {name: "Szekszárd", country: HU, parent: "Pannon", classification: PDO, synonyms: ["Szekszard", "Szekszárdi"], source: "https://boraszat.kormany.hu/szekszard"}
+- {name: "Pécs", country: HU, parent: "Pannon", classification: PDO, synonyms: ["Pécsi"], source: "https://bor.hu/en/"}
+- {name: "Tolna", country: HU, parent: "Pannon", classification: PDO, synonyms: ["Tolnai"], source: "https://bor.hu/en/"}
+
+# PGI (OFJ) tier
+- {name: "Duna-Tisza közi", country: HU, classification: PGI, synonyms: ["Duna-Tisza-közi"], source: "https://boraszat.kormany.hu/duna-tisza"}
+- {name: "Dunántúli", country: HU, classification: PGI, synonyms: ["Transdanubian"], source: "https://gi.kormany.hu/foldrajzi-arujelzok"}
+- {name: "Felső-Magyarországi", country: HU, classification: PGI, synonyms: [], source: "https://gi.kormany.hu/foldrajzi-arujelzok"}
+- {name: "Balatonmelléki", country: HU, classification: PGI, synonyms: [], source: "https://gi.kormany.hu/foldrajzi-arujelzok"}
+- {name: "Zemplén", country: HU, classification: PGI, synonyms: ["Zempléni"], source: "https://gi.kormany.hu/foldrajzi-arujelzok"}
+
+# Tokaj villages (label-relevant, aiming for 10-15 of the historic 22)
+- {name: "Mád", country: HU, parent: "Tokaj", classification: Gemeinde, synonyms: ["Mad"], source: "https://winesofhungary.hu/wine-regions/tokaj-wine-region/tokaj-wine-district"}
+- {name: "Tarcal", country: HU, parent: "Tokaj", classification: Gemeinde, synonyms: [], source: "https://winesofhungary.hu/wine-regions/tokaj-wine-region/tokaj-wine-district"}
+- {name: "Tállya", country: HU, parent: "Tokaj", classification: Gemeinde, synonyms: ["Tallya"], source: "https://winesofhungary.hu/wine-regions/tokaj-wine-region/tokaj-wine-district"}
+- {name: "Tolcsva", country: HU, parent: "Tokaj", classification: Gemeinde, synonyms: [], source: "https://winesofhungary.hu/wine-regions/tokaj-wine-region/tokaj-wine-district"}
+- {name: "Sárospatak", country: HU, parent: "Tokaj", classification: Gemeinde, synonyms: ["Sarospatak"], source: "https://winesofhungary.hu/wine-regions/tokaj-wine-region/tokaj-wine-district"}
+- {name: "Erdőbénye", country: HU, parent: "Tokaj", classification: Gemeinde, synonyms: ["Erdobenye"], source: "https://winesofhungary.hu/wine-regions/tokaj-wine-region/tokaj-wine-district"}
+- {name: "Mezőzombor", country: HU, parent: "Tokaj", classification: Gemeinde, synonyms: ["Mezozombor"], source: "https://winesofhungary.hu/wine-regions/tokaj-wine-region/tokaj-wine-district"}
+- {name: "Bodrogkeresztúr", country: HU, parent: "Tokaj", classification: Gemeinde, synonyms: ["Bodrogkeresztur"], source: "https://winesofhungary.hu/wine-regions/tokaj-wine-region/tokaj-wine-district"}
+- {name: "Sátoraljaújhely", country: HU, parent: "Tokaj", classification: Gemeinde, synonyms: ["Satoraljaujhely"], source: "https://winesofhungary.hu/wine-regions/tokaj-wine-region/tokaj-wine-district"}
+- {name: "Bodrogkisfalud", country: HU, parent: "Tokaj", classification: Gemeinde, synonyms: [], source: "https://winesofhungary.hu/wine-regions/tokaj-wine-region/tokaj-wine-district"}
+- {name: "Rátka", country: HU, parent: "Tokaj", classification: Gemeinde, synonyms: ["Ratka"], source: "https://winesofhungary.hu/wine-regions/tokaj-wine-region/tokaj-wine-district"}

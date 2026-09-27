@@ -65,12 +65,12 @@
 - {name: "Gros Manseng", color: white}
 - {name: "Petit Manseng", color: white}
 - {name: "Riesling", color: white, synonyms: ["Johannisberg Riesling", "White Riesling", "Rheinriesling", "Riesling Renano", "Weisser Riesling", "Rhine Riesling", "Weißer Riesling"]}
-- {name: "Gewürztraminer", color: white, synonyms: ["Gewurztraminer", "Traminer", "Traminer Aromatico"]}
-- {name: "Pinot Gris", color: white, synonyms: ["Pinot Grigio", "Grauburgunder", "Ruländer", "Rulander", "PG", "Grauer Burgunder", "Pinot Beurot", "Tokay d'Alsace", "Tokay Pinot Gris", "Malvoisie"]}
+- {name: "Gewürztraminer", color: white, synonyms: ["Gewurztraminer", "Traminer", "Traminer Aromatico", "Tramini"]}
+- {name: "Pinot Gris", color: white, synonyms: ["Pinot Grigio", "Grauburgunder", "Ruländer", "Rulander", "PG", "Grauer Burgunder", "Pinot Beurot", "Tokay d'Alsace", "Tokay Pinot Gris", "Malvoisie", "Szürkebarát"]}
 - {name: "Pinot Blanc", color: white, synonyms: ["Pinot Bianco", "Weissburgunder", "Weißburgunder", "Weisser Burgunder", "Weißer Burgunder"]}
 - {name: "Auxerrois Blanc", color: white, synonyms: ["Auxerrois", "Pinot Auxerrois"]}
 - {name: "Silvaner", color: white, synonyms: ["Sylvaner", "Grüner Silvaner"]}
-- {name: "Muscat Blanc à Petits Grains", color: white, synonyms: ["Muscat", "Moscato", "Moscato Bianco", "Muscat Canelli", "Muscat Blanc", "Moscatel Galego", "Gelber Muskateller", "Muskateller", "Tamjanika", "Muscat de Frontignan", "Moscato d'Asti (grape)", "Muscadel", "Muskadel", "Red Muscadel", "White Muscadel", "Moscatel de Grano Menudo", "Moscadello", "Moschato Aspro", "Brown Muscat", "Temjanika"]}
+- {name: "Muscat Blanc à Petits Grains", color: white, synonyms: ["Muscat", "Moscato", "Moscato Bianco", "Muscat Canelli", "Muscat Blanc", "Moscatel Galego", "Gelber Muskateller", "Muskateller", "Tamjanika", "Muscat de Frontignan", "Moscato d'Asti (grape)", "Muscadel", "Muskadel", "Red Muscadel", "White Muscadel", "Moscatel de Grano Menudo", "Moscadello", "Moschato Aspro", "Brown Muscat", "Temjanika", "Sárgamuskotály"]}
 - {name: "Muscat of Alexandria", color: white, synonyms: ["Moscatel", "Zibibbo", "Moscatel de Alejandría", "Muscat Gordo Blanco", "Gordo", "Hanepoot", "Moscatel de Setúbal (grape)", "Muscat d'Alexandrie"]}
 - {name: "Muscat Ottonel", color: white}
 - {name: "Aligoté", color: white, synonyms: ["Aligote"]}
@@ -309,7 +309,7 @@
 - {name: "Kéknyelű", color: white, synonyms: ["Keknyelu"]}
 - {name: "Fetească Neagră", color: red, synonyms: ["Feteasca Neagra"]}
 - {name: "Fetească Albă", color: white, synonyms: ["Feteasca Alba"]}
-- {name: "Fetească Regală", color: white, synonyms: ["Feteasca Regala"]}
+- {name: "Fetească Regală", color: white, synonyms: ["Feteasca Regala", "Királyleányka"]}
 - {name: "Tămâioasă Românească", color: white, synonyms: ["Tamaioasa Romaneasca"]}
 - {name: "Băbească Neagră", color: red, synonyms: ["Babeasca Neagra"]}
 - {name: "Saperavi", color: red}
@@ -561,3 +561,13 @@
 - {name: "Vugava", color: white, synonyms: ["Bugava"]}
 - {name: "Žametovka", color: red, synonyms: ["Zametovka", "Modra Kavčina", "Žametna Črnina"]}
 - {name: "Stanušina", color: red, synonyms: ["Stanusina"]}
+
+# ---------------- research: hu ----------------
+- {name: "Zéta", color: white, synonyms: ["Oremus"]}
+- {name: "Kövérszőlő", color: white, synonyms: ["Koverszolo"]}
+- {name: "Kabar", color: white}
+- {name: "Kövidinka", color: white, synonyms: ["Kovidinka"]}
+- {name: "Ezerjó", color: white, synonyms: ["Ezerjo"]}
+- {name: "Budai Zöld", color: white, synonyms: ["Budai Zold"]}
+- {name: "Bíborkadarka", color: red, synonyms: ["Biborkadarka"]}
+- {name: "Turán", color: red, synonyms: ["Turan"]}

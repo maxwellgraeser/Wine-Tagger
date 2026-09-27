@@ -612,3 +612,33 @@ MK:
     "Tikves": "Tikveš"
   grapes:
     "Temjanika": "Muscat Blanc à Petits Grains"
+
+HU:
+  regions:
+    "Tokaji": "Tokaj"
+    "Tokay": "Tokaj"
+    "Egri": "Eger"
+    "Villányi": "Villány"
+    "Szekszárdi": "Szekszárd"
+    "Badacsonyi": "Badacsony"
+    "Somlói": "Somló"
+    "Nagy-Somló": "Somló"
+    "Soproni": "Sopron"
+    "Balatonfüred-Csopaki": "Balatonfüred-Csopak"
+    "Csopaki": "Csopak"
+    "Mátrai": "Mátra"
+    "Bükki": "Bükk"
+    "Etyek-Budai": "Etyek-Buda"
+    "Zalai": "Zala"
+    "Kunsági": "Kunság"
+    "Hajós-Bajai": "Hajós-Baja"
+    "Zempléni": "Zemplén"
+    "Duna-Tisza-közi": "Duna-Tisza közi"
+  grapes:
+    "Kékfrankos": "Blaufränkisch"
+    "Olaszrizling": "Welschriesling"
+    "Kékoportó": "Portugieser"
+    "Szürkebarát": "Pinot Gris"
+    "Sárgamuskotály": "Muscat Blanc à Petits Grains"
+    "Tramini": "Gewürztraminer"
+    "Királyleányka": "Fetească Regală"

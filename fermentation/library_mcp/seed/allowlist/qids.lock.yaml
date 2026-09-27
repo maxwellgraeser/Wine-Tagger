@@ -322,11 +322,21 @@ grapes:
     label: Brianna
     note: ok
     qid: Q100264191
+  Budai Zöld:
+    description: grape variety
+    label: Budai zöld
+    note: ok
+    qid: Q850895
   Bukettraube:
     description: Italian grape variety
     label: Bukettraube
     note: ok
     qid: Q1003251
+  Bíborkadarka:
+    description: variety of grape
+    label: Bíborkadarka
+    note: ok
+    qid: Q854662
   Băbească Neagră:
     description: varietal
     label: Băbească Neagră
@@ -652,6 +662,11 @@ grapes:
     label: Espadeiro
     note: ok
     qid: Q489307
+  Ezerjó:
+    description: Hungarian white wine variety
+    label: Ezerjó
+    note: ok
+    qid: Q994329
   Falanghina:
     description: Italian grape variety
     label: Falanghina
@@ -947,6 +962,11 @@ grapes:
     label: Juhfark
     note: ok
     qid: Q600151
+  Kabar:
+    description: variety of grape
+    label: Kabar
+    note: ok
+    qid: Q6343872
   Kadarka:
     description: varietal
     label: Kadarka
@@ -1002,6 +1022,16 @@ grapes:
     label: Kéknyelű
     note: ok
     qid: Q836402
+  Kövidinka:
+    description: grape variety
+    label: Dinka
+    note: ok
+    qid: Q838456
+  Kövérszőlő:
+    description: grape variety of Hungary
+    label: Kövérszőlő
+    note: ok
+    qid: Q782339
   La Crescent:
     description: grape variety
     label: La Crescent
@@ -2152,6 +2182,11 @@ grapes:
     label: Tsolikouri
     note: ok
     qid: Q218515
+  Turán:
+    description: red-wine variety of grape
+    label: Turan
+    note: ok
+    qid: Q1325593
   Tămâioasă Românească:
     description: Variety of wine grape
     label: Tămâioasă Românească
@@ -2352,6 +2387,11 @@ grapes:
     label: Zweigelt
     note: ok
     qid: Q232825
+  Zéta:
+    description: variety of grape
+    label: Zéta
+    note: ok
+    qid: Q8076053
   Öküzgözü:
     description: a grape variety and a Turkish wine produced from this grape
     label: öküzgözü
@@ -2889,6 +2929,18 @@ regions:
     label: Balaton wine region
     note: ok
     qid: Q4049117
+  Balaton-felvidék (HU): null
+  Balatonboglár (HU):
+    description: Wine region in Hungary
+    label: Balatonboglár Wine Region
+    note: ok
+    qid: Q1153040
+  Balatonfüred-Csopak (HU):
+    description: ''
+    label: Balatonfüred-Csopak Wine Region
+    note: ok
+    qid: Q804659
+  Balatonmelléki (HU): null
   Balearic Islands (ES):
     description: autonomous community of Spain
     label: Balearic Islands
@@ -3175,6 +3227,8 @@ regions:
     note: ok
     qid: Q888933
   Bodensee (DE): null
+  Bodrogkeresztúr (HU): null
+  Bodrogkisfalud (HU): null
   Boesmansrivier (ZA): null
   Bolandin (ES): null
   Bolgheri (IT):
@@ -3401,6 +3455,7 @@ regions:
     qid: Q1019358
   Bío-Bío Valley (CL): null
   Bötzingen (DE): null
+  Bükk (HU): null
   Cabardès (FR): null
   Cabernet d'Anjou (FR): null
   Cacc'e Mmitte di Lucera (IT):
@@ -4716,6 +4771,8 @@ regions:
     label: Crépy AOC
     note: ok
     qid: Q1142517
+  Csongrád (HU): null
+  Csopak (HU): null
   Cucamonga Valley (US):
     description: American Viticultural Area in California
     label: Cucamonga Valley AVA
@@ -4916,6 +4973,7 @@ regions:
     label: Dealu Mare wine region
     note: ok
     qid: Q5245932
+  Debrői Hárslevelű (HU): null
   Dehesa Peñalba (ES): null
   Dehesa del Carrizal (ES):
     description: class of Spanish wine
@@ -5026,6 +5084,8 @@ regions:
     label: Dugenta IGT
     note: ok
     qid: Q139899462
+  Duna (HU): null
+  Duna-Tisza közi (HU): null
   Dundee Hills (US):
     description: American Viticultural Area in Oregon
     label: Dundee Hills AVA
@@ -5036,6 +5096,7 @@ regions:
     label: Dunnigan Hills AVA
     note: ok
     qid: Q1266207
+  Dunántúli (HU): null
   Durbach (DE): null
   Durbanville (ZA): null
   Duriense (PT): null
@@ -5202,6 +5263,7 @@ regions:
     label: Erden
     note: ok
     qid: Q565749
+  Erdőbénye (HU): null
   Erice (IT):
     description: Italian controlled designation of origin wine from Sicily
     label: Erice DOC
@@ -5230,6 +5292,7 @@ regions:
     label: Etna DOC
     note: ok
     qid: Q3733809
+  Etyek-Buda (HU): null
   Evia (GR): null
   Evros (GR): null
   Extremadura (ES):
@@ -5275,6 +5338,9 @@ regions:
     note: ok
     qid: Q1398382
   Fellbach (DE): null
+  Felső-Magyarország (HU): null
+  Felső-Magyarországi (HU): null
+  Felső-Pannon (HU): null
   Fennville (US):
     description: American Viticultural Area in Michigan
     label: Fennville AVA
@@ -5729,6 +5795,11 @@ regions:
     note: ok
     qid: Q3683134
   Hadersdorf (AT): null
+  Hajós-Baja (HU):
+    description: ''
+    label: Hajós-Baja Wine Region
+    note: ok
+    qid: Q1032804
   Halikouna (GR): null
   Halkidiki (GR): null
   Hames Valley (US):
@@ -6078,6 +6149,11 @@ regions:
   Krems (AT): null
   Kremstal (AT): null
   Kumeu (NZ): null
+  Kunság (HU):
+    description: ''
+    label: Kunság Wine Region
+    note: ok
+    qid: Q1122026
   Kutjevo (HR): null
   Kvarner and Croatian Littoral (HR): null
   KwaZulu-Natal (ZA): null
@@ -6858,6 +6934,7 @@ regions:
     label: Meursault wine
     note: ok
     qid: Q7889954
+  Mezőzombor (HU): null
   Međugorje (BA): null
   Michigan (US):
     description: state of the United States of America
@@ -7272,7 +7349,13 @@ regions:
     label: Musigny AOC
     note: ok
     qid: Q641077
+  Mád (HU): null
   Málaga (ES): null
+  Mátra (HU):
+    description: ''
+    label: Mátra Wine Region
+    note: ok
+    qid: Q6035587
   Mâcon-Villages (FR):
     description: French wine appellation
     label: Mâcon-Villages
@@ -7296,6 +7379,7 @@ regions:
     label: Méntrida DO
     note: ok
     qid: Q3170850
+  Mór (HU): null
   Naches Heights (US):
     description: viticultural area in Yakima County, Washington, USA
     label: Naches Heights AVA
@@ -7373,6 +7457,7 @@ regions:
     qid: Q139916524
   Nelson (NZ): null
   Nemea (GR): null
+  Neszmély (HU): null
   Nettuno (IT):
     description: Italian wine region
     label: Nettuno DOC
@@ -7739,6 +7824,8 @@ regions:
     qid: Q133850419
   Pampa El Cepillo (AR): null
   Pangeon (GR): null
+  Pannon (HU): null
+  Pannonhalma (HU): null
   Panquehue (CL):
     description: city and commune in Felipe de Aconcagua Province, Chile
     label: Panquehue
@@ -8140,6 +8227,7 @@ regions:
     label: Pécharmant
     note: ok
     qid: Q461047
+  Pécs (HU): null
   Périgord (FR): null
   Pčinja-Osogovo (MK): null
   Quarts de Chaume (FR): null
@@ -8601,6 +8689,7 @@ regions:
     note: ok
     qid: Q7383371
   Ruwertal (DE): null
+  Rátka (HU): null
   Régnié (FR): null
   Rías Baixas (ES): null
   Río Negro (AR):
@@ -9439,6 +9528,8 @@ regions:
     label: Szekszárd Wine Region
     note: ok
     qid: Q1295655
+  Sárospatak (HU): null
+  Sátoraljaújhely (HU): null
   Sächsischer Landwein (DE): null
   Südliche Weinstraße (DE): null
   Südsteiermark (AT): null
@@ -9463,6 +9554,7 @@ regions:
     label: Tarantino IGT
     note: ok
     qid: Q139899834
+  Tarcal (HU): null
   Tarquinia (IT):
     description: Italian controlled designation of origin wine from Lazio
     label: Tarquinia DOC
@@ -9718,6 +9810,12 @@ regions:
     label: Tokaj wine region
     note: ok
     qid: Q828125
+  Tolcsva (HU): null
+  Tolna (HU):
+    description: ''
+    label: Tolna wine region
+    note: ok
+    qid: Q85291571
   Tomar (PT): null
   Torgiano (IT):
     description: Italian controlled designation of origin wine from Umbria
@@ -9848,6 +9946,7 @@ regions:
     qid: Q1273
   Tutuvén Valley (CL): null
   Tyrnavos (GR): null
+  Tállya (HU): null
   Távora-Varosa (PT): null
   Târnave (RO): null
   Uclés (ES): null
@@ -10611,6 +10710,7 @@ regions:
     qid: Q4023640
   Zagorje-Međimurje (HR): null
   Zakynthos (GR): null
+  Zala (HU): null
   Zandrivier (ZA): null
   Zapallar (CL):
     description: ''
@@ -10618,6 +10718,7 @@ regions:
     note: non-wine class -- review
     qid: Q23660193
   Zeltingen-Rachtig (DE): null
+  Zemplén (HU): null
   Zinnkoepflé (FR): null
   Zitsa (GR): null
   Zonda (AR): null
