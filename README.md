@@ -1,7 +1,14 @@
 # Wine Warehouse DDD Data Pipeline
 
-A domain-driven pipeline that takes raw Lightspeed exports, enriches them with
-AI-generated wine metadata, and produces a database for review and re-upload.
+Built for **Wine Warehouse**, a wine shop in Atlantic Beach, Florida. Since the store moved to Lightspeed for the POS, new products come in with
+no category and no country, region or grape tags, so the catalogue can't be
+searched or filtered the way the staff need. This project picks the wines out
+of the catalogue, researches and tags each one with a local LLM, and produces
+a file to import back into Lightspeed.
+
+A domain-driven pipeline: the raw Lightspeed product export goes in,
+AI-generated wine tags are reviewed in a local web app, and a Lightspeed
+import `.xlsx` comes out.
 
 ```
   ┌─────────────┐      ┌──────────────────┐      ┌────────────────┐
@@ -17,9 +24,6 @@ AI-generated wine metadata, and produces a database for review and re-upload.
 
 > `fermentation/` drives a local LLM through a self-built **MCP wine
 > library** to tag wines. `distribution/` became `cellar/`, the web app.
->
-> See `Tree.html` (repo root) for a visual component map and a
-> severity-ordered list of known issues.
 
 ## Status at a glance
 
@@ -46,7 +50,9 @@ CELLAR_PORT=8010 VITE_PORT=5183 ./run.sh dev   # a second checkout (git worktree
 
 Cellar starts in **Developer** view (all logs and knobs); toggle to
 **Simple** in the top bar. The top bar shows the llama-server state and has
-**Start / Stop model server** buttons (model: `LLAMA_MODEL=qwen|gemma`, default qwen).
+**Start / Stop model server** buttons (model: `LLAMA_MODEL=qwen|gemma`, default
+qwen). Starting it needs `llama-server` (llama.cpp) on your `PATH`; it pulls
+the GGUF from Hugging Face on first start.
 
 In the Ferment panel, **Pause after each phase** runs search, stops, and
 shows a *Continue → score* button (then *Continue → tag*), so you can check
@@ -68,6 +74,12 @@ runs detached so it survives Cellar restarts — stop it with **Stop model
 server** in the top bar before you quit, so it doesn't keep eating RAM/GPU.
 Re-running `./run.sh` kills anything already on :8000 first, so it always gives
 you a fresh process.
+
+**Tests** (all offline, ~8 s):
+
+```sh
+.venv/bin/python -m pytest
+```
 
 ---
 
@@ -140,8 +152,12 @@ on it, and a phase can be re-run alone with `--phase … --run-id …`.
 `ferment.py` (CLI) → `phases.py` (the three phase loops) → three independent
 modules that never import each other; config (model, api_url) is passed down:
 
-- **`searcher.py`** — owns the network for snippets. DuckDuckGo queries (UPC +
-  per-source + fallback), cross-query URL dedupe, boilerplate strip, price-only
+- **`searcher.py`** — owns the network for snippets. Nine web queries per
+  wine through `ddgs` (Yahoo → Bing → DuckDuckGo): question-style, per-site
+  (Wine-Searcher, Vivino, CellarTracker, Wine.com), UPC, distributor site and
+  a fallback — see `SEARCH_QUERIES` in `constants.py`. Cross-query URL dedupe,
+  near-duplicate and spliced-blob removal, boilerplate strip (including
+  Vivino's per-region grape blurbs), blocked AI-content domains, price-only
   filter. → `list[Snippet]`.
 - **`scorer.py`** — the LLM scores each snippet 0–100 for product match
   *and* lists the facts it states (`grape` / `region` / `producer`). Snippets
@@ -149,7 +165,9 @@ modules that never import each other; config (model, api_url) is passed down:
   only in the slug), and any index the model leaves out of its reply is
   re-asked rather than silently scored 0 — that omission lost 28 % of matching
   snippets on the 2026-09-15 run. A **producer-absent hard gate** drops
-  snippets that don't mention the producer name. Of the survivors above
+  snippets that don't mention the producer name, and content gates drop
+  Wine-Searcher pages that only echo the query and URLs naming another colour
+  (a `…-blanc` page for a red). Of the survivors above
   `SNIPPET_MATCH_THRESHOLD` (70, the rubric's "very likely the same wine"
   band), the grape-naming, most-fact-rich ones fill `web_context` (score
   only gates identity) — or `None`, in which case the wine routes straight
@@ -164,14 +182,28 @@ modules that never import each other; config (model, api_url) is passed down:
 
 Supporting modules: `store.py` (read/write `output/wines.json`, manual edits,
 export rows), `events.py` (progress events: human lines, or `--events-json`
-JSON lines for Cellar, always appended to `events.jsonl`), `paths.py`
-(the folder layout).
+JSON lines for Cellar, always appended to `events.jsonl`), `settings.py`
+(`settings.json`, shared with Cellar), `paths.py` (the folder layout).
 
 ### The `library_mcp` server
 
 A FastMCP **stdio server** (`fermentation/library_mcp/server.py`) backed by a
-baked SQLite wine library (`library.db`), seeded offline from Wikidata +
-Wikipedia (`seed/build_db.py`). Tool surface:
+baked SQLite wine library (`library.db`, committed — nothing is fetched at
+tag time). It currently holds 46 countries, 2,832 canonical regions and 555
+canonical grapes, plus a placeholder tier (77 regions, 268 grapes) of real but
+niche names that lookups recognise and `submit_tags` rejects.
+
+The library is built by `seed/build_db.py` from hand-curated YAML allowlists
+(`seed/allowlist/`: `countries.yaml`, `regions.yaml`, `grapes.yaml`, and
+`qids.lock.yaml` pinning each entry to its Wikidata item). Regions — hierarchy,
+classification, label spellings and their grapes — are authored in YAML;
+Wikidata supplies grape synonyms and origins and the placeholder tier;
+per-country Wikipedia parsers add region → grape edges. The regions and grapes
+were filled in country by country by research agents (`seed/research/`: one
+`<slug>.regions.yaml` / `.grapes.yaml` / `.md` per slice, merged into the
+allowlists), then reconciled and checked against the locked Wikidata items.
+Rebuild with `python -m fermentation.library_mcp.seed.build_db` (always from
+scratch; `--offline` skips the network). Tool surface:
 
 - Browse (read-only): `lookup_country`, `lookup_region`, `lookup_grape`,
   `list_countries`, `list_regions`, `list_grapes`.
@@ -180,9 +212,10 @@ Wikipedia (`seed/build_db.py`). Tool surface:
   each comma-separated part ("Swartland, Western Cape, South Africa"). The
   same region name may exist in two countries (La Rioja: Spain, Argentina);
   `lookup_region(name, country?)` and `submit_tags` pick by the wine's country.
-- Terminal: `submit_tags(country, region[], grapes[], is_blend, organic, confidence)`
+- Terminal: `submit_tags(country, region[], grapes[], is_blend, organic, confidence, category?)`
   → `{ok, normalized}` on success, or `{ok:false, issues, hints}` so the model
-  can correct and retry in-loop.
+  can correct and retry in-loop. Parent regions are filled in from the tree
+  (`Russian River Valley` → Sonoma County → North Coast → California).
 
 Why MCP instead of a bigger prompt or a post-hoc pass: synonyms collapse
 upfront (Garnacha → Grenache), mismatches surface as a correctable tool failure,
@@ -191,17 +224,23 @@ and every lookup is captured in a structured transcript. See
 
 ### LLM runtime
 
-A single local model (default `gemma3n:e4b`) is hit at **two points** via an
-OpenAI-compatible `/v1/chat/completions` endpoint:
+A single local model (default **Qwen2.5-7B-Instruct**, Q6_K GGUF) is hit at
+**two points** — scoring and tagging — via an OpenAI-compatible
+`/v1/chat/completions` endpoint. The tagger needs tool-call support: `gemma3n`
+is still selectable (`LLAMA_MODEL=gemma`) but its chat template ignores `tools`
+under llama.cpp, so it can't drive the MCP loop.
 
-- **llama.cpp `llama-server`:** `http://localhost:8080/v1/chat/completions` (default)
+- **llama.cpp `llama-server`:** `http://localhost:8080/v1/chat/completions` (default;
+  started from the Cellar top bar)
 - **LM Studio (alternative):** `http://localhost:1234/v1/chat/completions` — pass `--api-url`
 
 ### Confidence & review flags
 
 - A wine with no usable `web_context` (no snippets, or all dropped by the
   producer gate) is written as `needs_review` without ever calling the tagger.
-- After tagging, `confidence < threshold` (default in `constants.py`) → `needs_review`.
+- After tagging, `confidence < threshold` → `needs_review`. The threshold
+  comes from CLI flag > `FERMENTATION_CONFIDENCE_THRESHOLD` > `settings.json`
+  (saved from Cellar) > `DEFAULT_CONFIDENCE_THRESHOLD` (85) in `constants.py`.
 - **Evidence rules** (`phases.apply_evidence_rules`, enforced in code, not
   just asked for in the prompt): a submitted grape that appears nowhere in
   `web_context` — by canonical name or any library synonym — routes the row
@@ -211,9 +250,10 @@ OpenAI-compatible `/v1/chat/completions` endpoint:
   routed to review (`review_reasons: ["single_source"]`). Sources are counted
   by family, so "Vivino #1" and "Vivino #2" are one source.
   A grape named by only one source (`uncorroborated_grape:<name>`), a blend
-  with one known grape (`incomplete_blend`), and a region coarser than one
-  the context names (`coarse_region:Barolo` when the model said Piedmont)
-  route to review too. Every review route records a reason, including
+  with one known grape (`incomplete_blend`), a red or rosé with white grapes
+  only (`white_grapes_only`), and a region coarser than one the context
+  names (`coarse_region:Barolo` when the model said Piedmont) route to
+  review too. Every review route records a reason, including
   `low_confidence`, `no_grapes`, `no_submit` and `no_context`; Cellar shows
   them on the wine's *Final* tab.
 - **Category**: when the CSV has no `product_category`, the tagger submits
@@ -229,13 +269,14 @@ OpenAI-compatible `/v1/chat/completions` endpoint:
 | Flag | Default | Description |
 |------|---------|-------------|
 | `--api-url` | llama.cpp (`:8080`) | LLM API URL (or `FERMENTATION_API_URL`) |
-| `--model` | `gemma3n:e4b` | Model name (or `FERMENTATION_MODEL`) |
-| `--confidence-threshold` | see `constants.py` | Min confidence to auto-accept |
+| `--model` | `qwen2.5-7b-instruct` | Model name (or `FERMENTATION_MODEL`) |
+| `--confidence-threshold` | `settings.json`, else 85 | Min confidence to auto-accept |
 | `--limit N` | 0 (all) | Process at most N wines (fresh runs only) |
 | `--force` | off | Ignore saved run state; start a fresh run |
 | `--input` | `ingestion/output/combined.csv` | Path to the input CSV |
 | `--no-producer-gate` | off | Disable the producer-absent hard gate (debug) |
 | `--phase P --run-id R` | — | Re-run from phase `search`/`score`/`tag` over run R's existing logs |
+| `--stop-after P` | — | Pause once phase P finishes (Cellar's *Pause after each phase*); run again to continue |
 | `--events-json` | off | One JSON event per line on stdout (what Cellar reads) |
 
 ### Resumability
@@ -249,7 +290,7 @@ checkpoints cleanly.
 
 ```jsonc
 {
-  "version": 2, "generated_at": "…", "last_run_id": "20260915-132128",
+  "version": 3, "generated_at": "…", "last_run_id": "20260915-132128", "source_csv": "…",
   "wines": [{
     "id": "…", "name": "…", "sku": "…", "category": "Red", "brand": null,
     "supply_price": 17.99, "retail_price": 25.99, "supplier": "Winebow",
@@ -258,8 +299,9 @@ checkpoints cleanly.
     "confidence": 84, "web_context": "…", "tags_raw": "Spain; Ribera del Duero; …",
     "tag_status": "model",                // pending | model | needs_review | human
     "sales": {"items_sold": 81, "margin_pct": 0.31, "sale_count": 46, "customer_count": 29, "avg_sale_value": 29.5},
-    "run_id": "20260915-132128",
-    "phase_status": {"search": "ok", "score": "ok", "tag": "ok"}
+    "run_id": "20260915-132128", "tag_run_id": "20260915-132128",
+    "phase_status": {"search": "ok", "score": "ok", "tag": "ok"},
+    "created_at": "…", "updated_at": "…"
   }]
 }
 ```
@@ -275,16 +317,21 @@ tagger/<id>.json      the full MCP tool-call transcript
 final/<id>.json       normalized block + tag_status as written to wines.json
 ```
 
-**Tech:** Python 3.11+, sqlite3, requests, `mcp` (FastMCP), DuckDuckGo search —
-no paid APIs or keys required.
+**Tech:** Python 3.11+, sqlite3, requests, `mcp` (FastMCP), `ddgs` web search,
+PyYAML (library seed) — no paid APIs or keys required.
+Tests: `pytest fermentation` (scorer, evidence rules, and the library's
+allowlists, lookups and `submit_tags` gate).
 
 > **Scoring methodology:** see `journal/2026-09-15-SCORING.md` for why
 > the snippet score was rebuilt (batched per-index scoring, URL shown,
 > facts-first context, threshold 70) and the evidence rules that gate the
 > tagger's output. `journal/2026-09-15-ACCURACY.md` is the earlier
 > per-wine accuracy review; `journal/2026-09-15-BATON.md` the library reseed.
-> Every dated note (reviews, batons, run comparisons) lives in `journal/`,
-> named `YYYY-MM-DD-TOPIC.md` so it sorts in the order it was written.
+> `journal/2026-09-27-RUN-COMPARE.md` covers the latest run and the review
+> gate built from it. Every dated note (reviews, batons, run comparisons)
+> lives in `journal/`, named `YYYY-MM-DD-TOPIC.md` so it sorts in the order
+> it was written; `journal/README.md` indexes them. The journal is
+> git-ignored — it exists only in the local checkout.
 
 ---
 
@@ -298,7 +345,14 @@ distribution step — browse, search, sort, edit tags (edits mark a wine
 `human`, which fermentation never overwrites), and **Export** a
 Lightspeed-compatible `.xlsx` with `id`, `name`, `tags` — and it also runs the
 two upstream stages with live progress and a drill-down into every phase log.
-See `cellar/PLAN.md` for the API.
+
+Three tabs follow the pipeline: **Ingest** (upload an export, see what the
+filters kept and excluded, and why), **Ferment** (start/stop/resume runs,
+pause between phases, the confidence threshold) and **Distribute** (run
+history, the wine table and export). Clicking a wine opens its snippets, scores, the tagger's full MCP
+transcript and the *Final* tab with any review reasons; the tag editor offers
+the library's canonical countries, regions and grapes. The top bar starts and
+stops the llama-server. See `cellar/PLAN.md` for the API.
 
 ---
 
@@ -308,10 +362,10 @@ See `cellar/PLAN.md` for the API.
 Wine Warehouse DDD/
 ├── README.md
 ├── PLAN.md
-├── Tree.html                    # visual architecture map + findings
 ├── requirements.txt
 ├── run.sh                       # starts the Cellar dashboard
-├── journal/                     # dated notes, YYYY-MM-DD-TOPIC.md (read newest first)
+├── settings.json                (git-ignored) confidence threshold, written by Cellar
+├── journal/                     (git-ignored) dated notes, YYYY-MM-DD-TOPIC.md (read newest first)
 ├── ingestion/
 │   ├── PLAN.md
 │   ├── ingest.py                # product-export CSV → filters → combined.csv
@@ -319,24 +373,30 @@ Wine Warehouse DDD/
 │   ├── fixtures/test-wines.csv  # the 24 development wines (with sales stats)
 │   ├── tests/
 │   ├── uploads/                 (git-ignored) exports dropped in the Ingest panel
-│   └── output/                  (generated) combined.csv · excluded.csv · summary.json
+│   └── output/                  (git-ignored) combined.csv · excluded.csv · summary.json
 ├── fermentation/                # active
 │   ├── PLAN.md
 │   ├── ferment.py               # CLI
 │   ├── phases.py                # search → score → tag, each over all wines
 │   ├── searcher.py · scorer.py · tagger.py · evidence.py
-│   ├── store.py · events.py · paths.py · types.py · constants.py
+│   ├── store.py · events.py · settings.py · paths.py · types.py · constants.py
 │   ├── tests/                   # offline scorer / evidence / category tests
 │   └── library_mcp/
 │       ├── server.py            # FastMCP stdio server
 │       ├── schema.sql · library.db
-│       └── seed/                # offline Wikidata + Wikipedia build
+│       ├── tests/               # allowlist, lookup and submit_tags tests
+│       └── seed/
+│           ├── build_db.py      # allowlists + Wikidata + Wikipedia → library.db
+│           ├── resolve_qids.py  # pins allowlist entries to Wikidata items
+│           ├── allowlist/       # countries · regions · grapes · qids.lock (YAML)
+│           ├── research/        # per-country research slices + agent brief
+│           └── wikipedia/       # per-country region → grape parsers
 ├── output/                      (generated) wines.json, .run_state.json, lightspeed-export.xlsx
 ├── logs/                        (generated) one folder per fermentation run
 ├── cellar/                      # the web app
 │   ├── PLAN.md
 │   ├── server/app.py            # FastAPI
-│   └── web/                     # React + Vite + Tailwind
+│   └── web/                     # React + Vite + TypeScript + Tailwind
 └── Sample Xlsx/                 (git-ignored) raw Lightspeed exports
     └── product-export-2026-09-16.csv
 ```

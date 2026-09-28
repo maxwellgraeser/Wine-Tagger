@@ -7,7 +7,7 @@ import json
 
 import pytest
 
-from fermentation import constants, evidence, scorer, searcher
+from fermentation import constants, evidence, library_text, scorer, searcher
 from fermentation.phases import apply_evidence_rules, decide_tag_status
 from fermentation.types import ParsedTags, Product, ScoredSnippet, Snippet
 
@@ -81,22 +81,91 @@ def test_prompt_shows_url_and_index_list(monkeypatch):
 # scorer: fact coverage decides context, score only gates
 # ---------------------------------------------------------------------------
 
-def test_context_prefers_fact_rich_snippets_over_price_pages():
-    def ss(i, score, facts, source):
-        return ScoredSnippet(snippet=_snip(i, f"body {i}", source=source), match_score=score,
-                             cleaned_body=f"body {i}", facts=facts)
+needs_library = pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
+
+
+def _ss(i, score, body, source, facts=()):
+    return ScoredSnippet(snippet=_snip(i, body, source=source), match_score=score,
+                         cleaned_body=body, facts=list(facts))
+
+
+@needs_library
+def test_context_prefers_snippets_that_name_grapes_over_price_pages():
     scored = [
-        ss(0, 98, [], "Wine Searcher"),
-        ss(1, 98, [], "Total Wine"),
-        ss(2, 90, ["grape", "region"], "Wine.com"),
-        ss(3, 95, ["region"], "Vivino"),
-        ss(4, 98, [], "CellarTracker"),
-        ss(5, 97, [], "fallback"),
+        _ss(0, 98, "Buy now, $14.99, free shipping over $100.", "Wine Searcher"),
+        _ss(1, 98, "In stock. Add to cart.", "Total Wine"),
+        _ss(2, 90, "A white wine from Languedoc, made from Picpoul Blanc.", "Wine.com"),
+        _ss(3, 95, "A white wine from Languedoc, France.", "Vivino"),
+        _ss(4, 98, "Community score 88 from 12 notes.", "CellarTracker"),
+        _ss(5, 97, "Great value white.", "fallback"),
     ]
     ctx = scorer._build_web_context(scored, threshold=85, top_n=2)
     chosen = [s for s in scored if s.in_context]
     assert [s.snippet.source for s in chosen] == ["Wine.com #2", "Vivino #3"]
     assert ctx.startswith("[Wine.com #2 | match=90]")
+
+
+@needs_library
+def test_llm_facts_no_longer_decide_the_pick():
+    # Chapelle Bastion Picpoul, 2026-09-28: the scorer gave every survivor the
+    # same score and facts, so the tie went to result #1, a listing line.
+    # Result #2 names the grape in its text and must win.
+    rubber_stamp = ["grape", "producer", "region"]
+    scored = [
+        _ss(1, 95, "Top 25 Languedoc whites under $20: Chapelle Bastion Picpoul de Pinet.",
+            "Vivino", rubber_stamp),
+        _ss(2, 95, "Chapelle Bastion Picpoul de Pinet. A white wine from Languedoc, France. "
+                   "Made from Picpoul Blanc.", "Vivino", rubber_stamp),
+    ]
+    scorer._build_web_context(scored, threshold=85, top_n=1)
+    assert [s.snippet.source for s in scored if s.in_context] == ["Vivino #2"]
+
+
+@needs_library
+def test_text_facts_region_name_alone_is_not_the_grape():
+    facts = library_text.text_facts("Chapelle Bastion Picpoul de Pinet 2023")
+    assert facts == {"grapes": [], "regions": ["Picpoul de Pinet"]}
+    facts = library_text.text_facts("Made from Picpoul grapes from Picpoul-de-Pinet.")
+    assert facts == {"grapes": ["Picpoul Blanc"], "regions": ["Picpoul de Pinet"]}
+
+
+@needs_library
+def test_text_facts_longest_grape_name_wins():
+    # Massaya's producer sheet: "Sauvignon" inside "Cabernet Sauvignon" is not
+    # Sauvignon Blanc, so the sheet names three grapes and keeps its credit.
+    facts = library_text.text_facts("Cinsault, Cabernet Sauvignon and Syrah from the Bekaa Valley.")
+    assert facts["grapes"] == ["Cinsault", "Cabernet Sauvignon", "Syrah"]
+    assert library_text.text_facts("Cabernet Sauvignon")["grapes"] == ["Cabernet Sauvignon"]
+    # A comma ends a name: a list's "Cabernet, Sauvignon Blanc" is not Cabernet Sauvignon.
+    assert library_text.text_facts("Cabernet, Sauvignon Blanc")["grapes"] == ["Sauvignon Blanc"]
+
+
+@needs_library
+def test_text_facts_skips_generic_words():
+    # Library synonyms and region names that are ordinary words.
+    assert library_text.text_facts("Quinta de Chocapalha Tinto, Mediterranean herbs, central palate") \
+        == {"grapes": [], "regions": []}
+    # "Italia" and "Mission" are library grapes, but not here.
+    assert library_text.text_facts("Un vino rosso da Piemonte, Italia. Da uve Nebbiolo.")["grapes"] == ["Nebbiolo"]
+    assert library_text.text_facts("Toasty oak and a hint of mission fig.")["grapes"] == []
+
+
+@needs_library
+def test_grape_list_page_gets_no_grape_credit():
+    listing = _ss(1, 95, "Shop Piedmont reds: Nebbiolo, Barbera, Dolcetto, Freisa.", "Wine Searcher (UPC)")
+    blend = _ss(2, 90, "A red from Piedmont, 100% Nebbiolo.", "Wine Searcher (UPC)")
+    assert len(library_text.text_facts(listing.snippet.body)["grapes"]) == constants.SNIPPET_GRAPE_LIST_MIN
+    scorer._build_web_context([listing, blend], threshold=85, top_n=1)
+    assert blend.in_context and not listing.in_context
+
+
+@needs_library
+def test_every_scored_snippet_logs_its_text_facts(monkeypatch):
+    snippets = [_snip(0, "Made from Tempranillo in Ribera del Duero."), _snip(1, "Bodegas Aster Crianza.")]
+    monkeypatch.setattr(scorer, "_call_llm", lambda *a, **k: json.dumps({"0": {"score": 95}}))
+    _ctx, scored = scorer.score_and_assemble(_product(), snippets, api_url="", model="")
+    assert scored[0].text_facts == {"grapes": ["Tempranillo"], "regions": ["Ribera del Duero"]}
+    assert scored[1].dropped_reason == "unscored" and scored[1].text_facts == {"grapes": [], "regions": []}
 
 
 def test_score_below_threshold_never_enters_context_even_with_facts():
@@ -211,6 +280,45 @@ def test_blend_with_one_named_grape_routes_to_review():
     reasons = apply_evidence_rules(tags, ctx)
     assert reasons == ["incomplete_blend"]
     assert decide_tag_status(normalized=tags, confidence_threshold=85, review_reasons=reasons) == "needs_review"
+
+
+URRUZOLA_CTX = ("[Grapes Q #2 | match=95]\nA pale pink Getariako Txakolina rosé, a blend of "
+                "Hondarrabi Zuri and Hondarrabi Beltza.\n\n"
+                "[Wine.com #1 | match=95]\nInazio Urruzola rosé from Hondarrabi Zuri and Hondarrabi Beltza.")
+
+
+@pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
+def test_rose_with_only_white_grapes_routes_to_review():
+    # Urruzola: the tagger dropped Hondarrabi Beltza "since it is a red grape and the wine is a rose".
+    tags = ParsedTags(country="Spain", grapes=["Hondarrabi Zuri"], is_blend=False, confidence=85)
+    reasons = apply_evidence_rules(tags, URRUZOLA_CTX, category="Rose")
+    assert reasons == ["white_grapes_only"]
+    assert decide_tag_status(normalized=tags, confidence_threshold=85, review_reasons=reasons) == "needs_review"
+    tags = ParsedTags(country="Spain", grapes=["Hondarrabi Zuri", "Hondarrabi Beltza"], is_blend=True,
+                      confidence=85)
+    assert apply_evidence_rules(tags, URRUZOLA_CTX, category="Rose") == []
+
+
+@pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
+def test_white_grapes_only_by_category():
+    assert evidence.white_grapes_only(["Chardonnay"], "Red")
+    assert evidence.white_grapes_only(["Macabeo", "Malvasia Bianca"], "Rosé")
+    assert not evidence.white_grapes_only(["Macabeo", "Tempranillo"], "Red")
+    # A white wine from red grapes is a blanc de noirs; sparkling says nothing about colour.
+    assert not evidence.white_grapes_only(["Pinot Noir"], "White")
+    assert not evidence.white_grapes_only(["Chardonnay"], "Sparkling")
+    assert not evidence.white_grapes_only([], "Rose")
+    # Pink-skinned grapes make a rosé on their own, never a red.
+    assert not evidence.white_grapes_only(["Pinot Gris"], "Rose")
+    assert evidence.white_grapes_only(["Pinot Gris"], "Red")
+
+
+@pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
+def test_white_grapes_only_uses_inferred_category_when_product_has_none():
+    tags = ParsedTags(country="Spain", grapes=["Hondarrabi Zuri"], confidence=85, category="Rose")
+    assert apply_evidence_rules(tags, URRUZOLA_CTX) == ["white_grapes_only"]
+    # The product's own category wins over the model's.
+    assert apply_evidence_rules(tags, URRUZOLA_CTX, category="White") == []
 
 
 def test_every_review_route_records_a_reason():

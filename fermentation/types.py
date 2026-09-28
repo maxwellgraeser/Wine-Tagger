@@ -36,7 +36,10 @@ class ScoredSnippet:
     cleaned_body: str
     dropped_reason: Optional[str] = None  # "producer_absent" | "search_page" | "colour_conflict" | "unscored" | None
     in_context: bool = False              # made the top-N cut into web_context
-    facts: list[str] = field(default_factory=list)  # scorer's claim: subset of grape/region/producer
+    facts: list[str] = field(default_factory=list)  # scorer's claim: subset of grape/region/producer (logged only)
+    # Library grapes/regions the body names ({"grapes": [...], "regions": [...]});
+    # decides which survivors go into web_context. None until computed.
+    text_facts: Optional[dict[str, list[str]]] = None
 
 
 @dataclass

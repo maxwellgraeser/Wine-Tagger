@@ -23,7 +23,7 @@ from . import scorer, searcher, store as store_mod, tagger
 from .constants import (
     GRAPE_MIN_SOURCES, ORGANIC_PHRASES, REQUIRE_GRAPE_EVIDENCE, SINGLE_SOURCE_CONFIDENCE_CAP,
 )
-from .evidence import context_source_count, finer_regions_named, grape_source_counts
+from .evidence import context_source_count, finer_regions_named, grape_source_counts, white_grapes_only
 from .events import EventSink
 from .paths import PHASES, RUN_STATE_PATH, phase_dir, run_dir
 from .types import ParsedTags, Product, ScoredSnippet, Snippet
@@ -274,8 +274,12 @@ def _scored_payload(product: Product, scored: list[ScoredSnippet], web_context: 
                 # True for the top-N survivors that were pasted into web_context
                 # and therefore seen by the tagger LLM.
                 "in_context": s.in_context,
-                # What the scorer says the snippet states: subset of grape/region/producer.
+                # What the scorer LLM says the snippet states: subset of
+                # grape/region/producer. Logged for comparison only.
                 "facts": s.facts,
+                # Library grapes and regions the body names; these rank the
+                # survivors for the context (scorer._fact_rank).
+                "text_facts": s.text_facts,
             }
             for s in scored
         ],
@@ -333,6 +337,7 @@ def apply_evidence_rules(
     web_context: Optional[str],
     *,
     product_name: str = "",
+    category: Optional[str] = None,
     confidence_threshold: Optional[int] = None,
 ) -> list[str]:
     """Mechanical checks on what the tagger submitted versus the text it was
@@ -353,6 +358,9 @@ def apply_evidence_rules(
         Skipped when single_source already covers the whole context.
       * "incomplete_blend": is_blend with one grape. A source calls the wine
         a blend but names only this grape (Chocapalha, Vilafonte).
+      * "white_grapes_only": a red or rosé wine submitted with white grapes
+        only. `category` is the product's; when it has none, the one the
+        model inferred. Urruzola's rosé lost its Hondarrabi Beltza this way.
       * "coarse_region:<name>": the context names a canonical region below the
         submitted one (Barolo when the model submitted Piedmont).
       * "no_grapes": the submission had no grapes.
@@ -378,6 +386,8 @@ def apply_evidence_rules(
                 reasons.append(f"uncorroborated_grape:{g}")
     if normalized.is_blend and len(normalized.grapes) == 1:
         reasons.append("incomplete_blend")
+    if white_grapes_only(normalized.grapes, category or normalized.category):
+        reasons.append("white_grapes_only")
     if normalized.region and web_context:
         for region in finer_regions_named(
             normalized.region, web_context, country=normalized.country, product_name=product_name,
@@ -463,7 +473,7 @@ def run_tag(ctx: RunContext, start: int = 0) -> None:
                 )
                 review_reasons = apply_evidence_rules(
                     normalized, web_context, product_name=product.name,
-                    confidence_threshold=cfg.confidence_threshold,
+                    category=product.category, confidence_threshold=cfg.confidence_threshold,
                 )
                 tag_status = decide_tag_status(
                     normalized=normalized, confidence_threshold=cfg.confidence_threshold,

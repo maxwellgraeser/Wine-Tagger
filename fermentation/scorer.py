@@ -3,8 +3,10 @@
 The scoring LLM sees each snippet's URL and body (in batches of
 SCORING_BATCH_SIZE) and returns, per snippet, a 0-100 same-wine score and the
 facts it states (grape / region / producer). Indices missing from a reply are
-re-asked. The score gates identity (SNIPPET_MATCH_THRESHOLD); the facts decide
-which survivors are worth the tagger's context window.
+re-asked. The score gates identity (SNIPPET_MATCH_THRESHOLD). Which survivors
+are worth the tagger's context window is decided by what their text names:
+library grapes and regions, found by `library_text.text_facts`. The LLM's
+facts are only logged; it gives every survivor the same ones too often.
 
 The producer-absent check is a **hard exclusion** (snippets failing the token-overlap test are dropped from
 web_context entirely) rather than a post-tagging confidence cap.
@@ -25,6 +27,7 @@ from urllib.parse import unquote, urlparse
 import requests
 
 from . import constants
+from .library_text import text_facts
 from .types import Product, ScoredSnippet, Snippet
 
 
@@ -366,17 +369,21 @@ def _source_family(s: ScoredSnippet) -> str:
 
 
 def _fact_rank(s: ScoredSnippet) -> tuple[int, int, int]:
-    """Sort key (desc): grape named, number of facts, score. The score is an
-    identity gate; among survivors what matters is what the snippet *says*."""
-    return (1 if "grape" in s.facts else 0, len(s.facts), s.match_score)
+    """Sort key (desc): names 1 to SNIPPET_GRAPE_LIST_MIN - 1 grapes, names a
+    region, score. The score is an identity gate; among survivors what
+    matters is what the snippet *says*. Ties keep search order."""
+    facts = s.text_facts or {}
+    n_grapes = len(facts.get("grapes") or ())
+    names_grapes = 0 < n_grapes < constants.SNIPPET_GRAPE_LIST_MIN
+    return (1 if names_grapes else 0, 1 if facts.get("regions") else 0, s.match_score)
 
 
 def _pick_diverse(survivors: list[ScoredSnippet], top_n: int) -> list[ScoredSnippet]:
     """Choose up to `top_n` survivors so the context holds distinct facts
     rather than five price pages that repeat the name.
 
-    Survivors are ordered by `_fact_rank` (grape-naming first, then most
-    facts, then score); then:
+    Survivors are ordered by `_fact_rank` (naming the grapes first, then a
+    region, then score, then search order); then:
       1. the distributor's snippet, if one survived (it names the exact blend);
       2. the best snippet from each source not yet represented;
       3. remaining slots in rank order.
@@ -427,6 +434,9 @@ def _build_web_context(
     ]
     if not survivors:
         return None
+    for s in survivors:
+        if s.text_facts is None:
+            s.text_facts = text_facts(s.snippet.body)
     top = _pick_diverse(survivors, top_n)
     for s in top:
         s.in_context = True
@@ -474,12 +484,13 @@ def score_and_assemble(
     for i, s in enumerate(snippets):
         if i in results:
             score, facts = results[i]
-            scored.append(ScoredSnippet(snippet=s, match_score=score, cleaned_body=s.body, facts=facts))
+            scored.append(ScoredSnippet(snippet=s, match_score=score, cleaned_body=s.body, facts=facts,
+                                        text_facts=text_facts(s.body)))
         else:
             # Never scored even after re-asks: visible in the log as "unscored",
             # not disguised as a confident 0.
             scored.append(ScoredSnippet(snippet=s, match_score=0, cleaned_body=s.body,
-                                        dropped_reason="unscored"))
+                                        dropped_reason="unscored", text_facts=text_facts(s.body)))
 
     _apply_content_gates(scored, product)
     if producer_gate:

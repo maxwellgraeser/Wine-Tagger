@@ -368,19 +368,25 @@ context selection, `web_context` assembly.
    `{"<idx>": {"score": 0-100, "facts": ["grape"|"region"|"producer"]}}`.
    `score` answers only "is this the same wine?"; `facts` says what the
    snippet states about it. A price page that repeats the name has
-   `facts: []`. Bare-integer replies (the old shape) still parse.
+   `facts: []`. Bare-integer replies (the old shape) still parse. The
+   `facts` are logged only: the model often gives every survivor the same
+   ones (11 of 43 calls on run `20260928-122808`).
 4. **Producer gate.** Unchanged: a snippet whose body and URL contain no
    significant token of the name/brand is dropped (`producer_absent`).
 5. **Identity threshold.** Survivors need `score >= SNIPPET_MATCH_THRESHOLD`
    (70 — the rubric's "very likely the same wine" band). 85 was tuned for
    bimodal output; with honest per-index grading the model put every true
    match for Li Veli, Cloudline and Chapelle Bastion at 70.
-6. **Fact-first selection.** Survivors are ordered by (names a grape, number
-   of facts, score); then the distributor's snippet first, then the best of
-   each source family, then the rest, up to `TOP_N_SNIPPETS` (5). The score
-   gates; the facts choose.
+6. **Fact-first selection.** `library_text.text_facts` finds the library
+   grapes and regions each body names (longest name first, so "Cabernet
+   Sauvignon" is one grape and "Picpoul de Pinet" is a region, not the
+   grape). Survivors are ordered by (names 1 to 3 grapes, names a region,
+   score, search order); a body naming `SNIPPET_GRAPE_LIST_MIN` (4) or more
+   grapes is a list page and gets no grape credit. Then the distributor's
+   snippet first, then the best of each source family, then the rest, up to
+   `TOP_N_SNIPPETS` (5). The score gates; the text chooses.
 7. **Log.** `logs/<run>/scorer/<id>.json` records per snippet
-   `match_score`, `facts`, `dropped_reason`, `in_context`, and under `llm`
+   `match_score`, `facts`, `text_facts`, `dropped_reason`, `in_context`, and under `llm`
    every call's `indices`, `response`, `error`, plus `missing`.
 
 ### What the tagger's output is checked against
@@ -404,6 +410,13 @@ stated, now enforced in code):
   (Curator's Sémillon, Bila Haut's Mourvèdre from a region blurb). Not
   added on top of `single_source`.
 - **Incomplete blend.** `is_blend` with one grape → `incomplete_blend`.
+- **White grapes only.** A red or rosé whose submitted grapes are all white
+  in the library → `white_grapes_only` (`evidence.white_grapes_only`). The
+  category is the product's, or the model's when the product has none.
+  Pink-skinned grapes filed as white (`ROSE_FROM_PINK_SKINNED`: Pinot Gris,
+  Grenache Gris, Moschofilero) pass for a rosé. Sparkling is not checked.
+  Added for Urruzola's rosé, which lost its Hondarrabi Beltza in three of
+  four runs; see `journal/2026-09-28-SNIPPET-PICK.md`, section 8.
 - **Coarse region.** `evidence.finer_regions_named` walks the library's
   region tree: when the context names a canonical region below the most
   specific one submitted (Barolo under Piedmont, Paarl under Western Cape),
@@ -461,7 +474,7 @@ def score_and_assemble(
 - `_significant_tokens(text)` — accent-strip + stopword + min-length
 - `_apply_producer_gate(scored, product)` — marks `producer_absent`
 - `_fact_rank(s)` / `_pick_diverse(survivors, top_n)` — fact-first,
-  source-diverse selection
+  source-diverse selection, ranked on `text_facts`
 - `_build_web_context(scored, threshold, top_n)` — labeled block
 
 ---

@@ -122,11 +122,20 @@ SNIPPET_MATCH_THRESHOLD = 70  # Min match score (0-100) for a snippet to enter w
                               # scoring the model grades honestly and rated every true match for
                               # Li Veli / Cloudline / Chapelle Bastion at 70 (replay 2026-09-15).
 TOP_N_SNIPPETS = 5            # Max number of survivors passed to the tag-inference LLM. Ordered by
-                              # how many facts the scorer says the snippet states (grape, region,
-                              # producer), then score; then the distributor's snippet (if any)
-                              # first, then the best snippet from each distinct source, then the
-                              # rest. Price pages that merely repeat the name no longer crowd out
-                              # a tech sheet that names the blend.
+                              # what the text names (library grapes, then a region; see
+                              # library_text.text_facts), then score, then search order; then the
+                              # distributor's snippet (if any) first, then the best snippet from
+                              # each distinct source, then the rest. Price pages that merely repeat
+                              # the name no longer crowd out a tech sheet that names the blend.
+                              # The scorer LLM's own `facts` used to decide this, but it labels
+                              # every survivor alike (11 of 43 calls on the 2026-09-28 run), so
+                              # the pick fell back to search order and Chapelle Bastion Picpoul
+                              # got five snippets, none naming its grape.
+SNIPPET_GRAPE_LIST_MIN = 4    # A snippet naming this many distinct grapes or more is a list page (a
+                              # producer's range, a shop's category page), not one wine's blend, and
+                              # gets no grape credit when picking the context: Vajra's UPC listing
+                              # named six. Three still counts, so Massaya's producer sheet (Cinsault,
+                              # Cabernet Sauvignon, Syrah) keeps its credit.
                               # Since tagging moved to the MCP tool loop the prompt no longer carries
                               # reference tables, so there is room for 5 x SNIPPET_CHAR_LIMIT
                               # (~2.5k tokens) — and the confidence rubric wants >= 2 sources.
@@ -192,6 +201,18 @@ GRAPE_MIN_SOURCES = 2               # ...and be named by at least this many dist
                                     # "uncorroborated_grape". On the 2026-09-27 run this caught 5 of the
                                     # 8 wrong rows (Curator's Semillon, Bila Haut's Mourvedre) for 3
                                     # right rows also routed. Not applied on top of single_source.
+# A red or rosé wine needs a red grape. When every submitted grape is one the
+# library files as white, the row routes to review as "white_grapes_only". The
+# tagger dropped Urruzola Txakolina Rosé's Hondarrabi Beltza in three runs out
+# of four: it never looked it up (2026-09-27), looked it up glued to Hondarrabi
+# Zuri and dropped the failed name (09-28), and dropped it "since Hondarrabi
+# Beltza is a red grape and the wine is a rose" (09-28 second run). The first
+# two were auto-accepted. Sparkling is left out: its colour is not in the category.
+WHITE_GRAPES_ONLY_CATEGORIES = {"red", "rose"}  # folded
+# Pink-skinned grapes the library files as white that make a rosé on their own
+# (Pinot Grigio ramato, Grenache Gris and Moschofilero rosés). They pass for a
+# rosé, never for a red.
+ROSE_FROM_PINK_SKINNED = {"Pinot Gris", "Grenache Gris", "Moschofilero"}
 
 # --- Category ---
 # Lightspeed product_category values, in the store's spelling. When the CSV
