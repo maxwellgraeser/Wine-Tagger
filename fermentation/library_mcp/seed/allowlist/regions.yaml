@@ -410,7 +410,7 @@
 - {name: "Ajaccio", country: FR, parent: "Corsica", classification: AOC, grapes: ["Sciacarello", "Nielluccio", "Vermentino"]}
 - {name: "Muscat du Cap Corse", country: FR, parent: "Corsica", classification: AOC, grapes: ["Muscat Blanc à Petits Grains"]}
 - {name: "Languedoc-Roussillon", country: FR, synonyms: ["Languedoc Roussillon", "Occitanie"]}
-- {name: "Languedoc", country: FR, parent: "Languedoc-Roussillon", classification: AOC, synonyms: ["Coteaux du Languedoc", "Languedoc AOC"], grapes: ["Syrah", "Grenache", "Mourvèdre", "Carignan", "Cinsault", "Grenache Blanc", "Bourboulenc", "Clairette", "Marsanne", "Roussanne", "Viognier", "Vermentino", "Picpoul Blanc"]}
+- {name: "Languedoc", country: FR, parent: "Languedoc-Roussillon", classification: AOC, synonyms: ["Coteaux du Languedoc", "Languedoc AOC"], grapes: ["Syrah", "Grenache", "Mourvèdre", "Carignan", "Cinsault", "Grenache Blanc", "Bourboulenc", "Clairette", "Marsanne", "Roussanne", "Viognier", "Vermentino", "Picpoul Blanc", "Lledoner Pelut"]}
 - {name: "Pic Saint-Loup", country: FR, parent: "Languedoc", classification: AOC, synonyms: ["Pic St-Loup", "Pic Saint Loup"], grapes: ["Syrah", "Grenache", "Mourvèdre"]}
 - {name: "Terrasses du Larzac", country: FR, parent: "Languedoc", classification: AOC, grapes: ["Syrah", "Grenache", "Mourvèdre", "Carignan"]}
 - {name: "La Clape", country: FR, parent: "Languedoc", classification: AOC, grapes: ["Syrah", "Grenache", "Mourvèdre", "Bourboulenc"]}
@@ -443,8 +443,8 @@
 - {name: "Muscat de Mireval", country: FR, parent: "Languedoc-Roussillon", classification: AOC, grapes: ["Muscat Blanc à Petits Grains"]}
 - {name: "Muscat de Saint-Jean-de-Minervois", country: FR, parent: "Languedoc-Roussillon", classification: AOC, grapes: ["Muscat Blanc à Petits Grains"]}
 - {name: "Roussillon", country: FR, parent: "Languedoc-Roussillon", synonyms: ["Le Roussillon"]}
-- {name: "Côtes du Roussillon", country: FR, parent: "Roussillon", classification: AOC, synonyms: ["Cotes du Roussillon", "Côtes-du-Roussillon"], grapes: ["Grenache", "Syrah", "Carignan", "Mourvèdre"]}
-- {name: "Côtes du Roussillon Villages", country: FR, parent: "Roussillon", classification: AOC, synonyms: ["Cotes du Roussillon Villages", "Côtes-du-Roussillon Villages"], grapes: ["Grenache", "Carignan", "Syrah", "Mourvèdre"]}
+- {name: "Côtes du Roussillon", country: FR, parent: "Roussillon", classification: AOC, synonyms: ["Cotes du Roussillon", "Côtes-du-Roussillon"], grapes: ["Grenache", "Syrah", "Carignan", "Mourvèdre", "Lledoner Pelut"]}
+- {name: "Côtes du Roussillon Villages", country: FR, parent: "Roussillon", classification: AOC, synonyms: ["Cotes du Roussillon Villages", "Côtes-du-Roussillon Villages"], grapes: ["Grenache", "Carignan", "Syrah", "Mourvèdre", "Lledoner Pelut"]}
 - {name: "Côtes du Roussillon Villages Caramany", country: FR, parent: "Côtes du Roussillon Villages", classification: AOC, synonyms: ["Caramany"], grapes: ["Grenache", "Carignan", "Syrah", "Mourvèdre"]}
 - {name: "Côtes du Roussillon Villages Latour-de-France", country: FR, parent: "Côtes du Roussillon Villages", classification: AOC, synonyms: ["Latour-de-France"], grapes: ["Grenache", "Carignan", "Syrah", "Mourvèdre"]}
 - {name: "Côtes du Roussillon Villages Les Aspres", country: FR, parent: "Côtes du Roussillon Villages", classification: AOC, synonyms: ["Les Aspres"], grapes: ["Grenache", "Carignan", "Syrah", "Mourvèdre"]}
@@ -780,7 +780,7 @@
 - {name: "Romagna Albana", country: IT, parent: "Romagna", classification: DOCG, synonyms: ["Albana di Romagna"], grapes: ["Albana"]}
 - {name: "Colli Romagna Centrale", country: IT, parent: "Emilia-Romagna", classification: DOC, grapes: ["Sangiovese"]}
 - {name: "Emilia", country: IT, parent: "Emilia-Romagna", classification: IGT, synonyms: ["dell'Emilia"]}
-- {name: "Colli Piacentini", country: IT, parent: "Emilia-Romagna", classification: DOC}
+- {name: "Colli Piacentini", country: IT, parent: "Emilia-Romagna", classification: DOC, grapes: ["Croatina"]}
 - {name: "Monterosso Val d'Arda", country: IT, parent: "Colli Piacentini", classification: DOC}
 - {name: "Trebbianino Val Trebbia", country: IT, parent: "Colli Piacentini", classification: DOC}
 - {name: "Val Nure", country: IT, parent: "Colli Piacentini", classification: DOC}
@@ -1119,7 +1119,7 @@
 - {name: "Arborea", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Sangiovese", "Trebbiano"]}
 - {name: "Cagliari", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Malvasía Aromática", "Monica", "Vermentino"]}
 - {name: "Campidano di Terralba", country: IT, parent: "Sardinia", classification: DOC, synonyms: ["Terralba"], grapes: ["Bovale"]}
-- {name: "Girò di Cagliari", country: IT, parent: "Sardinia", classification: DOC}
+- {name: "Girò di Cagliari", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Girò"]}
 - {name: "Malvasia di Bosa", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Malvasía Aromática"]}
 - {name: "Mandrolisai", country: IT, parent: "Sardinia", classification: DOC, grapes: ["Bovale", "Grenache", "Monica"]}
 - {name: "Moscato di Sardegna", country: IT, parent: "Sardinia", classification: DOC, synonyms: ["Moscato di Sardegna Tempio Pausania", "Moscato di Sardegna Gallura"], grapes: ["Muscat of Alexandria"]}
@@ -1240,7 +1240,7 @@
 - {name: "Andalusia", country: ES, synonyms: ["Andalucía", "Andalucia"]}
 - {name: "Jerez", country: ES, parent: "Andalusia", classification: DO, synonyms: ["Jerez-Xérès-Sherry", "Xérès", "Sherry", "Jerez de la Frontera"], grapes: ["Palomino", "Pedro Ximénez", "Muscat of Alexandria"]}
 - {name: "Manzanilla-Sanlúcar de Barrameda", country: ES, parent: "Andalusia", classification: DO, synonyms: ["Manzanilla"], grapes: ["Palomino", "Pedro Ximénez", "Muscat of Alexandria"]}
-- {name: "Montilla-Moriles", country: ES, parent: "Andalusia", classification: DO, synonyms: ["Montilla Moriles", "Montilla"], grapes: ["Pedro Ximénez", "Muscat of Alexandria", "Torrontés"]}
+- {name: "Montilla-Moriles", country: ES, parent: "Andalusia", classification: DO, synonyms: ["Montilla Moriles", "Montilla"], grapes: ["Pedro Ximénez", "Muscat of Alexandria", "Torrontés", "Baladí Verdejo"]}
 - {name: "Málaga", country: ES, parent: "Andalusia", classification: DO, synonyms: ["Malaga"], grapes: ["Muscat of Alexandria", "Pedro Ximénez"]}
 - {name: "Sierras de Málaga", country: ES, parent: "Andalusia", classification: DO, grapes: ["Pedro Ximénez", "Muscat of Alexandria", "Doradilla", "Romé"]}
 - {name: "Condado de Huelva", country: ES, parent: "Andalusia", classification: DO, grapes: ["Zalema", "Palomino", "Garrido Fino", "Muscat of Alexandria", "Pedro Ximénez"]}
@@ -1278,7 +1278,7 @@
 - {name: "Ycoden-Daute-Isora", country: ES, parent: "Tenerife", classification: DO, grapes: ["Listán Blanco", "Negramoll", "Listán Negro"]}
 - {name: "Abona", country: ES, parent: "Tenerife", classification: DO, grapes: ["Listán Blanco", "Listán Negro"]}
 - {name: "Valle de Güímar", country: ES, parent: "Tenerife", classification: DO, synonyms: ["Valle de Guimar"], grapes: ["Listán Blanco", "Negramoll", "Listán Negro"]}
-- {name: "Lanzarote", country: ES, parent: "Canary Islands", classification: DO, grapes: ["Listán Negro", "Muscat of Alexandria"]}
+- {name: "Lanzarote", country: ES, parent: "Canary Islands", classification: DO, grapes: ["Listán Negro", "Muscat of Alexandria", "Malvasía Volcánica"]}
 - {name: "El Hierro", country: ES, parent: "Canary Islands", classification: DO, grapes: ["Listán Blanco", "Vijariego Blanco", "Listán Negro", "Baboso Negro"]}
 - {name: "Gran Canaria", country: ES, parent: "Canary Islands", classification: DO, grapes: ["Listán Negro", "Listán Blanco", "Vijariego Blanco"]}
 - {name: "La Gomera", country: ES, parent: "Canary Islands", classification: DO, grapes: ["Forastera Blanca", "Listán Negro"]}
@@ -1330,7 +1330,7 @@
 - {name: "Campo de Cartagena", country: ES, parent: "Murcia", classification: IGP}
 - {name: "Vino de la Tierra de Murcia", country: ES, parent: "Murcia", classification: IGP, synonyms: ["VT Murcia"]}
 - {name: "Extremadura", country: ES, synonyms: ["VT Extremadura"]}
-- {name: "Ribera del Guadiana", country: ES, parent: "Extremadura", classification: DO, grapes: ["Tempranillo", "Pardina", "Cayetana Blanca"]}
+- {name: "Ribera del Guadiana", country: ES, parent: "Extremadura", classification: DO, grapes: ["Tempranillo", "Cayetana Blanca"]}
 - {name: "Tierra de Barros", country: ES, parent: "Ribera del Guadiana"}
 - {name: "Cañamero", country: ES, parent: "Ribera del Guadiana", synonyms: ["Canamero"]}
 - {name: "Montánchez", country: ES, parent: "Ribera del Guadiana", synonyms: ["Montanchez"]}
@@ -1377,9 +1377,9 @@
 - {name: "Cova da Beira", country: PT, parent: "Beira Interior", classification: "Sub-região"}
 - {name: "Terras da Beira", country: PT, classification: IGP}
 - {name: "Beira Atlântico", country: PT, classification: IGP, synonyms: ["Beira Atlantico"]}
-- {name: "Távora-Varosa", country: PT, classification: DOC, synonyms: ["Tavora-Varosa", "Távora e Varosa"], grapes: ["Bical", "Fernão Pires", "Gouveio", "Malvasia Fina", "Tinta Barroca", "Tinta Roriz", "Touriga Franca", "Touriga Nacional"]}
+- {name: "Távora-Varosa", country: PT, classification: DOC, synonyms: ["Tavora-Varosa", "Távora e Varosa"], grapes: ["Bical", "Fernão Pires", "Gouveio", "Malvasia Fina", "Tinta Barroca", "Tinta Roriz", "Touriga Franca", "Touriga Nacional", "Cerceal"]}
 - {name: "Terras de Cister", country: PT, classification: IGP}
-- {name: "Lafões", country: PT, classification: DOC, synonyms: ["Lafoes"], grapes: ["Jaen", "Arinto"]}
+- {name: "Lafões", country: PT, classification: DOC, synonyms: ["Lafoes"], grapes: ["Jaen", "Arinto", "Cerceal"]}
 - {name: "Encostas d'Aire", country: PT, classification: DOC, synonyms: ["Encostas de Aire"]}
 - {name: "Alcobaça", country: PT, parent: "Encostas d'Aire", classification: "Sub-região", grapes: ["Aragonez", "Baga", "Castelão", "Touriga Nacional", "Fernão Pires"]}
 - {name: "Ourém", country: PT, parent: "Encostas d'Aire", classification: "Sub-região", synonyms: ["Ourem", "Medieval de Ourém"], grapes: ["Trincadeira", "Fernão Pires"]}
@@ -1387,7 +1387,7 @@
 - {name: "Alenquer", country: PT, parent: "Lisboa", classification: DOC, grapes: ["Castelão", "Trincadeira", "Touriga Nacional", "Arinto"]}
 - {name: "Arruda", country: PT, parent: "Lisboa", classification: DOC, synonyms: ["Arruda dos Vinhos"], grapes: ["Castelão", "Tinta Miúda", "Camarate"]}
 - {name: "Bucelas", country: PT, parent: "Lisboa", classification: DOC, grapes: ["Arinto", "Sercial", "Rabo de Ovelha"]}
-- {name: "Carcavelos", country: PT, parent: "Lisboa", classification: DOC, grapes: ["Arinto"]}
+- {name: "Carcavelos", country: PT, parent: "Lisboa", classification: DOC, grapes: ["Arinto", "Galego Dourado", "Ratinho"]}
 - {name: "Colares", country: PT, parent: "Lisboa", classification: DOC, grapes: ["Ramisco", "Malvasia de Colares"]}
 - {name: "Óbidos", country: PT, parent: "Lisboa", classification: DOC, synonyms: ["Obidos"], grapes: ["Arinto", "Vital", "Castelão"]}
 - {name: "Lourinhã", country: PT, parent: "Lisboa", classification: DOC, synonyms: ["Lourinha"], grapes: ["Vital", "Arinto"]}
@@ -1417,13 +1417,13 @@
 - {name: "Lagoa", country: PT, parent: "Algarve", classification: DOC, grapes: ["Castelão", "Negra Mole", "Arinto", "Síria"]}
 - {name: "Portimão", country: PT, parent: "Algarve", classification: DOC, synonyms: ["Portimao"], grapes: ["Castelão", "Negra Mole", "Arinto", "Síria"]}
 - {name: "Tavira", country: PT, parent: "Algarve", classification: DOC, grapes: ["Castelão", "Negra Mole", "Arinto", "Síria"]}
-- {name: "Madeira", country: PT, classification: DOC, synonyms: ["Madeira wine"], grapes: ["Sercial", "Verdelho", "Malvasia Fina", "Terrantez", "Negramoll"]}
+- {name: "Madeira", country: PT, classification: DOC, synonyms: ["Madeira wine"], grapes: ["Sercial", "Verdelho", "Malvasia Fina", "Terrantez", "Negramoll", "Malvasia Cândida"]}
 - {name: "Madeirense", country: PT, classification: DOC}
 - {name: "Terras Madeirenses", country: PT, classification: IGP}
 - {name: "Açores", country: PT, classification: VR, synonyms: ["Azores"]}
-- {name: "Biscoitos", country: PT, parent: "Açores", classification: DOC, grapes: ["Verdelho"]}
-- {name: "Graciosa", country: PT, parent: "Açores", classification: DOC, grapes: ["Fernão Pires", "Verdelho"]}
-- {name: "Pico", country: PT, parent: "Açores", classification: DOC, grapes: ["Verdelho"]}
+- {name: "Biscoitos", country: PT, parent: "Açores", classification: DOC, grapes: ["Verdelho", "Arinto dos Açores", "Terrantez do Pico"]}
+- {name: "Graciosa", country: PT, parent: "Açores", classification: DOC, grapes: ["Fernão Pires", "Verdelho", "Arinto dos Açores", "Terrantez do Pico"]}
+- {name: "Pico", country: PT, parent: "Açores", classification: DOC, grapes: ["Verdelho", "Arinto dos Açores", "Terrantez do Pico"]}
 
 # ======================= GERMANY =======================
 - {name: "Mosel", country: DE, classification: Anbaugebiet, synonyms: ["Mosel-Saar-Ruwer", "Moselle"]}
@@ -1748,8 +1748,8 @@
 - {name: "Zitsa", country: GR, parent: "Epirus", classification: PDO, grapes: ["Debina"]}
 - {name: "Ioannina", country: GR, parent: "Epirus", classification: PGI}
 - {name: "Metsovo", country: GR, parent: "Epirus", classification: PGI}
-- {name: "Rapsani", country: GR, parent: "Thessaly", classification: PDO, grapes: ["Xinomavro", "Krasato"]}
-- {name: "Messenikola", country: GR, parent: "Thessaly", classification: PDO, synonyms: ["Mesenikola"], grapes: ["Carignan", "Syrah"]}
+- {name: "Rapsani", country: GR, parent: "Thessaly", classification: PDO, grapes: ["Xinomavro", "Krasato", "Stavroto"]}
+- {name: "Messenikola", country: GR, parent: "Thessaly", classification: PDO, synonyms: ["Mesenikola"], grapes: ["Carignan", "Syrah", "Mavro Messenikola"]}
 - {name: "Anchialos", country: GR, parent: "Thessaly", classification: PDO, grapes: ["Roditis", "Savatiano"]}
 - {name: "Krania", country: GR, parent: "Thessaly", classification: PGI}
 - {name: "Elassona", country: GR, parent: "Thessaly", classification: PGI}
@@ -1796,7 +1796,7 @@
 - {name: "Mavrodaphne of Patras", country: GR, parent: "Peloponnese", classification: PDO, synonyms: ["Mavrodafni of Patras"], grapes: ["Mavrodaphne"]}
 - {name: "Muscat of Patras", country: GR, parent: "Peloponnese", classification: PDO, grapes: ["Muscat Blanc à Petits Grains"]}
 - {name: "Muscat of Rio Patras", country: GR, parent: "Peloponnese", classification: PDO, synonyms: ["Muscat of Rion Patras"], grapes: ["Muscat Blanc à Petits Grains"]}
-- {name: "Monemvasia-Malvasia", country: GR, parent: "Peloponnese", classification: PDO, synonyms: ["Monemvassia-Malvasia"], grapes: ["Monemvasia", "Assyrtiko"]}
+- {name: "Monemvasia-Malvasia", country: GR, parent: "Peloponnese", classification: PDO, synonyms: ["Monemvassia-Malvasia"], grapes: ["Monemvasia", "Assyrtiko", "Kydonitsa"]}
 - {name: "Argolida", country: GR, parent: "Peloponnese", classification: PGI, synonyms: ["Argolis"]}
 - {name: "Arkadia", country: GR, parent: "Peloponnese", classification: PGI, synonyms: ["Arcadia"]}
 - {name: "Achaia", country: GR, parent: "Peloponnese", classification: PGI, synonyms: ["Achaea"]}
@@ -1905,7 +1905,7 @@
 - {name: "Slavonia", country: HR, parent: "Slavonia and Croatian Danube", classification: Subregion, synonyms: ["Slavonija"]}
 - {name: "Ilok", country: HR, parent: "Croatian Danube", classification: PDO}
 - {name: "Kutjevo", country: HR, parent: "Slavonia", classification: PDO}
-- {name: "Istria", country: HR, parent: "Istria and Kvarner", classification: PDO, synonyms: ["Istra", "Hrvatska Istra", "Croatian Istria"], grapes: ["Malvasia Istriana", "Refosco"]}
+- {name: "Istria", country: HR, parent: "Istria and Kvarner", classification: PDO, synonyms: ["Istra", "Hrvatska Istra", "Croatian Istria"], grapes: ["Malvasia Istriana", "Teran"]}
 - {name: "Kvarner and Croatian Littoral", country: HR, parent: "Istria and Kvarner", classification: Subregion, synonyms: ["Kvarner i Hrvatsko primorje", "Hrvatsko primorje"]}
 - {name: "North Dalmatia", country: HR, parent: "Dalmatia", classification: Subregion, synonyms: ["Sjeverna Dalmacija"]}
 - {name: "Dalmatian Hinterland", country: HR, parent: "Dalmatia", classification: Subregion, synonyms: ["Dalmatinska zagora"]}
@@ -1928,7 +1928,7 @@
 - {name: "Posavje", country: SI, classification: PGI, synonyms: ["Lower Sava Valley"]}
 - {name: "Goriška Brda", country: SI, parent: "Primorska", classification: PDO, synonyms: ["Brda", "Goriska Brda"], grapes: ["Ribolla Gialla"]}
 - {name: "Vipava Valley", country: SI, parent: "Primorska", classification: PDO, synonyms: ["Vipavska dolina", "Vipava"]}
-- {name: "Kras", country: SI, parent: "Primorska", classification: PDO, synonyms: ["Karst"], grapes: ["Refosco"]}
+- {name: "Kras", country: SI, parent: "Primorska", classification: PDO, synonyms: ["Karst"], grapes: ["Teran"]}
 - {name: "Slovenska Istra", country: SI, parent: "Primorska", classification: PDO, synonyms: ["Slovenian Istria"]}
 - {name: "Štajerska Slovenija", country: SI, parent: "Podravje", classification: PDO, synonyms: ["Štajerska", "Stajerska", "Slovenian Styria"]}
 - {name: "Prekmurje", country: SI, parent: "Podravje", classification: PDO}
@@ -1981,12 +1981,12 @@
 - {name: "Zegaani", country: GE, parent: "Kakheti", classification: PDO, grapes: ["Saperavi"]}
 - {name: "Khvanchkara", country: GE, parent: "Racha", classification: PDO, grapes: ["Aleksandrouli", "Mujuretuli"]}
 - {name: "Tvishi", country: GE, parent: "Racha", classification: PDO, grapes: ["Tsolikouri"]}
-- {name: "Okureshis Usakhelouri", country: GE, parent: "Racha", classification: PDO, synonyms: ["Okureshi"]}
+- {name: "Okureshis Usakhelouri", country: GE, parent: "Racha", classification: PDO, synonyms: ["Okureshi"], grapes: ["Usakhelouri"]}
 - {name: "Atenuri", country: GE, parent: "Kartli", classification: PDO, synonyms: ["Ateni"], grapes: ["Chinuri", "Goruli Mtsvane"]}
 - {name: "Bolnisi", country: GE, parent: "Kartli", classification: PDO}
 - {name: "Okami", country: GE, parent: "Kartli", classification: PDO, grapes: ["Shavkapito", "Chinuri", "Goruli Mtsvane"]}
-- {name: "Asuretuli Shala", country: GE, parent: "Kartli", classification: PDO, grapes: ["Shavkapito"]}
-- {name: "Sviri", country: GE, parent: "Imereti", classification: PDO, grapes: ["Tsolikouri"]}
+- {name: "Asuretuli Shala", country: GE, parent: "Kartli", classification: PDO, grapes: ["Shavkapito", "Asuretuli Shavi", "Tavkveri"]}
+- {name: "Sviri", country: GE, parent: "Imereti", classification: PDO, grapes: ["Tsolikouri", "Tsitska", "Krakhuna"]}
 - {name: "Salkhino Ojaleshi", country: GE, parent: "Samegrelo", classification: PDO, synonyms: ["Salkhino"], grapes: ["Ojaleshi"]}
 - {name: "Vayots Dzor", country: AM, synonyms: ["Areni (region)"]}
 - {name: "Thrace", country: TR, synonyms: ["Turkish Thrace"]}

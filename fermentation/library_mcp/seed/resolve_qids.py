@@ -253,7 +253,7 @@ def resolve(al: Allowlist, *, redo_all: bool, log=print) -> dict:
     lock = {"grapes": dict(existing.get("grapes") or {}), "regions": dict(existing.get("regions") or {})}
 
     # ---- grapes: pass 1, exact label/altLabel match among grape varieties ----
-    todo_g = [g for g in al.grapes if not g.qid and (
+    todo_g = [g for g in al.grapes if not g.qid and not g.no_qid and (
         redo_all or g.name not in lock["grapes"] or lock["grapes"].get(g.name) is None
         or (lock["grapes"][g.name] or {}).get("note") != "ok")]
     if todo_g:
@@ -276,7 +276,7 @@ def resolve(al: Allowlist, *, redo_all: bool, log=print) -> dict:
         write_lock(_pruned(lock, al))
 
     # ---- grapes: pass 2, entity search for whatever is still not ok ----
-    todo_g = [g for g in al.grapes if not g.qid and (
+    todo_g = [g for g in al.grapes if not g.qid and not g.no_qid and (
         redo_all or g.name not in lock["grapes"] or lock["grapes"].get(g.name) is None
         or (lock["grapes"][g.name] or {}).get("note") != "ok")]
     log(f"[grapes] {len(todo_g)} to resolve")
@@ -353,7 +353,7 @@ def resolve(al: Allowlist, *, redo_all: bool, log=print) -> dict:
 
 def _pruned(lock: dict, al: Allowlist) -> dict:
     """Drop lock entries for names no longer in the YAMLs; sort for stable diffs."""
-    gnames = {g.name for g in al.grapes if not g.qid}          # pinned entries need no lock row
+    gnames = {g.name for g in al.grapes if not g.qid and not g.no_qid}  # pinned entries need no lock row
     rkeys = {region_lock_key(r) for r in al.regions if not r.qid}
     return {
         "grapes": {k: v for k, v in sorted(lock["grapes"].items()) if k in gnames},
@@ -374,7 +374,7 @@ def write_lock(lock: dict, path: Path = LOCK_PATH) -> None:
 def report(al: Allowlist) -> int:
     bad = 0
     for g in al.grapes:
-        if al.grape_qid(g) is None:
+        if al.grape_qid(g) is None and not g.no_qid:
             print(f"grape unresolved: {g.name}")
             bad += 1
     for r in al.regions:

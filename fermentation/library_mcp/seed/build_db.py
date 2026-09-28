@@ -71,6 +71,12 @@ WIKIPEDIA_HEADERS = {"User-Agent": USER_AGENT, "Accept": "text/html"}
 SPARQL_PAUSE = 1.0          # seconds between SPARQL calls
 VALUES_CHUNK = 150          # QIDs per VALUES block
 
+# Wikidata grape items kept out of the placeholder tier: names that are not
+# a variety on a modern label, so a lookup should come back unknown.
+PLACEHOLDER_SKIP_GRAPES = {
+    "Q5519591",   # Gamay Beaujolais: a US style name (Pinot Noir or Valdiguié clones), banned since 2007
+}
+
 GRAPE_VARIETY = "Q958314"
 SOVEREIGN_STATE = "Q3624078"
 COUNTRY = "Q6256"
@@ -232,7 +238,7 @@ WHERE {{
 # ---------- canonical: grapes ----------
 
 def ingest_grapes(conn: sqlite3.Connection, al: Allowlist, country_ids: dict[str, int]) -> _SynonymGuard:
-    qid_to_entry = {al.grape_qid(g): g for g in al.grapes}
+    qid_to_entry = {al.grape_qid(g): g for g in al.grapes if not g.no_qid}
     fetched: dict[str, dict] = {}
     for chunk in _chunks(list(qid_to_entry), VALUES_CHUNK):
         values = " ".join(f"wd:{q}" for q in chunk)
@@ -274,8 +280,8 @@ WHERE {{
     guard = _SynonymGuard()
     ids: dict[str, int] = {}
     for g in al.grapes:
-        q = al.grape_qid(g)
-        origin_id = qid_to_country.get(fetched[q]["origin"])
+        q = al.grape_qid(g)                    # None for a `qid: none` grape
+        origin_id = qid_to_country.get(fetched[q]["origin"]) if q else None
         cur.execute(
             """INSERT INTO grapes (canonical_name, color, origin_country_id, wikidata_qid, is_canonical)
                VALUES (?, ?, ?, ?, 1)""",
@@ -289,9 +295,12 @@ WHERE {{
                 cur.execute("INSERT OR IGNORE INTO grape_synonyms (grape_id, synonym) VALUES (?, ?)",
                             (ids[g.name], s))
     for g in al.grapes:                        # then Wikidata label + altLabels
+        if g.no_qid:
+            continue
         info = fetched[al.grape_qid(g)]
+        blocked = {_fold(s) for s in g.not_synonyms}
         for s in [info["label"], *info["alts"]]:
-            if not s or _fold(s) == _fold(g.name) or len(s) > 40:
+            if not s or _fold(s) == _fold(g.name) or len(s) > 40 or _fold(s) in blocked:
                 continue
             if guard.claim(s, ids[g.name]):
                 cur.execute("INSERT OR IGNORE INTO grape_synonyms (grape_id, synonym) VALUES (?, ?)",
@@ -360,7 +369,7 @@ WHERE {
     for b in rows:
         q = _qid(_val(b, "g"))
         name = _val(b, "gLabel")
-        if not q or not name or name.startswith("Q") or q in have:
+        if not q or not name or name.startswith("Q") or q in have or q in PLACEHOLDER_SKIP_GRAPES:
             continue
         if guard.taken(name):                   # would shadow a canonical name/synonym
             continue

@@ -111,11 +111,19 @@
 - {name: "Schiava", color: red, synonyms: ["Vernatsch", "Trollinger", "Schiava Grossa"]}
 - {name: "Teroldego", color: red}
 - {name: "Marzemino", color: red}
-- {name: "Refosco", color: red, synonyms: ["Refosco dal Peduncolo Rosso", "Teran", "Refošk", "Refosk", "Terrano"]}
+- {name: "Refosco", color: red, synonyms: ["Refosco dal Peduncolo Rosso"]}
+# Teran / Terrano is its own VIVC variety (Kras, Istria, Carso), not Refosco
+# dal Peduncolo Rosso; Slovene "Refošk" labels are this grape.
+- {name: "Teran", color: red, qid: Q1437894, synonyms: ["Terrano", "Refošk", "Refosk", "Refosco d'Istria"]}
 - {name: "Raboso", color: red, synonyms: ["Raboso Piave", "Friularo"]}
 - {name: "Schioppettino", color: red}
 - {name: "Pignolo", color: red}
-- {name: "Lambrusco", color: red, synonyms: ["Lambrusco Grasparossa", "Lambrusco Salamino", "Lambrusco di Sorbara", "Lambrusco Maestri"]}
+# Bare "Lambrusco" stays a family entry; the four label varieties are split.
+- {name: "Lambrusco", color: red}
+- {name: "Lambrusco Grasparossa", color: red, qid: Q1695648}
+- {name: "Lambrusco Salamino", color: red, qid: Q1801495}
+- {name: "Lambrusco Maestri", color: red, qid: Q1236927}
+- {name: "Lambrusco di Sorbara", color: red, qid: none, source: "https://www.quattrocalici.it/vitigni/lambrusco-di-sorbara/", synonyms: ["Sorbara"]}
 - {name: "Croatina", color: red}
 - {name: "Vespolina", color: red}
 - {name: "Freisa", color: red}
@@ -189,7 +197,8 @@
 - {name: "Albarola", color: white}
 - {name: "Durella", color: white}
 - {name: "Grechetto", color: white, synonyms: ["Grechetto di Orvieto"]}
-- {name: "Malvasia Bianca", color: white, synonyms: ["Malvasia", "Malvasia Bianca di Candia", "Malvasia del Lazio"]}
+- {name: "Malvasia Bianca", color: white, synonyms: ["Malvasia", "Malvasia Bianca di Candia"]}
+- {name: "Malvasia del Lazio", color: white, qid: Q1530254, synonyms: ["Malvasia Puntinata"]}
 - {name: "Malvasia di Candia Aromatica", color: white}
 - {name: "Malvasia Nera", color: red, synonyms: ["Malvasia Nera di Brindisi", "Malvasia Nera di Lecce"]}
 - {name: "Moscato Giallo", color: white, synonyms: ["Goldmuskateller", "Fior d'Arancio"]}
@@ -231,7 +240,7 @@
 - {name: "Castelão", color: red, synonyms: ["Castelao", "Periquita", "Castelão Francês", "João de Santarém"]}
 - {name: "Baga", color: red}
 - {name: "Trincadeira", color: red, synonyms: ["Tinta Amarela"]}
-- {name: "Alfrocheiro", color: red, synonyms: ["Baboso Negro", "Bruñal", "Bastardillo Chico"]}
+- {name: "Alfrocheiro", color: red, synonyms: ["Baboso Negro", "Bruñal", "Bastardillo Chico", "Albarín Tinto", "Albarin Tinto"]}
 - {name: "Rufete", color: red}
 - {name: "Vinhão", color: red, synonyms: ["Vinhao", "Sousão", "Sousao", "Souzao", "Sousón"]}
 - {name: "Arinto", color: white, synonyms: ["Pedernã"]}
@@ -346,7 +355,9 @@
 - {name: "Norton", color: red, synonyms: ["Cynthiana"]}
 - {name: "Vidal Blanc", color: white, synonyms: ["Vidal"]}
 - {name: "Torrontés", color: white, synonyms: ["Torrontes", "Torrontés Riojano"]}
-- {name: "Bonarda", color: red, qid: Q136078247, synonyms: ["Douce Noir", "Charbono", "Bonarda Argentina"]}
+# Canonical Bonarda is Argentina's (Douce Noir). Italian "Bonarda" labels
+# (Oltrepò Pavese, Colli Piacentini) are Croatina; those regions list it.
+- {name: "Bonarda", color: red, qid: Q136078247, synonyms: ["Douce Noir", "Charbono", "Bonarda Argentina"], not_synonyms: ["Bonarda Piemontese"]}
 - {name: "País", color: red, qid: Q498598, synonyms: ["Pais", "Listán Prieto", "Listan Prieto", "Mission", "Criolla Chica"]}
 - {name: "Cereza", color: rose}
 - {name: "Criolla Grande", color: rose}
@@ -457,8 +468,8 @@
 
 # ---------------- research: es-s2 ----------------
 - {name: "Merseguera", color: white, synonyms: ["Meseguera", "Blanquilla"]}
-- {name: "Pardina", color: white, synonyms: ["Jaén Blanco"]}
-- {name: "Cayetana Blanca", color: white, synonyms: ["Cayetana"]}
+# VIVC files Pardina and Jaén Blanco under Cayetana Blanca.
+- {name: "Cayetana Blanca", color: white, synonyms: ["Cayetana", "Pardina", "Jaén Blanco", "Jaen Blanco"]}
 - {name: "Moravia Agria", color: red}
 - {name: "Forcallat Tinta", color: red, synonyms: ["Forcallà"]}
 - {name: "Malvar", color: white}
@@ -594,3 +605,49 @@
 
 # ---------------- research: uy-ca ----------------
 - {name: "L'Acadie Blanc", color: white, synonyms: ["Acadie Blanc"]}
+
+# ---------------- reconciliation 2026-09-27 ----------------
+# Found on Wikidata after the merges dropped them.
+- {name: "Orbois", color: white, qid: Q630166, synonyms: ["Menu Pineau"], not_synonyms: ["Arbois", "Arbois B"]}
+- {name: "Folle Noire", color: red, qid: Q5507188, synonyms: ["Fuella", "Fuella Nera"]}
+- {name: "Girò", color: red, qid: Q735114, synonyms: ["Giro", "Giró Ros", "Giro Ros"], not_synonyms: ["Girò di Cagliari DOC", "Girò di Cagliari"]}
+- {name: "Grk", color: white, qid: Q1547141, synonyms: ["Grk Bijeli"]}
+- {name: "Debit", color: white, qid: Q27826727}
+- {name: "Tavkveri", color: red, qid: Q20574534, synonyms: ["Takveri"]}
+- {name: "Usakhelouri", color: red, qid: Q7901690, synonyms: ["Usakhelauri"]}
+- {name: "Torrontés Sanjuanino", color: white, qid: Q2444680, synonyms: ["Torrontes Sanjuanino", "Moscatel de Austria"]}
+# No Wikidata item; `source:` is the research slice's citation.
+- {name: "Nouvelle", color: white, qid: none, source: "https://southafrica.co.za/nouvelle.html"}
+- {name: "Petite Pearl", color: red, qid: none, source: "https://en.wikipedia.org/wiki/Nebraska_wine"}
+- {name: "Malvasía Volcánica", color: white, qid: none, source: "https://marcacanaria.com/malvasia-volcanica-la-uva-de-lanzarote/", synonyms: ["Malvasia Volcanica"]}
+- {name: "Vijariego Negro", color: red, qid: none, source: "https://www.canarywine.com/en/varieties/"}
+- {name: "Baladí Verdejo", color: white, qid: none, source: "https://bodegasmunana.com/denominacion-origen-vinos-de-granada/"}
+- {name: "Samtrot", color: red, qid: none, source: "https://www.echt-wuerttemberger.de/weine/rebsorten/samtrot"}
+- {name: "Cerceal", color: white, qid: none, source: "https://bubblyprofessor.com/2021/06/20/confusion-corner-sercial-cerceal-cercial/", synonyms: ["Cercial", "Cerceal Branco"]}
+- {name: "Malvasia Cândida", color: white, qid: none, source: "https://www.madeirawineanddine.com/madeira-wines-styles/", synonyms: ["Malvasia Candida"]}
+- {name: "Arinto dos Açores", color: white, qid: none, source: "https://winesofportugal.com/pt/descobrir/regioes-vitivinicolas/acores/", synonyms: ["Arinto dos Acores"]}
+- {name: "Terrantez do Pico", color: white, qid: none, source: "https://winesofportugal.com/pt/descobrir/regioes-vitivinicolas/acores/"}
+- {name: "Galego Dourado", color: white, qid: none, source: "https://en.wikipedia.org/wiki/Carcavelos_DOC"}
+- {name: "Ratinho", color: red, qid: none, source: "https://en.wikipedia.org/wiki/Carcavelos_DOC"}
+- {name: "Stavroto", color: red, qid: none, source: "https://winesofgreece.org/articles/stavroto/"}
+- {name: "Tsaoussi", color: white, qid: none, source: "https://www.wine-searcher.com/grape-662-tsaoussi", synonyms: ["Tsaousi"]}
+- {name: "Goustolidi", color: white, qid: none, source: "https://thegreekwineexperience.com/index.php/kefalonia-and-its-grapes/"}
+- {name: "Mavro Messenikola", color: red, qid: none, source: "https://winesofgreece.org/pdo/pdo-messenikola/"}
+- {name: "Dafni", color: white, qid: none, source: "https://en.wikipedia.org/wiki/Dafni_(grape)"}
+- {name: "Plyto", color: white, qid: none, source: "https://en.wikipedia.org/wiki/Plyto"}
+- {name: "Kydonitsa", color: white, qid: none, source: "https://thegrapereset.com/monemvasia-winery-tsimbidi"}
+- {name: "Fokiano", color: red, qid: none, source: "https://winesofgreece.org/pgi/pgi-ikaria/", synonyms: ["Fokianos"]}
+- {name: "Begleri", color: white, qid: none, source: "https://winesofgreece.org/pgi/pgi-ikaria/"}
+- {name: "Mavrothiriko", color: red, qid: none, source: "https://winesofgreece.org/pdo/pdo-rhodes/"}
+- {name: "Asuretuli Shavi", color: red, qid: none, source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Chkhaveri", color: rose, qid: none, source: "https://en.wikipedia.org/wiki/Georgian_wine"}
+- {name: "Krakhuna", color: white, qid: none, source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Otskhanuri Sapere", color: red, qid: none, source: "https://en.wikipedia.org/wiki/Georgian_wine"}
+- {name: "Tsitska", color: white, qid: none, source: "https://en.wikipedia.org/wiki/List_of_Georgian_wine_appellations"}
+- {name: "Emir", color: white, qid: none, source: "https://en.wikipedia.org/wiki/Turkish_wine"}
+- {name: "Merwah", color: white, qid: none, source: "https://en.wikipedia.org/wiki/Lebanese_wine"}
+- {name: "Škrlet", color: white, qid: none, source: "https://total-croatia-news.com/wine/grapes/the-indigenous-grapes-of-croatia-skrlet/", synonyms: ["Skrlet", "Ovnek"]}
+- {name: "Mara", color: red, qid: none, source: "https://www.wine-searcher.com/grape-2284-mara"}
+- {name: "Torontel", color: white, qid: none, source: "https://vivc.de/index.php?id=15465&r=passport%2Fview"}
+- {name: "Moscatel Rosado", color: rose, qid: none, source: "https://www.vivc.de/index.php?r=passport/view&id=8040"}
+- {name: "Torrontés Mendocino", color: white, qid: none, source: "https://en.wikipedia.org/wiki/Torront%C3%A9s", synonyms: ["Torrontes Mendocino"]}

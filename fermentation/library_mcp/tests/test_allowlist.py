@@ -127,3 +127,22 @@ def test_bad_qid_format_rejected(base):
     _write(base, [{"name": "Italy", "iso": "IT"}], [{"name": "A", "qid": "12"}], [])
     with pytest.raises(AllowlistError):
         load_allowlists(base)
+
+
+def test_grape_without_wikidata_item_needs_source(base):
+    _write(base, [{"name": "Georgia", "iso": "GE"}],
+           [{"name": "Tsitska", "qid": "none", "source": "https://example.org/tsitska"},
+            {"name": "Krakhuna", "qid": "none"}], [])
+    with pytest.raises(AllowlistError, match="needs a source"):
+        load_allowlists(base)
+
+
+def test_grape_without_wikidata_item_validates(base):
+    _write(base, [{"name": "Georgia", "iso": "GE"}],
+           [{"name": "Tsitska", "qid": "none", "source": "https://example.org/tsitska"},
+            {"name": "Bonarda", "qid": "Q1", "not_synonyms": ["Bonarda Piemontese"]}], [],
+           {"grapes": {}, "regions": {}})
+    al = load_allowlists(base)
+    tsitska, bonarda = al.grapes
+    assert tsitska.no_qid and al.grape_qid(tsitska) is None
+    assert bonarda.not_synonyms == ["Bonarda Piemontese"]

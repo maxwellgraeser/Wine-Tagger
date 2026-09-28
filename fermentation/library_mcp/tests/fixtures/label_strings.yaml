@@ -134,7 +134,9 @@ FR:
     "Côt": "Malbec"
     "Braucol": "Fer Servadou"
     "Len de l'El": "Len de l'El"
-  not_grapes: ["Tokay"]
+    "Menu Pineau": "Orbois"
+    "Fuella": "Folle Noire"
+  not_grapes: ["Tokay", "Arbois"]
 
 US:
   regions:
@@ -213,6 +215,7 @@ US:
     "Foch": "Marechal Foch"
     "Moore's Diamond": "Diamond"
     "Scuppernong": "Scuppernong"
+  not_grapes: ["Gamay Beaujolais"]
 
 ES:
   regions:
@@ -279,7 +282,10 @@ ES:
     "Garnacha Tintorera": "Alicante Bouschet"
     "Bobal": "Bobal"
     "Merseguera": "Merseguera"
-    "Pardina": "Pardina"
+    "Pardina": "Cayetana Blanca"
+    "Albarin Tinto": "Alfrocheiro"
+    "Malvasia Volcanica": "Malvasía Volcánica"
+    "Giró Ros": "Girò"
     "Cayetana Blanca": "Cayetana Blanca"
     "Moravia Agria": "Moravia Agria"
     "Forcallat Tinta": "Forcallat Tinta"
@@ -378,7 +384,11 @@ IT:
     "Prunent": "Nebbiolo"
     "Turbiana": "Verdicchio"
     "Rebula": "Ribolla Gialla"
-    "Teran": "Refosco"
+    "Teran": "Teran"
+    "Terrano": "Teran"
+    "Lambrusco di Sorbara": "Lambrusco di Sorbara"
+    "Lambrusco Grasparossa": "Lambrusco Grasparossa"
+    "Malvasia del Lazio": "Malvasia del Lazio"
     "Brunello": "Sangiovese"
     "Prugnolo Gentile": "Sangiovese"
     "Sangioveto": "Sangiovese"
@@ -675,6 +685,8 @@ GE:
     "Racha-Lechkhumi": "Racha"
   grapes:
     "Mtsvane Kakhuri": "Mtsvane"
+    "Takveri": "Tavkveri"
+    "Usakhelauri": "Usakhelouri"
 
 TR:
   regions:

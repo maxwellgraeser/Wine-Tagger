@@ -3,7 +3,8 @@
 Three hand-edited YAMLs live next to this file:
 
     countries.yaml   -- {name, iso, synonyms[]}            keyed by ISO-3166-1 alpha-2
-    grapes.yaml      -- {name, color, synonyms[], qid?}    keyed by name
+    grapes.yaml      -- {name, color, synonyms[], not_synonyms[], qid?, source?}
+                                                           keyed by name
     regions.yaml     -- {name, country, parent?, classification?, synonyms[], grapes[], qid?}
 
 plus one machine-generated lock file, `qids.lock.yaml`, written by
@@ -14,7 +15,10 @@ eyeball wrong picks in a diff. Build rules:
   * Countries resolve deterministically from ISO code (wdt:P297) at build
     time -- no lock entry needed.
   * Grapes MUST have a QID: either `qid:` in the YAML (manual pin) or a lock
-    entry. Missing -> build fails. Wikidata supplies altLabel synonyms.
+    entry. Missing -> build fails. Wikidata supplies altLabel synonyms,
+    minus any listed in `not_synonyms:`. The one exception is a grape
+    Wikidata has no item for: `qid: none` plus a `source:` (VIVC number or
+    URL) lands it with authored synonyms only.
   * Regions MAY have a QID. Wikidata types wine regions inconsistently
     (Barolo is a "wine", Rioja a "wine-producing region", Napa an "AVA",
     Bekaa a "valley"), so the hierarchy, country and classification are
@@ -60,6 +64,9 @@ class GrapeEntry:
     color: str | None = None
     synonyms: list[str] = field(default_factory=list)
     qid: str | None = None          # manual pin; overrides the lock file
+    no_qid: bool = False            # `qid: none`: Wikidata has no item for it
+    source: str | None = None       # required with `qid: none` (VIVC number or URL)
+    not_synonyms: list[str] = field(default_factory=list)  # Wikidata altLabels to drop
 
 
 @dataclass
@@ -177,12 +184,19 @@ def _load_grapes(path: Path) -> list[GrapeEntry]:
         color = _opt_str(d.get("color"), where)
         if color is not None and color not in _COLORS:
             raise AllowlistError(f"{where} ({name}): color must be one of {sorted(_COLORS)}")
+        no_qid = d.get("qid") == "none"
+        source = _opt_str(d.get("source"), where)
+        if no_qid and not source:
+            raise AllowlistError(f"{where} ({name}): `qid: none` needs a source: (VIVC number or URL)")
         out.append(
             GrapeEntry(
                 name=name,
                 color=color,
                 synonyms=_str_list(d.get("synonyms"), where),
-                qid=_opt_qid(d.get("qid"), where),
+                qid=None if no_qid else _opt_qid(d.get("qid"), where),
+                no_qid=no_qid,
+                source=source,
+                not_synonyms=_str_list(d.get("not_synonyms"), where),
             )
         )
     return out
@@ -264,7 +278,10 @@ def validate(al: Allowlist) -> None:
             problems.append(f"grapes: duplicate name {g.name!r}")
         gnames[key] = g.name
         q = al.grape_qid(g)
-        if q is None:
+        if g.no_qid:
+            if al.lock_grapes.get(g.name):
+                problems.append(f"grapes: {g.name!r} is `qid: none` but has a lock entry")
+        elif q is None:
             problems.append(f"grapes: {g.name!r} has no QID (run resolve_qids.py or pin qid:)")
         elif q in gqids:
             problems.append(f"grapes: {g.name!r} and {gqids[q]!r} share QID {q}")
