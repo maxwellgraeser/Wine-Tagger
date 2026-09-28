@@ -21,9 +21,9 @@ from typing import Any, Optional
 
 from . import scorer, searcher, store as store_mod, tagger
 from .constants import (
-    ORGANIC_PHRASES, REQUIRE_GRAPE_EVIDENCE, SINGLE_SOURCE_CONFIDENCE_CAP,
+    GRAPE_MIN_SOURCES, ORGANIC_PHRASES, REQUIRE_GRAPE_EVIDENCE, SINGLE_SOURCE_CONFIDENCE_CAP,
 )
-from .evidence import context_source_count, unsupported_grapes
+from .evidence import context_source_count, finer_regions_named, grape_source_counts
 from .events import EventSink
 from .paths import PHASES, RUN_STATE_PATH, phase_dir, run_dir
 from .types import ParsedTags, Product, ScoredSnippet, Snippet
@@ -328,11 +328,18 @@ def run_score(ctx: RunContext, start: int = 0) -> None:
 # Phase 3 — tag
 # ---------------------------------------------------------------------------
 
-def apply_evidence_rules(normalized: Optional[ParsedTags], web_context: Optional[str]) -> list[str]:
+def apply_evidence_rules(
+    normalized: Optional[ParsedTags],
+    web_context: Optional[str],
+    *,
+    product_name: str = "",
+    confidence_threshold: Optional[int] = None,
+) -> list[str]:
     """Mechanical checks on what the tagger submitted versus the text it was
     shown. Mutates `normalized` (confidence clamp) and returns the reasons
     that will route the row to needs_review:
 
+      * "no_submit": the model never got a submission accepted.
       * "single_source": every snippet in context came from the same site, so
         nothing corroborates it. Confidence is clamped to
         SINGLE_SOURCE_CONFIDENCE_CAP and the row is routed to review outright
@@ -341,18 +348,46 @@ def apply_evidence_rules(normalized: Optional[ParsedTags], web_context: Optional
       * "unsupported_grape:<name>": a submitted grape, or any library synonym
         of it, appears nowhere in web_context. The model inferred it from the
         name, region or style (Aster → Tempranillo, Bila Haut → Cinsault).
+      * "uncorroborated_grape:<name>": only one source names the grape
+        (Curator's Sémillon, Bila Haut's Mourvèdre from a region blurb).
+        Skipped when single_source already covers the whole context.
+      * "incomplete_blend": is_blend with one grape. A source calls the wine
+        a blend but names only this grape (Chocapalha, Vilafonte).
+      * "coarse_region:<name>": the context names a canonical region below the
+        submitted one (Barolo when the model submitted Piedmont).
+      * "no_grapes": the submission had no grapes.
+      * "low_confidence": the model's own confidence, before any clamp, is
+        below `confidence_threshold` (when one is given).
     """
-    reasons: list[str] = []
     if normalized is None:
-        return reasons
-    if web_context is not None and context_source_count(web_context) <= 1:
+        return ["no_submit"]
+    reasons: list[str] = []
+    own_confidence = normalized.confidence
+    single = web_context is not None and context_source_count(web_context) <= 1
+    if single:
         if (normalized.confidence is None
                 or normalized.confidence > SINGLE_SOURCE_CONFIDENCE_CAP):
             normalized.confidence = SINGLE_SOURCE_CONFIDENCE_CAP
         reasons.append("single_source")
     if REQUIRE_GRAPE_EVIDENCE and normalized.grapes:
-        for g in unsupported_grapes(normalized.grapes, web_context or ""):
-            reasons.append(f"unsupported_grape:{g}")
+        counts = grape_source_counts(normalized.grapes, web_context or "")
+        for g in normalized.grapes:
+            if counts[g] == 0:
+                reasons.append(f"unsupported_grape:{g}")
+            elif counts[g] < GRAPE_MIN_SOURCES and not single:
+                reasons.append(f"uncorroborated_grape:{g}")
+    if normalized.is_blend and len(normalized.grapes) == 1:
+        reasons.append("incomplete_blend")
+    if normalized.region and web_context:
+        for region in finer_regions_named(
+            normalized.region, web_context, country=normalized.country, product_name=product_name,
+        ):
+            reasons.append(f"coarse_region:{region}")
+    if not normalized.grapes:
+        reasons.append("no_grapes")
+    if confidence_threshold is not None and (
+            own_confidence is None or own_confidence < confidence_threshold):
+        reasons.append("low_confidence")
     return reasons
 
 
@@ -362,22 +397,19 @@ def decide_tag_status(
     confidence_threshold: int,
     review_reasons: Optional[list[str]] = None,
 ) -> str:
-    """None -> needs_review; no grapes -> needs_review; any evidence-rule
-    reason -> needs_review; confidence < threshold -> needs_review; else model.
+    """None -> needs_review; no grapes -> needs_review; any review reason ->
+    needs_review; confidence < threshold -> needs_review; else model.
 
     `submit_tags` accepts an empty grape list (with a `no_grapes` warning) so
     the country/region the model *did* find are kept on the row; the empty
     grapes are what route it to review. `review_reasons` comes from
-    `apply_evidence_rules`; both "unsupported_grape:*" and "single_source" are
-    hard routes, so they hold whatever the threshold is set to."""
+    `apply_evidence_rules`; every reason is a hard route, so it holds whatever
+    the threshold is set to."""
     if normalized is None:
         return "needs_review"
     if not normalized.grapes:
         return "needs_review"
-    reasons = review_reasons or []
-    if any(r.startswith("unsupported_grape:") for r in reasons):
-        return "needs_review"
-    if "single_source" in reasons:
+    if review_reasons:
         return "needs_review"
     conf = normalized.confidence
     if conf is None or conf < confidence_threshold:
@@ -422,13 +454,17 @@ def run_tag(ctx: RunContext, start: int = 0) -> None:
 
             if web_context is None:
                 tag_status = "needs_review"
+                review_reasons = ["no_context"]
                 counts["no_context"] += 1
                 _set_phase_status(ctx, product, "tag", "no_context")
             else:
                 normalized, transcript = tagger.infer_tags(
                     product, web_context, api_url=cfg.api_url, model=cfg.model, mcp_session=mcp,
                 )
-                review_reasons = apply_evidence_rules(normalized, web_context)
+                review_reasons = apply_evidence_rules(
+                    normalized, web_context, product_name=product.name,
+                    confidence_threshold=cfg.confidence_threshold,
+                )
                 tag_status = decide_tag_status(
                     normalized=normalized, confidence_threshold=cfg.confidence_threshold,
                     review_reasons=review_reasons,

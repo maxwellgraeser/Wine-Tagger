@@ -20,6 +20,7 @@ import json
 import re
 import unicodedata
 from typing import Optional
+from urllib.parse import unquote, urlparse
 
 import requests
 
@@ -291,6 +292,62 @@ def _apply_producer_gate(
 
 
 # ---------------------------------------------------------------------------
+# Content gates (hard exclusion)
+# ---------------------------------------------------------------------------
+
+# Wine-Searcher's results page for a query it could not match to one wine
+# echoes the query back in lower case: "Find the best local price for bila
+# haut. Find and shop from stores and merchants near you in USA". It carries
+# the name and nothing else, yet scored 85-95 on every run so far and took
+# context slots. A page matched to a wine names it in title case, with its
+# region ("... for A.A. Badenhorst The Curator White, Coastal Region, South
+# Africa. Avg Price ..."), and is kept.
+_SEARCH_ECHO_RE = re.compile(
+    r"\s*Find the best local price for ([^.]*)\.\s*"
+    r"Find and shop from stores and merchants near you(?: in [^.]*)?\.?\s*"
+)
+
+
+def _is_search_echo(body: str) -> bool:
+    m = _SEARCH_ECHO_RE.fullmatch(body or "")
+    return m is not None and m.group(1) == m.group(1).lower()
+
+
+def _url_slug_words(url: str) -> set[str]:
+    """Words of the longest path segment, which is the product slug on the
+    wine sites (vivino /en/<slug>/w/1, wine.com /product/<slug>/1). Taking
+    only that one skips Wine-Searcher's trailing related-query segment
+    (".../the+curator+white.../1/-/a+badenhorst+red+swartland")."""
+    path = unquote(urlparse(url or "").path)
+    slug = max(path.split("/"), key=len, default="")
+    return set(_TOKEN_RE.findall(_strip_accents(slug)))
+
+
+def _colour_conflict(product: Product, url: str) -> bool:
+    """True when the URL slug names a colour the product is not."""
+    conflicting = constants.COLOUR_CONFLICT_URL_WORDS.get(_strip_accents(product.category or ""))
+    if not conflicting:
+        return False
+    in_name = set(_TOKEN_RE.findall(_strip_accents(f"{product.name} {product.brand or ''}")))
+    return bool((_url_slug_words(url) & conflicting) - in_name)
+
+
+def _apply_content_gates(scored: list[ScoredSnippet], product: Product) -> list[ScoredSnippet]:
+    """Mark snippets that name the product but are not about it as dropped:
+    `search_page` for a Wine-Searcher query echo, `colour_conflict` for a
+    URL naming another colour (the white Bila-Haut for the red). Like the
+    producer gate, dropped snippets stay in the list for the scorer log."""
+    for item in scored:
+        if item.dropped_reason is not None:
+            continue
+        if _is_search_echo(item.snippet.body):
+            item.dropped_reason = "search_page"
+        elif _colour_conflict(product, item.snippet.url):
+            item.dropped_reason = "colour_conflict"
+    return scored
+
+
+# ---------------------------------------------------------------------------
 # Web-context assembly
 # ---------------------------------------------------------------------------
 
@@ -424,6 +481,7 @@ def score_and_assemble(
             scored.append(ScoredSnippet(snippet=s, match_score=0, cleaned_body=s.body,
                                         dropped_reason="unscored"))
 
+    _apply_content_gates(scored, product)
     if producer_gate:
         _apply_producer_gate(scored, product)
 

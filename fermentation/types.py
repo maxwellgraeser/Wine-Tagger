@@ -34,7 +34,7 @@ class ScoredSnippet:
     snippet: Snippet
     match_score: int
     cleaned_body: str
-    dropped_reason: Optional[str] = None  # "producer_absent" | "unscored" | None
+    dropped_reason: Optional[str] = None  # "producer_absent" | "search_page" | "colour_conflict" | "unscored" | None
     in_context: bool = False              # made the top-N cut into web_context
     facts: list[str] = field(default_factory=list)  # scorer's claim: subset of grape/region/producer
 

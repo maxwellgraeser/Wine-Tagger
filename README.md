@@ -210,6 +210,12 @@ OpenAI-compatible `/v1/chat/completions` endpoint:
   confidence is clamped to `SINGLE_SOURCE_CONFIDENCE_CAP` (69) and the row is
   routed to review (`review_reasons: ["single_source"]`). Sources are counted
   by family, so "Vivino #1" and "Vivino #2" are one source.
+  A grape named by only one source (`uncorroborated_grape:<name>`), a blend
+  with one known grape (`incomplete_blend`), and a region coarser than one
+  the context names (`coarse_region:Barolo` when the model said Piedmont)
+  route to review too. Every review route records a reason, including
+  `low_confidence`, `no_grapes`, `no_submit` and `no_context`; Cellar shows
+  them on the wine's *Final* tab.
 - **Category**: when the CSV has no `product_category`, the tagger submits
   one of `Red / White / Rose / Sparkling` from the snippets; the store keeps
   it (`category_source: "model"`, shown as *inferred* in Cellar) until the

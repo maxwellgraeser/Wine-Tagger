@@ -40,9 +40,10 @@ def _is_upc(sku: str) -> bool:
 # ---------------------------------------------------------------------------
 
 def _clean_snippet_text(text: str) -> str:
-    """Strip known CMS/UI boilerplate phrases from a snippet body.
+    """Strip known CMS/UI boilerplate phrases, and region-blurb sentences,
+    from a snippet body.
 
-    Case-insensitive substring removal. The original casing of surviving text is
+    Case-insensitive removal. The original casing of surviving text is
     preserved by walking the string with re.sub.
     """
     if not text:
@@ -50,6 +51,8 @@ def _clean_snippet_text(text: str) -> str:
     cleaned = text
     for phrase in constants.SNIPPET_BOILERPLATE_PHRASES:
         cleaned = re.sub(re.escape(phrase), " ", cleaned, flags=re.IGNORECASE)
+    for sentence in constants.SNIPPET_BOILERPLATE_SENTENCES:
+        cleaned = re.sub(sentence, " ", cleaned, flags=re.IGNORECASE)
     # Collapse whitespace left behind by removals
     cleaned = re.sub(r"\s+", " ", cleaned).strip()
     return cleaned

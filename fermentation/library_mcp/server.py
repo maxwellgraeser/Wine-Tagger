@@ -488,6 +488,12 @@ _HINTS = {
         "Grape list is empty; accepted as-is. The row will route to "
         "needs_review. Only add grapes if a source actually names them."
     ),
+    # Also a warning, not an issue (see the is_blend check in submit_tags).
+    "incomplete_blend": (
+        "is_blend=true with one grape; accepted as a blend whose other grapes "
+        "no source names. The row will route to needs_review. Only add grapes "
+        "if a source actually names them."
+    ),
     "non_canonical_grape": (
         "One or more grape names aren't in the canonical list. Call "
         "lookup_grape on each to find the canonical spelling, or list_grapes "
@@ -522,8 +528,8 @@ _HINTS = {
         "region (e.g. 'Veneto'), not a country."
     ),
     "is_blend_mismatch": (
-        "is_blend disagrees with the grape count. One grape -> is_blend=false; "
-        "two or more -> is_blend=true."
+        "is_blend=false with two or more grapes. A wine made from two or more "
+        "grapes is a blend: set is_blend=true."
     ),
 }
 
@@ -686,10 +692,16 @@ def submit_tags(
             detail["unknown_category"] = [category]
 
     # --- is_blend ---
+    # One grape with is_blend=true is accepted: the tagger prompt says a wine
+    # a source calls a blend is one even when only one grape is named.
+    # Rejecting it made the model flip is_blend to false (Chocapalha and
+    # Vilafonte on 2026-09-27), turning a partly known blend into a single
+    # varietal. The warning routes the row to review instead.
     if is_blend is not None and normalized_grapes:
-        expected = len(normalized_grapes) >= 2
-        if bool(is_blend) != expected:
+        if not is_blend and len(normalized_grapes) >= 2:
             _add_issue(issues, "is_blend_mismatch")
+        elif is_blend and len(normalized_grapes) == 1:
+            warnings.append("incomplete_blend")
 
     if issues:
         hints = {}

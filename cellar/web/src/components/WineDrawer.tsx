@@ -229,6 +229,9 @@ export function WineDrawer({
                       <>
                         <div className="space-y-1 text-sm">
                           <div>tag_status: <StatusBadge status={detail.logs.final.tag_status} /></div>
+                          {!!detail.logs.final.review_reasons?.length && (
+                            <div>review_reasons: {detail.logs.final.review_reasons.join(', ')}</div>
+                          )}
                           <div>organic: {String(detail.logs.final.organic)}</div>
                         </div>
                         {detail.logs.final.normalized && (

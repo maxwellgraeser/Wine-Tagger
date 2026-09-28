@@ -277,6 +277,8 @@ export interface NormalizedTags {
 
 export interface FinalLog {
   tag_status: TagStatus;
+  /** Why the row went to needs_review, e.g. "coarse_region:Barolo". Absent on older runs. */
+  review_reasons?: string[];
   organic: boolean;
   normalized: NormalizedTags | null;
   tags_raw: string | null;

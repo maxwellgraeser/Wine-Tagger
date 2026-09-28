@@ -156,6 +156,24 @@ NAME_COVERAGE_LIST_PAGE_CAP_RATIO = 0.7  # Fraction of words starting with a cap
 NAME_COVERAGE_MIN_WORDS = 8              # Below this a body is too short for the ratio to mean
                                          # anything (a 3-word title is trivially "all capitals").
 
+# --- Content gates (scorer._apply_content_gates) ---
+# Colour words in a result's URL slug that contradict the product's category.
+# A URL naming another colour is a different wine even when the text is
+# silent: on the 2026-09-27 run three of Bila Haut's five context snippets
+# were the white (vivino ...-blanc, wine.com ...-blanc-2024), scored 90-95.
+# A word that is in the product name never counts. Cuvee words (reserva,
+# riserva, crianza) are NOT used: every URL for "La Rioja Alta Ardanza" says
+# "reserva" because Vina Ardanza is one, and Aster's pages split between its
+# Crianza and Reserva while the CSV name has neither.
+_WHITE_URL_WORDS = {"blanc", "blanco", "bianco", "branco", "white"}
+_RED_URL_WORDS = {"red", "rouge", "rosso", "tinto"}
+_ROSE_URL_WORDS = {"rose", "rosado", "rosato"}
+COLOUR_CONFLICT_URL_WORDS = {
+    "red": _WHITE_URL_WORDS | _ROSE_URL_WORDS,
+    "white": _RED_URL_WORDS | _ROSE_URL_WORDS,
+    "rose": _WHITE_URL_WORDS | _RED_URL_WORDS,
+}
+
 # --- Tagger evidence checks (phases.decide_tag_status) ---
 # The tagger prompt asks for these, but a prompt is not a guarantee: on the
 # 2026-09-15 run Bila Haut got three grapes at confidence 89 from a single
@@ -170,6 +188,10 @@ SINGLE_SOURCE_CONFIDENCE_CAP = 69   # confidence is clamped here when the contex
                                     # are one source (see scorer.source_family).
 REQUIRE_GRAPE_EVIDENCE = True       # a submitted grape (or a library synonym of it) must appear in
                                     # web_context, else the row routes to needs_review
+GRAPE_MIN_SOURCES = 2               # ...and be named by at least this many distinct sources, else
+                                    # "uncorroborated_grape". On the 2026-09-27 run this caught 5 of the
+                                    # 8 wrong rows (Curator's Semillon, Bila Haut's Mourvedre) for 3
+                                    # right rows also routed. Not applied on top of single_source.
 
 # --- Category ---
 # Lightspeed product_category values, in the store's spelling. When the CSV
@@ -203,6 +225,18 @@ SNIPPET_BOILERPLATE_PHRASES = [
     "view all reviews",
     "community tasting note",
     "your shopping cart",
+]
+
+# Whole sentences stripped the same way: region boilerplate that Vivino pastes
+# under every wine of a region. On the 2026-09-27 run Bila Haut's "Grapes Q"
+# snippet was nothing but the Languedoc-Roussillon blurb ("Cabernet, Merlot,
+# Mourvedre, Grenache, and Syrah are some of the most important red grapes in
+# the region"), scored 90, and gave the model Syrah and Mourvedre. A snippet
+# left with little else is then dropped by the length and keep-ratio checks.
+SNIPPET_BOILERPLATE_SENTENCES = [
+    r"[^.]*\bmost important (?:red |white )?grapes\b[^.]*(?:\.|$)",
+    r"The name comes from a combination of two distinct regions\.?",
+    r"There is great diversity and volume of wine produced in this region\.?",
 ]
 
 # A snippet is dropped (match_score forced to 0) if cleaning leaves it shorter than

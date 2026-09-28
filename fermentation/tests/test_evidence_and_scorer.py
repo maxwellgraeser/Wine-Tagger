@@ -172,12 +172,96 @@ def test_single_source_routes_to_review_below_the_cap_too():
     assert decide_tag_status(normalized=tags, confidence_threshold=50, review_reasons=reasons) == "needs_review"
 
 
+CTX_BOTH_NAME_IT = CTX_TWO + "\n\n[Wine.com #1 | match=95]\nRioja Crianza, 100% Tempranillo."
+
+
 def test_supported_grapes_and_two_snippets_pass():
     tags = ParsedTags(country="Spain", grapes=["Tempranillo"], confidence=90)
-    reasons = apply_evidence_rules(tags, CTX_TWO)
+    reasons = apply_evidence_rules(tags, CTX_BOTH_NAME_IT)
     assert reasons == []
     assert tags.confidence == 90
     assert decide_tag_status(normalized=tags, confidence_threshold=85, review_reasons=reasons) == "model"
+
+
+def test_grape_named_by_one_source_is_uncorroborated():
+    # Two sources in context, but only Vivino names Tempranillo.
+    assert evidence.grape_source_counts(["Tempranillo", "Cinsault"], CTX_TWO) == {"Tempranillo": 1, "Cinsault": 0}
+    tags = ParsedTags(country="Spain", grapes=["Tempranillo"], confidence=90)
+    reasons = apply_evidence_rules(tags, CTX_TWO)
+    assert reasons == ["uncorroborated_grape:Tempranillo"]
+    assert decide_tag_status(normalized=tags, confidence_threshold=85, review_reasons=reasons) == "needs_review"
+
+
+def test_grape_source_counts_fold_numbered_results():
+    ctx = ("[Vivino #1 | match=95]\nMade from Tempranillo.\n\n"
+           "[Vivino #2 | match=92]\nTempranillo again.\n\n[CellarTracker | match=90]\nA red Rioja.")
+    assert evidence.grape_source_counts(["Tempranillo"], ctx) == {"Tempranillo": 1}
+
+
+def test_uncorroborated_is_not_stacked_on_single_source():
+    tags = ParsedTags(country="Spain", grapes=["Tempranillo"], confidence=80)
+    reasons = apply_evidence_rules(tags, "[Vivino #1 | match=95]\nMade from Tempranillo.")
+    assert reasons == ["single_source"]
+
+
+def test_blend_with_one_named_grape_routes_to_review():
+    tags = ParsedTags(country="Portugal", grapes=["Touriga Nacional"], is_blend=True, confidence=95)
+    ctx = ("[Vivino #1 | match=95]\nMade from Touriga Nacional.\n\n"
+           "[Wine.com #1 | match=90]\nA blend of indigenous varietals, led by Touriga Nacional.")
+    reasons = apply_evidence_rules(tags, ctx)
+    assert reasons == ["incomplete_blend"]
+    assert decide_tag_status(normalized=tags, confidence_threshold=85, review_reasons=reasons) == "needs_review"
+
+
+def test_every_review_route_records_a_reason():
+    # Below the threshold on the model's own say-so (Mont Gravet at 80).
+    tags = ParsedTags(country="Spain", grapes=["Tempranillo"], confidence=80)
+    assert apply_evidence_rules(tags, CTX_BOTH_NAME_IT, confidence_threshold=85) == ["low_confidence"]
+    tags = ParsedTags(country="Spain", grapes=["Tempranillo"], confidence=85)
+    assert apply_evidence_rules(tags, CTX_BOTH_NAME_IT, confidence_threshold=85) == []
+    # No grapes submitted.
+    tags = ParsedTags(country="Spain", grapes=[], confidence=90)
+    assert apply_evidence_rules(tags, CTX_BOTH_NAME_IT, confidence_threshold=85) == ["no_grapes"]
+    # The model never got a submission accepted.
+    assert apply_evidence_rules(None, CTX_TWO) == ["no_submit"]
+
+
+def test_single_source_clamp_does_not_add_low_confidence():
+    # The model said 90; the clamp to 69 is single_source's doing, not the model's.
+    tags = ParsedTags(country="Spain", grapes=["Tempranillo"], confidence=90)
+    reasons = apply_evidence_rules(tags, "[Vivino #1 | match=95]\nMade from Tempranillo.", confidence_threshold=85)
+    assert reasons == ["single_source"]
+
+
+@pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
+def test_coarse_region_when_context_names_a_finer_one():
+    ctx = ("[Wine.com #1 | match=100]\nG.D. Vajra Barolo Albe 2021 from Barolo, Piedmont, Italy.\n\n"
+           "[Vivino #1 | match=90]\nA Red wine from Piemonte, Italy. Made from Nebbiolo.")
+    assert evidence.finer_regions_named(["Piedmont"], ctx, country="Italy",
+                                        product_name="Vajra Barolo Albe") == ["Barolo"]
+    tags = ParsedTags(country="Italy", region=["Piedmont"], grapes=["Nebbiolo"], confidence=85)
+    reasons = apply_evidence_rules(tags, ctx, product_name="Vajra Barolo Albe")
+    assert "coarse_region:Barolo" in reasons
+    # The precise answer, parents included, has nothing finer to point at.
+    assert evidence.finer_regions_named(["Barolo", "Langhe", "Piedmont"], ctx, country="Italy",
+                                        product_name="Vajra Barolo Albe") == []
+
+
+@pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
+def test_coarse_region_ignores_a_region_inside_the_producer_name():
+    name = "La Rioja Alta Ardanza"
+    ctx = "[Vivino #1 | match=95]\nLa Rioja Alta S.A. Vina Ardanza Reserva, a Red wine from Rioja."
+    assert evidence.finer_regions_named(["Rioja"], ctx, country="Spain", product_name=name) == []
+    # A mention of the sub-zone on its own still counts.
+    ctx += "\n\n[Wine.com #1 | match=90]\nFruit from the Rioja Alta sub-zone."
+    assert evidence.finer_regions_named(["Rioja"], ctx, country="Spain", product_name=name) == ["Rioja Alta"]
+
+
+@pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
+def test_coarse_region_ignores_where_the_winery_is():
+    ctx = ("[Region Q #2 | match=95]\nBodegas Faustino, located in Oyon, Rioja Alavesa, makes Faustino VII.\n\n"
+           "[Vivino #1 | match=90]\nA Red wine from Rioja, Spain.")
+    assert evidence.finer_regions_named(["Rioja"], ctx, country="Spain", product_name="Faustino VII Rioja") == []
 
 
 def test_unsupported_grape_routes_to_review_even_at_high_confidence():
@@ -235,6 +319,77 @@ def test_submit_tags_category():
     assert none["ok"] and none["normalized"]["category"] is None
     bad = server.submit_tags("Spain", ["Rioja"], ["Tempranillo"], False, False, 90, category="orange")
     assert not bad["ok"] and "unknown_category" in bad["issues"]
+
+
+@pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
+def test_submit_tags_accepts_a_blend_with_one_named_grape():
+    from fermentation.library_mcp import server
+    res = server.submit_tags("Portugal", ["Lisboa"], ["Touriga Nacional"], True, False, 90)
+    assert res["ok"], res
+    assert res["warnings"] == ["incomplete_blend"]
+    assert res["normalized"]["is_blend"] is True
+    # Two grapes still cannot be a single varietal.
+    res = server.submit_tags("Portugal", ["Lisboa"], ["Touriga Nacional", "Syrah"], False, False, 90)
+    assert not res["ok"] and "is_blend_mismatch" in res["issues"]
+
+
+# ---------------------------------------------------------------------------
+# scorer content gates and region-blurb stripping
+# ---------------------------------------------------------------------------
+
+def test_search_echo_is_dropped_but_a_matched_search_page_is_kept():
+    assert scorer._is_search_echo(
+        "Find the best local price for bila haut. Find and shop from stores and merchants near you in USA")
+    assert scorer._is_search_echo(
+        "Find the best local price for a badenhorst curator white coastal. Find and shop from stores and merchants near you.")
+    assert not scorer._is_search_echo(
+        "Find the best local price for Vilafonte Seriously Old Dirt Red, Paarl, South Africa. "
+        "Avg Price (ex-tax) $38 / 750ml. Find and shop from stores and merchants near you in USA")
+
+
+def test_colour_conflict_reads_the_url_slug():
+    red = _product("Bila Haut Roussillon")
+    assert scorer._colour_conflict(red, "https://www.vivino.com/en/m-chapoutier-les-vignes-de-bila-haut-cotes-du-roussillon-blanc/w/2256359")
+    assert scorer._colour_conflict(red, "https://www.wine.com/product/bila-haut-by-michel-chapoutier-cotes-du-roussillon-blanc-2024/3636735")
+    assert not scorer._colour_conflict(red, "https://www.vivino.com/en/m-chapoutier-les-vignes-de-bila-haut-cotes-du-roussillon-villages/w/20677")
+    white = _product("Curator White"); white.category = "White"
+    # Wine-Searcher's trailing related-query segment is not the slug.
+    assert not scorer._colour_conflict(white, "https://www.wine-searcher.com/find/a+badenhorst+the+curator+white+coastal+western+cape+south+africa/1/-/a+badenhorst+red+swartland")
+    assert not scorer._colour_conflict(white, "https://www.totalwine.com/wine/white-wine/chardonnay/excelsior-chardonnay/p/97127750")
+    # A colour word in the product name is not a conflict; no category, no check.
+    rose = _product("Mont Gravet Rose"); rose.category = "Rose"
+    assert not scorer._colour_conflict(rose, "https://example.com/mont-gravet-rose-2024")
+    assert scorer._colour_conflict(rose, "https://example.com/mont-gravet-blanc-2024")
+    unknown = _product("La Rioja Alta Ardanza"); unknown.category = None
+    assert not scorer._colour_conflict(unknown, "https://example.com/la-rioja-alta-blanco")
+
+
+def test_content_gates_keep_dropped_snippets_out_of_context(monkeypatch):
+    product = _product("Bila Haut Roussillon")
+    snippets = [
+        Snippet(source="Vivino #1", domain="vivino.com", url="https://www.vivino.com/en/bila-haut-cotes-du-roussillon-blanc/w/1",
+                body="M. Chapoutier Bila-Haut Cotes du Roussillon Blanc. Made from Grenache Blanc, Macabeo."),
+        Snippet(source="Wine Searcher #1", domain="wine-searcher.com", url="https://www.wine-searcher.com/find/bila+haut",
+                body="Find the best local price for bila haut. Find and shop from stores and merchants near you in USA"),
+        Snippet(source="Wine.com #1", domain="wine.com", url="https://www.wine.com/product/bila-haut-villages-2022/1",
+                body="Bila-Haut Cotes du Roussillon Villages, a blend of Syrah, Grenache and Carignan."),
+    ]
+    monkeypatch.setattr(scorer, "_call_llm",
+                        lambda *a, **k: json.dumps({str(i): {"score": 95, "facts": ["producer"]} for i in range(3)}))
+    ctx, scored = scorer.score_and_assemble(product, snippets, api_url="", model="")
+    assert [s.dropped_reason for s in scored] == ["colour_conflict", "search_page", None]
+    assert "Villages" in ctx and "Macabeo" not in ctx and "local price" not in ctx
+
+
+def test_region_blurb_sentences_are_stripped():
+    blurb = ("Cabernet, Merlot, Mourvedre, Grenache, and Syrah are some of the most important red grapes "
+             "in the region. The name comes from a combination of two distinct regions.")
+    assert searcher._clean_snippet_text(blurb) == ""
+    mixed = blurb + " The Domaine Lafage Tessellae GSM Old Vines is a Grenache, Syrah, Mourvedre blend."
+    assert searcher._clean_snippet_text(mixed) == (
+        "The Domaine Lafage Tessellae GSM Old Vines is a Grenache, Syrah, Mourvedre blend.")
+    rioja = "Rioja is classified as DOCa. Its two most important red grapes are Tempranillo and Garnacha. Grape Profile: x"
+    assert searcher._clean_snippet_text(rioja) == "Rioja is classified as DOCa. Grape Profile: x"
 
 
 # ---------------------------------------------------------------------------

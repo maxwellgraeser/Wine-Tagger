@@ -260,7 +260,10 @@ Failure:
 ```
 
 Issue codes: `placeholder_grapes`, `no_grapes`, `non_canonical_grape`,
-`region_country_mismatch`, `country_in_region_slot`, `is_blend_mismatch`.
+`region_country_mismatch`, `country_in_region_slot`, `is_blend_mismatch`
+(`is_blend=false` with two or more grapes). `is_blend=true` with one grape
+is accepted with an `incomplete_blend` warning, like `no_grapes`: rejecting
+it made the model flip the flag and call a blend a single varietal.
 
 The library *is* the contract — the model cannot ship a row without the
 server canonicalizing it. Whatever `submit_tags` emits is what
@@ -396,6 +399,39 @@ stated, now enforced in code):
   counted by family (`scorer.source_family`), so "Vivino #1" and "Vivino #2"
   are one source — the earlier rule counted snippets and let that case pass.
   The route is unconditional, not a by-product of the threshold.
+- **Grape corroboration.** A grape named by fewer than `GRAPE_MIN_SOURCES`
+  (2) distinct sources routes the row with `uncorroborated_grape:<name>`
+  (Curator's Sémillon, Bila Haut's Mourvèdre from a region blurb). Not
+  added on top of `single_source`.
+- **Incomplete blend.** `is_blend` with one grape → `incomplete_blend`.
+- **Coarse region.** `evidence.finer_regions_named` walks the library's
+  region tree: when the context names a canonical region below the most
+  specific one submitted (Barolo under Piedmont, Paarl under Western Cape),
+  the row routes with `coarse_region:<name>`. Mentions inside a longer
+  phrase of the product name ("La Rioja Alta") and right after a location
+  cue ("located in Oyón, Rioja Alavesa", "38 km from Baalbek") don't count.
+- **Every review route has a reason:** `low_confidence` (the model's own
+  confidence, before any clamp, is under the threshold), `no_grapes`,
+  `no_submit` and `no_context` too, so no row reaches review unexplained.
+
+On the logs of run `20260927-205354` these rules route all 8 wrong or coarse
+rows, plus 4 right ones (Aster, DV Catena, La Rioja Alta, Neirano). See
+`journal/2026-09-27-RUN-COMPARE.md`.
+
+### Content gates in the scorer
+
+Besides the producer gate, `scorer._apply_content_gates` drops two kinds of
+snippet that name the product but are not about it:
+- `search_page`: a Wine-Searcher page that only echoes the query in lower
+  case ("Find the best local price for bila haut. ..."). Pages matched to a
+  wine name it in title case with its region, and are kept.
+- `colour_conflict`: the URL slug names a colour the product's category
+  contradicts (`...-blanc-2024` for a red). Cuvée words (reserva, riserva)
+  are not used, since CSV names often omit them.
+
+The searcher also strips Vivino's region-blurb sentences
+(`SNIPPET_BOILERPLATE_SENTENCES`: "... are some of the most important red
+grapes in the region").
 
 ### Public surface
 
