@@ -384,7 +384,7 @@ def report(al: Allowlist) -> int:
     raw = _y.safe_load(LOCK_PATH.read_text(encoding="utf-8")) if LOCK_PATH.exists() else {}
     for sec in ("grapes", "regions"):
         for k, v in sorted(((raw or {}).get(sec) or {}).items()):
-            if v and v.get("note") != "ok":
+            if v and v.get("note") != "ok" and not v.get("note", "").startswith("reviewed"):
                 print(f"{sec[:-1]} review: {k} -> {v['qid']} {v.get('label')!r} ({v.get('description')!r}): {v['note']}")
     return 1 if bad else 0
 

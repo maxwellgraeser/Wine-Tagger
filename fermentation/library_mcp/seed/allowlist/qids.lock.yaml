@@ -2503,7 +2503,7 @@ regions:
   Abkhazia (GE):
     description: historical-geographic region in the South Caucasus, now a disputed territory
     label: Abkhazia
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q23334
   Abona (ES):
     description: Spanish wine area
@@ -2513,7 +2513,7 @@ regions:
   Abruzzo (IT):
     description: region in Italy
     label: Abruzzo
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1284
   Abymes (FR): null
   Achaia (GR): null
@@ -2526,7 +2526,7 @@ regions:
   Aconcagua Valley (CL):
     description: ''
     label: Aconcagua valley
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q6159198
   Adelaida District (US):
     description: appelation that designates wine in San Luis Obispo County, California
@@ -2572,7 +2572,7 @@ regions:
   Aigle (CH):
     description: town and municipality in the canton of Vaud in Switzerland
     label: Aigle
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q43195
   Ajaccio (FR):
     description: French wine
@@ -2764,7 +2764,7 @@ regions:
   Amador County (US):
     description: county in California, United States
     label: Amador County
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q156177
   Amandi (ES): null
   Amarante (PT): null
@@ -2776,7 +2776,7 @@ regions:
   Ambonnay (FR):
     description: commune in Marne, France
     label: Ambonnay
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1018399
   Amelia (IT):
     description: Italian controlled designation of origin wine from Umbria
@@ -2795,7 +2795,7 @@ regions:
   Andalusia (ES):
     description: autonomous community of Spain
     label: Andalusia
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q5783
   Anderson Valley (US):
     description: wine region in California
@@ -2815,7 +2815,7 @@ regions:
   Annapolis Valley (CA):
     description: valley and economic region in Nova Scotia, Canada
     label: Annapolis Valley
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q564530
   Ansonica Costa dell'Argentario (IT):
     description: Italian controlled designation of origin wine from Tuscany
@@ -2849,21 +2849,13 @@ regions:
     note: ok
     qid: Q139906443
   Arabako Txakolina (ES): null
-  Aragón (ES):
-    description: commune in Aude, France
-    label: Aragon
-    note: non-wine class -- review
-    qid: Q625115
+  Aragón (ES): null
   Arbin (FR):
     description: ''
     label: Arbin AOC
     note: ok
     qid: Q28496644
-  Arbois (FR):
-    description: white French wine grape variety
-    label: Arbois
-    note: ok
-    qid: Q630166
+  Arbois (FR): null
   Arbois Pupillin (FR): null
   Arborea (IT): null
   Archanes (GR): null
@@ -2883,13 +2875,13 @@ regions:
   Arizona (US):
     description: state of the United States of America
     label: Arizona
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q816
   Arkadia (GR): null
   Arkansas (US):
     description: state of the United States of America
     label: Arkansas
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1612
   Arkansas Mountain (US):
     description: viticultural area
@@ -2952,7 +2944,7 @@ regions:
   Attica (GR):
     description: historical region of Greece, including the city of Athens
     label: Attica
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q122443
   Auckland (NZ):
     description: wine region in New Zealand
@@ -2985,7 +2977,7 @@ regions:
   Avize (FR):
     description: commune in Marne, France
     label: Avize
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q791195
   Avola (IT):
     description: Italian typical geographical indication wine from Sicily
@@ -3029,7 +3021,7 @@ regions:
   Baja California (MX):
     description: state of Mexico
     label: Baja California
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q58731
   Bajo Aragón (ES): null
   Balaton (HU):
@@ -3052,7 +3044,7 @@ regions:
   Balearic Islands (ES):
     description: autonomous community of Spain
     label: Balearic Islands
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q107356467
   Ballard Canyon (US):
     description: winemaking region in California, United States
@@ -3146,12 +3138,12 @@ regions:
   Basilicata (IT):
     description: region of Italy
     label: Basilicata
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1452
   Basque Country (ES):
     description: cultural and historic land of the Basque people
     label: Basque Country
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q47588
   Basto (PT): null
   Batroun (LB): null
@@ -3167,7 +3159,7 @@ regions:
   Beaumont-sur-Vesle (FR):
     description: commune in Marne, France
     label: Beaumont-sur-Vesle
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1116005
   Beaune (FR): null
   Bechtheim (DE): null
@@ -3177,7 +3169,7 @@ regions:
   Bekaa Valley (LB):
     description: valley in Beqaa Governorate, Lebanon
     label: Bekaa Valley
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q21576015
   Bela krajina (SI): null
   Bell Mountain (US):
@@ -3248,7 +3240,7 @@ regions:
   Bex (CH):
     description: municipality in the canton of Vaud in Switzerland
     label: Bex
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q52261
   Bianchello del Metauro (IT):
     description: Italian controlled designation of origin wine from Marche
@@ -3377,11 +3369,7 @@ regions:
   Bonvillars (CH): null
   Boppard (DE): null
   Borba (PT): null
-  Bordeaux (FR):
-    description: brownish red colour associated with Bordeaux wine
-    label: bordeaux
-    note: ok
-    qid: Q10859033
+  Bordeaux (FR): null
   Bordeaux Clairet (FR): null
   Bordeaux Haut-Benauge (FR): null
   Bordeaux Supérieur (FR): null
@@ -3462,13 +3450,13 @@ regions:
   Bouzy (FR):
     description: commune in Marne, France
     label: Bouzy
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1064043
   Bovlei (ZA): null
   Bozcaada (TR):
     description: district capital of the island
     label: Bozcaada
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q49277292
   Brachetto d'Acqui (IT):
     description: Italian controlled and guaranteed designation of origin wine from Piedmont
@@ -3509,7 +3497,7 @@ regions:
   British Columbia (CA):
     description: province of Canada
     label: British Columbia
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1973
   Broke Fordwich (AU):
     description: Australian wine subregion
@@ -3545,7 +3533,7 @@ regions:
   Buin (CL):
     description: Chilean city
     label: Buin
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q3656
   Bullas (ES):
     description: wine-producing region
@@ -3556,7 +3544,7 @@ regions:
   Burgenland (AT):
     description: state of Austria
     label: Burgenland
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q43210
   Burgundy (FR):
     description: wine made in the Burgundy region in eastern France
@@ -3604,7 +3592,7 @@ regions:
   Cafayate (AR):
     description: human settlement in Argentina
     label: Cafayate
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1025501
   Cagliari (IT): null
   Cahors (FR): null
@@ -3616,7 +3604,7 @@ regions:
   Calabria (IT):
     description: region of Italy
     label: Calabria
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1458
   Calamin (CH): null
   Calatayud (ES): null
@@ -3624,7 +3612,7 @@ regions:
   California (US):
     description: state of the United States of America
     label: California
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q99
   California Shenandoah Valley (US):
     description: American viticultural area
@@ -3650,15 +3638,11 @@ regions:
     label: Camarro IGT
     note: ok
     qid: Q139899858
-  Campanha (BR):
-    description: town (município) in the Brazilian state of Minas Gerais
-    label: Campanha
-    note: non-wine class -- review
-    qid: Q1780173
+  Campanha (BR): null
   Campania (IT):
     description: region in Southern Italy
     label: Campania
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1438
   Campi Flegrei (IT):
     description: Italian controlled designation of origin wine from Campania
@@ -3685,7 +3669,7 @@ regions:
   Canary Islands (ES):
     description: autonomous community of Spain, and archipelago in the Atlantic Ocean
     label: Canary Islands
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q5813
   Canavese (IT):
     description: Italian controlled designation of origin wine from Piedmont
@@ -3738,7 +3722,7 @@ regions:
   Cantabria (ES):
     description: autonomous community of Spain
     label: Cantabria
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q3946
   Canterbury (NZ): null
   Capalbio (IT):
@@ -3769,7 +3753,7 @@ regions:
   Cappadocia (TR):
     description: historical region of Anatolia in Turkey
     label: Cappadocia
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q217265
   Capri (IT):
     description: Italian controlled designation of origin wine from Campania
@@ -3896,7 +3880,7 @@ regions:
   Catalonia (ES):
     description: nationality and autonomous community of Spain
     label: Catalonia
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q5705
   Catamarca (AR): null
   Catoctin (US):
@@ -3907,7 +3891,7 @@ regions:
   Cauquenes (CL):
     description: city in Chile
     label: Cauquenes
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q3749
   Cautín Valley (CL): null
   Cava (ES): null
@@ -3919,7 +3903,7 @@ regions:
   Cañamero (ES):
     description: capital of Cañamero Municipality, Spain
     label: Cañamero
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q24010231
   Cebreros (ES):
     description: Spanish Denominación de Origen Protegida (DOP) for wines in southeast of Castile and
@@ -3937,7 +3921,7 @@ regions:
   Central Anatolia (TR):
     description: ''
     label: Central Anatolia
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q117197489
   Central Coast (US):
     description: winemaking region
@@ -3953,7 +3937,7 @@ regions:
   Central Greece (GR):
     description: traditional region of Greece
     label: Central Greece
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q190600
   Central Hawke's Bay (NZ): null
   Central Orange River (ZA): null
@@ -3971,7 +3955,7 @@ regions:
   Central Valley (US):
     description: valley in central California, USA
     label: Central Valley
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q27026
   Central Victoria (AU): null
   Central Western Australia (AU):
@@ -4077,7 +4061,7 @@ regions:
   Chardonne (CH):
     description: municipality in the canton of Vaud in Switzerland
     label: Chardonne
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q52698
   Charlemagne (FR): null
   Charmes-Chambertin (FR): null
@@ -4164,12 +4148,12 @@ regions:
   Chillán (CL):
     description: commune of Chile
     label: Chillán
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q23660244
   Chimbarongo (CL):
     description: city and commune in Chile
     label: Chimbarongo
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q3782
   Chinon (FR):
     description: wine region in Touraine, France
@@ -4191,7 +4175,7 @@ regions:
   Chouilly (FR):
     description: commune in Marne, France
     label: Chouilly
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1063932
   Chozas Carrascal (ES): null
   Chubut (AR): null
@@ -4315,14 +4299,14 @@ regions:
   Coal River Valley (AU):
     description: valley in Tasmania, Australia
     label: Coal River Valley
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q5137776
   Coastal Region (ZA): null
   Codru (MD): null
   Coelemu (CL):
     description: Chilean commune
     label: Coelemu
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q3807
   Colares (PT): null
   Colchagua Valley (CL):
@@ -4581,7 +4565,7 @@ regions:
   Colorado (US):
     description: state of the United States of America
     label: Colorado
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1261
   Columbia Gorge (US):
     description: American Viticultural Area
@@ -4642,7 +4626,7 @@ regions:
   Connecticut (US):
     description: state of the United States of America
     label: Connecticut
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q779
   Conselvano (IT):
     description: Italian typical geographical indication wine from Veneto
@@ -4685,13 +4669,9 @@ regions:
   Copiapó Valley (CL):
     description: ''
     label: Copiapó Valley
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q5168576
-  Coquimbo (CL):
-    description: ''
-    label: Coquimbo
-    note: non-wine class -- review
-    qid: Q23660214
+  Coquimbo (CL): null
   Corbières (FR): null
   Corfu (GR): null
   Cori (IT):
@@ -4709,7 +4689,7 @@ regions:
   Corsica (FR):
     description: French single territorial collectivity and island in the Mediterranean Sea
     label: Corsica
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q14112
   Cortese dell'Alto Monferrato (IT):
     description: Italian controlled designation of origin wine from Piedmont
@@ -4823,7 +4803,7 @@ regions:
   Cotnari (RO):
     description: commune in Iași County, Romania
     label: Cotnari
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q12113776
   Coulée de Serrant (FR): null
   Cour-Cheverny (FR): null
@@ -4842,7 +4822,7 @@ regions:
   Cramant (FR):
     description: commune in Marne, France
     label: Cramant
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q750246
   Creek Shores (CA): null
   Crest of the Blue Ridge Henderson County (US):
@@ -4855,11 +4835,7 @@ regions:
     label: Creston District AVA
     note: ok
     qid: Q19867019
-  Crete (GR):
-    description: city in Saline County, Nebraska, United States
-    label: Crete
-    note: non-wine class -- review
-    qid: Q958049
+  Crete (GR): null
   Criots-Bâtard-Montrachet (FR):
     description: winery
     label: Criots-Bâtard-Montrachet
@@ -5105,7 +5081,7 @@ regions:
   Dalmatia (HR):
     description: historical and cultural Croatian region
     label: Dalmatia
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q528042
   Dalmatian Hinterland (HR): null
   Danubian Plain (BG): null
@@ -5136,14 +5112,14 @@ regions:
   Denizli (TR):
     description: city in Turkey
     label: Denizli
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q170967
   Denmark (AU): null
   Dernau (DE): null
   Derwent Valley (AU):
     description: valley in Tasmania, Australia
     label: Derwent Valley
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q21913852
   Desierto de Almería (ES):
     description: Vino de la Tierra, classification of Spanish wines with protected geographical indication
@@ -5170,7 +5146,7 @@ regions:
   Diyarbakır (TR):
     description: city in Southeastern Anatolia, Turkey
     label: Diyarbakır
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q83387
   Dodecanese (GR): null
   Dogliani (IT):
@@ -5233,7 +5209,7 @@ regions:
   Drăgășani (RO):
     description: city in Vâlcea County, Romania
     label: Drăgășani
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q754726
   Duché d'Uzès (FR): null
   Dugenta (IT):
@@ -5301,7 +5277,7 @@ regions:
   Eger (HU):
     description: city in Hungary
     label: Eger
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q167109
   Ehrenhausen (AT): null
   Eichberg (AT): null
@@ -5322,7 +5298,7 @@ regions:
   El Molar (ES):
     description: municipality in Spain
     label: El Molar
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1915119
   El Pomar District (US):
     description: appelation that designates wine in San Luis Obispo County, CA
@@ -5344,7 +5320,7 @@ regions:
   Elazığ (TR):
     description: central district and city in Elazığ Province, Turkey
     label: Elazığ
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q174060
   Elba (IT):
     description: wine made from grapes grown on the island of Elba
@@ -5379,7 +5355,7 @@ regions:
   Emilia-Romagna (IT):
     description: region of Italy
     label: Emilia-Romagna
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1263
   Empordà (ES):
     description: wine-producing region
@@ -5393,11 +5369,7 @@ regions:
     label: Engelberg
     note: ok
     qid: Q3054236
-  England (GB):
-    description: city in Lonoke County, Arkansas, United States
-    label: England
-    note: non-wine class -- review
-    qid: Q79282
+  England (GB): null
   Entraygues-Le Fel (FR): null
   Entre Arve et Lac (CH): null
   Entre Arve et Rhône (CH): null
@@ -5708,12 +5680,12 @@ regions:
   Galicia (ES):
     description: autonomous community of Spain
     label: Galicia
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q3908
   Galilee (IL):
     description: large region mainly located in northern Israel
     label: Galilee
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q83241
   Galluccio (IT):
     description: Italian controlled designation of origin wine from Campania
@@ -5773,18 +5745,14 @@ regions:
   Gelibolu (TR):
     description: district and town in Çanakkale Province, Turkey
     label: Gelibolu
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q216907
   Genazzano (IT):
     description: Italian controlled designation of origin wine from Lazio
     label: Genazzano DOC
     note: ok
     qid: Q130734308
-  Geneva (CH):
-    description: capital of the canton of Geneva, Switzerland
-    label: Geneva
-    note: non-wine class -- review
-    qid: Q71
+  Geneva (CH): null
   Geographe (AU):
     description: wine region in Western Australia
     label: Geographe
@@ -5793,13 +5761,13 @@ regions:
   Georgia (US):
     description: state of the United States of America
     label: Georgia
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1428
   Gerania (GR): null
   German-speaking Switzerland (CH):
     description: area of Switzerland with a predominantly German or Swiss German speaking population
     label: German-speaking Switzerland
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q689055
   Gers (FR): null
   Getariako Txakolina (ES): null
@@ -5984,7 +5952,7 @@ regions:
   Guria (GE):
     description: ''
     label: Guria
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q16367739
   Gurjaani (GE):
     description: Georgian wine
@@ -6036,7 +6004,7 @@ regions:
   Hawaii (US):
     description: state of the United States of America
     label: Hawaii
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q782
   Hawke's Bay (NZ):
     description: wine region in New Zealand
@@ -6068,7 +6036,7 @@ regions:
   Herzegovina (BA):
     description: historical region of Bosnia and Herzegovina
     label: Herzegovina
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q189863
   Hessische Bergstraße (DE):
     description: wine-producing region
@@ -6091,7 +6059,7 @@ regions:
   Hokkaido (JP):
     description: prefecture of Japan
     label: Hokkaido
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1037393
   Hoopsrivier (ZA): null
   Horse Heaven Hills (US):
@@ -6120,7 +6088,7 @@ regions:
   Huon Valley (AU):
     description: valley in Tasmania, Australia
     label: Huon Valley
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q19874516
   Hvar (HR): null
   Hérault (FR): null
@@ -6138,7 +6106,7 @@ regions:
   Idaho (US):
     description: state of the United States of America
     label: Idaho
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1221
   Ihringen (DE): null
   Ikaria (GR): null
@@ -6152,19 +6120,19 @@ regions:
   Illinois (US):
     description: state of the United States of America
     label: Illinois
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1204
   Ilok (HR): null
   Imathia (GR): null
   Imereti (GE):
     description: historical province in Georgia
     label: Imereti
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q6455147
   Indiana (US):
     description: state of the United States of America
     label: Indiana
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1415
   Indiana Uplands (US):
     description: American Viticultural Area in Indiana
@@ -6183,7 +6151,7 @@ regions:
   Iowa (US):
     description: state of the United States of America
     label: Iowa
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1546
   Iphofen (DE): null
   Irancy (FR):
@@ -6209,7 +6177,7 @@ regions:
   Isla de Maipo (CL):
     description: commune of Chile
     label: Isla de Maipo
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q14445
   Isle St. George (US):
     description: Ohio wine region
@@ -6217,17 +6185,13 @@ regions:
     note: ok
     qid: Q1454225
   Ismaros (GR): null
-  Istria (HR):
-    description: commune in Constanța County, Romania
-    label: Istria
-    note: non-wine class -- review
-    qid: Q5053165
+  Istria (HR): null
   Istria and Kvarner (HR): null
   Itata Valley (CL): null
   Izmir (TR):
     description: city in İzmir Province, Turkey
     label: İzmir
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q35997
   Jahant (US):
     description: American Viticultural Area in San Joaquin County, California
@@ -6266,7 +6230,7 @@ regions:
   Jura (FR):
     description: French department
     label: Jura
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q3120
   Jurançon (FR):
     description: Wine region in France
@@ -6279,7 +6243,7 @@ regions:
   Kakheti (GE):
     description: ''
     label: Kakheti
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q16371011
   Kalecik (TR): null
   Kallstadt (DE): null
@@ -6298,7 +6262,7 @@ regions:
   Kartli (GE):
     description: historical region in central-to-eastern Georgia
     label: Kartli
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q459875
   Karystos (GR): null
   Kasel (DE): null
@@ -6315,12 +6279,12 @@ regions:
   Kent (GB):
     description: historic county of England
     label: Kent
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q67479626
   Kentucky (US):
     description: state of the United States of America
     label: Kentucky
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1603
   Kessler (FR): null
   Khashmi Saperavi (GE): null
@@ -6387,7 +6351,7 @@ regions:
   Kırklareli (TR):
     description: central district and city in Kırklareli Province, Turkey
     label: Kırklareli
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q206903
   L'Étoile (FR): null
   La Clape (FR): null
@@ -6466,11 +6430,7 @@ regions:
     note: ok
     qid: Q6475300
   Lake Country (CA): null
-  Lake County (US):
-    description: county in Oregon, United States
-    label: Lake County
-    note: non-wine class -- review
-    qid: Q495340
+  Lake County (US): null
   Lake Erie (US):
     description: American wine region in the Great Lakes region
     label: Lake Erie AVA
@@ -6595,13 +6555,13 @@ regions:
   Lazio (IT):
     description: region of Italy
     label: Lazio
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1282
   Le Chasseur (ZA): null
   Le Mesnil-sur-Oger (FR):
     description: commune in Marne, France
     label: Le Mesnil-sur-Oger
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q845984
   Le Pallet (FR): null
   Lebrija (ES): null
@@ -6658,7 +6618,7 @@ regions:
   Liguria (IT):
     description: Italian region
     label: Liguria
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1256
   Liguria di Levante (IT):
     description: Italian typical geographical indication wine from Liguria
@@ -6759,12 +6719,12 @@ regions:
   Lolol (CL):
     description: Chilean commune and town
     label: Lolol
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q16899
   Lombardy (IT):
     description: administrative region in Northern Italy
     label: Lombardy
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1210
   Loncomilla Valley (CL): null
   Long Island (US):
@@ -6810,7 +6770,7 @@ regions:
   Louisiana (US):
     description: state of the United States of America
     label: Louisiana
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1588
   Loupiac (FR):
     description: French dessert wine
@@ -6821,7 +6781,7 @@ regions:
   Louvois (FR):
     description: former commune in Marne, France
     label: Louvois
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q777764
   Lowburn (NZ): null
   Lower Duivenhoks River (ZA): null
@@ -6847,7 +6807,7 @@ regions:
   Lutry (CH):
     description: municipality in the canton of Vaud, Switzerland
     label: Lutry
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q69697
   Lutzville Valley (ZA): null
   Luzern (CH): null
@@ -6861,7 +6821,7 @@ regions:
     description: geographical and historical region in southeastern Europe, today forming parts of the
       Republics of Greece, North Macedonia and Bulgaria
     label: Macedonia
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q103251
   Macvin du Jura (FR): null
   Madeira (PT): null
@@ -6881,20 +6841,16 @@ regions:
   Mailly-Champagne (FR):
     description: commune in Marne, France
     label: Mailly-Champagne
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1103648
   Maindreieck (DE): null
   Mainviereck (DE): null
   Maipo Valley (CL): null
-  Maipú (AR):
-    description: commune of Chile
-    label: Maipú
-    note: non-wine class -- review
-    qid: Q16918
+  Maipú (AR): null
   Malatya (TR):
     description: metropolitan municipality in Eastern Anatolia, Turkey
     label: Malatya
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q165995
   Maldonado (UY): null
   Malepère (FR):
@@ -6948,7 +6904,7 @@ regions:
   Mandement (CH):
     description: region of canton of Geneva, Switzerland
     label: Mandement
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q3285486
   Mandrolisai (IT):
     description: Italian controlled designation of origin wine from Sardinia
@@ -6958,7 +6914,7 @@ regions:
   Manisa (TR):
     description: city in Turkey
     label: Manisa
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q147089
   Manjimup (AU):
     description: wine region in Western Australia
@@ -6988,12 +6944,12 @@ regions:
   Marche (IT):
     description: region in Italy
     label: Marche
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1279
   Marchigüe (CL):
     description: Chilean commune
     label: Marchigüe
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q16921
   Marcillac (FR):
     description: Appellation d'Origine Contrôlée for wine from the Aveyron department
@@ -7008,11 +6964,7 @@ regions:
     qid: Q15833829
   Marestel (FR): null
   Mareuil (FR): null
-  Marga-Marga (CL):
-    description: ''
-    label: Marga-Marga
-    note: non-wine class -- review
-    qid: Q61876766
+  Marga-Marga (CL): null
   Margaret River (AU):
     description: Wine region in Western Australia
     label: Margaret River
@@ -7069,12 +7021,12 @@ regions:
   Maryland (US):
     description: state of the United States of America
     label: Maryland
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1391
   Massachusetts (US):
     description: state of the United States of America
     label: Massachusetts
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q771
   Matakana (NZ): null
   Matanegra (ES): null
@@ -7135,7 +7087,7 @@ regions:
   Meknès (MA):
     description: city in Morocco
     label: Meknes
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q178663
   Melissa (IT):
     description: Italian controlled designation of origin wine from Calabria
@@ -7150,18 +7102,14 @@ regions:
   Mendocino County (US):
     description: county in northwestern California, United States
     label: Mendocino County
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q108087
   Mendocino Ridge (US):
     description: wine region in California, USA
     label: Mendocino Ridge AVA
     note: ok
     qid: Q1920369
-  Mendoza (AR):
-    description: city in Argentina
-    label: Mendoza
-    note: non-wine class -- review
-    qid: Q44237
+  Mendoza (AR): null
   Menetou-Salon (FR):
     description: French wine
     label: Menetou-salon
@@ -7196,7 +7144,7 @@ regions:
   Meskheti (GE):
     description: geographic region
     label: Meskheti
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1195815
   Messenikola (GR): null
   Messinia (GR): null
@@ -7214,7 +7162,7 @@ regions:
   Michigan (US):
     description: state of the United States of America
     label: Michigan
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1166
   Mid-Berg River (ZA): null
   Middle Rio Grande Valley (US):
@@ -7239,12 +7187,12 @@ regions:
   Minnesota (US):
     description: state of the United States of America
     label: Minnesota
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1527
   Mississippi (US):
     description: state of the United States of America
     label: Mississippi
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1494
   Mississippi Delta (US):
     description: American Viticultural Area
@@ -7254,7 +7202,7 @@ regions:
   Missouri (US):
     description: state of the United States of America
     label: Missouri
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1581
   Mittelburgenland (AT): null
   Mitteldeutscher Landwein (DE): null
@@ -7397,7 +7345,7 @@ regions:
   Monterey County (US):
     description: county in California, United States
     label: Monterey County
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q108072
   Monterminod (FR): null
   Monterosso Val d'Arda (IT): null
@@ -7450,7 +7398,7 @@ regions:
   Montánchez (ES):
     description: capital of Montánchez Municipality, Spain
     label: Montánchez
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q24010150
   Monzingen (DE): null
   Monção e Melgaço (PT): null
@@ -7463,7 +7411,7 @@ regions:
   Moravia (CZ):
     description: historical land in the Czech Republic
     label: Moravia
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q43266
   Morellino di Scansano (IT):
     description: Italian controlled and guaranteed designation of origin wine from Tuscany
@@ -7533,11 +7481,7 @@ regions:
     label: Mount Gambier wine region
     note: ok
     qid: Q19875806
-  Mount Lebanon (LB):
-    description: town in Bienville Parish, Louisiana
-    label: Mount Lebanon
-    note: non-wine class -- review
-    qid: Q2087150
+  Mount Lebanon (LB): null
   Mount Lofty Ranges (AU): null
   Mount Pisgah, Polk County, Oregon (US):
     description: American Viticultural Area in Oregon
@@ -7564,11 +7508,7 @@ regions:
     label: Mukuzani
     note: ok
     qid: Q4306822
-  Murcia (ES):
-    description: municipality of the Philippines in the province of Negros Occidental
-    label: Murcia
-    note: non-wine class -- review
-    qid: Q195459
+  Murcia (ES): null
   Murfatlar (RO): null
   Murgia (IT):
     description: Italian typical geographical indication wine from Apulia
@@ -7640,7 +7580,7 @@ regions:
   Mâconnais (FR):
     description: district in Burgundy, France
     label: Mâconnais
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1957131
   Médanos (AR): null
   Méditerranée (FR): null
@@ -7679,7 +7619,7 @@ regions:
   Nancagua (CL):
     description: Chilean city and commune
     label: Nancagua
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q51042
   Naoussa (GR): null
   Napa Valley (US):
@@ -7718,7 +7658,7 @@ regions:
   Navalcarnero (ES):
     description: capital of Navalcarnero Municipality, Spain
     label: Navalcarnero
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q24012716
   Navarra (ES):
     description: Spanish Denominación de Origen Protegida (DOP) for wines from the southern half of the
@@ -7746,16 +7686,8 @@ regions:
     label: Nettuno DOC
     note: ok
     qid: Q125121215
-  Neuchâtel (CH):
-    description: capital of the canton of Neuchâtel, Switzerland
-    label: Neuchâtel
-    note: non-wine class -- review
-    qid: Q69345
-  Neuquén (AR):
-    description: capital of Neuquen province, Argentina
-    label: Neuquén
-    note: non-wine class -- review
-    qid: Q44239
+  Neuchâtel (CH): null
+  Neuquén (AR): null
   Neusiedlersee (AT): null
   New England Australia (AU):
     description: wine region in New South Wales
@@ -7765,18 +7697,18 @@ regions:
   New Jersey (US):
     description: state of the United States of America
     label: New Jersey
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1408
   New Mexico (US):
     description: state of the United States of America
     label: New Mexico
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1522
   New South Wales (AU): null
   New York (US):
     description: state of the United States of America
     label: New York
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1384
   Niagara Escarpment (CA): null
   Niagara Escarpment (US):
@@ -7801,7 +7733,7 @@ regions:
   Ningxia (CN):
     description: autonomous region of China
     label: Ningxia
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q57448
   Nizza (IT):
     description: Italian controlled and guaranteed designation of origin wine from Piedmont
@@ -7823,7 +7755,7 @@ regions:
   North Carolina (US):
     description: state of the United States of America
     label: North Carolina
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1454
   North Coast (US):
     description: American Viticultural Area in California
@@ -7884,7 +7816,7 @@ regions:
   Nova Scotia (CA):
     description: province of Canada
     label: Nova Scotia
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1952
   Nuits-Saint-Georges (FR):
     description: French wine
@@ -7929,7 +7861,7 @@ regions:
   Oger (FR):
     description: former commune in Marne, France
     label: Oger
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1228972
   Ogliastra (IT):
     description: Italian typical geographical indication wine from Sardinia
@@ -7939,7 +7871,7 @@ regions:
   Ohio (US):
     description: state of the United States of America
     label: Ohio
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1397
   Ohio River Valley (US):
     description: wine region along the Ohio River
@@ -7950,7 +7882,7 @@ regions:
   Oiry (FR):
     description: commune in Marne, France
     label: Oiry
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q950485
   Okami (GE): null
   Okanagan Falls (CA): null
@@ -7962,7 +7894,7 @@ regions:
   Oklahoma (US):
     description: state of the United States of America
     label: Oklahoma
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1649
   Okureshis Usakhelouri (GE): null
   Old Mission Peninsula (US):
@@ -7975,7 +7907,7 @@ regions:
   Ollon (CH):
     description: municipality in the canton of Vaud in Switzerland
     label: Ollon
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q70115
   Ollwiller (FR): null
   Oltrepò Pavese (IT):
@@ -7996,7 +7928,7 @@ regions:
   Ontario (CA):
     description: province of Canada
     label: Ontario
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1904
   Opountia Locris (GR): null
   Oppenheim (DE): null
@@ -8013,7 +7945,7 @@ regions:
   Oregon (US):
     description: state of the United States of America
     label: Oregon
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q824
   Orta Nova (IT):
     description: Italian controlled designation of origin wine from Apulia
@@ -8054,7 +7986,7 @@ regions:
   Ovče Pole (MK):
     description: plain in North Macedonia
     label: Ovče Pole
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q2740712
   Ozark Highlands (US):
     description: American Viticultural Area located in southern Missouri
@@ -8128,7 +8060,7 @@ regions:
   Panquehue (CL):
     description: city and commune in Felipe de Aconcagua Province, Chile
     label: Panquehue
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q51078
   Pantelleria (IT):
     description: Italian controlled designation of origin wine from Sicily
@@ -8174,11 +8106,7 @@ regions:
     label: Paso Robles Willow Creek District AVA
     note: ok
     qid: Q133093969
-  Patagonia (AR):
-    description: town in Santa Cruz County, Arizona, United States
-    label: Patagonia
-    note: non-wine class -- review
-    qid: Q1024689
+  Patagonia (AR): null
   Patras (GR): null
   Patrimonio (FR): null
   Pauillac (FR):
@@ -8194,7 +8122,7 @@ regions:
   Payogasta (AR):
     description: human settlement
     label: Payogasta
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1648760
   Pays d'Oc (FR): null
   Paysandú (UY): null
@@ -8215,7 +8143,7 @@ regions:
   Peloponnese (GR):
     description: large peninsula and geographic region in southern Greece
     label: Peloponnese
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q78967
   Pemberton (AU): null
   Penedès (ES):
@@ -8232,7 +8160,7 @@ regions:
   Pennsylvania (US):
     description: state of the United States of America
     label: Pennsylvania
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1400
   Pentro d'Isernia (IT):
     description: Italian controlled designation of origin wine from Molise
@@ -8243,7 +8171,7 @@ regions:
   Peralillo (CL):
     description: commune of Chile
     label: Peralillo
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q51095
   Perdriel (AR): null
   Pergola (IT):
@@ -8280,7 +8208,7 @@ regions:
   Peumo (CL):
     description: commune of Chile
     label: Peumo
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q51097
   Peza (GR): null
   Pfalz (DE): null
@@ -8306,11 +8234,7 @@ regions:
     label: Picpoul de Pinet
     note: ok
     qid: Q9298961
-  Piedmont (IT):
-    description: municipality in Quebec, Canada
-    label: Piedmont
-    note: non-wine class -- review
-    qid: Q3382642
+  Piedmont (IT): null
   Piekenierskloof (ZA): null
   Pieria (GR): null
   Pierrevert (FR): null
@@ -8332,7 +8256,7 @@ regions:
   Pirque (CL):
     description: commune of Chile
     label: Pirque
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q51113
   Pisa (NZ): null
   Pisatis (GR): null
@@ -8471,11 +8395,7 @@ regions:
     label: Prosecco DOC
     note: ok
     qid: Q1069954
-  Provence (FR):
-    description: municipality in the canton of Vaud in Switzerland
-    label: Provence
-    note: non-wine class -- review
-    qid: Q70450
+  Provence (FR): null
   Provincia di Mantova (IT):
     description: Italian typical geographical indication wine from Lombardy
     label: Provincia di Mantova IGT
@@ -8494,7 +8414,7 @@ regions:
   Puente Alto (CL):
     description: city and commune of Chile
     label: Puente Alto
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q51594
   Puget Sound (US):
     description: viticultural area in Washington, USA
@@ -8505,7 +8425,7 @@ regions:
   Puisieulx (FR):
     description: commune in Marne, France
     label: Puisieulx
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q373299
   Puisseguin-Saint-Émilion (FR):
     description: wine region in Bordeaux, France
@@ -8537,7 +8457,7 @@ regions:
   Quillón (CL):
     description: commune of Chile
     label: Quillón
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q56109
   Quincy (FR):
     description: French wine-producing region
@@ -8553,12 +8473,12 @@ regions:
   Québec (CA):
     description: province of Canada
     label: Quebec
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q176
   Racha (GE):
     description: geographic region
     label: Racha
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1463301
   Radebeul (DE): null
   Raimat (ES): null
@@ -8643,7 +8563,7 @@ regions:
   Rengo (CL):
     description: Chilean city
     label: Rengo
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q56120
   Reno (IT):
     description: Italian controlled designation of origin wine from Emilia-Romagna
@@ -8653,7 +8573,7 @@ regions:
   Requínoa (CL):
     description: commune of Chile
     label: Requínoa
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q56121
   Rethymno (GR): null
   Reuilly (FR):
@@ -8677,13 +8597,13 @@ regions:
   Rhode Island (US):
     description: state of the United States of America
     label: Rhode Island
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1387
   Rhodes (GR): null
   Rhône Valley (FR):
     description: region on either side of the Rhône River in France
     label: Rhône Valley
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q2747791
   Ribbon Ridge (US):
     description: Oregon wine region in Yamhill County
@@ -9000,11 +8920,7 @@ regions:
   Rátka (HU): null
   Régnié (FR): null
   Rías Baixas (ES): null
-  Río Negro (AR):
-    description: Colombian municipality of the department of Antioquia
-    label: Rio negro
-    note: non-wine class -- review
-    qid: Q1774644
+  Río Negro (AR): null
   Río Negro (ES): null
   Río Negro (UY): null
   Rüdesheim (DE): null
@@ -9030,7 +8946,7 @@ regions:
   Sagrada Familia (CL):
     description: commune of Chile
     label: Sagrada Familia
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q56133
   Saillon (CH): null
   Saint-Amour (FR): null
@@ -9088,7 +9004,7 @@ regions:
   Saint-Saphorin (CH):
     description: municipality in the canton of Vaud in Switzerland
     label: Saint-Saphorin
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q70535
   Saint-Sardos (FR): null
   Saint-Véran (FR):
@@ -9147,7 +9063,7 @@ regions:
   Samegrelo (GE):
     description: historic province in the western part of Georgia
     label: Samegrelo
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q19084
   Samos (GR): null
   San Antonio Valley (CL): null
@@ -9164,7 +9080,7 @@ regions:
   San Benito County (US):
     description: county in California, United States
     label: San Benito County
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q109656
   San Bernabe (US):
     description: American Viticultural Area in California
@@ -9195,11 +9111,7 @@ regions:
     qid: Q118819287
   San Javier (CL): null
   San José (UY): null
-  San Juan (AR):
-    description: capital of San Juan Province, Argentina
-    label: San Juan
-    note: non-wine class -- review
-    qid: Q44241
+  San Juan (AR): null
   San Juan Creek (US):
     description: appelation that designates wine in San Luis Obispo County, CA
     label: San Juan Creek AVA
@@ -9233,7 +9145,7 @@ regions:
   San Martín de Valdeiglesias (ES):
     description: municipality of Spain
     label: San Martín de Valdeiglesias
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1751908
   San Miguel District (US):
     description: appelation that designates wine in San Luis Obispo County, CA
@@ -9249,13 +9161,9 @@ regions:
   San Patricio del Chañar (AR):
     description: municipality of Argentina
     label: San Patricio del Chañar
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1016891
-  San Rafael (AR):
-    description: city and the county seat of Marin County, California, United States
-    label: San Rafael
-    note: non-wine class -- review
-    qid: Q631915
+  San Rafael (AR): null
   San Severo (IT):
     description: Italian controlled designation of origin wine from Apulia
     label: San Severo DOC
@@ -9304,7 +9212,7 @@ regions:
   Santa Barbara County (US):
     description: county in southern California, United States
     label: Santa Barbara County
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q108106
   Santa Clara Valley (US):
     description: California wine region in Santa Clara County
@@ -9362,7 +9270,7 @@ regions:
   Sardinia (IT):
     description: island and autonomous region of Italy
     label: Sardinia
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1462
   Sassella (IT):
     description: human settlement in Province of Sondrio, Lombardy, Italy
@@ -9406,7 +9314,7 @@ regions:
   Savoie (FR):
     description: French department in the Auvergne-Rhône-Alpes region of the French Alps
     label: Savoie
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q12745
   Savuto (IT):
     description: Italian controlled designation of origin wine from Calabria
@@ -9482,7 +9390,7 @@ regions:
   Shandong (CN):
     description: province in East China
     label: Shandong
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q43407
   Shawnee Hills (US):
     description: wine region
@@ -9515,7 +9423,7 @@ regions:
   Sicily (IT):
     description: island in the Mediterranean, region of Italy
     label: Sicily
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1460
   Siebeldingen (DE): null
   Siebengebirge (DE):
@@ -9563,11 +9471,7 @@ regions:
     label: Sillaro IGT
     note: ok
     qid: Q139899813
-  Sillery (FR):
-    description: neighborhood in Quebec City, Quebec, Canada, former town
-    label: Sillery
-    note: non-wine class -- review
-    qid: Q3483898
+  Sillery (FR): null
   Similkameen Valley (CA): null
   Simonsberg-Paarl (ZA): null
   Simonsberg-Stellenbosch (ZA): null
@@ -9590,7 +9494,7 @@ regions:
   Slavonia (HR):
     description: historical region of Croatia
     label: Slavonia
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q681964
   Slavonia and Croatian Danube (HR): null
   Slopes of Aigialia (GR): null
@@ -9636,7 +9540,7 @@ regions:
   Solano County (US):
     description: county in California, United States
     label: Solano County
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q108083
   Solano County Green Valley (US):
     description: American Viticultural Area in Solano County, California
@@ -9670,7 +9574,7 @@ regions:
   Sonoma County (US):
     description: county in California, United States
     label: Sonoma County
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q108067
   Sonoma Mountain (US):
     description: American wine region
@@ -9685,7 +9589,7 @@ regions:
   Sopraceneri (CH):
     description: geographic region
     label: Sopraceneri
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q75651
   Sopron (HU):
     description: one of the seven larger wine regions of Hungary
@@ -9696,7 +9600,7 @@ regions:
   Sottoceneri (CH):
     description: geographic region
     label: Sottoceneri
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q75653
   Sousa (PT): null
   South Australia (AU): null
@@ -9847,7 +9751,7 @@ regions:
   Sussex (GB):
     description: historic county of England, United Kingdom
     label: Sussex
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q23346
   Sutherland-Karoo (ZA): null
   Suvereto (IT):
@@ -9899,12 +9803,12 @@ regions:
   Talagante (CL):
     description: commune of Chile
     label: Talagante
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q188038
   Tamar Valley (AU):
     description: valley in Tasmania, Australia
     label: Tamar Valley
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q7680758
   Tarantino (IT):
     description: Italian typical geographical indication wine from Apulia
@@ -9944,11 +9848,7 @@ regions:
     note: ok
     qid: Q133891330
   Tejo (PT): null
-  Tekirdağ (TR):
-    description: electoral district
-    label: Tekirdağ
-    note: non-wine class -- review
-    qid: Q1966785
+  Tekirdağ (TR): null
   Teliani (GE):
     description: Georgian wine
     label: Teliani
@@ -9964,15 +9864,11 @@ regions:
     label: Templeton Gap District AVA
     note: ok
     qid: Q132572901
-  Tenerife (ES):
-    description: Colombian municipality in the department of Magdalena
-    label: Tenerife
-    note: non-wine class -- review
-    qid: Q1525827
+  Tenerife (ES): null
   Tennessee (US):
     description: state of the United States of America
     label: Tennessee
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1509
   Teno Valley (CL): null
   Teroldego Rotaliano (IT):
@@ -10082,7 +9978,7 @@ regions:
   Texas (US):
     description: state of the United States of America
     label: Texas
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1439
   Texas Davis Mountains (US):
     description: American Viticultural Area located in western Texas
@@ -10130,7 +10026,7 @@ regions:
   Thessaly (GR):
     description: geographic region of Greece
     label: Thessaly
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q166919
   Thiva (GR): null
   Thompson Valley (CA): null
@@ -10138,7 +10034,7 @@ regions:
   Thrace (TR):
     description: geographical and historical region in Southeast Europe
     label: Thrace
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q41741
   Thracian Valley (BG): null
   Three Lakes (CH): null
@@ -10154,7 +10050,7 @@ regions:
   Tierra de Barros (ES):
     description: comarca of Spain
     label: Tierra de Barros
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q751003
   Tierra del Vino de Zamora (ES):
     description: ''
@@ -10185,7 +10081,7 @@ regions:
   Tokat (TR):
     description: central district and city in Tokat Province, Turkey
     label: Tokat
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q183651
   Tolcsva (HU): null
   Tolna (HU):
@@ -10235,7 +10131,7 @@ regions:
   Tours-sur-Marne (FR):
     description: commune in Marne, France
     label: Tours-sur-Marne
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1342783
   Traben-Trarbach (DE): null
   Tracy Hills (US):
@@ -10248,7 +10144,7 @@ regions:
   Traiguén (CL):
     description: commune of Chile
     label: Traiguén
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q200961
   Traisen (DE): null
   Traisental (AT): null
@@ -10321,7 +10217,7 @@ regions:
   Tuscany (IT):
     description: region of Italy
     label: Tuscany
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1273
   Tutuvén Valley (CL): null
   Tvishi (GE):
@@ -10346,7 +10242,7 @@ regions:
   Umbria (IT):
     description: region of Italy
     label: Umbria
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1280
   Umpqua Valley (US):
     description: wine growing region
@@ -10396,7 +10292,7 @@ regions:
   Urla (TR):
     description: town and district in İzmir Province, Turkey
     label: Urla
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q996670
   Urueña (ES): null
   Utiel-Requena (ES):
@@ -10445,11 +10341,7 @@ regions:
     qid: Q139899799
   Val do Miño-Ourense (ES): null
   Val do Salnés (ES): null
-  Valais (CH):
-    description: housing estate in Kwu Tung
-    label: Valais
-    note: non-wine class -- review
-    qid: Q140285751
+  Valais (CH): null
   Valcalepio (IT):
     description: Italian controlled designation of origin wine from Lombardy
     label: Valcalepio DOC
@@ -10506,7 +10398,7 @@ regions:
   Valencian Community (ES):
     description: autonomous community of Spain
     label: Valencian Community
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q5720
   Valençay (FR):
     description: French wine
@@ -10642,7 +10534,7 @@ regions:
   Veneto (IT):
     description: region in Italy
     label: Veneto
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1243
   Veneto Orientale (IT):
     description: Italian typical geographical indication wine from Veneto
@@ -10729,12 +10621,12 @@ regions:
   Verzenay (FR):
     description: commune in Marne, France
     label: Verzenay
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q535917
   Verzy (FR):
     description: commune in Marne, France
     label: Verzy
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q839779
   Vesuvio (IT):
     description: Italian controlled designation of origin wine from Campania
@@ -10840,12 +10732,12 @@ regions:
   Vipava Valley (SI):
     description: valley in Slovenia
     label: Vipava Valley
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q2625492
   Virginia (US):
     description: state of the United States of America
     label: Virginia
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1370
   Virginia Peninsula (US):
     description: American Viticultural Area in Virginia
@@ -10941,7 +10833,7 @@ regions:
   Washington (US):
     description: state of the United States of America
     label: Washington
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1223
   Watervale (AU): null
   Wehlen (DE): null
@@ -10970,7 +10862,7 @@ regions:
   West Virginia (US):
     description: state of the United States of America
     label: West Virginia
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1371
   Western Australia (AU): null
   Western Cape (ZA): null
@@ -11034,7 +10926,7 @@ regions:
   Wisconsin (US):
     description: state of the United States of America
     label: Wisconsin
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q1537
   Wisconsin Ledge (US):
     description: American Viticultural Area in northeast Wisconsin
@@ -11063,11 +10955,7 @@ regions:
     label: Yakima Valley AVA
     note: ok
     qid: Q1570385
-  Yamanashi (JP):
-    description: dissolved municipality in Higashiyamanashi district, Yamanashi prefecture, Japan
-    label: Yamanashi
-    note: non-wine class -- review
-    qid: Q11469634
+  Yamanashi (JP): null
   Yamhill-Carlton (US): null
   Yarra Valley (AU):
     description: wine region in Victoria, Australia
@@ -11107,12 +10995,12 @@ regions:
   Yunnan (CN):
     description: province of China
     label: Yunnan
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q43194
   Yvorne (CH):
     description: municipality in Switzerland
     label: Yvorne
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q70240
   Zagarolo (IT):
     description: Italian controlled designation of origin wine from Lazio
@@ -11123,7 +11011,7 @@ regions:
   Zahlé (LB):
     description: capital and largest city of Beqaa Governorate, Lebanon
     label: Zahlé
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q26569
   Zakynthos (GR): null
   Zala (HU): null
@@ -11131,7 +11019,7 @@ regions:
   Zapallar (CL):
     description: ''
     label: Zapallar
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q23660193
   Zegaani (GE): null
   Zeltingen-Rachtig (DE): null
@@ -11157,7 +11045,7 @@ regions:
   Épesses (CH):
     description: village and former municipality in Bourg-en-Lavaux in the canton of Vaud, Switzerland
     label: Epesses
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q668869
   Évora (PT): null
   Île de Beauté (FR): null
@@ -11167,11 +11055,7 @@ regions:
   Şarköy (TR):
     description: district and town in Tekirdağ, Turkey
     label: Şarköy
-    note: non-wine class -- review
+    note: 'reviewed 2026-09-27: namesake in the same country'
     qid: Q388544
   Štajerska Slovenija (SI): null
-  Ștefan Vodă (MD):
-    description: commune in Călărași County, Romania
-    label: Ștefan Vodă
-    note: non-wine class -- review
-    qid: Q16426124
+  Ștefan Vodă (MD): null

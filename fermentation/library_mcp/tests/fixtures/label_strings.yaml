@@ -267,7 +267,6 @@ ES:
     "Viura": "Macabeo"
     "Doña Blanca": "Dona Branca"
     "Merenzao": "Trousseau"
-    "Albillo": "Albillo Real"
     "Moscatel de Grano Menudo": "Muscat Blanc à Petits Grains"
     "Sousón": "Vinhão"
     "Hondarribi Zuri": "Hondarrabi Zuri"
@@ -290,7 +289,7 @@ ES:
     "Moravia Agria": "Moravia Agria"
     "Forcallat Tinta": "Forcallat Tinta"
     "Malvar": "Malvar"
-  not_grapes: ["Diego"]
+  not_grapes: ["Diego", "Albillo"]
 
 IT:
   regions:

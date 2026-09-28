@@ -145,7 +145,7 @@
 - {name: "Canaiolo", color: red, synonyms: ["Canaiolo Nero"]}
 - {name: "Mammolo", color: red}
 - {name: "Tintilia", color: red}
-- {name: "Piedirosso", color: red, synonyms: ["Per'e Palummo"]}
+- {name: "Piedirosso", color: red, synonyms: ["Per'e Palummo"], not_synonyms: ["Campi Flegrei Piedirosso"]}
 - {name: "Casavecchia", color: red}
 - {name: "Pallagrello Nero", color: red}
 - {name: "Aleatico", color: red}
@@ -450,7 +450,7 @@
 - {name: "Dona Branca", color: white, synonyms: ["Doña Blanca", "Malvasía Castellana", "Cigüente", "Moza Fresca"]}
 - {name: "Garnacha Peluda", color: red, synonyms: ["Garnatxa Peluda", "Grenache Poilu", "Grenache Velu", "Lledoner Pelut"]}
 - {name: "Albillo Mayor", color: white}
-- {name: "Albillo Real", color: white, synonyms: ["Albillo de Madrid"]}
+- {name: "Albillo Real", color: white, synonyms: ["Albillo de Madrid"], not_synonyms: ["Albillo"]}
 
 # ---------------- research: es-s1 ----------------
 - {name: "Negramoll", color: red, synonyms: ["Tinta Negra", "Negra Mole", "Tinta Negra Mole"]}
