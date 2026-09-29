@@ -152,7 +152,7 @@ on it, and a phase can be re-run alone with `--phase … --run-id …`.
 `ferment.py` (CLI) → `phases.py` (the three phase loops) → three independent
 modules that never import each other; config (model, api_url) is passed down:
 
-- **`searcher.py`** — owns the network for snippets. Nine web queries per
+- **`searcher.py`** — owns the network for snippets. Ten web queries per
   wine through `ddgs` (Yahoo → Bing → DuckDuckGo): question-style, per-site
   (Wine-Searcher, Vivino, CellarTracker, Wine.com), UPC, distributor site and
   a fallback — see `SEARCH_QUERIES` in `constants.py`. Cross-query URL dedupe,

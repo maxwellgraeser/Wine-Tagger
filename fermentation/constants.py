@@ -16,6 +16,13 @@
 # queries (site:cellartracker.com "{sku}") passed the gate only 37% of the time;
 # totalwine.com timed out on 6/11. Every query costs ~1 s and engines throttle
 # bursts, so the plan is 9 queries per wine, down from 12.
+#
+# "Grape variety" (2026-09-28) brings it back to 10. It found the true grape
+# for 11/11 wines in that experiment, and on run 20260928-135321 it found a
+# second site naming the grape for 4 of the 5 wines that routed as
+# uncorroborated_grape (Aster, Chocapalha, La Rioja Alta, Bila Haut; not
+# Vilafonte). It sits after the curated queries, just before the fallback, so
+# their labels and URL dedupe are unchanged.
 SEARCH_QUERIES = [
     # label,                    template,                                  scope
     ("Grapes Q",                "what grapes are in {name} wine",          "*"),
@@ -26,6 +33,7 @@ SEARCH_QUERIES = [
     ("Wine.com",                'site:wine.com "{name}"',                  "wine.com"),
     ("UPC",                     '"{sku}" wine',                            "*"),
     ("{supplier} (distributor)", "site:{dist} {name}",                     "{dist}"),
+    ("Grape variety",           '"{name}" grape variety',                  "*"),
     ("fallback",                "{name} wine",                             "*"),
 ]
 
