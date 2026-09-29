@@ -50,7 +50,10 @@ DISTRIBUTOR_SITES = {
 # --- LLM / API ---
 DEFAULT_API_URL = "http://localhost:8080/v1/chat/completions"
 DEFAULT_MODEL = "qwen2.5-7b-instruct"
-DEFAULT_CONFIDENCE_THRESHOLD = 85   # initial value; settings.json (see settings.py) overrides it
+DEFAULT_CONFIDENCE_THRESHOLD = 80   # initial value; settings.json (see settings.py) overrides it.
+                                    # Was 85. On every logged run the rows routed by the model's own
+                                    # confidence alone, at 80-84, were right (Vajra, Li Veli, Faustino);
+                                    # the evidence rules route regardless of it. journal 2026-09-29.
 
 # Models - models previously used for DEFAULT_MODEL above
 # qwen2.5-7b-instruct  -- current default; gemma3n has no working tool-call
@@ -209,6 +212,16 @@ GRAPE_MIN_SOURCES = 2               # ...and be named by at least this many dist
                                     # "uncorroborated_grape". On the 2026-09-27 run this caught 5 of the
                                     # 8 wrong rows (Curator's Semillon, Bila Haut's Mourvedre) for 3
                                     # right rows also routed. Not applied on top of single_source.
+                                    # A blend is exempt when one snippet names the whole of it (see
+                                    # evidence.blend_named_whole) and another source names one of its
+                                    # grapes: Vilafonte's "Cabernet Sauvignon 86%, Merlot 8%, Malbec 4%,
+                                    # Cabernet Franc 2%" has no second site in any run.
+FINER_REGION_MIN_SOURCES = 2        # a finer region the context names (coarse_region, longer_region)
+                                    # counts when this many sources name it, or at least as many as name
+                                    # the submitted region. One mention against several for the submitted
+                                    # region is mostly another wine: CellarTracker's list of DV Catena
+                                    # bottlings ("…Apelacion Paraje Altamira"), Chocapalha's "Alenquer"
+                                    # bottling, a blurb dividing Rioja into its three sub-zones.
 # A red or rosé wine needs a red grape. When every submitted grape is one the
 # library files as white, the row routes to review as "white_grapes_only". The
 # tagger dropped Urruzola Txakolina Rosé's Hondarrabi Beltza in three runs out

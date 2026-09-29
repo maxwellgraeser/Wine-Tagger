@@ -344,6 +344,7 @@ def test_single_source_clamp_does_not_add_low_confidence():
 @pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
 def test_coarse_region_when_context_names_a_finer_one():
     ctx = ("[Wine.com #1 | match=100]\nG.D. Vajra Barolo Albe 2021 from Barolo, Piedmont, Italy.\n\n"
+           "[Wine Searcher #3 | match=90]\nFind the best local price for 2021 G.D. Vajra Albe, Barolo DOCG, Italy.\n\n"
            "[Vivino #1 | match=90]\nA Red wine from Piemonte, Italy. Made from Nebbiolo.")
     assert evidence.finer_regions_named(["Piedmont"], ctx, country="Italy",
                                         product_name="Vajra Barolo Albe") == ["Barolo"]
@@ -353,6 +354,92 @@ def test_coarse_region_when_context_names_a_finer_one():
     # The precise answer, parents included, has nothing finer to point at.
     assert evidence.finer_regions_named(["Barolo", "Langhe", "Piedmont"], ctx, country="Italy",
                                         product_name="Vajra Barolo Albe") == []
+
+
+@pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
+def test_coarse_region_from_one_source_does_not_outweigh_the_submitted_one():
+    # DV Catena Tinto Historico: CellarTracker lists the producer's other bottlings,
+    # one of them "…Apelacion Paraje Altamira"; two sources say Uco Valley.
+    name = "DV Catena Tinto"
+    ctx = ("[Grapes Q #3 | match=100]\n77% Malbec, 20% Bonarda and 3% Petit Verdot sourced from the "
+           "Uco Valley and Lujan de Cuyo.\n\n"
+           "[Region Q | match=100]\nA Red wine from Uco Valley, Mendoza, Argentina.\n\n"
+           "[CellarTracker #2 | match=98]\nCommunity wine reviews and ratings on 2023 Bodega Catena Zapata "
+           "D.V. Catena Tinto Historico Apelacion Paraje Altamira, plus professional notes.")
+    regions = ["Uco Valley", "Mendoza"]
+    assert evidence.finer_regions_named(regions, ctx, country="Argentina", product_name=name) == []
+    # A second source for it is enough.
+    ctx += "\n\n[Wine.com #1 | match=90]\nD.V. Catena Tinto Historico from Paraje Altamira, Mendoza."
+    assert evidence.finer_regions_named(regions, ctx, country="Argentina", product_name=name) == ["Paraje Altamira"]
+
+
+VILAFONTE_CTX = (
+    "[Grapes Q #1 | match=95]\nSeriously Old Dirt, a Cabernet Sauvignon-led blend.\n\n"
+    "[Vivino #1 | match=95]\nSeriously Old Dirt 2019 South Africa · Paarl · Red wine · Cabernet Sauvignon\n\n"
+    "[UPC #1 | match=90]\nSeriously Old Dirt Region : Paarl Grape : Cabernet Sauvignon 86%, Merlot 8%, "
+    "Malbec 4%, Cabernet Franc 2%")
+
+
+@pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
+def test_one_snippet_naming_the_whole_blend_corroborates_it():
+    grapes = ["Cabernet Sauvignon", "Merlot", "Malbec", "Cabernet Franc"]
+    assert evidence.blend_named_whole(grapes, VILAFONTE_CTX)
+    tags = ParsedTags(country="South Africa", region=["Paarl"], grapes=grapes, is_blend=True, confidence=85)
+    assert apply_evidence_rules(tags, VILAFONTE_CTX, product_name="Vilafonte Seriously Old Dirt") == []
+    # Not when no other source names any of its grapes: nothing ties the list to this wine.
+    ctx = "[UPC #1 | match=90]\nCabernet Sauvignon 86%, Merlot 8%, Malbec 4%, Cabernet Franc 2%\n\n[Wine.com #1 | match=90]\nA red blend."
+    tags = ParsedTags(country="South Africa", grapes=grapes, is_blend=True, confidence=85)
+    assert apply_evidence_rules(tags, ctx) == [f"uncorroborated_grape:{g}" for g in grapes]
+
+
+@pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
+def test_blend_named_whole_needs_this_blend_or_its_shares():
+    # La Rioja Alta: an older vintage adds 5% Mazuelo, but each grape has its share.
+    ctx = ("[Grapes Q #2 | match=100]\nGrapes 20% Grenache / Garnacha 5% Mazuelo 75% Tempranillo\n\n"
+           "[Vivino #3 | match=90]\nA Red wine from Rioja, Spain. Made from Tempranillo.")
+    assert evidence.blend_named_whole(["Tempranillo", "Grenache"], ctx)
+    # A region blurb lists the local grapes, with no shares: it backs no blend.
+    blurb = ("[Grapes Q #1 | match=90]\nCabernet, Merlot, Mourvedre, Grenache, and Syrah are some of the "
+             "most important red grapes in the region.\n\n[UPC #1 | match=90]\nGrenache, Carignan.")
+    assert not evidence.blend_named_whole(["Grenache", "Syrah", "Mourvèdre"], blurb)
+    # Two lists that disagree do not add up to their union (Curator's Sémillon).
+    curator = ("[Vivino #1 | match=89]\nMade from Sémillon, Chardonnay, Chenin Blanc.\n\n"
+               "[Wine.com #1 | match=95]\nChenin Blanc, Chardonnay, and Viognier.")
+    grapes = ["Chenin Blanc", "Chardonnay", "Viognier", "Sémillon"]
+    assert not evidence.blend_named_whole(grapes, curator)
+    tags = ParsedTags(country="South Africa", grapes=grapes, is_blend=True, confidence=89)
+    assert apply_evidence_rules(tags, curator) == ["uncorroborated_grape:Viognier", "uncorroborated_grape:Sémillon"]
+    # One grape is not a blend.
+    assert not evidence.blend_named_whole(["Tempranillo"], ctx)
+
+
+PAV_CTX = ("[Region Q #1 | match=95]\nPavillon de Chavannes, a Côte de Brouilly from the slopes of Mont Brouilly.\n\n"
+           "[Wine.com #1 | match=90]\nChateau du Pavillon de Chavannes Cote de Brouilly 2022 from Beaujolais.")
+
+
+@pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
+def test_longer_region_when_context_names_a_region_containing_the_submitted_one():
+    name = "Pav Chavannes Brouilly"
+    assert evidence.longer_regions_named(["Brouilly", "Beaujolais"], PAV_CTX, country="France",
+                                         product_name=name) == ["Côte de Brouilly"]
+    tags = ParsedTags(country="France", region=["Brouilly", "Beaujolais"], grapes=["Gamay"], confidence=85)
+    assert "longer_region:Côte de Brouilly" in apply_evidence_rules(tags, PAV_CTX, product_name=name)
+    # The right answer has nothing longer to point at.
+    assert evidence.longer_regions_named(["Côte de Brouilly", "Beaujolais"], PAV_CTX, country="France",
+                                         product_name=name) == []
+
+
+@pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
+def test_longer_region_is_weighed_against_the_submitted_region_on_its_own():
+    # More sources say Brouilly on its own than Côte de Brouilly.
+    ctx = ("[Region Q #1 | match=95]\nA Brouilly from Pavillon de Chavannes.\n\n"
+           "[Wine.com #1 | match=90]\nPavillon de Chavannes Brouilly, Beaujolais.\n\n"
+           "[Vivino #1 | match=90]\nA Red wine from Brouilly, Beaujolais. The family also farms Côte de Brouilly.")
+    assert evidence.longer_regions_named(["Brouilly"], ctx, country="France") == []
+    # A region below the submitted one is coarse_region's business, not this check's.
+    ctx = ("[Wine.com #1 | match=95]\nBila-Haut Côtes du Roussillon Villages Latour-de-France 2022.\n\n"
+           "[Region Q #1 | match=90]\nDomaine de Bila-Haut, Côtes du Roussillon Villages Latour de France.")
+    assert evidence.longer_regions_named(["Côtes du Roussillon Villages"], ctx, country="France") == []
 
 
 @pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")

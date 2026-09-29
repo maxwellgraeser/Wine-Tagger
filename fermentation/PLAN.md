@@ -408,7 +408,11 @@ stated, now enforced in code):
 - **Grape corroboration.** A grape named by fewer than `GRAPE_MIN_SOURCES`
   (2) distinct sources routes the row with `uncorroborated_grape:<name>`
   (Curator's Sémillon, Bila Haut's Mourvèdre from a region blurb). Not
-  added on top of `single_source`.
+  added on top of `single_source`, nor for a blend that one snippet names
+  whole (`evidence.blend_named_whole`: it names no other grape, or gives
+  each a share) while another source names one of its grapes. Vilafonte's
+  "Cabernet Sauvignon 86%, Merlot 8%, Malbec 4%, Cabernet Franc 2%" never
+  had a second site.
 - **Incomplete blend.** `is_blend` with one grape → `incomplete_blend`.
 - **White grapes only.** A red or rosé whose submitted grapes are all white
   in the library → `white_grapes_only` (`evidence.white_grapes_only`). The
@@ -423,13 +427,25 @@ stated, now enforced in code):
   the row routes with `coarse_region:<name>`. Mentions inside a longer
   phrase of the product name ("La Rioja Alta") and right after a location
   cue ("located in Oyón, Rioja Alavesa", "38 km from Baalbek") don't count.
+  The finer region must be named by `FINER_REGION_MIN_SOURCES` (2) sources,
+  or by at least as many as name the submitted one: one CellarTracker line
+  about another bottling ("…Apelacion Paraje Altamira") no longer outweighs
+  two sources that say Uco Valley.
+- **Longer region.** `evidence.longer_regions_named`: the context names a
+  canonical region whose name contains the submitted one's and that is
+  neither above nor below it (Côte de Brouilly for Brouilly, Côtes du
+  Roussillon Villages for Côtes du Roussillon) → `longer_region:<name>`,
+  weighed the same way against the sources that name the submitted region
+  on its own.
 - **Every review route has a reason:** `low_confidence` (the model's own
   confidence, before any clamp, is under the threshold), `no_grapes`,
   `no_submit` and `no_context` too, so no row reaches review unexplained.
 
 On the logs of run `20260927-205354` these rules route all 8 wrong or coarse
 rows, plus 4 right ones (Aster, DV Catena, La Rioja Alta, Neirano). See
-`journal/2026-09-27-RUN-COMPARE.md`.
+`journal/2026-09-27-RUN-COMPARE.md`. The whole-blend, source-weight and
+longer-region changes cut the right rows routed across all eight logged runs
+from 42 to 26; see `journal/2026-09-29-REVIEW-FLAGS.md`.
 
 ### Content gates in the scorer
 

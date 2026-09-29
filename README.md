@@ -240,7 +240,7 @@ under llama.cpp, so it can't drive the MCP loop.
   producer gate) is written as `needs_review` without ever calling the tagger.
 - After tagging, `confidence < threshold` → `needs_review`. The threshold
   comes from CLI flag > `FERMENTATION_CONFIDENCE_THRESHOLD` > `settings.json`
-  (saved from Cellar) > `DEFAULT_CONFIDENCE_THRESHOLD` (85) in `constants.py`.
+  (saved from Cellar) > `DEFAULT_CONFIDENCE_THRESHOLD` (80) in `constants.py`.
 - **Evidence rules** (`phases.apply_evidence_rules`, enforced in code, not
   just asked for in the prompt): a submitted grape that appears nowhere in
   `web_context` — by canonical name or any library synonym — routes the row
@@ -251,11 +251,14 @@ under llama.cpp, so it can't drive the MCP loop.
   by family, so "Vivino #1" and "Vivino #2" are one source.
   A grape named by only one source (`uncorroborated_grape:<name>`), a blend
   with one known grape (`incomplete_blend`), a red or rosé with white grapes
-  only (`white_grapes_only`), and a region coarser than one the context
-  names (`coarse_region:Barolo` when the model said Piedmont) route to
-  review too. Every review route records a reason, including
-  `low_confidence`, `no_grapes`, `no_submit` and `no_context`; Cellar shows
-  them on the wine's *Final* tab.
+  only (`white_grapes_only`), a region coarser than one the context
+  names (`coarse_region:Barolo` when the model said Piedmont), and a region
+  whose longer name the context uses (`longer_region:Côte de Brouilly` when
+  the model said Brouilly) route to review too. One snippet naming a whole
+  blend corroborates its grapes; a region named by one source does not
+  outweigh the several that name the submitted one. Every review route
+  records a reason, including `low_confidence`, `no_grapes`, `no_submit` and
+  `no_context`; Cellar shows them on the wine's *Final* tab.
 - **Category**: when the CSV has no `product_category`, the tagger submits
   one of `Red / White / Rose / Sparkling` from the snippets; the store keeps
   it (`category_source: "model"`, shown as *inferred* in Cellar) until the

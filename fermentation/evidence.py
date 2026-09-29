@@ -17,17 +17,28 @@ the single-source rule gates on. `grape_source_counts` asks the same per
 grape: on the 2026-09-27 run every wrong grape set but one rested on a grape
 that a single source named (Curator's Sémillon, Bila Haut's Mourvèdre).
 
+`blend_named_whole` is the exception to that per-grape count: one snippet that
+names a whole blend ("45% Tinta Roriz, 25% Touriga Nacional, 15% Castelão…")
+is the composition as a source states it, and a second site rarely lists the
+minor grapes too.
+
 `finer_regions_named` catches the other common miss on that run: the context
-names Barolo but the model submitted Piedmont. It walks the library's region
-tree, read once from library.db like the grape synonyms.
+names Barolo but the model submitted Piedmont. `longer_regions_named` catches
+its sibling: the context says Côte de Brouilly and the model looked up the
+product name's "Brouilly". Both walk the library's region tree, read once
+from library.db like the grape synonyms, and both count sources, so a single
+mention in a list of the producer's other wines does not outweigh the region
+the rest of the context names.
 """
 
 from __future__ import annotations
 
 import re
 
-from .constants import ROSE_FROM_PINK_SKINNED, WHITE_GRAPES_ONLY_CATEGORIES
-from .library_text import LIBRARY_DB, fold, grape_aliases, grape_colours, mentioned, region_tree  # noqa: F401 (LIBRARY_DB: tests skip on it)
+from .constants import FINER_REGION_MIN_SOURCES, ROSE_FROM_PINK_SKINNED, WHITE_GRAPES_ONLY_CATEGORIES
+from .library_text import (  # noqa: F401 (LIBRARY_DB: tests skip on it)
+    LIBRARY_DB, fold, grape_aliases, grape_colours, mentioned, region_tree, text_facts,
+)
 from .scorer import source_family
 
 # Captures the source label so the same parse serves both counts below.
@@ -63,6 +74,41 @@ def unsupported_grapes(grapes: list[str], web_context: str) -> list[str]:
     neither by canonical name nor by any library synonym."""
     counts = grape_source_counts(grapes, web_context)
     return [g for g in grapes if counts[g] == 0]
+
+
+# A share next to a grape name: "86% Cabernet Sauvignon", "Merlot 8%",
+# "Grenache (60%)", "20% of Garnacha".
+_SHARE = r"\d{1,3}(?:[.,]\d+)?\s?%"
+
+
+def _has_share(grape: str, body: str) -> bool:
+    """True when the folded `body` gives `grape`, by any library name, a percentage."""
+    for alias in grape_aliases().get(fold(grape)) or (fold(grape),):
+        name = re.escape(alias)
+        if re.search(_SHARE + r"\s*(?:of\s+)?" + name + r"(?![a-z0-9])", body) or re.search(
+                r"(?<![a-z0-9])" + name + r"\s*[:(]?\s*" + _SHARE, body):
+            return True
+    return False
+
+
+def blend_named_whole(grapes: list[str], web_context: str) -> bool:
+    """True when one snippet names every grape of a blend (two or more), as
+    that wine's composition: it names no other grape, or it gives each of
+    these a share.
+
+    The share test lets La Rioja Alta's "20% Grenache / Garnacha 5% Mazuelo
+    75% Tempranillo" (an older vintage) back Tempranillo and Grenache. Without
+    it, a region blurb that lists the local grapes would back any three of
+    them: Bila Haut's "Cabernet, Merlot, Mourvedre, Grenache, and Syrah are
+    some of the most important red grapes in the region"."""
+    if len(grapes) < 2:
+        return False
+    want = {fold(g) for g in grapes}
+    for _family, body in _context_blocks(web_context):
+        named = {fold(g) for g in text_facts(body)["grapes"]}
+        if want <= named and (named == want or all(_has_share(g, body) for g in grapes)):
+            return True
+    return False
 
 
 def white_grapes_only(grapes: list[str], category: str | None) -> bool:
@@ -118,39 +164,108 @@ def _named_as_origin(alias: str, hay: str, name_words: list[str]) -> bool:
     )
 
 
+def _source_count(aliases, blocks: list[tuple[str, str]], name_words: list[str]) -> int:
+    """Distinct sources whose block names one of `aliases` as the wine's origin."""
+    return len({fam for fam, body in blocks if any(_named_as_origin(a, body, name_words) for a in aliases)})
+
+
+def _outweighs(n: int, submitted_n: int) -> bool:
+    """A region `n` sources name counts against one `submitted_n` sources name."""
+    return n > 0 and (n >= FINER_REGION_MIN_SOURCES or n >= submitted_n)
+
+
+def _submitted_leaves(regions: list[str], country: str | None) -> tuple[set[int], list[int]]:
+    """(ids of every submitted region, ids of the most specific ones).
+    `regions` is the normalized list, parents included, so the most specific
+    entries are the ones that are no other entry's parent. `country` narrows
+    same-named regions to the submitted country."""
+    by_name, nodes, children = region_tree()
+    ids = [rid for r in regions for rid in by_name.get(r, []) if not country or nodes[rid][1] == country]
+    submitted = set(ids)
+    parents = {p for p, kids in children.items() for k in kids if k in submitted}
+    return submitted, [rid for rid in ids if rid not in parents]
+
+
+def _descendants(rid: int, children: dict[int, list[int]]) -> list[int]:
+    out: list[int] = []
+    stack = list(children.get(rid, []))
+    while stack:
+        kid = stack.pop()
+        out.append(kid)
+        stack.extend(children.get(kid, []))
+    return out
+
+
 def finer_regions_named(
     regions: list[str], web_context: str, *, country: str | None = None, product_name: str = "",
 ) -> list[str]:
     """Canonical regions that `web_context` names and that sit below the most
     specific submitted region: Barolo when the model submitted Piedmont.
 
-    `regions` is the normalized list, parents included, so the most specific
-    entries are the ones that are no other entry's parent. `country` narrows
-    same-named regions to the submitted country.
+    A finer region counts when FINER_REGION_MIN_SOURCES sources name it, or
+    at least as many as name the submitted region (see `_outweighs`).
     """
-    by_name, nodes, children = region_tree()
-    ids = [
-        rid for r in regions for rid in by_name.get(r, [])
-        if not country or nodes[rid][1] == country
-    ]
-    if not ids:
-        return []
-    submitted = set(ids)
-    parents = {p for p, kids in children.items() for k in kids if k in submitted}
-    hay = fold(web_context)
+    _by_name, nodes, children = region_tree()
+    submitted, leaves = _submitted_leaves(regions, country)
+    blocks = _context_blocks(web_context)
     name_words = _words(fold(product_name))
     found: list[str] = []
-    for leaf in (rid for rid in ids if rid not in parents):
-        stack = list(children.get(leaf, []))
-        while stack:
-            rid = stack.pop()
-            stack.extend(children.get(rid, []))
+    for leaf in leaves:
+        leaf_n = _source_count(nodes[leaf][3], blocks, name_words)
+        for rid in _descendants(leaf, children):
             name, _country, canonical, aliases = nodes[rid]
             if not canonical or rid in submitted or name in found:
                 continue
-            if any(_named_as_origin(a, hay, name_words) for a in aliases):
+            if _outweighs(_source_count(aliases, blocks, name_words), leaf_n):
                 found.append(name)
     return found
+
+
+def _contains(longer: list[str], shorter: list[str]) -> bool:
+    k = len(shorter)
+    return len(longer) > k and any(longer[i:i + k] == shorter for i in range(len(longer) - k + 1))
+
+
+def longer_regions_named(
+    regions: list[str], web_context: str, *, country: str | None = None, product_name: str = "",
+) -> list[str]:
+    """Canonical regions that `web_context` names whose name contains the
+    submitted region's, and that are neither above nor below it: Côte de
+    Brouilly when the model submitted Brouilly, Côtes du Roussillon Villages
+    for Côtes du Roussillon. The model tends to look up the product name's
+    word. Counted like `finer_regions_named`, against the sources that name
+    the submitted region on its own, outside the longer name."""
+    _by_name, nodes, children = region_tree()
+    parent_of = {kid: p for p, kids in children.items() for kid in kids}
+    _submitted, leaves = _submitted_leaves(regions, country)
+    blocks = _context_blocks(web_context)
+    name_words = _words(fold(product_name))
+    found: list[str] = []
+    for leaf in leaves:
+        leaf_name, leaf_country, _canonical, leaf_aliases = nodes[leaf]
+        related = {leaf, *_descendants(leaf, children)}
+        rid = leaf
+        while rid in parent_of:
+            rid = parent_of[rid]
+            related.add(rid)
+        leaf_words = [_words(a) for a in leaf_aliases]
+        for rid, (name, rcountry, canonical, aliases) in nodes.items():
+            if (not canonical or rcountry != leaf_country or rid in related or name in found
+                    or not any(_contains(_words(a), w) for a in aliases for w in leaf_words)):
+                continue
+            n = _source_count(aliases, blocks, name_words)
+            if not n:
+                continue
+            masked = [(fam, _mask(body, aliases)) for fam, body in blocks]
+            if _outweighs(n, _source_count(leaf_aliases, masked, name_words)):
+                found.append(name)
+    return found
+
+
+def _mask(body: str, aliases) -> str:
+    for alias in aliases:
+        body = _phrase_re(_words(alias)).sub(" ", body)
+    return body
 
 
 def context_snippet_count(web_context: str) -> int:

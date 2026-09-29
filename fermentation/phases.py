@@ -23,7 +23,10 @@ from . import scorer, searcher, store as store_mod, tagger
 from .constants import (
     GRAPE_MIN_SOURCES, ORGANIC_PHRASES, REQUIRE_GRAPE_EVIDENCE, SINGLE_SOURCE_CONFIDENCE_CAP,
 )
-from .evidence import context_source_count, finer_regions_named, grape_source_counts, white_grapes_only
+from .evidence import (
+    blend_named_whole, context_source_count, finer_regions_named, grape_source_counts, longer_regions_named,
+    white_grapes_only,
+)
 from .events import EventSink
 from .paths import PHASES, RUN_STATE_PATH, phase_dir, run_dir
 from .types import ParsedTags, Product, ScoredSnippet, Snippet
@@ -355,7 +358,9 @@ def apply_evidence_rules(
         name, region or style (Aster → Tempranillo, Bila Haut → Cinsault).
       * "uncorroborated_grape:<name>": only one source names the grape
         (Curator's Sémillon, Bila Haut's Mourvèdre from a region blurb).
-        Skipped when single_source already covers the whole context.
+        Skipped when single_source already covers the whole context, and for
+        a blend that one snippet names whole (evidence.blend_named_whole)
+        while another source names one of its grapes.
       * "incomplete_blend": is_blend with one grape. A source calls the wine
         a blend but names only this grape (Chocapalha, Vilafonte).
       * "white_grapes_only": a red or rosé wine submitted with white grapes
@@ -363,6 +368,10 @@ def apply_evidence_rules(
         model inferred. Urruzola's rosé lost its Hondarrabi Beltza this way.
       * "coarse_region:<name>": the context names a canonical region below the
         submitted one (Barolo when the model submitted Piedmont).
+      * "longer_region:<name>": the context names a canonical region whose
+        name contains the submitted one's (Côte de Brouilly for Brouilly).
+        Both region checks need the other region named by enough sources
+        (FINER_REGION_MIN_SOURCES, or as many as name the submitted one).
       * "no_grapes": the submission had no grapes.
       * "low_confidence": the model's own confidence, before any clamp, is
         below `confidence_threshold` (when one is given).
@@ -379,20 +388,23 @@ def apply_evidence_rules(
         reasons.append("single_source")
     if REQUIRE_GRAPE_EVIDENCE and normalized.grapes:
         counts = grape_source_counts(normalized.grapes, web_context or "")
+        whole_blend = (max(counts.values()) >= GRAPE_MIN_SOURCES
+                       and blend_named_whole(normalized.grapes, web_context or ""))
         for g in normalized.grapes:
             if counts[g] == 0:
                 reasons.append(f"unsupported_grape:{g}")
-            elif counts[g] < GRAPE_MIN_SOURCES and not single:
+            elif counts[g] < GRAPE_MIN_SOURCES and not single and not whole_blend:
                 reasons.append(f"uncorroborated_grape:{g}")
     if normalized.is_blend and len(normalized.grapes) == 1:
         reasons.append("incomplete_blend")
     if white_grapes_only(normalized.grapes, category or normalized.category):
         reasons.append("white_grapes_only")
     if normalized.region and web_context:
-        for region in finer_regions_named(
-            normalized.region, web_context, country=normalized.country, product_name=product_name,
-        ):
+        where = dict(country=normalized.country, product_name=product_name)
+        for region in finer_regions_named(normalized.region, web_context, **where):
             reasons.append(f"coarse_region:{region}")
+        for region in longer_regions_named(normalized.region, web_context, **where):
+            reasons.append(f"longer_region:{region}")
     if not normalized.grapes:
         reasons.append("no_grapes")
     if confidence_threshold is not None and (
