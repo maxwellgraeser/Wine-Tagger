@@ -469,8 +469,9 @@ stated, now enforced in code):
     may still win on a tie.
   - On the ten 24-wine logs: 18 rows fixed, none broken (174 → 192 right);
     `journal/2026-10-02-REGION-RULES.md`. `REGION_UPGRADE_NEEDS_REVIEW`
-    (on for now, while testing) also routes every upgraded row; off, the
-    upgrade is accepted and the queue on the logs drops from 72 to 54.
+    (off since Oct 2; it was on while testing) routes every upgraded row
+    when on. Off, the upgrade is accepted and the queue on the logs drops
+    from 72 to 54.
 - **Unsupported region.** `evidence.unsupported_regions`: the most specific
   submitted region is named nowhere in the context or the product name (by
   any library spelling, separators ignored), and no region below it is

@@ -7,7 +7,7 @@ import json
 
 import pytest
 
-from fermentation import constants, evidence, library_text, scorer, searcher
+from fermentation import constants, evidence, library_text, phases, scorer, searcher
 from fermentation.phases import apply_evidence_rules, decide_tag_status
 from fermentation.types import ParsedTags, Product, ScoredSnippet, Snippet
 
@@ -361,14 +361,16 @@ def test_single_source_clamp_does_not_add_low_confidence():
 
 
 @pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
-def test_coarse_region_when_context_names_a_finer_one():
+def test_coarse_region_when_context_names_a_finer_one(monkeypatch):
+    # The upgrade's reason shows only with REGION_UPGRADE_NEEDS_REVIEW on.
+    monkeypatch.setattr(phases, "REGION_UPGRADE_NEEDS_REVIEW", True)
     ctx = ("[Wine.com #1 | match=100]\nG.D. Vajra Barolo Albe 2021 from Barolo, Piedmont, Italy.\n\n"
            "[Wine Searcher #3 | match=90]\nFind the best local price for 2021 G.D. Vajra Albe, Barolo DOCG, Italy.\n\n"
            "[Vivino #1 | match=90]\nA Red wine from Piemonte, Italy. Made from Nebbiolo.")
     assert evidence.finer_regions_named(["Piedmont"], ctx, country="Italy",
                                         product_name="Vajra Barolo Albe") == ["Barolo"]
-    # The gate puts the finer region in place (the product name names it too) and, while
-    # REGION_UPGRADE_NEEDS_REVIEW is on, routes the row instead of flagging coarse_region.
+    # The gate puts the finer region in place (the product name names it too) and, with
+    # review on, routes the row instead of flagging coarse_region.
     tags = ParsedTags(country="Italy", region=["Piedmont"], grapes=["Nebbiolo"], confidence=85)
     reasons = apply_evidence_rules(tags, ctx, product_name="Vajra Barolo Albe")
     assert reasons == ["region_from_name:Piedmont→Barolo"]
@@ -468,7 +470,9 @@ PAV_CTX = ("[Region Q #1 | match=95]\nPavillon de Chavannes, a Côte de Brouilly
 
 
 @pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
-def test_longer_region_when_context_names_a_region_containing_the_submitted_one():
+def test_longer_region_when_context_names_a_region_containing_the_submitted_one(monkeypatch):
+    # The upgrade's reason shows only with REGION_UPGRADE_NEEDS_REVIEW on.
+    monkeypatch.setattr(phases, "REGION_UPGRADE_NEEDS_REVIEW", True)
     name = "Pav Chavannes Brouilly"
     assert evidence.longer_regions_named(["Brouilly", "Beaujolais"], PAV_CTX, country="France",
                                          product_name=name) == ["Côte de Brouilly"]
@@ -515,7 +519,9 @@ NEIRANO_CTX = (
 
 
 @pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
-def test_a_region_that_ends_the_product_name_is_not_masked():
+def test_a_region_that_ends_the_product_name_is_not_masked(monkeypatch):
+    # The upgrade's reason shows only with REGION_UPGRADE_NEEDS_REVIEW on.
+    monkeypatch.setattr(phases, "REGION_UPGRADE_NEEDS_REVIEW", True)
     assert evidence.finer_regions_named(["Piedmont"], NEIRANO_CTX, country="Italy",
                                         product_name="Neirano Barolo") == ["Barolo"]
     tags = ParsedTags(country="Italy", region=["Piedmont"], grapes=["Nebbiolo"], confidence=89)
@@ -604,7 +610,6 @@ def test_region_from_sources_needs_two_sources_for_a_region_below():
 
 @pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
 def test_region_upgrade_without_review(monkeypatch):
-    from fermentation import phases
     monkeypatch.setattr(phases, "REGION_UPGRADE_NEEDS_REVIEW", False)
     tags = ParsedTags(country="Italy", region=["Piedmont"], grapes=["Nebbiolo"], confidence=89)
     assert apply_evidence_rules(tags, NEIRANO_CTX, product_name="Neirano Barolo") == []

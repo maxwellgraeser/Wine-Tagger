@@ -227,13 +227,13 @@ FINER_REGION_MIN_SOURCES = 2        # a finer region the context names (coarse_r
                                     # region is mostly another wine: CellarTracker's list of DV Catena
                                     # bottlings ("…Apelacion Paraje Altamira"), Chocapalha's "Alenquer"
                                     # bottling, a blurb dividing Rioja into its three sub-zones.
-REGION_UPGRADE_NEEDS_REVIEW = True  # the gate puts a finer region in place of the submitted one when the
+REGION_UPGRADE_NEEDS_REVIEW = False # the gate puts a finer region in place of the submitted one when the
                                     # product name names it (region_from_name: Piedmont → Barolo for
                                     # "Neirano Barolo") or exactly one finer region outweighs it in the
                                     # sources (region_from_sources: Brouilly → Côte de Brouilly). While
                                     # True, such a row also routes to review so the change can be
-                                    # checked. Temporary, for testing (2026-10-02): set False once the
-                                    # upgrades have been seen to hold. region_from_sources is the riskier
+                                    # checked. Off since 2026-10-02: on run 20261002-000902 all 4 upgraded
+                                    # rows were right and leave the queue. region_from_sources is the riskier
                                     # one: on Oct 1 it would have turned La Rioja Alta's Rioja into Rioja
                                     # Oriental, the Garnacha's origin.
 # A red or rosé wine needs a red grape. When every submitted grape is one the

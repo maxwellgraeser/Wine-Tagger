@@ -285,8 +285,8 @@ under llama.cpp, so it can't drive the MCP loop.
   Before those checks the gate upgrades the region itself when the product
   name names a finer one (`region_from_name:Piedmont→Barolo` for "Neirano
   Barolo") or exactly one finer region is named by at least as many sources
-  (`region_from_sources:Brouilly→Côte de Brouilly`); for now those rows are
-  routed to review as well (`REGION_UPGRADE_NEEDS_REVIEW`, temporary). One
+  (`region_from_sources:Brouilly→Côte de Brouilly`). The upgrade is accepted;
+  `REGION_UPGRADE_NEEDS_REVIEW` routes those rows to review as well. One
   snippet naming a whole blend corroborates its grapes, unless it says the
   list is partial ("and touches of other grapes"); a single varietal needs
   only one source naming its grape, unless the context calls the wine a
