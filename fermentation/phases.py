@@ -21,11 +21,13 @@ from typing import Any, Optional
 
 from . import scorer, searcher, store as store_mod, tagger
 from .constants import (
-    GRAPE_MIN_SOURCES, ORGANIC_PHRASES, REQUIRE_GRAPE_EVIDENCE, SINGLE_SOURCE_CONFIDENCE_CAP,
+    GRAPE_MIN_SOURCES, ORGANIC_PHRASES, REGION_UPGRADE_NEEDS_REVIEW, REQUIRE_GRAPE_EVIDENCE,
+    SINGLE_SOURCE_CONFIDENCE_CAP,
 )
 from .evidence import (
     blend_named_whole, context_calls_it_a_blend, context_source_count, finer_regions_named, grape_source_counts,
-    longer_regions_named, unsupported_regions, white_grapes_only,
+    longer_regions_named, region_from_name, region_from_sources, replace_region, unsupported_regions,
+    white_grapes_only,
 )
 from .events import EventSink
 from .paths import PHASES, RUN_STATE_PATH, phase_dir, run_dir
@@ -362,7 +364,7 @@ def apply_evidence_rules(
     confidence_threshold: Optional[int] = None,
 ) -> list[str]:
     """Mechanical checks on what the tagger submitted versus the text it was
-    shown. Mutates `normalized` (confidence clamp) and returns the reasons
+    shown. Mutates `normalized` (confidence clamp, region upgrades) and returns the reasons
     that will route the row to needs_review:
 
       * "no_submit": the model never got a submission accepted.
@@ -388,6 +390,17 @@ def apply_evidence_rules(
       * "white_grapes_only": a red or rosé wine submitted with white grapes
         only. `category` is the product's; when it has none, the one the
         model inferred. Urruzola's rosé lost its Hondarrabi Beltza this way.
+      * "region_from_name:<submitted>→<name>": the product name names a region
+        below the submitted one ("Neirano Barolo", submitted Piedmont), or the
+        model submitted none. The gate puts that region and its parents in
+        place of the submission (evidence.region_from_name). A reason only
+        while REGION_UPGRADE_NEEDS_REVIEW is on; the upgrade happens either way.
+      * "name_region_conflict:<name>": the product name names a region on
+        another branch than the submitted one. Nothing is changed.
+      * "region_from_sources:<submitted>→<name>": after that, exactly one
+        finer region outweighs the submitted one in the sources (what
+        coarse_region / longer_region would report), so it replaces the
+        submission (evidence.region_from_sources). Same switch.
       * "coarse_region:<name>": the context names a canonical region below the
         submitted one (Barolo when the model submitted Piedmont).
       * "longer_region:<name>": the context names a canonical region whose
@@ -427,8 +440,24 @@ def apply_evidence_rules(
         reasons.append("incomplete_blend")
     if white_grapes_only(normalized.grapes, category or normalized.category):
         reasons.append("white_grapes_only")
+    if product_name:
+        action, name = region_from_name(normalized.region, country=normalized.country,
+                                        product_name=product_name)
+        if action == "upgrade":
+            was = normalized.region[0] if normalized.region else "none"
+            normalized.region = replace_region(normalized.region, name, country=normalized.country)
+            if REGION_UPGRADE_NEEDS_REVIEW:
+                reasons.append(f"region_from_name:{was}→{name}")
+        elif action == "conflict":
+            reasons.append(f"name_region_conflict:{name}")
     if normalized.region and web_context:
         where = dict(country=normalized.country, product_name=product_name)
+        finer = region_from_sources(normalized.region, web_context, **where)
+        if finer:
+            was = normalized.region[0]
+            normalized.region = replace_region(normalized.region, finer, country=normalized.country)
+            if REGION_UPGRADE_NEEDS_REVIEW:
+                reasons.append(f"region_from_sources:{was}→{finer}")
         for region in finer_regions_named(normalized.region, web_context, **where):
             reasons.append(f"coarse_region:{region}")
         for region in longer_regions_named(normalized.region, web_context, **where):

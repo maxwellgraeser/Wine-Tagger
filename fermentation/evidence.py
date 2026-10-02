@@ -37,6 +37,7 @@ submitted region that nothing in the text names, nor anything below it.
 from __future__ import annotations
 
 import re
+from functools import lru_cache
 
 from .constants import FINER_REGION_MIN_SOURCES, ROSE_FROM_PINK_SKINNED, WHITE_GRAPES_ONLY_CATEGORIES
 from .library_text import (  # noqa: F401 (LIBRARY_DB: tests skip on it)
@@ -326,6 +327,137 @@ def unsupported_regions(
         if aliases and name not in found and not any(_phrase_re(_words(a)).search(hay) for a in aliases):
             found.append(name)
     return found
+
+
+@lru_cache(maxsize=1)
+def _parent_of() -> dict[int, int]:
+    _by_name, _nodes, children = region_tree()
+    return {kid: p for p, kids in children.items() for kid in kids}
+
+
+def _ancestors(rid: int) -> list[int]:
+    parent_of = _parent_of()
+    out: list[int] = []
+    while rid in parent_of:
+        rid = parent_of[rid]
+        out.append(rid)
+    return out
+
+
+def _chain_names(rid: int) -> list[str]:
+    """The region and its parents, most specific first: the normalized form."""
+    _by_name, nodes, _children = region_tree()
+    return [nodes[r][0] for r in (rid, *_ancestors(rid))]
+
+
+def _region_id(name: str, country: str | None) -> int | None:
+    by_name, nodes, _children = region_tree()
+    ids = [rid for rid in by_name.get(name, []) if not country or nodes[rid][1] == country]
+    return ids[0] if len(ids) == 1 else None
+
+
+@lru_cache(maxsize=512)
+def name_region(product_name: str) -> int | None:
+    """The canonical region the product name names ("Neirano Barolo" →
+    Barolo), or None.
+
+    Every region the name matches must sit on one branch of the tree, and the
+    most specific is returned. A name that matches regions on two branches is
+    left alone: "La Rioja Alta Ardanza" names Rioja Alta and Argentina's La
+    Rioja, because the producer's name is a place name. Note the POS name can
+    still be wrong in its own way: "Pav Chavannes Brouilly" is a Côte de
+    Brouilly (see `region_from_name`)."""
+    _by_name, nodes, _children = region_tree()
+    hay = fold(product_name)
+    hits = [rid for rid, (_n, _c, canonical, aliases) in nodes.items()
+            if canonical and any(mentioned(a, hay) for a in aliases)]
+    if not hits:
+        return None
+    deepest = max(hits, key=lambda rid: len(_ancestors(rid)))
+    on_branch = {deepest, *_ancestors(deepest)}
+    return deepest if all(rid in on_branch for rid in hits) else None
+
+
+def region_from_name(
+    regions: list[str], *, country: str | None, product_name: str,
+) -> tuple[str | None, str | None]:
+    """Compare the submitted region with the one the product name names.
+
+    Returns ("upgrade", name) when the submission is that region's parent, or
+    empty (Piedmont for "Neirano Barolo"); ("conflict", name) when it sits on
+    another branch; (None, None) when the name names no region, the region is
+    in another country, or the submission agrees (the same region, or one
+    below it: Rioja Alavesa for "Faustino VII Rioja"). A submission whose name
+    contains the name's region is not a conflict: the POS abbreviates Côte de
+    Brouilly to "Brouilly"."""
+    rid = name_region(product_name)
+    if rid is None:
+        return None, None
+    _by_name, nodes, _children = region_tree()
+    name, rcountry, _canonical, aliases = nodes[rid]
+    if country and rcountry != country:
+        return None, None
+    _submitted, leaves = _submitted_leaves(regions, country)
+    if not leaves:
+        return "upgrade", name
+    above = set(_ancestors(rid))
+    if any(leaf == rid or rid in _ancestors(leaf) for leaf in leaves):
+        return None, None
+    if all(leaf in above for leaf in leaves):
+        return "upgrade", name
+    name_words = [_words(a) for a in aliases]
+    if any(_contains(_words(a), w) for leaf in leaves for a in nodes[leaf][3] for w in name_words):
+        return None, None
+    return "conflict", name
+
+
+def region_from_sources(
+    regions: list[str], web_context: str, *, country: str | None = None, product_name: str = "",
+) -> str | None:
+    """The one finer region the sources name, if there is exactly one.
+
+    The candidates are what `finer_regions_named` and `longer_regions_named`
+    report (Barolo for Piedmont, Côte de Brouilly for Brouilly). Any that is
+    the parent of another is dropped; when one is left it is returned, and
+    when two or more are left (two sub-zones of one region) nothing is.
+
+    The one left must also be named by at least as many sources as the
+    submitted region (outside the finer name). The review checks let two
+    sources outweigh any number, which is right for a flag but not for a
+    replacement: on 2026-10-01, three sources named Rioja Oriental (the
+    Garnacha's origin) and five named La Rioja Alta's Rioja."""
+    where = dict(country=country, product_name=product_name)
+    names = [*finer_regions_named(regions, web_context, **where),
+             *longer_regions_named(regions, web_context, **where)]
+    ids = [rid for n in dict.fromkeys(names) if (rid := _region_id(n, country)) is not None]
+    above = {a for rid in ids for a in _ancestors(rid)}
+    left = [rid for rid in ids if rid not in above]
+    if len(left) != 1:
+        return None
+    _by_name, nodes, _children = region_tree()
+    name, _country, _canonical, aliases = nodes[left[0]]
+    blocks = _context_blocks(web_context)
+    name_words = _words(fold(product_name))
+    masked = [(fam, _mask(body, aliases)) for fam, body in blocks]
+    _submitted, leaves = _submitted_leaves(regions, country)
+    submitted_n = max((_source_count(nodes[leaf][3], masked, name_words) for leaf in leaves), default=0)
+    return name if _source_count(aliases, blocks, name_words) >= submitted_n else None
+
+
+def replace_region(regions: list[str], new: str, *, country: str | None) -> list[str]:
+    """`regions` with `new` and its parents in front. A submitted region whose
+    name `new` contains (Brouilly, for Côte de Brouilly) is dropped; the rest
+    is kept as it was."""
+    rid = _region_id(new, country)
+    if rid is None:
+        return regions
+    _by_name, nodes, _children = region_tree()
+    chain = _chain_names(rid)
+    new_words = [_words(a) for a in nodes[rid][3]]
+    _submitted, leaves = _submitted_leaves(regions, country)
+    replaced = {nodes[leaf][0] for leaf in leaves
+                if any(_contains(w, _words(a)) for a in nodes[leaf][3] for w in new_words)}
+    return chain + [r for r in regions if r not in chain and r not in replaced]
 
 
 def context_snippet_count(web_context: str) -> int:

@@ -445,6 +445,28 @@ stated, now enforced in code):
   Roussillon Villages for Côtes du Roussillon) → `longer_region:<name>`,
   weighed the same way against the sources that name the submitted region
   on its own.
+- **Region upgrades (the gate changes the region).** Before the region
+  checks, two rules put a finer region in place of the submitted one, with
+  its parents (`evidence.replace_region`):
+  - **From the product name** (`evidence.region_from_name`): the name
+    names one branch of the region tree ("Neirano Barolo" → Barolo) and the
+    submission is above it or empty → `region_from_name:Piedmont→Barolo`.
+    A name that matches two branches is skipped (La Rioja Alta: Rioja Alta
+    and Argentina's La Rioja), and so is a region in another country. A
+    submission on another branch is left alone and routes as
+    `name_region_conflict:<name>`; one below the name's region (Rioja
+    Alavesa for "…Rioja") or containing it (Côte de Brouilly for
+    "…Brouilly") agrees with it.
+  - **From the sources** (`evidence.region_from_sources`): of what the
+    coarse and longer checks find, exactly one most specific region is
+    left, and it is named by at least as many sources as the submitted
+    region → `region_from_sources:Brouilly→Côte de Brouilly`. With fewer
+    (La Rioja Alta, Oct 1: Rioja Oriental 3 against Rioja 5) nothing
+    changes and `coarse_region` routes the row as before.
+  - On the ten 24-wine logs: 19 rows fixed, none broken (174 → 193 right);
+    `journal/2026-10-02-REGION-RULES.md`. `REGION_UPGRADE_NEEDS_REVIEW`
+    (on for now, while testing) also routes every upgraded row; off, the
+    upgrade is accepted and the queue on the logs drops from 72 to 52.
 - **Unsupported region.** `evidence.unsupported_regions`: the most specific
   submitted region is named nowhere in the context or the product name (by
   any library spelling, separators ignored), and no region below it is

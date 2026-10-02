@@ -367,9 +367,12 @@ def test_coarse_region_when_context_names_a_finer_one():
            "[Vivino #1 | match=90]\nA Red wine from Piemonte, Italy. Made from Nebbiolo.")
     assert evidence.finer_regions_named(["Piedmont"], ctx, country="Italy",
                                         product_name="Vajra Barolo Albe") == ["Barolo"]
+    # The gate puts the finer region in place (the product name names it too) and, while
+    # REGION_UPGRADE_NEEDS_REVIEW is on, routes the row instead of flagging coarse_region.
     tags = ParsedTags(country="Italy", region=["Piedmont"], grapes=["Nebbiolo"], confidence=85)
     reasons = apply_evidence_rules(tags, ctx, product_name="Vajra Barolo Albe")
-    assert "coarse_region:Barolo" in reasons
+    assert reasons == ["region_from_name:Piedmont→Barolo"]
+    assert tags.region == ["Barolo", "Langhe", "Piedmont"]
     # The precise answer, parents included, has nothing finer to point at.
     assert evidence.finer_regions_named(["Barolo", "Langhe", "Piedmont"], ctx, country="Italy",
                                         product_name="Vajra Barolo Albe") == []
@@ -470,7 +473,8 @@ def test_longer_region_when_context_names_a_region_containing_the_submitted_one(
     assert evidence.longer_regions_named(["Brouilly", "Beaujolais"], PAV_CTX, country="France",
                                          product_name=name) == ["Côte de Brouilly"]
     tags = ParsedTags(country="France", region=["Brouilly", "Beaujolais"], grapes=["Gamay"], confidence=85)
-    assert "longer_region:Côte de Brouilly" in apply_evidence_rules(tags, PAV_CTX, product_name=name)
+    assert "region_from_sources:Brouilly→Côte de Brouilly" in apply_evidence_rules(tags, PAV_CTX, product_name=name)
+    assert tags.region == ["Côte de Brouilly", "Beaujolais"]
     # The right answer has nothing longer to point at.
     assert evidence.longer_regions_named(["Côte de Brouilly", "Beaujolais"], PAV_CTX, country="France",
                                          product_name=name) == []
@@ -515,7 +519,8 @@ def test_a_region_that_ends_the_product_name_is_not_masked():
     assert evidence.finer_regions_named(["Piedmont"], NEIRANO_CTX, country="Italy",
                                         product_name="Neirano Barolo") == ["Barolo"]
     tags = ParsedTags(country="Italy", region=["Piedmont"], grapes=["Nebbiolo"], confidence=89)
-    assert apply_evidence_rules(tags, NEIRANO_CTX, product_name="Neirano Barolo") == ["coarse_region:Barolo"]
+    assert apply_evidence_rules(tags, NEIRANO_CTX, product_name="Neirano Barolo") == [
+        "region_from_name:Piedmont→Barolo"]
     # A region inside the name is still masked (the producer La Rioja Alta), and so is one at
     # its start: only the end of a POS name is the appellation.
     ctx = ("[Vivino #1 | match=95]\nLa Rioja Alta Vina Ardanza, a Red wine from Rioja.\n\n"
@@ -523,6 +528,69 @@ def test_a_region_that_ends_the_product_name_is_not_masked():
     assert evidence.finer_regions_named(["Rioja"], ctx, country="Spain", product_name="La Rioja Alta Ardanza") == []
     # A name that is only the region masks nothing to begin with.
     assert evidence.finer_regions_named(["Piedmont"], NEIRANO_CTX, country="Italy", product_name="Barolo") == ["Barolo"]
+
+
+@pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
+def test_name_region_is_the_one_branch_the_product_name_names():
+    nodes = library_text.region_tree()[1]
+    assert nodes[evidence.name_region("Neirano Barolo")][0] == "Barolo"
+    assert nodes[evidence.name_region("Aster Ribera del Duero")][0] == "Ribera del Duero"
+    assert evidence.name_region("Annabella Pinot Noir") is None
+    # The producer's name is a place name: Rioja Alta (Spain) and La Rioja (Argentina).
+    assert evidence.name_region("La Rioja Alta Ardanza") is None
+
+
+@pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
+def test_region_from_name():
+    name = "Neirano Barolo"
+    assert evidence.region_from_name(["Piedmont"], country="Italy", product_name=name) == ("upgrade", "Barolo")
+    assert evidence.region_from_name([], country="Italy", product_name=name) == ("upgrade", "Barolo")
+    assert evidence.region_from_name(["Barolo", "Langhe", "Piedmont"], country="Italy",
+                                     product_name=name) == (None, None)
+    # Another branch: a sibling under Langhe.
+    assert evidence.region_from_name(["Barbaresco", "Langhe", "Piedmont"], country="Italy",
+                                     product_name=name) == ("conflict", "Barolo")
+    # A region in another country than the one submitted is not this wine's.
+    assert evidence.region_from_name(["Rhône"], country="France", product_name=name) == (None, None)
+    # Finer than the name is fine (Faustino's Rioja Alavesa), and so is a name the submission
+    # contains: the POS shortens Côte de Brouilly to "Brouilly".
+    assert evidence.region_from_name(["Rioja Alavesa", "Rioja"], country="Spain",
+                                     product_name="Faustino VII Rioja") == (None, None)
+    assert evidence.region_from_name(["Côte de Brouilly", "Beaujolais"], country="France",
+                                     product_name="Pav Chavannes Brouilly") == (None, None)
+
+
+@pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
+def test_name_region_conflict_routes_and_changes_nothing():
+    tags = ParsedTags(country="Italy", region=["Barbaresco", "Langhe", "Piedmont"], grapes=["Nebbiolo"],
+                      confidence=89)
+    assert "name_region_conflict:Barolo" in apply_evidence_rules(tags, NEIRANO_CTX, product_name="Neirano Barolo")
+    assert tags.region == ["Barbaresco", "Langhe", "Piedmont"]
+
+
+@pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
+def test_region_from_sources_needs_as_many_sources_as_the_submitted_region():
+    # 2026-10-01, La Rioja Alta: Rioja Oriental is the Garnacha's origin, named by fewer
+    # sources than Rioja. It is still flagged, but not put in place.
+    ctx = ("[Vivino #1 | match=95]\nVina Ardanza Reserva, a Red wine from Rioja.\n\n"
+           "[Wine.com #1 | match=90]\nArdanza Reserva, Rioja. Garnacha from Rioja Oriental.\n\n"
+           "[Wine Searcher #1 | match=90]\nArdanza, Rioja DOCa, Spain. Its Garnacha grows in Rioja Oriental.")
+    name = "La Rioja Alta Ardanza"
+    assert evidence.finer_regions_named(["Rioja"], ctx, country="Spain", product_name=name) == ["Rioja Oriental"]
+    assert evidence.region_from_sources(["Rioja"], ctx, country="Spain", product_name=name) is None
+    tags = ParsedTags(country="Spain", region=["Rioja"], grapes=["Tempranillo", "Grenache"], is_blend=True,
+                      confidence=90)
+    assert "coarse_region:Rioja Oriental" in apply_evidence_rules(tags, ctx, product_name=name)
+    assert tags.region == ["Rioja"]
+
+
+@pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
+def test_region_upgrade_without_review(monkeypatch):
+    from fermentation import phases
+    monkeypatch.setattr(phases, "REGION_UPGRADE_NEEDS_REVIEW", False)
+    tags = ParsedTags(country="Italy", region=["Piedmont"], grapes=["Nebbiolo"], confidence=89)
+    assert apply_evidence_rules(tags, NEIRANO_CTX, product_name="Neirano Barolo") == []
+    assert tags.region == ["Barolo", "Langhe", "Piedmont"]
 
 
 @pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")

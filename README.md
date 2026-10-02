@@ -281,7 +281,12 @@ under llama.cpp, so it can't drive the MCP loop.
   names (`coarse_region:Barolo` when the model said Piedmont), a region
   whose longer name the context uses (`longer_region:Côte de Brouilly` when
   the model said Brouilly), and a region that nothing in the context or the
-  product name names (`unsupported_region:<name>`) route to review too. One
+  product name names (`unsupported_region:<name>`) route to review too.
+  Before those checks the gate upgrades the region itself when the product
+  name names a finer one (`region_from_name:Piedmont→Barolo` for "Neirano
+  Barolo") or exactly one finer region is named by at least as many sources
+  (`region_from_sources:Brouilly→Côte de Brouilly`); for now those rows are
+  routed to review as well (`REGION_UPGRADE_NEEDS_REVIEW`, temporary). One
   snippet naming a whole blend corroborates its grapes, unless it says the
   list is partial ("and touches of other grapes"); a single varietal needs
   only one source naming its grape, unless the context calls the wine a
