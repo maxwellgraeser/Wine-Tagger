@@ -197,6 +197,19 @@ export function FermentPanel({
     }
   };
 
+  // --- Grape colour in lookup_grape: a developer switch, settings.json ---
+  const grapeColor = status?.settings?.lookup_grape_color ?? true;
+  const [grapeColorMsg, setGrapeColorMsg] = useState<string | null>(null);
+  const saveGrapeColor = async (v: boolean) => {
+    try {
+      await api.patchSettings({ lookup_grape_color: v });
+      setGrapeColorMsg(`Saved: colour ${v ? 'shown' : 'hidden'}`);
+      onSettingsChanged?.();
+    } catch (e) {
+      setGrapeColorMsg(e instanceof Error ? e.message : 'Failed to save');
+    }
+  };
+
   const [rerunRunId, setRerunRunId] = useState('');
   const [rerunPhase, setRerunPhase] = useState<Phase>('search');
 
@@ -479,6 +492,17 @@ export function FermentPanel({
           />
           Disable producer gate
           <Help text={FERMENT_HELP.producerGate} />
+        </label>
+        <label className="flex items-center gap-1.5 text-sm">
+          <input
+            type="checkbox"
+            checked={grapeColor}
+            onChange={(e) => saveGrapeColor(e.target.checked)}
+            className="accent-wine"
+          />
+          Grape colour in lookup_grape
+          <Help text={FERMENT_HELP.grapeColor} />
+          {grapeColorMsg && <span className="text-[11px] text-muted">{grapeColorMsg}</span>}
         </label>
         <label className="flex items-center gap-1.5 text-sm sm:col-span-3">
           <input

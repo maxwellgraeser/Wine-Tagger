@@ -24,8 +24,8 @@ from .constants import (
     GRAPE_MIN_SOURCES, ORGANIC_PHRASES, REQUIRE_GRAPE_EVIDENCE, SINGLE_SOURCE_CONFIDENCE_CAP,
 )
 from .evidence import (
-    blend_named_whole, context_source_count, finer_regions_named, grape_source_counts, longer_regions_named,
-    white_grapes_only,
+    blend_named_whole, context_calls_it_a_blend, context_source_count, finer_regions_named, grape_source_counts,
+    longer_regions_named, unsupported_regions, white_grapes_only,
 )
 from .events import EventSink
 from .paths import PHASES, RUN_STATE_PATH, phase_dir, run_dir
@@ -52,6 +52,7 @@ class RunConfig:
     producer_gate: bool = True
     limit: int = 0
     input_csv: str = ""
+    grape_color: bool = True       # lookup_grape shows the colour (setting lookup_grape_color)
 
 
 @dataclass
@@ -377,7 +378,11 @@ def apply_evidence_rules(
         (Curator's Sémillon, Bila Haut's Mourvèdre from a region blurb).
         Skipped when single_source already covers the whole context, and for
         a blend that one snippet names whole (evidence.blend_named_whole)
-        while another source names one of its grapes.
+        while another source names one of its grapes. Also skipped for a
+        single varietal (one grape, not is_blend) unless the context calls
+        the wine a blend: one source naming the only grape was the largest
+        source of false alarms (12 of 29 on the logs to 2026-10-01: Aster ×5,
+        Mont Gravet, Librandi…) and a blend is where a grape goes missing.
       * "incomplete_blend": is_blend with one grape. A source calls the wine
         a blend but names only this grape (Chocapalha, Vilafonte).
       * "white_grapes_only": a red or rosé wine submitted with white grapes
@@ -389,6 +394,10 @@ def apply_evidence_rules(
         name contains the submitted one's (Côte de Brouilly for Brouilly).
         Both region checks need the other region named by enough sources
         (FINER_REGION_MIN_SOURCES, or as many as name the submitted one).
+      * "unsupported_region:<name>": the most specific submitted region is
+        named nowhere in the context or the product name, nor is any region
+        below it (evidence.unsupported_regions). A region from the library,
+        not the text: a lookup_sub_regions pick no snippet mentions.
       * "no_grapes": the submission had no grapes.
       * "low_confidence": the model's own confidence, before any clamp, is
         below `confidence_threshold` (when one is given).
@@ -407,10 +416,12 @@ def apply_evidence_rules(
         counts = grape_source_counts(normalized.grapes, web_context or "")
         whole_blend = (max(counts.values()) >= GRAPE_MIN_SOURCES
                        and blend_named_whole(normalized.grapes, web_context or ""))
+        varietal = (len(normalized.grapes) == 1 and not normalized.is_blend
+                    and not context_calls_it_a_blend(web_context or ""))
         for g in normalized.grapes:
             if counts[g] == 0:
                 reasons.append(f"unsupported_grape:{g}")
-            elif counts[g] < GRAPE_MIN_SOURCES and not single and not whole_blend:
+            elif counts[g] < GRAPE_MIN_SOURCES and not single and not whole_blend and not varietal:
                 reasons.append(f"uncorroborated_grape:{g}")
     if normalized.is_blend and len(normalized.grapes) == 1:
         reasons.append("incomplete_blend")
@@ -422,6 +433,8 @@ def apply_evidence_rules(
             reasons.append(f"coarse_region:{region}")
         for region in longer_regions_named(normalized.region, web_context, **where):
             reasons.append(f"longer_region:{region}")
+        for region in unsupported_regions(normalized.region, web_context, **where):
+            reasons.append(f"unsupported_region:{region}")
     if not normalized.grapes:
         reasons.append("no_grapes")
     if confidence_threshold is not None and (
@@ -474,7 +487,7 @@ def run_tag(ctx: RunContext, start: int = 0) -> None:
     cfg = ctx.config
     counts = {"tagged": 0, "model": 0, "needs_review": 0, "skipped_human": 0, "no_context": 0}
 
-    with tagger.library_mcp_session() as mcp:
+    with tagger.library_mcp_session(grape_color=cfg.grape_color) as mcp:
         for idx in range(start, total):
             product = ctx.products[idx]
             row = store_mod.ensure_wine(ctx.store, product)

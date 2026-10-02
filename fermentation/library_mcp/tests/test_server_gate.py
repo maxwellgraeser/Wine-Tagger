@@ -119,3 +119,27 @@ def test_submit_expands_parents_and_infers_country(server):
     assert res["normalized"]["region"] == ["Willamette Valley", "Oregon"]
     assert res["normalized"]["grapes"] == ["Pinot Noir"]
     assert res["normalized"]["organic"] is True
+
+
+def test_lookup_sub_regions_lists_one_level_of_canonical_regions(server):
+    res = server.lookup_sub_regions("Piemonte")
+    assert res["known"] and res["region"] == "Piedmont" and res["country"] == "Italy"
+    # Barolo sits under Langhe: one level at a time.
+    assert "Langhe" in res["sub_regions"] and "Barolo" not in res["sub_regions"]
+    assert "Barolo" in server.lookup_sub_regions("Langhe")["sub_regions"]
+    assert server.lookup_sub_regions("Rioja")["sub_regions"] == ["Rioja Alavesa", "Rioja Alta", "Rioja Oriental"]
+    # Classification words are stripped as in lookup_region, and a leaf has nothing below it.
+    assert server.lookup_sub_regions("Barolo DOCG") == {
+        "region": "Barolo", "country": "Italy", "sub_regions": [], "known": True}
+    assert server.lookup_sub_regions("Narnia")["known"] is False
+    # Every name it lists passes submit_tags.
+    canonical = set(server.list_regions())
+    assert all(r in canonical for r in res["sub_regions"])
+
+
+def test_lookup_grape_colour_can_be_hidden(server, monkeypatch):
+    assert server.lookup_grape("Hondarrabi Beltza")["color"] == "red"
+    monkeypatch.setattr(server, "GRAPE_COLOR", False)
+    res = server.lookup_grape("Hondarrabi Beltza")
+    assert "color" not in res and res["canonical"] == "Hondarrabi Beltza"
+    assert "color" not in server.lookup_grape("Narnia Noir")

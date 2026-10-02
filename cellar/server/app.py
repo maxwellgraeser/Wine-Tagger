@@ -469,6 +469,7 @@ async def api_ferment_run(req: FermentRequest) -> dict:
 
 class SettingsPatch(BaseModel):
     confidence_threshold: Optional[int] = None
+    lookup_grape_color: Optional[bool] = None
 
 
 @app.get("/api/settings")

@@ -68,7 +68,8 @@ class _SyncMCPSession:
     entire `library_mcp_session()` context — one spawn per ferment.py run.
     """
 
-    def __init__(self) -> None:
+    def __init__(self, grape_color: bool = True) -> None:
+        self.grape_color = grape_color
         self._loop: Optional[asyncio.AbstractEventLoop] = None
         self._thread: Optional[threading.Thread] = None
         self._ready = threading.Event()
@@ -115,6 +116,8 @@ class _SyncMCPSession:
             params = StdioServerParameters(
                 command=sys.executable,
                 args=["-m", "fermentation.library_mcp.server"],
+                # Added to the few safe variables the SDK passes the child.
+                env={"LIBRARY_GRAPE_COLOR": "1" if self.grape_color else "0"},
             )
             async with AsyncExitStack() as stack:
                 try:
@@ -188,13 +191,15 @@ def _unwrap_call_tool_result(result: Any) -> Any:
 
 
 @contextmanager
-def library_mcp_session():
+def library_mcp_session(grape_color: bool = True):
     """Spawn the library_mcp stdio server for the duration of a run.
 
     Yields a session object with a synchronous `.call_tool(name, args)`
     method and `.tools`, the server's tool list in OpenAI function shape. Lifecycle is ONCE per ferment.py run, not per product.
+    `grape_color=False` starts the server with lookup_grape's colour hidden,
+    and `infer_tags` drops it from the system prompt to match.
     """
-    session = _SyncMCPSession()
+    session = _SyncMCPSession(grape_color)
     session.__enter__()
     try:
         yield session
@@ -215,6 +220,17 @@ def _post_llama(api_url: str, model: str, messages: list[dict], tools: list[dict
     resp = requests.post(api_url, json=payload, timeout=HTTP_TIMEOUT_SECONDS)
     resp.raise_for_status()
     return resp.json()
+
+
+_GRAPE_ANSWER_WITH_COLOR = "{canonical, color, origin,"
+
+
+def system_prompt(grape_color: bool = True) -> str:
+    """SYSTEM_PROMPT_MCP, with `color` taken out of lookup_grape's answer
+    when the colour is hidden (setting `lookup_grape_color`)."""
+    if grape_color:
+        return SYSTEM_PROMPT_MCP
+    return SYSTEM_PROMPT_MCP.replace(_GRAPE_ANSWER_WITH_COLOR, "{canonical, origin,")
 
 
 def _product_user_prompt(product: Product, web_context: str) -> str:
@@ -288,7 +304,7 @@ def infer_tags(
     product as ``tag_status='needs_review'``.
     """
     messages: list[dict] = [
-        {"role": "system", "content": SYSTEM_PROMPT_MCP},
+        {"role": "system", "content": system_prompt(getattr(mcp_session, "grape_color", True))},
         {"role": "user", "content": _product_user_prompt(product, web_context)},
     ]
 

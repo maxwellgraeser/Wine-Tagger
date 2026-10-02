@@ -225,7 +225,8 @@ Browse tools (read-only):
 |------|---------|----------|
 | `lookup_country(name)` | `{canonical, iso, known}` | Model has a country string. |
 | `lookup_region(name, country?)` | `{canonical, country, parents[], known, alternatives?}` | Region → parent chain + pinned country. `country` picks between same-named regions. |
-| `lookup_grape(name)` | `{canonical, color, origin, synonyms[], is_placeholder, known}` | Per-grape resolve; QID-aware so synonyms collapse. |
+| `lookup_sub_regions(region)` | `{region, country, sub_regions[], known, alternatives?}` | The canonical regions one level below. For when the model thinks the wine is from a sub-region but is not sure which; it submits one only if a snippet names it (`unsupported_region` catches one that none does). |
+| `lookup_grape(name)` | `{canonical, color, origin, synonyms[], is_placeholder, known}` | Per-grape resolve; QID-aware so synonyms collapse. `color` is left out when the `lookup_grape_color` setting is off (`LIBRARY_GRAPE_COLOR=0` for the server). |
 | `list_countries()` | `string[]` | ~30 names. |
 | `list_regions(country?)` | `string[]` | Filtered by canonical country. |
 | `list_grapes(country?, region?)` | `string[]` | Filtered browse. |
@@ -412,7 +413,12 @@ stated, now enforced in code):
   whole (`evidence.blend_named_whole`: it names no other grape, or gives
   each a share) while another source names one of its grapes. Vilafonte's
   "Cabernet Sauvignon 86%, Merlot 8%, Malbec 4%, Cabernet Franc 2%" never
-  had a second site.
+  had a second site. A snippet that says its list is partial ("Grenache,
+  Carignan, and touches of a couple other grapes", "among others") names no
+  whole blend. A single varietal (one grape, not `is_blend`) is exempt
+  unless the context calls the wine a blend ("blend", "blended",
+  "assemblage" anywhere): on the logs to Oct 1 this cut false alarms from
+  29 to 17 with no extra miss (`journal/2026-10-01-SCORECARD.md` §7).
 - **Incomplete blend.** `is_blend` with one grape → `incomplete_blend`.
 - **White grapes only.** A red or rosé whose submitted grapes are all white
   in the library → `white_grapes_only` (`evidence.white_grapes_only`). The
@@ -426,7 +432,9 @@ stated, now enforced in code):
   specific one submitted (Barolo under Piedmont, Paarl under Western Cape),
   the row routes with `coarse_region:<name>`. Mentions inside a longer
   phrase of the product name ("La Rioja Alta") and right after a location
-  cue ("located in Oyón, Rioja Alavesa", "38 km from Baalbek") don't count.
+  cue ("located in Oyón, Rioja Alavesa", "38 km from Baalbek") don't count,
+  except a region that ends the product name ("Neirano Barolo": producer +
+  appellation, so "Tenute Neirano Barolo" in a snippet names Barolo).
   The finer region must be named by `FINER_REGION_MIN_SOURCES` (2) sources,
   or by at least as many as name the submitted one: one CellarTracker line
   about another bottling ("…Apelacion Paraje Altamira") no longer outweighs
@@ -437,6 +445,13 @@ stated, now enforced in code):
   Roussillon Villages for Côtes du Roussillon) → `longer_region:<name>`,
   weighed the same way against the sources that name the submitted region
   on its own.
+- **Unsupported region.** `evidence.unsupported_regions`: the most specific
+  submitted region is named nowhere in the context or the product name (by
+  any library spelling, separators ignored), and no region below it is
+  either → `unsupported_region:<name>`. Any mention counts, an address
+  included. It guards `lookup_sub_regions`: a sub-region picked off the list
+  that no snippet names. On the logs to Oct 1 it fires once (DV Catena,
+  Sep 28a: Mendoza from the model's own knowledge).
 - **Every review route has a reason:** `low_confidence` (the model's own
   confidence, before any clamp, is under the threshold), `no_grapes`,
   `no_submit` and `no_context` too, so no row reaches review unexplained.

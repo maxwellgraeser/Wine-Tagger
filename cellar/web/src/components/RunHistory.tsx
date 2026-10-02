@@ -148,6 +148,7 @@ export function RunHistory({
                       {cfg.limit ? `limit ${cfg.limit} · ` : ''}
                       thr {String(cfg.confidence_threshold ?? '—')}
                       {cfg.producer_gate === false ? ' · gate off' : ''}
+                      {cfg.grape_color === false ? ' · colour off' : ''}
                     </td>
                     <td className="px-2 py-1 text-right">
                       {!isActive && (

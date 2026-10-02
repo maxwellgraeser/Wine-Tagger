@@ -29,6 +29,9 @@ product name's "Brouilly". Both walk the library's region tree, read once
 from library.db like the grape synonyms, and both count sources, so a single
 mention in a list of the producer's other wines does not outweigh the region
 the rest of the context names.
+
+`unsupported_regions` is the region-side twin of `unsupported_grapes`: a
+submitted region that nothing in the text names, nor anything below it.
 """
 
 from __future__ import annotations
@@ -91,6 +94,14 @@ def _has_share(grape: str, body: str) -> bool:
     return False
 
 
+# A list that says it is not the whole blend: "Grenache, Carignan, and touches
+# of a couple other grapes", "…among others".
+_PARTIAL_LIST_RE = re.compile(
+    r"\b(?:and|with|plus)\s+(?:touches|a touch|a few|some|a couple|a little|small amounts?|other)\b"
+    r"[^.]{0,40}?\b(?:grapes|varieties|varietals)\b|\bamong others\b"
+)
+
+
 def blend_named_whole(grapes: list[str], web_context: str) -> bool:
     """True when one snippet names every grape of a blend (two or more), as
     that wine's composition: it names no other grape, or it gives each of
@@ -100,15 +111,33 @@ def blend_named_whole(grapes: list[str], web_context: str) -> bool:
     75% Tempranillo" (an older vintage) back Tempranillo and Grenache. Without
     it, a region blurb that lists the local grapes would back any three of
     them: Bila Haut's "Cabernet, Merlot, Mourvedre, Grenache, and Syrah are
-    some of the most important red grapes in the region"."""
+    some of the most important red grapes in the region".
+
+    A snippet that says its list is partial (_PARTIAL_LIST_RE) never names a
+    whole blend: Bila Haut's "Grenache, Carignan, and touches of a couple other
+    grapes" passed on 2026-10-01 with its Syrah missing."""
     if len(grapes) < 2:
         return False
     want = {fold(g) for g in grapes}
     for _family, body in _context_blocks(web_context):
+        if _PARTIAL_LIST_RE.search(body):
+            continue
         named = {fold(g) for g in text_facts(body)["grapes"]}
         if want <= named and (named == want or all(_has_share(g, body) for g in grapes)):
             return True
     return False
+
+
+_BLEND_WORD_RE = re.compile(r"\b(?:blend|blended|assemblage)\b")
+
+
+def context_calls_it_a_blend(web_context: str) -> bool:
+    """True when any snippet uses the word blend (or assemblage). Crude on
+    purpose: it is the guard on the single-grape exemption from
+    uncorroborated_grape, so a false hit only keeps today's stricter check.
+    Chocapalha's "a blend of indigenous Portuguese varietals" (2026-09-27,
+    submitted as Touriga Nacional alone) is the row it keeps in review."""
+    return _BLEND_WORD_RE.search(fold(web_context or "")) is not None
 
 
 def white_grapes_only(grapes: list[str], category: str | None) -> bool:
@@ -148,12 +177,18 @@ def _named_as_origin(alias: str, hay: str, name_words: list[str]) -> bool:
     count: "La Rioja Alta Ardanza" makes "la rioja alta" such a phrase, so the
     producer's name is not a mention of the Rioja Alta sub-zone, while
     "Vajra Barolo Albe" still lets "from Barolo, Piedmont" count. Nor does a
-    mention right after a location cue (_LOCATION_CUE_RE)."""
+    mention right after a location cue (_LOCATION_CUE_RE).
+
+    A region that ends the product name is left unmasked: a POS name that
+    ends in a region is producer + appellation ("Neirano Barolo", "Faustino
+    VII Rioja"), and the snippets name the wine that way ("Tenute Neirano
+    Barolo"). Masking it hid Barolo from the 2026-10-01 Neirano check."""
     words = _words(alias)
     if len(alias) < 4 or not words:
         return False
     k = len(words)
-    for n in range(len(name_words), k, -1):
+    ends_name = len(name_words) > k and name_words[-k:] == words
+    for n in range(len(name_words) if not ends_name else 0, k, -1):
         for i in range(len(name_words) - n + 1):
             gram = name_words[i:i + n]
             if any(gram[j:j + k] == words for j in range(n - k + 1)):
@@ -266,6 +301,31 @@ def _mask(body: str, aliases) -> str:
     for alias in aliases:
         body = _phrase_re(_words(alias)).sub(" ", body)
     return body
+
+
+def unsupported_regions(
+    regions: list[str], web_context: str, *, country: str | None = None, product_name: str = "",
+) -> list[str]:
+    """The most specific submitted regions that neither the context nor the
+    product name names, by any library spelling (Piemonte for Piedmont), and
+    that have no region below them named either (Barolo backs Piedmont).
+
+    The region-side twin of `unsupported_grapes`: it catches a region taken
+    from the library rather than the text, such as a sub-region picked off a
+    `lookup_sub_regions` list that no snippet mentions. Any mention counts,
+    a winery's address included: this asks whether the text names the place
+    at all, not whether it is the wine's origin."""
+    _by_name, nodes, children = region_tree()
+    _submitted, leaves = _submitted_leaves(regions, country)
+    hay = fold(f"{product_name}\n{web_context}")
+    found: list[str] = []
+    for leaf in leaves:
+        aliases = [a for rid in (leaf, *_descendants(leaf, children)) for a in nodes[rid][3]
+                   if len(a) >= 4 and _words(a)]
+        name = nodes[leaf][0]
+        if aliases and name not in found and not any(_phrase_re(_words(a)).search(hay) for a in aliases):
+            found.append(name)
+    return found
 
 
 def context_snippet_count(web_context: str) -> int:

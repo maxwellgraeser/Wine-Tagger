@@ -1,5 +1,23 @@
 # Wine Warehouse DDD Data Pipeline
 
+> [!WARNING]
+> **Every wine's tags need a human check before they go into Lightspeed.**
+> The tags are built from information found online, and that information
+> describes *a* wine, not necessarily *your* vintage. Producers change their
+> blends from year to year, so a page can be about exactly the right wine and
+> still describe a different year's composition. Web information can also be
+> outdated. The pipeline does not match on vintage.
+>
+> - **Country and region** are a good basis. They rarely change between vintages.
+> - **Grape blends** may be slightly inaccurate depending on the vintage, unless
+>   the blend for that vintage is provided or confirmed (the label, the
+>   producer's tech sheet). Check them.
+> - A high confidence score does **not** cover this. It says nothing about
+>   whether the grapes match the vintage on the shelf.
+>
+> Review and correct tags in Cellar (Distribute tab). Edits mark a wine `human`,
+> and re-runs never overwrite those.
+
 Built for **Wine Warehouse**, a wine shop in Atlantic Beach, Florida. Since the store moved to Lightspeed for the POS, new products come in with
 no category and no country, region or grape tags, so the catalogue can't be
 searched or filtered the way the staff need. This project picks the wines out
@@ -205,8 +223,16 @@ allowlists), then reconciled and checked against the locked Wikidata items.
 Rebuild with `python -m fermentation.library_mcp.seed.build_db` (always from
 scratch; `--offline` skips the network). Tool surface:
 
-- Browse (read-only): `lookup_country`, `lookup_region`, `lookup_grape`,
-  `list_countries`, `list_regions`, `list_grapes`.
+- Browse (read-only): `lookup_country`, `lookup_region`, `lookup_sub_regions`,
+  `lookup_grape`, `list_countries`, `list_regions`, `list_grapes`.
+- `lookup_sub_regions(region)` lists the canonical regions one level below a
+  region (Langhe → Barbaresco, Barolo, …). The prompt tells the model to use
+  it when it thinks the wine is from a sub-region but is not sure which, and
+  to submit one only if a snippet names it.
+- `lookup_grape` shows the grape's colour unless the developer switch
+  *Grape colour in lookup_grape* (Ferment panel, `lookup_grape_color` in
+  `settings.json`, `--no-grape-color` on the console) is off. Shown a red
+  grape next to a rosé, the 7B has argued it out of the blend.
 - Region names resolve leniently: when the exact name misses, the lookup
   drops classification words ("Barolo DOCG", "W.O. Stellenbosch") and tries
   each comma-separated part ("Swartland, Western Cape, South Africa"). The
@@ -252,17 +278,27 @@ under llama.cpp, so it can't drive the MCP loop.
   A grape named by only one source (`uncorroborated_grape:<name>`), a blend
   with one known grape (`incomplete_blend`), a red or rosé with white grapes
   only (`white_grapes_only`), a region coarser than one the context
-  names (`coarse_region:Barolo` when the model said Piedmont), and a region
+  names (`coarse_region:Barolo` when the model said Piedmont), a region
   whose longer name the context uses (`longer_region:Côte de Brouilly` when
-  the model said Brouilly) route to review too. One snippet naming a whole
-  blend corroborates its grapes; a region named by one source does not
-  outweigh the several that name the submitted one. Every review route
+  the model said Brouilly), and a region that nothing in the context or the
+  product name names (`unsupported_region:<name>`) route to review too. One
+  snippet naming a whole blend corroborates its grapes, unless it says the
+  list is partial ("and touches of other grapes"); a single varietal needs
+  only one source naming its grape, unless the context calls the wine a
+  blend. A region named by one source does not outweigh the several that
+  name the submitted one. Every review route
   records a reason, including `low_confidence`, `no_grapes`, `no_submit` and
   `no_context`; Cellar shows them on the wine's *Final* tab.
 - **Category**: when the CSV has no `product_category`, the tagger submits
   one of `Red / White / Rose / Sparkling` from the snippets; the store keeps
   it (`category_source: "model"`, shown as *inferred* in Cellar) until the
   CSV supplies a real one. A CSV category is never overwritten.
+- **Vintage is not checked.** The scorer treats a vintage the product name
+  doesn't mention as missing information, not a conflict, so the context can
+  come from a different year than the bottle. Grape blends are the field most
+  exposed to this; the evidence rules above check that sources agree with each
+  other, not that they describe the right vintage. A human check is still
+  required (see the warning at the top).
 - `organic` is set only when explicit certification language
   (`certified organic`, `biodynamic`, `certified biodynamic`) appears.
 - Rows with `tag_status = 'human'` (edited in Cellar) are never overwritten on re-run.

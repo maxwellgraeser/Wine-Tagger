@@ -169,6 +169,7 @@ export function DistributePanel({
               {cfg.limit ? ` · limit ${cfg.limit}` : ''}
               {cfg.confidence_threshold != null ? ` · threshold ${cfg.confidence_threshold}` : ''}
               {cfg.producer_gate === false ? ' · producer gate off' : ''}
+              {cfg.grape_color === false ? ' · grape colour hidden' : ''}
               {typeof cfg.model === 'string' ? ` · ${cfg.model}` : ''}
             </span>
             {runInfo.run_id !== activeRunId && (

@@ -22,9 +22,21 @@ from .paths import PROJECT_ROOT
 
 SETTINGS_PATH = PROJECT_ROOT / "settings.json"
 
+
+def _to_bool(v: Any) -> bool:
+    if isinstance(v, str):
+        if v.strip().lower() in ("1", "true", "yes", "on"):
+            return True
+        if v.strip().lower() in ("0", "false", "no", "off"):
+            return False
+        raise ValueError(v)
+    return bool(v)
+
+
 # key -> (default, coercer)
 _KNOWN: dict[str, tuple[Any, Any]] = {
     "confidence_threshold": (constants.DEFAULT_CONFIDENCE_THRESHOLD, int),
+    "lookup_grape_color": (constants.DEFAULT_LOOKUP_GRAPE_COLOR, _to_bool),
 }
 
 
@@ -74,3 +86,7 @@ def save_settings(updates: dict[str, Any]) -> dict[str, Any]:
 
 def confidence_threshold() -> int:
     return int(load_settings()["confidence_threshold"])
+
+
+def lookup_grape_color() -> bool:
+    return bool(load_settings()["lookup_grape_color"])

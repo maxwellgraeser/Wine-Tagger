@@ -253,12 +253,31 @@ def test_supported_grapes_and_two_snippets_pass():
 
 
 def test_grape_named_by_one_source_is_uncorroborated():
-    # Two sources in context, but only Vivino names Tempranillo.
+    # Two sources in context, but only Vivino names Tempranillo, and one calls the wine a blend.
     assert evidence.grape_source_counts(["Tempranillo", "Cinsault"], CTX_TWO) == {"Tempranillo": 1, "Cinsault": 0}
+    ctx = CTX_TWO + "\n\n[Wine.com #1 | match=90]\nA red blend from Rioja."
     tags = ParsedTags(country="Spain", grapes=["Tempranillo"], confidence=90)
-    reasons = apply_evidence_rules(tags, CTX_TWO)
+    reasons = apply_evidence_rules(tags, ctx)
     assert reasons == ["uncorroborated_grape:Tempranillo"]
     assert decide_tag_status(normalized=tags, confidence_threshold=85, review_reasons=reasons) == "needs_review"
+
+
+def test_single_varietal_needs_one_source_unless_the_context_calls_it_a_blend():
+    # Aster, Mont Gravet, Librandi: one grape, one source naming it, and right every time.
+    tags = ParsedTags(country="Spain", grapes=["Tempranillo"], is_blend=False, confidence=90)
+    assert apply_evidence_rules(tags, CTX_TWO) == []
+    # Chocapalha (2026-09-27): Touriga Nacional alone, from "a blend of indigenous Portuguese varietals".
+    for word in ("a blend of indigenous varietals", "Blended in concrete.", "Assemblage of the best lots."):
+        ctx = CTX_TWO + f"\n\n[Wine.com #1 | match=90]\n{word}"
+        assert evidence.context_calls_it_a_blend(ctx)
+        assert apply_evidence_rules(tags, ctx) == ["uncorroborated_grape:Tempranillo"]
+    assert not evidence.context_calls_it_a_blend(CTX_TWO + "\n\n[Wine.com #1 | match=90]\nBlenheim Vineyards.")
+    # A blend with one named grape keeps the check, next to incomplete_blend.
+    tags = ParsedTags(country="Spain", grapes=["Tempranillo"], is_blend=True, confidence=90)
+    assert apply_evidence_rules(tags, CTX_TWO) == ["uncorroborated_grape:Tempranillo", "incomplete_blend"]
+    # A grape no source names is still unsupported.
+    tags = ParsedTags(country="Spain", grapes=["Cinsault"], is_blend=False, confidence=90)
+    assert apply_evidence_rules(tags, CTX_TWO) == ["unsupported_grape:Cinsault"]
 
 
 def test_grape_source_counts_fold_numbered_results():
@@ -413,6 +432,34 @@ def test_blend_named_whole_needs_this_blend_or_its_shares():
     assert not evidence.blend_named_whole(["Tempranillo"], ctx)
 
 
+# 2026-10-01, Bila Haut: Syrah missing, accepted because the UPC line passed for the whole blend.
+BILA_HAUT_CTX = (
+    "[Region Q #2 | match=95]\nBila-Haut V.I.T. 2022 Côtes du Roussillon Villages Latour de France Mostly "
+    "Grenache. Fermented in concrete and aged in Clayver (600 litres).\n\n"
+    "[UPC #1 | match=90]\nFrom the famous Rhone winemaker Chapoutier comes this organic-grapes wine from "
+    "Roussillon. Grenache, Carignan, and touches of a couple other grapes make this powerful with blackberry, "
+    "herb, black cherry and coffee flavors.\n\n"
+    "[Wine.com #1 | match=90]\nThe 2023 Bila-Haut by Michel Chapoutier Côtes du Roussillon Villages is an "
+    "outstanding value.")
+
+
+@pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
+def test_a_list_that_says_it_is_partial_is_not_the_whole_blend():
+    grapes = ["Grenache", "Carignan"]
+    assert not evidence.blend_named_whole(grapes, BILA_HAUT_CTX)
+    tags = ParsedTags(country="France", region=["Côtes du Roussillon Villages"], grapes=grapes, is_blend=True,
+                      confidence=89)
+    assert apply_evidence_rules(tags, BILA_HAUT_CTX, product_name="Bila Haut Roussillon") == [
+        "uncorroborated_grape:Carignan"]
+    # The same list without the tail names the whole blend.
+    whole = BILA_HAUT_CTX.replace(", and touches of a couple other grapes", "")
+    assert evidence.blend_named_whole(grapes, whole)
+    for tail in ("among others", "with a few other varieties", "and some other grapes"):
+        assert not evidence.blend_named_whole(grapes, whole.replace("Carignan make", f"Carignan {tail} make"))
+    # "and other red and black berries" is a tasting note, not a partial grape list.
+    assert evidence.blend_named_whole(grapes, whole.replace("flavors.", "and other red and black berries."))
+
+
 PAV_CTX = ("[Region Q #1 | match=95]\nPavillon de Chavannes, a Côte de Brouilly from the slopes of Mont Brouilly.\n\n"
            "[Wine.com #1 | match=90]\nChateau du Pavillon de Chavannes Cote de Brouilly 2022 from Beaujolais.")
 
@@ -450,6 +497,51 @@ def test_coarse_region_ignores_a_region_inside_the_producer_name():
     # A mention of the sub-zone on its own still counts.
     ctx += "\n\n[Wine.com #1 | match=90]\nFruit from the Rioja Alta sub-zone."
     assert evidence.finer_regions_named(["Rioja"], ctx, country="Spain", product_name=name) == ["Rioja Alta"]
+
+
+# 2026-10-01, Neirano: accepted at Piedmont. Every "Barolo" but Ellis's sits in "Tenute Neirano Barolo".
+NEIRANO_CTX = (
+    "[CellarTracker #2 | match=90]\nAverage of 90 points in 5 community wine reviews on 2017 Tenute Neirano "
+    "Barolo. Red 2018 Tenute Neirano Barolo (view label images) Nebbiolo Drink 2024-2030\n\n"
+    "[Vivino #1 | match=89]\nA Red wine from Piemonte, Northern Italy, Italy. Made from Nebbiolo.\n\n"
+    "[Wine Searcher #1 | match=95]\nFind the best local price for Tenute Neirano Barolo DOCG, Piedmont, Italy.\n\n"
+    "[Grape variety #2 | match=90]\nBarolo is the classic red wine of Piedmont, produced from the best "
+    "vineyards on the hills around the town of Barolo. Before release Neirano Barolo spends three years in "
+    "large oak 'botti'.")
+
+
+@pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
+def test_a_region_that_ends_the_product_name_is_not_masked():
+    assert evidence.finer_regions_named(["Piedmont"], NEIRANO_CTX, country="Italy",
+                                        product_name="Neirano Barolo") == ["Barolo"]
+    tags = ParsedTags(country="Italy", region=["Piedmont"], grapes=["Nebbiolo"], confidence=89)
+    assert apply_evidence_rules(tags, NEIRANO_CTX, product_name="Neirano Barolo") == ["coarse_region:Barolo"]
+    # A region inside the name is still masked (the producer La Rioja Alta), and so is one at
+    # its start: only the end of a POS name is the appellation.
+    ctx = ("[Vivino #1 | match=95]\nLa Rioja Alta Vina Ardanza, a Red wine from Rioja.\n\n"
+           "[Wine.com #1 | match=90]\nLa Rioja Alta Ardanza Reserva, Rioja.")
+    assert evidence.finer_regions_named(["Rioja"], ctx, country="Spain", product_name="La Rioja Alta Ardanza") == []
+    # A name that is only the region masks nothing to begin with.
+    assert evidence.finer_regions_named(["Piedmont"], NEIRANO_CTX, country="Italy", product_name="Barolo") == ["Barolo"]
+
+
+@pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
+def test_unsupported_region_when_nothing_in_the_text_names_it():
+    ctx = ("[Vivino #1 | match=95]\nA Red wine from Piemonte, Italy. Made from Nebbiolo.\n\n"
+           "[Wine.com #1 | match=90]\nA firm Nebbiolo from Italy.")
+    # Barolo picked off a lookup_sub_regions list: no snippet names it.
+    assert evidence.unsupported_regions(["Barolo", "Piedmont"], ctx, country="Italy") == ["Barolo"]
+    tags = ParsedTags(country="Italy", region=["Barolo", "Piedmont"], grapes=["Nebbiolo"], confidence=90)
+    assert apply_evidence_rules(tags, ctx, product_name="Vajra Albe") == ["unsupported_region:Barolo"]
+    # The product name counts, and so does a library synonym (Piemonte).
+    assert apply_evidence_rules(tags, ctx, product_name="Vajra Barolo Albe") == []
+    assert evidence.unsupported_regions(["Piedmont"], ctx, country="Italy") == []
+    # A region below the submitted one backs it (coarse_region is a separate question).
+    assert evidence.unsupported_regions(["Piedmont"], NEIRANO_CTX.replace("Piemonte", "Italy").replace(
+        "Piedmont", "Italy"), country="Italy") == []
+    # Separators do not matter: "Cotes-du-Roussillon" names Côtes du Roussillon.
+    ctx = "[Wine.com #1 | match=90]\nA Cotes-du-Roussillon red.\n\n[Vivino #1 | match=90]\nGrenache."
+    assert evidence.unsupported_regions(["Côtes du Roussillon"], ctx, country="France") == []
 
 
 @pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")

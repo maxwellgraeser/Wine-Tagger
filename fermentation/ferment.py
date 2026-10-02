@@ -90,6 +90,11 @@ def build_parser() -> argparse.ArgumentParser:
         help="Min tagger confidence for tag_status=model (default: settings.json, "
              f"else {settings_mod.defaults()['confidence_threshold']})",
     )
+    p.add_argument(
+        "--grape-color", action=argparse.BooleanOptionalAction, default=settings_mod.lookup_grape_color(),
+        help="Show lookup_grape's colour to the tagger (default: settings.json lookup_grape_color, "
+             f"else {settings_mod.defaults()['lookup_grape_color']})",
+    )
     p.add_argument("--force", action="store_true",
                    help="Ignore saved run state and start a fresh run")
     p.add_argument("--input", default=str(INPUT_CSV), help="Path to combined.csv")
@@ -168,12 +173,14 @@ def main(argv: Optional[list[str]] = None) -> None:
         producer_gate=not args.no_producer_gate,
         limit=args.limit,
         input_csv=str(Path(args.input).resolve()),
+        grape_color=args.grape_color,
     )
     ctx = phases.RunContext(run_id=run_id, config=config, products=products, sink=sink, store=store)
 
     existing = phases.load_run_json(run_id)
     if existing is not None and (state or args.phase):
         ctx.run_json = existing
+        ctx.run_json["run_id"] = run_id   # a copied run folder keeps its source's id (journal/README.md)
         ctx.run_json["config"] = config.__dict__ | {"resumed_at": phases._now()}
         for ph in PHASES:
             if PHASES.index(ph) >= PHASES.index(resume_phase):
@@ -197,6 +204,8 @@ def main(argv: Optional[list[str]] = None) -> None:
                   phases.run_plan(len(products), resume_phase, resume_cursor))
     if args.no_producer_gate:
         sink.info("NOTE: --no-producer-gate set; producer-absent gating disabled.")
+    if not args.grape_color:
+        sink.info("NOTE: lookup_grape colour hidden from the tagger (lookup_grape_color off).")
 
     try:
         paused = phases.run_all(

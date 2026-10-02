@@ -54,6 +54,11 @@ DEFAULT_CONFIDENCE_THRESHOLD = 80   # initial value; settings.json (see settings
                                     # Was 85. On every logged run the rows routed by the model's own
                                     # confidence alone, at 80-84, were right (Vajra, Li Veli, Faustino);
                                     # the evidence rules route regardless of it. journal 2026-09-29.
+DEFAULT_LOOKUP_GRAPE_COLOR = True   # lookup_grape shows the grape's colour to the tagger. A developer
+                                    # switch (settings.json, Cellar's Ferment panel): hidden, Urruzola kept
+                                    # its red grape in every replay and no other wine got worse (journal
+                                    # 2026-10-01-SCORECARD §5). The gate reads colours from library.db
+                                    # either way.
 
 # Models - models previously used for DEFAULT_MODEL above
 # qwen2.5-7b-instruct  -- current default; gemma3n has no working tool-call
@@ -347,6 +352,7 @@ one terminal tool (submit_tags) to commit your final answer.
 Tools available:
   - lookup_country(name)            -> {canonical, iso, known}
   - lookup_region(name, country?)   -> {canonical, country, parents[], classification, is_placeholder, known}
+  - lookup_sub_regions(region)      -> {region, country, sub_regions[], known}
   - lookup_grape(name)              -> {canonical, color, origin, synonyms[], is_phrase, is_placeholder, known}
   - list_countries()                -> string[]
   - list_regions(country?)          -> string[]
@@ -364,11 +370,16 @@ Workflow:
   2. Use lookup_region and lookup_grape whenever you are unsure about a
      spelling or synonym (Garnacha vs Grenache, Piemonte vs Piedmont, Bical vs
      Borrado das Moscas). Prefer the canonical name returned by the tool.
-  3. Call submit_tags once you have your final answer. If it returns
+  3. If you believe the wine comes from a sub-region of the region you
+     found but are not confident which one, call lookup_sub_regions(region)
+     and compare its names with the web snippets. Submit a sub-region only
+     if a snippet names it for this wine; otherwise keep the region you are
+     sure of.
+  4. Call submit_tags once you have your final answer. If it returns
      ok: false, read the `hints` field (it names the offending values), fix
      your submission, and call again. Unknown names never pass: fix the
      spelling via lookup_*, or drop the value and keep what you are sure of.
-  4. Do NOT reply with free-text JSON. The only way to commit is submit_tags.
+  5. Do NOT reply with free-text JSON. The only way to commit is submit_tags.
 
 Field rules for submit_tags:
   - country: a single canonical country name (use lookup_country if unsure).

@@ -66,6 +66,11 @@ export const FERMENT_HELP = {
   threshold:
     "Minimum tagger confidence (0-100) for a wine to be tagged 'Model' instead of 'Needs review'. " +
     'Saved to settings.json when you leave the field, and used by console runs too.',
+  grapeColor:
+    "Developer switch: when on, the tagger's lookup_grape answer includes the grape's colour (red, white…). " +
+    "With it shown, the model has argued a rosé's red grape out of the blend (Urruzola's Hondarrabi Beltza). " +
+    'The review gate reads colours from the library either way. Saved to settings.json; applies from the next tag phase, ' +
+    'and the run history shows which runs had it off.',
   model:
     'Model name sent with every request to llama-server. The list is what the server currently reports as loaded; ' +
     'it serves one model at a time, so pick the one it has loaded (start it from the top bar if it is down).',

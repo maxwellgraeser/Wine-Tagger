@@ -138,6 +138,8 @@ The file is also written to `output/lightspeed-export.xlsx`.
 
 ## Not done / later
 
+- Known bugs and their fix plan: `journal/2026-10-01-BUG-FIXES.md` (first
+  item: the Ferment progress bars).
 - Auth: none, it is a local tool.
 - Pagination: the table loads everything; fine for hundreds of wines.
 - The old `distribution/` open question "separate overrides DB" is moot —
@@ -150,7 +152,7 @@ The file is also written to `output/lightspeed-export.xlsx`.
 |---|---|
 | `pending` | not tagged yet |
 | `model` | the LLM tagged it and cleared the confidence threshold |
-| `needs_review` | the LLM could not tag it confidently (no context, no grapes, low confidence), or an evidence rule fired — `final/<id>.json` → `review_reasons` says which: `unsupported_grape:<name>` (grape not in the context it was shown) or `single_source` (every snippet came from one site → confidence clamped to 69 and routed to review) |
+| `needs_review` | the LLM could not tag it confidently (no context, no grapes, low confidence), or an evidence rule fired — `final/<id>.json` → `review_reasons` says which: `unsupported_grape:<name>` (grape not in the context it was shown), `single_source` (every snippet came from one site → confidence clamped to 69 and routed to review), and the rest listed in `fermentation/PLAN.md` (`uncorroborated_grape`, `coarse_region`, `longer_region`, `unsupported_region`, …) |
 | `human` | a person saved tags in Cellar; fermentation skips it until "Reset human tags" |
 
 (`auto` / `manual` were the names before 2026-09-15; `store.load_store` migrates them.)

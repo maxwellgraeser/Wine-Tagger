@@ -17,7 +17,14 @@ once at startup (the DB is a few thousand rows) -- no per-call table scans.
 
 Region names can repeat across countries (La Rioja in Spain and
 Argentina); `lookup_region`, `list_grapes` and `submit_tags` use the
-wine's country to pick one. A region string that misses exactly is
+wine's country to pick one. `lookup_sub_regions` walks the tree the other
+way, one level down.
+
+`LIBRARY_GRAPE_COLOR=0` in the environment hides the grape colour from
+`lookup_grape` (its answer and its description). The tagger sets it from the
+`lookup_grape_color` setting: shown `color: red` for a rosé's Hondarrabi
+Beltza, the 7B argued the grape out of the blend (journal 2026-10-01-SCORECARD
+§5). The colour stays in library.db for the gate's own checks. A region string that misses exactly is
 retried without classification words ("Barolo DOCG", "W.O. Stellenbosch")
 and split on commas ("Coastal Region, Western Cape, South Africa").
 
@@ -27,6 +34,7 @@ Run standalone for smoke testing:
 
 from __future__ import annotations
 
+import os
 import re
 import sqlite3
 import unicodedata
@@ -38,6 +46,7 @@ from mcp.server.fastmcp import FastMCP
 from pydantic import Field
 
 DB_PATH = Path(__file__).resolve().parent / "library.db"
+GRAPE_COLOR = os.environ.get("LIBRARY_GRAPE_COLOR", "1") != "0"
 
 # Generic phrases the model sometimes hallucinates as grape names.
 _PHRASE_PATTERNS = (
@@ -272,6 +281,10 @@ def _load_index(conn: sqlite3.Connection):
 
 
 _COUNTRIES, _REGIONS, _GRAPES, _C_IDX, _R_IDX, _G_IDX = _load_index(_CONN)
+_CHILDREN: dict[int, list[Region]] = {}
+for _r in _REGIONS.values():
+    if _r.parent_id is not None:
+        _CHILDREN.setdefault(_r.parent_id, []).append(_r)
 
 
 def _resolve_country(name: str) -> Optional[Country]:
@@ -395,28 +408,56 @@ def lookup_region(name: str, country: Optional[str] = None) -> dict:
 
 
 @mcp.tool()
-def lookup_grape(name: str) -> dict:
-    """Resolve a grape (or one of its synonyms: Garnacha, Shiraz, PN) to
+def lookup_sub_regions(region: str) -> dict:
+    """List the canonical regions one level below a region (Piedmont ->
+    Barbaresco, Barolo, ...). Use it when you believe the wine comes from a
+    sub-region of the region you found but are not confident which: compare
+    the names with the web snippets and submit a sub-region only if a snippet
+    names it for this wine; otherwise keep the region you are sure of. Call
+    it again on a sub-region to go one level deeper.
+
+    Returns {region, country, sub_regions[], known}. An empty sub_regions
+    means the library has nothing below this region.
+    """
+    row, alts = _pick_region(_region_candidates(region), None)
+    if not row:
+        return {"region": None, "country": None, "sub_regions": [], "known": False}
+    out = {
+        "region": row.name,
+        "country": _region_country(row),
+        "sub_regions": sorted(r.name for r in _CHILDREN.get(row.id, []) if r.canonical),
+        "known": True,
+    }
+    if alts:
+        out["alternatives"] = [f"{a.name} ({_region_country(a)})" for a in alts]
+    return out
+
+
+_LOOKUP_GRAPE_DOC = """Resolve a grape (or one of its synonyms: Garnacha, Shiraz, PN) to
     its canonical name.
 
-    Returns {canonical, color, origin, synonyms[], is_phrase,
-    is_placeholder, known}. `is_phrase` flips for non-grape filler
+    Returns {{canonical, {color}origin, synonyms[], is_phrase,
+    is_placeholder, known}}. `is_phrase` flips for non-grape filler
     ('Bordeaux Blend', 'unknown') -- submit real varieties or an empty
     list. `is_placeholder` flips for real but niche grapes outside the
     canonical list; those will not pass submit_tags.
     """
+
+
+@mcp.tool(description=_LOOKUP_GRAPE_DOC.format(color="color, " if GRAPE_COLOR else ""))
+def lookup_grape(name: str) -> dict:
     empty = {"canonical": None, "color": None, "origin": None, "synonyms": [],
              "is_phrase": False, "is_placeholder": False, "known": False}
     if _is_phrase(name):
-        return {**empty, "is_phrase": True}
+        return _without_colour({**empty, "is_phrase": True})
     row = _resolve_grape(name)
     if not row:
-        return empty
+        return _without_colour(empty)
     origin = None
     if row.origin_country_id:
         c = _COUNTRIES.get(row.origin_country_id)
         origin = c.name if c else None
-    return {
+    return _without_colour({
         "canonical": row.name,
         "color": row.color,
         "origin": origin,
@@ -424,7 +465,12 @@ def lookup_grape(name: str) -> dict:
         "is_phrase": False,
         "is_placeholder": not row.canonical,
         "known": True,
-    }
+    })
+
+
+def _without_colour(answer: dict) -> dict:
+    """`answer` minus its colour when LIBRARY_GRAPE_COLOR is off."""
+    return answer if GRAPE_COLOR else {k: v for k, v in answer.items() if k != "color"}
 
 
 @mcp.tool()

@@ -91,6 +91,8 @@ export interface FermentationStatus {
 
 export interface Settings {
   confidence_threshold: number;
+  /** Show lookup_grape's colour to the tagger (a developer switch). */
+  lookup_grape_color: boolean;
   path?: string;
 }
 
