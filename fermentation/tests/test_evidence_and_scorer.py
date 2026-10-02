@@ -585,6 +585,24 @@ def test_region_from_sources_needs_as_many_sources_as_the_submitted_region():
 
 
 @pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
+def test_region_from_sources_needs_two_sources_for_a_region_below():
+    # 2026-10-02, Curator White: one snippet names Swartland and, as where the vines grow,
+    # Paardeberg. 1 to 1 is a tie; a sub-region needs FINER_REGION_MIN_SOURCES to replace.
+    ctx = ("[Grape variety #2 | match=90]\nChenin blanc, Chardonnay, Viognier, Swartland, South Africa. "
+           "Sourced from multiple sites across the Swartland district, specifically from mountain slopes "
+           "in the Paardeberg area.\n\n"
+           "[CellarTracker #1 | match=90]\n2021 Badenhorst Family Wines The Curator White.")
+    regions = ["Swartland", "Coastal Region", "Western Cape"]
+    assert evidence.region_from_sources(regions, ctx, country="South Africa", product_name="Curator White") is None
+    ctx += "\n\n[Wine.com #1 | match=90]\nThe Curator White, from the Paardeberg, Swartland."
+    assert evidence.region_from_sources(regions, ctx, country="South Africa",
+                                        product_name="Curator White") == "Paardeberg"
+    # A longer name wins on a tie: one source each.
+    assert evidence.region_from_sources(["Brouilly", "Beaujolais"], PAV_CTX.split("\n\n")[0], country="France",
+                                        product_name="Pav Chavannes Brouilly") == "Côte de Brouilly"
+
+
+@pytest.mark.skipif(not evidence.LIBRARY_DB.exists(), reason="library.db not built")
 def test_region_upgrade_without_review(monkeypatch):
     from fermentation import phases
     monkeypatch.setattr(phases, "REGION_UPGRADE_NEEDS_REVIEW", False)

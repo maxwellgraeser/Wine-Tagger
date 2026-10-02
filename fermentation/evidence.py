@@ -425,10 +425,17 @@ def region_from_sources(
     submitted region (outside the finer name). The review checks let two
     sources outweigh any number, which is right for a flag but not for a
     replacement: on 2026-10-01, three sources named Rioja Oriental (the
-    Garnacha's origin) and five named La Rioja Alta's Rioja."""
+    Garnacha's origin) and five named La Rioja Alta's Rioja.
+
+    A region below the submitted one also needs FINER_REGION_MIN_SOURCES
+    sources: one snippet naming both is too thin. On 2026-10-02 Curator
+    White's "sourced from … the Paardeberg area" (where the vines grow, not
+    the appellation) turned the right Swartland into Paardeberg, 1 source to
+    1. A longer name (Côte de Brouilly for Brouilly) may still win on a tie:
+    the POS shortened it and the model looked up the short form."""
     where = dict(country=country, product_name=product_name)
-    names = [*finer_regions_named(regions, web_context, **where),
-             *longer_regions_named(regions, web_context, **where)]
+    longer = longer_regions_named(regions, web_context, **where)
+    names = [*finer_regions_named(regions, web_context, **where), *longer]
     ids = [rid for n in dict.fromkeys(names) if (rid := _region_id(n, country)) is not None]
     above = {a for rid in ids for a in _ancestors(rid)}
     left = [rid for rid in ids if rid not in above]
@@ -441,6 +448,8 @@ def region_from_sources(
     masked = [(fam, _mask(body, aliases)) for fam, body in blocks]
     _submitted, leaves = _submitted_leaves(regions, country)
     submitted_n = max((_source_count(nodes[leaf][3], masked, name_words) for leaf in leaves), default=0)
+    if name not in longer:
+        submitted_n = max(submitted_n, FINER_REGION_MIN_SOURCES)
     return name if _source_count(aliases, blocks, name_words) >= submitted_n else None
 
 

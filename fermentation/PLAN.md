@@ -462,11 +462,15 @@ stated, now enforced in code):
     left, and it is named by at least as many sources as the submitted
     region → `region_from_sources:Brouilly→Côte de Brouilly`. With fewer
     (La Rioja Alta, Oct 1: Rioja Oriental 3 against Rioja 5) nothing
-    changes and `coarse_region` routes the row as before.
-  - On the ten 24-wine logs: 19 rows fixed, none broken (174 → 193 right);
+    changes and `coarse_region` routes the row as before. A region *below*
+    the submitted one also needs `FINER_REGION_MIN_SOURCES` (2): on Oct 2 one
+    snippet's "sourced from … the Paardeberg area" turned Curator's right
+    Swartland into Paardeberg, 1 source to 1. A longer name (Côte de Brouilly)
+    may still win on a tie.
+  - On the ten 24-wine logs: 18 rows fixed, none broken (174 → 192 right);
     `journal/2026-10-02-REGION-RULES.md`. `REGION_UPGRADE_NEEDS_REVIEW`
     (on for now, while testing) also routes every upgraded row; off, the
-    upgrade is accepted and the queue on the logs drops from 72 to 52.
+    upgrade is accepted and the queue on the logs drops from 72 to 54.
 - **Unsupported region.** `evidence.unsupported_regions`: the most specific
   submitted region is named nowhere in the context or the product name (by
   any library spelling, separators ignored), and no region below it is
