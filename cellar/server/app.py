@@ -32,7 +32,7 @@ from pathlib import Path
 from typing import Any, Optional
 
 import requests
-from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi import FastAPI, File, Header, HTTPException, UploadFile
 from fastapi.responses import FileResponse, Response
 from fastapi.sse import EventSourceResponse, ServerSentEvent
 from fastapi.staticfiles import StaticFiles
@@ -564,18 +564,26 @@ async def api_job_stop(job_id: str) -> dict:
 
 
 @app.get("/api/jobs/{job_id}/events", response_class=EventSourceResponse)
-async def api_job_events(job_id: str, after: int = 0) -> AsyncIterable[ServerSentEvent]:
+async def api_job_events(
+    job_id: str, after: int = 0, last_event_id: Optional[str] = Header(None),
+) -> AsyncIterable[ServerSentEvent]:
     job = JOBS.get(job_id)
     if job is None:
         raise HTTPException(404, "no such job")
+    # A browser reconnecting on its own sends the id of the last event it got;
+    # resume after it instead of replaying the whole history a second time.
+    if last_event_id is not None and last_event_id.isdigit():
+        after = max(after, int(last_event_id) + 1)
     q = job.subscribe()
     try:
         # Replay history first so a late subscriber sees everything.
-        for i, ev in enumerate(job.events[after:], start=after):
+        history = job.events[after:]
+        for i, ev in enumerate(history, start=after):
             yield ServerSentEvent(data=ev, event=ev.get("type", "log"), id=str(i))
         if not job.running:
             return
-        idx = len(job.events)
+        # Events pushed during the replay are queued, not in `history`.
+        idx = after + len(history)
         while True:
             try:
                 ev = await asyncio.wait_for(q.get(), timeout=15)

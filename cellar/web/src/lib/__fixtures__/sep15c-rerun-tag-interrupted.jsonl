@@ -1,0 +1,5 @@
+{"type": "info", "run_id": "20260915-221614", "phase": "tag", "total": 24, "cursor": 0, "ts": 1789529575.653328, "message": "Run 20260915-221614: 24 wines, starting at phase tag"}
+{"type": "phase_start", "run_id": "20260915-221614", "phase": "tag", "total": 24, "ts": 1789529575.653673, "message": "=== Phase tag: 24 wines ==="}
+{"type": "progress", "run_id": "20260915-221614", "phase": "tag", "index": 0, "total": 24, "ts": 1789529592.558368, "name": "Annabella Pinot Noir", "message": "[tag 1/24] Annabella Pinot Noir | model (conf=98) United States; Russian River Valley; Sonoma County; North Coast; California; Pinot Noir; Single Varietal"}
+{"type": "progress", "run_id": "20260915-221614", "phase": "tag", "index": 1, "total": 24, "ts": 1789529606.9893382, "name": "Aster Ribera del Duero", "message": "[tag 2/24] Aster Ribera del Duero | model (conf=85) Spain; Ribera del Duero; Castilla y León; Tempranillo; Single Varietal"}
+{"type": "error", "run_id": "20260915-221614", "ts": 1789529622.545581, "message": "Interrupted. Re-run the same command to resume."}

@@ -6,8 +6,10 @@ const EVENT_TYPES = [
   'info',
   'log',
   'error',
+  'run_plan',
   'phase_start',
   'phase_end',
+  'wine_start',
   'progress',
   'paused',
   'done',
@@ -25,7 +27,9 @@ export interface UseJobStreamResult {
 /**
  * Subscribes to a job's SSE event stream (`GET /api/jobs/{id}/events`).
  * History is replayed by the server on connect. Closes automatically on
- * an `exit` event.
+ * an `exit` event. If the connection drops, EventSource reconnects by itself
+ * and the server resumes after the last event id it sent; events already
+ * received are dropped by id, so nothing is appended twice.
  *
  * `onDone` fires on done / paused / exit; `onEvent` fires for every event
  * (used to refresh the wine table live while the tag phase runs).
@@ -54,8 +58,14 @@ export function useJobStream(onDone?: () => void, onEvent?: (e: JobEvent) => voi
       const es = new EventSource(api.jobEventsUrl(jobId));
       esRef.current = es;
       setRunning(true);
+      let lastId = -1;
 
       const handleMessage = (evt: MessageEvent) => {
+        const id = evt.lastEventId === '' ? NaN : Number(evt.lastEventId);
+        if (Number.isFinite(id)) {
+          if (id <= lastId) return;
+          lastId = id;
+        }
         try {
           const data = JSON.parse(evt.data) as JobEvent;
           const type = data.type ?? evt.type;
@@ -79,10 +89,10 @@ export function useJobStream(onDone?: () => void, onEvent?: (e: JobEvent) => voi
       }
       es.onmessage = handleMessage;
       es.onerror = () => {
-        // EventSource retries automatically; if the job already finished
-        // the server will have closed the stream, so just stop showing
-        // "running" after a failure.
-        setRunning(false);
+        // While CONNECTING, EventSource is retrying on its own and the job
+        // may well still be running. Only a CLOSED stream (the server
+        // refused the reconnect, e.g. it restarted) ends it.
+        if (es.readyState === EventSource.CLOSED) setRunning(false);
       };
     },
     [],

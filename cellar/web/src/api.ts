@@ -366,7 +366,8 @@ export interface GrapeEntry {
 export interface JobEvent {
   type: string;
   message?: string;
-  ts?: string;
+  /** Epoch seconds. */
+  ts?: number;
   [key: string]: unknown;
 }
 

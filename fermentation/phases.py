@@ -102,6 +102,19 @@ def init_run_json(ctx: RunContext) -> None:
     ctx.save_run_json()
 
 
+def run_plan(total: int, resume_phase: str, cursor: int) -> dict[str, dict]:
+    """Each phase's state as an invocation starts at (resume_phase, cursor):
+    earlier phases are done, the resume phase has `cursor` wines done."""
+    start = PHASES.index(resume_phase)
+    plan = {}
+    for i, ph in enumerate(PHASES):
+        if i < start:
+            plan[ph] = {"state": "done", "done": total}
+        else:
+            plan[ph] = {"state": "pending", "done": cursor if i == start else 0}
+    return plan
+
+
 def _phase_state(ctx: RunContext, phase: str) -> dict:
     return ctx.run_json["phases"][phase]
 
@@ -207,10 +220,12 @@ def run_search(ctx: RunContext, start: int = 0) -> None:
         if _is_human(ctx, product):
             counts["skipped_human"] += 1
             _set_phase_status(ctx, product, "search", "skipped")
-            ctx.sink.progress("search", idx, total, product.id, product.name, "skip (human)")
+            ctx.sink.progress("search", idx, total, product.id, product.name, "skip (human)",
+                              skipped=True)
             _checkpoint(ctx, "search", idx + 1)
             continue
 
+        ctx.sink.wine_start("search", idx, total, product.id, product.name)
         snippets, search_errors, n_dup = searcher.gather_snippets(product, return_errors=True)
         _write_log(ctx, "search", product.id, {
             "product_id": product.id,
@@ -304,10 +319,12 @@ def run_score(ctx: RunContext, start: int = 0) -> None:
         if _is_human(ctx, product):
             counts["skipped_human"] += 1
             _set_phase_status(ctx, product, "score", "skipped")
-            ctx.sink.progress("score", idx, total, product.id, product.name, "skip (human)")
+            ctx.sink.progress("score", idx, total, product.id, product.name, "skip (human)",
+                              skipped=True)
             _checkpoint(ctx, "score", idx + 1)
             continue
 
+        ctx.sink.wine_start("score", idx, total, product.id, product.name)
         snippets = _snippets_from_log(_read_log(ctx, "search", product.id))
         web_context, scored, llm_raw = scorer.score_and_assemble(
             product, snippets, api_url=cfg.api_url, model=cfg.model,
@@ -464,10 +481,12 @@ def run_tag(ctx: RunContext, start: int = 0) -> None:
             if row.get("tag_status") == "human":
                 counts["skipped_human"] += 1
                 _set_phase_status(ctx, product, "tag", "skipped")
-                ctx.sink.progress("tag", idx, total, product.id, product.name, "skip (human)")
+                ctx.sink.progress("tag", idx, total, product.id, product.name, "skip (human)",
+                                  skipped=True)
                 _checkpoint(ctx, "tag", idx + 1)
                 continue
 
+            ctx.sink.wine_start("tag", idx, total, product.id, product.name)
             score_log = _read_log(ctx, "score", product.id) or {}
             web_context: Optional[str] = score_log.get("web_context")
             normalized: Optional[ParsedTags] = None

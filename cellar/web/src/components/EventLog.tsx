@@ -10,8 +10,13 @@ function colorFor(type: string): string {
   return 'text-muted';
 }
 
-export function EventLog({ events, height = 'h-64' }: { events: JobEvent[]; height?: string }) {
+// The progress bars show the wine being worked on; one log line per wine
+// start would only double the log.
+const HIDDEN = new Set(['wine_start']);
+
+export function EventLog({ events: all, height = 'h-64' }: { events: JobEvent[]; height?: string }) {
   const ref = useRef<HTMLDivElement>(null);
+  const events = all.filter((e) => !HIDDEN.has(e.type));
 
   useEffect(() => {
     if (ref.current) {

@@ -193,6 +193,8 @@ def main(argv: Optional[list[str]] = None) -> None:
         run_id=run_id, total=len(products), phase=resume_phase, cursor=resume_cursor,
         model=args.model, api_url=args.api_url,
     )
+    sink.run_plan(len(products), resume_phase, resume_cursor, args.stop_after,
+                  phases.run_plan(len(products), resume_phase, resume_cursor))
     if args.no_producer_gate:
         sink.info("NOTE: --no-producer-gate set; producer-absent gating disabled.")
 

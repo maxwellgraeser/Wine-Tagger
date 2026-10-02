@@ -50,6 +50,29 @@ class EventSink:
     def phase_end(self, phase: str, **counts: Any) -> None:
         self.emit("phase_end", f"=== Phase {phase} done ===", phase=phase, **counts)
 
+    def run_plan(self, total: int, resume_phase: str, cursor: int,
+                 stop_after: Optional[str], phases: dict[str, dict]) -> None:
+        """The run's shape before any work: every phase's total and how much of
+        it is already done, so the dashboard can draw all bars from the start."""
+        parts = []
+        for ph, st in phases.items():
+            if st["state"] == "done":
+                parts.append(f"{ph} done")
+            elif st["done"]:
+                parts.append(f"{ph} from wine {st['done'] + 1}")
+            else:
+                parts.append(f"{ph} to do")
+        pause = f" (pausing after {stop_after})" if stop_after else ""
+        self.emit("run_plan", f"Plan: {total} wines; {', '.join(parts)}{pause}",
+                  total=total, resume_phase=resume_phase, cursor=cursor,
+                  stop_after=stop_after, phases=phases)
+
+    def wine_start(self, phase: str, index: int, total: int, product_id: str, name: str) -> None:
+        self.emit(
+            "wine_start", f"[{phase} {index + 1}/{total}] {name} …",
+            phase=phase, index=index, total=total, product_id=product_id, name=name,
+        )
+
     def progress(self, phase: str, index: int, total: int, product_id: str,
                  name: str, message: str, **extra: Any) -> None:
         self.emit(

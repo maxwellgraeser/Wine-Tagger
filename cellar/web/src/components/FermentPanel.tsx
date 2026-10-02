@@ -9,6 +9,18 @@ import {
   type RunSummary,
   type StatusResponse,
 } from '../api';
+import {
+  computeRunProgress,
+  formatClock,
+  formatDuration,
+  hasRunStart,
+  overallEta,
+  overallFraction,
+  phaseEta,
+  type PhaseProgress,
+  type PhaseState,
+  type RunProgress,
+} from '../lib/progress';
 import { EventLog } from './EventLog';
 import { FERMENT_HELP, Help } from './Help';
 import { RunHistory, runLabel } from './RunHistory';
@@ -17,29 +29,84 @@ import { StatusCounts } from './StatusCounts';
 
 const nextPhase = (p: Phase): Phase | null => PHASES[PHASES.indexOf(p) + 1] ?? null;
 
-function computePhaseProgress(events: JobEvent[]): Record<Phase, { index: number; total: number; active: boolean }> {
-  const result: Record<Phase, { index: number; total: number; active: boolean }> = {
-    search: { index: 0, total: 0, active: false },
-    score: { index: 0, total: 0, active: false },
-    tag: { index: 0, total: 0, active: false },
-  };
-  for (const e of events) {
-    const phase = e.phase as Phase | undefined;
-    if (!phase || !(phase in result)) continue;
-    if (e.type === 'phase_start') {
-      result[phase].active = true;
-      result[phase].total = Number(e.total ?? result[phase].total);
-      result[phase].index = 0;
-    } else if (e.type === 'progress') {
-      result[phase].index = Number(e.index ?? result[phase].index);
-      result[phase].total = Number(e.total ?? result[phase].total);
-      result[phase].active = true;
-    } else if (e.type === 'phase_end') {
-      result[phase].active = false;
-      if (result[phase].total) result[phase].index = result[phase].total;
+/** The clock in epoch seconds, ticking every second while `active`. */
+function useNow(active: boolean): number {
+  const [now, setNow] = useState(() => Date.now() / 1000);
+  useEffect(() => {
+    if (!active) return;
+    const tick = () => setNow(Date.now() / 1000);
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, [active]);
+  return now;
+}
+
+function phaseDetail(p: PhaseProgress, now: number): string {
+  if (!p.total) return 'waiting';
+  const count = `${p.done} / ${p.total}`;
+  switch (p.state) {
+    case 'pending':
+      return `${count} · ${p.inRun ? 'waiting' : 'after the pause'}`;
+    case 'done':
+      return `${count} · done`;
+    case 'stopped':
+      return `${count} · stopped`;
+    case 'running': {
+      const eta = phaseEta(p, now);
+      const pct = Math.round((p.done / p.total) * 100);
+      return `${count} (${pct}%)${eta !== null ? ` · ~${formatDuration(eta)} left` : ''}`;
     }
   }
-  return result;
+}
+
+function PhaseBars({ progress, now }: { progress: RunProgress; now: number }) {
+  return (
+    <>
+      {PHASES.map((ph) => {
+        const p = progress.phases[ph];
+        const cur = p.state === 'running' ? p.current : null;
+        return (
+          <ProgressBar
+            key={ph}
+            label={ph}
+            state={p.state}
+            fraction={p.total ? p.done / p.total : 0}
+            detail={phaseDetail(p, now)}
+            sub={
+              cur && (
+                <>
+                  Now: <span className="text-ink">{cur.name ?? `wine ${cur.index + 1}`}</span> ·{' '}
+                  <span className="tabular-nums">{formatClock(now - cur.since)}</span>
+                </>
+              )
+            }
+          />
+        );
+      })}
+    </>
+  );
+}
+
+function OverallBar({ progress, now }: { progress: RunProgress; now: number }) {
+  const states = PHASES.map((p) => progress.phases[p].state);
+  const state: PhaseState = states.includes('running')
+    ? 'running'
+    : states.includes('stopped')
+      ? 'stopped'
+      : states.every((s) => s === 'done')
+        ? 'done'
+        : 'pending';
+  const fraction = overallFraction(progress);
+  const eta = overallEta(progress, now);
+  return (
+    <ProgressBar
+      label="Overall progress"
+      state={state}
+      fraction={fraction}
+      detail={`${Math.floor(fraction * 100)}%${eta !== null ? ` · ~${formatDuration(eta)} left` : ''}`}
+    />
+  );
 }
 
 /** The pause point of the current stream (if the last event is `paused`). */
@@ -136,7 +203,34 @@ export function FermentPanel({
   const [resetting, setResetting] = useState(false);
   const [resetMsg, setResetMsg] = useState<string | null>(null);
 
-  const phaseProgress = useMemo(() => computePhaseProgress(events), [events]);
+  // The bars follow the live job's events. With no fermentation run in them
+  // (after a reload once the job ended, or after an ingest job), they show
+  // the last fermentation run, read back from its events.jsonl.
+  const liveHasRun = useMemo(() => hasRunStart(events), [events]);
+  const lastRunId =
+    status?.jobs.find((j) => j.stage === 'ferment' && typeof j.run_id === 'string')?.run_id ??
+    runs[0]?.run_id ??
+    null;
+  const [lastRun, setLastRun] = useState<{ runId: string; events: JobEvent[] } | null>(null);
+  useEffect(() => {
+    if (running || liveHasRun || !lastRunId || lastRun?.runId === lastRunId) return;
+    let cancelled = false;
+    api
+      .getRunEvents(lastRunId, 100000)
+      .then((r) => !cancelled && setLastRun({ runId: lastRunId, events: r.events }))
+      .catch(() => undefined);
+    return () => {
+      cancelled = true;
+    };
+  }, [running, liveHasRun, lastRunId, lastRun?.runId]);
+  const progress = useMemo(
+    () =>
+      running || liveHasRun
+        ? computeRunProgress(events, { live: running })
+        : computeRunProgress(lastRun?.events ?? [], { live: false }),
+    [running, liveHasRun, events, lastRun],
+  );
+  const now = useNow(PHASES.some((p) => progress.phases[p].state === 'running'));
   const runState = status?.fermentation.run_state ?? null;
   const byStatus = status?.fermentation.wines_json.by_status;
 
@@ -250,8 +344,6 @@ export function FermentPanel({
   );
 
   if (simple) {
-    const totalIndex = PHASES.reduce((s, p) => s + phaseProgress[p].index, 0);
-    const totalTotal = PHASES.reduce((s, p) => s + phaseProgress[p].total, 0);
     return (
       <div className="space-y-3">
         <div className="flex items-center justify-between">
@@ -279,7 +371,10 @@ export function FermentPanel({
           </div>
         </div>
         {pausedBanner}
-        <ProgressBar value={totalIndex} total={totalTotal || 1} label="Overall progress" />
+        <div className="space-y-2 rounded-md border border-parchment bg-white p-3">
+          <OverallBar progress={progress} now={now} />
+          <PhaseBars progress={progress} now={now} />
+        </div>
         {byStatus && <StatusCounts byStatus={byStatus} />}
         {resetMsg && <div className="text-xs text-ink/70">{resetMsg}</div>}
       </div>
@@ -444,14 +539,7 @@ export function FermentPanel({
 
       <div className="space-y-2 rounded-md border border-parchment bg-white p-3">
         <h3 className="text-sm font-semibold text-ink">Phase progress</h3>
-        {PHASES.map((p) => (
-          <ProgressBar
-            key={p}
-            value={phaseProgress[p].index}
-            total={phaseProgress[p].total || 1}
-            label={`${p}${phaseProgress[p].active ? ' (running)' : ''}`}
-          />
-        ))}
+        <PhaseBars progress={progress} now={now} />
       </div>
 
       <div>
